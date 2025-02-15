@@ -23,6 +23,4 @@ In diesem Blog finden Sie:
 
 Egal ob Sie kompletter Linux-Neuling sind oder X-Plane 12 einfach auf Ihrem bestehenden Linux-System zum Laufen bringen möchten - dieser Leitfaden wird Sie durch den gesamten Prozess führen, von der Auswahl und Installation von Linux bis zum reibungslosen Betrieb von X-Plane 12.
 
-Ich lade Sie herzlich ein, sich umzusehen und von den bereitgestellten Informationen zu profitieren. Ihre Anregungen und Fragen sind stets willkommen.
-
 Viel Erfolg und einen guten Flug!
