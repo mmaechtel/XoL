@@ -23,6 +23,4 @@ In this blog you will find:
 
 Whether you're completely new to Linux or just want to get X-Plane 12 running on your existing Linux system, this guide will help you through the entire process - from choosing and installing Linux to getting X-Plane 12 up and running smoothly.
 
-I invite you to look around and benefit from the information provided. Your suggestions and questions are always welcome.
-
 Good luck and happy flying! 
