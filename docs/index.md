@@ -13,3 +13,5 @@ In diesem Blog finden Sie:
 Ich lade Sie herzlich ein, sich umzusehen und von den bereitgestellten Informationen zu profitieren. Ihre Anregungen und Fragen sind stets willkommen.
 
 Viel Erfolg und einen guten Flug!
+
+EDIT
