@@ -62,9 +62,9 @@ plugins:
           build: true
           default: true
           nav:
-            - Startseite: index.md
-            - Karten: maps.md
-            - Über: about.md
+            - Startseite: de/index.md
+            - Karten: de/maps.md
+            - Über: de/about.md
         - locale: en
           name: English
           build: true
