@@ -1,0 +1,91 @@
+site_name: XoL - XPlane on Linux
+site_url: https://emvisio.com/
+repo_url: https://github.com/mmaechtel/XoL
+repo_name: XoL
+edit_uri: edit/main/docs/
+
+use_directory_urls: false
+
+theme:
+  name: material
+  custom_dir: overrides
+  palette:
+    - scheme: default
+      primary: indigo
+      accent: indigo
+      toggle:
+        icon: material/weather-night
+        name: Switch to dark mode
+    - scheme: slate
+      primary: indigo
+      accent: indigo
+      toggle:
+        icon: material/weather-sunny
+        name: Switch to light mode
+  language: de
+  features:
+    - navigation.tracking
+    - navigation.tabs
+    - navigation.sections
+    - navigation.indexes
+    - toc.follow
+    - search.suggest
+    - search.highlight
+    - content.action.edit
+
+plugins:
+  - search
+  - pub-blog
+  - pub-obsidian
+  - i18n:
+      #reconfigure_material: true
+      docs_structure: folder
+      languages:
+        - locale: de
+          name: Deutsch
+          build: true
+          default: true
+          nav:
+            - Startseite: index.md
+            - Karten: maps.md
+            - Über: about.md
+        - locale: en
+          name: English
+          build: true
+          nav:
+            - Home: en/index.md
+            - Maps: en/maps.md
+            - About: en/about.md
+  - git-revision-date-localized:
+      #enable_creation_date: true
+      #enabled: !ENV [CI, false]
+      #type: date
+      #fallback_to_build_date: true
+      
+extra:
+  alternate:
+    - name: Deutsch
+      link: /de/
+      lang: de
+    - name: English
+      link: /en/
+      lang: en
+  social:
+    - icon: fontawesome/brands/github
+      link: https://github.com/mmaechtel/XoL/issues/new/choose
+      name: NewIssue
+    - icon: fontawesome/brands/twitter
+      link: https://x.com/HeDragonist
+      name: X
+
+markdown_extensions:
+  - attr_list
+  - md_in_html
+  - tables
+  - pymdownx.highlight:
+      anchor_linenums: true
+  - pymdownx.inlinehilite
+  - pymdownx.snippets
+  - pymdownx.superfences
+
+
