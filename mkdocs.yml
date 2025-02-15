@@ -34,10 +34,14 @@ theme:
 
   language: de
   features:
+
     - navigation.tracking
     - navigation.tabs
     - navigation.sections
+    - navigation.expand
+    - navigation.path
     - navigation.indexes
+    - navigation.top
     - toc.follow
     - search.suggest
     - search.highlight
@@ -49,6 +53,8 @@ plugins:
   - pub-obsidian
   - i18n:
       #reconfigure_material: true
+      default_language: de
+
       docs_structure: folder
       languages:
         - locale: de
