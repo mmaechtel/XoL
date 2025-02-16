@@ -50,11 +50,13 @@ theme:
 plugins:
   - search
   - pub-blog
-  - pub-obsidian
+  - pub-obsidian:
+      wikilinks: true
+      markdown_features:
+        wikilinks: true
+      backlinks:
+        enabled: false  # Deaktivieren der Backlinks, da sie nicht wie gewünscht funktionieren
   - i18n:
-      #reconfigure_material: true
-      default_language: de
-
       docs_structure: folder
       languages:
         - locale: de
