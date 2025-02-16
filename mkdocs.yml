@@ -64,6 +64,8 @@ plugins:
           nav:
             - Startseite: de/index.md
             - Karten: de/maps.md
+            - Addons: de/addon/xroad.md
+            - Glossar: de/glossary.md
             - Über: de/about.md
         - locale: en
           name: English
@@ -71,6 +73,8 @@ plugins:
           nav:
             - Home: en/index.md
             - Maps: en/maps.md
+            - Addons: en/addon/xroad.md
+            - Glossary: en/glossary.md
             - About: en/about.md
   - git-revision-date-localized:
       #enable_creation_date: true
@@ -103,5 +107,8 @@ markdown_extensions:
   - pymdownx.inlinehilite
   - pymdownx.snippets
   - pymdownx.superfences
+  - def_list
+  - pymdownx.tabbed:
+      alternate_style: true
 
 
