@@ -1,15 +1,15 @@
-# XoL - XPlane on Linux
+# XoL - [X-Plane](glossary.md#x-plane) on [Linux](glossary.md#linux)
 
-Welcome to this blog dedicated to getting started with Linux and X-Plane 12. The aim of this platform is to provide a comprehensive guide that helps complete beginners set up both Linux and the X-Plane flight simulator from scratch.
+Welcome to this blog dedicated to getting started with [Linux](glossary.md#linux) and [X-Plane](glossary.md#x-plane) 12. The aim of this platform is to provide a comprehensive guide that helps complete beginners set up both [Linux](glossary.md#linux) and the [X-Plane](glossary.md#x-plane) flight simulator from scratch.
 
 In this blog you will find:
 
 - **Step-by-step guides** for:
-    - Installing Linux for the first time
-    - Basic Linux system configuration
-    - Installing X-Plane 12 on your Linux system
+    - Installing [Linux](glossary.md#linux) for the first time
+    - Basic [Linux](glossary.md#linux) system configuration
+    - Installing [X-Plane](glossary.md#x-plane) 12 on your [Linux](glossary.md#linux) system
 - **Tips and tricks** for:
-    - Choosing the right Linux distribution
+    - Choosing the right [Linux](glossary.md#linux) distribution
     - System optimization for flight simulation
     - Graphics and performance settings
 - **Solutions** for common problems and challenges
