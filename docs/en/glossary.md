@@ -1,3 +1,10 @@
+---
+title: Glossary
+description: Terms and definitions related to X-Plane and Linux
+tags:
+  - reference
+---
+
 # Glossary
 
 ## L

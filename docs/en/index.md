@@ -1,15 +1,15 @@
-# XoL - [X-Plane](glossary.md#x-plane) on [Linux](glossary.md#linux)
+# XoL - [X-Plane](/en/glossary.html#x-plane) on [Linux](/en/glossary.html#linux)
 
-Welcome to this blog dedicated to getting started with [Linux](glossary.md#linux) and [X-Plane](glossary.md#x-plane) 12. The aim of this platform is to provide a comprehensive guide that helps complete beginners set up both [Linux](glossary.md#linux) and the [X-Plane](glossary.md#x-plane) flight simulator from scratch.
+Welcome to this blog dedicated to getting started with [Linux](/en/glossary.html#linux) and [X-Plane](/en/glossary.html#x-plane) 12. The aim of this platform is to provide a comprehensive guide that helps complete beginners set up both [Linux](/en/glossary.html#linux) and the [X-Plane](/en/glossary.html#x-plane) flight simulator from scratch.
 
 In this blog you will find:
 
 - **Step-by-step guides** for:
-    - Installing [Linux](glossary.md#linux) for the first time
-    - Basic [Linux](glossary.md#linux) system configuration
-    - Installing [X-Plane](glossary.md#x-plane) 12 on your [Linux](glossary.md#linux) system
+    - Installing [Linux](/en/glossary.html#linux) for the first time
+    - Basic [Linux](/en/glossary.html#linux) system configuration
+    - Installing [X-Plane](/en/glossary.html#x-plane) 12 on your [Linux](/en/glossary.html#linux) system
 - **Tips and tricks** for:
-    - Choosing the right [Linux](glossary.md#linux) distribution
+    - Choosing the right [Linux](/en/glossary.html#linux) distribution
     - System optimization for flight simulation
     - Graphics and performance settings
 - **Solutions** for common problems and challenges
