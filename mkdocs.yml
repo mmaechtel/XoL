@@ -66,6 +66,7 @@ plugins:
             - Karten: de/maps.md
             - Linux:
                 - KVM: de/kvm.md
+                - Wine: de/wine.md
             - Addons: 
                 - XRoad: de/addon/xroad.md
                 - AutoOrtho: de/addon/autoortho.md
@@ -79,6 +80,7 @@ plugins:
             - Maps: en/maps.md
             - Linux:
                 - KVM: en/kvm.md
+                - Wine: en/wine.md
             - Addons:
                 - XRoad: en/addon/xroad.md
                 - AutoOrtho: en/addon/autoortho.md

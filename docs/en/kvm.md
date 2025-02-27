@@ -9,7 +9,7 @@ tags:
 
 ## KVM
 
-KVM is an open-source virtualization technology integrated into the Linux kernel that enables running virtual machines on a physical computer. It uses hardware virtualization (like Intel VT or AMD-V) to efficiently run guest systems like Linux or Windows.
+[KVM](../glossary.md#kvm-kernel-based-virtual-machine) is an open-source virtualization technology integrated into the Linux kernel that enables running virtual machines on a physical computer. It uses hardware virtualization (like Intel VT or AMD-V) to efficiently run guest systems like Linux or Windows.
 
 ### Installation
 

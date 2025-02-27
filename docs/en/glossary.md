@@ -78,4 +78,12 @@ A configuration file in X-Plane's Custom Scenery folder that determines the load
 A tool for managing multiple Python versions on a system. It allows installation and use of multiple Python versions side by side without affecting the system Python.
 
 ## Binary
-A pre-compiled, executable file of a program. Unlike installation from source code, a binary can be executed directly without requiring additional compilation steps. 
+A pre-compiled, executable file of a program. Unlike installation from source code, a binary can be executed directly without requiring additional compilation steps.
+
+## K
+### KVM (Kernel-based Virtual Machine)
+A virtualization solution integrated into the Linux kernel that enables running virtual machines with near-native performance. KVM utilizes hardware virtualization features of modern processors for efficient virtualization.
+
+## W
+### Wine (Wine Is Not an Emulator)
+A compatibility layer that enables running Windows programs on Linux. Wine translates Windows API calls to POSIX calls without emulating Windows itself. 

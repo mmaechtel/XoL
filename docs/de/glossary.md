@@ -67,4 +67,12 @@ Beschreibt die aktuelle Architektur von X-Plane, bei der die Hauptsimulation auf
 Ein hochrealistischer Flugsimulator, der für verschiedene Plattformen (Windows, macOS, Linux) verfügbar ist.
 
 ### Xroads
-Eine Bibliothek für X-Plane 11 & 12, die die Darstellung von Straßen in Ortho4XP-Szenerien optimiert. 
+Eine Bibliothek für X-Plane 11 & 12, die die Darstellung von Straßen in Ortho4XP-Szenerien optimiert.
+
+## K
+### KVM (Kernel-based Virtual Machine)
+Eine in den Linux-Kernel integrierte Virtualisierungslösung, die es ermöglicht, virtuelle Maschinen mit nahezu nativer Leistung auszuführen. KVM nutzt Hardware-Virtualisierungsfunktionen moderner Prozessoren für effiziente Virtualisierung.
+
+## W
+### Wine (Wine Is Not an Emulator)
+Ein Kompatibilitätslayer, der es ermöglicht, Windows-Programme unter Linux auszuführen. Wine übersetzt Windows-API-Aufrufe in POSIX-Aufrufe, ohne Windows selbst zu emulieren. 
