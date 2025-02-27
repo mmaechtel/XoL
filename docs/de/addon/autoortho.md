@@ -6,7 +6,7 @@
 
 Die [Binary](../glossary.md#binary)-Version von AutoOrtho ist eine vorgefertigte, ausführbare Datei, die keine zusätzliche Python-Umgebung erfordert. Sie ist ideal für Nutzer, die eine schnelle und unkomplizierte Installation wünschen. Folgen Sie diesen Schritten:
 
-1. **Download:** Laden Sie die Binary herunter: [AutoOrtho Binary](https://github.com/kubilus1/autoortho/releases/download/v1.0.0/autoortho-linux-x64-v1.0.0.zip).  
+1. **Download:** Laden Sie die Binary herunter: [AutoOrtho Binary](https://github.com/kubilus1/autoortho/releases/).  
 2. **Entpacken:** Extrahieren Sie die ZIP-Datei mit einem Tool wie `unzip` (Installation: `sudo apt install unzip`), z. B.:  
    ```bash
    unzip autoortho-linux-x64-v1.0.0.zip
