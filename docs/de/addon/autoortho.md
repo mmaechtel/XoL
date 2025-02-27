@@ -114,9 +114,17 @@ Eine GUI öffnet sich, und die Konfigurationsdatei `.autoortho` wird im Home-Ver
 Starten Sie X-Plane, während AutoOrtho läuft. Prüfen Sie die [`scenery_packs.ini`](../glossary.md#scenery_packsini) im [`Custom Scenery`](../glossary.md#custom-scenery)-Ordner von X-Plane auf AutoOrtho-Einträge wie `z_ao_*`.
 
 ### Zusätzliche Hinweise
-- **Umgebung deaktivieren:** Mit `pyenv deactivate` verlassen Sie die virtuelle Umgebung.  
 - **Fehlerbehebung:** Bei Problemen können Sie `.autoortho` löschen und AutoOrtho neu starten.  
 - **Voraussetzungen:** Eine stabile Internetverbindung ist für das Streaming der Orthofotos erforderlich.
+- **FUSE-Konfiguration:** Wenn AutoOrtho als normaler Benutzer ausgeführt wird (was dringend empfohlen wird), muss in der Datei `/etc/fuse.conf` die Option `user_allow_other` aktiviert sein. Dies können Sie entweder mit folgendem Befehl erreichen:
+  ```bash
+  sudo echo "user_allow_other" >> /etc/fuse.conf
+  ```
+  Alternativ können Sie die Option auch in einem Editor auskommentieren (Achtung: sudo-Rechte werden auch zum Editieren benötigt):
+  ```bash
+  sudo nano /etc/fuse.conf
+  ```
+  Entfernen Sie dann das #-Zeichen vor der Zeile `#user_allow_other`.
 
 ### Fazit
 Mit diesen Schritten lässt sich AutoOrtho in einer `pyenv`-Umgebung unter Debian 12 mit `zsh` installieren. Die isolierte Umgebung trennt Abhängigkeiten sauber, sodass AutoOrtho in X-Plane reibungslos läuft.
