@@ -64,7 +64,11 @@ plugins:
           nav:
             - Startseite: de/index.md
             - Karten: de/maps.md
-            - Addons: de/addon/xroad.md
+            - Linux:
+                - KVM: de/kvm.md
+            - Addons: 
+                - XRoad: de/addon/xroad.md
+                - AutoOrtho: de/addon/autoortho.md
             - Glossar: de/glossary.md
             - Über: de/about.md
         - locale: en
@@ -73,7 +77,11 @@ plugins:
           nav:
             - Home: en/index.md
             - Maps: en/maps.md
-            - Addons: en/addon/xroad.md
+            - Linux:
+                - KVM: en/kvm.md
+            - Addons:
+                - XRoad: en/addon/xroad.md
+                - AutoOrtho: en/addon/autoortho.md
             - Glossary: en/glossary.md
             - About: en/about.md
   - git-revision-date-localized:

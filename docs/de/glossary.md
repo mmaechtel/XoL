@@ -7,6 +7,10 @@ tags:
 
 # Glossar
 
+## A
+### AutoOrtho
+Ein Tool für X-Plane, das Orthofotos direkt in den Flugsimulator integriert. Es ermöglicht das Streaming von hochauflösenden Luftbildern als Bodenstruktur, ohne dass diese vorher heruntergeladen und konvertiert werden müssen. Die Software kann entweder als vorgefertigte Binary oder aus dem Quellcode installiert werden.
+
 ## B
 ### Blade Element Theory
 Eine Berechnungsmethode in der Aerodynamik, bei der ein Flugzeug in viele kleine Segmente zerlegt wird, um die Luftströmung und Kräfte in Echtzeit zu simulieren.
@@ -43,4 +47,22 @@ Beschreibt die aktuelle Architektur von X-Plane, bei der die Hauptsimulation auf
 Ein hochrealistischer Flugsimulator, der für verschiedene Plattformen (Windows, macOS, Linux) verfügbar ist.
 
 ### Xroads
-Eine Bibliothek für X-Plane 11 & 12, die die Darstellung von Straßen in Ortho4XP-Szenerien optimiert. 
+Eine Bibliothek für X-Plane 11 & 12, die die Darstellung von Straßen in Ortho4XP-Szenerien optimiert.
+
+## Orthofotos
+Orthofotos (oder Orthophotos) sind maßstabsgetreue, verzerrungsfreie Luftbilder der Erdoberfläche. Sie werden in X-Plane als hochauflösende Bodentexturen verwendet, um eine realistische Darstellung der Landschaft zu erreichen.
+
+## GUI (Graphical User Interface)
+Eine grafische Benutzeroberfläche, die die Interaktion mit einem Programm durch grafische Elemente wie Fenster, Buttons und Menüs ermöglicht. Bei AutoOrtho dient die GUI zur Konfiguration des X-Plane-Verzeichnisses und zum Laden von Ortho-Sets.
+
+## Custom Scenery
+Ein Verzeichnis in X-Plane, in dem zusätzliche Szenerie-Dateien gespeichert werden. Hier werden auch die von AutoOrtho generierten Ortho-Texturen eingebunden.
+
+## scenery_packs.ini
+Eine Konfigurationsdatei im Custom Scenery-Ordner von X-Plane, die die Ladereihenfolge der installierten Szenerien festlegt. AutoOrtho fügt hier automatisch Einträge mit dem Präfix `z_ao_` hinzu.
+
+## pyenv
+Ein Werkzeug zur Verwaltung verschiedener Python-Versionen auf einem System. Es ermöglicht die Installation und Nutzung mehrerer Python-Versionen nebeneinander, ohne das System-Python zu beeinflussen.
+
+## Binary
+Eine vorkompilierte, ausführbare Datei eines Programms. Im Gegensatz zur Installation aus dem Quellcode kann eine Binary direkt ausgeführt werden, ohne dass weitere Kompilierungsschritte notwendig sind. 

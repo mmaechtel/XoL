@@ -7,6 +7,10 @@ tags:
 
 # Glossary
 
+## A
+### AutoOrtho
+A tool for X-Plane that integrates orthophotos directly into the flight simulator. It enables streaming of high-resolution aerial imagery as ground textures without the need to download and convert them beforehand. The software can be installed either as a pre-built binary or from source code.
+
 ## B
 ### Blade Element Theory
 A calculation method in aerodynamics where an aircraft is divided into many small segments to simulate airflow and forces in real-time.
@@ -43,4 +47,22 @@ Describes the current architecture of X-Plane, where the main simulation runs on
 A highly realistic flight simulator available for various platforms (Windows, macOS, Linux).
 
 ### Xroads
-A library for X-Plane 11 & 12 that optimizes the display of roads in Ortho4XP scenery. 
+A library for X-Plane 11 & 12 that optimizes the display of roads in Ortho4XP scenery.
+
+## Orthophotos
+Orthophotos (or orthoimages) are geometrically corrected aerial photographs of the Earth's surface. In X-Plane, they are used as high-resolution ground textures to achieve a realistic representation of the landscape.
+
+## GUI (Graphical User Interface)
+A graphical user interface that enables interaction with a program through graphical elements such as windows, buttons, and menus. In AutoOrtho, the GUI is used to configure the X-Plane directory and load ortho sets.
+
+## Custom Scenery
+A directory in X-Plane where additional scenery files are stored. This is also where AutoOrtho's generated ortho textures are integrated.
+
+## scenery_packs.ini
+A configuration file in X-Plane's Custom Scenery folder that determines the load order of installed scenery. AutoOrtho automatically adds entries with the prefix `z_ao_` here.
+
+## pyenv
+A tool for managing multiple Python versions on a system. It allows installation and use of multiple Python versions side by side without affecting the system Python.
+
+## Binary
+A pre-compiled, executable file of a program. Unlike installation from source code, a binary can be executed directly without requiring additional compilation steps. 

@@ -1,12 +1,40 @@
-## Installation von AutoOrtho unter Debian 12 mit pyenv und zsh: Eine Anleitung
+## Was ist AutoOrtho?
 
-AutoOrtho ist ein Tool für X-Plane, das Orthofotos in den Flugsimulator integriert. Dieser Beitrag beschreibt die Installation von AutoOrtho unter Debian 12 (Bookworm) in einer `pyenv`-Umgebung mit der Z Shell (`zsh`). Die Nutzung von `pyenv` ermöglicht isolierte Python-Versionen und vermeidet Konflikte mit dem System-Python. Die Schritte sind im Folgenden detailliert aufgeführt.
+[AutoOrtho](../glossary.md#autoortho) ist ein Tool für X-Plane, das [Orthofotos](../glossary.md#orthofotos) in den Flugsimulator integriert. Es ermöglicht die Nutzung hochauflösender Luftbilder als Bodenstruktur, wodurch die visuelle Realitätstreue in X-Plane deutlich erhöht wird. Diese Anleitung beschreibt die Installation unter Debian 12 (Bookworm), sowohl als vorgefertigte [Binary](../glossary.md#binary) als auch aus dem Quellcode in einer `pyenv`-Umgebung mit der Z Shell (`zsh`).
+
+## Installation der AutoOrtho-Binary unter Debian 12
+
+Die [Binary](../glossary.md#binary)-Version von AutoOrtho ist eine vorgefertigte, ausführbare Datei, die keine zusätzliche Python-Umgebung erfordert. Sie ist ideal für Nutzer, die eine schnelle und unkomplizierte Installation wünschen. Folgen Sie diesen Schritten:
+
+1. **Download:** Laden Sie die Binary herunter: [AutoOrtho Binary](https://github.com/kubilus1/autoortho/releases/download/v1.0.0/autoortho-linux-x64-v1.0.0.zip).  
+2. **Entpacken:** Extrahieren Sie die ZIP-Datei mit einem Tool wie `unzip` (Installation: `sudo apt install unzip`), z. B.:  
+   ```bash
+   unzip autoortho-linux-x64-v1.0.0.zip
+   ```
+3. **Ausführbar machen:** Stellen Sie sicher, dass die Datei ausführbar ist:  
+   ```bash
+   chmod +x autoortho
+   ```
+4. **Starten:** Führen Sie die Binary direkt aus:  
+   ```bash
+   ./autoortho
+   ```
+5. **Voraussetzung:** Installieren Sie `libfuse2`, da AutoOrtho dies für die Dateisystem-Integration benötigt:  
+   ```bash
+   sudo apt install libfuse2
+   ```
+
+Eine [GUI](../glossary.md#gui-graphical-user-interface) öffnet sich, und die Konfigurationsdatei `.autoortho` wird im Home-Verzeichnis erstellt. Geben Sie das X-Plane-Verzeichnis ein und laden Sie ein Ortho-Set über den "Scenery"-Tab.
+
+## Installation von AutoOrtho aus dem Quellcode unter Debian 12 mit pyenv und zsh
+
+Die Installation aus dem Quellcode bietet mehr Kontrolle und Flexibilität. Mit `pyenv` lassen sich Python-Versionen isolieren und Konflikte mit dem System-Python vermeiden. Die folgenden Schritte führen Sie durch den Prozess.
 
 ### Voraussetzungen
-AutoOrtho basiert auf Python und externen Bibliotheken. Eine `pyenv`-Umgebung bietet eine effiziente Möglichkeit, Python-Versionen und Abhängigkeiten zu verwalten.
+AutoOrtho benötigt Python und externe Bibliotheken. Eine `pyenv`-Umgebung erleichtert die Verwaltung von Python-Versionen und Abhängigkeiten.
 
-### Schritt 1: Systemvorbereitung
-Aktualisieren Sie die Paketquellen und installieren Sie die erforderlichen Abhängigkeiten für `pyenv`:
+### Schritt 1: System vorbereiten
+Aktualisieren Sie die Paketquellen und installieren Sie die für `pyenv` benötigten Abhängigkeiten:
 
 ```bash
 sudo apt update
@@ -20,13 +48,13 @@ sudo apt install libfuse2
 ```
 
 ### Schritt 2: pyenv einrichten
-Laden Sie `pyenv` aus dem GitHub-Repository:
+Laden Sie `pyenv` von GitHub herunter:
 
 ```bash
 git clone https://github.com/pyenv/pyenv.git ~/.pyenv
 ```
 
-Fügen Sie `pyenv` zur `zsh`-Konfiguration hinzu, indem Sie diese Zeilen in `~/.zshrc` einfügen:
+Fügen Sie `pyenv` zu Ihrer `zsh`-Konfiguration hinzu, indem Sie folgende Zeilen in `~/.zshrc` einfügen:
 
 ```zsh
 export PYENV_ROOT="$HOME/.pyenv"
@@ -41,26 +69,15 @@ Aktualisieren Sie die Shell:
 source ~/.zshrc
 ```
 
-Installieren Sie das `pyenv-virtualenv`-Plugin für virtuelle Umgebungen:
-
-```zsh
-git clone https://github.com/pyenv/pyenv-virtualenv.git ~/.pyenv/plugins/pyenv-virtualenv
-source ~/.zshrc
-```
-
-!!! note "Hinweis"
-`pyenv-virtualenv` wird verwendet, um virtuelle Umgebungen direkt in `pyenv` zu verwalten. Es sorgt für eine saubere Isolierung der AutoOrtho-Abhängigkeiten und erleichtert die Arbeit mit mehreren Python-Versionen.
-
-
 ### Schritt 3: Python-Version installieren
-Installieren Sie eine Python-Version, z. B. 3.11.7:
+Installieren Sie eine Python-Version, z. B. 3.10.16:
 
 ```zsh
-pyenv install 3.11.7
+pyenv install 3.10.16
 ```
 
 ### Schritt 4: AutoOrtho-Quellcode herunterladen
-Laden Sie den AutoOrtho-Quellcode und wechseln Sie in das Verzeichnis:
+Laden Sie den Quellcode herunter und wechseln Sie in das Verzeichnis:
 
 ```zsh
 git clone https://github.com/kubilus1/autoortho.git
@@ -70,51 +87,36 @@ cd autoortho
 Setzen Sie die lokale Python-Version:
 
 ```zsh
-pyenv local 3.11.7
+pyenv local 3.10.16
 ```
 
-### Schritt 5: Virtuelle Umgebung erstellen
-Erstellen und aktivieren Sie eine virtuelle Umgebung:
-
-```zsh
-pyenv virtualenv 3.11.7 autoortho-env
-pyenv activate autoortho-env
-```
-
-### Schritt 6: Abhängigkeiten installieren
+### Schritt 5: Abhängigkeiten installieren
 Installieren Sie die Python-Abhängigkeiten:
 
 ```zsh
 pip install -r requirements.txt
 ```
 
-Die Systemabhängigkeit `libfuse2` wurde bereits in Schritt 1 installiert.
+An dieser Stelle kann es zu einem Fehler kommen, da PySimpleGUI nicht installiert werden kann. Das Paket ist nicht mehr standardmäßig in Python enthalten und muss separat installiert werden. PySimpleGUI kann aus verschiedenen Quellen heruntergeladen werden. Die Installation erfolgt im Verzeichnis `.pyenv/versions/3.10.16/lib/python3.10/site-packages/PySimpleGUI`.
 
-### Schritt 7: AutoOrtho starten
+(`libfuse2` wurde bereits in Schritt 1 installiert.)
+
+### Schritt 6: AutoOrtho starten
 Starten Sie AutoOrtho:
 
 ```zsh
-python autoortho.py
+python -i autoortho
 ```
 
 Eine GUI öffnet sich, und die Konfigurationsdatei `.autoortho` wird im Home-Verzeichnis erstellt. Geben Sie das X-Plane-Verzeichnis ein und laden Sie ein Ortho-Set über den "Scenery"-Tab.
 
-### Schritt 8: Überprüfung
-Starten Sie X-Plane, während AutoOrtho aktiv ist. Kontrollieren Sie die `scenery_packs.ini` im `Custom Scenery`-Ordner von X-Plane, um sicherzustellen, dass AutoOrtho-Einträge (z. B. `z_ao_*`) vorhanden sind.
+### Schritt 7: Überprüfung
+Starten Sie X-Plane, während AutoOrtho läuft. Prüfen Sie die [`scenery_packs.ini`](../glossary.md#scenery_packsini) im [`Custom Scenery`](../glossary.md#custom-scenery)-Ordner von X-Plane auf AutoOrtho-Einträge wie `z_ao_*`.
 
-### Zusätzliche Informationen
-- **Umgebung deaktivieren:** Verwenden Sie `pyenv deactivate`, um die virtuelle Umgebung zu verlassen.
-- **Fehlerbehebung:** Bei Problemen kann die `.autoortho`-Datei gelöscht und AutoOrtho neu gestartet werden.
-- **Systemanforderungen:** Eine stabile Internetverbindung ist für das Streaming der Orthofotos erforderlich.
+### Zusätzliche Hinweise
+- **Umgebung deaktivieren:** Mit `pyenv deactivate` verlassen Sie die virtuelle Umgebung.  
+- **Fehlerbehebung:** Bei Problemen können Sie `.autoortho` löschen und AutoOrtho neu starten.  
+- **Voraussetzungen:** Eine stabile Internetverbindung ist für das Streaming der Orthofotos erforderlich.
 
-### Schlussfolgerung
-Die Installation von AutoOrtho in einer `pyenv`-Umgebung unter Debian 12 mit `zsh` ist mit diesen Schritten umsetzbar. Die isolierte Umgebung sorgt für eine saubere Trennung der Abhängigkeiten, und AutoOrtho kann anschließend in X-Plane genutzt werden.
-
----
-
-### Änderungen für zsh
-- Alle Verweise auf `~/.bashrc` wurden durch `~/.zshrc` ersetzt.
-- Die Shell-Befehle verwenden `zsh` als Syntaxhervorhebung, obwohl die Befehle selbst kompatibel bleiben.
-- Der Text bleibt sachlich und neutral, mit Fokus auf technische Genauigkeit.
-
-Dieser Eintrag ist präzise und auf die Nutzung von `zsh` abgestimmt.
+### Fazit
+Mit diesen Schritten lässt sich AutoOrtho in einer `pyenv`-Umgebung unter Debian 12 mit `zsh` installieren. Die isolierte Umgebung trennt Abhängigkeiten sauber, sodass AutoOrtho in X-Plane reibungslos läuft.

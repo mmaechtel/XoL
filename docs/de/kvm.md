@@ -1,3 +1,12 @@
+---
+title: KVM
+description: KVM für X-Plane unter Linux
+tags:
+  - virtualisierung
+  - kvm
+  - qemu
+---
+
 ## KVM
 
 KVM ist eine Open-Source-Virtualisierungstechnologie, die im Linux-Kernel integriert ist und es ermöglicht, virtuelle Maschinen auf einem physischen Rechner auszuführen. Sie nutzt Hardware-Virtualisierung (wie Intel VT oder AMD-V), um Gastsysteme wie Linux oder Windows effizient zu betreiben.
@@ -6,40 +15,46 @@ KVM ist eine Open-Source-Virtualisierungstechnologie, die im Linux-Kernel integr
 
 Für Debian Bookworm gibt es eine Reihe von Tutorials die die Installation von KVM in einem Linux System beschreiben, z.B. [How Do I Properly Install KVM on Linux](https://sysguides.com/install-kvm-on-linux). Folgende Punkte sind dabei besonders wichtig:
 
-1. **Systemvoraussetzungen prüfen**  
-   - Stelle sicher, dass dein Prozessor Hardware-Virtualisierung unterstützt (Intel VT-x oder AMD-V).  
-   - Überprüfe mit `egrep -c '(vmx|svm)' /proc/cpuinfo` (Wert > 0 bedeutet Unterstützung).  
-   - Teste KVM-Beschleunigung mit `kvm-ok` (nach Installation von `cpu-checker`, falls nötig).
+**Systemvoraussetzungen prüfen**
 
-2. **Pakete installieren**  
-   - Für Ubuntu/Debian: `sudo apt install qemu-kvm libvirt-daemon-system libvirt-clients bridge-utils virt-manager`   
+- Stelle sicher, dass dein Prozessor Hardware-Virtualisierung unterstützt (Intel VT-x oder AMD-V).
+- Überprüfe mit `egrep -c '(vmx|svm)' /proc/cpuinfo` (Wert > 0 bedeutet Unterstützung).
+- Teste KVM-Beschleunigung mit `kvm-ok` (nach Installation von `cpu-checker`, falls nötig).
 
-3. **Libvirt-Dienst starten und aktivieren**  
-   - `sudo systemctl enable --now libvirtd`  
-   - Überprüfe den Status: `sudo systemctl status libvirtd`
+**Pakete installieren**
 
-4. **Benutzerberechtigungen setzen**  
-   - Füge deinen Benutzer der `libvirt`-Gruppe hinzu: `sudo usermod -aG libvirt $(whoami)`  
-   - Melde dich ab und wieder an, damit die Änderungen wirksam werden.
+- Für Ubuntu/Debian: `sudo apt install qemu-kvm libvirt-daemon-system libvirt-clients bridge-utils virt-manager`
 
-5. **Netzwerk konfigurieren (optional)**  
-   - Richte eine Netzwerkbrücke ein, z. B. mit `bridge-utils`, falls VMs extern erreichbar sein sollen (Details in der Anleitung). Für unsere Zwecke benötigen wir diese nicht.
-   - Standardmäßig wird NAT verwendet.
+**Libvirt-Dienst starten und aktivieren**
 
-6. **Installation überprüfen**  
-   - Teste KVM mit `virsh list --all` (sollte eine leere VM-Liste anzeigen, wenn keine VMs existieren).  
-   - Prüfe geladene Module: `lsmod | grep kvm` (z. B. `kvm_intel` oder `kvm_amd`).
+- `sudo systemctl enable --now libvirtd`
+- Überprüfe den Status: `sudo systemctl status libvirtd`
 
-7. **Optimierung (optional)**  
-   - Aktiviere TuneD-Profil `virtual-host`: `sudo tuned-adm profile virtual-host`  
-   - Überprüfe mit `tuned-adm active`.
+**Benutzerberechtigungen setzen**
 
+- Füge deinen Benutzer der `libvirt`-Gruppe hinzu: `sudo usermod -aG libvirt $(whoami)`
+- Melde dich ab und wieder an, damit die Änderungen wirksam werden.
+
+**Netzwerk konfigurieren (optional)**
+
+- Richte eine Netzwerkbrücke ein, z. B. mit `bridge-utils`, falls VMs extern erreichbar sein sollen (Details in der Anleitung). Für unsere Zwecke benötigen wir diese nicht.
+- Standardmäßig wird NAT verwendet.
+
+**Installation überprüfen**
+
+- Teste KVM mit `virsh list --all` (sollte eine leere VM-Liste anzeigen, wenn keine VMs existieren).
+- Prüfe geladene Module: `lsmod | grep kvm` (z. B. `kvm_intel` oder `kvm_amd`).
+
+**Optimierung (optional)**
+
+- Aktiviere TuneD-Profil `virtual-host`: `sudo tuned-adm profile virtual-host`
+- Überprüfe mit `tuned-adm active`.
 
 Das gleiche gilt für die Installation eines Windows OS in der KVM, z.B. [How to Properly Install a Windows 11 Virtual Machine on KVM](https://sysguides.com/install-a-windows-11-virtual-machine-on-kvm)
 
 In diesem Zusammen ist die Vorbereitung eines eigenen ISO Images für Windows wie z.B. [hier](https://github.com/ntdevlabs/tiny11builder) beschrieben interessant.
 
-## X-Plane Plugins in einem Windows OS in der KVM
+## WiP: X-Plane Plugins in einem Windows OS in der KVM
 
 - Streamdeck
     - USB Devices hinzufügen
@@ -49,4 +64,3 @@ In diesem Zusammen ist die Vorbereitung eines eigenen ISO Images für Windows wi
         - Fonts!
     - weitere Profile?
 - My FS Flight
-    - 
