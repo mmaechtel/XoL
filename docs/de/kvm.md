@@ -64,3 +64,28 @@ In diesem Zusammen ist die Vorbereitung eines eigenen ISO Images für Windows wi
         - Fonts!
     - weitere Profile?
 - My FS Flight
+
+## SSH Key auf Server kopieren
+
+Der einfachste Weg ist die Verwendung von `ssh-copy-id`:
+
+**SSH Key erstellen (falls noch nicht vorhanden)**
+
+- Key generieren: `ssh-keygen -t ed25519 -C "your@email.com"`
+- Standardmäßig wird der Key in `~/.ssh/id_ed25519` gespeichert
+
+**Key auf Server kopieren**
+
+- Mit ssh-copy-id: `ssh-copy-id username@server`
+- Alternativ manuell:
+  ```bash
+  cat ~/.ssh/id_ed25519.pub | ssh username@server "mkdir -p ~/.ssh && cat >> ~/.ssh/authorized_keys"
+  ```
+
+**Berechtigungen prüfen**
+
+- Auf dem Server sollten folgende Berechtigungen gesetzt sein:
+  ```bash
+  chmod 700 ~/.ssh
+  chmod 600 ~/.ssh/authorized_keys
+  ```
