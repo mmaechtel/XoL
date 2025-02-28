@@ -63,13 +63,14 @@ plugins:
           default: true
           nav:
             - Startseite: de/index.md
-            - Karten: de/maps.md
             - Linux:
                 - KVM: de/kvm.md
                 - Liquorix: de/liquorix.md
                 - Nvidia: de/nvidia.md
                 - Wine: de/wine.md
                 - Docker: de/docker.md
+            - X-Plane:
+                - Karten: de/maps.md
             - Addons: 
                 - XRoad: de/addon/xroad.md
                 - AutoOrtho: de/addon/autoortho.md
@@ -80,13 +81,14 @@ plugins:
           build: true
           nav:
             - Home: en/index.md
-            - Maps: en/maps.md
             - Linux:
                 - KVM: en/kvm.md
                 - Liquorix: en/liquorix.md
                 - Nvidia: en/nvidia.md
                 - Wine: en/wine.md
                 - Docker: en/docker.md
+            - X-Plane:
+                - Maps: en/maps.md
             - Addons:
                 - XRoad: en/addon/xroad.md
                 - AutoOrtho: en/addon/autoortho.md
