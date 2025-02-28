@@ -100,4 +100,4 @@ Melden Sie sich anschließend ab und wieder an (oder starten Sie das Terminal ne
 
 ## Fazit
 
-Sie haben Docker nun erfolgreich auf Debian 12 "Bookworm" installiert. Mit dieser Installation können Sie Container erstellen, Images verwalten und Anwendungen in isolierten Umgebungen betreiben. Falls Sie weitere Anpassungen oder spezifische Konfigurationen benötigen, bietet die [offizielle Docker-Dokumentation](https://docs.docker.com) detaillierte Informationen.
+Sie haben Docker nun erfolgreich auf Debian installiert. Mit dieser Installation können Sie Container erstellen, Images verwalten und Anwendungen in isolierten Umgebungen betreiben. Falls Sie weitere Anpassungen oder spezifische Konfigurationen benötigen, bietet die [offizielle Docker-Dokumentation](https://docs.docker.com) detaillierte Informationen.

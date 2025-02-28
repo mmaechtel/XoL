@@ -1,86 +1,31 @@
-# XoL - [X-Plane](glossary.md#x-plane) on [Linux](glossary.md#linux)
+# **XoL**: Running **X**-Plane **o**n **L**inux
 
-## Introduction
+This documentation is aimed at experienced Linux users who want to run X-Plane on Linux. A working Linux installation is assumed.
 
-This documentation helps you set up and optimize [X-Plane](glossary.md#x-plane) on [Linux](glossary.md#linux). It's designed for both beginners and advanced users.
+The examples shown here are based on Debian Linux but can be easily adapted to other distributions. The basic concepts and approaches remain the same - only the specific package manager commands or repository configurations need to be adjusted accordingly.
 
-The guide covers:
+## Documentation Content
 
-- **Basics**
-    - Linux installation and system configuration
-    - X-Plane 12 setup
-    - Hardware compatibility
+The documentation covers the following main areas:
 
-- **Optimization**
-    - System optimization
-    - Performance settings
-    - Peripheral setup
+- **X-Plane Configuration**: Optimal settings for X-Plane on Linux
+- **Performance Optimization**: Kernel, drivers, and system settings for best performance
+- **Addons**: Installation and configuration of important extensions like AutoOrtho
+- **Troubleshooting**: Common issues and their solutions
 
-- **Help**
-    - Solutions for common problems
-    - Recommended configurations
-    - Community resources
+## Guide Structure
 
-Whether you're new to Linux or want to set up X-Plane 12 on your existing Linux system - this guide will lead you through the entire process, from selecting and installing Linux to running X-Plane 12 smoothly.
+The technical guides are modular. You can implement individual components as needed or customize the entire system according to your requirements.
 
-## Why X-Plane?
+Each guide:
+- Describes the goal and benefit of the change
+- Shows the necessary steps
+- Explains important configuration options
+- Provides troubleshooting tips
 
-[X-Plane](glossary.md#x-plane) stands out from other flight simulators through its simulation-oriented approach:
+## Contributing
 
-### Realistic Flight Simulation
-- Aerodynamics calculation using [Blade Element Theory](glossary.md#blade-element-theory) (real-time flow simulation)
-- Real-time flight physics calculations instead of pre-calculated tables
-- Detailed simulation of engines and aircraft systems
-- Precise weather simulation with atmospheric effects
-
-### Professional Use
-- Used in flight schools and pilot training
-- Certified versions for professional simulators
-- Application in research and development
-- Basis for [FAA](glossary.md#faa)-certified training devices
-
-### Graphics Representation
-X-Plane follows a different approach than typical simulators:
-
-- Focus on physically correct light representation
-- Realistic rather than artistic interpretation
-- Plausible base representation, expandable through addons
-
-Technical implementation:
-
-- [PBR](glossary.md#pbr) for realistic material representation
-- Dynamic lighting and atmospheric effects
-- Real-time reflections and [HDR](glossary.md#hdr) rendering
-
-### Customization and Development
-- Open [Plugin](glossary.md#plugin) architecture and development tools
-- Integration of external flight models
-- Regular updates of the simulation engine
-- Active developer community
-
-### Current Limitations
-- Performance limitation due to [Single-CPU](glossary.md#single-cpu) architecture (multi-core support in development)
-- More complex system configuration compared to other simulators
-- Longer learning curve for optimal usage
-
-## Why X-Plane on Linux?
-
-Linux as an operating system offers special advantages for X-Plane:
-
-### System Control and Development
-- Direct access to system functions
-- Full access to operating system source code
-- Comprehensive development tools
-- Ideal environment for developing X-Plane extensions
-
-### Performance Optimization
-- Precise control over system resources
-- Optimization possibilities at operating system level
-- Low system overhead through adapted configuration
-
-### Open Source Benefits
-- Transparent system processes
-- Extensive documentation and support
-- Opportunity for active participation
-
-While X-Plane also runs on Windows, Linux enables deeper intervention in both system and simulator. The higher initial effort is offset by better control and optimization possibilities. 
+This documentation is an open project. If you have improvements or additions, you can contribute via GitHub:
+- Create issues for bugs or suggestions
+- Submit pull requests for changes
+- Share your experiences in the discussions
