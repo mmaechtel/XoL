@@ -1,8 +1,8 @@
 ## What is AutoOrtho?
 
-[AutoOrtho](../glossary.md#autoortho) is a tool for X-Plane that integrates [orthophotos](../glossary.md#orthophotos) into the flight simulator. It enables the use of high-resolution aerial imagery as ground textures, significantly enhancing the visual realism in X-Plane. This guide describes the installation on Debian 12 (Bookworm), both as a pre-built [binary](../glossary.md#binary) and from source code in a `pyenv` environment using Z Shell (`zsh`).
+[AutoOrtho](../glossary.md#autoortho) is a tool for X-Plane that integrates [orthophotos](../glossary.md#orthophotos) into the flight simulator. It enables the use of high-resolution aerial imagery as ground textures, significantly enhancing the visual realism in X-Plane. This guide describes the installation on Debian, both as a pre-built [binary](../glossary.md#binary) and from source code in a `pyenv` environment using Z Shell (`zsh`).
 
-## Installing the AutoOrtho Binary on Debian 12
+## Installing the AutoOrtho Binary on Debian
 
 The [binary](../glossary.md#binary) version of AutoOrtho is a pre-compiled executable that doesn't require an additional Python environment. It's ideal for users who want a quick and straightforward installation. Follow these steps:
 
@@ -29,7 +29,7 @@ A [GUI](../glossary.md#gui-graphical-user-interface) will open, and the configur
 ### Step 7: Verification
 Start X-Plane while AutoOrtho is running. Check the [`scenery_packs.ini`](../glossary.md#scenery_packsini) in X-Plane's [`Custom Scenery`](../glossary.md#custom-scenery) folder for AutoOrtho entries like `z_ao_*`.
 
-## Installing AutoOrtho from Source on Debian 12 with pyenv and zsh
+## Installing AutoOrtho from Source on Debian with pyenv and zsh
 
 Installing from source offers more control and flexibility. Using `pyenv` allows you to isolate Python versions and avoid conflicts with the system Python. The following steps will guide you through the process.
 
@@ -130,5 +130,5 @@ Start X-Plane while AutoOrtho is running. Check the [`scenery_packs.ini`](../glo
   Then remove the # character in front of the line `#user_allow_other`.
 
 ### Conclusion
-Following these steps, you can install AutoOrtho in a `pyenv` environment on Debian 12 with `zsh`. The isolated environment cleanly separates dependencies, ensuring AutoOrtho runs smoothly in X-Plane.
+Following these steps, you can install AutoOrtho in a `pyenv` environment on Debian with `zsh`. The isolated environment cleanly separates dependencies, ensuring AutoOrtho runs smoothly in X-Plane.
 

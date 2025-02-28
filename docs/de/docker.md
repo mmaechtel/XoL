@@ -1,14 +1,13 @@
-### Docker unter Debian 12 "Bookworm" installieren: Eine Schritt-für-Schritt-Anleitung
+### [Docker](../glossary.md#docker) unter Debian installieren: Eine Schritt-für-Schritt-Anleitung
 
-Docker ist eine weit verbreitete Plattform zur Containerisierung von Anwendungen, die Entwicklern und Administratoren hilft, Anwendungen effizient zu erstellen, bereitzustellen und zu verwalten. Dieser Artikel erklärt, wie man Docker auf einem System mit Debian 12 "Bookworm" installiert. Die Anleitung ist sachlich und praxisorientiert, sodass auch Einsteiger problemlos folgen können.
+[Docker](../glossary.md#docker) ist eine weit verbreitete Plattform zur Containerisierung von Anwendungen, die Entwicklern und Administratoren hilft, Anwendungen effizient zu erstellen, bereitzustellen und zu verwalten. Dieser Artikel erklärt, wie man Docker auf einem Debian-System installiert. Die Anleitung ist sachlich und praxisorientiert, sodass auch Einsteiger problemlos folgen können.
 
 ## Voraussetzungen
 
 Bevor Sie beginnen, stellen Sie sicher, dass:
 
-- Sie Zugriff auf ein System mit Debian 12 "Bookworm" haben.
-- Sie über Root- oder Sudo-Rechte verfügen.
-- Eine stabile Internetverbindung besteht, da Pakete heruntergeladen werden.
+- Sie Zugriff auf ein Debian-System haben
+- Sie über Root- oder Sudo-Rechte verfügen
 
 ## Schritt 1: System aktualisieren
 
@@ -33,7 +32,7 @@ Diese Pakete ermöglichen den sicheren Download von Software und die Verwaltung 
 
 ## Schritt 3: Docker-Repository hinzufügen
 
-Debian 12 enthält zwar eine ältere Version von Docker im Standard-Repository, aber es ist empfehlenswert, das offizielle Docker-Repository zu verwenden, um die neueste Version zu erhalten. Folgen Sie diesen Schritten:
+Debian enthält zwar eine ältere Version von Docker im Standard-Repository, aber es ist empfehlenswert, das offizielle Docker-Repository zu verwenden, um die neueste Version zu erhalten. Folgen Sie diesen Schritten:
 
 1. **GPG-Schlüssel hinzufügen:**
 
@@ -44,7 +43,7 @@ Debian 12 enthält zwar eine ältere Version von Docker im Standard-Repository, 
 2. **Repository einrichten:**
 
    ```bash
-   echo "deb [arch=$(dpkg --print-architecture) signed-by=/usr/share/keyrings/docker-archive-keyring.gpg] https://download.docker.com/linux/debian bookworm stable" | sudo tee /etc/apt/sources.list.d/docker.list > /dev/null
+   echo "deb [arch=$(dpkg --print-architecture) signed-by=/usr/share/keyrings/docker-archive-keyring.gpg] https://download.docker.com/linux/debian $(lsb_release -cs) stable" | sudo tee /etc/apt/sources.list.d/docker.list > /dev/null
    ```
 
 3. **Paketlisten aktualisieren:**
