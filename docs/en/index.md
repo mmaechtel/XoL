@@ -18,6 +18,7 @@ The documentation covers the following main areas:
 The technical guides are modular. You can implement individual components as needed or customize the entire system according to your requirements.
 
 Each guide:
+
 - Describes the goal and benefit of the change
 - Shows the necessary steps
 - Explains important configuration options
@@ -26,6 +27,7 @@ Each guide:
 ## Contributing
 
 This documentation is an open project. If you have improvements or additions, you can contribute via GitHub:
+
 - Create issues for bugs or suggestions
 - Submit pull requests for changes
 - Share your experiences in the discussions

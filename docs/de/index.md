@@ -18,6 +18,7 @@ Die Dokumentation deckt folgende Hauptbereiche ab:
 Die technischen Anleitungen sind modular aufgebaut. Sie können je nach Bedarf einzelne Komponenten implementieren oder das Gesamtsystem nach Ihren Anforderungen anpassen.
 
 Jede Anleitung:
+
 - Beschreibt das Ziel und den Nutzen der Änderung
 - Zeigt die notwendigen Schritte
 - Erklärt wichtige Konfigurationsoptionen
@@ -26,6 +27,7 @@ Jede Anleitung:
 ## Beitragen
 
 Diese Dokumentation ist ein offenes Projekt. Wenn Sie Verbesserungen oder Ergänzungen haben, können Sie über GitHub dazu beitragen:
+
 - Erstellen Sie Issues für Fehler oder Vorschläge
 - Reichen Sie Pull Requests für Änderungen ein
 - Teilen Sie Ihre Erfahrungen in den Diskussionen
