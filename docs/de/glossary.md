@@ -29,6 +29,9 @@ Eine Plattform zur Containerisierung von Anwendungen, die es ermöglicht, Softwa
 ### DKMS (Dynamic Kernel Module Support)
 Ein Framework, das die automatische Neukompilierung von Kernel-Modulen bei Kernel-Updates ermöglicht. Besonders wichtig für Treiber wie Nvidia, die nicht im Standard-Kernel enthalten sind.
 
+### Dynamische Bibliotheken
+Auch als Shared Libraries bezeichnet, sind wiederverwendbare Programmcode-Sammlungen, die zur Laufzeit von verschiedenen Programmen geladen und gemeinsam genutzt werden können. Sie haben typischerweise die Endung .so (shared object) unter Linux und ermöglichen effizientere Speichernutzung und einfachere Updates.
+
 ## F
 ### FAA
 Federal Aviation Administration - die US-amerikanische Luftfahrtbehörde, die Standards für Flugsimulationen und Trainingsgeräte festlegt.
@@ -46,6 +49,9 @@ High Dynamic Range - ein Grafikverfahren, das einen besonders großen Helligkeit
 Eine in den Linux-Kernel integrierte Virtualisierungslösung, die es ermöglicht, virtuelle Maschinen mit nahezu nativer Leistung auszuführen. KVM nutzt Hardware-Virtualisierungsfunktionen moderner Prozessoren für effiziente Virtualisierung.
 
 ## L
+### ldd
+Ein Kommandozeilenprogramm unter Linux, das alle dynamischen Bibliotheksabhängigkeiten einer ausführbaren Datei anzeigt. Es ist ein wichtiges Diagnosewerkzeug, um fehlende oder inkompatible Bibliotheken zu identifizieren, die für die Ausführung eines Programms wie X-Plane erforderlich sind.
+
 ### Linux
 Ein freies, quelloffenes Betriebssystem, das sich besonders durch seine Stabilität, Sicherheit und Anpassungsfähigkeit auszeichnet.
 
@@ -83,6 +89,10 @@ Eine Konfigurationsdatei im Custom Scenery-Ordner von X-Plane, die die Ladereihe
 ### Single-CPU
 Beschreibt die aktuelle Architektur von X-Plane, bei der die Hauptsimulation auf einem einzelnen Prozessorkern läuft.
 
+## V
+### Vulkan API
+Eine moderne, plattformübergreifende Grafikschnittstelle mit geringem Overhead, die von X-Plane für die Grafikdarstellung verwendet wird. Im Vergleich zu OpenGL bietet Vulkan oft bessere Performance durch effizientere CPU-Nutzung und direktere GPU-Kontrolle.
+
 ## W
 ### Wine (Wine Is Not an Emulator)
 Ein Kompatibilitätslayer, der es ermöglicht, Windows-Programme unter Linux auszuführen. Wine übersetzt Windows-API-Aufrufe in POSIX-Aufrufe, ohne Windows selbst zu emulieren.
@@ -92,4 +102,8 @@ Ein Kompatibilitätslayer, der es ermöglicht, Windows-Programme unter Linux aus
 Ein hochrealistischer Flugsimulator, der für verschiedene Plattformen (Windows, macOS, Linux) verfügbar ist.
 
 ### Xroads
-Eine Bibliothek für X-Plane 11 & 12, die die Darstellung von Straßen in Ortho4XP-Szenerien optimiert. 
+Eine Bibliothek für X-Plane 11 & 12, die die Darstellung von Straßen in Ortho4XP-Szenerien optimiert.
+
+## 3
+### 32-Bit-Kompatibilität
+Die Fähigkeit eines 64-Bit-Linux-Systems, 32-Bit-Anwendungen und -Bibliotheken auszuführen und zu unterstützen. Für manche Programme oder Plugins, die noch nicht für 64-Bit-Architekturen optimiert wurden, kann dies erforderlich sein. Unter Debian wird die 32-Bit-Unterstützung durch Hinzufügen der i386-Architektur und Installation entsprechender Bibliotheken aktiviert. 

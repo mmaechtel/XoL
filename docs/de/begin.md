@@ -46,8 +46,8 @@ Diese Dokumentation geht davon aus, dass Sie Debian Linux in der aktuellen Stabl
 
 ### Tipps für die Installation
 - Wählen Sie während der Installation die Desktop-Umgebung "GNOME" oder "KDE Plasma" für beste Kompatibilität
-- Aktivieren Sie bei der Partitionierung mindestens 8 GB Swap-Speicher
-- Richten Sie separate Partitionen für `/` (root, mindestens 50 GB) und `/home` (restlicher Speicher) ein
+- Aktivieren Sie bei der Partitionierung mindestens Swap-Speicher in Höhe der Hälfte Ihres RAM (z.B. 16 GB Swap bei 32 GB RAM)
+- Richten Sie separate Partitionen für `/` (root, mindestens 100 GB) und `/home` (restlicher Speicher) ein
 - Installieren Sie den GRUB-Bootloader auf dem Hauptlaufwerk
 
 ### Nach der Installation
@@ -67,60 +67,52 @@ Die folgenden Kapitel dieser Dokumentation setzen eine funktionierende Debian-In
 
 ## X-Plane 12 unter Linux installieren
 
-X-Plane 12 läuft nativ unter Linux und benötigt im Gegensatz zu vielen anderen Spielen und Simulatoren keine Kompatibilitätsschicht wie Wine oder Proton. Hier sind die Schritte zur Installation:
-
-### Vorbereitungen
-Bevor Sie X-Plane 12 installieren, sollten Sie folgende Vorbereitungen treffen:
-
-1. **Grafiktreiber aktualisieren** - Für Nvidia-GPUs installieren Sie den aktuellen proprietären Treiber:
-   ```bash
-   sudo apt install nvidia-driver
-   ```
-   *Weitere Details finden Sie im Kapitel [Nvidia-Treiber](nvidia.md).*
-
-2. **OpenGL-Bibliotheken installieren**:
-   ```bash
-   sudo apt install libgl1-mesa-glx libgl1-mesa-dri
-   ```
-
-3. **Audiokomponenten sicherstellen**:
-   ```bash
-   sudo apt install pulseaudio pavucontrol
-   ```
+X-Plane 12 ist sowohl über Steam als auch direkt vom Entwickler Laminar Research erhältlich. Obwohl die Steam-Version für Einsteiger bequem sein kann, konzentrieren wir uns in dieser Dokumentation auf die Standalone-Version, die mehr Kontrolle und Flexibilität bietet.
 
 ### Installationsmethoden
 
-Sie haben zwei Hauptmöglichkeiten, X-Plane 12 zu installieren:
+X-Plane 12 ist sowohl über Steam als auch direkt vom Entwickler Laminar Research erhältlich. Obwohl die Steam-Version für Einsteiger bequem sein kann, konzentrieren wir uns in dieser Dokumentation auf die Standalone-Version, die mehr Kontrolle und Flexibilität bietet.
 
-#### 1. Steam-Version (empfohlen für Einsteiger)
-1. [Steam für Linux installieren](https://store.steampowered.com/about/)
-2. X-Plane 12 in der Steam-Bibliothek kaufen und installieren
-3. Folgen Sie den Anweisungen des Steam-Installers
+#### Standalone-Version (direkter Download von Laminar Research)
 
-**Vorteile der Steam-Version:**
-- Automatische Updates
-- Einfache Installation
-- Steam-Workshop-Integration für Addons
-- Komfortabler Support für Steam-Controller und andere Hardware
+Die direkte Installation von X-Plane bietet zahlreiche Vorteile für erfahrene Nutzer:
 
-#### 2. Standalone-Version (direkter Download von Laminar Research)
-1. Besuchen Sie die [offizielle X-Plane-Website](https://www.x-plane.com/)
-2. Kaufen Sie X-Plane 12 und laden Sie den Installer herunter
-3. Installer ausführbar machen:
-   ```bash
-   chmod +x X-Plane-installer.run
-   ```
-4. Installer starten:
-   ```bash
-   ./X-Plane-installer.run
-   ```
-5. Folgen Sie den Anweisungen des grafischen Installers
+1. **X-Plane herunterladen**
+   - Besuchen Sie die [offizielle X-Plane-Website](https://www.x-plane.com/)
+   - Erwerben Sie X-Plane 12 (oder laden Sie die Demo-Version herunter)
+   - Laden Sie den Installer herunter (ca. 1 GB)
+
+2. **Installer vorbereiten**
+   - Wechseln Sie in den Download-Ordner:
+     ```bash
+     cd ~/Downloads
+     ```
+   - Machen Sie den Installer ausführbar:
+     ```bash
+     chmod +x X-Plane-installer.run
+     ```
+
+3. **Installation starten**
+   - Führen Sie den Installer aus:
+     ```bash
+     ./X-Plane-installer.run
+     ```
+   - Im grafischen Installer können Sie auswählen:
+     - Installationsverzeichnis (empfohlen: `/home/[username]/X-Plane 12/`)
+     - Zu ladende Szeneriepakete
+     - Weltabdeckung (mindestens Ihr Hauptfluggebiet auswählen)
+
+4. **Download-Prozess**
+   - Der Installer lädt die ausgewählten Inhalte herunter (70-150 GB je nach Auswahl)
+   - Dieser Vorgang kann mehrere Stunden dauern
+   - Der Download kann jederzeit unterbrochen und später fortgesetzt werden
 
 **Vorteile der Standalone-Version:**
-- Volle Kontrolle über Installationsverzeichnis
-- Unabhängig von Steam
-- Direktes Update über den X-Plane Updater
+- Volle Kontrolle über Installationsverzeichnis und -optionen
+- Direktes Update über den X-Plane Updater ohne Drittanbieter
 - Oft schnellere Updates bei neuen Versionen
+- Einfache Backups und Migration auf andere Rechner
+- Uneingeschränkter Zugriff auf die Dateien für Modifikationen
 
 ### Nach der Installation
 
@@ -139,6 +131,82 @@ Nach erfolgreicher Installation sollten Sie folgende Schritte durchführen:
 3. **Speichern Sie ein benutzerdefiniertes Grafikprofil** für verschiedene Szenarien (Flugtraining, Fotografie, etc.)
 
 4. **Prüfen Sie die Performance** mit den eingebauten FPS-Anzeige (Aktivierung mit der Taste `Shift+Strg+F`)
+
+### Überprüfung der Bibliotheksabhängigkeiten
+
+Wenn X-Plane nicht startet oder unerwartet abstürzt, kann das an fehlenden Bibliotheken liegen. Linux bietet mit dem [ldd](../glossary.md#ldd)-Tool eine einfache Möglichkeit, Abhängigkeiten zu überprüfen:
+
+#### Abhängigkeiten mit ldd überprüfen
+
+1. **Terminal öffnen** und zum X-Plane-Verzeichnis navigieren:
+   ```bash
+   cd ~/X-Plane\ 12/
+   ```
+
+2. **[ldd](../glossary.md#ldd) auf die X-Plane-Executable anwenden**:
+   ```bash
+   ldd X-Plane-x86_64
+   ```
+
+3. **Die Ausgabe analysieren**:
+   - Normale Abhängigkeiten erscheinen im Format: `libname.so => /pfad/zu/libname.so`
+   - Problematische Abhängigkeiten zeigen `not found` oder fehlen komplett:
+     ```
+     libvulkan.so.1 => not found
+     ```
+
+#### Interpretation der ldd-Ausgabe
+
+Die [ldd](../glossary.md#ldd)-Ausgabe zeigt alle [dynamischen Bibliotheken](../glossary.md#dynamische-bibliotheken), die X-Plane benötigt:
+
+```
+linux-vdso.so.1 (0x00007ffcb9192000)
+libdl.so.2 => /lib/x86_64-linux-gnu/libdl.so.2 (0x00007f040d8e5000)
+libpthread.so.0 => /lib/x86_64-linux-gnu/libpthread.so.0 (0x00007f040d8c6000)
+libGL.so.1 => /usr/lib/x86_64-linux-gnu/libGL.so.1 (0x00007f040d83a000)
+libvulkan.so.1 => not found
+...
+```
+
+- **Gefundene Bibliotheken**: Mit vollständigem Pfad aufgelistet
+- **Fehlende Bibliotheken**: Mit `not found` markiert
+- **Abhängigkeiten der Abhängigkeiten**: Werden ebenfalls angezeigt
+
+#### Behebung fehlender Abhängigkeiten
+
+1. **Beispiel: Fehlende [Vulkan API](../glossary.md#vulkan-api)-Bibliothek**:
+   ```bash
+   sudo apt install libvulkan1 mesa-vulkan-drivers vulkan-utils
+   ```
+
+2. **Beispiel: Fehlende Audio-Bibliotheken**:
+   ```bash
+   sudo apt install libasound2 libasound2-plugins libpulse0
+   ```
+
+3. **Beispiel: Fehlende OpenGL-Bibliotheken**:
+   ```bash
+   sudo apt install libgl1-mesa-glx libgl1-mesa-dri
+   ```
+
+4. **Beispiel: [32-Bit-Kompatibilität](../glossary.md#32-bit-kompatibilität) (falls notwendig)**:
+   ```bash
+   sudo dpkg --add-architecture i386
+   sudo apt update
+   sudo apt install libgl1-mesa-glx:i386 libvulkan1:i386
+   ```
+
+#### Häufige fehlende Abhängigkeiten
+
+| Bibliothek | Paket | Installationsbefehl |
+|------------|-------|---------------------|
+| libvulkan.so.1 | libvulkan1 | `sudo apt install libvulkan1` |
+| libGL.so.1 | libgl1-mesa-glx | `sudo apt install libgl1-mesa-glx` |
+| libX11.so.6 | libx11-6 | `sudo apt install libx11-6` |
+| libasound.so.2 | libasound2 | `sudo apt install libasound2` |
+| libpulse.so.0 | libpulse0 | `sudo apt install libpulse0` |
+
+Nach der Installation fehlender Bibliotheken sollten Sie X-Plane erneut starten. In den meisten Fällen werden dadurch Startprobleme behoben, die durch fehlende Abhängigkeiten verursacht wurden.
 
 ### Fehlerbehebung bei X-Plane Installation
 
