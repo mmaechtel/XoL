@@ -67,8 +67,11 @@ plugins:
           default: true
           nav:
             - Startseite: de/index.md
-            - Übersicht: de/intro.md
+            - Übersicht:
+                - Einführung: de/intro.md
+                - Erste Schritte: de/begin.md
             - Linux:
+                - Übersicht: de/linux.md
                 - KVM: de/kvm.md
                 - Liquorix: de/liquorix.md
                 - Nvidia: de/nvidia.md
@@ -86,8 +89,11 @@ plugins:
           build: true
           nav:
             - Home: en/index.md
-            - Overview: en/intro.md
+            - Overview:
+                - Introduction: en/intro.md
+                - Getting Started: en/begin.md
             - Linux:
+                - Overview: en/linux.md
                 - KVM: en/kvm.md
                 - Liquorix: en/liquorix.md
                 - Nvidia: en/nvidia.md
