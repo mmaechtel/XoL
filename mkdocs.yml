@@ -72,11 +72,13 @@ plugins:
                 - Erste Schritte: de/begin.md
             - Linux:
                 - Übersicht: de/linux.md
-                - KVM: de/kvm.md
-                - Liquorix: de/liquorix.md
-                - Nvidia: de/nvidia.md
-                - Wine: de/wine.md
-                - Docker: de/docker.md
+                - Optimierungen:
+                    - Nvidia Treiber: de/nvidia.md
+                    - Liquorix Kernel: de/liquorix.md
+                - Erweiterungen:
+                    - KVM: de/kvm.md
+                    - Docker: de/docker.md
+                    - Wine: de/wine.md
             - X-Plane:
                 - Karten: de/maps.md
             - Addons: 
@@ -94,11 +96,13 @@ plugins:
                 - Getting Started: en/begin.md
             - Linux:
                 - Overview: en/linux.md
-                - KVM: en/kvm.md
-                - Liquorix: en/liquorix.md
-                - Nvidia: en/nvidia.md
-                - Wine: en/wine.md
-                - Docker: en/docker.md
+                - Optimizations:
+                    - Nvidia Drivers: en/nvidia.md
+                    - Liquorix Kernel: en/liquorix.md
+                - Extensions:
+                    - KVM: en/kvm.md
+                    - Docker: en/docker.md
+                    - Wine: en/wine.md
             - X-Plane:
                 - Maps: en/maps.md
             - Addons:
