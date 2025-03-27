@@ -8,11 +8,18 @@ We will optimize the following areas:
 
 - **Kernel**: Adjustment or switching to a more performant kernel like [Liquorix](liquorix.md)
 - **Graphics Drivers**: Installation and configuration of optimal [Nvidia drivers](nvidia.md)
+
+## Extensions Overview
+
+We will install the following extensions:
+
 - **Wine**: Configuration for Windows-based add-ons and tools
 - **Virtualization**: Setting up [KVM](kvm.md) for optional Windows environments
 - **Containers**: [Docker](docker.md) for isolated development and testing environments
 
-These optimizations offer the following benefits:
+## Goal
+
+These optimizations and extensions offer the following benefits:
 
 - Better resource allocation for X-Plane
 - Reduced system latency
