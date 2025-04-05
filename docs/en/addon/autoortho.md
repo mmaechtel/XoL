@@ -1,3 +1,82 @@
+# AutoOrtho
+
+AutoOrtho is a tool for X-Plane that integrates orthophotos into the flight simulator. It enables the use of high-resolution aerial imagery as ground textures, significantly improving the visual reality in X-Plane.
+
+## Installation
+
+1. Download the latest version of AutoOrtho from the [official GitHub page](https://github.com/kubilus1/autoortho)
+2. Extract the archive to a folder of your choice
+3. Make sure Python 3.x is installed
+4. Install the required Python packages:
+   ```bash
+   pip install -r requirements.txt
+   ```
+
+## Basic Usage
+
+1. Start AutoOrtho using the Python file:
+   ```bash
+   python autoortho.py
+   ```
+
+2. In the main window, select:
+   - The image source (e.g., Bing, Google, Here)
+   - The target area
+
+3. Click "Start" to begin the process
+
+## Configuration
+
+The configuration file `.autoortho` is created in your home directory and can be edited with a text editor. Here are the most important parameters:
+
+```ini
+# X-Plane directory
+xplane_path = /path/to/xplane
+
+# Cache directory for orthophotos
+cache_dir = /path/to/cache
+
+# Image provider (bing, google, here)
+provider = bing
+
+# Cache size in GB
+cache_size = 20
+
+# Number of download threads
+download_threads = 4
+
+# Autostart with X-Plane
+autostart = true
+
+# Debug mode (true/false)
+debug = false
+```
+
+### Important Parameter Explanations
+
+- `xplane_path`: Path to the X-Plane main directory
+- `cache_dir`: Directory for orthophoto cache (recommended: fast SSD)
+- `provider`: Image source for orthophotos
+- `cache_size`: Maximum cache size in GB
+- `download_threads`: Number of parallel downloads
+- `autostart`: Start AutoOrtho automatically with X-Plane
+- `debug`: Enable debug information in logs
+
+## Important Notes
+
+- AutoOrtho runs as a background service and generates orthophotos during flight
+- Textures are stored in a cache to avoid repeated downloads
+- A stable internet connection is required for streaming orthophotos
+- The quality of orthophotos is automatically adjusted based on altitude
+
+## Troubleshooting
+
+If you encounter issues:
+1. Check the log files in the AutoOrtho directory
+2. Ensure all Python dependencies are installed
+3. Verify your internet connection for image data downloads
+4. Consult the [AutoOrtho Forum](https://forums.x-plane.org/index.php?/forums/forum/406-autoortho/) for additional help
+
 ## What is AutoOrtho?
 
 [AutoOrtho](../glossary.md#autoortho) is a tool for X-Plane that integrates [orthophotos](../glossary.md#orthophotos) into the flight simulator. It enables the use of high-resolution aerial imagery as ground textures, significantly enhancing the visual realism in X-Plane. This guide describes the installation on Debian, both as a pre-built [binary](../glossary.md#binary) and from source code in a `pyenv` environment using Z Shell (`zsh`).

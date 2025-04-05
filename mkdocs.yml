@@ -79,11 +79,15 @@ plugins:
                     - KVM: de/kvm.md
                     - Docker: de/docker.md
                     - Wine: de/wine.md
+                    - pyenv: de/pyenv.md
+                    - zsh: de/zsh.md
             - X-Plane:
                 - Karten: de/maps.md
             - Addons: 
                 - XRoad: de/addon/xroad.md
                 - AutoOrtho: de/addon/autoortho.md
+                - Ortho4XP: de/addon/ortho4xp.md
+                - XOrganizer: de/addon/xorganizer.md
             - Glossar: de/glossary.md
             - Über: de/about.md
         - locale: en
@@ -103,11 +107,15 @@ plugins:
                     - KVM: en/kvm.md
                     - Docker: en/docker.md
                     - Wine: en/wine.md
+                    - pyenv: en/pyenv.md
+                    - zsh: en/zsh.md
             - X-Plane:
                 - Maps: en/maps.md
             - Addons:
                 - XRoad: en/addon/xroad.md
                 - AutoOrtho: en/addon/autoortho.md
+                - Ortho4XP: en/addon/ortho4xp.md
+                - XOrganizer: en/addon/xorganizer.md
             - Glossary: en/glossary.md
             - About: en/about.md
   - git-revision-date-localized:
