@@ -11,11 +11,29 @@ X-Plane bietet verschiedene Möglichkeiten, realistische Szenerien und Landschaf
 X-Plane wird mit einer umfangreichen Sammlung von Standard-Szenerien ausgeliefert:
 
 - **Global Scenery**: Grundlegende Landschaftsdaten für die gesamte Welt
-- **Default Airports**: Basis-Flughäfen mit grundlegenden Gebäuden und Landebahnen
+- **Default Airports**: Basis-Flughäfen mit grundlegenden Gebäuden und Landebahnen ([X-Plane Gateway](https://gateway.x-plane.com/))
 - **Autogen**: Automatisch generierte Gebäude und Vegetation
 - **Mesh**: Grundlegende Geländedaten
 
 Die Standard-Szenerien bieten eine gute Basis für den Flugsimulator, können aber durch zusätzliche Szenerien erheblich verbessert werden.
+
+### X-Plane Gateway Server
+
+Der [X-Plane Gateway Server](https://gateway.x-plane.com/) ist eine zentrale Plattform für die Community-gestützte Entwicklung von Flughafenszenerien. Hier können Benutzer:
+
+- Flughäfen erstellen und verbessern
+- Ihre Arbeiten mit der Community teilen
+- Von anderen Benutzern erstellte Flughäfen herunterladen
+- An der Qualitätssicherung teilnehmen
+
+Die auf dem Gateway veröffentlichten Flughäfen werden von Laminar Research überprüft und in zukünftige X-Plane-Updates integriert. Dieses System ermöglicht:
+
+- Eine stetige Verbesserung der Standard-Flughäfen
+- Eine weltweite Community von Entwicklern
+- Qualitätskontrolle durch Laminar Research
+- Regelmäßige Updates der Flughäfen
+
+Eine Übersicht aller verfügbaren Gateway-Flughäfen finden Sie in der [Gateway Scenery Map](https://x-plane.cleverest.eu/).
 
 ## SimHeaven X-World
 
@@ -62,17 +80,8 @@ Auf [x-plane.org](https://forums.x-plane.org/) finden Sie eine große Auswahl an
 
 ## Payware-Szenerien
 
-Für die höchste Qualität und Detailtreue stehen zahlreiche kommerzielle Szenerien zur Verfügung:
+Für die höchste Qualität und Detailtreue stehen zahlreiche kommerzielle Szenerien zur Verfügung. Eine fast vollständige Übersicht finden Sie unten verlinkt.
 
-### Flughäfen
-- **Aerosoft**: Hochdetaillierte europäische Flughäfen
-- **JustSim**: Internationale Flughäfen
-- **Orbx**: Flughäfen weltweit
-
-### Regionen
-- **Orbx TrueEarth**: Komplette Regionen mit Orthofotos
-- **SimHeaven**: Detaillierte Stadtlandschaften
-- **X-Plane Global**: Verbesserte globale Szenerien
 
 ### Tools
 - **XOrganizer**: Szenerie-Management-Tool

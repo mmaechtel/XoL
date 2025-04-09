@@ -11,11 +11,29 @@ X-Plane offers various ways to use realistic sceneries and landscapes. This sect
 X-Plane comes with an extensive collection of standard sceneries:
 
 - **Global Scenery**: Basic landscape data for the entire world
-- **Default Airports**: Basic airports with fundamental buildings and runways
+- **Default Airports**: Basic airports with fundamental buildings and runways ([X-Plane Gateway](https://gateway.x-plane.com/))
 - **Autogen**: Automatically generated buildings and vegetation
 - **Mesh**: Basic terrain data
 
 The standard sceneries provide a good foundation for the flight simulator but can be significantly enhanced with additional sceneries.
+
+### X-Plane Gateway Server
+
+The [X-Plane Gateway Server](https://gateway.x-plane.com/) is a central platform for community-driven airport scenery development. Here, users can:
+
+- Create and improve airports
+- Share their work with the community
+- Download airports created by other users
+- Participate in quality assurance
+
+Airports published on the Gateway are reviewed by Laminar Research and integrated into future X-Plane updates. This system enables:
+
+- Continuous improvement of default airports
+- A worldwide community of developers
+- Quality control by Laminar Research
+- Regular airport updates
+
+An overview of all available Gateway airports can be found in the [Gateway Scenery Map](https://x-plane.cleverest.eu/).
 
 ## SimHeaven X-World
 
@@ -62,17 +80,7 @@ On [x-plane.org](https://forums.x-plane.org/), you'll find a large selection of 
 
 ## Payware Sceneries
 
-For the highest quality and detail, numerous commercial sceneries are available:
-
-### Airports
-- **Aerosoft**: Highly detailed European airports
-- **JustSim**: International airports
-- **Orbx**: Airports worldwide
-
-### Regions
-- **Orbx TrueEarth**: Complete regions with orthophotos
-- **SimHeaven**: Detailed cityscapes
-- **X-Plane Global**: Enhanced global sceneries
+For the highest quality and detail, numerous commercial sceneries are available. An almost complete overview can be found in the link below.
 
 ### Tools
 - **XOrganizer**: Scenery management tool
