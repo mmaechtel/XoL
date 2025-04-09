@@ -65,21 +65,29 @@ Technische Umsetzung:
 
 Linux als Betriebssystem bietet für X-Plane besondere Vorteile:
 
-### Systemkontrolle und Entwicklung
-- Direkter Zugriff auf Systemfunktionen
-- Voller Zugriff auf Betriebssystem-Quellcode
-- Umfangreiche Entwicklungswerkzeuge
-- Ideale Umgebung für X-Plane-Erweiterungsentwicklung
-
 ### Performance-Optimierung
-- Präzise Kontrolle über Systemressourcen
-- Optimierungsmöglichkeiten auf Betriebssystemebene
-- Geringer Systemoverhead durch angepasste Konfiguration
+- Präzise Kontrolle über CPU- und GPU-Ressourcen für optimale X-Plane-Performance
+- Minimale System-Latenz durch angepasste Kernel-Konfiguration
+- Effiziente Speichernutzung und Prozessverwaltung
+- Optimierte Treiberunterstützung für Grafikhardware
 
-### Open Source Vorteile
-- Transparente Systemprozesse
-- Umfangreiche Dokumentation und Support
-- Möglichkeit zur aktiven Mitgestaltung
+### Stabilität und Zuverlässigkeit
+- Keine automatischen Updates oder Hintergrundprozesse während des Fluges
+- Vorhersehbare Systemleistung ohne unerwartete Einbrüche
+- Robuste Fehlerbehandlung und Systemwiederherstellung
+- Lange Laufzeiten ohne Performance-Degradation
 
-Während X-Plane auch unter Windows läuft, ermöglicht Linux tiefere Eingriffe sowohl in System als auch Simulator. Der höhere initiale Aufwand wird durch bessere Kontroll- und Optimierungsmöglichkeiten ausgeglichen.
+### Hardware-Integration
+- Direkte Hardware-Zugriffe ohne zusätzliche Abstraktionsschichten
+- Optimierte Unterstützung für Flugsimulator-spezifische Peripherie
+- Flexible Konfiguration von Multi-Monitor-Setups
+- Effiziente Nutzung von VR-Hardware
+
+### Entwicklung und Anpassung
+- Umfangreiche Entwicklungswerkzeuge für X-Plane-Plugins
+- Direkte Integration von Entwicklungs- und Debugging-Tools
+- Einfache Automatisierung von X-Plane-Prozessen
+- Flexible Skripting-Möglichkeiten für komplexe Workflows
+
+Während X-Plane auch unter Windows läuft, ermöglicht Linux eine präzisere Kontrolle über Systemressourcen und eine stabilere Laufzeitumgebung. Der höhere initiale Aufwand wird durch bessere Performance und Zuverlässigkeit ausgeglichen.
 

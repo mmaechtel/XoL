@@ -8,19 +8,19 @@ X-Plane 12 ist ein anspruchsvoller Flugsimulator, der erhebliche Systemressource
 
 ### Empfohlene Anforderungen
 - **CPU**: Aktuelle Generation mit hoher Single-Core-Performance (Intel Core i7/i9 oder AMD Ryzen 7/9)
-  - *Warum?* X-Plane nutzt hauptsächlich einen CPU-Kern für die Flugphysik-Berechnungen. Eine hohe Single-Core-Geschwindigkeit ist entscheidend für flüssige Framerates.
+    - *Warum?* X-Plane nutzt hauptsächlich einen CPU-Kern für die Flugphysik-Berechnungen. Eine hohe Single-Core-Geschwindigkeit ist entscheidend für flüssige Framerates.
   
 - **RAM**: 32 GB oder mehr
-  - *Warum?* Speicherhungrige Addons, detaillierte Szenerien und Orthofotos können den RAM-Verbrauch drastisch erhöhen.
+    - *Warum?* Speicherhungrige Addons, detaillierte Szenerien und Orthofotos können den RAM-Verbrauch drastisch erhöhen.
   
 - **Grafikkarte**: Hochleistungs-GPU mit mindestens 8 GB VRAM (z.B. NVIDIA RTX 3080/4080 oder höher)
-  - *Warum?* Insbesondere für 4K-Auflösung oder Multi-Monitor-Setups benötigen Sie viel Grafikleistung und VRAM. Hochauflösende Texturen und komplexe Beleuchtungseffekte fordern selbst High-End-GPUs.
+    - *Warum?* Insbesondere für 4K-Auflösung oder Multi-Monitor-Setups benötigen Sie viel Grafikleistung und VRAM. Hochauflösende Texturen und komplexe Beleuchtungseffekte fordern selbst High-End-GPUs.
   
 - **Speicherplatz**: 250 GB oder mehr SSD-Speicher (NVMe empfohlen)
-  - *Warum?* Die Basisinstallation benötigt bereits etwa 70 GB, und Orthofotos können schnell Hunderte von GB belegen. SSD-Geschwindigkeit reduziert Nachladezeiten während des Flugs.
+    - *Warum?* Die Basisinstallation benötigt bereits etwa 70 GB, und Orthofotos können schnell Hunderte von GB belegen. SSD-Geschwindigkeit reduziert Nachladezeiten während des Flugs.
   
 - **Netzwerk**: Schnelle Internetverbindung für Ortho-Streaming und Kartenaktualisierungen
-  - *Warum?* Echtzeitdaten wie Wetter und Luftverkehr sowie Streaming-Orthofotos benötigen eine zuverlässige Verbindung.
+    - *Warum?* Echtzeitdaten wie Wetter und Luftverkehr sowie Streaming-Orthofotos benötigen eine zuverlässige Verbindung.
 
 ### Hardware-Optimierungen
 - SSD/NVMe-Laufwerk für Betriebssystem und X-Plane Installation

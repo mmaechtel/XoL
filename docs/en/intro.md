@@ -65,23 +65,31 @@ Technical implementation:
 
 Linux as an operating system offers special advantages for X-Plane:
 
-### System Control and Development
-- Direct access to system functions
-- Full access to operating system source code
-- Comprehensive development tools
-- Ideal environment for X-Plane extension development
-
 ### Performance Optimization
-- Precise control over system resources
-- Optimization possibilities at operating system level
-- Low system overhead through adapted configuration
+- Precise control over CPU and GPU resources for optimal X-Plane performance
+- Minimal system latency through customized kernel configuration
+- Efficient memory usage and process management
+- Optimized driver support for graphics hardware
 
-### Open Source Benefits
-- Transparent system processes
-- Extensive documentation and support
-- Opportunity for active participation
+### Stability and Reliability
+- No automatic updates or background processes during flight
+- Predictable system performance without unexpected drops
+- Robust error handling and system recovery
+- Long runtime without performance degradation
 
-While X-Plane also runs on Windows, Linux enables deeper intervention in both system and simulator. The higher initial effort is offset by better control and optimization possibilities.
+### Hardware Integration
+- Direct hardware access without additional abstraction layers
+- Optimized support for flight simulator-specific peripherals
+- Flexible configuration of multi-monitor setups
+- Efficient utilization of VR hardware
+
+### Development and Customization
+- Comprehensive development tools for X-Plane plugins
+- Direct integration of development and debugging tools
+- Easy automation of X-Plane processes
+- Flexible scripting capabilities for complex workflows
+
+While X-Plane also runs on Windows, Linux enables more precise control over system resources and a more stable runtime environment. The higher initial effort is offset by better performance and reliability.
 
 ## Documentation Content
 

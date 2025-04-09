@@ -8,19 +8,19 @@ X-Plane 12 is a demanding flight simulator that requires significant system reso
 
 ### Recommended Requirements
 - **CPU**: Current generation with high single-core performance (Intel Core i7/i9 or AMD Ryzen 7/9)
-  - *Why?* X-Plane primarily uses one CPU core for flight physics calculations. High single-core speed is crucial for smooth framerates.
+    - *Why?* X-Plane primarily uses one CPU core for flight physics calculations. High single-core speed is crucial for smooth framerates.
   
 - **RAM**: 32 GB or more
-  - *Why?* Memory-hungry addons, detailed scenery, and orthophotos can dramatically increase RAM usage.
+    - *Why?* Memory-hungry addons, detailed scenery, and orthophotos can dramatically increase RAM usage.
   
 - **Graphics Card**: High-performance GPU with at least 8 GB VRAM (e.g., NVIDIA RTX 3080/4080 or higher)
-  - *Why?* Especially for 4K resolution or multi-monitor setups, you need substantial graphics power and VRAM. High-resolution textures and complex lighting effects challenge even high-end GPUs.
+    - *Why?* Especially for 4K resolution or multi-monitor setups, you need substantial graphics power and VRAM. High-resolution textures and complex lighting effects challenge even high-end GPUs.
   
 - **Storage Space**: 250 GB or more SSD storage (NVMe recommended)
-  - *Why?* The base installation already requires about 70 GB, and orthophotos can quickly occupy hundreds of GB. SSD speed reduces loading times during flight.
+    - *Why?* The base installation already requires about 70 GB, and orthophotos can quickly occupy hundreds of GB. SSD speed reduces loading times during flight.
   
 - **Network**: Fast internet connection for ortho streaming and map updates
-  - *Why?* Real-time data such as weather and air traffic, as well as streaming orthophotos, require a reliable connection.
+    - *Why?* Real-time data such as weather and air traffic, as well as streaming orthophotos, require a reliable connection.
 
 ### Hardware Optimizations
 - SSD/NVMe drive for operating system and X-Plane installation
