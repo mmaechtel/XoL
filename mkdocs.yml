@@ -82,12 +82,12 @@ plugins:
                     - pyenv: de/pyenv.md
                     - zsh: de/zsh.md
             - X-Plane:
+                - XOrganizer: de/addon/xorganizer.md
                 - Szenerien: de/scenery.md
             - Addons: 
-                - XRoad: de/addon/xroad.md
-                - AutoOrtho: de/addon/autoortho.md
                 - Ortho4XP: de/addon/ortho4xp.md
-                - XOrganizer: de/addon/xorganizer.md
+                - AutoOrtho: de/addon/autoortho.md
+                - XRoad: de/addon/xroad.md
             - Glossar: de/glossary.md
             - Über: de/about.md
         - locale: en
@@ -110,12 +110,12 @@ plugins:
                     - pyenv: en/pyenv.md
                     - zsh: en/zsh.md
             - X-Plane:
+                - XOrganizer: en/addon/xorganizer.md
                 - Sceneries: en/scenery.md
             - Addons:
-                - XRoad: en/addon/xroad.md
-                - AutoOrtho: en/addon/autoortho.md
                 - Ortho4XP: en/addon/ortho4xp.md
-                - XOrganizer: en/addon/xorganizer.md
+                - AutoOrtho: en/addon/autoortho.md
+                - XRoad: en/addon/xroad.md
             - Glossary: en/glossary.md
             - About: en/about.md
   - git-revision-date-localized:

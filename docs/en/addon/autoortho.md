@@ -2,6 +2,46 @@
 
 AutoOrtho is a tool for X-Plane that integrates orthophotos into the flight simulator. It enables the use of high-resolution aerial imagery as ground textures, significantly improving the visual reality in X-Plane.
 
+## Differences from Ortho4XP
+
+AutoOrtho and Ortho4XP are both tools for integrating orthophotos into X-Plane, but they differ fundamentally in their operation and application:
+
+### AutoOrtho
+
+* **Streaming-based**: Loads orthophotos on demand during flight
+* **No local storage**: Does not require large local storage capacity
+* **Dynamic adjustment**: Automatically adjusts quality based on altitude
+* **Easy installation**: Quick start without complex configuration
+* **Regular updates**: Automatic updating of image data
+* **Internet-dependent**: Requires a stable internet connection
+* **Flexible**: Easy switching between different regions
+
+### Ortho4XP
+
+* **Local storage**: Creates and stores orthophotos locally
+* **High quality**: Maximum control over texture quality
+* **Offline usage**: No internet connection required during flight
+* **Complex configuration**: More settings for advanced users
+* **High storage requirements**: Requires significant disk space
+* **Long generation time**: Texture creation can take hours
+* **Static**: Once created, textures remain unchanged
+
+### When to Use Which Tool?
+
+**AutoOrtho is ideal for:**
+
+* Users with limited storage space
+* Occasional flyers in various regions
+* Users who don't want complex configuration
+* Users with good internet connection
+
+**Ortho4XP is ideal for:**
+
+* Users with sufficient storage space
+* Regular flights in specific regions
+* Users who want maximum control over quality
+* Users without stable internet connection
+
 ## Installation
 
 1. Download the latest version of AutoOrtho from the [official GitHub page](https://github.com/kubilus1/autoortho)
@@ -20,14 +60,15 @@ AutoOrtho is a tool for X-Plane that integrates orthophotos into the flight simu
    ```
 
 2. In the main window, select:
+   - Install Dirs
    - The image source (e.g., Bing, Google, Here)
-   - The target area
+   - The download target area
 
 3. Click "Start" to begin the process
 
 ## Configuration
 
-The configuration file `.autoortho` is created in your home directory and can be edited with a text editor. Here are the most important parameters:
+The configuration file `.autoortho` is created in your home directory and can be edited with a text editor. Here are the most important parameters that can be adjusted according to your system:
 
 ```ini
 # X-Plane directory
@@ -42,8 +83,13 @@ provider = bing
 # Cache size in GB
 cache_size = 20
 
-# Number of download threads
-download_threads = 4
+# max time to wait for images.  higher numbers mean better quality, but more
+# stutters.  lower numbers will be more responsive at the expense of
+# ocassional low quality tiles.
+maxwait = 1.5
+
+# minimum zoom level to allow.  this will not increase the max quality of satellite imagery
+min_zoom = 14
 
 # Autostart with X-Plane
 autostart = true
@@ -56,9 +102,10 @@ debug = false
 
 - `xplane_path`: Path to the X-Plane main directory
 - `cache_dir`: Directory for orthophoto cache (recommended: fast SSD)
-- `provider`: Image source for orthophotos
+- `provider`: Image source for orthophotos (bing, google, here)
 - `cache_size`: Maximum cache size in GB
-- `download_threads`: Number of parallel downloads
+- `maxwait`: Maximum wait time for images in seconds. Higher values mean better quality but more stuttering. Lower values are more responsive but may occasionally result in lower quality tiles.
+- `min_zoom`: Minimum zoom level for satellite imagery. Affects the minimum quality of displayed images.
 - `autostart`: Start AutoOrtho automatically with X-Plane
 - `debug`: Enable debug information in logs
 
@@ -77,137 +124,96 @@ If you encounter issues:
 3. Verify your internet connection for image data downloads
 4. Consult the [AutoOrtho Forum](https://forums.x-plane.org/index.php?/forums/forum/406-autoortho/) for additional help
 
-## What is AutoOrtho?
+## Improving Ortho Maps with Ortho4XP 1.4
 
-[AutoOrtho](../glossary.md#autoortho) is a tool for X-Plane that integrates [orthophotos](../glossary.md#orthophotos) into the flight simulator. It enables the use of high-resolution aerial imagery as ground textures, significantly enhancing the visual realism in X-Plane. This guide describes the installation on Debian, both as a pre-built [binary](../glossary.md#binary) and from source code in a `pyenv` environment using Z Shell (`zsh`).
+AutoOrtho can be enhanced using custom Ortho4XP 1.4 tiles. This method provides greater control over the quality and appearance of orthophotos.
 
-## Installing the AutoOrtho Binary on Debian
+### Ortho4XP 1.4 Configuration
 
-The [binary](../glossary.md#binary) version of AutoOrtho is a pre-compiled executable that doesn't require an additional Python environment. It's ideal for users who want a quick and straightforward installation. Follow these steps:
+For optimal results with AutoOrtho, use the following settings in Ortho4XP 1.4:
 
-1. **Download:** Get the binary from: [AutoOrtho Binary](https://github.com/kubilus1/autoortho/releases/).  
-2. **Extract:** Unpack the ZIP file using a tool like `unzip` (install with `sudo apt install unzip`), e.g.:  
-   ```bash
-   unzip autoortho-linux-x64-v1.0.0.zip
-   ```
-3. **Make executable:** Ensure the file is executable:  
-   ```bash
-   chmod +x autoortho
-   ```
-4. **Launch:** Run the binary directly:  
-   ```bash
-   ./autoortho
-   ```
-5. **Prerequisite:** Install `libfuse2`, as AutoOrtho needs it for filesystem integration:  
-   ```bash
-   sudo apt install libfuse2
-   ```
+| Parameter                  | Recommended Value | Description |
+|---------------------------|------------------|-------------|
+| `skip_downloads`          | Enabled          | No imagery download needed |
+| `skip_converts`           | Enabled          | No DDS rendering needed |
+| `mask_zl`                 | 16               | Optimal water transitions |
+| `use_masks_for_inland`    | Enabled          | Better inland water bodies |
+| `distance_masks_too`      | Enabled          | Clean coastlines |
+| `custom_dem`              | Optional         | Higher DEMs for finer meshes |
+| `curvature_tol`           | 2.0–4.0          | Affects mesh complexity |
+| `road_banking_limit`      | 0.3              | Prevents build errors |
+| `apt_smoothing_pix`       | 8–16             | Smoother runways |
+| `water_tech`              | "XP12"           | Uses XP12 water technology |
 
-A [GUI](../glossary.md#gui-graphical-user-interface) will open, and the configuration file `.autoortho` will be created in your home directory. Enter the X-Plane directory and load an ortho set through the "Scenery" tab.
+### Tile Consolidation
 
-### Step 7: Verification
-Start X-Plane while AutoOrtho is running. Check the [`scenery_packs.ini`](../glossary.md#scenery_packsini) in X-Plane's [`Custom Scenery`](../glossary.md#custom-scenery) folder for AutoOrtho entries like `z_ao_*`.
-
-## Installing AutoOrtho from Source on Debian with pyenv and zsh
-
-Installing from source offers more control and flexibility. Using `pyenv` allows you to isolate Python versions and avoid conflicts with the system Python. The following steps will guide you through the process.
-
-### Prerequisites
-AutoOrtho requires Python and external libraries. A `pyenv` environment makes it easier to manage Python versions and dependencies.
-
-### Step 1: Prepare the System
-Update package sources and install dependencies required for `pyenv`:
+To make the created tiles usable with AutoOrtho, they need to be consolidated in a specific format. A consolidation script can be used for this purpose:
 
 ```bash
-sudo apt update
-sudo apt install -y build-essential libssl-dev zlib1g-dev libbz2-dev libreadline-dev libsqlite3-dev curl libncursesw5-dev xz-utils tk-dev libxml2-dev libxmlsec1-dev libffi-dev liblzma-dev git
+#!/bin/bash
+
+# Define source and destination paths
+SRC="$HOME/xplane-ortho-work/tiles_source"
+DST="$HOME/xplane-ortho-work/tiles_consolidated/zOrtho4XP_RegionName"
+
+# Prepare destination directory
+rm -rf "$DST"
+mkdir -p "$DST"
+
+# Remove temporary files
+find "$SRC" -type f -name "*.bak" -delete
+
+# Copy relevant data
+for TILE in "$SRC"/*; do
+    if [ -d "$TILE" ]; then
+        [ -d "$TILE/textures" ] && cp -r "$TILE/textures" "$DST/"
+        [ -d "$TILE/terrain" ] && cp -r "$TILE/terrain" "$DST/"
+        [ -d "$TILE/Earth nav data" ] && cp -r "$TILE/Earth nav data" "$DST/"
+    fi
+done
 ```
 
-Also install `libfuse2`, which AutoOrtho needs for filesystem integration:
+### Integration with AutoOrtho
 
-```bash
-sudo apt install libfuse2
+After creating the tiles:
+
+1. Copy the consolidated folder to:
+   ```
+   ~/X-Plane 12/Custom Scenery/z_autoortho/scenery/
+   ```
+
+2. Restart AutoOrtho
+
+### Overlay Integration
+
+For additional details, overlays can be generated:
+
+1. Create overlays in Ortho4XP
+2. Save them in a folder named `yOrtho4XP_RegionName`
+3. Copy the folder to:
+   ```
+   ~/X-Plane 12/Custom Scenery/yOrtho4XP_RegionName/
+   ```
+
+### scenery_packs.ini Configuration
+
+The correct order in `scenery_packs.ini` is important:
+
+```ini
+SCENERY_PACK Custom Scenery/yOrtho4XP_RegionName/
+SCENERY_PACK Custom Scenery/z_autoortho/scenery/zOrtho4XP_RegionName/
+SCENERY_PACK Custom Scenery/z_autoortho/scenery/z_autoortho_xyz/
 ```
 
-### Step 2: Set up pyenv
-Download `pyenv` from GitHub:
+### Benefits of This Method
 
-```bash
-git clone https://github.com/pyenv/pyenv.git ~/.pyenv
-```
+- Greater control over orthophoto quality
+- Optimized performance through adjusted mesh details
+- Better representation of water bodies and coastlines
+- Ability to integrate overlays for additional details
+- Complete control over zoom levels and file size
 
-Add `pyenv` to your `zsh` configuration by adding these lines to `~/.zshrc`:
+### Note on Using with SimHeaven
 
-```zsh
-export PYENV_ROOT="$HOME/.pyenv"
-export PATH="$PYENV_ROOT/bin:$PATH"
-eval "$(pyenv init --path)"
-eval "$(pyenv init -)"
-```
-
-Update the shell:
-
-```zsh
-source ~/.zshrc
-```
-
-### Step 3: Install Python Version
-Install a Python version, e.g., 3.10.16:
-
-```zsh
-pyenv install 3.10.16
-```
-
-### Step 4: Download AutoOrtho Source Code
-Get the source code and change to its directory:
-
-```zsh
-git clone https://github.com/kubilus1/autoortho.git
-cd autoortho
-```
-
-Set the local Python version:
-
-```zsh
-pyenv local 3.10.16
-```
-
-### Step 5: Install Dependencies
-Install the Python dependencies:
-
-```zsh
-pip install -r requirements.txt
-```
-
-At this point, you might encounter an error as PySimpleGUI cannot be installed. The package is no longer included in Python by default and needs to be installed separately. PySimpleGUI can be downloaded from various sources. Installation takes place in the directory `.pyenv/versions/3.10.16/lib/python3.10/site-packages/PySimpleGUI`.
-
-(`libfuse2` was already installed in Step 1.)
-
-### Step 6: Launch AutoOrtho
-Start AutoOrtho:
-
-```zsh
-python -i autoortho
-```
-
-A GUI will open, and the configuration file `.autoortho` will be created in your home directory. Enter the X-Plane directory and load an ortho set through the "Scenery" tab.
-
-### Step 7: Verification
-Start X-Plane while AutoOrtho is running. Check the [`scenery_packs.ini`](../glossary.md#scenery_packsini) in X-Plane's [`Custom Scenery`](../glossary.md#custom-scenery) folder for AutoOrtho entries like `z_ao_*`.
-
-### Additional Notes
-- **Troubleshooting:** If problems occur, you can delete `.autoortho` and restart AutoOrtho.  
-- **Requirements:** A stable internet connection is required for streaming orthophotos.
-- **FUSE Configuration:** When running AutoOrtho as a regular user (which is strongly recommended), the `user_allow_other` option must be enabled in `/etc/fuse.conf`. You can either do this with the following command:
-  ```bash
-  sudo echo "user_allow_other" >> /etc/fuse.conf
-  ```
-  Alternatively, you can uncomment the option in an editor (Note: sudo rights are also needed for editing):
-  ```bash
-  sudo nano /etc/fuse.conf
-  ```
-  Then remove the # character in front of the line `#user_allow_other`.
-
-### Conclusion
-Following these steps, you can install AutoOrtho in a `pyenv` environment on Debian with `zsh`. The isolated environment cleanly separates dependencies, ensuring AutoOrtho runs smoothly in X-Plane.
+When using [SimHeaven](https://simheaven.com/), the `yOrtho4XP` directories are not required as SimHeaven already contains all necessary overlay data. In this case, neither the Ortho4XP-created nor the AutoOrtho-generated `yOrtho4XP` directories need to be listed in the `scenery_packs.ini`.
 
