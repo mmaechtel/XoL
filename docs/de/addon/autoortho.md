@@ -2,9 +2,9 @@
 
 AutoOrtho ist ein Tool für X-Plane, das Orthofotos in den Flugsimulator integriert. Es ermöglicht die Nutzung von hochauflösenden Luftbildern als Bodentexturen und verbessert damit die visuelle Realität in X-Plane deutlich.
 
-## Unterschiede zu Ortho4XP
+## Vergleich mit Ortho4XP
 
-AutoOrtho und Ortho4XP sind beide Tools zur Integration von Orthofotos in X-Plane, unterscheiden sich jedoch grundlegend in ihrer Funktionsweise und Anwendung:
+AutoOrtho und Ortho4XP sind beide Tools zur Integration von Orthofotos in X-Plane, unterscheiden sich jedoch grundlegend:
 
 ### AutoOrtho
 
@@ -31,18 +31,20 @@ AutoOrtho und Ortho4XP sind beide Tools zur Integration von Orthofotos in X-Plan
 **AutoOrtho ist ideal für:**
 
 * Nutzer mit begrenztem Speicherplatz
-* Gelegenheitsflieger in verschiedenen Regionen
+* Gelegentliche Flüge in verschiedenen Regionen
 * Nutzer, die keine komplexe Konfiguration wünschen
-* Anwender mit guter Internetverbindung
+* Nutzer mit guter Internetverbindung
 
 **Ortho4XP ist ideal für:**
 
 * Nutzer mit ausreichend Speicherplatz
 * Regelmäßige Flüge in bestimmten Regionen
 * Nutzer, die maximale Kontrolle über die Qualität wünschen
-* Anwender ohne stabile Internetverbindung
+* Nutzer ohne stabile Internetverbindung
 
-## Installation
+## Installation und Verwendung
+
+### Installation
 
 1. Laden Sie die neueste Version von AutoOrtho von der [offiziellen GitHub-Seite](https://github.com/kubilus1/autoortho) herunter
 2. Entpacken Sie das Archiv in einen Ordner Ihrer Wahl
@@ -52,7 +54,50 @@ AutoOrtho und Ortho4XP sind beide Tools zur Integration von Orthofotos in X-Plan
    pip install -r requirements.txt
    ```
 
-## Grundlegende Verwendung
+### Konfiguration
+
+Die Konfigurationsdatei `.autoortho` wird im Home-Verzeichnis erstellt und kann mit einem Texteditor bearbeitet werden. Hier sind die wichtigsten Parameter, die an Ihr System angepasst werden können:
+
+```ini
+# X-Plane Verzeichnis
+xplane_path = /pfad/zum/xplane
+
+# Cache-Verzeichnis für Orthofotos
+cache_dir = /pfad/zum/cache
+
+# Bildanbieter (bing, google, here)
+provider = bing
+
+# Cache-Größe in GB
+cache_size = 20
+
+# Maximale Wartezeit für Bilder. Höhere Werte bedeuten bessere Qualität, aber mehr
+# Ruckeln. Niedrigere Werte sind reaktiver auf Kosten gelegentlicher
+# niedrigerer Qualität.
+maxwait = 1.5
+
+# Minimaler Zoom-Level. Dies erhöht nicht die maximale Qualität der Satellitenbilder
+min_zoom = 14
+
+# Automatischer Start mit X-Plane
+autostart = true
+
+# Debug-Modus (true/false)
+debug = false
+```
+
+### Wichtige Parameter-Erklärungen
+
+- `xplane_path`: Pfad zum X-Plane Hauptverzeichnis
+- `cache_dir`: Verzeichnis für Orthofoto-Cache (empfohlen: schnelle SSD)
+- `provider`: Bildquelle für Orthofotos (bing, google, here)
+- `cache_size`: Maximale Cache-Größe in GB
+- `maxwait`: Maximale Wartezeit für Bilder in Sekunden. Höhere Werte bedeuten bessere Qualität aber mehr Ruckeln. Niedrigere Werte sind reaktiver, können aber gelegentlich zu niedrigerer Qualität führen.
+- `min_zoom`: Minimaler Zoom-Level für Satellitenbilder. Beeinflusst die minimale Qualität der angezeigten Bilder.
+- `autostart`: AutoOrtho automatisch mit X-Plane starten
+- `debug`: Debug-Informationen in den Logs aktivieren
+
+### Grundlegende Verwendung
 
 1. Starten Sie AutoOrtho über die Python-Datei:
    ```bash
@@ -66,89 +111,30 @@ AutoOrtho und Ortho4XP sind beide Tools zur Integration von Orthofotos in X-Plan
 
 3. Klicken Sie auf "Start" um den Prozess zu starten
 
-## Konfiguration
+## Integration mit Ortho4XP 1.4
 
-Die Konfigurationsdatei `.autoortho` wird im Home-Verzeichnis erstellt und kann mit einem Texteditor bearbeitet werden. Hier sind die wichtigsten Parameter die nach eigenem System variiert werden können:
-
-```ini
-# X-Plane Verzeichnis
-xplane_path = /pfad/zum/xplane
-
-# Cache-Verzeichnis für Orthofotos
-cache_dir = /pfad/zum/cache
-
-# Bildquelle (bing, google, here)
-provider = bing
-
-# Cache-Größe in GB
-cache_size = 20
-
-# max time to wait for images.  higher numbers mean better quality, but more
-# stutters.  lower numbers will be more responsive at the expense of
-# ocassional low quality tiles.
-maxwait = 1.5
-
-# minimum zoom level to allow.  this will not increase the max quality of satellite imagery
-min_zoom = 14
-
-# Automatischer Start mit X-Plane
-autostart = true
-
-# Debug-Modus (true/false)
-debug = false
-```
-
-### Wichtige Parameter-Erklärungen
-
-- `xplane_path`: Pfad zum X-Plane Hauptverzeichnis
-- `cache_dir`: Verzeichnis für den Orthofoto-Cache (empfohlen: schnelle SSD)
-- `provider`: Bildquelle für die Orthofotos (bing, google, here)
-- `cache_size`: Maximale Größe des Caches in GB
-- `maxwait`: Maximale Wartezeit für Bilder in Sekunden. Höhere Werte bedeuten bessere Qualität, aber mehr Ruckler. Niedrigere Werte sind reaktionsschneller, aber können gelegentlich zu niedrigerer Qualität führen.
-- `min_zoom`: Minimaler Zoom-Level für Satellitenbilder. Beeinflusst die Mindestqualität der angezeigten Bilder.
-- `autostart`: AutoOrtho automatisch mit X-Plane starten
-- `debug`: Debug-Informationen in den Logs aktivieren
-
-## Wichtige Hinweise
-
-- AutoOrtho läuft als Hintergrunddienst und generiert Orthofotos während des Flugs
-- Die Texturen werden in einem Cache gespeichert, um wiederholte Downloads zu vermeiden
-- Eine stabile Internetverbindung ist für das Streaming der Orthofotos erforderlich
-- Die Qualität der Orthofotos wird automatisch an die Flughöhe angepasst
-
-## Fehlerbehebung
-
-Bei Problemen:
-1. Überprüfen Sie die Log-Dateien im AutoOrtho-Verzeichnis
-2. Stellen Sie sicher, dass alle Python-Abhängigkeiten installiert sind
-3. Überprüfen Sie die Internetverbindung für den Download der Bilddaten
-4. Konsultieren Sie das [AutoOrtho-Forum](https://forums.x-plane.org/index.php?/forums/forum/406-autoortho/) für weitere Hilfe
-
-## Verbesserung der Ortho Maps mit Ortho4XP 1.4
-
-AutoOrtho kann durch selbst erstellte Ortho4XP 1.4 Kacheln verbessert werden. Diese Methode ermöglicht eine höhere Kontrolle über die Qualität und Darstellung der Orthofotos.
-
+AutoOrtho kann durch selbst erstellte Ortho4XP 1.4 Kacheln verbessert werden. Diese Methode bietet eine größere Kontrolle über die Qualität und das Aussehen der Orthofotos.
 
 ### Ortho4XP 1.4 Konfiguration
 
-Für optimale Ergebnisse mit AutoOrtho sollten folgende Einstellungen in Ortho4XP 1.4 verwendet werden:
+Für optimale Ergebnisse mit AutoOrtho verwenden Sie folgende Einstellungen in Ortho4XP 1.4:
 
 | Parameter                  | Empfohlener Wert | Beschreibung |
 |---------------------------|------------------|--------------|
-| `skip_downloads`          | Aktiviert        | Kein Imagery Download notwendig |
+| `skip_downloads`          | Aktiviert        | Kein Bilddownload nötig |
 | `skip_converts`           | Aktiviert        | Kein DDS-Rendering nötig |
 | `mask_zl`                 | 16               | Optimale Wasserübergänge |
-| `use_masks_for_inland`    | Aktiviert        | Bessere Binnenseen |
+| `use_masks_for_inland`    | Aktiviert        | Bessere Binnengewässer |
 | `distance_masks_too`      | Aktiviert        | Saubere Küstenlinien |
 | `custom_dem`              | Optional         | Höhere DEMs für feinere Meshes |
-| `curvature_tol`           | 2.0–4.0          | Beeinflusst Mesh-Komplexität |
-| `road_banking_limit`      | 0.3              | Vermeidet Build-Fehler |
-| `apt_smoothing_pix`       | 8–16             | Glättet Runways |
-| `water_tech`              | "XP12"           | Nutzt XP12 Wassertechnik |
+| `curvature_tol`           | 2.0–4.0          | Beeinflusst die Mesh-Komplexität |
+| `road_banking_limit`      | 0.3              | Verhindert Build-Fehler |
+| `apt_smoothing_pix`       | 8–16             | Glattere Landebahnen |
+| `water_tech`              | "XP12"           | Verwendet XP12 Wassertechnologie |
 
-### Konsolidierung der Kacheln
+### Kachel-Konsolidierung
 
-Um die erstellten Kacheln für AutoOrtho nutzbar zu machen, müssen sie in einem speziellen Format konsolidiert werden. Hierfür kann ein Konsolidierungsskript verwendet werden:
+Um die erstellten Kacheln mit AutoOrtho nutzbar zu machen, müssen sie in einem spezifischen Format konsolidiert werden. Hierfür kann ein Konsolidierungsskript verwendet werden:
 
 ```bash
 #!/bin/bash
@@ -174,31 +160,31 @@ for TILE in "$SRC"/*; do
 done
 ```
 
-### Integration in AutoOrtho
+### Integration mit AutoOrtho
 
 Nach der Erstellung der Kacheln:
 
-1. Kopiere den konsolidierten Ordner nach:
+1. Kopieren Sie den konsolidierten Ordner nach:
    ```
    ~/X-Plane 12/Custom Scenery/z_autoortho/scenery/
    ```
 
-2. Starte AutoOrtho neu
+2. Starten Sie AutoOrtho neu
 
 ### Overlay-Integration
 
 Für zusätzliche Details können Overlays generiert werden:
 
-1. Erstelle Overlays in Ortho4XP
-2. Speichere sie in einem Ordner namens `yOrtho4XP_RegionName`
-3. Kopiere den Ordner nach:
+1. Erstellen Sie Overlays in Ortho4XP
+2. Speichern Sie sie in einem Ordner namens `yOrtho4XP_RegionName`
+3. Kopieren Sie den Ordner nach:
    ```
    ~/X-Plane 12/Custom Scenery/yOrtho4XP_RegionName/
    ```
 
 ### scenery_packs.ini Konfiguration
 
-Die korrekte Reihenfolge in der `scenery_packs.ini` ist wichtig:
+Die richtige Reihenfolge in der `scenery_packs.ini` ist wichtig:
 
 ```ini
 SCENERY_PACK Custom Scenery/yOrtho4XP_RegionName/
@@ -208,11 +194,21 @@ SCENERY_PACK Custom Scenery/z_autoortho/scenery/z_autoortho_xyz/
 
 ### Vorteile dieser Methode
 
-- Höhere Kontrolle über die Qualität der Orthofotos
+- Größere Kontrolle über die Orthofoto-Qualität
 - Optimierte Performance durch angepasste Mesh-Details
-- Bessere Darstellung von Wasserflächen und Küstenlinien
+- Bessere Darstellung von Gewässern und Küstenlinien
 - Möglichkeit zur Integration von Overlays für zusätzliche Details
 - Vollständige Kontrolle über Zoom-Level und Dateigröße
+
+## Wichtige Hinweise und Fehlerbehebung
+
+AutoOrtho läuft als Hintergrunddienst und generiert Orthofotos während des Flugs. Die Texturen werden in einem Cache gespeichert, um wiederholte Downloads zu vermeiden. Eine stabile Internetverbindung ist für das Streaming der Orthofotos erforderlich. Die Qualität der Orthofotos wird automatisch an die Flughöhe angepasst.
+
+Bei Problemen:
+1. Überprüfen Sie die Log-Dateien im AutoOrtho-Verzeichnis
+2. Stellen Sie sicher, dass alle Python-Abhängigkeiten installiert sind
+3. Überprüfen Sie die Internetverbindung für den Download der Bilddaten
+4. Konsultieren Sie das [AutoOrtho-Forum](https://forums.x-plane.org/index.php?/forums/forum/406-autoortho/) für weitere Hilfe
 
 ### Hinweis zur Verwendung mit SimHeaven
 
