@@ -5,4 +5,9 @@ docs/ToDo.canvas
 private/
 site/
 .obsidian/
+# Map files
+Maps/airportmap.html
+Maps/countries.geojson
+Maps/scenerymap.html
+Maps/styles.css
 
