@@ -95,6 +95,36 @@ Ortho4XP is available in two main versions:
 * `mask_zl`: 15
 * `water_smoothing`: 2
 
+## LiDAR Data Integration
+
+Ortho4XP supports the integration of high-resolution LiDAR data for improved terrain representation. This data is particularly useful for areas with complex topography such as the Alps or other mountain regions.
+
+### Available LiDAR Data
+
+The LiDAR data from [sonny.4lima.de](https://sonny.4lima.de) provides high resolution and accuracy for various regions. This data can be integrated into Ortho4XP in two ways:
+
+**Method 1: Individual Tiles**
+- Use the LiDAR data as `custom_dem` in Ortho4XP
+- This method is suitable for individual tiles or small areas
+- The LiDAR data is only used for specific tiles
+
+**Method 2: Larger Areas**
+- Replace the DEM files in the Ortho4XP directory
+- This method is suitable for larger regions
+- Ortho4XP automatically uses the LiDAR data for all tiles in the region
+
+### Integration Steps
+
+1. Download the desired LiDAR data from [sonny.4lima.de](https://sonny.4lima.de)
+2. Extract the files to the Ortho4XP directory
+3. Choose the desired integration method (Method 1 or 2)
+4. Generate the tiles as usual
+
+The improved terrain representation will be automatically adopted in the generated tiles.
+
+!!! note "Note"
+    The LiDAR data is particularly useful for areas with complex topography such as the Alps or other mountain regions. It provides significantly higher resolution and accuracy than the default DEM data.
+
 ## Important Notes and Troubleshooting
 
 ### General Notes
@@ -107,9 +137,10 @@ Ortho4XP is available in two main versions:
 
 ### Performance Optimization
 
-- `max_convert_slots` and `max_download_slots` should be adjusted to CPU performance
-- Too high values can overload the system
+- Processing time depends heavily on the chosen zoom level and area size
+- Too high zoom levels can overload the system
 - Skip parameters are useful for reprocessing individual steps
+- Using an SSD can significantly reduce processing time
 
 ### Troubleshooting
 

@@ -167,16 +167,9 @@ for TILE in "$SRC"/*; do
 done
 ```
 
-### Integration with AutoOrtho
+### Improved Terrain Representation with LiDAR Data
 
-After creating the tiles:
-
-1. Copy the consolidated folder to:
-   ```
-   ~/X-Plane 12/Custom Scenery/z_autoortho/scenery/
-   ```
-
-2. Restart AutoOrtho
+For improved terrain representation in AutoOrtho, the LiDAR data from [sonny.4lima.de](https://sonny.4lima.de) can be used. The integration is performed as described in the [Ortho4XP documentation](ortho4xp.md#lidar-data-integration). After integrating the LiDAR data in Ortho4XP, it will be automatically used in AutoOrtho as well.
 
 ### Overlay Integration
 
@@ -184,44 +177,6 @@ For additional details, overlays can be generated:
 
 1. Create overlays in Ortho4XP
 2. Save them in a folder named `yOrtho4XP_RegionName`
-
-### Integration of Sonny's LiDAR Data
-
-[Sonny's LiDAR Digital Terrain Models](https://sonny.4lima.de) provide high-resolution terrain data for Europe that can significantly improve the quality of AutoOrtho. These datasets are based on precise LiDAR measurements and offer much better resolution than conventional satellite data.
-
-#### Advantages of LiDAR Data
-- Higher accuracy in forested areas
-- Better representation of steep terrain
-- More precise elevation information
-- Optimized representation of valleys and gorges
-
-#### Available Resolutions
-- **0.5"** (only for Austria and Switzerland)
-- **1"** (approx. 20-30m resolution)
-- **3"** (approx. 60-90m resolution)
-- **10m** (only for Austria and Switzerland)
-- **20m** (20x20m resolution)
-- **50m** (50x50m resolution)
-
-#### Integration with AutoOrtho
-1. Download the desired LiDAR data from [sonny.4lima.de](https://sonny.4lima.de)
-2. Extract the files to the Ortho4XP directory
-
-**Method 1: Individual Tiles**
-- Use the LiDAR data as `custom_dem` in Ortho4XP
-- This method is suitable for individual tiles or small areas
-- The LiDAR data is only used for specific tiles
-
-**Method 2: Larger Areas**
-- Replace the DEM files in the Ortho4XP directory
-- This method is suitable for larger regions
-- Ortho4XP automatically uses the LiDAR data for all tiles in the region
-
-3. Generate the tiles as usual
-4. The improved terrain representation will be automatically adopted in AutoOrtho
-
-!!! note "Note"
-    The LiDAR data is available under the Creative Commons Attribution 4.0 (CC BY 4.0) license. Please observe the license terms and credit Sonny as the source.
 
 ## Important Notes and Troubleshooting
 

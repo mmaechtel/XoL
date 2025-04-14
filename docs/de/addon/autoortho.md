@@ -167,61 +167,9 @@ for TILE in "$SRC"/*; do
 done
 ```
 
-### Integration mit AutoOrtho
+### Verbesserte Geländedarstellung mit LiDAR-Daten
 
-Nach der Erstellung der Kacheln:
-
-1. Kopieren Sie den konsolidierten Ordner nach:
-   ```
-   ~/X-Plane 12/Custom Scenery/z_autoortho/scenery/
-   ```
-
-2. Starten Sie AutoOrtho neu
-
-### Overlay-Integration
-
-Für zusätzliche Details können Overlays generiert werden:
-
-1. Erstellen Sie Overlays in Ortho4XP
-2. Speichern Sie sie in einem Ordner namens `yOrtho4XP_RegionName`
-
-### Integration von Sonny's LiDAR-Daten
-
-[Sonny's LiDAR Digital Terrain Models](https://sonny.4lima.de) bieten hochauflösende Geländedaten für Europa, die die Qualität von AutoOrtho deutlich verbessern können. Diese Daten basieren auf präzisen LiDAR-Messungen und bieten eine deutlich bessere Auflösung als herkömmliche Satellitendaten.
-
-#### Vorteile der LiDAR-Daten
-- Höhere Genauigkeit in bewaldeten Gebieten
-- Bessere Darstellung von steilem Gelände
-- Präzisere Höheninformationen
-- Optimierte Darstellung von Tälern und Schluchten
-
-#### Verfügbare Auflösungen
-- **0.5"** (nur für Österreich und Schweiz)
-- **1"** (ca. 20-30m Auflösung)
-- **3"** (ca. 60-90m Auflösung)
-- **10m** (nur für Österreich und Schweiz)
-- **20m** (20x20m Auflösung)
-- **50m** (50x50m Auflösung)
-
-#### Integration in AutoOrtho
-1. Laden Sie die gewünschten LiDAR-Daten von [sonny.4lima.de](https://sonny.4lima.de) herunter
-2. Entpacken Sie die Dateien in das Ortho4XP-Verzeichnis
-
-**Methode 1: Einzelne Kacheln**
-- Verwenden Sie die LiDAR-Daten als `custom_dem` in Ortho4XP
-- Diese Methode eignet sich für einzelne Kacheln oder kleine Bereiche
-- Die LiDAR-Daten werden nur für die spezifischen Kacheln verwendet
-
-**Methode 2: Größere Bereiche**
-- Ersetzen Sie die DEM-Dateien im Ortho4XP-Verzeichnis
-- Diese Methode eignet sich für größere Regionen
-- Ortho4XP verwendet automatisch die LiDAR-Daten für alle Kacheln in der Region
-
-3. Generieren Sie die Tiles wie gewohnt
-4. Die verbesserte Geländedarstellung wird automatisch in AutoOrtho übernommen
-
-!!! note "Hinweis"
-    Die LiDAR-Daten sind unter der Creative Commons Attribution 4.0 (CC BY 4.0) Lizenz verfügbar. Bitte beachten Sie die Lizenzbedingungen und geben Sie Sonny als Quelle an.
+Für eine verbesserte Geländedarstellung in AutoOrtho können die LiDAR-Daten von [sonny.4lima.de](https://sonny.4lima.de) verwendet werden. Die Integration erfolgt wie in der [Ortho4XP-Dokumentation](ortho4xp.md#integration-von-lidar-daten) beschrieben. Nach der Integration der LiDAR-Daten in Ortho4XP werden diese automatisch auch in AutoOrtho verwendet.
 
 ## Important Notes and Troubleshooting
 

@@ -95,6 +95,36 @@ Ortho4XP ist in zwei Hauptversionen verfügbar:
 * `mask_zl`: 15
 * `water_smoothing`: 2
 
+## Integration von LiDAR-Daten
+
+Ortho4XP unterstützt die Integration von hochauflösenden LiDAR-Daten für eine verbesserte Geländedarstellung. Diese Daten sind besonders für Gebiete mit komplexer Topographie wie die Alpen oder andere Bergregionen nützlich.
+
+### Verfügbare LiDAR-Daten
+
+Die LiDAR-Daten von [sonny.4lima.de](https://sonny.4lima.de) bieten eine hohe Auflösung und Genauigkeit für verschiedene Regionen. Diese Daten können in Ortho4XP auf zwei Arten integriert werden:
+
+**Methode 1: Einzelne Kacheln**
+- Verwenden Sie die LiDAR-Daten als `custom_dem` in Ortho4XP
+- Diese Methode eignet sich für einzelne Kacheln oder kleine Bereiche
+- Die LiDAR-Daten werden nur für spezifische Kacheln verwendet
+
+**Methode 2: Größere Bereiche**
+- Ersetzen Sie die DEM-Dateien im Ortho4XP-Verzeichnis
+- Diese Methode eignet sich für größere Regionen
+- Ortho4XP verwendet die LiDAR-Daten automatisch für alle Kacheln in der Region
+
+### Schritte zur Integration
+
+1. Laden Sie die gewünschten LiDAR-Daten von [sonny.4lima.de](https://sonny.4lima.de) herunter
+2. Extrahieren Sie die Dateien in das Ortho4XP-Verzeichnis
+3. Wählen Sie die gewünschte Integrationsmethode (Methode 1 oder 2)
+4. Generieren Sie die Kacheln wie gewohnt
+
+Die verbesserte Geländedarstellung wird automatisch in den generierten Kacheln übernommen.
+
+!!! note "Hinweis"
+    Die LiDAR-Daten sind besonders nützlich für Gebiete mit komplexer Topographie wie die Alpen oder andere Bergregionen. Sie bieten eine deutlich höhere Auflösung und Genauigkeit als die standardmäßig verfügbaren DEM-Daten.
+
 ## Wichtige Hinweise und Fehlerbehebung
 
 ### Allgemeine Hinweise
@@ -107,9 +137,10 @@ Ortho4XP ist in zwei Hauptversionen verfügbar:
 
 ### Performance-Optimierung
 
-- `max_convert_slots` und `max_download_slots` sollten an die CPU-Leistung angepasst werden
-- Zu hohe Werte können das System überlasten
+- Die Verarbeitungszeit hängt stark von der gewählten Zoomstufe und der Gebietsgröße ab
+- Zu hohe Zoomstufen können das System überlasten
 - Skip-Parameter sind nützlich für die Wiederverarbeitung einzelner Schritte
+- Die Verwendung einer SSD kann die Verarbeitungszeit deutlich reduzieren
 
 ### Fehlerbehebung
 
