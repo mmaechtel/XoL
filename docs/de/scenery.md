@@ -54,7 +54,7 @@ SimHeaven X-World ist eine kostenlose Szenerie-Erweiterung, die die Standard-Sze
 - **X-World Oceania**: Australien und Ozeanien
 
 ### Installation und Kompatibilität
-- Einfache Installation über den Scenery-Pack-Manager
+- Manuelle Installation im Custom Scenery Verzeichnis
 - Kompatibel mit Ortho4XP und AutoOrtho
 - Optimiert für X-Plane 12
 - Regelmäßige Updates und Verbesserungen
@@ -81,11 +81,6 @@ Auf [x-plane.org](https://forums.x-plane.org/) finden Sie eine große Auswahl an
 ## Payware-Szenerien
 
 Für die höchste Qualität und Detailtreue stehen zahlreiche kommerzielle Szenerien zur Verfügung. Eine fast vollständige Übersicht finden Sie unten verlinkt.
-
-
-### Tools
-- **XOrganizer**: Szenerie-Management-Tool
-- **X-Plane Global**: Verbesserte globale Szenerien
 
 ## Ressourcen
 

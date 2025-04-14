@@ -82,6 +82,8 @@ plugins:
                     - pyenv: de/pyenv.md
                     - zsh: de/zsh.md
             - X-Plane:
+                - Konfiguration: de/xplane/config.md
+            - Szenerien:
                 - XOrganizer: de/addon/xorganizer.md
                 - Szenerien: de/scenery.md
             - Addons: 
@@ -110,6 +112,8 @@ plugins:
                     - pyenv: en/pyenv.md
                     - zsh: en/zsh.md
             - X-Plane:
+                - Configuration: en/xplane/config.md
+            - Sceneries:
                 - XOrganizer: en/addon/xorganizer.md
                 - Sceneries: en/scenery.md
             - Addons:
