@@ -8,6 +8,8 @@ use_directory_urls: false
 
 theme: 
   name: material
+  icon:
+    repo: fontawesome/brands/github
   palette:
     # Palette toggle for automatic mode
     - media: "(prefers-color-scheme)"
@@ -47,6 +49,7 @@ theme:
     - content.action.edit
     - toc.integrate
     - content.code.copy    # Aktiviert Copy-Buttons für Code-Blöcke
+    - content.tabs.link    # Aktiviert Material-Icons
 
 plugins:
   - search:
@@ -161,5 +164,13 @@ markdown_extensions:
   - def_list
   - pymdownx.tabbed:
       alternate_style: true
+  - pymdownx.emoji:
+      emoji_index: !!python/name:material.extensions.emoji.twemoji
+      emoji_generator: !!python/name:material.extensions.emoji.to_svg
+  - admonition
+  - pymdownx.details
+  - pymdownx.superfences
+  - pymdownx.tasklist:
+      custom_checkbox: true
 
 
