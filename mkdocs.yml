@@ -87,8 +87,9 @@ plugins:
             - X-Plane:
                 - Konfiguration: de/xplane/config.md
             - Szenerien:
-                - XOrganizer: de/addon/xorganizer.md
+                - Komponenten: de/scenery_components.md
                 - Szenerien: de/scenery.md
+                - XOrganizer: de/addon/xorganizer.md
             - Addons: 
                 - Ortho4XP: de/addon/ortho4xp.md
                 - AutoOrtho: de/addon/autoortho.md
@@ -117,8 +118,9 @@ plugins:
             - X-Plane:
                 - Configuration: en/xplane/config.md
             - Sceneries:
-                - XOrganizer: en/addon/xorganizer.md
+                - Components: en/scenery_components.md
                 - Sceneries: en/scenery.md
+                - XOrganizer: en/addon/xorganizer.md
             - Addons:
                 - Ortho4XP: en/addon/ortho4xp.md
                 - AutoOrtho: en/addon/autoortho.md
