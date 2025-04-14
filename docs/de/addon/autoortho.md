@@ -105,9 +105,9 @@ debug = false
    ```
 
 2. Wählen Sie im Hauptfenster:
-   - Install Dirs
-   - Die Bildquelle (z.B. Bing, Google, Here)
-   - Den Download Zielbereich
+    - Install Dirs
+    - Die Bildquelle (z.B. Bing, Google, Here)
+    - Den Download Zielbereich
 
 3. Klicken Sie auf "Start" um den Prozess zu starten
 
