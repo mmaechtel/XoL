@@ -1,5 +1,8 @@
 # X-Plane Konfiguration
 
+!!! info "Hinweis"
+    Diese Dokumentation ist noch nicht vollständig und befindet sich im Aufbau (Work in Progress).
+
 Hier finden Sie wichtige Informationen zur Konfiguration von X-Plane unter Linux.
 
 ## Grundlegende Einstellungen

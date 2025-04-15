@@ -1,5 +1,8 @@
 # X-Plane Configuration
 
+!!! info "Note"
+    This documentation is not yet complete and is currently under development (Work in Progress).
+
 Here you will find important information about configuring X-Plane on Linux.
 
 ## Basic Settings
