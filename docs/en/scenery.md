@@ -1,66 +1,90 @@
-# Sceneries in X-Plane
+# Sceneries
 
-X-Plane offers a variety of sceneries that realistically represent the world. These sceneries can be categorized into different types, each covering different aspects of the landscape.
+Here you will find information about various scenery options for X-Plane.
+
+## Overview
+
+X-Plane offers various ways to use realistic sceneries and landscapes. This section presents the most important options.
 
 ## Standard Sceneries
 
-X-Plane comes with a set of standard sceneries that provide a basic representation of the world. These sceneries include:
+X-Plane comes with an extensive collection of standard sceneries:
 
-- **Global Scenery**: A worldwide foundation with basic landscape features such as mountains, valleys, and water bodies.
-- **Global Airports**: A collection of standard airports worldwide, contributed by the X-Plane community through the X-Plane Gateway.
+- **Global Scenery**: Basic landscape data for the entire world
+- **Default Airports**: Basic airports with basic buildings and runways ([X-Plane Gateway](https://gateway.x-plane.com/))
+- **Autogen**: Automatically generated buildings and vegetation
+- **Mesh**: Basic terrain data
 
-## Enhanced Sceneries
+The standard sceneries provide a good foundation for the flight simulator but can be significantly improved with additional sceneries.
 
-For an even more realistic representation, various types of enhanced sceneries can be added:
+### X-Plane Gateway Server
 
-### Mesh Sceneries
+The [X-Plane Gateway Server](https://gateway.x-plane.com/) is a central platform for community-supported development of airport sceneries. Here, users can:
 
-Mesh sceneries improve the topographic accuracy of the landscape:
+- Create and improve airports
+- Share their work with the community
+- Download airports created by other users
+- Participate in quality assurance
 
-- **HD Mesh**: Provides higher resolution for the basic structure of the landscape.
-- **UHD Mesh**: Offers the highest resolution for extremely detailed landscapes.
-- **Regional Mesh Sceneries**: Specific mesh sceneries for certain regions or airports.
+The airports published on the Gateway are reviewed by Laminar Research and integrated into future X-Plane updates. This system enables:
 
-### Ortho Sceneries
+- Continuous improvement of standard airports
+- A worldwide community of developers
+- Quality control by Laminar Research
+- Regular updates of airports
 
-Ortho sceneries add realistic satellite images:
+An overview of all available Gateway airports can be found in the [Gateway Scenery Map](https://x-plane.cleverest.eu/).
 
-- **Ortho4XP**: A tool for creating high-resolution ortho sceneries from satellite images.
-- **AutoOrtho**: A tool that automatically downloads and installs ortho sceneries.
-- **Pre-made Ortho Sceneries**: Complete ortho sceneries for specific regions.
+## SimHeaven X-World
 
-### Autogen Sceneries
+SimHeaven X-World is a free scenery extension that significantly improves X-Plane's standard sceneries:
 
-Autogen sceneries add automatically generated objects:
+### Features
+- Detailed buildings and cityscapes
+- Realistic vegetation and trees
+- Improved road networks and highways
+- Correct building heights and shapes
+- Regional architectural styles
 
-- **SimHeaven X-World**: Adds realistic buildings, roads, and other objects based on OpenStreetMap data.
-- **Other Autogen Libraries**: Additional libraries for specific regions or object types.
+### Available Regions
+- **X-World Europe**: Detailed European cities and landscapes
+- **X-World America**: North and South American regions
+- **X-World Asia**: Asian cities and landscapes
+- **X-World Africa**: African regions
+- **X-World Oceania**: Australia and Oceania
 
-## Installation and Management
+### Installation and Compatibility
+- Manual installation in the Custom Scenery directory
+- Compatible with Ortho4XP and AutoOrtho
+- Optimized for X-Plane 12
+- Regular updates and improvements
 
-The installation and management of sceneries require some attention:
+## Freeware and Shareware
 
-1. **Download and Installation**:
-   - Sceneries are downloaded to the `Custom Scenery` folder of X-Plane.
-   - The order of sceneries in the `scenery_packs.ini` is important for correct representation.
+On [x-plane.org](https://forums.x-plane.org/), you will find a large selection of free and affordable sceneries:
 
-2. **Management Tools**:
-   - **[XOrganizer](addon/xorganizer.md)**: A tool for managing and organizing sceneries.
-   - Manual Management: If needed, the `scenery_packs.ini` can also be edited manually.
+### Airports
+- Many community-created airports
+- Improved versions of standard airports
+- Historical airports
 
-3. **Updates and Maintenance**:
-   - Regular updates of sceneries are important for the best representation.
-   - Compatibility with the current X-Plane version should be checked.
+### Landscapes
+- Improved terrain data
+- More detailed vegetation
+- Special regions and landscapes
 
-## Tips for Selection
+### Tools
+- [Ortho4XP](../addon/ortho4xp.md): Tool for creating your own orthophoto sceneries
+- [AutoOrtho](../addon/autoortho.md): Automatic orthophoto sceneries
+- [XRoad](../addon/xroad.md): Improved road networks
 
-When selecting sceneries, the following aspects should be considered:
+## Payware Sceneries
 
-- **Performance**: High-resolution sceneries can affect system performance.
-- **Storage Space**: Ortho sceneries can require a lot of storage space.
-- **Region**: The availability of sceneries varies by region.
-- **Compatibility**: Compatibility with other add-ons should be checked.
+For the highest quality and detail, numerous commercial sceneries are available. An almost complete overview can be found linked below.
 
-## Conclusion
+## Resources
 
-The right combination of sceneries can transform X-Plane into an extremely realistic flight simulation experience. Through careful selection and management of sceneries, each user can create their own optimal flight environment. 
+Below you will find two essential resources for optimizing flight simulation:
+
+- **[Additional ICAO Sceneries](../Maps/airportmap.html)** – In addition to X-Plane's standard airports, there are third-party providers. A not complete, but extensive collection with a focus on X-Plane 12 sceneries is shown on this map.
+- **[zOrtho Tiles](../Maps/scenerymap.html)** – My self-created and installed zOrtho tiles. 
