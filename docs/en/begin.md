@@ -67,26 +67,7 @@ The following chapters of this documentation assume a working Debian installatio
 
 ## Installing X-Plane 12 on Linux
 
-X-Plane 12 runs natively on Linux and, unlike many other games and simulators, doesn't require a compatibility layer like Wine or Proton. Here are the steps for installation:
-
-### Preparations
-Before installing X-Plane 12, you should make the following preparations:
-
-1. **Update graphics drivers** - For Nvidia GPUs, install the current proprietary driver:
-   ```bash
-   sudo apt install nvidia-driver
-   ```
-   *For more details, see the chapter [Nvidia Drivers](nvidia.md).*
-
-2. **Install OpenGL libraries**:
-   ```bash
-   sudo apt install libgl1-mesa-glx libgl1-mesa-dri
-   ```
-
-3. **Ensure audio components**:
-   ```bash
-   sudo apt install pulseaudio pavucontrol
-   ```
+X-Plane 12 is available both through Steam and directly from developer Laminar Research. While the Steam version may be convenient for beginners, in this documentation we focus on the standalone version, which offers more control and flexibility.
 
 ### Installation Methods
 
