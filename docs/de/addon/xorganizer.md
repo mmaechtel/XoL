@@ -2,6 +2,8 @@
 
 XOrganizer ist ein leistungsstarkes Tool zur Verwaltung und Organisation von X-Plane Addons. Es unterstützt die Verwaltung von Szenerien, Plugins und anderen Addons, um Konflikte zu vermeiden und die Leistung zu optimieren.
 
+> **Wichtiger Hinweis**: Viele der leistungsstarken Funktionen von XOrganizer erschließen sich erst durch das gründliche Lesen der Dokumentation. Es wird dringend empfohlen, die offizielle Dokumentation zu studieren, um das volle Potenzial des Tools auszuschöpfen.
+
 ## Installation
 
 1. Die offizielle Website von XOrganizer ist unter [4xplane.nl/xorganizer/](https://www.4xplane.nl/xorganizer/) zu finden
