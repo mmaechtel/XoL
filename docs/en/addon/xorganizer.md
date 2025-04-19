@@ -12,48 +12,41 @@ XOrganizer is a powerful tool for managing and organizing X-Plane addons. It sup
 
 ## Basic Usage
 
-1. **Scenery Management**:
-- Automatic detection and categorization of sceneries
-- Drag & drop functionality for reordering
-- **Advanced Conflict Analysis**:
-    - Identification of overwrites due to incorrect order
-    - Analysis of conflicts between:
-        - Sceneries
-        - Overlays
-        - Elevation data (Mesh)
-    - Visual representation of dependencies and overwrites
-    - Warnings for potential conflicts
-    - Suggestions for optimal order
-- Intelligent management of `scenery_packs.ini`
-- Automatic detection and categorization of:
-    - Default sceneries
-    - Custom Sceneries
-    - Orthophoto tiles
-    - Overlay data
-    - Mesh data
-- Visual representation of scenery dependencies
-- Warnings for potential conflicts
+### Scenery Management
 
-2. **Plugin Management**:
-- Overview of all installed plugins
-- Easy activation/deactivation of plugins
-- Plugin configuration management
+Scenery Management is a central component of XOrganizer, offering comprehensive functions for organizing and optimizing your X-Plane sceneries. The tool automatically detects and categorizes sceneries and enables easy reordering through drag & drop functionality.
 
-3. **Profile Management**:
-- Creation of different profiles for various flight areas
-- Quick switching between profiles
-- Automatic adjustment of scenery order
-- **Flight Plan Based Profile Creation**:
-    - Identification of required scenery components along the flight route
-    - Creation of an optimized profile with only the necessary components
-    - Consideration of:
-        - Airports along the route
-        - Surrounding sceneries
-        - Orthophoto tiles
-        - Overlay data
-        - Mesh data
-    - Automatic deactivation of unnecessary components
-    - Performance optimization through reduction of loaded sceneries
+A particular highlight is the advanced conflict analysis. This identifies overwrites that can occur due to incorrect scenery order. The analysis takes into account conflicts between different scenery types, including default and custom sceneries, overlays, and elevation data (mesh). The visual representation of dependencies and overwrites makes potential issues immediately visible, and the tool provides suggestions for optimal order.
+
+The intelligent management of `scenery_packs.ini` is another important aspect. XOrganizer automatically detects and categorizes various scenery types:
+- Default sceneries
+- Custom sceneries
+- Orthophoto tiles
+- Overlay data
+- Mesh data
+
+Through the visual representation of scenery dependencies and warnings for potential conflicts, you can optimally adjust your scenery configuration.
+
+### Plugin Management
+
+The Plugin Management in XOrganizer provides a clear overview of all installed plugins in your X-Plane installation. With this function, you can easily activate or deactivate plugins, which is particularly useful when you want to test the impact of individual plugins on system performance.
+
+Another important aspect is the management of plugin configurations. XOrganizer allows you to centrally manage your plugin settings and switch between different configurations as needed. This is especially helpful when you use different flight profiles with various plugin combinations.
+
+### Profile Management
+
+Profile Management is one of the central functions of XOrganizer, allowing you to create and manage different configurations for various flight areas. With this function, you can quickly switch between different profiles, which is particularly useful when flying in different regions.
+
+A special highlight is the automatic adjustment of scenery order based on the selected profile. This ensures that the correct sceneries are always activated for the current flight area.
+
+Another important aspect is flight plan-based profile creation. This innovative function analyzes your flight route and automatically creates an optimized profile with all necessary components. The following are taken into account:
+- Airports along the route
+- Surrounding sceneries
+- Orthophoto tiles
+- Overlay data
+- Mesh data
+
+Through the automatic deactivation of unnecessary components, system performance is optimized as only the actually needed sceneries are loaded.
 
 ## Advanced Features
 
@@ -84,12 +77,14 @@ If problems occur:
 ## Recommendation
 
 XOrganizer represents an excellent investment for any X-Plane pilot who goes beyond the standard installation. The tool is particularly recommended for:
+
 - Pilots with an extensive scenery collection
 - Users of orthophoto tiles and overlays
 - Users who fly in different areas with different scenery configurations
 - Users who value optimal performance
 
 The investment in XOrganizer is especially worthwhile when:
+
 - Multiple scenery types are combined (e.g., orthophotos, overlays, custom sceneries)
 - Regular switching between different flight areas occurs
 - Value is placed on clear and efficient management of sceneries
