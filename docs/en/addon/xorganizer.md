@@ -19,6 +19,7 @@ Scenery Management is a central component of XOrganizer, offering comprehensive 
 A particular highlight is the advanced conflict analysis. This identifies overwrites that can occur due to incorrect scenery order. The analysis takes into account conflicts between different scenery types, including default and custom sceneries, overlays, and elevation data (mesh). The visual representation of dependencies and overwrites makes potential issues immediately visible, and the tool provides suggestions for optimal order.
 
 The intelligent management of `scenery_packs.ini` is another important aspect. XOrganizer automatically detects and categorizes various scenery types:
+
 - Default sceneries
 - Custom sceneries
 - Orthophoto tiles
@@ -40,6 +41,7 @@ Profile Management is one of the central functions of XOrganizer, allowing you t
 A special highlight is the automatic adjustment of scenery order based on the selected profile. This ensures that the correct sceneries are always activated for the current flight area.
 
 Another important aspect is flight plan-based profile creation. This innovative function analyzes your flight route and automatically creates an optimized profile with all necessary components. The following are taken into account:
+
 - Airports along the route
 - Surrounding sceneries
 - Orthophoto tiles

@@ -19,6 +19,7 @@ Die Szenerie-Verwaltung ist ein zentraler Bestandteil von XOrganizer und bietet 
 Ein besonderes Highlight ist die erweiterte Konfliktanalyse. Diese identifiziert Überschreibungen, die durch eine falsche Reihenfolge der Szenerien entstehen können. Die Analyse berücksichtigt Konflikte zwischen verschiedenen Szenerie-Typen, einschließlich Standard- und benutzerdefinierten Szenerien, Overlays und Höhendaten (Mesh). Die visuelle Darstellung von Abhängigkeiten und Überschreibungen macht potenzielle Probleme sofort sichtbar, und das Tool bietet Vorschläge für eine optimale Reihenfolge.
 
 Die intelligente Verwaltung der `scenery_packs.ini` ist ein weiterer wichtiger Aspekt. XOrganizer erkennt und kategorisiert automatisch verschiedene Szenerie-Typen:
+
 - Standardszenerien
 - Benutzerdefinierte Szenerien
 - Orthophoto-Kacheln
@@ -40,6 +41,7 @@ Die Profilverwaltung ist eine der zentralen Funktionen von XOrganizer und ermög
 Ein besonderes Highlight ist die automatische Anpassung der Szenerie-Reihenfolge basierend auf dem ausgewählten Profil. Dies stellt sicher, dass immer die richtigen Szenerien für das aktuelle Fluggebiet aktiviert sind.
 
 Ein weiterer wichtiger Aspekt ist die flugplanbasierte Profilerstellung. Diese innovative Funktion analysiert Ihre Flugroute und erstellt automatisch ein optimiertes Profil mit allen notwendigen Komponenten. Dabei werden berücksichtigt:
+
 - Flughäfen entlang der Route
 - Umgebende Szenerien
 - Orthophoto-Kacheln
