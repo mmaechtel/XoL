@@ -145,6 +145,7 @@ The improved terrain representation will be automatically adopted in the generat
 ### Troubleshooting
 
 If you encounter issues:
+
 1. Check the log files in the Ortho4XP directory
 2. Ensure all Python dependencies are installed
 3. Consult the [shred86 fork documentation](https://github.com/shred86/Ortho4XP/wiki)
