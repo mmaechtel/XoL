@@ -87,6 +87,7 @@ plugins:
                     - zsh: de/zsh.md
             - X-Plane:
                 - Konfiguration: de/xplane/config.md
+                - Performance: de/xplane/performance.md
             - Szenerien:
                 - Komponenten: de/scenery_components.md
                 - Szenerien: de/scenery.md
@@ -119,6 +120,7 @@ plugins:
                     - zsh: en/zsh.md
             - X-Plane:
                 - Configuration: en/xplane/config.md
+                - Performance: en/xplane/performance.md
             - Sceneries:
                 - Components: en/scenery_components.md
                 - Sceneries: en/scenery.md
