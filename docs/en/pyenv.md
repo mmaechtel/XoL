@@ -6,60 +6,70 @@ pyenv is a Python version management tool that allows you to install and manage 
 
 ### Dependencies
 
-Before you can install pyenv, you need to install some dependencies:
+Before you can install pyenv, you need to install some dependencies. The required packages differ depending on your Linux distribution:
 
+#### Ubuntu/Debian
 ```bash
-# Ubuntu/Debian
 sudo apt-get update
 sudo apt-get install -y make build-essential libssl-dev zlib1g-dev \
 libbz2-dev libreadline-dev libsqlite3-dev wget curl llvm \
 libncursesw5-dev xz-utils tk-dev libxml2-dev libxmlsec1-dev libffi-dev liblzma-dev
+```
 
-# Fedora
+#### Fedora
+```bash
 sudo dnf install -y make gcc zlib-devel bzip2 bzip2-devel readline-devel \
 sqlite sqlite-devel openssl-devel xz xz-devel libffi-devel findutils
+```
 
-# Arch Linux
+#### Arch Linux
+```bash
 sudo pacman -S --needed base-devel openssl zlib xz tk
 ```
 
 ### Installing pyenv
 
+The installation of pyenv consists of three steps:
+
 1. Clone the pyenv repository:
 
-```bash
-git clone https://github.com/pyenv/pyenv.git ~/.pyenv
-```
+    ```bash
+    git clone https://github.com/pyenv/pyenv.git ~/.pyenv
+    ```
 
-2. Add pyenv to your shell configuration:
+2. Add pyenv to your shell configuration. Choose the configuration for your shell:
 
-```bash
-# For bash
-echo 'export PYENV_ROOT="$HOME/.pyenv"' >> ~/.bashrc
-echo 'command -v pyenv >/dev/null || export PATH="$PYENV_ROOT/bin:$PATH"' >> ~/.bashrc
-echo 'eval "$(pyenv init -)"' >> ~/.bashrc
+    #### For bash
+    ```bash
+    echo 'export PYENV_ROOT="$HOME/.pyenv"' >> ~/.bashrc
+    echo 'command -v pyenv >/dev/null || export PATH="$PYENV_ROOT/bin:$PATH"' >> ~/.bashrc
+    echo 'eval "$(pyenv init -)"' >> ~/.bashrc
+    ```
 
-# For zsh
-echo 'export PYENV_ROOT="$HOME/.pyenv"' >> ~/.zshrc
-echo 'command -v pyenv >/dev/null || export PATH="$PYENV_ROOT/bin:$PATH"' >> ~/.zshrc
-echo 'eval "$(pyenv init -)"' >> ~/.zshrc
-```
+    #### For zsh
+    ```bash
+    echo 'export PYENV_ROOT="$HOME/.pyenv"' >> ~/.zshrc
+    echo 'command -v pyenv >/dev/null || export PATH="$PYENV_ROOT/bin:$PATH"' >> ~/.zshrc
+    echo 'eval "$(pyenv init -)"' >> ~/.zshrc
+    ```
 
 3. Reload your shell configuration:
 
-```bash
-# For bash
-source ~/.bashrc
+    #### For bash
+    ```bash
+    source ~/.bashrc
+    ```
 
-# For zsh
-source ~/.zshrc
-```
+    #### For zsh
+    ```bash
+    source ~/.zshrc
+    ```
 
 ## Basic Usage
 
 ### Installing Python Versions
 
-To install a new Python version:
+To install a new Python version, use the following command:
 
 ```bash
 pyenv install 3.12.3
@@ -67,7 +77,7 @@ pyenv install 3.12.3
 
 ### Setting Global Python Version
 
-To use a Python version globally:
+To use a Python version globally, execute this command:
 
 ```bash
 pyenv global 3.12.3
@@ -75,7 +85,7 @@ pyenv global 3.12.3
 
 ### Setting Local Python Version
 
-To use a Python version for a specific directory:
+To use a Python version for a specific directory, execute this command in the desired directory:
 
 ```bash
 pyenv local 3.12.3
@@ -83,7 +93,7 @@ pyenv local 3.12.3
 
 ### Listing Available Python Versions
 
-To show all installed Python versions:
+To show all installed Python versions, use:
 
 ```bash
 pyenv versions
@@ -93,29 +103,29 @@ pyenv versions
 
 ### Virtual Environments
 
-pyenv supports virtual environments through the pyenv-virtualenv plugin:
+pyenv supports virtual environments through the pyenv-virtualenv plugin. The setup consists of three steps:
 
 1. Install the plugin:
 
-```bash
-git clone https://github.com/pyenv/pyenv-virtualenv.git $(pyenv root)/plugins/pyenv-virtualenv
-```
+    ```bash
+    git clone https://github.com/pyenv/pyenv-virtualenv.git $(pyenv root)/plugins/pyenv-virtualenv
+    ```
 
 2. Create a virtual environment:
 
-```bash
-pyenv virtualenv 3.12.3 myenv
-```
+    ```bash
+    pyenv virtualenv 3.12.3 myenv
+    ```
 
 3. Activate the virtual environment:
 
-```bash
-pyenv activate myenv
-```
+    ```bash
+    pyenv activate myenv
+    ```
 
 ### Automatic Version Selection
 
-pyenv can automatically select the right Python version based on a `.python-version` file:
+pyenv can automatically select the right Python version based on a `.python-version` file. Create the file with:
 
 ```bash
 echo "3.12.3" > .python-version
@@ -133,13 +143,15 @@ pyenv supports various plugins for additional functionality:
 
 ### Checking Current Python Version
 
+To check the currently used Python version:
+
 ```bash
 pyenv version
 ```
 
 ### Rehashing pyenv
 
-When you've installed new Python binaries:
+When you've installed new Python binaries, execute this command:
 
 ```bash
 pyenv rehash
@@ -147,7 +159,7 @@ pyenv rehash
 
 ### Shell Integration
 
-pyenv provides seamless integration with your shell:
+For seamless integration with your shell, add these lines to your shell configuration:
 
 ```bash
 # For zsh
@@ -158,7 +170,7 @@ eval "$(pyenv virtualenv-init -)"
 
 ## Troubleshooting
 
-If you encounter issues:
+If you encounter issues, proceed as follows:
 
 1. Check your shell configuration
 2. Ensure all dependencies are installed

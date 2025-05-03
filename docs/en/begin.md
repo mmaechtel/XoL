@@ -78,34 +78,34 @@ X-Plane 12 is available both through Steam and directly from developer Laminar R
 Direct installation of X-Plane offers numerous advantages for experienced users:
 
 1. **Download X-Plane**
-   - Visit the [official X-Plane website](https://www.x-plane.com/)
-   - Purchase X-Plane 12 (or download the demo version)
-   - Download the installer (approximately 1 GB)
+    - Visit the [official X-Plane website](https://www.x-plane.com/)
+    - Purchase X-Plane 12 (or download the demo version)
+    - Download the installer (approximately 1 GB)
 
 2. **Prepare the installer**
-   - Navigate to the download folder:
-     ```bash
-     cd ~/Downloads
-     ```
-   - Make the installer executable:
-     ```bash
-     chmod +x X-Plane-installer.run
-     ```
+    - Navigate to the download folder:
+        ```bash
+        cd ~/Downloads
+        ```
+    - Make the installer executable:
+        ```bash
+        chmod +x X-Plane-installer.run
+        ```
 
 3. **Start installation**
-   - Run the installer:
-     ```bash
-     ./X-Plane-installer.run
-     ```
-   - In the graphical installer, you can select:
-     - Installation directory (recommended: `/home/[username]/X-Plane 12/`)
-     - Scenery packages to load
-     - World coverage (select at least your main flying area)
+    - Run the installer:
+        ```bash
+        ./X-Plane-installer.run
+        ```
+    - In the graphical installer, you can select:
+        - Installation directory (recommended: `/home/[username]/X-Plane 12/`)
+        - Scenery packages to load
+        - World coverage (select at least your main flying area)
 
 4. **Download process**
-   - The installer downloads the selected content (70-150 GB depending on selection)
-   - This process can take several hours
-   - The download can be interrupted and resumed later
+    - The installer downloads the selected content (70-150 GB depending on selection)
+    - This process can take several hours
+    - The download can be interrupted and resumed later
 
 **Advantages of the standalone version:**
 - Full control over installation directory and options

@@ -78,34 +78,34 @@ X-Plane 12 ist sowohl über Steam als auch direkt vom Entwickler Laminar Researc
 Die direkte Installation von X-Plane bietet zahlreiche Vorteile für erfahrene Nutzer:
 
 1. **X-Plane herunterladen**
-   - Besuchen Sie die [offizielle X-Plane-Website](https://www.x-plane.com/)
-   - Erwerben Sie X-Plane 12 (oder laden Sie die Demo-Version herunter)
-   - Laden Sie den Installer herunter (ca. 1 GB)
+    - Besuchen Sie die [offizielle X-Plane-Website](https://www.x-plane.com/)
+    - Erwerben Sie X-Plane 12 (oder laden Sie die Demo-Version herunter)
+    - Laden Sie den Installer herunter (ca. 1 GB)
 
 2. **Installer vorbereiten**
-   - Wechseln Sie in den Download-Ordner:
-     ```bash
-     cd ~/Downloads
-     ```
-   - Machen Sie den Installer ausführbar:
-     ```bash
-     chmod +x X-Plane-installer.run
-     ```
+    - Wechseln Sie in den Download-Ordner:
+        ```bash
+        cd ~/Downloads
+        ```
+    - Machen Sie den Installer ausführbar:
+        ```bash
+        chmod +x X-Plane-installer.run
+        ```
 
 3. **Installation starten**
-   - Führen Sie den Installer aus:
-     ```bash
-     ./X-Plane-installer.run
-     ```
-   - Im grafischen Installer können Sie auswählen:
-     - Installationsverzeichnis (empfohlen: `/home/[username]/X-Plane 12/`)
-     - Zu ladende Szeneriepakete
-     - Weltabdeckung (mindestens Ihr Hauptfluggebiet auswählen)
+    - Führen Sie den Installer aus:
+        ```bash
+        ./X-Plane-installer.run
+        ```
+    - Im grafischen Installer können Sie auswählen:
+        - Installationsverzeichnis (empfohlen: `/home/[username]/X-Plane 12/`)
+        - Zu ladende Szeneriepakete
+        - Weltabdeckung (mindestens Ihr Hauptfluggebiet auswählen)
 
 4. **Download-Prozess**
-   - Der Installer lädt die ausgewählten Inhalte herunter (70-150 GB je nach Auswahl)
-   - Dieser Vorgang kann mehrere Stunden dauern
-   - Der Download kann jederzeit unterbrochen und später fortgesetzt werden
+    - Der Installer lädt die ausgewählten Inhalte herunter (70-150 GB je nach Auswahl)
+    - Dieser Vorgang kann mehrere Stunden dauern
+    - Der Download kann jederzeit unterbrochen und später fortgesetzt werden
 
 **Vorteile der Standalone-Version:**
 - Volle Kontrolle über Installationsverzeichnis und -optionen
