@@ -65,13 +65,4 @@ Die Szenerie ist eine Payware und kann in den gängigen X-Plane Shops erworben w
 
 ## Fazit
 
-Die HD-Version des Los Angeles International Airport bietet eine hochwertige und detaillierte Darstellung des Flughafens für X-Plane 12. Die Szenerie ist besonders für Langstreckenflüge und internationale Verbindungen geeignet.
-
-![KLAX Terminal](/assets/images/blog/klax-terminal.jpg)
-*Das moderne Terminalgebäude des Los Angeles International Airport*
-
-![KLAX Gates](/assets/images/blog/klax-gates.jpg)
-*Gates-Übersicht des Flughafens*
-
-![KLAX Details](/assets/images/blog/klax-details.jpg)
-*Detailansicht der Szenerie* 
+Die HD-Version des Los Angeles International Airport bietet eine hochwertige und detaillierte Darstellung des Flughafens für X-Plane 12. Die Szenerie ist besonders für Langstreckenflüge und internationale Verbindungen geeignet. 

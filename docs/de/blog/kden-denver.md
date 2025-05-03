@@ -65,10 +65,4 @@ Die Szenerie ist eine Payware und kann in den gängigen X-Plane Shops erworben w
 
 ## Fazit
 
-Die X-Codr Designs Version 2.2 des Denver International Airport bietet eine hochwertige und detaillierte Darstellung des Flughafens für X-Plane 12.
-
-![KDEN Terminal](/assets/images/blog/kden-terminal.jpg)
-*Das markante Zeltdach des Denver International Airport*
-
-![KDEN Details](/assets/images/blog/kden-details.jpg)
-*Detailansicht der Szenerie* 
+Die X-Codr Designs Version 2.2 des Denver International Airport bietet eine hochwertige und detaillierte Darstellung des Flughafens für X-Plane 12. 

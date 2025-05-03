@@ -65,10 +65,4 @@ Die Szenerie ist kostenlos und kann im [X-Plane.org Forum](https://forums.x-plan
 
 ## Fazit
 
-Die JSD Scenery Version 2.0 des Cleveland Hopkins International Airport bietet eine hochwertige und detaillierte Darstellung des Flughafens für X-Plane 12.
-
-![KCLE Terminal](/assets/images/blog/kcle-terminal.jpg)
-*Das moderne Terminalgebäude des Cleveland Hopkins International Airport*
-
-![KCLE Nachtansicht](/assets/images/blog/kcle-night.jpg)
-*Nachtansicht des Flughafens mit dynamischer Beleuchtung* 
+Die JSD Scenery Version 2.0 des Cleveland Hopkins International Airport bietet eine hochwertige und detaillierte Darstellung des Flughafens für X-Plane 12. 
