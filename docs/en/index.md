@@ -31,3 +31,12 @@ This documentation is an open project. If you have improvements or additions, yo
 - Create issues for bugs or suggestions
 - Submit pull requests for changes
 - Share your experiences in the discussions
+
+## Recent Changes
+
+### 2025-05-04
+- [Scenery Documentation](scenery.md) revised
+  - List formatting corrected (indentation, spaces)
+  - English version aligned with German version
+- [Ortho4XP Guide](ortho4xp.md) extended
+  - New chapter [File Size Optimization](ortho4xp.md#file-size-optimization) added

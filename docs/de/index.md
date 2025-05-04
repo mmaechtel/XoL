@@ -31,3 +31,12 @@ Diese Dokumentation ist ein offenes Projekt. Wenn Sie Verbesserungen oder Ergän
 - Erstellen Sie Issues für Fehler oder Vorschläge
 - Reichen Sie Pull Requests für Änderungen ein
 - Teilen Sie Ihre Erfahrungen in den Diskussionen
+
+## Letzte Änderungen
+
+### 2025-05-04
+- [Szenerien Dokumentation](scenery.md) überarbeitet
+  - Formatierung der Listen korrigiert (Einrückung, Leerzeichen)
+  - Englische Version an deutsche Version angepasst
+- [Ortho4XP Anleitung](ortho4xp.md) erweitert
+  - Neues Kapitel [Optimierung der Dateigröße](ortho4xp.md#optimierung-der-dateigröße) hinzugefügt
