@@ -142,6 +142,18 @@ Die verbesserte Geländedarstellung wird automatisch in den generierten Kacheln 
 - Skip-Parameter sind nützlich für die Wiederverarbeitung einzelner Schritte
 - Die Verwendung einer SSD kann die Verarbeitungszeit deutlich reduzieren
 
+### Optimierung der Dateigröße
+
+Da Ortho4XP große Mengen an Texturen generiert, kann der Speicherplatzbedarf schnell ansteigen. Um die Dateigröße der Orthofotos zu optimieren, stehen verschiedene Tools zur Verfügung:
+
+#### Windows 11
+[`texconv`](https://github.com/Microsoft/DirectXTex/wiki/Texconv) (DirectXTex, Microsoft) ermöglicht die Skalierung von Texturen auf 2048x2048 Pixel mit dem Befehl `texconv.exe *.* -w 2048 -h 2048 -y`. Das Tool ist registrierungsfrei und eignet sich besonders für die Batch-Verarbeitung.
+
+#### macOS und Linux
+ImageMagick bietet eine plattformübergreifende Lösung. Nach der Installation (`brew install imagemagick` für macOS, `sudo apt-get install imagemagick` für Linux) können DDS-Dateien mit `mogrify -resize 2048x2048 *.dds` skaliert werden.
+
+Diese Tools reduzieren die Dateigröße effizient, während die visuelle Qualität erhalten bleibt. Die optimierte Größe von 2048x2048 Pixel bietet einen guten Kompromiss zwischen Qualität und Speicherplatzbedarf.
+
 ### Fehlerbehebung
 
 Bei Problemen:

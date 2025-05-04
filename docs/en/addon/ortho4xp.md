@@ -142,6 +142,18 @@ The improved terrain representation will be automatically adopted in the generat
 - Skip parameters are useful for reprocessing individual steps
 - Using an SSD can significantly reduce processing time
 
+### File Size Optimization
+
+Since Ortho4XP generates large amounts of textures, storage requirements can quickly increase. To optimize the file size of orthophotos, various tools are available:
+
+#### Windows 11
+[`texconv`](https://github.com/Microsoft/DirectXTex/wiki/Texconv) (DirectXTex, Microsoft) enables texture scaling to 2048x2048 pixels using the command `texconv.exe *.* -w 2048 -h 2048 -y`. The tool is registration-free and particularly suitable for batch processing.
+
+#### macOS and Linux
+ImageMagick provides a cross-platform solution. After installation (`brew install imagemagick` for macOS, `sudo apt-get install imagemagick` for Linux), DDS files can be scaled using `mogrify -resize 2048x2048 *.dds`.
+
+These tools efficiently reduce file size while maintaining visual quality. The optimized size of 2048x2048 pixels offers a good compromise between quality and storage requirements.
+
 ### Troubleshooting
 
 If you encounter issues:
