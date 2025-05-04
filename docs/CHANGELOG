@@ -5,11 +5,21 @@ All notable changes to the XoL documentation will be documented in this file.
 ## [2025-05-04]
 
 ### Changed
-- [Scenery Documentation](de/scenery.md) revised
+- [Scenery Documentation](docs/de/scenery.md) revised
   - List formatting corrected (indentation, spaces)
   - English version aligned with German version
-- [Ortho4XP Guide](de/ortho4xp.md) extended
-  - New chapter [File Size Optimization](de/ortho4xp.md#file-size-optimization) added
+  - [Resources/Maps section](docs/de/scenery.md#ressourcen) updated
+    - Self-created WorldMaps and their purpose highlighted
+    - Limitations of ICAO code search for X-Plane 12 scenery documented
+- [Ortho4XP Guide](docs/de/ortho4xp.md) extended
+  - New chapter [File Size Optimization](docs/de/ortho4xp.md#optimierung-der-dateigröße) added
+
+## [2025-05-03]
+
+### Added
+- New chapter [Scenery Tips](docs/de/blog/kcle-cleveland.html) added to Scenery Documentation
+  - Collection of useful tips and tricks for scenery management
+  - Best practices for scenery organization and optimization
 
 ## Format
 

@@ -36,7 +36,16 @@ Diese Dokumentation ist ein offenes Projekt. Wenn Sie Verbesserungen oder Ergän
 
 ### 2025-05-04
 - [Szenerien Dokumentation](scenery.md) überarbeitet
-  - Formatierung der Listen korrigiert (Einrückung, Leerzeichen)
-  - Englische Version an deutsche Version angepasst
-- [Ortho4XP Anleitung](ortho4xp.md) erweitert
-  - Neues Kapitel [Optimierung der Dateigröße](ortho4xp.md#optimierung-der-dateigröße) hinzugefügt
+    - Formatierung der Listen korrigiert (Einrückung, Leerzeichen)
+    - Englische Version an deutsche Version angepasst
+    - [Ressourcen/Maps Kapitel](scenery.md#ressourcen) überarbeitet
+        - Selbst erstellte WorldMaps und deren Zweck hervorgehoben
+        - Einschränkungen der ICAO-Code Suche für X-Plane 12 Szenerien dokumentiert
+- [Ortho4XP Anleitung](addon/ortho4xp.md) erweitert
+    - Neues Kapitel [Optimierung der Dateigröße](addon/ortho4xp.md#optimierung-der-dateigröße) hinzugefügt
+
+### 2025-05-03
+- [Szenerien Dokumentation](scenery.md) erweitert
+    - Neues Kapitel [Szenerie Tips](blog/kcle-cleveland.html) hinzugefügt
+        - Sammlung nützlicher Tipps und Tricks für die Szenerieverwaltung
+        - Best Practices für die Organisation und Optimierung von Szenerien

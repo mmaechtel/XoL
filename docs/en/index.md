@@ -36,7 +36,16 @@ This documentation is an open project. If you have improvements or additions, yo
 
 ### 2025-05-04
 - [Scenery Documentation](scenery.md) revised
-  - List formatting corrected (indentation, spaces)
-  - English version aligned with German version
-- [Ortho4XP Guide](ortho4xp.md) extended
-  - New chapter [File Size Optimization](ortho4xp.md#file-size-optimization) added
+    - List formatting corrected (indentation, spaces)
+    - English version aligned with German version
+    - [Resources/Maps Chapter](scenery.md#resources) revised
+        - Self-created WorldMaps and their purpose highlighted
+        - Limitations of ICAO code search for X-Plane 12 scenery documented
+- [Ortho4XP Guide](addon/ortho4xp.md) extended
+    - New chapter [File Size Optimization](addon/ortho4xp.md#file-size-optimization) added
+
+### 2025-05-03
+- [Scenery Documentation](scenery.md) extended
+    - New chapter [Scenery Tips](blog/kcle-cleveland.html) added
+        - Collection of useful tips and tricks for scenery management
+        - Best practices for scenery organization and optimization
