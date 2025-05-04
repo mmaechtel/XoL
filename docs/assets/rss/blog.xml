@@ -6,22 +6,64 @@
     <link>https://emvisio.com/</link>
     <atom:link href="https://emvisio.com/assets/rss/blog.xml" rel="self" type="application/rss+xml" />
     <language>de</language>
-    <lastBuildDate>{{ last_build_date }}</lastBuildDate>
-    <pubDate>{{ pub_date }}</pubDate>
+    <lastBuildDate>Sun, 04 May 2025 22:32:48 GMT</lastBuildDate>
+    <pubDate>Sun, 04 May 2025 22:32:48 GMT</pubDate>
     <ttl>60</ttl>
 
-    {% for post in posts %}
+    
     <item>
-        <title>{{ post.title }}</title>
-        <description>{{ post.description }}</description>
-        <link>https://emvisio.com{{ post.url }}</link>
-        <guid>https://emvisio.com{{ post.url }}</guid>
-        <pubDate>{{ post.date }}</pubDate>
-        <author>{{ post.author }}</author>
-        {% for tag in post.tags %}
-        <category>{{ tag }}</category>
-        {% endfor %}
+        <title>Cleveland Hopkins International Airport (KCLE) - JSD Scenery</title>
+        <description>Cleveland Hopkins International Airport (KCLE) is a significant commercial airport in the northeastern United States, developed by JSD Scenery in Version 2.0 for X-Plane 12. This scenery provides a detailed representation of the airport and its surroundings.</description>
+        <link>https://emvisio.com/en/blog/kcle-cleveland/</link>
+        <guid>https://emvisio.com/en/blog/kcle-cleveland/</guid>
+        <pubDate>Sun, 04 May 2025 22:32:48 GMT</pubDate>
+        <author>XoL Team</author>
+        
+        <category>Scenery</category>
+        
+        <category>Airport</category>
+        
+        <category>USA</category>
+        
+        <category>X-Plane</category>
+        
     </item>
-    {% endfor %}
+    
+    <item>
+        <title>Denver International Airport (KDEN) - X-Codr Designs</title>
+        <description>Denver International Airport (KDEN) is one of the largest and most modern airports in the USA, developed by X-Codr Designs in Version 2.2 for X-Plane 12. This scenery provides a detailed representation of the airport and its surroundings.</description>
+        <link>https://emvisio.com/en/blog/kden-denver/</link>
+        <guid>https://emvisio.com/en/blog/kden-denver/</guid>
+        <pubDate>Sun, 04 May 2025 22:32:48 GMT</pubDate>
+        <author>XoL Team</author>
+        
+        <category>Scenery</category>
+        
+        <category>Airport</category>
+        
+        <category>USA</category>
+        
+        <category>X-Plane</category>
+        
+    </item>
+    
+    <item>
+        <title>Los Angeles International Airport (KLAX) - X-Plane.org</title>
+        <description>Los Angeles International Airport (KLAX) is one of the largest and busiest airports in the world, developed by X-Plane.org in HD version for X-Plane 12. This scenery provides a detailed representation of the airport and its surroundings.</description>
+        <link>https://emvisio.com/en/blog/klax-los-angeles/</link>
+        <guid>https://emvisio.com/en/blog/klax-los-angeles/</guid>
+        <pubDate>Sun, 04 May 2025 22:32:48 GMT</pubDate>
+        <author>XoL Team</author>
+        
+        <category>Scenery</category>
+        
+        <category>Airport</category>
+        
+        <category>USA</category>
+        
+        <category>X-Plane</category>
+        
+    </item>
+    
 </channel>
 </rss> 

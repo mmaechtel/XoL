@@ -96,7 +96,7 @@ plugins:
                     - Cleveland Hopkins Airport: de/blog/kcle-cleveland.md
                     - Denver International Airport: de/blog/kden-denver.md
                     - Los Angeles International Airport: de/blog/klax-los-angeles.md
-                    - RSS Feed: de/blog/feed_rss_created.xml
+                    - RSS Feed: assets/rss/blog.xml
             - Addons: 
                 - Ortho4XP: de/addon/ortho4xp.md
                 - AutoOrtho: de/addon/autoortho.md
@@ -134,7 +134,7 @@ plugins:
                     - Cleveland Hopkins Airport: en/blog/kcle-cleveland.md
                     - Denver International Airport: en/blog/kden-denver.md
                     - Los Angeles International Airport: en/blog/klax-los-angeles.md
-                    - RSS Feed: en/blog/feed_rss_created.xml
+                    - RSS Feed: assets/rss/blog.xml
             - Addons:
                 - Ortho4XP: en/addon/ortho4xp.md
                 - AutoOrtho: en/addon/autoortho.md
