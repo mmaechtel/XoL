@@ -1,0 +1,34 @@
+# Markdown Formatierungsregeln
+
+1. Listen-Einrückung:
+   - 1. Ebene (Hauptpunkte): 0 Spaces
+   - 2. Ebene (Unterpunkte): 4 Spaces
+   - 3. Ebene (weitere Unterpunkte): 8 Spaces
+   Beispiel:
+   - Hauptpunkt (0 Spaces)
+       - Unterpunkt (4 Spaces)
+           - Unter-Unterpunkt (8 Spaces)
+
+2. Überschriften und Aufzählungen:
+   - Kein Doppelpunkt nach Überschriften, die mit einer Aufzählung folgen
+   - Ein Leerzeichen zwischen Überschrift und Aufzählung
+   Beispiel:
+   ### Features
+   
+   - Punkt 1
+   - Punkt 2
+
+3. Verschachtelte Listen:
+   - Nach einem Doppelpunkt am Ende eines Listeneintrags folgt die nächste Ebene mit 4 Spaces
+   Beispiel:
+   - Hauptpunkt mit Doppelpunkt:
+       - Unterpunkt (4 Spaces)
+
+4. Leerzeichen nach Doppelpunkten:
+   - Nach einem Doppelpunkt immer ein Leerzeichen setzen
+   Beispiel:
+   - **Beispiel**: Text mit Leerzeichen
+
+5. Konsistenz:
+   - Die gleichen Regeln in allen Sprachversionen anwenden
+   - Einheitliche Formatierung in der gesamten Dokumentation 
