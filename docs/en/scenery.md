@@ -84,7 +84,11 @@ For the highest quality and detail, numerous commercial sceneries are available.
 
 ## Resources
 
-Below you will find two essential resources for optimizing flight simulation:
+For better overview and planning of your flight simulation, two self-created WorldMaps are available:
 
-- **[Additional ICAO Sceneries](../Maps/airportmap.html)** – In addition to X-Plane's standard airports, there are third-party providers. A not complete, but extensive collection with a focus on X-Plane 12 sceneries is shown on this map.
-- **[zOrtho Tiles](../Maps/scenerymap.html)** – My self-created and installed zOrtho tiles. 
+- **[WorldMap of Sceneries](../Maps/airportmap.html)** – An interactive map with over 1400 sceneries for X-Plane 12. The map provides detailed information about each airport to help you find the right scenery. The search is performed using a valid 4-digit ICAO code, which means smaller airfields like grass runways and helipads are not displayed - this would make the map too cluttered in some areas. Direct download links have been deliberately omitted because:
+    - No purchase recommendations for specific shops should be given
+    - Updating numerous links would be very time-consuming
+    - The map focuses on X-Plane 12 sceneries (XP11 sceneries were only included if there are special adaptations that enable the scenery to support XP12 features)
+
+- **[WorldMap of Ortho Tiles](../Maps/scenerymap.html)** – An overview map of my self-created and installed Ortho Tiles. The displayed orthos were specifically created for addon sceneries and provide high-resolution textures, often enhanced with mesh patches for additional details like runway slopes. In addition to the self-created orthos, official ortho patches from scenery manufacturers as well as community-created patches from the X-Plane.org forum are used. 
