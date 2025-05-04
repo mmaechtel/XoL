@@ -49,3 +49,6 @@ Diese Dokumentation ist ein offenes Projekt. Wenn Sie Verbesserungen oder Ergän
     - Neues Kapitel [Szenerie Tips](blog/kcle-cleveland.html) hinzugefügt
         - Sammlung nützlicher Tipps und Tricks für die Szenerieverwaltung
         - Best Practices für die Organisation und Optimierung von Szenerien
+    - RSS Feed erstellt
+        - Automatische Generierung aus englischen Blog-Einträgen
+        - Verfügbar unter `assets/rss/blog.xml`

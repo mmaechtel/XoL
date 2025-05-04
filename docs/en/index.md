@@ -45,7 +45,10 @@ This documentation is an open project. If you have improvements or additions, yo
     - New chapter [File Size Optimization](addon/ortho4xp.md#file-size-optimization) added
 
 ### 2025-05-03
-- [Scenery Documentation](scenery.md) extended
+- [Scenery Documentation](scenery.md) expanded
     - New chapter [Scenery Tips](blog/kcle-cleveland.html) added
         - Collection of useful tips and tricks for scenery management
-        - Best practices for scenery organization and optimization
+        - Best practices for organizing and optimizing sceneries
+    - RSS Feed created
+        - Automatic generation from English blog entries
+        - Available at `assets/rss/blog.xml`
