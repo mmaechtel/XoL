@@ -35,6 +35,10 @@ This documentation is an open project. If you have improvements or additions, yo
 ## Recent Changes
 
 ### 2025-05-05
+- Added new filesystem documentation
+    - Comprehensive guide for filesystem optimization under Linux
+    - Covers SSD partitioning, multi-drive setups, and filesystem types
+    - Available in both German and English
 - Discord community channel added
     - Link available in the footer of both German and English versions
     - Join our community for discussions and support

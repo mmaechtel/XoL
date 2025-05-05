@@ -35,6 +35,10 @@ Diese Dokumentation ist ein offenes Projekt. Wenn Sie Verbesserungen oder Ergän
 ## Letzte Änderungen
 
 ### 2025-05-05
+- Neue Dateisystem-Dokumentation hinzugefügt
+    - Umfassender Leitfaden zur Dateisystem-Optimierung unter Linux
+    - Abdeckung von SSD-Partitionierung, Multi-Laufwerk-Setups und Dateisystem-Typen
+    - Verfügbar in Deutsch und Englisch
 - Discord Community-Kanal hinzugefügt
     - Link in der Fußzeile der deutschen und englischen Version verfügbar
     - Treten Sie unserer Community für Diskussionen und Support bei

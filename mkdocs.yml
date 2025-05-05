@@ -6,7 +6,7 @@ edit_uri: edit/main/docs/
 
 use_directory_urls: false
 
-theme: 
+theme:
   name: material
   icon:
     repo: fontawesome/brands/github
@@ -37,7 +37,7 @@ theme:
 
     # Palette toggle for light mode
     - media: "(prefers-color-scheme: light)"
-      scheme: default 
+      scheme: default
       primary: light blue
       toggle:
         icon: material/brightness-7
@@ -80,6 +80,7 @@ plugins:
                 - Optimierungen:
                     - Nvidia Treiber: de/nvidia.md
                     - Liquorix Kernel: de/liquorix.md
+                    - Dateisystem: de/filesystem.md
                 - Erweiterungen:
                     - KVM: de/kvm.md
                     - Docker: de/docker.md
@@ -98,7 +99,7 @@ plugins:
                     - Denver International Airport: de/blog/kden-denver.md
                     - Los Angeles International Airport: de/blog/klax-los-angeles.md
                     - RSS Feed: assets/rss/blog.xml
-            - Addons: 
+            - Addons:
                 - Ortho4XP: de/addon/ortho4xp.md
                 - AutoOrtho: de/addon/autoortho.md
                 - XRoad: de/addon/xroad.md
@@ -118,6 +119,7 @@ plugins:
                 - Optimizations:
                     - Nvidia Drivers: en/nvidia.md
                     - Liquorix Kernel: en/liquorix.md
+                    - Filesystem: en/filesystem.md
                 - Extensions:
                     - KVM: en/kvm.md
                     - Docker: en/docker.md
@@ -148,7 +150,7 @@ plugins:
       #enabled: !ENV [CI, false]
       #type: date
       #fallback_to_build_date: true
-      
+
 extra:
   alternate:
     - name: Deutsch
@@ -165,7 +167,8 @@ extra:
       link: https://x.com/HeDragonist
       name: X
     - icon: fontawesome/brands/discord
-      link: https://discord.gg/2CZWSBprDd
+      #link: https://discord.gg/2CZWSBprDd
+      link: https://discord.gg/S6VkndbfVX
       name: Discord
 
 markdown_extensions:
@@ -193,5 +196,3 @@ markdown_extensions:
   - pymdownx.superfences
   - pymdownx.tasklist:
       custom_checkbox: true
-
-
