@@ -1,95 +1,34 @@
 ## Introduction
 
-This documentation describes the optimal setup and configuration of [X-Plane](glossary.md#x-plane) on [Linux](glossary.md#linux). It is aimed at Linux-experienced users and assumes a working Linux installation.
+This documentation describes the optimal setup and configuration of [X-Plane](glossary.md#x-plane) under [Linux](glossary.md#linux). It is aimed at Linux-experienced users and assumes a working Linux installation.
 
-The guide covers:
+The guide covers the most important aspects of system optimization, including kernel configuration, driver optimization, and performance tuning. In the area of X-Plane setup, optimal configuration, performance settings, and hardware integration are addressed. Additionally, extensions such as addon integration, plugin configuration, and setting up a development environment are described.
 
-- **System Optimization**
-    - Kernel Configuration
-    - Driver Optimization
-    - Performance Tuning
-
-- **X-Plane Setup**
-    - Optimal Configuration
-    - Performance Settings
-    - Hardware Integration
-
-- **Extensions**
-    - Addon Integration
-    - Plugin Configuration
-    - Development Environment
-
-The examples shown here are based on Debian Linux but can be easily adapted to other distributions. The basic concepts and approaches remain the same - only the specific package manager commands or repository configurations need to be adjusted accordingly.
+The examples shown here are based on Debian Linux but can be easily transferred to other distributions. The basic concepts and procedures remain the same - only the specific package manager commands or repository configurations need to be adjusted accordingly.
 
 ## Why X-Plane?
 
-[X-Plane](glossary.md#x-plane) stands out from other flight simulators through its simulation-oriented approach:
+[X-Plane](glossary.md#x-plane) stands out from other flight simulators through its simulation-oriented approach. The realistic flight simulation is based on [Blade Element Theory](glossary.md#blade-element-theory), which enables real-time flow simulation. Instead of pre-made tables, real-time flight physics calculations are performed, supported by detailed simulations of engines and aircraft systems as well as precise weather simulation with atmospheric effects.
 
-### Realistic Flight Simulation
-- Aerodynamics calculation using [Blade Element Theory](glossary.md#blade-element-theory) (real-time flow simulation)
-- Real-time flight physics calculations instead of pre-calculated tables
-- Detailed simulation of engines and aircraft systems
-- Precise weather simulation with atmospheric effects
+In the professional field, X-Plane finds widespread use in flight schools and pilot training. There are certified versions for professional simulators that are also used in research and development. These versions form the basis for [FAA](glossary.md#faa)-certified training devices.
 
-### Professional Use
-- Used in flight schools and pilot training
-- Certified versions for professional simulators
-- Application in research and development
-- Basis for [FAA](glossary.md#faa)-certified training devices
+The graphical representation in X-Plane follows a unique approach. Unlike typical simulators, the focus is on physically correct light representation and realistic rather than artistic interpretation. The base representation is plausible and can be extended through addons. Technically, this is implemented through [PBR](glossary.md#pbr) for realistic material representation, dynamic lighting, atmospheric effects, real-time reflections, and [HDR](glossary.md#hdr) rendering.
 
-### Graphics Representation
-X-Plane follows a different approach than typical simulators:
+The adaptation and development of X-Plane is supported by an open [Plugin](glossary.md#plugin) architecture and extensive development tools. External flight models can be integrated, and the simulation engine is regularly updated. An active developer community supports continuous development.
 
-- Focus on physically correct light representation
-- Realistic rather than artistic interpretation
-- Plausible base representation, expandable through addons
+Currently, there are some limitations, such as performance limitations due to the [Single-CPU](glossary.md#single-cpu) architecture, with multi-core support in development. The system configuration is more complex than with other simulators, and optimal use requires a longer learning curve.
 
-Technical implementation:
+## Why X-Plane under Linux?
 
-- [PBR](glossary.md#pbr) for realistic material representation
-- Dynamic lighting and atmospheric effects
-- Real-time reflections and [HDR](glossary.md#hdr) rendering
+Linux as an operating system offers special advantages for X-Plane. Performance optimization enables precise control over CPU and GPU resources, minimal system latency through adapted kernel configuration, efficient memory usage, and optimized driver support for graphics hardware.
 
-### Customization and Development
-- Open [Plugin](glossary.md#plugin) architecture and development tools
-- Integration of external flight models
-- Regular updates of the simulation engine
-- Active developer community
+The stability and reliability of the system is ensured by the absence of automatic updates or background processes during flight. System performance is predictable without unexpected drops, and robust error handling enables long runtimes without performance degradation.
 
-### Current Limitations
-- Performance limitation due to [Single-CPU](glossary.md#single-cpu) architecture (multi-core support in development)
-- More complex system configuration compared to other simulators
-- Longer learning curve for optimal usage
+Hardware integration benefits from direct hardware access without additional abstraction layers. Flight simulator-specific peripherals are optimally supported, and multi-monitor setups can be flexibly configured. The use of VR hardware is particularly efficient.
 
-## Why X-Plane on Linux?
+For development and adaptation, extensive development tools for X-Plane plugins are available. The direct integration of development and debugging tools enables easy automation of X-Plane processes and flexible scripting options for complex workflows.
 
-Linux as an operating system offers special advantages for X-Plane:
-
-### Performance Optimization
-- Precise control over CPU and GPU resources for optimal X-Plane performance
-- Minimal system latency through customized kernel configuration
-- Efficient memory usage and process management
-- Optimized driver support for graphics hardware
-
-### Stability and Reliability
-- No automatic updates or background processes during flight
-- Predictable system performance without unexpected drops
-- Robust error handling and system recovery
-- Long runtime without performance degradation
-
-### Hardware Integration
-- Direct hardware access without additional abstraction layers
-- Optimized support for flight simulator-specific peripherals
-- Flexible configuration of multi-monitor setups
-- Efficient utilization of VR hardware
-
-### Development and Customization
-- Comprehensive development tools for X-Plane plugins
-- Direct integration of development and debugging tools
-- Easy automation of X-Plane processes
-- Flexible scripting capabilities for complex workflows
-
-While X-Plane also runs on Windows, Linux enables more precise control over system resources and a more stable runtime environment. The higher initial effort is offset by better performance and reliability.
+While X-Plane also runs under Windows, Linux enables more precise control over system resources and a more stable runtime environment. The higher initial effort is balanced by better performance and reliability.
 
 ## Documentation Content
 

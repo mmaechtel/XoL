@@ -6,31 +6,19 @@ The examples shown here are based on Debian Linux but can be easily adapted to o
 
 ## Documentation Content
 
-The documentation covers the following main areas:
-
-- **X-Plane Configuration**: Optimal settings for X-Plane on Linux
-- **Performance Optimization**: Kernel, drivers, and system settings for best performance
-- **Addons**: Installation and configuration of important extensions like AutoOrtho
-- **Troubleshooting**: Common issues and their solutions
+The documentation covers the most important areas of X-Plane configuration under Linux. The focus is on optimal settings for X-Plane, performance optimization through kernel, drivers, and system settings, as well as the installation and configuration of important extensions like AutoOrtho. Additionally, common problems and their solutions are thoroughly addressed. A special emphasis is placed on performance analysis using integrated and external tools, filesystem optimization for fast loading times, and hardware-specific adjustments for maximum performance.
 
 ## Guide Structure
 
-The technical guides are modular. You can implement individual components as needed or customize the entire system according to your requirements.
-
-Each guide:
-
-- Describes the goal and benefit of the change
-- Shows the necessary steps
-- Explains important configuration options
-- Provides troubleshooting tips
+The technical guides are modular in design and enable flexible implementation. You can implement individual components as needed or adapt the entire system according to your requirements. Each guide describes the goal and benefit of the change, shows the necessary steps, explains important configuration options, and provides troubleshooting tips. The guides are organized into logical sections: Basic system optimization, performance monitoring and analysis, hardware-specific adjustments, and advanced configurations for special use cases.
 
 ## Contributing
 
-This documentation is an open project. If you have improvements or additions, you can contribute via GitHub:
+This documentation is an open project. Improvements or additions can be contributed via GitHub:
 
 - Create issues for bugs or suggestions
 - Submit pull requests for changes
-- Share your experiences in the discussions
+- Share experiences in the discussions in the footer of this website (e.g., via the Discord link)
 
 ## Recent Changes
 
