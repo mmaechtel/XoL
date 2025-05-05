@@ -4,39 +4,39 @@ The Z Shell (zsh) is a powerful and extensible shell for Unix systems. It offers
 
 ## Installation
 
-1. Install zsh using the package manager:
+1. zsh is installed using the package manager
    ```bash
    sudo apt update
    sudo apt install zsh
    ```
 
-2. Set zsh as your default shell:
+2. zsh is set as the default shell
    ```bash
    chsh -s $(which zsh)
    ```
 
-3. Install Oh My Zsh (optional, but recommended):
+3. Oh My Zsh is installed (optional, but recommended)
    ```bash
    sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
    ```
 
 ## Basic Configuration
 
-1. Create a `.zshrc` file in your home directory:
+1. A `.zshrc` file is created in the home directory
    ```bash
    touch ~/.zshrc
    ```
 
-2. Add basic configurations:
+2. Basic configurations are added
    ```bash
-   # Enable autocompletion
+   # Autocompletion is enabled
    autoload -U compinit
    compinit
 
-   # Set the prompt
+   # The prompt is set
    PROMPT='%n@%m:%~%# '
 
-   # Enable color support
+   # Color support is enabled
    autoload -U colors && colors
    ```
 
@@ -67,16 +67,17 @@ The Z Shell (zsh) is a powerful and extensible shell for Unix systems. It offers
 
 ## Tips and Tricks
 
-- Use `setopt` to enable zsh options
-- Use `alias` for frequently used commands
-- Configure the prompt with `PROMPT` or `RPROMPT`
-- Use `history` to access command history
-- Enable `setopt share_history` for shared command history between terminals
+- `setopt` is used to enable zsh options
+- `alias` is used for frequently used commands
+- The prompt is configured with `PROMPT` or `RPROMPT`
+- `history` is used to access command history
+- `setopt share_history` is enabled for shared command history between terminals
 
 ## Troubleshooting
 
-If you encounter issues:
-1. Check the `.zshrc` file for syntax errors
-2. Test the configuration with `zsh -x`
-3. Verify permissions of configuration files
-4. Consult the [zsh documentation](https://zsh.sourceforge.io/Doc/) for additional help 
+If issues are encountered, the following steps are taken:
+
+1. The `.zshrc` file is checked for syntax errors
+2. The configuration is tested with `zsh -x`
+3. Permissions of configuration files are verified
+4. The [zsh documentation](https://zsh.sourceforge.io/Doc/) is consulted for additional help 

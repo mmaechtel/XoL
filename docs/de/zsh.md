@@ -4,39 +4,39 @@ Die Z Shell (zsh) ist eine leistungsstarke und erweiterbare Shell für Unix-Syst
 
 ## Installation
 
-1. Installieren Sie zsh über den Paketmanager:
+1. zsh wird über den Paketmanager installiert
    ```bash
    sudo apt update
    sudo apt install zsh
    ```
 
-2. Setzen Sie zsh als Standard-Shell:
+2. zsh wird als Standard-Shell gesetzt
    ```bash
    chsh -s $(which zsh)
    ```
 
-3. Installieren Sie Oh My Zsh (optional, aber empfohlen):
+3. Oh My Zsh wird installiert (optional, aber empfohlen)
    ```bash
    sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
    ```
 
 ## Grundlegende Konfiguration
 
-1. Erstellen Sie eine `.zshrc`-Datei in Ihrem Home-Verzeichnis:
+1. Eine `.zshrc`-Datei wird im Home-Verzeichnis erstellt
    ```bash
    touch ~/.zshrc
    ```
 
-2. Fügen Sie grundlegende Konfigurationen hinzu:
+2. Grundlegende Konfigurationen werden hinzugefügt
    ```bash
-   # Aktivieren Sie die Autovervollständigung
+   # Autovervollständigung wird aktiviert
    autoload -U compinit
    compinit
 
-   # Setzen Sie den Prompt
+   # Der Prompt wird gesetzt
    PROMPT='%n@%m:%~%# '
 
-   # Aktivieren Sie die Farbunterstützung
+   # Die Farbunterstützung wird aktiviert
    autoload -U colors && colors
    ```
 
@@ -67,16 +67,17 @@ Die Z Shell (zsh) ist eine leistungsstarke und erweiterbare Shell für Unix-Syst
 
 ## Tipps und Tricks
 
-- Verwenden Sie `setopt` um zsh-Optionen zu aktivieren
-- Nutzen Sie `alias` für häufig verwendete Befehle
-- Konfigurieren Sie den Prompt mit `PROMPT` oder `RPROMPT`
-- Verwenden Sie `history` für den Zugriff auf die Befehlsgeschichte
-- Aktivieren Sie `setopt share_history` für gemeinsame Befehlsgeschichte zwischen Terminals
+- `setopt` wird verwendet, um zsh-Optionen zu aktivieren
+- `alias` wird für häufig verwendete Befehle genutzt
+- Der Prompt wird mit `PROMPT` oder `RPROMPT` konfiguriert
+- `history` wird für den Zugriff auf die Befehlsgeschichte verwendet
+- `setopt share_history` wird für gemeinsame Befehlsgeschichte zwischen Terminals aktiviert
 
 ## Fehlerbehebung
 
-Bei Problemen:
-1. Überprüfen Sie die `.zshrc`-Datei auf Syntaxfehler
-2. Testen Sie die Konfiguration mit `zsh -x`
-3. Überprüfen Sie die Berechtigungen der Konfigurationsdateien
-4. Konsultieren Sie die [zsh-Dokumentation](https://zsh.sourceforge.io/Doc/) für weitere Hilfe 
+Bei Problemen wird wie folgt vorgegangen:
+
+1. Die `.zshrc`-Datei wird auf Syntaxfehler überprüft
+2. Die Konfiguration wird mit `zsh -x` getestet
+3. Die Berechtigungen der Konfigurationsdateien werden überprüft
+4. Die [zsh-Dokumentation](https://zsh.sourceforge.io/Doc/) wird für weitere Hilfe konsultiert 

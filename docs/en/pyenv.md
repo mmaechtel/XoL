@@ -2,9 +2,9 @@
 
 pyenv is a Python version management tool that allows you to install and manage multiple Python versions in parallel. It is particularly useful for developers who need to work with different Python versions.
 
-## Installation
+## Installation and Setup
 
-### Dependencies
+### Dependencies and Installation
 
 Before you can install pyenv, you need to install some dependencies. The required packages differ depending on your Linux distribution:
 
@@ -26,8 +26,6 @@ sqlite sqlite-devel openssl-devel xz xz-devel libffi-devel findutils
 ```bash
 sudo pacman -S --needed base-devel openssl zlib xz tk
 ```
-
-### Installing pyenv
 
 The installation of pyenv consists of three steps:
 
@@ -65,9 +63,9 @@ The installation of pyenv consists of three steps:
     source ~/.zshrc
     ```
 
-## Basic Usage
+## Basic Usage and Python Versions
 
-### Installing Python Versions
+### Managing Python Versions
 
 To install a new Python version, use the following command:
 
@@ -75,15 +73,11 @@ To install a new Python version, use the following command:
 pyenv install 3.12.3
 ```
 
-### Setting Global Python Version
-
 To use a Python version globally, execute this command:
 
 ```bash
 pyenv global 3.12.3
 ```
-
-### Setting Local Python Version
 
 To use a Python version for a specific directory, execute this command in the desired directory:
 
@@ -91,17 +85,15 @@ To use a Python version for a specific directory, execute this command in the de
 pyenv local 3.12.3
 ```
 
-### Listing Available Python Versions
-
 To show all installed Python versions, use:
 
 ```bash
 pyenv versions
 ```
 
-## Advanced Features
+## Advanced Features and Plugins
 
-### Virtual Environments
+### Virtual Environments and Plugin System
 
 pyenv supports virtual environments through the pyenv-virtualenv plugin. The setup consists of three steps:
 
@@ -123,15 +115,11 @@ pyenv supports virtual environments through the pyenv-virtualenv plugin. The set
     pyenv activate myenv
     ```
 
-### Automatic Version Selection
-
 pyenv can automatically select the right Python version based on a `.python-version` file. Create the file with:
 
 ```bash
 echo "3.12.3" > .python-version
 ```
-
-### Plugin System
 
 pyenv supports various plugins for additional functionality:
 
@@ -139,9 +127,9 @@ pyenv supports various plugins for additional functionality:
 - pyenv-which-ext: Extended path resolution
 - pyenv-update: Automatic updates
 
-## Tips and Tricks
+## System Management and Troubleshooting
 
-### Checking Current Python Version
+### System Status and Maintenance
 
 To check the currently used Python version:
 
@@ -149,15 +137,11 @@ To check the currently used Python version:
 pyenv version
 ```
 
-### Rehashing pyenv
-
 When you've installed new Python binaries, execute this command:
 
 ```bash
 pyenv rehash
 ```
-
-### Shell Integration
 
 For seamless integration with your shell, add these lines to your shell configuration:
 
@@ -168,7 +152,7 @@ eval "$(pyenv init -)"
 eval "$(pyenv virtualenv-init -)"
 ```
 
-## Troubleshooting
+### Troubleshooting
 
 If you encounter issues, proceed as follows:
 
