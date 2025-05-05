@@ -5,10 +5,7 @@ All notable changes to the XoL documentation will be documented in this file.
 ## [2025-05-05]
 
 ### Added
-- New filesystem documentation
-  - Comprehensive guide for filesystem optimization under Linux
-  - Covers SSD partitioning, multi-drive setups, and filesystem types
-  - Available in both German and English
+- Neue [Dateisystem-Dokumentation](docs/de/filesystem.md) / New [filesystem documentation](docs/en/filesystem.md)
 - Discord community channel added
   - Link available in the footer of both German and English versions
   - Join our community for discussions and support
