@@ -1,6 +1,6 @@
 ## Official Nvidia Driver
 
-The installation of [Nvidia drivers](../glossary.md#nvidia-driver) directly from the official Nvidia website is another option to support Nvidia graphics cards under Debian – especially for the latest driver version. This article describes the process precisely, uses `systemctl set-default` for switching between non-graphics and graphics mode, and covers the use of the [Liquorix kernel](../glossary.md#liquorix-kernel).
+The installation of [Nvidia drivers](../glossary.md#nvidia-driver) directly from the official Nvidia website is another option to support Nvidia graphics cards under Debian – especially for the latest driver version. This chapter describes the process precisely, uses `systemctl set-default` for switching between non-graphics and graphics mode, and covers the use of the [Liquorix kernel](../glossary.md#liquorix-kernel).
 
 ## Prerequisites
 

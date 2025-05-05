@@ -1,6 +1,6 @@
 ## Offizieller Nvidia-Treiber
 
-Die Installation der [Nvidia-Treiber](../glossary.md#nvidia-treiber) direkt von der offiziellen Nvidia-Website ist eine weitere Option, um Nvidia-Grafikkarten unter Debian zu unterstützen – besonders für die neueste Treiberversion. Dieser Artikel beschreibt den Prozess präzise, nutzt `systemctl set-default` für den Wechsel zwischen Nicht-Grafik- und Grafik-Modus und geht auf die Verwendung des [Liquorix-Kernel](../glossary.md#liquorix-kernel)s ein.
+Die Installation der [Nvidia-Treiber](../glossary.md#nvidia-treiber) direkt von der offiziellen Nvidia-Website ist eine weitere Option, um Nvidia-Grafikkarten unter Debian zu unterstützen – besonders für die neueste Treiberversion. Dieses Kapitel beschreibt den Prozess präzise, nutzt `systemctl set-default` für den Wechsel zwischen Nicht-Grafik- und Grafik-Modus und geht auf die Verwendung des [Liquorix-Kernel](../glossary.md#liquorix-kernel)s ein.
 
 ## Voraussetzungen
 

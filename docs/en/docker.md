@@ -1,6 +1,6 @@
 ### Installing [Docker](../glossary.md#docker) on Debian: A Step-by-Step Guide
 
-[Docker](../glossary.md#docker) is a widely used platform for containerizing applications that helps developers and administrators efficiently create, deploy, and manage applications. This article explains how to install Docker on a system with Debian. The guide is factual and practice-oriented, making it easy to follow even for beginners.
+[Docker](../glossary.md#docker) is a widely used platform for containerizing applications that helps developers and administrators efficiently create, deploy, and manage applications. This chapter explains how to install Docker on a system with Debian. The guide is factual and practice-oriented, making it easy to follow even for beginners.
 
 ## Prerequisites
 

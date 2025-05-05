@@ -1,6 +1,6 @@
 # How X-Plane Builds the World: Meshes, Orthos, and Autogen Explained
 
-X-Plane is known for its realistic landscapes that immerse users in a living world while flying. Three central building blocks make up the scenery: **Meshes**, **Orthos**, and **Autogen**. This article explains what these terms mean and how they work together to create the impressive landscapes in X-Plane.
+X-Plane is known for its realistic landscapes that immerse users in a living world while flying. Three central building blocks make up the scenery: **Meshes**, **Orthos**, and **Autogen**. This chapter explains what these terms mean and how they work together to create the impressive landscapes in X-Plane.
 
 ## Meshes: The 3D Framework of the World
 
@@ -51,7 +51,7 @@ With such tools, the X-Plane world can be shaped in even more detail – perfect
 
 # The Correct Order in scenery_packs.ini: Mesh, Orthos, Autogen, and More
 
-The landscapes in X-Plane are created through the interaction of various components: meshes, orthos, autogen, and special sceneries like airports. For everything to be displayed correctly, the order in the `scenery_packs.ini` file is crucial. This article explains how the order should be structured, why it's important, and how to avoid errors.
+The landscapes in X-Plane are created through the interaction of various components: meshes, orthos, autogen, and special sceneries like airports. For everything to be displayed correctly, the order in the `scenery_packs.ini` file is crucial. This chapter explains how the order should be structured, why it's important, and how to avoid errors.
 
 ## The Correct Order of Components
 

@@ -2,7 +2,7 @@
 
 ## Übersicht
 
-X-Plane, ein datenintensiver Flugsimulator, stellt hohe Anforderungen an Speicherbandbreite und Zugriffszeiten, insbesondere bei der Nutzung umfangreicher Szenerien, hochauflösender Texturen und Add-ons. Die Organisation von **Partitionen** auf **SSDs** oder mehreren Festplatten sowie die Wahl des **Dateisystems** unter Linux beeinflussen die Performance erheblich. Dieser Artikel erläutert, wie Partitionen auf SSDs, verteilte Daten auf mehreren Laufwerken und Dateisysteme unter Linux optimiert werden können, um die beste Leistung für X-Plane zu erzielen.
+X-Plane, ein datenintensiver Flugsimulator, stellt hohe Anforderungen an Speicherbandbreite und Zugriffszeiten, insbesondere bei der Nutzung umfangreicher Szenerien, hochauflösender Texturen und Add-ons. Die Organisation von **Partitionen** auf **SSDs** oder mehreren Festplatten sowie die Wahl des **Dateisystems** unter Linux beeinflussen die Performance erheblich. Dieses Kapitel erläutert, wie Partitionen auf SSDs, verteilte Daten auf mehreren Laufwerken und Dateisysteme unter Linux optimiert werden können, um die beste Leistung für X-Plane zu erzielen.
 
 ## Hardware-Empfehlungen
 

@@ -1,6 +1,6 @@
 # X-Plane Performance
 
-The performance of X-Plane is a crucial factor for a smooth and realistic flight experience. In this article, various aspects of performance measurement and optimization are examined.
+The performance of X-Plane is a crucial factor for a smooth and realistic flight experience. In this chapter, various aspects of performance measurement and optimization are examined.
 
 ## Performance Metrics
 
