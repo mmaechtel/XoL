@@ -46,15 +46,15 @@ Die JSD Scenery Version 2.0 bietet folgende Hauptmerkmale:
 
 ### Außenansichten
 
-![KCLE Außenansicht 1](../../assets/images/blog/kcle-terminal.jpg)
+![KCLE Außenansicht 1](../../assets/images/blog/KCLE-OV1.png)
 *Außenansicht des Cleveland Hopkins International Airport*
 
-![KCLE Außenansicht 2](../../assets/images/blog/kcle-night.jpg)
+![KCLE Außenansicht 2](../../assets/images/blog/KCLE-OV2.png)
 *Weitere Außenansicht des Flughafens*
 
 ### Innenansicht
 
-![KCLE Innenansicht](../../assets/images/blog/kcle-terminal.jpg)
+![KCLE Innenansicht](../../assets/images/blog/KCL_IN1.png)
 *Innenansicht des Terminalgebäudes*
 
 ## Installation und Kompatibilität

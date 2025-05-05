@@ -46,15 +46,15 @@ The JSD Scenery Version 2.0 offers the following main features:
 
 ### Exterior Views
 
-![KCLE Exterior View 1](../../assets/images/blog/kcle-terminal.jpg)
+![KCLE Exterior View 1](../../assets/images/blog/KCLE-OV1.png)
 *Exterior view of Cleveland Hopkins International Airport*
 
-![KCLE Exterior View 2](../../assets/images/blog/kcle-night.jpg)
+![KCLE Exterior View 2](../../assets/images/blog/KCLE-OV2.png)
 *Additional exterior view of the airport*
 
 ### Interior View
 
-![KCLE Interior View](../../assets/images/blog/kcle-terminal.jpg)
+![KCLE Interior View](../../assets/images/blog/KCL_IN1.png)
 *Interior view of the terminal building*
 
 ## Installation and Compatibility
