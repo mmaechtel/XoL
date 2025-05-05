@@ -1,6 +1,6 @@
 ---
 title: Cleveland Hopkins International Airport (KCLE) - JSD Scenery
-date: 2024-05-03
+date: 2025-05-05
 author: XoL Team
 tags:
   - Szenerie
@@ -41,6 +41,21 @@ Die JSD Scenery Version 2.0 bietet folgende Hauptmerkmale:
 - Realistische Parkpositionen und Gates
 - Detaillierte Geländemodellierung
 - Verbesserte Nachtbeleuchtung
+
+## Bildergalerie
+
+### Außenansichten
+
+![KCLE Außenansicht 1](../../assets/images/blog/kcle-terminal.jpg)
+*Außenansicht des Cleveland Hopkins International Airport*
+
+![KCLE Außenansicht 2](../../assets/images/blog/kcle-night.jpg)
+*Weitere Außenansicht des Flughafens*
+
+### Innenansicht
+
+![KCLE Innenansicht](../../assets/images/blog/kcle-terminal.jpg)
+*Innenansicht des Terminalgebäudes*
 
 ## Installation und Kompatibilität
 

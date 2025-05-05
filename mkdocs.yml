@@ -10,6 +10,7 @@ theme:
   name: material
   icon:
     repo: fontawesome/brands/github
+  logo: assets/favicon.png
   features:
     - navigation.tracking
     - navigation.tabs
@@ -163,6 +164,9 @@ extra:
     - icon: fontawesome/brands/twitter
       link: https://x.com/HeDragonist
       name: X
+    - icon: fontawesome/brands/discord
+      link: https://discord.gg/2CZWSBprDd
+      name: Discord
 
 markdown_extensions:
   - attr_list

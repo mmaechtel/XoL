@@ -34,6 +34,11 @@ Diese Dokumentation ist ein offenes Projekt. Wenn Sie Verbesserungen oder Ergän
 
 ## Letzte Änderungen
 
+### 2025-05-05
+- Discord Community-Kanal hinzugefügt
+    - Link in der Fußzeile der deutschen und englischen Version verfügbar
+    - Treten Sie unserer Community für Diskussionen und Support bei
+
 ### 2025-05-04
 - [Szenerien Dokumentation](scenery.md) überarbeitet
     - Formatierung der Listen korrigiert (Einrückung, Leerzeichen)

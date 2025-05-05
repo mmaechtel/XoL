@@ -34,6 +34,11 @@ This documentation is an open project. If you have improvements or additions, yo
 
 ## Recent Changes
 
+### 2025-05-05
+- Discord community channel added
+    - Link available in the footer of both German and English versions
+    - Join our community for discussions and support
+
 ### 2025-05-04
 - [Scenery Documentation](scenery.md) revised
     - List formatting corrected (indentation, spaces)
