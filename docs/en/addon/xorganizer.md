@@ -14,7 +14,7 @@ XOrganizer is a powerful tool for managing and organizing X-Plane addons. It sup
 
 ### Scenery Management
 
-Scenery Management is a central component of XOrganizer, offering comprehensive functions for organizing and optimizing your X-Plane sceneries. The tool automatically detects and categorizes sceneries and enables easy reordering through drag & drop functionality.
+Scenery Management is a central component of XOrganizer, offering comprehensive functions for organizing and optimizing X-Plane sceneries. The tool automatically detects and categorizes sceneries and enables easy reordering through drag & drop functionality.
 
 A particular highlight is the advanced conflict analysis. This identifies overwrites that can occur due to incorrect scenery order. The analysis takes into account conflicts between different scenery types, including default and custom sceneries, overlays, and elevation data (mesh). The visual representation of dependencies and overwrites makes potential issues immediately visible, and the tool provides suggestions for optimal order.
 
@@ -26,21 +26,21 @@ The intelligent management of `scenery_packs.ini` is another important aspect. X
 - Overlay data
 - Mesh data
 
-Through the visual representation of scenery dependencies and warnings for potential conflicts, you can optimally adjust your scenery configuration.
+Through the visual representation of scenery dependencies and warnings for potential conflicts, the scenery configuration can be optimally adjusted.
 
 ### Plugin Management
 
-The Plugin Management in XOrganizer provides a clear overview of all installed plugins in your X-Plane installation. With this function, you can easily activate or deactivate plugins, which is particularly useful when you want to test the impact of individual plugins on system performance.
+The Plugin Management in XOrganizer provides a clear overview of all installed plugins in the X-Plane installation. With this function, plugins can be easily activated or deactivated, which is particularly useful when testing the impact of individual plugins on system performance.
 
-Another important aspect is the management of plugin configurations. XOrganizer allows you to centrally manage your plugin settings and switch between different configurations as needed. This is especially helpful when you use different flight profiles with various plugin combinations.
+Another important aspect is the management of plugin configurations. XOrganizer enables central management of plugin settings and switching between different configurations as needed. This is especially helpful when different flight profiles with various plugin combinations are used.
 
 ### Profile Management
 
-Profile Management is one of the central functions of XOrganizer, allowing you to create and manage different configurations for various flight areas. With this function, you can quickly switch between different profiles, which is particularly useful when flying in different regions.
+Profile Management is one of the central functions of XOrganizer, enabling the creation and management of different configurations for various flight areas. With this function, quick switching between different profiles is possible, which is particularly useful when flying in different regions.
 
 A special highlight is the automatic adjustment of scenery order based on the selected profile. This ensures that the correct sceneries are always activated for the current flight area.
 
-Another important aspect is flight plan-based profile creation. This innovative function analyzes your flight route and automatically creates an optimized profile with all necessary components. The following are taken into account:
+Another important aspect is flight plan-based profile creation. This innovative function analyzes the flight route and automatically creates an optimized profile with all necessary components. The following are taken into account:
 
 - Airports along the route
 - Surrounding sceneries

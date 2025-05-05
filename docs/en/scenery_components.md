@@ -17,7 +17,7 @@ The second building block is **Orthos**. While the mesh provides the shape, orth
 
 - **What are Orthos?** Orthos are aerial or satellite images that show the earth from above. They contain details like houses, roads, forests, fields, or rivers. In X-Plane, they are placed as image files (e.g., .jpg or .png) on the mesh.
 - **Why are they important?** Without orthos, the mesh would only look like gray, lifeless hills. Orthos bring the colors and patterns of the real world into play.
-- **Example**: When flying over a city, thanks to orthos, you can see roofs, streets, and green spaces that look realistic.
+- **Example**: When flying over a city, thanks to orthos, one can see roofs, streets, and green spaces that look realistic.
 
 Tools like **Ortho4XP** help download high-resolution ortho images and integrate them into X-Plane. This makes the scenery even more detailed.
 
@@ -27,7 +27,7 @@ Mesh and orthos already create an impressive base, but something is still missin
 
 - **What is Autogen?** X-Plane analyzes the landscape (mesh and ortho) and automatically places appropriate objects. It often uses data sources like OpenStreetMap to know where cities, forests, or roads are.
 - **How does it work?** Autogen "reads" the scenery and distributes objects: trees in forest areas, houses in residential areas, factories in industrial zones. These objects come from libraries provided by X-Plane or add-ons.
-- **Example**: In a village, thanks to autogen, you can see houses with gardens, trees along the roadside, and maybe a few parked cars. Without autogen, the landscape would be flat – just a satellite image without depth.
+- **Example**: In a village, thanks to autogen, one can see houses with gardens, trees along the roadside, and maybe a few parked cars. Without autogen, the landscape would be flat – just a satellite image without depth.
 
 ## Interaction: How Everything Comes Together
 
@@ -37,7 +37,7 @@ The three building blocks work hand in hand:
 2. **Ortho**: Delivers the realistic image that is placed on the mesh, e.g., forests or roads on the mountain.
 3. **Autogen**: Adds the 3D objects, e.g., trees and houses that perfectly match the scenery.
 
-The result is a world that not only looks real but feels real. When flying over a valley, the mesh forms the hills, the ortho shows green meadows and paths, and autogen scatters cows, trees, and small huts – and there you have the living scenery!
+The result is a world that not only looks real but feels real. When flying over a valley, the mesh forms the hills, the ortho shows green meadows and paths, and autogen scatters cows, trees, and small huts – and there one has the living scenery!
 
 ## Add-ons and the Next Level
 

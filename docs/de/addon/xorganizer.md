@@ -14,7 +14,7 @@ XOrganizer ist ein leistungsstarkes Tool zur Verwaltung und Organisation von X-P
 
 ### Szenerie-Verwaltung
 
-Die Szenerie-Verwaltung ist ein zentraler Bestandteil von XOrganizer und bietet umfangreiche Funktionen zur Organisation und Optimierung Ihrer X-Plane-Szenerien. Das Tool erkennt und kategorisiert Szenerien automatisch und ermöglicht eine einfache Neuanordnung per Drag & Drop.
+Die Szenerie-Verwaltung ist ein zentraler Bestandteil von XOrganizer und bietet umfangreiche Funktionen zur Organisation und Optimierung der X-Plane-Szenerien. Das Tool erkennt und kategorisiert Szenerien automatisch und ermöglicht eine einfache Neuanordnung per Drag & Drop.
 
 Ein besonderes Highlight ist die erweiterte Konfliktanalyse. Diese identifiziert Überschreibungen, die durch eine falsche Reihenfolge der Szenerien entstehen können. Die Analyse berücksichtigt Konflikte zwischen verschiedenen Szenerie-Typen, einschließlich Standard- und benutzerdefinierten Szenerien, Overlays und Höhendaten (Mesh). Die visuelle Darstellung von Abhängigkeiten und Überschreibungen macht potenzielle Probleme sofort sichtbar, und das Tool bietet Vorschläge für eine optimale Reihenfolge.
 
@@ -26,21 +26,21 @@ Die intelligente Verwaltung der `scenery_packs.ini` ist ein weiterer wichtiger A
 - Overlay-Daten
 - Mesh-Daten
 
-Durch die visuelle Darstellung von Szenerie-Abhängigkeiten und Warnungen bei potenziellen Konflikten können Sie Ihre Szenerie-Konfiguration optimal anpassen.
+Durch die visuelle Darstellung von Szenerie-Abhängigkeiten und Warnungen bei potenziellen Konflikten kann die Szenerie-Konfiguration optimal angepasst werden.
 
 ### Plugin-Verwaltung
 
-Die Plugin-Verwaltung in XOrganizer bietet eine übersichtliche Darstellung aller installierten Plugins in Ihrer X-Plane-Installation. Mit dieser Funktion können Sie Plugins einfach aktivieren oder deaktivieren, was besonders nützlich ist, wenn Sie die Auswirkungen einzelner Plugins auf die Systemleistung testen möchten.
+Die Plugin-Verwaltung in XOrganizer bietet eine übersichtliche Darstellung aller installierten Plugins in der X-Plane-Installation. Mit dieser Funktion können Plugins einfach aktiviert oder deaktiviert werden, was besonders nützlich ist, wenn die Auswirkungen einzelner Plugins auf die Systemleistung getestet werden sollen.
 
-Ein weiterer wichtiger Aspekt ist die Verwaltung der Plugin-Konfigurationen. XOrganizer ermöglicht es Ihnen, die Einstellungen Ihrer Plugins zentral zu verwalten und bei Bedarf zwischen verschiedenen Konfigurationen zu wechseln. Dies ist besonders hilfreich, wenn Sie verschiedene Flugprofile mit unterschiedlichen Plugin-Kombinationen verwenden.
+Ein weiterer wichtiger Aspekt ist die Verwaltung der Plugin-Konfigurationen. XOrganizer ermöglicht die zentrale Verwaltung der Plugin-Einstellungen und den Wechsel zwischen verschiedenen Konfigurationen bei Bedarf. Dies ist besonders hilfreich, wenn verschiedene Flugprofile mit unterschiedlichen Plugin-Kombinationen verwendet werden.
 
 ### Profilverwaltung
 
-Die Profilverwaltung ist eine der zentralen Funktionen von XOrganizer und ermöglicht es Ihnen, verschiedene Konfigurationen für unterschiedliche Fluggebiete zu erstellen und zu verwalten. Mit dieser Funktion können Sie schnell zwischen verschiedenen Profilen wechseln, was besonders nützlich ist, wenn Sie in verschiedenen Regionen fliegen.
+Die Profilverwaltung ist eine der zentralen Funktionen von XOrganizer und ermöglicht die Erstellung und Verwaltung verschiedener Konfigurationen für unterschiedliche Fluggebiete. Mit dieser Funktion kann schnell zwischen verschiedenen Profilen gewechselt werden, was besonders nützlich ist, wenn in verschiedenen Regionen geflogen wird.
 
 Ein besonderes Highlight ist die automatische Anpassung der Szenerie-Reihenfolge basierend auf dem ausgewählten Profil. Dies stellt sicher, dass immer die richtigen Szenerien für das aktuelle Fluggebiet aktiviert sind.
 
-Ein weiterer wichtiger Aspekt ist die flugplanbasierte Profilerstellung. Diese innovative Funktion analysiert Ihre Flugroute und erstellt automatisch ein optimiertes Profil mit allen notwendigen Komponenten. Dabei werden berücksichtigt:
+Ein weiterer wichtiger Aspekt ist die flugplanbasierte Profilerstellung. Diese innovative Funktion analysiert die Flugroute und erstellt automatisch ein optimiertes Profil mit allen notwendigen Komponenten. Dabei werden berücksichtigt:
 
 - Flughäfen entlang der Route
 - Umgebende Szenerien
