@@ -48,4 +48,6 @@ Zur besseren Übersicht und Planung der Flugsimulation stehen zwei selbst erstel
     - Die Aktualisierung zahlreicher Links sehr aufwändig wäre
     - Die Karte sich auf X-Plane 12 Szenerien konzentriert (XP11 Szenerien wurden nur dann aufgenommen, wenn es spezielle Anpassungen gibt, wodurch die Szenerie Features von XP12 unterstützt)
 
+    Es gibt einen Hilfe-Link in der Agenda, der die Einträge des Popups erklärt.
+
 - **[WorldMap der Ortho Tiles](../Maps/scenerymap.html)** – Eine Übersichtskarte der selbst erstellten und installierten Ortho Tiles. Die dargestellten Orthos wurden speziell für Addon-Szenerien erstellt und bieten hochauflösende Texturen, oft ergänzt durch Mesh Patches für zusätzliche Details wie Runway Slopes. Neben den selbst erstellten Orthos werden auch offizielle Ortho Patches der Szenerienhersteller sowie Community-erstellte Patches aus dem X-Plane.org Forum benutzt. 
