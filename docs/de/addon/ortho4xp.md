@@ -20,14 +20,14 @@ Ortho4XP ist in zwei Hauptversionen verfügbar:
 ### Installationsmethoden
 
 1. **Mit Binaries (empfohlen)**:
-    - Laden Sie die passende Version für Ihr Betriebssystem herunter
-    - Entpacken Sie das Archiv
-    - Führen Sie die ausführbare Datei aus
+    - Die passende Version für das Betriebssystem herunterladen
+    - Das Archiv entpacken
+    - Die ausführbare Datei ausführen
 
 2. **Manuelle Installation**:
-    - Laden Sie die gewünschte Version herunter
-    - Stellen Sie sicher, dass Python 3.x installiert ist
-    - Installieren Sie die erforderlichen Python-Pakete:
+    - Die gewünschte Version herunterladen
+    - Sicherstellen, dass Python 3.x installiert ist
+    - Die erforderlichen Python-Pakete installieren:
      ```bash
      pip install -r requirements.txt
      ```
@@ -40,17 +40,17 @@ Ortho4XP ist in zwei Hauptversionen verfügbar:
 
 ### Grundlegende Verwendung
 
-1. Starten Sie Ortho4XP über die Python-Datei oder die ausführbare Datei:
+1. Ortho4XP über die Python-Datei oder die ausführbare Datei starten:
    ```bash
    python Ortho4XP.py
    ```
 
-2. Wählen Sie im Hauptfenster:
+2. Im Hauptfenster auswählen:
    - Den Zielbereich (Tile)
    - Die gewünschte Zoomstufe (ZL)
    - Die Bildquelle (z.B. Bing, Google, Here)
 
-3. Klicken Sie auf "Build" um den Prozess zu starten
+3. Auf "Build" klicken, um den Prozess zu starten
 
 ### Wichtige Parameter
 
@@ -104,21 +104,21 @@ Ortho4XP unterstützt die Integration von hochauflösenden LiDAR-Daten für eine
 Die LiDAR-Daten von [sonny.4lima.de](https://sonny.4lima.de) bieten eine hohe Auflösung und Genauigkeit für verschiedene Regionen. Diese Daten können in Ortho4XP auf zwei Arten integriert werden:
 
 **Methode 1: Einzelne Kacheln**
-- Verwenden Sie die LiDAR-Daten als `custom_dem` in Ortho4XP
+- Die LiDAR-Daten als `custom_dem` in Ortho4XP verwenden
 - Diese Methode eignet sich für einzelne Kacheln oder kleine Bereiche
 - Die LiDAR-Daten werden nur für spezifische Kacheln verwendet
 
 **Methode 2: Größere Bereiche**
-- Ersetzen Sie die DEM-Dateien im Ortho4XP-Verzeichnis
+- Die DEM-Dateien im Ortho4XP-Verzeichnis ersetzen
 - Diese Methode eignet sich für größere Regionen
 - Ortho4XP verwendet die LiDAR-Daten automatisch für alle Kacheln in der Region
 
 ### Schritte zur Integration
 
-1. Laden Sie die gewünschten LiDAR-Daten von [sonny.4lima.de](https://sonny.4lima.de) herunter
-2. Extrahieren Sie die Dateien in das Ortho4XP-Verzeichnis
-3. Wählen Sie die gewünschte Integrationsmethode (Methode 1 oder 2)
-4. Generieren Sie die Kacheln wie gewohnt
+1. Die gewünschten LiDAR-Daten von [sonny.4lima.de](https://sonny.4lima.de) herunterladen
+2. Die Dateien in das Ortho4XP-Verzeichnis entpacken
+3. Die gewünschte Integrationsmethode wählen (Methode 1 oder 2)
+4. Die Kacheln wie gewohnt generieren
 
 Die verbesserte Geländedarstellung wird automatisch in den generierten Kacheln übernommen.
 
@@ -158,7 +158,7 @@ Diese Tools reduzieren die Dateigröße effizient, während die visuelle Qualit�
 
 Bei Problemen:
 
-1. Überprüfen Sie die Log-Dateien im Ortho4XP-Verzeichnis
-2. Stellen Sie sicher, dass alle Python-Abhängigkeiten installiert sind
-3. Konsultieren Sie die [Dokumentation des shred86 Forks](https://github.com/shred86/Ortho4XP/wiki)
-4. Besuchen Sie das [X-Plane Forum](https://forums.x-plane.org/index.php?/forums/forum/310-ortho4xp/) 
+1. Die Log-Dateien im Ortho4XP-Verzeichnis überprüfen
+2. Sicherstellen, dass alle Python-Abhängigkeiten installiert sind
+3. Die [Dokumentation des shred86 Forks](https://github.com/shred86/Ortho4XP/wiki) konsultieren
+4. Das [X-Plane Forum](https://forums.x-plane.org/index.php?/forums/forum/310-ortho4xp/) besuchen 

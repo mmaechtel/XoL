@@ -11,36 +11,36 @@ Ortho4XP is available in two main versions:
     * The original version with basic features
     * [Binaries available](https://github.com/kubilus1/autoortho/releases/tag/0.7.2)
 
-2. **Fork by shred86** (recommended):
+2. **shred86's fork** (recommended):
     * [GitHub Repository](https://github.com/shred86/Ortho4XP)
-    * [Detailed Documentation](https://github.com/shred86/Ortho4XP/wiki)
+    * [Detailed documentation](https://github.com/shred86/Ortho4XP/wiki)
     * Contains numerous improvements and new features
     * [Binaries for various operating systems](https://github.com/shred86/Ortho4XP/wiki/Installation)
 
 ### Installation Methods
 
-1. **With Binaries (recommended)**:
+1. **Using Binaries (recommended)**:
     - Download the appropriate version for your operating system
     - Extract the archive
     - Run the executable file
 
 2. **Manual Installation**:
-    - Download your preferred version
-    - Make sure Python 3.x is installed
-    - Install the required Python packages:
+    - Download the desired version
+    - Ensure Python 3.x is installed
+    - Install required Python packages:
      ```bash
      pip install -r requirements.txt
      ```
 
 3. **Alternative Installation for Linux**:
-    - Installation with Docker (see [Docker documentation](../docker.md))
-    - Installation with pyenv (see [pyenv documentation](../pyenv.md))
+    - Installation with Docker (see [Docker Documentation](../docker.md))
+    - Installation with pyenv (see [pyenv Documentation](../pyenv.md))
 
 ## Usage and Configuration
 
 ### Basic Usage
 
-1. Start Ortho4XP using the Python file or executable:
+1. Start Ortho4XP via the Python file or executable:
    ```bash
    python Ortho4XP.py
    ```
@@ -55,19 +55,19 @@ Ortho4XP is available in two main versions:
 ### Important Parameters
 
 | Parameter | Default Value | Description |
-|-----------|--------------|-------------|
+|-----------|--------------|--------------|
 | `custom_build_dir` | `Tiles` | Directory for generated tiles |
 | `custom_overlay_src` | `Global Scenery` | Source for overlay data |
 | `custom_overlay_dir` | `yOrtho4XP_Overlays` | Target directory for overlays |
 | `custom_scenery_dir` | `Custom Scenery` | Target directory for finished tiles |
 | `provider` | `BI` | Image source (BI=Bing, GO2=Google, ES=ESRI) |
 | `zoomlevel` | `16` | Zoom level of satellite images |
-| `curvature_tol` | `3.0` | Tolerance for terrain curvature |
+| `curvature_tol` | `3.0` | Terrain curvature tolerance |
 | `mesh_zl` | `16` | Zoom level for mesh generation |
 | `mask_zl` | `16` | Zoom level for water masks |
-| `water_smoothing` | `3` | Smoothing of water transitions |
+| `water_smoothing` | `3` | Water transition smoothing |
 | `road_banking_limit` | `0.3` | Maximum road banking |
-| `apt_smoothing_pix` | `8` | Smoothing parameter for airports |
+| `apt_smoothing_pix` | `8` | Airport smoothing parameter |
 
 ### Recommended Settings
 
@@ -97,11 +97,11 @@ Ortho4XP is available in two main versions:
 
 ## LiDAR Data Integration
 
-Ortho4XP supports the integration of high-resolution LiDAR data for improved terrain representation. This data is particularly useful for areas with complex topography such as the Alps or other mountain regions.
+Ortho4XP supports the integration of high-resolution LiDAR data for improved terrain representation. These data are particularly useful for areas with complex topography such as the Alps or other mountain regions.
 
 ### Available LiDAR Data
 
-The LiDAR data from [sonny.4lima.de](https://sonny.4lima.de) provides high resolution and accuracy for various regions. This data can be integrated into Ortho4XP in two ways:
+The LiDAR data from [sonny.4lima.de](https://sonny.4lima.de) offers high resolution and accuracy for various regions. These data can be integrated into Ortho4XP in two ways:
 
 **Method 1: Individual Tiles**
 - Use the LiDAR data as `custom_dem` in Ortho4XP
@@ -116,14 +116,14 @@ The LiDAR data from [sonny.4lima.de](https://sonny.4lima.de) provides high resol
 ### Integration Steps
 
 1. Download the desired LiDAR data from [sonny.4lima.de](https://sonny.4lima.de)
-2. Extract the files to the Ortho4XP directory
+2. Extract the files into the Ortho4XP directory
 3. Choose the desired integration method (Method 1 or 2)
-4. Generate the tiles as usual
+4. Generate tiles as usual
 
-The improved terrain representation will be automatically adopted in the generated tiles.
+The improved terrain representation is automatically incorporated into the generated tiles.
 
 !!! note "Note"
-    The LiDAR data is particularly useful for areas with complex topography such as the Alps or other mountain regions. It provides significantly higher resolution and accuracy than the default DEM data.
+    The LiDAR data is particularly useful for areas with complex topography such as the Alps or other mountain regions. It provides significantly higher resolution and accuracy than the standard DEM data.
 
 ## Important Notes and Troubleshooting
 
@@ -131,32 +131,32 @@ The improved terrain representation will be automatically adopted in the generat
 
 - Ortho4XP requires significant storage space for generated textures
 - The quality of orthophotos depends on the chosen image source
-- Processing can take several hours depending on area size and zoom level
+- Processing may take several hours depending on area size and zoom level
 - The shred86 fork offers better performance and more features
-- Using binaries significantly simplifies the installation process
+- Using the binaries significantly simplifies installation
 
 ### Performance Optimization
 
-- Processing time depends heavily on the chosen zoom level and area size
+- Processing time heavily depends on the chosen zoom level and area size
 - Too high zoom levels can overload the system
 - Skip parameters are useful for reprocessing individual steps
 - Using an SSD can significantly reduce processing time
 
 ### File Size Optimization
 
-Since Ortho4XP generates large amounts of textures, storage requirements can quickly increase. To optimize the file size of orthophotos, various tools are available:
+As Ortho4XP generates large amounts of textures, storage requirements can quickly increase. Various tools are available to optimize the file size of orthophotos:
 
 #### Windows 11
-[`texconv`](https://github.com/Microsoft/DirectXTex/wiki/Texconv) (DirectXTex, Microsoft) enables texture scaling to 2048x2048 pixels using the command `texconv.exe *.* -w 2048 -h 2048 -y`. The tool is registration-free and particularly suitable for batch processing.
+[`texconv`](https://github.com/Microsoft/DirectXTex/wiki/Texconv) (DirectXTex, Microsoft) enables texture scaling to 2048x2048 pixels with the command `texconv.exe *.* -w 2048 -h 2048 -y`. The tool is registry-free and particularly suitable for batch processing.
 
 #### macOS and Linux
-ImageMagick provides a cross-platform solution. After installation (`brew install imagemagick` for macOS, `sudo apt-get install imagemagick` for Linux), DDS files can be scaled using `mogrify -resize 2048x2048 *.dds`.
+ImageMagick provides a cross-platform solution. After installation (`brew install imagemagick` for macOS, `sudo apt-get install imagemagick` for Linux), DDS files can be scaled with `mogrify -resize 2048x2048 *.dds`.
 
 These tools efficiently reduce file size while maintaining visual quality. The optimized size of 2048x2048 pixels offers a good compromise between quality and storage requirements.
 
 ### Troubleshooting
 
-If you encounter issues:
+In case of problems:
 
 1. Check the log files in the Ortho4XP directory
 2. Ensure all Python dependencies are installed
