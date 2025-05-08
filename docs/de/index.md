@@ -22,6 +22,10 @@ Diese Dokumentation ist ein offenes Projekt. Verbesserungen oder Ergänzungen k�
 
 ## Letzte Änderungen
 
+### 2025-05-08
+- [Ortho4XP](addon/ortho4xp.md) + [AutoOrtho](addon/autoortho.md) deutlich erweitert
+- Kombinationen von [Ortho4XP](addon/ortho4xp.md) und [AutoOrtho](addon/autoortho.md) hervorgehoben und praktische Beispiele in der [Kombinations-Anleitung](addon/autoortho_plus_zortho.md) hinzugefügt
+
 ### 2025-05-05
 - Neue [Dateisystem-Dokumentation](filesystem.md)
 - Discord Community-Kanal hinzugefügt

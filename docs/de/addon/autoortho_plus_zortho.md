@@ -73,11 +73,11 @@ Eine erfolgreiche Kombination erfordert sorgfältige Planung, regelmäßige Wart
 
 ## Neue Meshes für AutoOrtho
 
-Ortho4XP kann nicht nur für hochwertige Orthophotos, sondern auch als Mesh-Generator für AutoOrtho verwendet werden. Dies ermöglicht eine verbesserte Geländedarstellung in Kombination mit den AutoOrtho-Texturen.
+zOrtho4XP kann nicht nur für hochwertige Orthophotos, sondern auch als Mesh-Generator für AutoOrtho verwendet werden. Dies ermöglicht eine verbesserte Geländedarstellung in Kombination mit den AutoOrtho-Texturen.
 
 ### Vorteile
 
-Die Verwendung von Ortho4XP als Mesh-Generator bietet mehrere Vorteile
+Die Verwendung von zOrtho4XP als Mesh-Generator bietet mehrere Vorteile:
 
 - Höhere Auflösung des Geländes
 - Bessere Darstellung von Bergen und Tälern
@@ -86,89 +86,68 @@ Die Verwendung von Ortho4XP als Mesh-Generator bietet mehrere Vorteile
 
 ### Einrichtung
 
-Die Einrichtung erfolgt in drei Hauptschritten. Zuerst generieren Sie die Meshes mit Ortho4XP. Starten Sie dazu Ortho4XP, wählen Sie die gewünschte Region und aktivieren Sie die "Build Mesh" Option. Deaktivieren Sie "Build Overlays" und "Build Imagery". Setzen Sie das Mesh-Level auf 1-2 für detaillierteres Gelände und deaktivieren Sie die Bilddownloads (skip_downloads aktiviert).
+Die Einrichtung erfolgt in drei Hauptschritten:
 
-Im zweiten Schritt führen Sie die Verzeichnisse zusammen. Für jede Ortho4XP-Kachel werden drei Verzeichnisse erstellt: `Earth Nav Data`, `terrain` und `textures`. Diese müssen in ein neues Verzeichnis zusammengeführt werden, das mit `aa_` beginnt (z.B. `aa_ortho4xp_meshes`). Speichern Sie das zusammengeführte Verzeichnis unter
-
-```
-Custom Scenery/z_autoortho/scenery/aa_ortho4xp_meshes/
-```
-
-Die Struktur sollte den bestehenden `ao_`-Verzeichnissen entsprechen.
-
-Die scenery_packs.ini muss folgende Struktur aufweisen
-
-```
-...
-SCENERY_PACK Custom Scenery/yAutoOrtho_Overlays/
-SCENERY_PACK Custom Scenery/z_autoortho/scenery/aa_ortho4xp_meshes/
-SCENERY_PACK Custom Scenery/z_ao_eur/
-...
-SCENERY_PACK Custom Scenery/z_autoortho/
-```
-
-**Wichtig**: Das `aa_`-Verzeichnis muss direkt vor den `ao_`-Verzeichnissen platziert werden, damit AutoOrtho zuerst dort nach Meshes sucht.
-
-### Best Practices
-
-Die erfolgreiche Nutzung von Ortho4XP als Mesh-Generator erfordert sorgfältige Planung, regelmäßige Wartung und kontinuierliche Optimierung. Identifizieren Sie Gebiete mit komplexem Gelände und planen Sie die Mesh-Level basierend auf der Flughöhe. Berücksichtigen Sie dabei den verfügbaren Speicherplatz. Die Wartung umfasst regelmäßige Überprüfung der Mesh-Qualität, Aktualisierung bei Bedarf und Performance-Monitoring. Die Optimierung erfolgt durch Anpassung der Mesh-Level, Balance zwischen Detail und Performance sowie regionale Priorisierung.
-
-## Mesh-Auflösung erhöhen
-
-Wie in Ortho4XP bereits beschrieben, können LiDAR-Daten verwendet werden, um die Auflösung und Genauigkeit des Geländes zu verbessern. Die LiDAR-Daten von [sonny.4lima.de](https://sonny.4lima.de) bieten eine hohe Auflösung und Genauigkeit für verschiedene Regionen. Diese Daten können in Ortho4XP auf zwei Arten integriert werden:
-
-### 2. Ortho4XP als Mesh-Generator für AutoOrtho
-
-Diese Methode nutzt Ortho4XP, um hochauflösende Meshes zu erstellen, die dann von AutoOrtho für die Texturierung verwendet werden:
-
-1. **LiDAR-Daten Integration**:
-    - Besuchen Sie [sonny.4lima.de](https://sonny.4lima.de)
+1. **Mesh-Generierung**:
+    - Starten Sie zOrtho4XP
     - Wählen Sie die gewünschte Region
-    - Laden Sie die .hgt Dateien herunter
+    - Aktivieren Sie die "Build Mesh" Option
+    - Deaktivieren Sie "Build Overlays" und "Build Imagery"
+    - Setzen Sie das Mesh-Level auf 1-2 für detaillierteres Gelände
+    - Deaktivieren Sie die Bilddownloads (skip_downloads aktiviert)
 
-2. **Ortho4XP-Konfiguration**:
-
-    - Setzen Sie `custom_dem` auf den Pfad zu den LiDAR-Daten
-    - Aktivieren Sie `use_masks_for_inland`
-    - Passen Sie `curvature_tol` an (1.0-2.0 für höhere Auflösung)
-    - Höhere Mesh-Level (3-4) für detailliertes Gelände
-    - **Wichtig**: Bilddownloads deaktivieren (skip_downloads aktiviert)
-
-3. **Verzeichnisse zusammenführen**:
-    - Für jede Ortho4XP-Kachel werden drei Verzeichnisse erstellt:
+2. **Verzeichnisse zusammenführen**:
+    - Für jede zOrtho4XP-Kachel werden drei Verzeichnisse erstellt:
         - `Earth Nav Data`
         - `terrain`
         - `textures`
     - Diese Verzeichnisse müssen in ein neues Verzeichnis zusammengeführt werden
-    - Das neue Verzeichnis sollte mit `aa_` beginnen (z.B. `aa_ortho4xp_meshes`)
+    - Das neue Verzeichnis sollte mit `aa_` beginnen (z.B. `aa_zortho4xp_meshes`)
     - Speichern Sie das zusammengeführte Verzeichnis unter:
      ```
-     Custom Scenery/z_autoortho/scenery/aa_ortho4xp_meshes/
+     Custom Scenery/z_autoortho/scenery/aa_zortho4xp_meshes/
      ```
     - Die Struktur sollte den bestehenden `ao_`-Verzeichnissen entsprechen
 
-4. **scenery_packs.ini Struktur**:
+3. **scenery_packs.ini anpassen**:
    ```
    SCENERY_PACK Custom Scenery/yAutoOrtho_Overlays/
-   SCENERY_PACK Custom Scenery/z_autoortho/scenery/aa_ortho4xp_meshes/
+   SCENERY_PACK Custom Scenery/z_autoortho/scenery/aa_zortho4xp_meshes/
    SCENERY_PACK Custom Scenery/z_ao_eur/
    SCENERY_PACK Custom Scenery/z_autoortho/
    ```
    **Wichtig**: Das `aa_`-Verzeichnis muss direkt vor den `ao_`-Verzeichnissen platziert werden, damit AutoOrtho zuerst dort nach Meshes sucht.
 
-5. **AutoOrtho-Nutzung**:
-    - AutoOrtho verwendet automatisch die erstellten Meshes
-    - Bessere Geländedarstellung durch höhere Auflösung
-    - Optimierte Performance durch lokale Mesh-Daten
+### Best Practices
 
-### Vorteile der Kombination
+Die erfolgreiche Nutzung von zOrtho4XP als Mesh-Generator erfordert:
 
-Die Kombination von AutoOrtho mit Ortho4XP als Mesh-Generator bietet mehrere Vorteile
+- Sorgfältige Planung der Mesh-Level basierend auf der Flughöhe
+- Berücksichtigung des verfügbaren Speicherplatzes
+- Regelmäßige Überprüfung der Mesh-Qualität
+- Aktualisierung bei Bedarf
+- Performance-Monitoring
+- Anpassung der Mesh-Level
+- Balance zwischen Detail und Performance
+- Regionale Priorisierung
 
-- Höhere Auflösung des Geländes
-- Bessere Darstellung von Bergen und Tälern
-- Präzisere Flughafen-Glättungen
-- Optimierte Performance durch lokale Mesh-Daten
+## Mesh-Auflösung erhöhen
+
+Wie in zOrtho4XP bereits beschrieben, können LiDAR-Daten verwendet werden, um die Auflösung und Genauigkeit des Geländes zu verbessern. Die LiDAR-Daten von [sonny.4lima.de](https://sonny.4lima.de) bieten eine hohe Auflösung und Genauigkeit für verschiedene Regionen.
+
+### LiDAR-Integration
+
+1. **Datenbeschaffung**:
+    - Besuchen Sie [sonny.4lima.de](https://sonny.4lima.de)
+    - Wählen Sie die gewünschte Region
+    - Laden Sie die .hgt Dateien herunter
+
+2. **zOrtho4XP-Konfiguration**:
+    - Setzen Sie `custom_dem` auf den Pfad zu den LiDAR-Daten
+    - Aktivieren Sie `use_masks_for_inland`
+    - Passen Sie `curvature_tol` an (1.0-2.0 für höhere Auflösung)
+    - Höhere Mesh-Level (3-4) für detailliertes Gelände
+    - **Wichtig**: Bilddownloads deaktivieren (skip_downloads aktiviert)
 
 ## Fazit
 
