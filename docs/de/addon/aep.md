@@ -27,5 +27,5 @@ Die Markierungen und Beläge wurden durch neue Texturen ersetzt. Alle Bodentextu
 
 Für Support und Updates:
 
-* Besuchen Sie die [offizielle Website](https://www.x-codrdesigns.com/xp-aep)
-* Treten Sie der X-Codr Designs Discord-Community bei 
+* Die [offizielle Website](https://www.x-codrdesigns.com/xp-aep) besuchen
+* Der X-Codr Designs Discord-Community beitreten 
