@@ -102,6 +102,7 @@ plugins:
             - Addons:
                 - Ortho4XP: de/addon/ortho4xp.md
                 - AutoOrtho: de/addon/autoortho.md
+                - AutoOrtho + Ortho4XP: de/addon/autoortho_plus_zortho.md
                 - XRoad: de/addon/xroad.md
                 - AEP: de/addon/aep.md
             - Glossar: de/glossary.md
@@ -141,6 +142,7 @@ plugins:
             - Addons:
                 - Ortho4XP: en/addon/ortho4xp.md
                 - AutoOrtho: en/addon/autoortho.md
+                - AutoOrtho + Ortho4XP: en/addon/autoortho_plus_zortho.md
                 - XRoad: en/addon/xroad.md
                 - AEP: en/addon/aep.md
             - Glossary: en/glossary.md

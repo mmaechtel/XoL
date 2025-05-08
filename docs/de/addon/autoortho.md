@@ -34,6 +34,31 @@ SCENERY_PACK Custom Scenery/z_autoortho/
 
 Der z_autoortho-Eintrag wird am Ende platziert, um anderen Szenerien Priorität zu geben. Die aktuelle Version stellt Platzhalterverzeichnisse wieder her, um eine stabile Reihenfolge zu gewährleisten. AutoOrtho muss vor X-Plane gestartet werden, um das virtuelle Dateisystem zu mounten, und die scenery_packs.ini sollte schreibgeschützt sein.
 
+### Wichtige Konfigurationsparameter
+
+Die AutoOrtho-Konfiguration kann in der `.autoortho` Konfigurationsdatei angepasst werden. Hier sind die wichtigsten Parameter:
+
+- `xplane_path`: Pfad zum X-Plane Hauptverzeichnis
+- `cache_dir`: Verzeichnis für Orthofoto-Cache (empfohlen: schnelle SSD)
+- `provider`: Bildquelle für Orthofotos (bing, google, here)
+- `cache_size`: Maximale Cache-Größe in GB
+- `maxwait`: Maximale Wartezeit für Bilder in Sekunden. Höhere Werte bedeuten bessere Qualität aber mehr Ruckeln. Niedrigere Werte sind reaktiver, können aber gelegentlich zu niedrigerer Qualität führen.
+- `min_zoom`: Minimaler Zoom-Level für Satellitenbilder. Beeinflusst die minimale Qualität der angezeigten Bilder.
+- `autostart`: AutoOrtho automatisch mit X-Plane starten
+- `debug`: Debug-Informationen in den Logs aktivieren
+
+Beispiel einer Konfigurationsdatei:
+```ini
+xplane_path = /home/user/X-Plane-12
+cache_dir = /home/user/.autoortho-data/cache
+provider = bing
+cache_size = 20
+maxwait = 2
+min_zoom = 14
+autostart = true
+debug = false
+```
+
 Für optimale Erfahrung fügt SimHeaven X-World 3D-Objekte und Autogen hinzu, während xOrganizer/xToolbox die Szenerie-Verwaltung vereinfacht. vStates bietet eine Alternative für vorgefertigte Orthophotos.
 
 ### Vergleich mit Ortho4XP

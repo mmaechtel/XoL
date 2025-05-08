@@ -24,7 +24,7 @@ The system requires X-Plane 11.50+ or X-Plane 12, running on Windows, Linux (wit
 
 AutoOrtho is downloaded from GitHub (kubilus1/autoortho), either as a binary or installer. Windows users install WinFSP/Dokan and launch autoortho_win.exe, while Linux users require FUSE, and macOS users should follow experimental instructions.
 
-The user interface requires specification of the X-Plane root folder and Custom Scenery directory. Regional overlays (few GB) are installed through the "Scenery" tab. The scenery_packs.ini is configured with the following structure:
+The GUI requires the X-Plane main directory and Custom Scenery directory. Regional overlays (few GB) are installed via the "Scenery" tab. The scenery_packs.ini is configured with the following structure:
 
 ```
 SCENERY_PACK Custom Scenery/yAutoOrtho_Overlays/
@@ -32,9 +32,34 @@ SCENERY_PACK Custom Scenery/z_ao_eur/
 SCENERY_PACK Custom Scenery/z_autoortho/
 ```
 
-The z_autoortho entry is placed at the end to give priority to other scenery. The current version restores placeholder directories to maintain stable ordering. AutoOrtho must be started before X-Plane to mount the virtual file system, and the scenery_packs.ini should be write-protected.
+The z_autoortho entry is placed at the end to give priority to other scenery. The current version restores placeholder directories to ensure a stable order. AutoOrtho must be started before X-Plane to mount the virtual file system, and the scenery_packs.ini should be write-protected.
 
-For optimal experience, SimHeaven X-World adds 3D objects and autogen, while xOrganizer/xToolbox simplifies scenery management. vStates provides an alternative for pre-made orthophotos.
+### Important Configuration Parameters
+
+The AutoOrtho configuration can be adjusted in the `.autoortho` configuration file. Here are the most important parameters:
+
+- `xplane_path`: Path to the X-Plane main directory
+- `cache_dir`: Directory for orthophoto cache (recommended: fast SSD)
+- `provider`: Image source for orthophotos (bing, google, here)
+- `cache_size`: Maximum cache size in GB
+- `maxwait`: Maximum wait time for images in seconds. Higher values mean better quality but more stuttering. Lower values are more responsive but may occasionally result in lower quality.
+- `min_zoom`: Minimum zoom level for satellite images. Affects the minimum quality of displayed images.
+- `autostart`: Start AutoOrtho automatically with X-Plane
+- `debug`: Enable debug information in logs
+
+Example configuration file:
+```ini
+xplane_path = /home/user/X-Plane-12
+cache_dir = /home/user/.autoortho-data/cache
+provider = bing
+cache_size = 20
+maxwait = 2
+min_zoom = 14
+autostart = true
+debug = false
+```
+
+For optimal experience, SimHeaven X-World adds 3D objects and autogen, while xOrganizer/xToolbox simplifies scenery management. vStates offers an alternative for pre-made orthophotos.
 
 ## Comparison with Ortho4XP
 
