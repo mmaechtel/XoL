@@ -2,54 +2,33 @@
 
 ## Introduction
 
-Device losses in X-Plane are a specific type of error that can occur during operation. This document explains what device losses are, how they can be identified, and what measures can be taken to resolve them.
+Device losses are a known but difficult to analyze problem in X-Plane. The goal is to explain the nature of device losses, their causes, debugging challenges, and measures for problem resolution.
 
 ## Definition and Causes
 
-A device loss occurs when the graphics card (GPU) loses connection to X-Plane. This can happen for various reasons:
-
-- **Driver issues**: Outdated or incompatible graphics drivers
-- **Hardware overload**: The GPU is pushed beyond its limits
-- **System instability**: Conflicts with other system components
-- **Memory problems**: Insufficient VRAM or memory leaks
+A device loss is a crash of the Graphics Processing Unit (GPU), similar to a software crash on the CPU, but with specific challenges. GPUs execute shaders - small programs that handle tasks such as vertex data transformation, pixel calculations, or object culling. X-Plane uses numerous shader modules, each containing many shader variants. A device loss occurs when a shader or GPU command is executed incorrectly, signaled by the Vulkan error code `VK_ERROR_DEVICE_LOST`.
 
 ## Debugging Challenges
 
-Device losses are particularly challenging to debug because:
+Debugging device losses is complex due to the following factors:
+1. **Asynchronous Execution**: CPU and GPU work asynchronously, with the CPU often several frames ahead. A crash is only detected with delay, making cause analysis difficult.
+2. **Limited Debugging Tools**: Shaders cannot be inspected step by step. The GPU state is only accessible after execution, and in case of a crash, often only fragmented data is available.
+3. **Latency in Detection**: The operating system and graphics driver prioritize GPU recovery, leading to delays and visual artifacts before X-Plane registers the error.
 
-1. They can occur randomly and are difficult to reproduce
-2. The error messages in the log files are often not very informative
-3. The problem can be caused by a combination of factors
-4. The symptoms can vary depending on the system configuration
+## Problem Resolution Measures
 
-## Troubleshooting Measures
+For investigating device losses, the command line parameter `--aftermath` or the script `X-Plane_aftermath.bat` is recommended. This activates the Aftermath library (supported for Nvidia, AMD, and Intel GPUs), which collects detailed diagnostic data. When a crash occurs, the message "Encountered a GPU crash!" is displayed, and the collected data helps developers identify the cause. However, Aftermath causes a performance impact and should be used selectively.
 
-### Immediate Actions
+In X-Plane 12.2, Aftermath support was revised to insert checkpoints into the command stream for each draw or dispatch command. This fine-grained data enables more precise analysis of the GPU state after a crash. Earlier versions such as 12.06 and 12.1.0 significantly reduced device losses, for example through workarounds for Nvidia driver bugs.
 
-1. **Check graphics drivers**: Update to the latest version
-2. **Monitor temperatures**: Ensure the GPU is not overheating
-3. **Reduce graphics settings**: Lower texture resolution and effects
-4. **Check system resources**: Monitor CPU, RAM, and VRAM usage
+## Misunderstandings
 
-### Advanced Diagnostics
-
-1. **Use Aftermath**: NVIDIA's tool for GPU crash analysis
-2. **Check system logs**: Look for related errors
-3. **Test with default settings**: Disable all add-ons
-4. **Monitor system stability**: Check for other system issues
-
-## Common Misunderstandings
-
-- Device losses are not always caused by the graphics card
-- They can occur even with high-end hardware
-- Not all crashes are device losses
-- The problem might be in the system configuration
+A common misconception is that device losses are caused by insufficient video memory (VRAM) - this is not the case. Plugins or scenery can only indirectly trigger device losses, for example through modifications to shader paths. A/B testing with disabled plugins is helpful for reproducible crashes but often ineffective for rare device losses.
 
 ## Conclusion
 
-Device losses are complex issues that require systematic troubleshooting. While they can be frustrating, most cases can be resolved through proper diagnosis and appropriate measures.
+Device losses in X-Plane are GPU crashes that are difficult to debug due to the complexity of shaders and asynchronous CPU-GPU interaction. Tools like Aftermath and improved implementations in X-Plane 12.2 facilitate diagnosis. Users can contribute to problem resolution by submitting crash reports with Aftermath enabled. Future developments may further reduce the frequency of such errors.
 
 ## References
 
-- X-Plane Documentation: <https://www.x-plane.com/support>
-- NVIDIA Aftermath Documentation: <https://developer.nvidia.com/nsight-aftermath> 
+- "What's up with device losses in X-Plane anyways?". Available at: <https://developer.x-plane.com>. Accessed: 2024-05-09. 
