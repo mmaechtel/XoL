@@ -22,31 +22,37 @@ This documentation is an open project. Improvements or additions can be contribu
 
 ## Recent Changes
 
+### 2025-05-09
+- ['Device Lost Crash'](xplane/geraeteverluste.md) explained
+- New ['Flight Operations'](flight_operations/overview.md) menu with [weather tools](flight_operations/weather.md)
+
 ### 2025-05-08
 - [Ortho4XP](addon/ortho4xp.md) + [AutoOrtho](addon/autoortho.md) significantly expanded
 - Highlighted combinations of [Ortho4XP](addon/ortho4xp.md) and [AutoOrtho](addon/autoortho.md), and added practical examples in the [combination guide](addon/autoortho_plus_zortho.md)
 
-### 2025-05-05
-- New [filesystem documentation](filesystem.md)
-- Discord community channel added
-    - Link available in the footer of both German and English versions
-    - Join our community for discussions and support
+??? note "Older Changes"
 
-### 2025-05-04
-- [Scenery Documentation](scenery.md) revised
-    - List formatting corrected (indentation, spaces)
-    - English version aligned with German version
-    - [Resources/Maps Chapter](scenery.md#resources) revised
-        - Self-created WorldMaps and their purpose highlighted
-        - Limitations of ICAO code search for X-Plane 12 scenery documented
-- [Ortho4XP Guide](addon/ortho4xp.md) extended
-    - New chapter [File Size Optimization](addon/ortho4xp.md#file-size-optimization) added
+    **2025-05-05:**
 
-### 2025-05-03
-- [Scenery Documentation](scenery.md) expanded
-    - New chapter [Scenery Tips](blog/kcle-cleveland.html) added
-        - Collection of useful tips and tricks for scenery management
-        - Best practices for organizing and optimizing sceneries
+    - New [filesystem documentation](filesystem.md)
+    - Discord community channel added
+        - Link available in the footer of both German and English versions
+        - Join our community for discussions and support
+
+    **2025-05-04:**
+
+    - Scenery Documentation revised
+        - List formatting corrected
+        - English version aligned
+        - Resources/Maps Chapter revised
+    - Ortho4XP Guide extended
+        - New chapter on file size optimization
+
+    **2025-05-03:**
+
+    - Scenery Documentation expanded
+        - New chapter with scenery tips
+        - Best practices for organization
     - RSS Feed created
-        - Automatic generation from English blog entries
-        - Available at `assets/rss/blog.xml`
+        - Automatic generation
+        - Available at assets/rss/blog.xml

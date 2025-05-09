@@ -108,6 +108,9 @@ plugins:
                 - AutoOrtho + Ortho4XP: de/addon/autoortho_plus_zortho.md
                 - XRoad: de/addon/xroad.md
                 - AEP: de/addon/aep.md
+            - Flugbetrieb:
+                - Übersicht: de/flight_operations/overview.md
+                - Wetter: de/flight_operations/weather.md
             - Glossar: de/glossary.md
             - Über: de/about.md
         - locale: en
@@ -151,6 +154,9 @@ plugins:
                 - AutoOrtho + Ortho4XP: en/addon/autoortho_plus_zortho.md
                 - XRoad: en/addon/xroad.md
                 - AEP: en/addon/aep.md
+            - Flight Operations:
+                - Overview: en/flight_operations/overview.md
+                - Weather: en/flight_operations/weather.md
             - Glossary: en/glossary.md
             - About: en/about.md
   - git-revision-date-localized:

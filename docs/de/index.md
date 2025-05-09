@@ -22,31 +22,37 @@ Diese Dokumentation ist ein offenes Projekt. Verbesserungen oder Ergänzungen k�
 
 ## Letzte Änderungen
 
+### 2025-05-09
+- ['device lost Absturz'](xplane/geraeteverluste.md) erklärt
+- Neues Menu ['Flugbetrieb'](flight_operations/overview.md) und darin [Wettertools](flight_operations/weather.md)
+
 ### 2025-05-08
 - [Ortho4XP](addon/ortho4xp.md) + [AutoOrtho](addon/autoortho.md) deutlich erweitert
 - Kombinationen von [Ortho4XP](addon/ortho4xp.md) und [AutoOrtho](addon/autoortho.md) hervorgehoben und praktische Beispiele in der [Kombinations-Anleitung](addon/autoortho_plus_zortho.md) hinzugefügt
 
-### 2025-05-05
-- Neue [Dateisystem-Dokumentation](filesystem.md)
-- Discord Community-Kanal hinzugefügt
-    - Link in der Fußzeile der deutschen und englischen Version verfügbar
-    - Treten Sie unserer Community für Diskussionen und Support bei
+??? note "Ältere Änderungen"
 
-### 2025-05-04
-- [Szenerien Dokumentation](scenery.md) überarbeitet
-    - Formatierung der Listen korrigiert (Einrückung, Leerzeichen)
-    - Englische Version an deutsche Version angepasst
-    - [Ressourcen/Maps Kapitel](scenery.md#ressourcen) überarbeitet
-        - Selbst erstellte WorldMaps und deren Zweck hervorgehoben
-        - Einschränkungen der ICAO-Code Suche für X-Plane 12 Szenerien dokumentiert
-- [Ortho4XP Anleitung](addon/ortho4xp.md) erweitert
-    - Neues Kapitel [Optimierung der Dateigröße](addon/ortho4xp.md#optimierung-der-dateigröße) hinzugefügt
+    **2025-05-05:**
 
-### 2025-05-03
-- [Szenerien Dokumentation](scenery.md) erweitert
-    - Neues Kapitel [Szenerie Tips](blog/kcle-cleveland.html) hinzugefügt
-        - Sammlung nützlicher Tipps und Tricks für die Szenerieverwaltung
-        - Best Practices für die Organisation und Optimierung von Szenerien
+    - Neue [Dateisystem-Dokumentation](filesystem.md)
+    - Discord Community-Kanal hinzugefügt
+        - Link in der Fußzeile der deutschen und englischen Version verfügbar
+        - Treten Sie unserer Community für Diskussionen und Support bei
+
+    **2025-05-04:**
+
+    - Szenerien Dokumentation überarbeitet
+        - Formatierung der Listen korrigiert
+        - Englische Version angepasst
+        - Ressourcen/Maps Kapitel überarbeitet
+    - Ortho4XP Anleitung erweitert
+        - Neues Kapitel zur Dateigrößen-Optimierung
+
+    **2025-05-03:**
+
+    - Szenerien Dokumentation erweitert
+        - Neues Kapitel mit Szenerie-Tipps
+        - Best Practices für die Organisation
     - RSS Feed erstellt
-        - Automatische Generierung aus englischen Blog-Einträgen
-        - Verfügbar unter `assets/rss/blog.xml`
+        - Automatische Generierung
+        - Verfügbar unter assets/rss/blog.xml
