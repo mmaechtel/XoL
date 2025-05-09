@@ -11,6 +11,7 @@ A device loss is a crash of the Graphics Processing Unit (GPU), similar to a sof
 ## Debugging Challenges
 
 Debugging device losses is complex due to the following factors:
+
 1. **Asynchronous Execution**: CPU and GPU work asynchronously, with the CPU often several frames ahead. A crash is only detected with delay, making cause analysis difficult.
 2. **Limited Debugging Tools**: Shaders cannot be inspected step by step. The GPU state is only accessible after execution, and in case of a crash, often only fragmented data is available.
 3. **Latency in Detection**: The operating system and graphics driver prioritize GPU recovery, leading to delays and visual artifacts before X-Plane registers the error.

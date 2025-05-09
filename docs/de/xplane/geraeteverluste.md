@@ -11,6 +11,7 @@ Ein Geräteverlust ist ein Absturz der Grafikprozessoreinheit (GPU), vergleichba
 ## Herausforderungen beim Debugging
 
 Das Debugging von Geräteverlusten ist komplex aufgrund folgender Faktoren:
+
 1. **Asynchrone Ausführung**: CPU und GPU arbeiten asynchron, wobei die CPU oft mehrere Frames voraus ist. Ein Absturz wird erst verzögert erkannt, was die Ursachenanalyse erschwert.
 2. **Begrenzte Debugging-Tools**: Shader können nicht schrittweise inspiziert werden. Der GPU-Zustand ist nur nach der Ausführung zugänglich, bei einem Absturz stehen oft nur fragmentierte Daten zur Verfügung.
 3. **Latenz bei der Erkennung**: Das Betriebssystem und der Grafiktreiber priorisieren die Wiederherstellung der GPU, was zu Verzögerungen und visuellen Artefakten führt, bevor X-Plane den Fehler registriert.
