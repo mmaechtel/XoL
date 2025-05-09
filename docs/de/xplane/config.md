@@ -60,23 +60,4 @@ Falls diese Maßnahmen nicht zu einer zufriedenstellenden Bildqualität führen,
 * RAM-Auslagerung konfigurieren
 * Cache-Einstellungen
 * Ortho4XP-Tile-Management
-* Szenerie-Ladestrategien
-
-## Fehlerbehebung
-
-### Häufige Probleme
-* Grafiktreiber-Konflikte
-* Audio-Probleme
-* Performance-Einbrüche
-* Abstürze und Freezes
-* Kompatibilitätsprobleme mit Addons
-
-### Log-Dateien
-* Log.txt: Hauptprotokoll
-* X-Plane Installer Logs
-* Treiber-Logs
-* Addon-spezifische Logs
-* Debug-Modi aktivieren
-
-**Hinweis zu X-Plane 12.2:**
-Ab Version 12.2.0 generiert X-Plane bei jedem Start automatisch sowohl eine neue `Log.txt` als auch eine `Log_ATC.txt`. Dieses Verhalten wurde auch in einer Testumgebung ohne zusätzliche Add-ons beobachtet und scheint ein spezifisches Merkmal der 12.2 Version zu sein, nicht jedoch auf Inkompatibilitäten mit Drittanbieter-Software oder Plugins hinzuweisen. 
+* Szenerie-Ladestrategien 

@@ -90,6 +90,9 @@ plugins:
             - X-Plane:
                 - Konfiguration: de/xplane/config.md
                 - Performance: de/xplane/performance.md
+                - Systemfehler:
+                    - Einführung: de/xplane/systemfehler.md
+                    - Geräteverluste: de/xplane/geraeteverluste.md
             - Szenerien:
                 - Komponenten: de/scenery_components.md
                 - Szenerien: de/scenery.md
@@ -130,9 +133,12 @@ plugins:
             - X-Plane:
                 - Configuration: en/xplane/config.md
                 - Performance: en/xplane/performance.md
-            - Sceneries:
-                - Components: en/scenery_components.md
-                - Sceneries: en/scenery.md
+                - System Errors:
+                    - Introduction: en/xplane/systemfehler.md
+                    - Device Losses: en/xplane/geraeteverluste.md
+            - Scenerien:
+                - Komponenten: en/scenery_components.md
+                - Scenerien: en/scenery.md
                 - XOrganizer: en/addon/xorganizer.md
                 - Scenery Tips:
                     - Cleveland Hopkins Airport: en/blog/kcle-cleveland.md

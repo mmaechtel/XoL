@@ -9,6 +9,7 @@ Folgende Bereiche werden optimiert:
 - **Kernel**: Anpassung oder Wechsel zu einem performanteren Kernel wie [Liquorix](liquorix.md)
 - **Grafiktreiber**: Installation und Konfiguration der optimalen [Nvidia-Treiber](nvidia.md)
 - **Dateisystem**: Optimierung der Speicherstruktur und -performance für X-Plane ([Dateisystem](filesystem.md))
+- **Systemfehler**: Diagnose und Behebung von [Systemfehlern](systemfehler.md)
 
 ## Erweiterungen im Überblick
 
