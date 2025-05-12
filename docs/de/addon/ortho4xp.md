@@ -125,6 +125,14 @@ Die verbesserte Geländedarstellung wird automatisch in den generierten Kacheln 
 !!! note "Hinweis"
     Die LiDAR-Daten sind besonders nützlich für Gebiete mit komplexer Topographie wie die Alpen oder andere Bergregionen. Sie bieten eine deutlich höhere Auflösung und Genauigkeit als die standardmäßig verfügbaren DEM-Daten.
 
+## Ortho Patches für Szenerien
+
+Viele Szenerien – sowohl Standard- als auch Third-Party-Szenerien – sind ursprünglich auf das alte, flache Mesh-Modell von X-Plane ausgelegt. In der Datei `apt.dat` kann hierfür das Flag `flatten 1` gesetzt sein. Dieses Flag sorgt dafür, dass die Szenerie selbst und häufig auch größere Teile der Umgebung vollständig flach dargestellt werden. Das steht im Widerspruch zu dem Ziel, mit Ortho4XP ein möglichst genaues und realistisches Bodenmesh zu erzeugen.
+
+Für einige Szenerien existieren spezielle Ortho Patches, die entweder vom Hersteller selbst oder von aktiven X-Plane-Nutzern bereitgestellt werden. Mithilfe dieser Patches kann das Mesh-Modell mit Ortho4XP gezielt an die jeweilige Szenerie angepasst werden. Zudem erlauben Modifikationen an der Szenerie, auf das Setzen von `flatten 1` zu verzichten und dennoch eine korrekte Darstellung zu erreichen.
+
+Falls keine solchen Modifikationen oder Patches verfügbar sind, kann oft auch das manuelle Entfernen der Zeile mit `flatten 1` in der entsprechenden `apt.dat`-Datei helfen. Dadurch wird die Szenerie an das neue, detaillierte Bodenmodell angepasst. Es können dabei jedoch kleinere Artefakte auftreten, wie etwa Objekte, die nicht mehr exakt auf dem Boden stehen, sondern gelegentlich leicht in der Luft schweben oder im Boden versinken.
+
 ## Wichtige Hinweise und Fehlerbehebung
 
 ### Allgemeine Hinweise
