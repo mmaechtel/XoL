@@ -118,3 +118,5 @@ Die Analyse des Radardisplays erfordert besondere Aufmerksamkeit. Eng beieinande
 
 Das Wetterradar ist ein mächtiges Werkzeug, aber sein Erfolg hängt von der aktiven Nutzung durch die Flugbesatzung ab. Technisches Verständnis, meteorologisches Wissen und kontinuierliche Überwachung sind der Schlüssel, um gefährliche Wetterlagen zu vermeiden. Durch strategische Planung, frühzeitige Entscheidungen und die Nutzung moderner Radartechnologien können Piloten sicherstellen, dass ihre Flüge nicht nur sicher, sondern auch komfortabel verlaufen. In einer Welt, in der das Wetter unberechenbar bleibt, ist das Wetterradar ein verlässlicher Partner – vorausgesetzt, es wird mit Bedacht eingesetzt.
 
+**Quelle**: Adaptiert von "A320 Pilot's Guide to Airborne Weather Radar" von aviation-safety.net
+

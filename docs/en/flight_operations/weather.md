@@ -116,4 +116,6 @@ Analyzing the radar display requires special attention. Closely spaced color gra
 
 ### Conclusion
 
-Weather radar is a powerful tool, but its success depends on active use by the flight crew. Technical understanding, meteorological knowledge, and continuous monitoring are the keys to avoiding dangerous weather conditions. Through strategic planning, early decisions, and the use of modern radar technologies, pilots can ensure that their flights are not only safe but also comfortable. In a world where weather remains unpredictable, weather radar is a reliable partner – provided it is used wisely. 
+Weather radar is a powerful tool, but its success depends on active use by the flight crew. Technical understanding, meteorological knowledge, and continuous monitoring are the keys to avoiding dangerous weather conditions. Through strategic planning, early decisions, and the use of modern radar technologies, pilots can ensure that their flights are not only safe but also comfortable. In a world where weather remains unpredictable, weather radar is a reliable partner – provided it is used wisely.
+
+**Source**: Adapted from "A320 Pilot's Guide to Airborne Weather Radar" by aviation-safety.net 
