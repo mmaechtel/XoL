@@ -114,6 +114,8 @@ plugins:
             - Flugbetrieb:
                 - Übersicht: de/flight_operations/overview.md
                 - Wetter: de/flight_operations/weather.md
+                - ATC: de/flight_operations/atc.md
+                - VATSim: de/flight_operations/vatsim.md
             - Glossar: de/glossary.md
             - Über: de/about.md
         - locale: en
@@ -163,6 +165,8 @@ plugins:
             - Flight Operations:
                 - Overview: en/flight_operations/overview.md
                 - Weather: en/flight_operations/weather.md
+                - ATC: en/flight_operations/atc.md
+                - VATSim: en/flight_operations/vatsim.md
             - Glossary: en/glossary.md
             - About: en/about.md
   - git-revision-date-localized:
