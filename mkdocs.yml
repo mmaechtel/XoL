@@ -117,7 +117,7 @@ plugins:
                 - ATC: 
                     - Clearance: de/flight_operations/clearance.md
                 - VATSim: 
-                    -Übersicht: de/flight_operations/vatsim.md
+                    - Übersicht: de/flight_operations/vatsim.md
             - Glossar: de/glossary.md
             - Über: de/about.md
         - locale: en
