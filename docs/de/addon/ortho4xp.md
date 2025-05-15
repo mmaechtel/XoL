@@ -116,7 +116,49 @@ Die LiDAR-Daten von [sonny.4lima.de](https://sonny.4lima.de) bieten eine hohe Au
 ### Schritte zur Integration
 
 1. Die gewünschten LiDAR-Daten von [sonny.4lima.de](https://sonny.4lima.de) herunterladen
-2. Die Dateien in das Ortho4XP-Verzeichnis entpacken
+2. Für Methode 2 gibt es nun zwei Möglichkeiten:
+
+    - Die Dateien in das Ortho4XP-Verzeichnis entpacken und die Kacheln entsprechend in die Verzeichnisse unter Elevation_data sortieren. Dabei helfen Skripte wie z.B. [hier](https://forum.aerosoft.com/index.php?/topic/175397-h%C3%B6hendaten-f%C3%BCr-ortho4xp/#findComment-1102723) 
+    - Oder mit Links unter `Elevation_data` arbeiten:
+        - Zuerst das alte `Elevation_data` sichern
+        - Neues `Elevation_data` anlegen und darin die Verzeichnisse `+00-060` usw. als Links auf ein extra Verzeichnis (z.B. `GlobalElevationData`) anlegen. Folgendes Skript erstellt im neuen leeren `Elevation_data` alle nötigen Verzeichnisse als Links auf das Verzeichnis `../GlobalElevationData`:
+        ```bash
+        #!/bin/bash
+
+        # Target path for symbolic links
+        TARGET_PATH="../GlobalElevationData"
+
+        # Create target directory if it doesn't exist
+        mkdir -p "$TARGET_PATH"
+
+        # Funktion zum Erstellen eines Linknamens
+        create_link_name() {
+          local lat=$1
+          local lon=$2
+          # Breitengrad formatieren (+XX oder -XX)
+          if [ $lat -ge 0 ]; then
+            lat_str=$(printf "+%02d" $lat)
+          else
+            lat_str=$(printf "%03d" $lat)
+          fi
+          # Längengrad formatieren (+YYY oder -YYY)
+          if [ $lon -ge 0 ]; then
+            lon_str=$(printf "+%03d" $lon)
+          else
+            lon_str=$(printf "%04d" $lon)
+          fi
+          echo "${lat_str}${lon_str}"
+        }
+
+        # Alle möglichen Links generieren
+        for lat in $(seq -80 10 80); do    # Breitengrade: -80° bis +80° in 10°-Schritten
+          for lon in $(seq -180 10 180); do # Längengrade: -180° bis +180° in 10°-Schritten
+            link_name=$(create_link_name $lat $lon)
+            ln -s "$TARGET_PATH" "./$link_name"
+          done
+        done
+        ```
+        - Dann in das `GlobalElevationData`-Verzeichnis alle HGT-Dateien kopieren
 3. Die gewünschte Integrationsmethode wählen (Methode 1 oder 2)
 4. Die Kacheln wie gewohnt generieren
 

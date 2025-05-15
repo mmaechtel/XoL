@@ -116,7 +116,49 @@ The LiDAR data from [sonny.4lima.de](https://sonny.4lima.de) offers high resolut
 ### Integration Steps
 
 1. Download the desired LiDAR data from [sonny.4lima.de](https://sonny.4lima.de)
-2. Extract the files into the Ortho4XP directory
+2. For Method 2, there are two options:
+
+    - Extract the files into the Ortho4XP directory and sort the tiles into the appropriate directories under Elevation_data. Scripts like [this one](https://forum.aerosoft.com/index.php?/topic/175397-h%C3%B6hendaten-f%C3%BCr-ortho4xp/#findComment-1102723) can help
+    - Or work with links under `Elevation_data`:
+        - First, back up the old `Elevation_data`
+        - Create a new `Elevation_data` and create directories like `+00-060` etc. in it as links to an extra directory (e.g., `GlobalElevationData`). The following script creates all necessary directories in the empty new `Elevation_data` as links to the directory `../GlobalElevationData`:
+        ```bash
+        #!/bin/bash
+
+        # Target path for symbolic links
+        TARGET_PATH="../GlobalElevationData"
+
+        # Create target directory if it doesn't exist
+        mkdir -p "$TARGET_PATH"
+
+        # Function to create a link name
+        create_link_name() {
+            local lat=$1
+            local lon=$2
+            # Format latitude (+XX or -XX)
+            if [ $lat -ge 0 ]; then
+                lat_str=$(printf "+%02d" $lat)
+            else
+                lat_str=$(printf "%03d" $lat)
+            fi
+            # Format longitude (+YYY or -YYY)
+            if [ $lon -ge 0 ]; then
+                lon_str=$(printf "+%03d" $lon)
+            else
+                lon_str=$(printf "%04d" $lon)
+            fi
+            echo "${lat_str}${lon_str}"
+        }
+
+        # Generate all possible links
+        for lat in $(seq -80 10 80); do    # Latitudes: -80° to +80° in 10° steps
+            for lon in $(seq -180 10 180); do # Longitudes: -180° to +180° in 10° steps
+                link_name=$(create_link_name $lat $lon)
+                ln -s "$TARGET_PATH" "./$link_name"
+            done
+        done
+        ```
+        - Then copy all HGT files into the `GlobalElevationData` directory
 3. Choose the desired integration method (Method 1 or 2)
 4. Generate tiles as usual
 

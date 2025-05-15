@@ -137,17 +137,7 @@ Wie in zOrtho4XP bereits beschrieben, können LiDAR-Daten verwendet werden, um d
 
 ### LiDAR-Integration
 
-1. **Datenbeschaffung**:
-    - Besuchen Sie [sonny.4lima.de](https://sonny.4lima.de)
-    - Wählen Sie die gewünschte Region
-    - Laden Sie die .hgt Dateien herunter
-
-2. **zOrtho4XP-Konfiguration**:
-    - Setzen Sie `custom_dem` auf den Pfad zu den LiDAR-Daten
-    - Aktivieren Sie `use_masks_for_inland`
-    - Passen Sie `curvature_tol` an (1.0-2.0 für höhere Auflösung)
-    - Höhere Mesh-Level (3-4) für detailliertes Gelände
-    - **Wichtig**: Bilddownloads deaktivieren (skip_downloads aktiviert)
+Siehe Kapitel Integration von [LiDAR-Daten](ortho4xp.md#Integration von LiDAR-Daten) im Abschnitt Ortho4XP.
 
 ## Fazit
 

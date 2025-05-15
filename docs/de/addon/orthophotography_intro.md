@@ -17,5 +17,3 @@ Zur Implementierung von Orthofotos in X-Plane stehen mehrere Ansätze zur Verfü
 3. **[Kombination](autoortho_plus_zortho.md)**: Um die Auflösung von AutoOrtho weiter zu optimieren, können die präziseren Meshes von Ortho4XP mit der Streaming-Technologie von AutoOrtho kombiniert werden. Dieses Verfahren wird in einem spezifischen Kapitel detailliert beschrieben.
 
 Durch die vorgestellten Methoden wird eine flexible und effiziente Integration von Orthofotos in X-Plane ermöglicht, die sowohl die topografische Präzision als auch die visuelle Qualität der Flugsimulation erheblich steigert.
-
-+

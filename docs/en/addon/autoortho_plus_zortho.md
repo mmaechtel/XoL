@@ -137,17 +137,7 @@ As already described in zOrtho4XP, LiDAR data can be used to improve the resolut
 
 ### LiDAR Integration
 
-1. **Data Acquisition**:
-    - Visit [sonny.4lima.de](https://sonny.4lima.de)
-    - Select the desired region
-    - Download the .hgt files
-
-2. **zOrtho4XP Configuration**:
-    - Set `custom_dem` to the path of the LiDAR data
-    - Enable `use_masks_for_inland`
-    - Adjust `curvature_tol` (1.0-2.0 for higher resolution)
-    - Higher mesh levels (3-4) for detailed terrain
-    - **Important**: Disable image downloads (skip_downloads enabled)
+See chapter Integration of [LiDAR data](ortho4xp.md#LiDAR Data Integration) in the Ortho4XP section.
 
 ## Conclusion
 
