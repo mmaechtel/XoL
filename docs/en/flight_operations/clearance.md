@@ -29,6 +29,34 @@ When obtaining an IFR clearance (Instrument Flight Rules), the pilot must prepar
 ## Digital clearance retrieval
 * **AOC Menu in MCDU** (if available) allows e.g. obtaining a Predeparture Clearance (PDC) digitally.
 
+### **ToLiss Airbus – Request Departure Clearance via CPDLC**
+
+1. **Access MCDU Menu**:
+
+    * Press `<MCDU MENU>`, then `<ATSU>`, followed by `<AOC MENU>`, and finally `<DEPARTURE CLEARANCE>`.
+
+2. **Fields that need to be filled**:
+
+    * **Flight Number**: Automatically taken from the INIT page, but can be manually changed.
+    * **Departure Airport**: Also automatically filled, can be adjusted if needed.
+    * **Arrival Airport**: Taken from the FMGS.
+    * **Gate Number**: Enter manually (e.g., `A14`).
+    * **ATIS ID**: Enter the current ATIS ID (e.g., `D`).
+    * **Station ID** (bottom right): Enter the **Hoppie ID** of the ATC controller, for VATSIM e.g., `EDDHDEL`.
+
+3. **Send request**:
+
+    * Once all fields are correctly filled **and** a valid Hoppie login is entered in the ISCS, an `*` appears next to **<REQUEST SEND>**.
+    * Press `<REQUEST SEND>` to send the clearance request via telex.
+
+4. **Receive and confirm message**:
+
+    * The Pre-Departure Clearance appears on the **Received Messages** page.
+    * There you can read it and confirm/accept it with LSK.
+
+
+**Note**: Without a valid Hoppie code or if required fields are missing, sending the request is not possible.
+
 ## What's next?
 Once the clearance has been correctly read back, continue with:
 
