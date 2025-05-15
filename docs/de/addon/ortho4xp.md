@@ -68,32 +68,42 @@ Ortho4XP ist in zwei Hauptversionen verfügbar:
 | `water_smoothing` | `3` | Glättung von Wasserübergängen |
 | `road_banking_limit` | `0.3` | Maximale Straßenneigung |
 | `apt_smoothing_pix` | `8` | Glättungsparameter für Flughäfen |
+| `road_level` | `2` | Welche Arten von Strassen sollen dargestellt werden |
+| `min_area` | `0.001` | minimale Größe von Wasserflächen |
 
 ### Empfohlene Einstellungen
 
 #### Standard-Einstellungen (gute Balance)
 
-* `zoomlevel`: 16
-* `curvature_tol`: 3.0
-* `mesh_zl`: 16
-* `mask_zl`: 16
-* `water_smoothing`: 3
+* `zoomlevel`: 17
+* `curvature_tol`: 2.0
+* `mesh_zl`: 18
+* `mask_zl`: 15
+* `cover_zl`: 17
+* `min_area`: 0.01
+* `apt_smoothing_pix`: 16
 
 #### Hochauflösende Einstellungen
 
-* `zoomlevel`: 17
-* `curvature_tol`: 2.0
-* `mesh_zl`: 17
-* `mask_zl`: 17
-* `water_smoothing`: 5
+* `zoomlevel`: 18
+* `curvature_tol`: 1.3
+* `mesh_zl`: 19
+* `mask_zl`: 16
+* `cover_zl`: 18
+* `min_area`: 0.001
+* `apt_smoothing_pix`: 8
 
 #### Performance-optimierte Einstellungen
 
-* `zoomlevel`: 15
-* `curvature_tol`: 4.0
-* `mesh_zl`: 15
-* `mask_zl`: 15
-* `water_smoothing`: 2
+* `zoomlevel`: 16
+* `curvature_tol`: 3.0
+* `mesh_zl`: 16
+* `mask_zl`: 14
+* `cover_zl`: 16
+* `min_area`: 0.1
+* `apt_smoothing_pix`: 32
+
+#### 
 
 ## Integration von LiDAR-Daten
 
