@@ -68,32 +68,40 @@ Ortho4XP is available in two main versions:
 | `water_smoothing` | `3` | Water transition smoothing |
 | `road_banking_limit` | `0.3` | Maximum road banking |
 | `apt_smoothing_pix` | `8` | Airport smoothing parameter |
+| `road_level` | `2` | Which types of roads should be displayed |
+| `min_area` | `0.001` | minimum size of water areas |
 
 ### Recommended Settings
 
 #### Standard Settings (good balance)
 
-* `zoomlevel`: 16
-* `curvature_tol`: 3.0
-* `mesh_zl`: 16
-* `mask_zl`: 16
-* `water_smoothing`: 3
+* `zoomlevel`: 17
+* `curvature_tol`: 2.0
+* `mesh_zl`: 18
+* `mask_zl`: 15
+* `cover_zl`: 17
+* `min_area`: 0.01
+* `apt_smoothing_pix`: 16
 
 #### High-Resolution Settings
 
-* `zoomlevel`: 17
-* `curvature_tol`: 2.0
-* `mesh_zl`: 17
-* `mask_zl`: 17
-* `water_smoothing`: 5
+* `zoomlevel`: 18
+* `curvature_tol`: 1.3
+* `mesh_zl`: 19
+* `mask_zl`: 16
+* `cover_zl`: 18
+* `min_area`: 0.001
+* `apt_smoothing_pix`: 8
 
 #### Performance-Optimized Settings
 
-* `zoomlevel`: 15
-* `curvature_tol`: 4.0
-* `mesh_zl`: 15
-* `mask_zl`: 15
-* `water_smoothing`: 2
+* `zoomlevel`: 16
+* `curvature_tol`: 3.0
+* `mesh_zl`: 16
+* `mask_zl`: 14
+* `cover_zl`: 16
+* `min_area`: 0.1
+* `apt_smoothing_pix`: 32
 
 ## LiDAR Data Integration
 
