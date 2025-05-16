@@ -1,47 +1,17 @@
 # AutoOrtho + zOrtho4XP
 
 !!! info "Work in Progress"
-    This documentation is still under development and not complete. The described methods and settings are continuously being reviewed and updated.
+    This documentation is in the development phase and is not complete. The described methods and settings are continuously evaluated and updated.
 
-The combination of AutoOrtho with zOrtho4XP offers an optimal solution for X-Plane users who want to benefit from both real-time streaming and high-quality local orthophotos. This guide explains how both systems can work together effectively.
+The integration of **AutoOrtho** with **Ortho4XP** provides an optimal solution for **X-Plane** users who want to benefit from both real-time streaming and high-quality local orthophotos. This guide explains the effective implementation of both systems.
 
-## Basic Concept
-
-The combination is based on a hybrid approach where AutoOrtho is used for general worldwide coverage and zOrtho4XP for selected high-quality regions. This enables quick availability of orthophotos worldwide, highest quality in preferred flight areas, optimized storage usage, and flexibility in image source selection.
-
-## Installation and Configuration
-
-### Prerequisites
-
-For the successful combination of AutoOrtho and zOrtho4XP you need
-
-- A working AutoOrtho installation
-- zOrtho4XP (Version 1.4 or higher)
-- Sufficient SSD storage for zOrtho4XP tiles
-- Python 3.x for zOrtho4XP
-
-### Recommended zOrtho4XP Settings
-
-For optimal results with AutoOrtho, use the following settings in zOrtho4XP 1.4
-
-| Parameter                  | Recommended Value | Description |
-|---------------------------|------------------|--------------|
-| `skip_downloads`          | Enabled          | No image download needed |
-| `skip_converts`           | Enabled          | No DDS rendering needed |
-| `mask_zl`                 | 16               | Optimal water transitions |
-| `use_masks_for_inland`    | Enabled          | Better inland waters |
-| `distance_masks_too`      | Enabled          | Clean coastlines |
-| `custom_dem`              | Optional         | Higher DEMs for finer meshes |
-| `curvature_tol`           | 2.0–4.0          | Affects mesh complexity |
-| `road_banking_limit`      | 0.3              | Prevents build errors |
-| `apt_smoothing_pix`       | 8–16             | Smoother runways |
-| `water_tech`              | "XP12"           | Uses XP12 water technology |
+The combination is based on a **hybrid approach** where **AutoOrtho** is used for global coverage and **zOrtho4XP** for selected high-quality regions. This enables quick availability of orthophotos worldwide, highest quality in preferred flight areas, optimized storage usage, and flexibility in image source selection.
 
 ### Setup
 
-The setup is done in two main steps. First, create the zOrtho4XP tiles for your preferred flight areas. Choose zoom levels 17-19 for maximum quality and enable overlays. You can choose between Bing and Google as image sources.
+The implementation is done in two main steps. First, the **Ortho4XP tiles** are generated for the preferred flight areas. Here, **zoom levels** 17-19 are recommended for maximum quality, with **overlays** to be activated unless [**SimHeaven**](../scenery.md) is used. As image source, you can choose between **Bing** and **Google**.
 
-The correct structure of scenery_packs.ini is crucial for the interaction of both systems
+The correct structure of the `scenery_packs.ini` is essential for the interoperability of both systems:
 
 ```
 SCENERY_PACK Custom Scenery/yAutoOrtho_Overlays/
@@ -51,94 +21,96 @@ SCENERY_PACK Custom Scenery/z_ao_eur/
 SCENERY_PACK Custom Scenery/z_autoortho/
 ```
 
-## Optimal Usage
+### Optimal Usage
 
-### Regional Prioritization
+Efficient usage requires precise **prioritization** of regions. For frequently visited airports, **zOrtho4XP tiles** with **ZL**17-19 in a 50km radius are recommended. Main flight routes benefit from tiles with **ZL**16-17, which are implemented as corridors along the route. For all other areas, **AutoOrtho** provides coverage with **ZL**16 as standard.
 
-Optimal usage requires clear prioritization of regions. For frequently used airports, zOrtho4XP tiles with ZL17-19 in a 50km radius are recommended. Main flight routes benefit from tiles with ZL16-17, which are created as corridors along the route. For all other areas, AutoOrtho provides coverage with ZL16 as standard.
+A successful integration requires systematic planning, regular maintenance, and continuous optimization. The identification of main flight areas and planning of **zOrtho4XP coverage** considering available storage space is crucial. Maintenance includes regular **cache cleanup**, validation of the `scenery_packs.ini`, and updating both systems. Optimization is achieved through adjustment of **zoom levels**, balancing quality and performance, and regular review of the configuration.
 
-### Performance Optimization
+### Troubleshooting
 
-Effective performance optimization is based on two main aspects: cache management and graphics settings. The AutoOrtho cache should be between 20-30 GB, while zOrtho4XP tiles are managed as needed. Regular cache cleanup is important. For graphics settings, maximum textures, high object density, and minimal reflections are recommended.
-
-## Troubleshooting
-
-### Common Problems
-
-The most common problems occur with overlapping tiles when multiple ortho sources are present for the same region. This can be resolved by clear prioritization in scenery_packs.ini. Performance issues often arise from too many high-resolution tiles and can be solved by reducing zOrtho4XP coverage. Storage issues with large zOrtho4XP tiles require selective tile creation.
-
-## Best Practices
-
-A successful combination requires careful planning, regular maintenance, and continuous optimization. Identify your main flight areas and plan zOrtho4XP coverage considering available storage space. Maintenance includes regular cache cleanup, checking scenery_packs.ini, and updating both systems. Optimization is achieved by adjusting zoom levels, balancing quality and performance, and regular review of settings.
+The most common problems occur with overlapping **tiles** when multiple **ortho sources** are present for the same region. This can be resolved by precise **prioritization** in the `scenery_packs.ini`. Performance issues often result from an excessive number of high-resolution **tiles** and can be optimized by reducing **zOrtho4XP coverage** or with alternative **settings** when generating the tiles.
 
 ## New Meshes for AutoOrtho
 
-zOrtho4XP can be used not only for high-quality orthophotos but also as a mesh generator for AutoOrtho. This enables improved terrain representation in combination with AutoOrtho textures.
+**zOrtho4XP** can be used not only for high-quality **orthophotos** but also as a **mesh generator** for **AutoOrtho**. This enables improved **terrain representation** in combination with **AutoOrtho textures**.
 
 ### Benefits
 
-Using zOrtho4XP as a mesh generator offers several advantages:
+The implementation of **zOrtho4XP** as a **mesh generator** offers the following advantages for **AutoOrtho**:
 
-- Higher terrain resolution
-- Better representation of mountains and valleys
-- More precise airport smoothing
-- Optimized performance through local mesh data
+- Increased resolution of **terrain representation**
+- More precise representation of **topographic features**
+- Improved **topographic representation** through **Ortho Patches**
+
+### Recommended Ortho4XP Settings
+
+For optimal results with **AutoOrtho**, the following parameters in **Ortho4XP 1.4** are essential:
+
+| Parameter                  | Recommended Value | Description |
+|---------------------------|------------------|--------------|
+| `skip_downloads`          | Enabled          | Disables image download |
+| `skip_converts`           | Enabled          | Disables DDS rendering |
+
+The remaining parameters are detailed in the [**Ortho4XP chapter**](ortho4xp.md).
 
 ### Setup
 
-The setup is done in three main steps:
+The implementation is done in three main steps:
 
 1. **Mesh Generation**:
-    - Start zOrtho4XP
+    - Initialize **zOrtho4XP**
     - Select the desired region
-    - Enable the "Build Mesh" option
-    - Disable "Build Overlays" and "Build Imagery"
-    - Set the mesh level to 1-2 for more detailed terrain
-    - Disable image downloads (skip_downloads enabled)
+    - Enable the "**Build Mesh**" option
+    - Disable "**Build Overlays**" and "**Build Imagery**"
+    - Configure the **mesh level** to 1-2 for more detailed terrain
+    - Disable image downloads (`skip_downloads` enabled)
 
-2. **Merge Directories**:
-    - For each zOrtho4XP tile, three directories are created:
+2. **Directory Structure**:
+    - **Ortho4XP** generates three directories per tile (e.g., `zOrtho4XP_+51+00`):
         - `Earth Nav Data`
         - `terrain`
         - `textures`
-    - These directories must be merged into a new directory
-    - The new directory should start with `aa_` (e.g., `aa_zortho4xp_meshes`)
-    - Save the merged directory under:
-     ```
-     Custom Scenery/z_autoortho/scenery/aa_zortho4xp_meshes/
-     ```
-    - The structure should match the existing `ao_` directories
+    - Separate integration of these directories into the **AutoOrtho configuration directory** and the `scenery_packs.ini` would significantly increase initialization time, as **AutoOrtho** mounts each directory at startup.
+    - Therefore, the contents of these three directories per tile are consolidated into a single directory (e.g., `aa_zortho4xp_meshes`).
+    - In case of name conflicts during the copy process, files can be safely overwritten as they are identical **masks**.
+    - The new directory should start with `aa_` (e.g., `aa_zortho4xp_meshes`) to ensure correct reading order.
+    - Store the consolidated directory under `z_autoortho/scenery`:
+       ```
+       Custom Scenery/z_autoortho/scenery/aa_zortho4xp_meshes/
+       ```
+    - The structure thus matches the existing `ao_` directories
 
-3. **Adjust scenery_packs.ini**:
+3. **scenery_packs.ini Configuration**:
    ```
    SCENERY_PACK Custom Scenery/yAutoOrtho_Overlays/
    SCENERY_PACK Custom Scenery/z_autoortho/scenery/aa_zortho4xp_meshes/
    SCENERY_PACK Custom Scenery/z_ao_eur/
    SCENERY_PACK Custom Scenery/z_autoortho/
    ```
-   **Important**: The `aa_` directory must be placed directly before the `ao_` directories so that AutoOrtho searches for meshes there first.
+   **Important**: The `aa_` directory must be placed before the `ao_` directories to ensure correct **mesh prioritization**.
 
 ### Best Practices
 
-Successful use of zOrtho4XP as a mesh generator requires:
+Effective use of **zOrtho4XP** as a **mesh generator** requires:
 
-- Careful planning of mesh levels based on flight altitude
-- Consideration of available storage space
-- Regular checking of mesh quality
-- Updates as needed
-- Performance monitoring
-- Adjustment of mesh levels
-- Balance between detail and performance
-- Regional prioritization
+- Systematic planning of **mesh levels** based on flight altitude
+- Consideration of available **storage capacity**
+- Regular **quality control** of **meshes**
+- Demand-oriented updates
+- Continuous **performance monitoring**
+- Optimization of **mesh levels**
+- Balanced ratio between **detail level** and performance
+- Regional **prioritization**
 
 ## Increasing Mesh Resolution
 
-As already described in zOrtho4XP, LiDAR data can be used to improve the resolution and accuracy of the terrain. The LiDAR data from [sonny.4lima.de](https://sonny.4lima.de) offers high resolution and accuracy for various regions.
+As described in the [**Ortho4XP chapter**](ortho4xp.md), **LiDAR data** can be implemented to improve the resolution and accuracy of **terrain representation**. The **LiDAR data** from [sonny.4lima.de](https://sonny.4lima.de) offers high resolution and precision for various regions.
 
 ### LiDAR Integration
 
-See chapter Integration of [LiDAR data](ortho4xp.md#LiDAR Data Integration) in the Ortho4XP section.
+See chapter [**LiDAR Data Integration**](ortho4xp.md#Integration of LiDAR Data) in the **Ortho4XP section**.
 
 ## Conclusion
 
-The combination of AutoOrtho and zOrtho4XP offers the best solution for X-Plane users who want both worldwide coverage and highest quality in preferred regions. With careful planning and regular maintenance, both systems can work together harmoniously and provide an optimal flight experience. 
+The integration of **AutoOrtho** and **zOrtho4XP** provides an optimal solution for **X-Plane** users who want both global coverage and highest quality in preferred regions. Through systematic planning and regular maintenance, both systems can be effectively integrated and provide an optimal flight experience. 

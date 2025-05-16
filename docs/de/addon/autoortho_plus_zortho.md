@@ -1,47 +1,17 @@
 # AutoOrtho + zOrtho4XP
 
 !!! info "Work in Progress"
-    Diese Dokumentation befindet sich noch in der Entwicklung und ist nicht vollständig. Die beschriebenen Methoden und Einstellungen werden kontinuierlich überprüft und aktualisiert.
+    Diese Dokumentation befindet sich in der Entwicklungsphase und ist nicht vollständig. Die beschriebenen Methoden und Einstellungen werden kontinuierlich evaluiert und aktualisiert.
 
-Die Kombination von AutoOrtho mit Ortho4XP bietet eine optimale Lösung für X-Plane-Benutzer, die sowohl die Vorteile des Echtzeit-Streamings als auch hochwertige, lokale Orthophotos nutzen möchten. Diese Anleitung erklärt, wie beide Systeme effektiv zusammenarbeiten können.
+Die Integration von **AutoOrtho** mit **Ortho4XP** stellt eine optimale Lösung für **X-Plane**-Benutzer dar, die sowohl die Vorteile des **Echtzeit-Streamings** als auch hochwertige, lokale **Orthophotos** nutzen möchten. Diese Anleitung erläutert die effektive Implementierung beider Systeme.
 
-## Grundkonzept
-
-Die Kombination basiert auf einem hybriden Ansatz, bei dem AutoOrtho für die allgemeine, weltweite Abdeckung und zOrtho4XP für ausgewählte, hochwertige Regionen eingesetzt wird. Dies ermöglicht eine schnelle Verfügbarkeit von Orthophotos weltweit, höchste Qualität in bevorzugten Fluggebieten, eine optimierte Speichernutzung und Flexibilität bei der Bildquellenauswahl.
-
-## Installation und Konfiguration
-
-### Voraussetzungen
-
-Für die erfolgreiche Kombination von AutoOrtho und Ortho4XP benötigen Sie
-
-- Eine funktionierende AutoOrtho-Installation
-- Ortho4XP (Version 1.4 oder höher)
-- Ausreichend SSD-Speicher für Ortho4XP-Kacheln
-- Python 3.x für Ortho4XP
-
-### Empfohlene Ortho4XP-Einstellungen
-
-Für optimale Ergebnisse mit AutoOrtho verwenden Sie folgende Einstellungen in Ortho4XP 1.4
-
-| Parameter                  | Empfohlener Wert | Beschreibung |
-|---------------------------|------------------|--------------|
-| `skip_downloads`          | Aktiviert        | Kein Bilddownload nötig |
-| `skip_converts`           | Aktiviert        | Kein DDS-Rendering nötig |
-| `mask_zl`                 | 16               | Optimale Wasserübergänge |
-| `use_masks_for_inland`    | Aktiviert        | Bessere Binnengewässer |
-| `distance_masks_too`      | Aktiviert        | Saubere Küstenlinien |
-| `custom_dem`              | Optional         | Höhere DEMs für feinere Meshes |
-| `curvature_tol`           | 2.0–4.0          | Beeinflusst die Mesh-Komplexität |
-| `road_banking_limit`      | 0.3              | Verhindert Build-Fehler |
-| `apt_smoothing_pix`       | 8–16             | Glattere Landebahnen |
-| `water_tech`              | "XP12"           | Verwendet XP12 Wassertechnologie |
+Die Kombination basiert auf einem **hybriden Ansatz**, bei dem **AutoOrtho** für die globale Abdeckung und **zOrtho4XP** für ausgewählte, hochwertige Regionen implementiert wird. Dies ermöglicht eine schnelle Verfügbarkeit von **Orthophotos** weltweit, höchste Qualität in bevorzugten Fluggebieten, eine optimierte Speichernutzung sowie Flexibilität bei der Bildquellenauswahl.
 
 ### Einrichtung
 
-Die Einrichtung erfolgt in zwei Hauptschritten. Zuerst erstellen Sie die Ortho4XP-Kacheln für Ihre bevorzugten Fluggebiete. Wählen Sie dabei Zoom-Level 17-19 für maximale Qualität und aktivieren Sie die Overlays. Als Bildquelle können Sie zwischen Bing und Google wählen.
+Die Implementierung erfolgt in zwei Hauptschritten. Zunächst werden die **Ortho4XP-Kacheln** für die bevorzugten Fluggebiete generiert. Hierbei werden **Zoom-Level** 17-19 für maximale Qualität empfohlen, wobei die **Overlays** zu aktivieren sind, sofern nicht [**SimHeaven**](../scenery.md) implementiert wird. Als Bildquelle kann zwischen **Bing** und **Google** gewählt werden.
 
-Die korrekte Struktur der scenery_packs.ini ist entscheidend für das Zusammenspiel beider Systeme
+Die korrekte Struktur der `scenery_packs.ini` ist essentiell für die Interoperabilität beider Systeme:
 
 ```
 SCENERY_PACK Custom Scenery/yAutoOrtho_Overlays/
@@ -51,94 +21,96 @@ SCENERY_PACK Custom Scenery/z_ao_eur/
 SCENERY_PACK Custom Scenery/z_autoortho/
 ```
 
-## Optimale Nutzung
+### Optimale Nutzung
 
-### Regionale Priorisierung
+Die effiziente Nutzung erfordert eine präzise **Priorisierung** der Regionen. Für häufig frequentierte Flughäfen werden **zOrtho4XP-Kacheln** mit **ZL**17-19 in einem 50km-Radius empfohlen. Hauptflugrouten profitieren von Kacheln mit **ZL**16-17, die als **Korridore** entlang der Route implementiert werden. Für alle übrigen Gebiete übernimmt **AutoOrtho** die Versorgung mit **ZL**16 als Standard.
 
-Die optimale Nutzung erfordert eine klare Priorisierung der Regionen. Für häufig genutzte Flughäfen empfehlen sich zOrtho4XP-Kacheln mit ZL17-19 in einem 50km Umkreis. Hauptflugrouten profitieren von Kacheln mit ZL16-17, die als Korridore entlang der Route angelegt werden. Für alle anderen Gebiete übernimmt AutoOrtho die Versorgung mit ZL16 als Standard.
+Eine erfolgreiche Integration erfordert eine systematische Planung, regelmäßige Wartung und kontinuierliche Optimierung. Die Identifikation der Hauptfluggebiete und die Planung der **zOrtho4XP-Abdeckung** unter Berücksichtigung des verfügbaren Speicherplatzes sind entscheidend. Die Wartung umfasst die regelmäßige **Cache-Bereinigung**, Validierung der `scenery_packs.ini` und Aktualisierung beider Systeme. Die Optimierung erfolgt durch die Anpassung der **Zoom-Levels**, die Balance zwischen Qualität und Performance sowie die regelmäßige Überprüfung der Konfiguration.
 
-### Performance-Optimierung
+### Fehlerbehebung
 
-Eine effektive Performance-Optimierung basiert auf zwei Hauptaspekten: der Cache-Verwaltung und den Grafikeinstellungen. Der AutoOrtho-Cache sollte zwischen 20-30 GB liegen, während die zOrtho4XP-Kacheln nach Bedarf verwaltet werden. Regelmäßige Cache-Bereinigung ist wichtig. Bei den Grafikeinstellungen empfehlen sich maximale Texturen, hohe Objektdichte und minimale Reflexionen.
-
-## Fehlerbehebung
-
-### Häufige Probleme
-
-Die häufigsten Probleme treten bei überlappenden Kacheln auf, wenn mehrere Ortho-Quellen für dieselbe Region vorhanden sind. Dies lässt sich durch eine klare Priorisierung in der scenery_packs.ini beheben. Performance-Probleme entstehen oft durch zu viele hochauflösende Kacheln und können durch eine Reduzierung der zOrtho4XP-Abdeckung gelöst werden. Speicherprobleme bei großen zOrtho4XP-Kacheln erfordern eine selektive Kachelerstellung.
-
-## Best Practices
-
-Eine erfolgreiche Kombination erfordert sorgfältige Planung, regelmäßige Wartung und kontinuierliche Optimierung. Identifizieren Sie Ihre Hauptfluggebiete und planen Sie die zOrtho4XP-Abdeckung unter Berücksichtigung des verfügbaren Speicherplatzes. Die Wartung umfasst regelmäßige Cache-Bereinigung, Überprüfung der scenery_packs.ini und Aktualisierung beider Systeme. Die Optimierung erfolgt durch Anpassung der Zoom-Levels, Balance zwischen Qualität und Performance sowie regelmäßige Überprüfung der Einstellungen.
+Die häufigsten Probleme treten bei überlappenden **Kacheln** auf, wenn mehrere **Ortho-Quellen** für dieselbe Region vorhanden sind. Dies kann durch eine präzise **Priorisierung** in der `scenery_packs.ini` behoben werden. Performance-Probleme resultieren häufig aus einer übermäßigen Anzahl hochauflösender **Kacheln** und können durch eine Reduzierung der **zOrtho4XP-Abdeckung** optimiert werden oder mit alternativen **Settings** bei der Erzeugung der Kachel.
 
 ## Neue Meshes für AutoOrtho
 
-zOrtho4XP kann nicht nur für hochwertige Orthophotos, sondern auch als Mesh-Generator für AutoOrtho verwendet werden. Dies ermöglicht eine verbesserte Geländedarstellung in Kombination mit den AutoOrtho-Texturen.
+**zOrtho4XP** kann nicht nur für hochwertige **Orthophotos**, sondern auch als **Mesh-Generator** für **AutoOrtho** implementiert werden. Dies ermöglicht eine verbesserte **Geländedarstellung** in Kombination mit den **AutoOrtho-Texturen**.
 
 ### Vorteile
 
-Die Verwendung von zOrtho4XP als Mesh-Generator bietet mehrere Vorteile:
+Die Implementierung von **zOrtho4XP** als **Mesh-Generator** bietet folgende Vorteile für **AutoOrtho**:
 
-- Höhere Auflösung des Geländes
-- Bessere Darstellung von Bergen und Tälern
-- Präzisere Flughafen-Glättungen
-- Optimierte Performance durch lokale Mesh-Daten
+- Erhöhte Auflösung der **Geländedarstellung**
+- Präzisere Darstellung **topographischer Merkmale**
+- Verbesserte **topographische Darstellung** durch **Ortho Patches**
+
+### Empfohlene Ortho4XP-Einstellungen
+
+Für optimale Ergebnisse mit **AutoOrtho** sind die folgenden Parameter in **Ortho4XP 1.4** essentiell:
+
+| Parameter                  | Empfohlener Wert | Beschreibung |
+|---------------------------|------------------|--------------|
+| `skip_downloads`          | Aktiviert        | Deaktiviert den Bilddownload |
+| `skip_converts`           | Aktiviert        | Deaktiviert das DDS-Rendering |
+
+Die übrigen Parameter werden im [**Ortho4XP-Kapitel**](ortho4xp.md) detailliert erläutert.
 
 ### Einrichtung
 
-Die Einrichtung erfolgt in drei Hauptschritten:
+Die Implementierung erfolgt in drei Hauptschritten:
 
 1. **Mesh-Generierung**:
-    - Starten Sie zOrtho4XP
-    - Wählen Sie die gewünschte Region
-    - Aktivieren Sie die "Build Mesh" Option
-    - Deaktivieren Sie "Build Overlays" und "Build Imagery"
-    - Setzen Sie das Mesh-Level auf 1-2 für detaillierteres Gelände
-    - Deaktivieren Sie die Bilddownloads (skip_downloads aktiviert)
+    - Initialisierung von **zOrtho4XP**
+    - Selektion der gewünschten Region
+    - Aktivierung der "**Build Mesh**" Option
+    - Deaktivierung von "**Build Overlays**" und "**Build Imagery**"
+    - Konfiguration des **Mesh-Levels** auf 1-2 für detaillierteres Gelände
+    - Deaktivierung der Bilddownloads (`skip_downloads` aktiviert)
 
-2. **Verzeichnisse zusammenführen**:
-    - Für jede zOrtho4XP-Kachel werden drei Verzeichnisse erstellt:
+2. **Verzeichnisstruktur**:
+    - **Ortho4XP** generiert pro Kachel (z.B. `zOrtho4XP_+51+00`) drei Verzeichnisse:
         - `Earth Nav Data`
         - `terrain`
         - `textures`
-    - Diese Verzeichnisse müssen in ein neues Verzeichnis zusammengeführt werden
-    - Das neue Verzeichnis sollte mit `aa_` beginnen (z.B. `aa_zortho4xp_meshes`)
-    - Speichern Sie das zusammengeführte Verzeichnis unter:
-     ```
-     Custom Scenery/z_autoortho/scenery/aa_zortho4xp_meshes/
-     ```
-    - Die Struktur sollte den bestehenden `ao_`-Verzeichnissen entsprechen
+    - Die separate Integration dieser Verzeichnisse in das **AutoOrtho-Konfigurationsverzeichnis** und die `scenery_packs.ini` würde die Initialisierungszeit signifikant erhöhen, da **AutoOrtho** jedes Verzeichnis beim Start mountet.
+    - Daher werden die Inhalte dieser drei Verzeichnisse pro Kachel in einem einzigen Verzeichnis (z.B. `aa_zortho4xp_meshes`) konsolidiert.
+    - Bei Namenskonflikten während des Kopiervorgangs können die Dateien bedenkenlos überschrieben werden, da es sich um identische **Masken** handelt.
+    - Das neue Verzeichnis sollte mit `aa_` beginnen (z.B. `aa_zortho4xp_meshes`), um die korrekte Lese-Reihenfolge zu gewährleisten.
+    - Speicherung des konsolidierten Verzeichnisses unter `z_autoortho/scenery`:
+       ```
+       Custom Scenery/z_autoortho/scenery/aa_zortho4xp_meshes/
+       ```
+    - Die Struktur entspricht somit den bestehenden `ao_`-Verzeichnissen
 
-3. **scenery_packs.ini anpassen**:
+3. **scenery_packs.ini Konfiguration**:
    ```
    SCENERY_PACK Custom Scenery/yAutoOrtho_Overlays/
    SCENERY_PACK Custom Scenery/z_autoortho/scenery/aa_zortho4xp_meshes/
    SCENERY_PACK Custom Scenery/z_ao_eur/
    SCENERY_PACK Custom Scenery/z_autoortho/
    ```
-   **Wichtig**: Das `aa_`-Verzeichnis muss direkt vor den `ao_`-Verzeichnissen platziert werden, damit AutoOrtho zuerst dort nach Meshes sucht.
+   **Wichtig**: Das `aa_`-Verzeichnis muss vor den `ao_`-Verzeichnissen platziert werden, um die korrekte **Mesh-Priorisierung** zu gewährleisten.
 
 ### Best Practices
 
-Die erfolgreiche Nutzung von zOrtho4XP als Mesh-Generator erfordert:
+Die effektive Nutzung von **zOrtho4XP** als **Mesh-Generator** erfordert:
 
-- Sorgfältige Planung der Mesh-Level basierend auf der Flughöhe
-- Berücksichtigung des verfügbaren Speicherplatzes
-- Regelmäßige Überprüfung der Mesh-Qualität
-- Aktualisierung bei Bedarf
-- Performance-Monitoring
-- Anpassung der Mesh-Level
-- Balance zwischen Detail und Performance
-- Regionale Priorisierung
+- Systematische Planung der **Mesh-Level** basierend auf der Flughöhe
+- Berücksichtigung der verfügbaren **Speicherkapazität**
+- Regelmäßige **Qualitätskontrolle** der **Meshes**
+- Bedarfsorientierte Aktualisierung
+- Kontinuierliches **Performance-Monitoring**
+- Optimierung der **Mesh-Level**
+- Ausgewogene Balance zwischen **Detailgrad** und Performance
+- Regionale **Priorisierung**
 
 ## Mesh-Auflösung erhöhen
 
-Wie in zOrtho4XP bereits beschrieben, können LiDAR-Daten verwendet werden, um die Auflösung und Genauigkeit des Geländes zu verbessern. Die LiDAR-Daten von [sonny.4lima.de](https://sonny.4lima.de) bieten eine hohe Auflösung und Genauigkeit für verschiedene Regionen.
+Wie im [**Ortho4XP-Kapitel**](ortho4xp.md) beschrieben, können **LiDAR-Daten** zur Verbesserung der Auflösung und Genauigkeit der **Geländedarstellung** implementiert werden. Die **LiDAR-Daten** von [sonny.4lima.de](https://sonny.4lima.de) bieten eine hohe Auflösung und Präzision für verschiedene Regionen.
 
 ### LiDAR-Integration
 
-Siehe Kapitel Integration von [LiDAR-Daten](ortho4xp.md#Integration von LiDAR-Daten) im Abschnitt Ortho4XP.
+Siehe Kapitel [**LiDAR-Daten Integration**](ortho4xp.md#Integration von LiDAR-Daten) im **Ortho4XP-Abschnitt**.
 
 ## Fazit
 
-Die Kombination von AutoOrtho und zOrtho4XP bietet die beste Lösung für X-Plane-Benutzer, die sowohl weltweite Abdeckung als auch höchste Qualität in bevorzugten Regionen wünschen. Mit sorgfältiger Planung und regelmäßiger Wartung können beide Systeme harmonisch zusammenarbeiten und ein optimales Flugerlebnis bieten. 
+Die Integration von **AutoOrtho** und **zOrtho4XP** bietet eine optimale Lösung für **X-Plane**-Benutzer, die sowohl globale Abdeckung als auch höchste Qualität in bevorzugten Regionen anstreben. Durch systematische Planung und regelmäßige Wartung können beide Systeme effektiv integriert werden und ein optimales Flugerlebnis gewährleisten. 

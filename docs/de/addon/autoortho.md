@@ -1,30 +1,30 @@
 # AutoOrtho
 
-Die visuelle Qualität der Landschaften ist entscheidend für Sichtflüge (VFR) in Flugsimulatoren. Während X-Plane Standardtexturen bereitstellt, werden diese oft als veraltet empfunden. AutoOrtho behebt dieses Problem durch die Echtzeit-Integration von Satellitenbildern und bietet eine detaillierte Darstellung von Straßen, Wäldern und anderen Merkmalen. Die aktuelle Version 0.7.2, veröffentlicht am 28. Januar 2024, optimiert die Integration mit X-Plane und reduziert häufige Probleme wie Szenerie-Konflikte oder Leistungseinbußen.
+Die visuelle Qualität der Landschaftsdarstellung stellt einen entscheidenden Faktor für **Sichtflüge (VFR)** in Flugsimulatoren dar. Während X-Plane Standardtexturen implementiert, werden diese häufig als veraltet eingestuft. **AutoOrtho** adressiert diese Limitation durch die **Echtzeit-Integration** von Satellitenbildern und ermöglicht eine präzise Darstellung von Infrastruktur, Vegetation und weiteren Geländemerkmalen. Die aktuelle Version 0.7.2, veröffentlicht am 28. Januar 2024, optimiert die Integration mit X-Plane und minimiert typische Probleme wie **Szenerie-Konflikte** oder **Leistungseinbußen**.
 
 ## Funktionsweise
 
-AutoOrtho streamt Orthophotos basierend auf der Flugzeugposition und rendert sie als Texturen in X-Plane. Das System arbeitet über mehrere Schlüsselmechanismen:
+**AutoOrtho** implementiert ein **Streaming-System** für Orthophotos basierend auf der Flugzeugposition und rendert diese als Texturen in X-Plane. Das System operiert über mehrere Schlüsselmechanismen:
 
-Das Echtzeit-Streaming-System lädt Satellitenbilder in Kacheln von Anbietern wie Bing, wobei eine Zoomstufe von 16 (ZL16) verwendet wird, um Detail und Ladezeit auszubalancieren. Kacheln für aktuelle und angrenzende Bereiche werden vorab geladen, um nahtlose Übergänge zu gewährleisten, was eine stabile Internetverbindung von mindestens 100 Mbps erfordert.
+- Das **Echtzeit-Streaming-System** lädt Satellitenbilder in Kacheln von Anbietern wie Bing, wobei eine **Zoomstufe** von bis zu 16 (ZL16) implementiert wird, um Detailgenauigkeit und Ladezeit zu optimieren. Kacheln für aktuelle und angrenzende Bereiche werden präventiv geladen, um nahtlose Übergänge zu gewährleisten, was eine stabile Internetverbindung von mindestens 100 Mbps erfordert.
 
-Geladene Kacheln werden lokal zwischengespeichert, um wiederholte Downloads zu vermeiden. Der Cache, der mehrere Gigabyte umfassen kann, wird auf einer SSD gespeichert. Benutzer können die Cache-Größe anpassen oder bei Bedarf leeren. Ein virtuelles Dateisystem (WinFSP/Dokan unter Windows, FUSE unter Linux) stellt die Kacheln als Szenerie-Dateien dar und füllt den z_autoortho-Ordner im Custom Scenery-Verzeichnis dynamisch.
+- Ein **virtuelles Dateisystem** (`WinFSP`/`Dokan` unter Windows, `FUSE` unter Linux) verwaltet die Kacheln in einem lokalen Cache auf SSD und stellt sie als Szenerie-Dateien im `z_autoortho`-Ordner des `Custom Scenery`-Verzeichnisses dar.
 
-AutoOrtho liefert 2D-Orthophotos ohne 3D-Objekte. Für Gebäude und Bäume wird SimHeaven (X-World) empfohlen, das OpenStreetMap-Daten nutzt. Overlays passen die Bilder an das X-Plane-Terrain-Mesh an. Diese Overlays enthalten wichtige Informationen wie Flughafen-Glättungen, Straßen, Eisenbahnlinien und andere Geländemerkmale, die für eine realistische Darstellung notwendig sind. Bei Verwendung von SimHeaven X-World sind die yOrtho-Overlays nicht erforderlich, da SimHeaven bereits alle notwendigen Overlay-Daten enthält und diese sogar noch detaillierter darstellt.
+**AutoOrtho** liefert **2D-Orthophotos** ohne 3D-Objekte. Für die Darstellung von Gebäuden und Vegetation wird **SimHeaven (X-World)** empfohlen, das OpenStreetMap-Daten implementiert. Overlays adaptieren die Bilder an das **X-Plane-Terrain-Mesh** und enthalten essentielle Informationen wie Flughafen-Glättungen, Verkehrsinfrastruktur und Eisenbahnlinien. Bei Verwendung von **SimHeaven X-World** sind die `yOrtho-Overlays` redundant.
 
-Der Streaming-Prozess beeinflusst CPU, RAM (bis zu 64 GB) und Festplattenleistung. Während SSDs Engpässe minimieren, können bei langsamen Verbindungen oder unzureichender Hardware Frame-Drops auftreten.
+Der **Streaming-Prozess** beeinflusst CPU-Auslastung, RAM-Verbrauch (bis zu 64 GB) und Festplattenleistung. Während SSDs Engpässe minimieren, können bei suboptimalen Verbindungen oder unzureichender Hardware **Frame-Drops** auftreten.
 
 ## Installation und Konfiguration
 
 ### Systemanforderungen
 
-Das System erfordert X-Plane 11.50+ oder X-Plane 12, läuft unter Windows, Linux (mit FUSE) oder macOS (experimentell). Abhängigkeiten umfassen WinFSP/Dokan (Windows), FUSE (Linux) und optional Python 3.x für Quellcode. Hardwareanforderungen umfassen 16 GB RAM, SSD-Speicher und eine schnelle Internetverbindung (≥100 Mbps).
+Das System erfordert X-Plane 11.50+ oder X-Plane 12, läuft unter Windows, Linux (mit `FUSE`) oder macOS (experimentell). **Abhängigkeiten** umfassen `WinFSP`/`Dokan` (Windows), `FUSE` (Linux) und optional **Python** 3.x für Quellcode. **Hardwareanforderungen** umfassen 16 GB **RAM**, **SSD**-Speicher und eine schnelle **Internetverbindung** (≥100 Mbps).
 
 ### Installationsprozess
 
-AutoOrtho wird von GitHub (kubilus1/autoortho) heruntergeladen, entweder als Binary oder Installer. Windows-Benutzer installieren WinFSP/Dokan und starten autoortho_win.exe, während Linux-Benutzer FUSE benötigen und macOS-Benutzer den experimentellen Anweisungen folgen sollten.
+**AutoOrtho** wird von GitHub (`kubilus1/autoortho`) heruntergeladen, entweder als Binary oder Installer. Windows-Benutzer installieren `WinFSP`/`Dokan` und starten `autoortho_win.exe`, während Linux-Benutzer `FUSE` benötigen und macOS-Benutzer den experimentellen Anweisungen folgen sollten.
 
-Die Benutzeroberfläche erfordert die Angabe des X-Plane-Hauptverzeichnisses und des Custom Scenery-Verzeichnisses. Regionale Overlays (wenige GB) werden über den "Scenery"-Tab installiert. Die scenery_packs.ini wird mit folgender Struktur konfiguriert:
+Die Benutzeroberfläche erfordert die Angabe des X-Plane-Hauptverzeichnisses und des `Custom Scenery`-Verzeichnisses. Regionale Overlays (wenige GB) werden über den "Scenery"-Tab installiert. Die `scenery_packs.ini` wird mit folgender Struktur konfiguriert:
 
 ```
 SCENERY_PACK Custom Scenery/yAutoOrtho_Overlays/
@@ -32,7 +32,9 @@ SCENERY_PACK Custom Scenery/z_ao_eur/
 SCENERY_PACK Custom Scenery/z_autoortho/
 ```
 
-Der z_autoortho-Eintrag wird am Ende platziert, um anderen Szenerien Priorität zu geben. Die aktuelle Version stellt Platzhalterverzeichnisse wieder her, um eine stabile Reihenfolge zu gewährleisten. AutoOrtho muss vor X-Plane gestartet werden, um das virtuelle Dateisystem zu mounten, und die scenery_packs.ini sollte schreibgeschützt sein.
+Der `z_autoortho`-Eintrag wird am Ende platziert, um anderen Szenerien Priorität zu geben. Die aktuelle Version stellt Platzhalterverzeichnisse wieder her, um eine stabile Reihenfolge zu gewährleisten. **AutoOrtho** muss vor X-Plane gestartet werden, um das **virtuelle Dateisystem** zu mounten, und die `scenery_packs.ini` sollte schreibgeschützt sein bzw. von einem Tool wie xOrganizer verwaltet werden.
+
+Das Verzeichnis `yAutoOrtho_Overlays` wird nur benötigt, sofern nicht **SimHeaven** benutzt wird.
 
 ### Wichtige Konfigurationsparameter
 
@@ -63,35 +65,35 @@ Für optimale Erfahrung fügt SimHeaven X-World 3D-Objekte und Autogen hinzu, w�
 
 ### Vergleich mit Ortho4XP
 
-AutoOrtho und Ortho4XP erfüllen unterschiedliche Zwecke im X-Plane-Ökosystem. AutoOrtho streamt Daten in Echtzeit von Bing/USGS, benötigt minimalen Speicher (wenige GB Cache) aber eine konstante Internetverbindung. Es arbeitet mit ZL16, was einen guten Kompromiss zwischen Detail und Leistung bietet. Im Gegensatz dazu verwendet Ortho4XP vorbereitete lokale Kacheln von Bing/Google, benötigt hunderte GB Speicher, unterstützt aber bis zu ZL19 für maximale Details.
+AutoOrtho und Ortho4XP erfüllen unterschiedliche Zwecke im X-Plane-Ökosystem. AutoOrtho streamt Daten in Echtzeit von Bing/USGS, benötigt minimalen Speicher (wenige GB Cache) aber eine konstante Internetverbindung. Es arbeitet mit bis zu ZL16, was einen guten Kompromiss zwischen Detail und Leistung bietet. Im Gegensatz dazu verwendet Ortho4XP vorbereitete lokale Kacheln von Bing/Google, benötigt hunderte GB Speicher, unterstützt aber bis zu ZL19 für maximale Details.
 
 AutoOrthos Leistung kann gelegentliches Ruckeln zeigen und stellt höhere Anforderungen an CPU/RAM, während Ortho4XP stabilere Leistung mit lokal gespeicherten Daten bietet. Die Einrichtung ist mit AutoOrtho nach der initialen Konfiguration einfacher, während Ortho4XP zeitaufwändige Kachelerstellung erfordert, aber detailliertere Szenerien für bestimmte Regionen bietet.
 
 ### Häufige Probleme und Lösungen
 
-Benutzer können mehrere häufige Probleme bei der Verwendung von AutoOrtho erleben:
+Benutzer können mehrere typische Probleme bei der Implementierung von AutoOrtho konfrontieren:
 
-1. **Startfehler**:
-    - Ursache: Falsche WinFSP/Dokan-Installation oder fehlerhafte scenery_packs.ini-Konfiguration
-    - Lösung: Nochmalige Installation/Konfiguration WinFSP/Dokan. Korrigieren der scenery_packs.ini.
+1. **Initialisierungsfehler**:
+    - Ursache: Fehlerhafte `WinFSP`/`Dokan`-Installation oder inkorrekte `scenery_packs.ini`-Konfiguration
+    - Lösung: Neuinstallation/Konfiguration von `WinFSP`/`Dokan`. Korrektur der `scenery_packs.ini`.
 
 2. **FUSE-Probleme** (Linux):
     - Log-Eintrag: `FUSE error: Failed to mount filesystem`
-    - Ursache: Fehlende fuse3-Installation oder Berechtigungsprobleme
-    - Lösung: fuse3 installieren und Berechtigungen prüfen (Linux: ls -l /dev/fuse)
+    - Ursache: Fehlende `fuse3`-Installation oder Berechtigungsprobleme
+    - Lösung: Installation von `fuse3` und Überprüfung der Berechtigungen (Linux: `ls -l /dev/fuse`)
 
 3. **Python-Modul-Probleme**:
     - Log-Eintrag: `ModuleNotFoundError: No module named 'pyfuse3'`
-    - Ursache: Fehlende Abhängigkeiten
-    - Lösung: Fehlende Abhängigkeiten in der virtuellen Umgebung installieren
+    - Ursache: Fehlende **Abhängigkeiten**
+    - Lösung: Installation fehlender **Abhängigkeiten** in der **virtuellen Umgebung**
 
-4. **Ruckeln und Frame-Drops**:
-    - Ursache: Langsame Verbindungen oder unzureichende Hardware
-    - Lösung: Verwendung einer SSD und reduzierten Grafikeinstellungen
+4. **Performance-Probleme**:
+    - Ursache: Suboptimale Verbindungen oder unzureichende Hardware
+    - Lösung: Implementierung einer **SSD** und Reduzierung der **Grafikeinstellungen**
 
-5. **Unebene Flughäfen**:
-    - Ursache: Fehlende automatische Flughafen-Glättung
-    - Lösung: Verwendung von SimHeaven und Priorisierung von Flughafen-Szenerien
+5. **Flughafen-Topographie-Probleme**:
+    - Ursache: Fehlende automatische **Flughafen-Glättung** bzw. fehlende **Ortho Patches** für die **Flughafen-Szenerie**
+    - Lösung: Implementierung von **Ortho Patches** oder dem `flatten 1` Parameter in der `apt.dat` und Überprüfung der **Priorisierung** von **Flughafen-Szenerien**
 
 6. **Netzwerkprobleme**:
     - Log-Eintrag: `HTTP 429: Too Many Requests`
@@ -111,8 +113,6 @@ Benutzer können mehrere häufige Probleme bei der Verwendung von AutoOrtho erle
 9. **Abstürze**:
     - Ursache: RAM-Überlastung oder Add-on-Konflikte
     - Lösung: Deaktivieren von Add-ons, Erhöhen des RAMs oder Reduzieren der Cache-Größe
-
-
 
 ### Log-Analyse
 
@@ -139,7 +139,6 @@ Für detailliertere Log-Informationen kann in der `.autoortho` Konfigurationsdat
 # Debug-Modus
 debug = true
 ```
-
 
 ## Linux-spezifische Installation
 
@@ -215,7 +214,6 @@ Das Beispielsystem läuft mit Debian 12 (Bookworm) und X-Plane 12, verfügt übe
     ```bash
     chmod 444 ~/X-Plane-12/Custom\ Scenery/scenery_packs.ini
     ```
-
 
 ## Fazit
 
