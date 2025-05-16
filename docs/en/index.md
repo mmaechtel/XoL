@@ -22,6 +22,11 @@ This documentation is an open project. Improvements or additions can be contribu
 
 ## Recent Changes
 
+### 2025-05-15
+- [Ortho4XP](addon/ortho4xp.md) SonnyLiDAR chapter expanded
+- [Clearance](flight_operations/clearance.md#**ToLiss Airbus – Request Departure Clearance via CPDLC**) CPDLC ToLiss information added
+- [Weather radar functionality in real aircraft](flight_operations/weather.md#Weather Radar) summarized
+
 ### 2025-05-09
 - ['Device Lost Crash'](xplane/geraeteverluste.md) explained
 - New ['Flight Operations'](flight_operations/overview.md) menu with [weather tools](flight_operations/weather.md)
