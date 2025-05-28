@@ -42,7 +42,7 @@ Beim Einholen einer IFR-Clearance (Instrument Flight Rules) muss sich der Pilot 
     * **Arrival Airport**: Wird aus dem FMGS übernommen.
     * **Gate Number**: Manuell eingeben (z. B. `A14`).
     * **ATIS ID**: Eingeben der aktuellen ATIS-ID (z. B. `D`).
-    * **Station ID** (rechts unten): Hier kommt die **Hoppie ID** des ATC-Controllers rein, bei VATSIM z. B. `EDDHDEL`.
+    * **Station ID** (rechts unten): Hier kommt die **Hoppie ID** des ATC-Controllers rein, bei VATSIM z. B. `EDDH`. Informationen dazu finden sich auch oft in der ATIS des Flughafens. 
 
 3. **Anfrage absenden**:
 

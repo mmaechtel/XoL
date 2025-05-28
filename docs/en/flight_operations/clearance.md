@@ -42,7 +42,7 @@ When obtaining an IFR clearance (Instrument Flight Rules), the pilot must prepar
     * **Arrival Airport**: Taken from the FMGS.
     * **Gate Number**: Enter manually (e.g., `A14`).
     * **ATIS ID**: Enter the current ATIS ID (e.g., `D`).
-    * **Station ID** (bottom right): Enter the **Hoppie ID** of the ATC controller, for VATSIM e.g., `EDDHDEL`.
+    * **Station ID** (bottom right): Enter the **Hoppie ID** of the ATC controller, for VATSIM e.g., `EDDH`. You can also check the airport ATIS for information about it. 
 
 3. **Send request**:
 
