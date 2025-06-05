@@ -25,6 +25,18 @@ X-Plane uses deferred rendering, where metadata is stored in a G-buffer. This re
 
 Not all aliasing artifacts are due to MSAA limitations. Post-processing effects such as Screen-Space Reflections (SSR) can cause artifacts, for example through inaccurate reflections (e.g., sky on objects). These artifacts are not geometric in nature and therefore cannot be fixed by MSAA. FXAA can smooth such edges but does not remove the underlying faulty information.
 
+#### Interior Lighting and PBR
+
+The lighting in X-Plane is based on **Physically Based Rendering (PBR)**, which leads to realistic but also complex lighting effects. Particularly in interior spaces like the cockpit, this can result in unexpected lighting effects. X-Plane is fundamentally capable of distinguishing between interior and exterior areas. This becomes particularly evident when switching to the free camera (key "C"), as the interior lighting adjusts accordingly. However, external light sources such as sky light or atmospheric effects (e.g., sunset) can influence the interior lighting.
+
+The PBR implementation in X-Plane simulates realistic light reflections and absorptions. Materials are influenced by their environment - a cockpit in a pink hangar would take on a corresponding tint. Weather conditions like an orange sunset affect the cockpit lighting, and each material reacts differently to light based on its physical properties.
+
+The current render pipeline of X-Plane has some technical limitations. Each pixel is calculated independently and in parallel, without context about the surrounding geometry. The detection of shielding, for example when a cockpit shouldn't "see" the sky, is computationally intensive. Particularly with narrow geometries like cockpit edges or wing curves, unwanted light from the environment can be captured.
+
+Screen-Space Reflections (SSR) can lead to visible artifacts. Shimmering reflections, like on wet asphalt, can occur due to missing denoising techniques. The lack of ray coherence can lead to uneven reflections. A complete solution to these problems would require significant computational power and drastically reduce the frame rate.
+
+The optimization of interior lighting and the reduction of lighting artifacts have a high priority in X-Plane's development. These problems are among the most common complaints that deter potential users from X-Plane 12. However, the complexity of the implementation requires careful balancing between visual quality and performance.
+
 #### Driver-Based MSAA
 
 MSAA can also be forced through the graphics driver. This leads to faster execution but also to less accurate shading, as the complex X-Plane render pipeline is not taken into account. The driver implementation cannot fully account for the specific requirements of the X-Plane render pipeline.
@@ -38,10 +50,6 @@ If these measures do not result in satisfactory image quality, consideration sho
 #### Conclusion and Outlook
 
 Aliasing is a complex problem that is complicated by physical limits (Nyquist-Shannon Theorem) and the complexity of modern render pipelines. A solution requires improvements in the render pipeline, such as optimized SSR implementations. Currently, no immediate AA improvements are planned for X-Plane 12.2, but continuous optimization work is ongoing.
-
-#### Evaluation
-
-The analysis shows that AA in computer graphics represents a complex interplay of physical principles (Nyquist-Shannon Theorem) and technical limitations. The description of AA techniques (SSAA, FXAA, MSAA) and their implementation in a deferred rendering pipeline illustrates the challenge of balancing visual quality and performance. Non-geometric artifacts, such as those from SSR, emphasize that aliasing cannot be solved by AA techniques alone but requires optimization of the entire render pipeline. The discussion of driver-based AA shows the limits of external optimizations, while the ongoing efforts for improvements underscore the complexity of modern game development.
 
 ### Audio Settings
 

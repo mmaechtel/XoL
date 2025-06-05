@@ -25,6 +25,19 @@ X-Plane nutzt Deferred Rendering, bei dem Metadaten in einem G-Buffer gespeicher
 
 Nicht alle Aliasing-Artefakte sind auf MSAA-Mängel zurückzuführen. Post-Processing-Effekte wie Screen-Space Reflections (SSR) können Artefakte verursachen, etwa durch ungenaue Reflexionen (z.B. Himmel auf Objekten). Diese Artefakte sind nicht geometrischer Natur und können daher von MSAA nicht behoben werden. FXAA kann solche Kanten glätten, entfernt jedoch nicht die zugrunde liegende fehlerhafte Information.
 
+
+#### Innenraumbeleuchtung und PBR
+
+Die Beleuchtung in X-Plane basiert auf **Physically Based Rendering (PBR)**, was zu realistischen, aber auch komplexen Lichteffekten führt. Besonders in Innenräumen wie dem Cockpit kann dies zu unerwarteten Beleuchtungseffekten führen. X-Plane ist grundsätzlich in der Lage, zwischen Innen- und Außenbereichen zu unterscheiden. Dies wird besonders deutlich beim Wechsel in die freie Kamera (Taste "C"), da sich die Innenraumbeleuchtung entsprechend anpasst. Dennoch können externe Lichtquellen wie Himmelslicht oder atmosphärische Effekte (z.B. Sonnenuntergang) die Innenraumbeleuchtung beeinflussen.
+
+Die PBR-Implementierung in X-Plane simuliert realistische Lichtreflexionen und -absorptionen. Materialien werden durch ihre Umgebung beeinflusst - ein Cockpit in einem pinkfarbenen Hangar würde eine entsprechende Tönung annehmen. Wetterbedingungen wie ein orangefarbener Sonnenuntergang wirken sich auf die Cockpitbeleuchtung aus, und jedes Material reagiert unterschiedlich auf Licht, basierend auf seinen physikalischen Eigenschaften.
+
+Die aktuelle Renderpipeline von X-Plane hat einige technische Einschränkungen. Jeder Pixel wird unabhängig und parallel berechnet, ohne Kontext über die umgebende Geometrie. Die Erkennung von Abschirmungen, zum Beispiel wenn ein Cockpit den Himmel nicht "sehen" sollte, ist rechentechnisch aufwendig. Besonders bei schmalen Geometrien wie Cockpitkanten oder Flügelkurven können ungewollt Licht von der Umgebung aufgenommen werden.
+
+Screen-Space Reflections (SSR) können zu sichtbaren Artefakten führen. Schimmernde Reflexionen, wie bei nassem Asphalt, können durch fehlende Denoising-Techniken entstehen. Die fehlende Strahlkohärenz (Ray Coherency) kann zu ungleichmäßigen Reflexionen führen. Eine vollständige Lösung dieser Probleme würde erhebliche Rechenleistung erfordern und die Bildrate drastisch reduzieren.
+
+Die Optimierung der Innenraumbeleuchtung und die Reduzierung von Beleuchtungsartefakten haben eine hohe Priorität in der Entwicklung von X-Plane. Diese Probleme gehören zu den häufigsten Beschwerden, die potenzielle Nutzer von X-Plane 12 abschrecken. Die Komplexität der Implementierung erfordert jedoch sorgfältige Abwägungen zwischen visueller Qualität und Performance.
+
 #### Treiberbasierte MSAA
 
 MSAA kann auch über den Grafiktreiber erzwungen werden. Dies führt zu einer schnelleren Ausführung, aber auch zu ungenauerer Beschattung, da die komplexe X-Plane Renderpipeline nicht berücksichtigt wird. Die Treiberimplementierung kann die spezifischen Anforderungen der X-Plane Renderpipeline nicht vollständig berücksichtigen.
@@ -37,11 +50,7 @@ Falls diese Maßnahmen nicht zu einer zufriedenstellenden Bildqualität führen,
 
 #### Fazit und Ausblick
 
-Aliasing ist ein komplexes Problem, das durch physikalische Grenzen (Nyquist-Shannon-Theorem) und die Komplexität moderner Renderpipelines erschwert wird. Eine Lösung erfordert Verbesserungen in der Renderpipeline, etwa durch optimierte SSR-Implementierungen. Derzeit sind in X-Plane 12.2 keine unmittelbaren AA-Verbesserungen geplant, jedoch wird kontinuierlich an Optimierungen gearbeitet.
-
-#### Bewertung
-
-Die Analyse zeigt, dass AA in der Computergrafik ein komplexes Zusammenspiel von physikalischen Prinzipien (Nyquist-Shannon-Theorem) und technischen Einschränkungen darstellt. Die Beschreibung der AA-Techniken (SSAA, FXAA, MSAA) und ihre Implementierung in einer Deferred-Rendering-Pipeline verdeutlicht die Herausforderung, visuelle Qualität und Performance auszubalancieren. Nicht-geometrische Artefakte, etwa durch SSR, unterstreichen, dass Aliasing nicht allein durch AA-Techniken gelöst werden kann, sondern eine Optimierung der gesamten Renderpipeline erfordert. Die Diskussion über treiberbasierte AA zeigt die Grenzen externer Optimierungen, während die fortlaufenden Bemühungen um Verbesserungen die Komplexität moderner Spieleentwicklung unterstreichen.
+Aliasing ist ein komplexes Problem, das durch physikalische Grenzen (Nyquist-Shannon-Theorem) und die Komplexität moderner Renderpipelines erschwert wird. Eine Lösung erfordert Verbesserungen in der Renderpipeline, etwa durch optimierte SSR-Implementierungen. In X-Plane wird kontinuierlich an Optimierungen gearbeitet.
 
 ### Audio-Einstellungen
 
