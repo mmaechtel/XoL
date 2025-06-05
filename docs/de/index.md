@@ -23,7 +23,7 @@ Diese Dokumentation ist ein offenes Projekt. Verbesserungen oder Ergänzungen k�
 ## Letzte Änderungen
 
 ### 2025-06-05
-- Weiter Informationen zum Aliasing und Grafik Einstellungen
+- Weitere Informationen zum Aliasing und Grafik Einstellungen
 
 ### 2025-05-15
 - [Ortho4XP](addon/ortho4xp.md) SonnyLiDAR Kapitel erweitert
