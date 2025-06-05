@@ -23,7 +23,7 @@ Diese Dokumentation ist ein offenes Projekt. Verbesserungen oder Ergänzungen k�
 ## Letzte Änderungen
 
 ### 2025-06-05
-- Weitere Informationen zum Aliasing und Grafik Einstellungen
+- [Weitere Informationen zum Aliasing und Grafik Einstellungen](https://emvisio.com/xplane/config.html#grafik-einstellungen)
 
 ### 2025-05-15
 - [Ortho4XP](addon/ortho4xp.md) SonnyLiDAR Kapitel erweitert
