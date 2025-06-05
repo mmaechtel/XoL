@@ -2,6 +2,14 @@
 
 All notable changes to the XoL documentation will be documented in this file.
 
+## [2025-06-05]
+
+### Added
+- Additional information about aliasing and graphics settings
+  - Detailed explanation of anti-aliasing techniques in X-Plane
+  - Comprehensive guide on graphics settings optimization
+  - Technical details about the Nyquist-Shannon Theorem and its application
+
 ## [2025-05-08]
 
 ### Added
