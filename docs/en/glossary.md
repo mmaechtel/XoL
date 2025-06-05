@@ -8,6 +8,15 @@ tags:
 # Glossary
 
 ## A
+### Airport Enhancement Package (AEP)
+A scenery addon by X-Codr Designs for X-Plane that enhances default airports with more detailed models, higher resolution textures, and new technologies. It replaces airport buildings, facades, ground objects, static vehicles, as well as runway lights, beacons, and navigation aids with modern versions. [More details](../addon/aep.md)
+
+### Airport Elements
+The various components of an airport in X-Plane, such as buildings, facades, ground objects, static vehicles, runway lights, beacons, and navigation aids. The [Airport Enhancement Package (AEP)](../addon/aep.md) enhances these elements with more detailed models and higher resolution textures.
+
+### Airport Vegetation
+The 3D vegetation elements on airports in X-Plane. In the [Airport Enhancement Package (AEP)](../addon/aep.md), the default airport vegetation is replaced with new, more detailed 3D models for a more realistic representation.
+
 ### AutoOrtho
 A tool for X-Plane that integrates orthophotos directly into the flight simulator. It enables streaming of high-resolution aerial imagery as ground textures without the need to download and convert them beforehand. The software can be installed either as a pre-built binary or from source code.
 
@@ -39,6 +48,9 @@ Federal Aviation Administration - the US aviation authority that sets standards 
 ## G
 ### GUI (Graphical User Interface)
 A graphical user interface that enables interaction with a program through graphical elements such as windows, buttons, and menus. In AutoOrtho, the GUI is used to configure the X-Plane directory and load ortho sets.
+
+### Ground Markings
+The markings and pavements on airports in X-Plane. In the [Airport Enhancement Package (AEP)](../addon/aep.md), these are replaced with new, high-resolution textures that support X-Plane 12's weather effects and create realistic patterns without repetition.
 
 ## H
 ### HDR

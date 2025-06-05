@@ -1,10 +1,10 @@
 # Airport Enhancement Package (AEP)
 
-The Airport Enhancement Package (AEP) by X-Codr Designs is a scenery addon for X-Plane. It enhances default airports with more detailed models, higher resolution textures, new technologies like PBR normalmaps, and regionalization.
+The [Airport Enhancement Package (AEP)](../glossary.md#airport-enhancement-package-aep) by X-Codr Designs is a scenery addon for X-Plane. It enhances default airports with more detailed models, higher resolution textures, new technologies like PBR normalmaps, and regionalization.
 
 ## Features
 
-AEP replaces default airport elements with new developments. This includes airport buildings, facades, ground objects, static vehicles, as well as runway lights, beacons, and navigation aids.
+AEP replaces default [airport elements](../glossary.md#airport-elements) with new developments. This includes airport buildings, facades, ground objects, static vehicles, as well as runway lights, beacons, and navigation aids.
 
 All models are equipped with modern technology:
 
@@ -12,9 +12,9 @@ All models are equipped with modern technology:
 * PBR normalmaps for details and reflections
 * LODs for good performance at high detail level
 
-The models feature simple interiors for additional depth. The default airport vegetation has been replaced with new 3D vegetation.
+The models feature simple interiors for additional depth. The default [airport vegetation](../glossary.md#airport-vegetation) has been replaced with new 3D vegetation.
 
-The markings and pavements have been replaced with new textures. All ground textures are available in high resolution and feature PBR normalmaps. The markings have been revised and all ground textures support X-Plane 12's weather effects through "weather maps". Decals provide realistic patterns and avoid repetition.
+The [ground markings](../glossary.md#ground-markings) and pavements have been replaced with new textures. All ground textures are available in high resolution and feature PBR normalmaps. The markings have been revised and all ground textures support X-Plane 12's weather effects through "weather maps". Decals provide realistic patterns and avoid repetition.
 
 ## System Requirements
 

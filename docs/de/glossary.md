@@ -8,10 +8,16 @@ tags:
 # Glossar
 
 ## A
+### Airport Enhancement Package (AEP)
+Ein Szenerie-Addon von X-Codr Designs für X-Plane, das Standard-Flughäfen durch detailliertere Modelle, höher aufgelöste Texturen und neue Technologien verbessert. Es ersetzt Flughafengebäude, Fassaden, Bodenobjekte, statische Fahrzeuge sowie Landebahnlichter, Baken und Navigationshilfen durch modernere Versionen. [Mehr Details](../addon/aep.md)
+
 ### AutoOrtho
 Ein Tool für X-Plane, das Orthofotos direkt in den Flugsimulator integriert. Es ermöglicht das Streaming von hochauflösenden Luftbildern als Bodenstruktur, ohne dass diese vorher heruntergeladen und konvertiert werden müssen. Die Software kann entweder als vorgefertigte Binary oder aus dem Quellcode installiert werden.
 
 ## B
+### Bodenmarkierungen
+Die Markierungen und Beläge auf Flughäfen in X-Plane. Im [Airport Enhancement Package (AEP)](../addon/aep.md) werden diese durch neue, hochauflösende Texturen ersetzt, die X-Plane 12's Wettereffekte unterstützen und realistische Muster ohne Wiederholungen erzeugen.
+
 ### Binary
 Eine vorkompilierte, ausführbare Datei eines Programms. Im Gegensatz zur Installation aus dem Quellcode kann eine Binary direkt ausgeführt werden, ohne dass weitere Kompilierungsschritte notwendig sind.
 
@@ -36,7 +42,12 @@ Auch als Shared Libraries bezeichnet, sind wiederverwendbare Programmcode-Sammlu
 ### FAA
 Federal Aviation Administration - die US-amerikanische Luftfahrtbehörde, die Standards für Flugsimulationen und Trainingsgeräte festlegt.
 
-## G
+### Flughafenelemente
+Die verschiedenen Komponenten eines Flughafens in X-Plane, wie Gebäude, Fassaden, Bodenobjekte, statische Fahrzeuge, Landebahnlichter, Baken und Navigationshilfen. Das [Airport Enhancement Package (AEP)](../addon/aep.md) verbessert diese Elemente durch detailliertere Modelle und höher aufgelöste Texturen.
+
+### Flughafenvegetation
+Die 3D-Vegetationselemente auf Flughäfen in X-Plane. Im [Airport Enhancement Package (AEP)](../addon/aep.md) wird die Standard-Flughafenvegetation durch neue, detailliertere 3D-Modelle ersetzt, die für eine realistischere Darstellung sorgen.
+
 ### GUI (Graphical User Interface)
 Eine grafische Benutzeroberfläche, die die Interaktion mit einem Programm durch grafische Elemente wie Fenster, Buttons und Menüs ermöglicht. Bei AutoOrtho dient die GUI zur Konfiguration des X-Plane-Verzeichnisses und zum Laden von Ortho-Sets.
 
