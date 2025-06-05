@@ -23,7 +23,7 @@ This documentation is an open project. Improvements or additions can be contribu
 ## Recent Changes
 
 ### 2025-06-05
-- Additional information about aliasing and graphics settings
+- [Additional information about aliasing and graphics settings](https://emvisio.com/en/xplane/config.html#graphics-settings)
 
 ### 2025-05-15
 - [Ortho4XP](addon/ortho4xp.md) SonnyLiDAR chapter expanded
