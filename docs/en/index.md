@@ -22,45 +22,11 @@ This documentation is an open project. Improvements or additions can be contribu
 
 ## Recent Changes
 
-### 2025-06-05
-- [Additional information about aliasing and graphics settings](https://emvisio.com/en/xplane/config.html#graphics-settings)
-
-### 2025-05-15
-- [Ortho4XP](addon/ortho4xp.md) SonnyLiDAR chapter expanded
-- [Clearance](flight_operations/clearance.md#**ToLiss Airbus – Request Departure Clearance via CPDLC**) CPDLC ToLiss information added
-- [Weather radar functionality in real aircraft](flight_operations/weather.md#Weather Radar) summarized
-
-### 2025-05-09
-- ['Device Lost Crash'](xplane/geraeteverluste.md) explained
-- New ['Flight Operations'](flight_operations/overview.md) menu with [weather tools](flight_operations/weather.md)
-
-### 2025-05-08
-- [Ortho4XP](addon/ortho4xp.md) + [AutoOrtho](addon/autoortho.md) significantly expanded
-- Highlighted combinations of [Ortho4XP](addon/ortho4xp.md) and [AutoOrtho](addon/autoortho.md), and added practical examples in the [combination guide](addon/autoortho_plus_zortho.md)
-
-??? note "Older Changes"
-
-    **2025-05-05:**
-
-    - New [filesystem documentation](filesystem.md)
-    - Discord community channel added
-        - Link available in the footer of both German and English versions
-        - Join our community for discussions and support
-
-    **2025-05-04:**
-
-    - Scenery Documentation revised
-        - List formatting corrected
-        - English version aligned
-        - Resources/Maps Chapter revised
-    - Ortho4XP Guide extended
-        - New chapter on file size optimization
-
-    **2025-05-03:**
-
-    - Scenery Documentation expanded
-        - New chapter with scenery tips
-        - Best practices for organization
-    - RSS Feed created
-        - Automatic generation
-        - Available at assets/rss/blog.xml
+### 2025-09-22
+- [AutoOrtho](addon/autoortho.md) documentation comprehensively revised
+  - Integration of ProgrammingDinosaur Fork with enhanced features
+  - Zoom level increased to ZL18 (previously ZL16)
+  - GUI-based configuration highlighted
+  - Python 3.12 updated for Linux installation
+  - macOS compatibility (Apple Silicon) added
+  - Troubleshooting redirected to current fork documentation

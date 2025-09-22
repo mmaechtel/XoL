@@ -22,45 +22,11 @@ Diese Dokumentation ist ein offenes Projekt. Verbesserungen oder Ergänzungen k�
 
 ## Letzte Änderungen
 
-### 2025-06-05
-- [Weitere Informationen zum Aliasing und Grafik Einstellungen](https://emvisio.com/xplane/config.html#grafik-einstellungen)
-
-### 2025-05-15
-- [Ortho4XP](addon/ortho4xp.md) SonnyLiDAR Kapitel erweitert
-- [Clearance](flight_operations/clearance.md#**ToLiss Airbus– Departure Clearance über CPDLC anfordern**) CPDLC ToLiss Infos hinzugefügt
-- [Funktionsweise des Wetterradars im Real Airplane](flight_operations/weather.md#wetterradar) zusammen gefasst
-
-### 2025-05-09
-- ['device lost Absturz'](xplane/geraeteverluste.md) erklärt
-- Neues Menu ['Flugbetrieb'](flight_operations/overview.md) und darin [Wettertools](flight_operations/weather.md)
-
-### 2025-05-08
-- [Ortho4XP](addon/ortho4xp.md) + [AutoOrtho](addon/autoortho.md) deutlich erweitert
-- Kombinationen von [Ortho4XP](addon/ortho4xp.md) und [AutoOrtho](addon/autoortho.md) hervorgehoben und praktische Beispiele in der [Kombinations-Anleitung](addon/autoortho_plus_zortho.md) hinzugefügt
-
-??? note "Ältere Änderungen"
-
-    **2025-05-05:**
-
-    - Neue [Dateisystem-Dokumentation](filesystem.md)
-    - Discord Community-Kanal hinzugefügt
-        - Link in der Fußzeile der deutschen und englischen Version verfügbar
-        - Treten Sie unserer Community für Diskussionen und Support bei
-
-    **2025-05-04:**
-
-    - Szenerien Dokumentation überarbeitet
-        - Formatierung der Listen korrigiert
-        - Englische Version angepasst
-        - Ressourcen/Maps Kapitel überarbeitet
-    - Ortho4XP Anleitung erweitert
-        - Neues Kapitel zur Dateigrößen-Optimierung
-
-    **2025-05-03:**
-
-    - Szenerien Dokumentation erweitert
-        - Neues Kapitel mit Szenerie-Tipps
-        - Best Practices für die Organisation
-    - RSS Feed erstellt
-        - Automatische Generierung
-        - Verfügbar unter assets/rss/blog.xml
+### 2025-09-22
+- [AutoOrtho](addon/autoortho.md) Dokumentation umfassend überarbeitet
+  - Integration des ProgrammingDinosaur Forks mit erweiterten Funktionen
+  - Zoom-Level auf ZL18 erhöht (vorher ZL16)
+  - GUI-basierte Konfiguration hervorgehoben
+  - Python 3.12 für Linux-Installation aktualisiert
+  - macOS-Kompatibilität (Apple Silicon) hinzugefügt
+  - Problembehandlung auf aktuelle Fork-Dokumentation verlagert
