@@ -1,6 +1,8 @@
 # AutoOrtho
 
-Visual quality of landscapes is crucial for Visual Flight Rules (VFR) flights in flight simulators. While X-Plane provides standard textures, these are often perceived as outdated. AutoOrtho addresses this issue by integrating satellite imagery in real-time, providing detailed representation of infrastructure, vegetation, and other terrain features. The current version 0.7.2, released on January 28, 2024, optimizes integration with X-Plane and reduces common issues such as scenery conflicts or performance problems.
+Visual quality of landscapes is crucial for **Visual Flight Rules (VFR)** flights in flight simulators. While X-Plane provides standard textures, these are often perceived as outdated. **AutoOrtho** addresses this limitation through **real-time integration** of satellite imagery, enabling precise representation of infrastructure, vegetation, and other terrain features. The last version released by kubilus1, version 0.7.2 (January 21, 2024), optimized integration with X-Plane and minimizes typical problems such as **scenery conflicts** or **performance issues**.
+
+There is now an active fork at https://github.com/ProgrammingDinosaur/autoortho4xplane where AutoOrtho continues to be developed.
 
 ## How It Works
 
