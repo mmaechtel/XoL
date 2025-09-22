@@ -2,13 +2,13 @@
 
 Die visuelle Qualität der Landschaftsdarstellung ist ein entscheidender Faktor für **Sichtflüge (VFR)** in Flugsimulatoren. Während X-Plane mit Standardtexturen arbeitet, werden diese häufig als veraltet empfunden. **AutoOrtho** behebt diese Einschränkung durch die **Echtzeit-Integration** von Satellitenbildern und ermöglicht eine präzise Darstellung von Infrastruktur, Vegetation und weiteren Geländemerkmalen. Die letzte von kubilus1 veröffentlichte Version 0.7.2 (21. Januar 2024) optimierte die Integration mit X-Plane und minimiert typische Probleme wie **Szenerie-Konflikte** oder **Leistungseinbußen**.
 
-Inzwischen existiert ein aktiver Fork unter https://github.com/ProgrammingDinosaur/autoortho4xplane, in dem AutoOrtho kontinuierlich weiterentwickelt wird.
+Inzwischen existiert ein aktiver Fork unter [https://github.com/ProgrammingDinosaur/autoortho4xplane](https://github.com/ProgrammingDinosaur/autoortho4xplane), in dem AutoOrtho kontinuierlich weiterentwickelt wird.
 
 ## Funktionsweise
 
 **AutoOrtho** implementiert ein **Streaming-System** für Orthophotos basierend auf der Flugzeugposition und rendert diese als Texturen in X-Plane. Das System operiert über mehrere Schlüsselmechanismen:
 
-- Das **Echtzeit-Streaming-System** lädt Satellitenbilder in Kacheln von Anbietern wie Bing, wobei eine **Zoomstufe** von bis zu 16 (ZL16) implementiert wird, um Detailgenauigkeit und Ladezeit zu optimieren. Kacheln für aktuelle und angrenzende Bereiche werden präventiv geladen, um nahtlose Übergänge zu gewährleisten, was eine stabile Internetverbindung von mindestens 100 Mbps erfordert.
+- Das **Echtzeit-Streaming-System** lädt Satellitenbilder in Kacheln von Anbietern wie Bing, wobei eine **Zoomstufe** von bis zu 18 (ZL18) implementiert wird, um Detailgenauigkeit und Ladezeit zu optimieren. Kacheln für aktuelle und angrenzende Bereiche werden präventiv geladen, um nahtlose Übergänge zu gewährleisten, was eine stabile Internetverbindung von mindestens 100 Mbps erfordert.
 
 - Ein **virtuelles Dateisystem** (`WinFSP`/`Dokan` unter Windows, `FUSE` unter Linux) verwaltet die Kacheln in einem lokalen Cache auf SSD und stellt sie als Szenerie-Dateien im `z_autoortho`-Ordner des `Custom Scenery`-Verzeichnisses dar.
 
@@ -16,17 +16,31 @@ Inzwischen existiert ein aktiver Fork unter https://github.com/ProgrammingDinosa
 
 Der **Streaming-Prozess** beeinflusst CPU-Auslastung, RAM-Verbrauch (bis zu 64 GB) und Festplattenleistung. Während SSDs Engpässe minimieren, können bei suboptimalen Verbindungen oder unzureichender Hardware **Frame-Drops** auftreten.
 
+### Erweiterte Funktionen des Forks
+
+Der [ProgrammingDinosaur Fork](https://github.com/ProgrammingDinosaur/autoortho4xplane) baut auf der ursprünglichen Codebasis auf und erweitert AutoOrtho um zusätzliche Funktionen:
+
+- **Erhöhte Zoomstufen und Auflösung** für X-Plane 12
+- **Neue Benutzeroberfläche** mit modernen Frameworks
+- **Überarbeiteter Installer** mit Sicherheitsprüfungen für Zielverzeichnisse
+- **Verbesserte Szenerie-Download-Erfahrung** (schneller und benutzerfreundlicher)
+- **macOS-Kompatibilität** (nur Apple Silicon)
+- **Zusätzliche Kartenanbieter**: Yandex und Apple Maps
+- **Automatische scenery_packs.ini-Konfiguration** für die Verwendung mit SimHeaven
+
 ## Installation und Konfiguration
 
 ### Systemanforderungen
 
-Das System erfordert X-Plane 11.50+ oder X-Plane 12, läuft unter Windows, Linux (mit `FUSE`) oder macOS (experimentell). **Abhängigkeiten** umfassen `WinFSP`/`Dokan` (Windows), `FUSE` (Linux) und optional **Python** 3.x für Quellcode. **Hardwareanforderungen** umfassen 16 GB **RAM**, **SSD**-Speicher und eine schnelle **Internetverbindung** (≥100 Mbps).
+Das System erfordert X-Plane 11.50+ oder X-Plane 12, läuft unter Windows, Linux (mit `FUSE`) oder macOS (Apple Silicon). **Abhängigkeiten** umfassen `WinFSP`/`Dokan` (Windows), `FUSE` (Linux) und optional **Python** 3.x für Quellcode. **Hardwareanforderungen** umfassen 16 GB **RAM**, **SSD**-Speicher und eine schnelle **Internetverbindung** (≥100 Mbps).
+
+**Hinweis**: Der [ProgrammingDinosaur Fork](https://github.com/ProgrammingDinosaur/autoortho4xplane) bietet vollständige macOS-Kompatibilität für Apple Silicon-Prozessoren und erweiterte Funktionen für X-Plane 12.
 
 ### Installationsprozess
 
-**AutoOrtho** wird von GitHub (`kubilus1/autoortho`) heruntergeladen, entweder als Binary oder Installer. Windows-Benutzer installieren `WinFSP`/`Dokan` und starten `autoortho_win.exe`, während Linux-Benutzer `FUSE` benötigen und macOS-Benutzer den experimentellen Anweisungen folgen sollten.
+**AutoOrtho** wird von GitHub (`kubilus1/autoortho`) heruntergeladen, entweder als Binary oder Installer. Für die neuesten Funktionen und Verbesserungen wird der [ProgrammingDinosaur Fork](https://github.com/ProgrammingDinosaur/autoortho4xplane) empfohlen, der einen überarbeiteten Installer mit Sicherheitsprüfungen bietet. Windows-Benutzer installieren `WinFSP`/`Dokan` und starten `autoortho_win.exe`, während Linux-Benutzer `FUSE` benötigen und macOS-Benutzer (Apple Silicon) den entsprechenden Anweisungen folgen sollten.
 
-Die Benutzeroberfläche erfordert die Angabe des X-Plane-Hauptverzeichnisses und des `Custom Scenery`-Verzeichnisses. Regionale Overlays (wenige GB) werden über den "Scenery"-Tab installiert. Die `scenery_packs.ini` wird mit folgender Struktur konfiguriert:
+Die Benutzeroberfläche erfordert die Angabe des X-Plane-Hauptverzeichnisses und des `Custom Scenery`-Verzeichnisses. Regionale Overlays (wenige GB) werden über den "Scenery"-Tab installiert. Der [ProgrammingDinosaur Fork](https://github.com/ProgrammingDinosaur/autoortho4xplane) bietet eine automatische `scenery_packs.ini`-Konfiguration für die Verwendung mit SimHeaven. Die manuelle Konfiguration erfolgt mit folgender Struktur:
 
 ```
 SCENERY_PACK Custom Scenery/yAutoOrtho_Overlays/
@@ -38,30 +52,20 @@ Der `z_autoortho`-Eintrag wird am Ende platziert, um anderen Szenerien Prioritä
 
 Das Verzeichnis `yAutoOrtho_Overlays` wird nur benötigt, sofern nicht **SimHeaven** benutzt wird.
 
-### Wichtige Konfigurationsparameter
+### Konfiguration
 
-Die AutoOrtho-Konfiguration kann in der `.autoortho` Konfigurationsdatei angepasst werden. Hier sind die wichtigsten Parameter:
+Der [ProgrammingDinosaur Fork](https://github.com/ProgrammingDinosaur/autoortho4xplane) bietet eine moderne GUI für alle Konfigurationseinstellungen, die eine einfache Einrichtung ohne manuelle Dateibearbeitung ermöglicht. Die wichtigsten Einstellungen umfassen:
 
-- `xplane_path`: Pfad zum X-Plane Hauptverzeichnis
-- `cache_dir`: Verzeichnis für Orthofoto-Cache (empfohlen: schnelle SSD)
-- `provider`: Bildquelle für Orthofotos (bing, google, here)
-- `cache_size`: Maximale Cache-Größe in GB
-- `maxwait`: Maximale Wartezeit für Bilder in Sekunden. Höhere Werte bedeuten bessere Qualität aber mehr Ruckeln. Niedrigere Werte sind reaktiver, können aber gelegentlich zu niedrigerer Qualität führen.
-- `min_zoom`: Minimaler Zoom-Level für Satellitenbilder. Beeinflusst die minimale Qualität der angezeigten Bilder.
-- `autostart`: AutoOrtho automatisch mit X-Plane starten
-- `debug`: Debug-Informationen in den Logs aktivieren
+- **X-Plane-Pfad**: Verzeichnis des X-Plane-Installationsordners
+- **Cache-Verzeichnis**: Speicherort für Orthofoto-Cache (empfohlen: schnelle SSD)
+- **Kartenanbieter**: Auswahl zwischen Bing, Google, Here, Yandex und Apple Maps
+- **Cache-Größe**: Maximale Cache-Größe in GB
+- **Wartezeit**: Balance zwischen Qualität und Reaktionszeit
+- **Zoom-Level**: Mindest- und Maximalzoom für Satellitenbilder
+- **Autostart**: Automatischer Start mit X-Plane
+- **Debug-Modus**: Erweiterte Logging-Informationen
 
-Beispiel einer Konfigurationsdatei:
-```ini
-xplane_path = /home/user/X-Plane-12
-cache_dir = /home/user/.autoortho-data/cache
-provider = bing
-cache_size = 20
-maxwait = 2
-min_zoom = 14
-autostart = true
-debug = false
-```
+Für erweiterte Konfigurationen kann weiterhin die `.autoortho`-Konfigurationsdatei manuell bearbeitet werden, wenn gewünscht.
 
 Für optimale Erfahrung fügt SimHeaven X-World 3D-Objekte und Autogen hinzu, während xOrganizer/xToolbox die Szenerie-Verwaltung vereinfacht. vStates bietet eine Alternative für vorgefertigte Orthophotos.
 
@@ -73,46 +77,30 @@ AutoOrthos Leistung kann gelegentliches Ruckeln zeigen und stellt höhere Anford
 
 ### Häufige Probleme und Lösungen
 
-Benutzer können mehrere typische Probleme bei der Implementierung von AutoOrtho konfrontieren:
+Für grundlegende Installations- und Konfigurationsprobleme (Initialisierungsfehler, FUSE-Probleme, Python-Modul-Probleme, Performance-Probleme) wird auf die aktuelle Dokumentation des [ProgrammingDinosaur Forks](https://github.com/ProgrammingDinosaur/autoortho4xplane) verwiesen, da diese Probleme in der neueren Version behoben oder vereinfacht wurden.
 
-1. **Initialisierungsfehler**:
-    - Ursache: Fehlerhafte `WinFSP`/`Dokan`-Installation oder inkorrekte `scenery_packs.ini`-Konfiguration
-    - Lösung: Neuinstallation/Konfiguration von `WinFSP`/`Dokan`. Korrektur der `scenery_packs.ini`.
+Weitere spezifische Probleme bei der Verwendung von AutoOrtho:
 
-2. **FUSE-Probleme** (Linux):
-    - Log-Eintrag: `FUSE error: Failed to mount filesystem`
-    - Ursache: Fehlende `fuse3`-Installation oder Berechtigungsprobleme
-    - Lösung: Installation von `fuse3` und Überprüfung der Berechtigungen (Linux: `ls -l /dev/fuse`)
-
-3. **Python-Modul-Probleme**:
-    - Log-Eintrag: `ModuleNotFoundError: No module named 'pyfuse3'`
-    - Ursache: Fehlende **Abhängigkeiten**
-    - Lösung: Installation fehlender **Abhängigkeiten** in der **virtuellen Umgebung**
-
-4. **Performance-Probleme**:
-    - Ursache: Suboptimale Verbindungen oder unzureichende Hardware
-    - Lösung: Implementierung einer **SSD** und Reduzierung der **Grafikeinstellungen**
-
-5. **Flughafen-Topographie-Probleme**:
+1. **Flughafen-Topographie-Probleme**:
     - Ursache: Fehlende automatische **Flughafen-Glättung** bzw. fehlende **Ortho Patches** für die **Flughafen-Szenerie**
     - Lösung: Implementierung von **Ortho Patches** oder dem `flatten 1` Parameter in der `apt.dat` und Überprüfung der **Priorisierung** von **Flughafen-Szenerien**
 
-6. **Netzwerkprobleme**:
+2. **Netzwerkprobleme**:
     - Log-Eintrag: `HTTP 429: Too Many Requests`
     - Ursache: Bing-Blacklisting
     - Lösung: VPN verwenden oder zu USGS-Quellen wechseln
 
-7. **Szenerie-Konflikte**:
+3. **Szenerie-Konflikte**:
     - Log-Eintrag: `Warning: z_autoortho not found in scenery_packs.ini`
     - Ursache: Falsche Szenerie-Reihenfolge
     - Lösung: Reihenfolge in scenery_packs.ini korrigieren
 
-8. **Speicherprobleme**:
+4. **Speicherprobleme**:
     - Log-Eintrag: `MemoryError: Out of memory`
     - Ursache: Hohe RAM-Auslastung
-    - Lösung: Cache-Größe reduzieren, X-Plane-Grafikeinstellungen senken
-
-9. **Abstürze**:
+    - Lösung: Cache-Größe reduzieren, X-Plane-Grafikeinstellungen senken. 
+    
+5. **Abstürze**:
     - Ursache: RAM-Überlastung oder Add-on-Konflikte
     - Lösung: Deaktivieren von Add-ons, Erhöhen des RAMs oder Reduzieren der Cache-Größe
 
@@ -135,7 +123,7 @@ Der Benutzer kann die autoortho.log mit verschiedenen Methoden analysieren:
     grep -i "error" ~/.autoortho-data/autoortho.log
     ```
 
-Für detailliertere Log-Informationen kann in der `.autoortho` Konfigurationsdatei der Debug-Modus aktiviert werden:
+Für detailliertere Log-Informationen kann in den Settings oder der `.autoortho` Konfigurationsdatei der Debug-Modus aktiviert werden:
 
 ```ini
 # Debug-Modus
@@ -148,13 +136,15 @@ debug = true
 
 Dieser Abschnitt bietet eine detaillierte Anleitung zur Installation von AutoOrtho mit der Python-Version auf einem Debian 12-System. Das Beispiel zeigt, wie eine isolierte Python-Umgebung mit pyenv eingerichtet wird und enthält umfassende Fehlerbehebung mit der autoortho.log-Datei.
 
+**Hinweis**: Für die neuesten Funktionen wird der [ProgrammingDinosaur Fork](https://github.com/ProgrammingDinosaur/autoortho4xplane) empfohlen, der eine verbesserte GUI und erweiterte Kompatibilität bietet.
+
 ### Systemanforderungen
 
 Das Beispielsystem läuft mit Debian 12 (Bookworm) und X-Plane 12, verfügt über eine SSD, 32 GB RAM und eine stabile Internetverbindung mit 200 Mbps. Erforderliche Abhängigkeiten umfassen:
 
 - fuse3 für das virtuelle Dateisystem
 - git, build-essential, libssl-dev, zlib1g-dev für pyenv und Python
-- Python 3.8+ (verwaltet über pyenv)
+- Python 3.12+ (verwaltet über pyenv) - empfohlen für den ProgrammingDinosaur Fork
 - Einige GB SSD-Speicher für Overlays und Cache
 
 ### Schritt-für-Schritt Installation
@@ -183,21 +173,21 @@ Das Beispielsystem läuft mit Debian 12 (Bookworm) und X-Plane 12, verfügt übe
     eval "$(pyenv init -)"
     ```
 
-    Python 3.10.13 installieren:
+    Python 3.12.0 installieren:
     ```bash
-    pyenv install 3.10.13
-    pyenv global 3.10.13
+    pyenv install 3.12.0
+    pyenv global 3.12.0
     ```
 
 3. **AutoOrtho-Installation**:
     Repository klonen und virtuelle Umgebung einrichten:
 
     ```bash
-    git clone https://github.com/kubilus1/autoortho.git ~/autoortho
+    # Für den ProgrammingDinosaur Fork (empfohlen):
+    git clone https://github.com/ProgrammingDinosaur/autoortho4xplane.git ~/autoortho
     cd ~/autoortho
-    git checkout v0.7.2
 
-    pyenv virtualenv 3.10.13 autoortho
+    pyenv virtualenv 3.12.0 autoortho
     pyenv activate autoortho
     pip install --upgrade pip
     pip install -r requirements.txt
