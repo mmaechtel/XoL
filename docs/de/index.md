@@ -23,18 +23,10 @@ Diese Dokumentation ist ein offenes Projekt. Verbesserungen oder Ergänzungen k�
 ## Letzte Änderungen
 
 ### 2026-02-09
-- [Systemtools](systemtools.md) faktengeprüft: irqtop-Referenzen entfernt (nicht als util-linux-Paket verfügbar), lsirq-Sortierung korrigiert, Per-CPU-Optionen ergänzt, nmon zur Installationszeile hinzugefügt
-- Neue Seite [Systemtools](systemtools.md) — Companion zu Systemtuning: Monitoring-Tools (htop, turbostat, mpstat, iotop, ioping, glances u.a.) zur Verifikation der Tuning-Einstellungen
-- [Systemtuning](systemtuning.md): Neues Kapitel „Zwischen Kerneln wechseln" — GRUB-basierter Wechsel zwischen Standard-Debian und Liquorix (einmalig und dauerhaft)
-- [Systemtuning](systemtuning.md) korrigiert: CPU-Governor für Liquorix von `schedutil` auf `ondemand` geändert (BORE-Scheduler unterstützt schedutil nicht), temporäre Terminal-Befehle für Governor-Wechsel ergänzt, IRQBALANCE-Konfigurationspfad und NVMe-Runtime-Parameter dokumentiert
-- [X-Plane Konfiguration](xplane/config.md): Quellenabschnitt mit 6 Primärquellen ergänzt, Querverweise zu Geräteverluste-Dokumentation
-- [Systemfehler](xplane/systemfehler.md) auf Navigationsseite reduziert: Verweise auf Konfiguration (CLI-Diagnose), Geräteverluste und Performance statt generischer Inhalte
-- [X-Plane Konfiguration](xplane/config.md) überarbeitet: Fokus auf Linux-Spezifika — Vulkan/Zink, Shader-Cache, Umgebungsvariablen, Display-Server, Audio, Controller, szenariobasierte Fehlerbehebung mit CLI-Parametern. Alle Angaben gegen Primärquellen geprüft, versionsspezifische Informationen zugunsten langfristiger Gültigkeit entfernt
-- [Glossar](glossary.md) erweitert: Zink, FMOD, evdev, RADV
-- Neue Seite [Systemtuning](systemtuning.md) — Latenzoptimierung für X-Plane: Distributionen, Latenzquellen, zwei Kernel-Profile (Standardkernel vs. Liquorix) mit konkreten Konfigurationsschritten
-- [Liquorix](liquorix.md) ergänzt: neuer Abschnitt „Warum Liquorix?" mit Erklärung des EEVDF-Schedulers und Optimierungsmodells
-- [Linux-Übersicht](linux.md), [Performance](xplane/performance.md) und Navigation um Systemtuning-Verweise erweitert
+- Neue Seite [Systemtools](systemtools.md) — Monitoring-Tools (htop, turbostat, mpstat, iotop, ioping, glances u.a.) zur Verifikation der Tuning-Einstellungen. Alle Angaben gegen Primärquellen faktengeprüft
+- Neue Seite [Systemtuning](systemtuning.md) — Latenzoptimierung für X-Plane: zwei Kernel-Profile (Standardkernel vs. Liquorix), Governor, C-States, Interrupt-Shielding, NVMe-Energiesparen, Kernel-Wechsel via GRUB
+- [X-Plane Konfiguration](xplane/config.md) überarbeitet: Fokus auf Linux-Spezifika — Vulkan/Zink, Shader-Cache, Umgebungsvariablen, Display-Server, Audio, Controller, CLI-Fehlerbehebung. Quellenabschnitt mit Primärquellen ergänzt
+- [Liquorix](liquorix.md) ergänzt: EEVDF-Scheduler und Optimierungsmodell erklärt
+- [Systemfehler](xplane/systemfehler.md) auf Navigationsseite reduziert, [Glossar](glossary.md) um Zink, FMOD, evdev, RADV erweitert
 - Neue [XEarthLayer](addon/xearthlayer.md)-Dokumentation — Rust-basierte Streaming-Alternative mit adaptivem Prefetch
-- [Orthofotographie-Einführung](addon/orthophotography_intro.md) neu strukturiert: Statische Generierung vs. Ortho-Streaming, Spielerprofile
-- [AutoOrtho](addon/autoortho.md) aktualisiert: Fork 2.0 (C-Pipeline, .aob2), Vergleich mit Ortho4XP überarbeitet
-- [Statisch + Streaming](addon/static_plus_streaming.md) umbenannt und vollständig überarbeitet
+- [Orthofotografie](addon/orthophotography_intro.md) neu strukturiert, [AutoOrtho](addon/autoortho.md) aktualisiert (Fork 2.0), [Statisch + Streaming](addon/static_plus_streaming.md) vollständig überarbeitet
