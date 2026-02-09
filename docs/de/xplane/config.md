@@ -251,7 +251,7 @@ X-Plane kann bei GPU-Crashes (Device Loss) detaillierte Diagnosedaten sammeln �
 ./X-Plane-x86_64 --aftermath
 ```
 
-Aftermath injiziert Checkpoints in den GPU-Commandstream. Bei einem Device Loss helfen diese Markers, den GPU-Zustand zum Zeitpunkt des Fehlers zu rekonstruieren. Performance-Overhead vorhanden, aber die Diagnosedaten sind bei wiederkehrenden GPU-Crashes unverzichtbar.
+Aftermath injiziert Checkpoints in den GPU-Commandstream. Bei einem Device Loss helfen diese Markers, den GPU-Zustand zum Zeitpunkt des Fehlers zu rekonstruieren. Performance-Overhead vorhanden, aber die Diagnosedaten sind bei wiederkehrenden GPU-Crashes unverzichtbar. Für ein tieferes Verständnis von Device Losses und ihren Ursachen siehe [Geräteverluste](geraeteverluste.md).
 
 **Vulkan Validation Layers**
 
@@ -288,6 +288,17 @@ ulimit -c unlimited
 Core-Dump-Pfad prüfen: `cat /proc/sys/kernel/core_pattern`
 
 Unter systemd liegen Core Dumps in `/var/lib/systemd/coredump/` (komprimiert).
+
+## Quellen
+
+Die wichtigsten Quellen zu den auf dieser Seite behandelten Themen:
+
+- [Addressing Plugin Flickering](https://developer.x-plane.com/2023/02/addressing-plugin-flickering/) — Laminar-Research-Blogpost zur Zink-Integration und OpenGL/Vulkan-Interop
+- [Mesa Environment Variables](https://docs.mesa3d.org/envvars.html) — Offizielle Mesa-Dokumentation für Shader-Cache, Present-Mode und Treibervariablen
+- [PipeWire Audio Troubleshooting](https://www.x-plane.com/kb/troubleshooting-audio-issues-with-pipewire-on-linux/) — Offizieller X-Plane-KB-Artikel zu FMOD und PipeWire-Kompatibilität
+- [Using Joysticks on Linux](https://www.x-plane.com/kb/using-joysticks-x-plane-11-linux-systems/) — Offizieller X-Plane-Guide für udev-Regeln und Controller-Berechtigungen
+- [Vulkan Specification](https://registry.khronos.org/vulkan/) — Khronos-Group-Vulkan-API-Spezifikation und -Referenz
+- [Arch Wiki: Vulkan](https://wiki.archlinux.org/title/Vulkan) — Praktischer Guide zu Vulkan-Setup, ICD-Auswahl und Fehlerbehebung unter Linux
 
 ## Hintergrund: Antialiasing und Rendering
 

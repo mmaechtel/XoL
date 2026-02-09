@@ -18,7 +18,7 @@ Debugging device losses is complex due to the following factors:
 
 ## Problem Resolution Measures
 
-For investigating device losses, the command line parameter `--aftermath` or the script `X-Plane_aftermath.bat` is recommended. This activates the Aftermath library (supported for Nvidia, AMD, and Intel GPUs), which collects detailed diagnostic data. When a crash occurs, the message "Encountered a GPU crash!" is displayed, and the collected data helps developers identify the cause. However, Aftermath causes a performance impact and should be used selectively.
+For investigating device losses, the command line parameter `--aftermath` is recommended (see also [Configuration → GPU Debugging](config.md#gpu-debugging) for a quick CLI reference). This activates the Aftermath library (supported for Nvidia, AMD, and Intel GPUs), which collects detailed diagnostic data. When a crash occurs, the message "Encountered a GPU crash!" is displayed, and the collected data helps developers identify the cause. However, Aftermath causes a performance impact and should be used selectively.
 
 In X-Plane 12.2, Aftermath support was revised to insert checkpoints into the command stream for each draw or dispatch command. This fine-grained data enables more precise analysis of the GPU state after a crash. Earlier versions such as 12.06 and 12.1.0 significantly reduced device losses, for example through workarounds for Nvidia driver bugs.
 

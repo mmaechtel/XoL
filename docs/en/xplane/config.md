@@ -251,7 +251,7 @@ X-Plane can collect detailed diagnostic data during GPU crashes (Device Loss) �
 ./X-Plane-x86_64 --aftermath
 ```
 
-Aftermath injects checkpoints into the GPU command stream. During a Device Loss, these markers help reconstruct the GPU state at the time of the error. Performance overhead is present, but the diagnostic data is invaluable for recurring GPU crashes.
+Aftermath injects checkpoints into the GPU command stream. During a Device Loss, these markers help reconstruct the GPU state at the time of the error. Performance overhead is present, but the diagnostic data is invaluable for recurring GPU crashes. For a deeper understanding of Device Losses and their causes, see [Device Losses](geraeteverluste.md).
 
 **Vulkan Validation Layers**
 
@@ -288,6 +288,17 @@ ulimit -c unlimited
 Check core dump path: `cat /proc/sys/kernel/core_pattern`
 
 Under systemd, core dumps are stored in `/var/lib/systemd/coredump/` (compressed).
+
+## Sources
+
+The most important sources on the topics covered on this page:
+
+- [Addressing Plugin Flickering](https://developer.x-plane.com/2023/02/addressing-plugin-flickering/) — Laminar Research blog post on Zink integration and OpenGL/Vulkan interop
+- [Mesa Environment Variables](https://docs.mesa3d.org/envvars.html) — Official Mesa documentation for shader cache, present mode and driver variables
+- [PipeWire Audio Troubleshooting](https://www.x-plane.com/kb/troubleshooting-audio-issues-with-pipewire-on-linux/) — Official X-Plane KB article on FMOD and PipeWire compatibility
+- [Using Joysticks on Linux](https://www.x-plane.com/kb/using-joysticks-x-plane-11-linux-systems/) — Official X-Plane guide for udev rules and controller permissions
+- [Vulkan Specification](https://registry.khronos.org/vulkan/) — Khronos Group Vulkan API specification and reference
+- [Arch Wiki: Vulkan](https://wiki.archlinux.org/title/Vulkan) — Practical guide to Vulkan setup, ICD selection and troubleshooting on Linux
 
 ## Background: Anti-Aliasing and Rendering
 
