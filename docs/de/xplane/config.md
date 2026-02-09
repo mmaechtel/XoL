@@ -1,71 +1,330 @@
-# X-Plane Konfiguration
+# X-Plane Konfiguration unter Linux
 
-!!! info "Hinweis"
-    Diese Dokumentation ist noch nicht vollständig und befindet sich im Aufbau (Work in Progress).
+X-Plane 12 ist eine Cross-Plattform-Anwendung — die allgemeinen Grafikeinstellungen (Texturen, Schatten, Wolken, Antialiasing) funktionieren auf allen Betriebssystemen gleich und sind in der [offiziellen Dokumentation](https://www.x-plane.com/kb/configuring-the-rendering-options/) beschrieben. Diese Seite behandelt ausschließlich, was unter Linux **anders** ist.
 
-Hier finden Sie wichtige Informationen zur Konfiguration von X-Plane unter Linux.
+## Vulkan und Zink
 
-## Grundlegende Einstellungen
+X-Plane 12 nutzt ausschließlich Vulkan als Rendering-API. Ein OpenGL-Fallback existiert nicht.
 
-### Grafik-Einstellungen
+**Treiber-Anforderungen (Vulkan 1.3)**
 
-Die Grafik-Einstellungen umfassen die Wahl zwischen Vulkan und OpenGL mit ihren jeweiligen Vor- und Nachteilen, die Einstellung der Monitor-Auflösung und Bildwiederholrate, die Konfiguration von Anti-Aliasing und Texturqualität, sowie die Anpassung von Schatten und Reflexionen. Zusätzlich gibt es spezielle Grafikoptionen für Nvidia- und AMD-Grafikkarten, die Wetter- und Wolkenqualität beeinflussen.
+| GPU | Treiber | Mindestversion |
+|-----|---------|---------------|
+| NVIDIA | Proprietärer Treiber | 510+ |
+| AMD | Mesa RADV | 22.0+ |
+| Intel Arc | Mesa ANV | In neueren Versionen unterstützt |
 
-#### Anti-Aliasing in X-Plane
+Für NVIDIA-Treiber-Installation und -Optimierung siehe [Nvidia Treiber](../nvidia.md).
 
-Aliasing ist ein Phänomen, das durch die diskrete Abtastung eines kontinuierlichen Signals entsteht, wie durch das **Nyquist-Shannon-Theorem** beschrieben. Dieses Theorem besagt, dass die Abtastfrequenz mindestens doppelt so hoch wie die höchste Signal-Frequenz sein muss, um Aliasing-Artefakte zu vermeiden. In der Computergrafik führt eine unzureichende Abtastfrequenz zu Treppeneffekten, insbesondere an Kanten, die nicht mit dem Pixelgitter ausgerichtet sind.
+### Zink — Plugin-Kompatibilität
 
-In X-Plane stehen verschiedene Anti-Aliasing-Techniken zur Verfügung. **SSAA (Super Sampling Anti-Aliasing)** erhöht die Auflösung des gerenderten Bildes, beispielsweise von 1920x1080 auf 3840x2160 bei 2x SSAA. Der Speicher- und Rechenaufwand wächst dabei quadratisch, weshalb diese Technik in neueren Versionen von X-Plane nicht mehr verwendet wird.
+Viele X-Plane-Plugins nutzen OpenGL für ihre Darstellung (z.B. Cockpit-Displays, Overlays). Da X-Plane 12 aber ausschließlich Vulkan verwendet, muss das OpenGL-Rendering der Plugins übersetzt werden. X-Plane liefert dafür den [Zink](../glossary.md#zink)-Treiber mit — eine Übersetzungsschicht, die OpenGL-Befehle in Vulkan-Befehle umwandelt.
 
-**FXAA (Fast Approximate Anti-Aliasing)** ist eine Post-Processing-Technik zur Kantenglättung. Sie ist rechenleistungsschonend und benötigt keinen zusätzlichen Speicher, kann aber zu unscharfen Instrumenten führen, besonders bei 1080p. Bei 4K-Auflösungen zeigt FXAA bessere Ergebnisse.
+**Warum das unter Linux besonders relevant ist:**
 
-**MSAA (Multi-Sample Anti-Aliasing)** ist eine hardware-implementierte Technik mit Abdeckungsmaske pro Pixel. Sie ist besonders effektiv an geometrischen Kanten, hat aber Schwierigkeiten mit transparenten Geometrien. In X-Plane 12.1 wurden diese Probleme durch Alpha-to-Coverage und Alpha-to-One verbessert.
+- Ohne Zink versucht der Treiber, OpenGL und Vulkan gleichzeitig zu koordinieren (Native Interop). Das kostete bis zu 10 ms pro Frame, in Extremfällen 30 ms
+- Mit Zink: messbar 50 FPS → 80 FPS in Tests von Laminar Research
+- AMD-GPUs ([RADV](../glossary.md#radv)) profitieren am stärksten — die native OpenGL/Vulkan-Interop war auf Mesa besonders problematisch
+- NVIDIA: Zink-Support hat eine wechselhafte Geschichte — der Status wechselt zwischen Releases und kann sich mit Updates ändern
 
-X-Plane nutzt Deferred Rendering, bei dem Metadaten in einem G-Buffer gespeichert werden. Dies reduziert Overdraw, erhöht jedoch die Komplexität bei MSAA, da Beleuchtungsschritte pro Sample ausgeführt werden müssen. Die Renderpipeline umfasst zahlreiche Zwischenschritte, die die Komplexität weiter erhöhen.
+**Bekannte Einschränkung:** Shared OpenGL Contexts für Hintergrundverarbeitung in Plugins sind mit Zink nicht vollständig stabil. Für allgemeine OpenGL-Fehlerdiagnose bei Plugins kann `--debug_gl` nützlich sein.
 
-Nicht alle Aliasing-Artefakte sind auf MSAA-Mängel zurückzuführen. Post-Processing-Effekte wie Screen-Space Reflections (SSR) können Artefakte verursachen, etwa durch ungenaue Reflexionen (z.B. Himmel auf Objekten). Diese Artefakte sind nicht geometrischer Natur und können daher von MSAA nicht behoben werden. FXAA kann solche Kanten glätten, entfernt jedoch nicht die zugrunde liegende fehlerhafte Information.
+## Shader-Cache
 
+X-Plane 12 verwendet unter Linux zwei unabhängige Shader-Cache-Systeme. Wenn nach einem Treiberupdate Grafikfehler auftreten oder die Performance unerklärlich schlecht ist, kann es helfen, einen oder beide Caches zu löschen.
 
-#### Innenraumbeleuchtung und PBR
+### X-Plane-eigener Cache
 
-Die Beleuchtung in X-Plane basiert auf **Physically Based Rendering (PBR)**, was zu realistischen, aber auch komplexen Lichteffekten führt. Besonders in Innenräumen wie dem Cockpit kann dies zu unerwarteten Beleuchtungseffekten führen. X-Plane ist grundsätzlich in der Lage, zwischen Innen- und Außenbereichen zu unterscheiden. Dies wird besonders deutlich beim Wechsel in die freie Kamera (Taste "C"), da sich die Innenraumbeleuchtung entsprechend anpasst. Dennoch können externe Lichtquellen wie Himmelslicht oder atmosphärische Effekte (z.B. Sonnenuntergang) die Innenraumbeleuchtung beeinflussen.
+Enthält vorkompilierte Vulkan-Pipeline-Objekte.
 
-Die PBR-Implementierung in X-Plane simuliert realistische Lichtreflexionen und -absorptionen. Materialien werden durch ihre Umgebung beeinflusst - ein Cockpit in einem pinkfarbenen Hangar würde eine entsprechende Tönung annehmen. Wetterbedingungen wie ein orangefarbener Sonnenuntergang wirken sich auf die Cockpitbeleuchtung aus, und jedes Material reagiert unterschiedlich auf Licht, basierend auf seinen physikalischen Eigenschaften.
+- **Pfad:** `<X-Plane 12>/Output/shadercache/vulkan/`
+- Löschen: Verzeichnisinhalt entfernen. Wird beim nächsten Start automatisch neu aufgebaut (kann mehrere Minuten dauern)
 
-Die aktuelle Renderpipeline von X-Plane hat einige technische Einschränkungen. Jeder Pixel wird unabhängig und parallel berechnet, ohne Kontext über die umgebende Geometrie. Die Erkennung von Abschirmungen, zum Beispiel wenn ein Cockpit den Himmel nicht "sehen" sollte, ist rechentechnisch aufwendig. Besonders bei schmalen Geometrien wie Cockpitkanten oder Flügelkurven können ungewollt Licht von der Umgebung aufgenommen werden.
+### Mesa Shader-Cache (nur AMD/Intel)
 
-Screen-Space Reflections (SSR) können zu sichtbaren Artefakten führen. Schimmernde Reflexionen, wie bei nassem Asphalt, können durch fehlende Denoising-Techniken entstehen. Die fehlende Strahlkohärenz (Ray Coherency) kann zu ungleichmäßigen Reflexionen führen. Eine vollständige Lösung dieser Probleme würde erhebliche Rechenleistung erfordern und die Bildrate drastisch reduzieren.
+Der Mesa-Treiberstack cacht zusätzlich die vom ACO-Compiler erzeugten Shader.
 
-Die Optimierung der Innenraumbeleuchtung und die Reduzierung von Beleuchtungsartefakten haben eine hohe Priorität in der Entwicklung von X-Plane. Diese Probleme gehören zu den häufigsten Beschwerden, die potenzielle Nutzer von X-Plane 12 abschrecken. Die Komplexität der Implementierung erfordert jedoch sorgfältige Abwägungen zwischen visueller Qualität und Performance.
+- **Standard-Pfad:** `~/.cache/mesa_shader_cache/` (ab Mesa 24.2: `~/.cache/mesa_shader_cache_db/`)
+- **Standard-Maximum:** 1 GB
 
-#### Treiberbasierte MSAA
+Cache auf schnellere SSD umleiten oder vergrößern:
 
-MSAA kann auch über den Grafiktreiber erzwungen werden. Dies führt zu einer schnelleren Ausführung, aber auch zu ungenauerer Beschattung, da die komplexe X-Plane Renderpipeline nicht berücksichtigt wird. Die Treiberimplementierung kann die spezifischen Anforderungen der X-Plane Renderpipeline nicht vollständig berücksichtigen.
+```bash
+export MESA_SHADER_CACHE_DIR=/pfad/zur/schnellen/ssd/mesa_cache
+export MESA_SHADER_CACHE_MAX_SIZE=2G
+```
 
-#### Optimierungsempfehlungen
+NVIDIA nutzt einen eigenen internen Shader-Cache, der nicht über Mesa konfiguriert wird.
 
-Für optimale Bildqualität empfehlen wir folgende Schritte: Zunächst sollte FSR deaktiviert werden (Regler auf Maximum). Anschließend kann Multisampling (MSAA) schrittweise erhöht werden, wobei nach jeder Anpassung Performance und Bildqualität zu prüfen sind. Bei Bedarf können weitere Stufen hinzugefügt werden. FXAA kann optional aktiviert werden, wobei die Auswirkung auf die Bildschärfe zu berücksichtigen ist.
+## Umgebungsvariablen
 
-Falls diese Maßnahmen nicht zu einer zufriedenstellenden Bildqualität führen, sollte die Verwendung eines Monitors mit höherer Auflösung in Betracht gezogen werden. Eine höhere native Auflösung reduziert das Kantenflimmern signifikant, erfordert jedoch eine entsprechend leistungsfähige Grafikkarte.
+Einige Mesa/RADV-Variablen können für X-Plane unter Linux nützlich sein. Setzen per Launch-Script oder direkt vor dem Aufruf:
 
-#### Fazit und Ausblick
+```bash
+MESA_VK_WSI_PRESENT_MODE=mailbox ./X-Plane-x86_64
+```
 
-Aliasing ist ein komplexes Problem, das durch physikalische Grenzen (Nyquist-Shannon-Theorem) und die Komplexität moderner Renderpipelines erschwert wird. Eine Lösung erfordert Verbesserungen in der Renderpipeline, etwa durch optimierte SSR-Implementierungen. In X-Plane wird kontinuierlich an Optimierungen gearbeitet.
+**Nützliche Variablen (AMD/Intel mit Mesa)**
 
-### Audio-Einstellungen
+| Variable | Empfohlener Wert | Effekt |
+|----------|-----------------|--------|
+| `MESA_VK_WSI_PRESENT_MODE` | `mailbox` | Tearing-frei bei niedriger Latenz. Alternative: `immediate` (niedrigste Latenz, aber Tearing) |
+| `MESA_SHADER_CACHE_MAX_SIZE` | `2G` | Shader-Cache vergrößern (Standard: 1 GB) |
+| `MESA_SHADER_CACHE_DIR` | Pfad | Shader-Cache auf schnelleren Datenträger umleiten |
 
-Die Audio-Konfiguration umfasst die Auswahl der Audio-Engine zwischen OpenAL und FMOD, die präzise Lautstärkeregelung für verschiedene Soundquellen, die Konfiguration von 3D-Audio-Einstellungen, die Einrichtung externer Soundkarten und die Optimierung der Mikrofon-Einstellungen für den Online-Flug.
+!!! warning "NVIDIA: `__GL_*`-Variablen sind irrelevant"
+    Die häufig empfohlenen NVIDIA-Variablen `__GL_THREADED_OPTIMIZATIONS` und `__GL_YIELD` betreffen ausschließlich OpenGL. Da X-Plane 12 Vulkan nutzt, haben sie **keinen Effekt** auf die Rendering-Pipeline.
 
-### Steuerung
+!!! note "Experimentell: Variable Rate Shading"
+    `RADV_FORCE_VRS=2x2` kann auf RDNA2+ GPUs (RX 6000 und neuer) 10-30% FPS-Gewinn bringen, reduziert aber die Bildqualität. **Nicht mit X-Plane getestet** — Artefakte möglich.
 
-Die Steuerungskonfiguration beinhaltet die präzise Kalibrierung von Joystick und Gamepad, die Anpassung der Tastaturbelegung, die Konfiguration der Ruderpedale, das Einrichten eines Multi-Monitor-Setups und die Feinabstimmung der VR-Controller-Einstellungen.
+## Display-Server
 
-## Performance-Optimierung
+X-Plane 12 hat keine native Wayland-Unterstützung und läuft unter Wayland-Sitzungen über XWayland.
 
-### Rendering-Optionen
+!!! tip "Empfehlung: X11-Sitzung verwenden"
+    Unter X11 können Fullscreen-Anwendungen den Compositor umgehen (Compositor-Bypass), was Overhead eliminiert. Unter XWayland ist das nicht möglich — es entsteht eine zusätzliche Bildkopie pro Frame.
 
-Die Rendering-Optionen umfassen die detaillierte Einstellung von Objektdichte und Sichtweite, die Konfiguration von Autogen-Gebäuden und Vegetation, die Anpassung von Wasser- und Wolkeneffekten, die Steuerung der Flugzeug- und Verkehrsdichte sowie die Einstellung der Wetterkomplexität.
+    Welchen Display-Server nutze ich?
+    ```bash
+    echo $XDG_SESSION_TYPE
+    ```
+    Ausgabe `x11` oder `wayland`.
 
-### Speicherverwaltung
+Bei Fullscreen-Problemen unter Wayland kann `--window=1920x1080` als Workaround dienen (siehe [Fehlerbehebung](#diagnose-start-mit-cli-parametern)).
 
-Die Speicherverwaltung beinhaltet die Optimierung der VRAM-Nutzung, die Konfiguration der RAM-Auslagerung, die Anpassung der Cache-Einstellungen, das Management von Ortho4XP-Tiles und die Implementierung effizienter Szenerie-Ladestrategien. 
+## Audio
+
+X-Plane 12 nutzt [FMOD](../glossary.md#fmod) Studio 2.02 als Audio-Engine. Unter Debian 12 (PulseAudio) funktioniert Audio in der Regel ohne Konfiguration.
+
+!!! tip "PipeWire: Kein Sound?"
+    Unter PipeWire (Debian 13 Standard, in Debian 12 Standard für GNOME, optional für andere DEs) erkennt FMOD das Audiosystem manchmal nicht. FMOD prüft `/usr/bin/pulseaudio --check` — auf reinen PipeWire-Systemen existiert diese Binary nicht.
+
+    Lösung:
+
+    ```bash
+    sudo apt install pipewire-pulse pipewire-alsa
+    # Falls das allein nicht reicht:
+    sudo ln -s /bin/true /usr/bin/pulseaudio
+    ```
+
+    Offizieller Troubleshooting-Artikel: [PipeWire Audio Issues](https://www.x-plane.com/kb/troubleshooting-audio-issues-with-pipewire-on-linux/)
+
+    Zur Diagnose: `--no_sound` startet X-Plane ohne Audio-Initialisierung und isoliert Audio-Probleme.
+
+## Controller
+
+X-Plane erkennt Controller unter Linux über SDL2 mit [evdev](../glossary.md#evdev)-Backend (`/dev/input/event*`). Damit das funktioniert, braucht der Nutzer Leserechte auf die Input-Devices — **X-Plane darf niemals als root gestartet werden**.
+
+### udev-Regeln
+
+Wenn ein Controller nicht erkannt wird, fehlen meist die Berechtigungen. Die offizielle Anleitung beschreibt die nötigen udev-Regeln: [Using Joysticks on Linux](https://www.x-plane.com/kb/using-joysticks-x-plane-11-linux-systems/)
+
+### Konfigurationsdateien
+
+| Datei | Pfad (relativ zu X-Plane 12) | Inhalt |
+|-------|------------------------------|--------|
+| `.joy` | `Resources/joystick configs/` | Gerätedefinitionen |
+| `.prf` | `Output/preferences/` | Benutzerspezifische Zuweisungen |
+
+Backup: Das gesamte `Output/preferences/`-Verzeichnis sichern. Reset: `X-Plane Joystick Settings.prf` löschen — wird beim nächsten Start neu erstellt.
+
+### Häufige Probleme
+
+- **Gerät nicht erkannt:** SDL2 nutzt `/dev/input/event*`, nicht `/dev/input/js*`. Wenn das Gerät in `jstest-gtk` funktioniert aber nicht in X-Plane → udev-Regeln für evdev-Nodes prüfen
+- **Gerät verschwindet nach Standby:** USB-Autosuspend deaktivieren — siehe [Systemtuning](../systemtuning.md)
+- **Phantomachsen / Mehrfacherkennung:** Einige Geräte melden sich als mehrere Input-Devices. In der `.joy`-Datei können Phantom-Controls als "hidden" markiert werden
+- **Achsen invertiert:** "Reverse"-Checkbox in den X-Plane Achsen-Einstellungen
+
+Zur Diagnose: `--no_joysticks` startet X-Plane ohne Controller-Initialisierung (siehe [Fehlerbehebung](#diagnose-start-mit-cli-parametern)).
+
+## Fehlerbehebung
+
+### Log-Dateien
+
+X-Plane schreibt bei jedem Start eine neue `Log.txt` im Installationsverzeichnis.
+
+**Log-Rotation (in neueren Versionen)**
+
+- Bis zu 4 Kopien: `Log.txt` (aktuell), `Log.1.txt`, `Log.2.txt`, `Log.3.txt`
+- Ältere Logs werden in `Output/Log Archive/` mit Zeitstempel archiviert
+- Separate `Log_ATC.txt` mit eigenem Rotationszyklus
+
+**Was suchen?**
+
+- **GPU-Initialisierung:** `Vulkan Device :` zeigt erkannte GPU und VRAM
+- **Plugin-Probleme:** `Loaded:` gefolgt von Plugin-Pfad bestätigt erfolgreiches Laden. Fehlt eine Zeile → Plugin wurde nicht geladen
+- **Device Loss:** `Encountered Vulkan device loss error!` — GPU-Crash während der Laufzeit
+
+### Diagnose-Start mit CLI-Parametern
+
+Die Kommandozeile ist unter Linux das mächtigste Werkzeug zur Fehlersuche. Statt X-Plane über den Launcher zu starten:
+
+```bash
+cd ~/X-Plane\ 12/
+./X-Plane-x86_64 --<option>
+```
+
+**Szenario: X-Plane startet nicht oder crasht**
+
+```bash
+# Grafik-Problem? Nur Grafik im Safe Mode:
+./X-Plane-x86_64 --safe_mode=GFX
+
+# Plugin-Problem? Nur Plugins deaktivieren:
+./X-Plane-x86_64 --safe_mode=PLG
+
+# Mehrere Subsysteme gleichzeitig:
+./X-Plane-x86_64 --safe_mode=PLG,SCN
+
+# Alles im Safe Mode:
+./X-Plane-x86_64 --safe_mode
+```
+
+Die `--safe_mode`-Optionen im Detail:
+
+| Option | Deaktiviert |
+|--------|------------|
+| `GFX` | Grafik-Einstellungen zurückgesetzt |
+| `PLG` | Alle Plugins |
+| `SCN` | Custom Scenery |
+| `ART` | Art Controls |
+| `UI` | UI-Einstellungen zurückgesetzt |
+
+**Szenario: Audio oder Controller funktionieren nicht**
+
+```bash
+# Ohne Sound starten (isoliert PipeWire/PulseAudio):
+./X-Plane-x86_64 --no_sound
+
+# Ohne Controller starten (isoliert evdev/udev):
+./X-Plane-x86_64 --no_joysticks
+
+# Ohne Netzwerk (isoliert IPv6/Netzwerk-Probleme):
+./X-Plane-x86_64 --disable_networking
+```
+
+**Szenario: Fullscreen-Probleme unter Wayland**
+
+```bash
+# Fenstermodus erzwingen:
+./X-Plane-x86_64 --window=1920x1080
+
+# Oder Vollbild mit expliziter Auflösung:
+./X-Plane-x86_64 --full=2560x1440
+```
+
+**Szenario: Performance testen / vergleichen**
+
+```bash
+# Reproduzierbarer Benchmark (Cockpit, klares Wetter, High Quality):
+./X-Plane-x86_64 --fps_test=003 --verbose --weather_seed=42
+
+# Pass/Fail-Test für Scripting (mindestens 30 FPS):
+./X-Plane-x86_64 --fps_test=003 --require_fps=30
+```
+
+Der `--fps_test`-Code ist dreistellig: Hunderterstelle = Kameraposition (0=Cockpit, 1=Draufsicht), Zehnerstelle = Wetter (0-7), Einerstelle = Qualität (1=Low bis 5=Extreme). Der Test läuft 90 Sekunden und schreibt Ergebnisse in `Log.txt`.
+
+**Launch-Scripte mit Profilen**
+
+Mit `--pref` und `--dref` lassen sich Einstellungen per Kommandozeile überschreiben — nützlich für verschiedene Startprofile:
+
+```bash
+# DataRef beim Start setzen:
+./X-Plane-x86_64 --dref:sim/private/controls/rain/kill_it=1
+
+# Preference überschreiben:
+./X-Plane-x86_64 --pref:_is_full_res=1
+```
+
+!!! note "Vollständige Parameterliste"
+    `./X-Plane-x86_64 --help` zeigt alle verfügbaren Optionen. Viele der dort aufgeführten `--no_vbos`, `--no_fbos` etc. sind OpenGL-Legacy-Flags und unter X-Plane 12 (Vulkan) irrelevant.
+
+### GPU-Debugging
+
+**Aftermath (GPU-Crash-Analyse)**
+
+X-Plane kann bei GPU-Crashes (Device Loss) detaillierte Diagnosedaten sammeln — für alle GPU-Hersteller (NVIDIA, AMD, Intel):
+
+```bash
+./X-Plane-x86_64 --aftermath
+```
+
+Aftermath injiziert Checkpoints in den GPU-Commandstream. Bei einem Device Loss helfen diese Markers, den GPU-Zustand zum Zeitpunkt des Fehlers zu rekonstruieren. Performance-Overhead vorhanden, aber die Diagnosedaten sind bei wiederkehrenden GPU-Crashes unverzichtbar.
+
+**Vulkan Validation Layers**
+
+Für tiefgehende Vulkan-Diagnose:
+
+```bash
+sudo apt install vulkan-validationlayers
+VK_INSTANCE_LAYERS=VK_LAYER_KHRONOS_validation ./X-Plane-x86_64
+```
+
+!!! warning "Nur für Debugging"
+    Validation Layers verursachen massive Performance-Einbußen. Nur aktivieren, wenn gezielt nach Vulkan-Fehlern gesucht wird.
+
+### Crash-Analyse mit GDB
+
+Bei wiederholten Crashes kann GDB einen Backtrace liefern:
+
+```bash
+cd ~/X-Plane\ 12/
+gdb ./X-Plane-x86_64
+(gdb) run
+# Nach dem Crash:
+(gdb) backtrace full
+(gdb) thread apply all backtrace
+```
+
+**Core Dumps aktivieren** (falls kein Core Dump erzeugt wird):
+
+```bash
+ulimit -c unlimited
+./X-Plane-x86_64
+```
+
+Core-Dump-Pfad prüfen: `cat /proc/sys/kernel/core_pattern`
+
+Unter systemd liegen Core Dumps in `/var/lib/systemd/coredump/` (komprimiert).
+
+## Hintergrund: Antialiasing und Rendering
+
+??? abstract "Technischer Hintergrund: Anti-Aliasing in X-Plane"
+
+    #### Aliasing und Abtastung
+
+    Aliasing ist ein Phänomen, das durch die diskrete Abtastung eines kontinuierlichen Signals entsteht, wie durch das **Nyquist-Shannon-Theorem** beschrieben. Dieses Theorem besagt, dass die Abtastfrequenz mindestens doppelt so hoch wie die höchste Signal-Frequenz sein muss, um Aliasing-Artefakte zu vermeiden. In der Computergrafik führt eine unzureichende Abtastfrequenz zu Treppeneffekten, insbesondere an Kanten, die nicht mit dem Pixelgitter ausgerichtet sind.
+
+    #### AA-Techniken in X-Plane 12
+
+    **FXAA (Fast Approximate Anti-Aliasing)** ist eine Post-Processing-Technik zur Kantenglättung. Sie ist rechenleistungsschonend und benötigt keinen zusätzlichen Speicher, kann aber zu unscharfen Instrumenten führen, besonders bei 1080p. Bei 4K-Auflösungen zeigt FXAA bessere Ergebnisse. Ab Version 12.1.0 ist FXAA als separater Schalter verfügbar, ab 12.4.0 werden Cockpit-Displays von FXAA ausgenommen (bessere Lesbarkeit).
+
+    **MSAA (Multi-Sample Anti-Aliasing)** ist eine hardware-implementierte Technik mit Abdeckungsmaske pro Pixel. Sie ist besonders effektiv an geometrischen Kanten, hat aber Schwierigkeiten mit transparenten Geometrien. In X-Plane 12.1 wurden diese Probleme durch Alpha-to-Coverage und Alpha-to-One verbessert.
+
+    X-Plane nutzt Deferred Rendering, bei dem Metadaten in einem G-Buffer gespeichert werden. Dies reduziert Overdraw, erhöht jedoch die Komplexität bei MSAA, da Beleuchtungsschritte pro Sample ausgeführt werden müssen.
+
+    #### Treiberbasierte MSAA
+
+    MSAA kann auch über den Grafiktreiber erzwungen werden. Dies führt zu einer schnelleren Ausführung, aber auch zu ungenauerer Beschattung, da die komplexe X-Plane Renderpipeline nicht berücksichtigt wird.
+
+    #### Empfehlung
+
+    Für optimale Bildqualität: FSR deaktivieren (Regler auf Maximum), dann MSAA schrittweise erhöhen und Performance prüfen. FXAA optional aktivieren, wobei die Auswirkung auf die Bildschärfe zu berücksichtigen ist. Falls das nicht ausreicht, bietet ein Monitor mit höherer Auflösung die effektivste Verbesserung.
+
+??? abstract "Technischer Hintergrund: PBR und Innenraumbeleuchtung"
+
+    #### Physically Based Rendering
+
+    Die Beleuchtung in X-Plane basiert auf **Physically Based Rendering (PBR)**, was zu realistischen, aber auch komplexen Lichteffekten führt. Materialien werden durch ihre Umgebung beeinflusst — ein Cockpit in einem pinkfarbenen Hangar würde eine entsprechende Tönung annehmen. Wetterbedingungen wie ein orangefarbener Sonnenuntergang wirken sich auf die Cockpitbeleuchtung aus.
+
+    #### Bekannte Einschränkungen
+
+    Die aktuelle Renderpipeline von X-Plane hat einige technische Einschränkungen. Jeder Pixel wird unabhängig und parallel berechnet, ohne Kontext über die umgebende Geometrie. Besonders bei schmalen Geometrien wie Cockpitkanten oder Flügelkurven können ungewollt Licht von der Umgebung aufgenommen werden.
+
+    Screen-Space Reflections (SSR) können zu sichtbaren Artefakten führen — schimmernde Reflexionen auf nassem Asphalt oder ungleichmäßige Reflexionen durch fehlende Strahlkohärenz. Eine vollständige Lösung würde erhebliche Rechenleistung erfordern.
+
+    #### Entwicklung
+
+    Ab Version 12.2.0 wurde das Tone-Mapping auf AgX umgestellt und Exposure Fusion für Innenansichten eingeführt, was die Balance zwischen hellen und dunklen Bereichen verbessert. SSAO wurde für Bäume, Gebäude und Flugzeuge rekalibriert. Die Optimierung der Innenraumbeleuchtung hat laut Laminar Research weiterhin hohe Priorität.

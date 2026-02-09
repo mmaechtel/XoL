@@ -1,0 +1,190 @@
+Usage: X-Plane [options...]
+
+X-Plane can take a number of command-line flags, in the form of --flag or
+--flag=value.  OpenGL options are available for all X-Plane-related
+applications; the frame-rate test is only for X-Plane itself.  Here is a list of current flags:
+
+--help
+-h
+	Prints this message listing all command-line options, then quits.
+
+--no_sound
+	Runs without initializing sound - can help identify a problem with sound hardware.
+
+--no_joysticks
+	Runs without initializing joysticks, yokes, pedals, or other USB hardware.
+
+--missing_strings
+	Causes X-Plane to output to the log file any string that it cannot find a localization
+	to the current language for.  Since the sim runs natively in English, this option does
+	nothing unless you change languages.
+
+--lang=<lang code>
+	Runs the sim in a specific language (if available).
+	Bypasses the regular system-language detection.
+
+--disable_networking
+	Prevents X-Plane from sending or receiving data over the network, regardless of
+	your in-sim preferences.
+
+--allow_rosetta
+	Normally X-Plane will not run under Rosetta PPC emulation.  Pass this flag to allow
+	ppc execution on an x86 machine.  NOTE: running under Rosetta is storngly discouraged
+	for performance reasons; this option is only provided so that plugin developers can
+	test PPC plugins on an x86 Macintosh.
+
+OPTIONS TO AUTO-CONFIGURE X-PLANE
+
+--pref:<key>=<value>
+	This command line option can be used more than one time, and sets an individual preference
+	to the overloaded value specified on the command line.
+
+--dref:<ref>=<value>
+	This command line option sets a dataref to a value at startup.  Note: because this command line
+	runs early in the sim's life-cycle, it is only appropriate for datarefs created by the sim.
+
+OPTIONS TO DISABLE HARDWARE ACCELERATION
+Normally X-Plane uses all available hardware capabilities to maximize framerate.
+These options force X-Plane not to use some aspects of hardware acceleration.
+This hurts framerate, but can sometimes allow you to work around driver bugs.
+
+--no_vbos
+	This disables the use of vertex buffer objects, as defined by
+	GL_ARB_vertex_buffer_object.  VBOs are used to accelerate all aspects of X-Plane
+	drawing.
+
+--no_fbos
+	Disable the use of framebuffer obects, even if the hardware supports them.
+
+--no_pbos
+	Disable the use of pixelbuffer obects, even if the hardware supports them.
+
+--no_sprites
+	This disables the use of point sprites, as defined by GL_ARB_point_sprite.
+	Point sprites are used to accelerate runway lights, among other things.
+
+--no_pixel_counters
+	This disables pixel counters, as defined by GL_ARB_occlusion_query.  Pixel
+	counters are used to calculate sun glare, among other things.
+
+--no_aniso_filtering
+	This disables anisotropic filtering of textures, as defined by
+	GL_EXT_texture_filter_anisotropic.  Anisotropic filtering is used to make
+	runways look better.
+
+--no_hw_mipmap
+	This disables hardware accelerated mipmap-creation, as defined by
+	GL_SGIS_generate_mipmap.  X-Plane will still use mipmapping, but it will
+	create the mipmap images on the CPU instead of the GPU.
+
+--no_fshaders
+	Disable the use of fragment shaders, even on hardware that reports having them.
+
+--no_vshaders
+	Disable the use of vertex shaders, even on hardware that reports having them.
+
+--no_glsl
+	Disable the use of GLSL, even on hardware theat supports it.
+
+--limited_glsl
+	Force shaders to act as if the graphics hardware has the most limited GLSL, e.g. R300 or NV25.
+
+--unlimited_glsl
+	Override the detection of first-gen graphics hw to run advanced shaders on old machines.
+	WARNING: this may cause X-plane to crash if it exceeds the maximum fragment program length.
+
+--no_threaded_ogl
+	Disable the use of OpenGL via multiple threads.
+
+OPTIONS TO ENABLE INCOMPATIBLE HARDWARE ACCELERATION
+X-Plane will in a few cases intentionally disable hardware acceleration
+to work around known driver compatibility bugs.  You can force X-Plane
+to use the feature anyway (if the card supports it) with these options,
+but they may cause the sim to crash.
+
+--use_vbos
+	Forces the use of VBOs, even on drivers where we at one point found
+	them to be unstable.
+
+--use_sprites
+	Forces the use of point sprites, even on drivers where they cause bugs.
+
+--use_fshaders
+	Force the use of fragment shaders, even if they would not normally be used.
+
+--use_vshaders
+	Force the use of vertex shaders, even if they would not be used.
+
+--use_glsl
+	Force the use of GLSL even on cards where we would avoid it due to driver compatibility problems.
+
+--use_fbos
+	Force the use of FBOs even on hardware where it would not be used due to compatibility problems.
+
+--force_run
+	X-Plane will not run on a machine that does not appear to have some
+	minimum requirements, like at least two texture units.  This will allow
+	X-Plane to run no matter what the hardware looks like.  Please note that
+	most of the time if X-Plane out-right refuses to run, it will probably
+	crash later if --force_run is used.
+
+--fake_vr
+	Normally, X-Plane will not allow enabling VR unless your computer has
+	a VR headset attached, plus the proper driver support. In "fake VR" mode,
+	though, you can enable VR from the settings and see on your normal, 2-D monitor
+	what would be drawn on a VR headset.
+
+WINDOWING OPTIONS
+
+--full=<width>x<height>
+	Launches the simulator in full-screen mode, with your monitor
+	resolution set to the specified width & height. (Requires hardware support).
+
+--window=<width>x<height>
+	Launches the simulator in a window with the specified width & height.
+
+OPTIONS FOR IMPROVING REPRODUCIBILITY
+
+--weather_seed=<number>
+	Seeds the random number generator used in the weather system.
+	Use this to get reproducible weather across runs of the simulator.
+
+--time_seed=<number>
+	Seeds the random number generator used in non-weather systems.
+	Use this to make the simulator more deterministic across runs.
+
+--safe_mode=[GFX|PLG|SCN|ART|UI]
+	Runs X-Plane in a safe mode that disables certain features that may be
+	causing crashes.  Pass one or more of the following options to use safe mode in
+	the corresponding subsystems: GFX (graphics), PLG (plugins), SCN (scenery),
+	ART (art controls), UI (user interface).
+	Options should be separated by a comma (,). If no options are given,
+	all safe mode options are enabled.
+
+FRAMERATE TEST
+
+--fps_test=n
+	This runs X-Plane in frame-rate test mode.  The number indicates a framerate
+	test number, which is 3 digits indicating a combination of camera angle,
+	scenery complexity, and weather settings.  X-Plane will run for 90 seconds
+	and quit, outputting 3 framerates to the Log.txt file for panel view,
+	no-panel view, and paused no-panel view.  This can be used to get repeatable
+	performance measurements without changing preferences.  (The preferences
+	file is ignored when the framerate test is in effect).
+	For more information, see: x-plane.com/kb/frame-rate-test
+
+--verbose
+	Causes the summary printed at the end of the FPS test to include detailed
+	timing information for every frame, rather than just the average frame rate
+	summary.
+
+--require_fps=n
+	When used after --fps_test this puts X-Plane into a pass-fail mode.  The
+	sim will run only one 30 second test with the flight model paused.  The
+	sim will then exit with 0 if the measured fps is higher than N or 1
+	if the fps is lower.  This can be used to create a shell script that will
+	automatically detect whether X-Plane performance is as expected.
+
+--qa_script=<file>
+	This will use the specified text file to run some time-based commands to
+	monitor X-Plane's performance.  See the wiki for more info.

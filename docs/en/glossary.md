@@ -41,9 +41,16 @@ A framework that enables automatic recompilation of kernel modules when kernel u
 ### Dynamic Libraries
 Also known as shared libraries, these are reusable collections of program code that can be loaded and shared by different programs at runtime. They typically have a .so (shared object) extension on Linux and allow for more efficient memory usage and easier updates.
 
+## E
+### evdev
+Event Device — the Linux kernel input interface that exposes input devices via `/dev/input/event*`. X-Plane uses SDL2 with the evdev backend for controller detection. Not to be confused with the older joystick interface (`/dev/input/js*`).
+
 ## F
 ### FAA
 Federal Aviation Administration - the US aviation authority that sets standards for flight simulations and training devices.
+
+### FMOD
+A proprietary audio engine by Firelight Technologies. X-Plane 12 uses FMOD Studio 2.02 for all audio output. On Linux, FMOD communicates with PulseAudio or PipeWire.
 
 ## G
 ### GUI (Graphical User Interface)
@@ -94,6 +101,10 @@ A software extension that adds additional functionality to X-Plane. Plugins can 
 ### pyenv
 A tool for managing multiple Python versions on a system. It allows installation and use of multiple Python versions side by side without affecting the system Python.
 
+## R
+### RADV
+The open-source Vulkan driver for AMD GPUs within the Mesa driver stack. RADV is the default Vulkan driver on Linux systems with AMD graphics cards and is used directly by X-Plane 12.
+
 ## S
 ### scenery_packs.ini
 A configuration file in X-Plane's Custom Scenery folder that determines the load order of installed scenery. AutoOrtho automatically adds entries with the prefix `z_ao_` here.
@@ -118,4 +129,8 @@ A compatibility layer that enables running Windows programs on Linux. Wine trans
 A highly realistic flight simulator available for various platforms (Windows, macOS, Linux).
 
 ### Xroads
-A library for X-Plane 11 & 12 that optimizes the display of roads in Ortho4XP scenery. 
+A library for X-Plane 11 & 12 that optimizes the display of roads in Ortho4XP scenery.
+
+## Z
+### Zink
+An OpenGL translation layer within Mesa that converts OpenGL commands into Vulkan commands. X-Plane 12 ships its own Zink driver so that plugins using OpenGL for rendering can work within the Vulkan render pipeline.

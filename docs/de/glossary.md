@@ -38,9 +38,16 @@ Ein Framework, das die automatische Neukompilierung von Kernel-Modulen bei Kerne
 ### Dynamische Bibliotheken
 Auch als Shared Libraries bezeichnet, sind wiederverwendbare Programmcode-Sammlungen, die zur Laufzeit von verschiedenen Programmen geladen und gemeinsam genutzt werden können. Sie haben typischerweise die Endung .so (shared object) unter Linux und ermöglichen effizientere Speichernutzung und einfachere Updates.
 
+## E
+### evdev
+Event Device — die Linux-Eingabeschnittstelle im Kernel, die Eingabegeräte über `/dev/input/event*` bereitstellt. X-Plane nutzt SDL2 mit evdev-Backend zur Controller-Erkennung. Nicht zu verwechseln mit dem älteren Joystick-Interface (`/dev/input/js*`).
+
 ## F
 ### FAA
 Federal Aviation Administration - die US-amerikanische Luftfahrtbehörde, die Standards für Flugsimulationen und Trainingsgeräte festlegt.
+
+### FMOD
+Eine proprietäre Audio-Engine von Firelight Technologies. X-Plane 12 verwendet FMOD Studio 2.02 für die gesamte Audioausgabe. Unter Linux kommuniziert FMOD mit PulseAudio oder PipeWire.
 
 ### Flughafenelemente
 Die verschiedenen Komponenten eines Flughafens in X-Plane, wie Gebäude, Fassaden, Bodenobjekte, statische Fahrzeuge, Landebahnlichter, Baken und Navigationshilfen. Das [Airport Enhancement Package (AEP)](../addon/aep.md) verbessert diese Elemente durch detailliertere Modelle und höher aufgelöste Texturen.
@@ -93,6 +100,10 @@ Eine Softwareerweiterung, die zusätzliche Funktionen zu X-Plane hinzufügt. Plu
 ### pyenv
 Ein Werkzeug zur Verwaltung verschiedener Python-Versionen auf einem System. Es ermöglicht die Installation und Nutzung mehrerer Python-Versionen nebeneinander, ohne das System-Python zu beeinflussen.
 
+## R
+### RADV
+Der Open-Source-Vulkan-Treiber für AMD-GPUs innerhalb des Mesa-Treiberstacks. RADV ist der Standard-Vulkan-Treiber auf Linux-Systemen mit AMD-Grafikkarten und wird von X-Plane 12 direkt genutzt.
+
 ## S
 ### scenery_packs.ini
 Eine Konfigurationsdatei im Custom Scenery-Ordner von X-Plane, die die Ladereihenfolge der installierten Szenerien festlegt. AutoOrtho fügt hier automatisch Einträge mit dem Präfix `z_ao_` hinzu.
@@ -114,6 +125,10 @@ Ein hochrealistischer Flugsimulator, der für verschiedene Plattformen (Windows,
 
 ### Xroads
 Eine Bibliothek für X-Plane 11 & 12, die die Darstellung von Straßen in Ortho4XP-Szenerien optimiert.
+
+## Z
+### Zink
+Eine OpenGL-Übersetzungsschicht innerhalb von Mesa, die OpenGL-Befehle in Vulkan-Befehle übersetzt. X-Plane 12 liefert einen eigenen Zink-Treiber mit, damit Plugins, die OpenGL für ihre Darstellung nutzen, innerhalb der Vulkan-Renderpipeline funktionieren.
 
 ## 3
 ### 32-Bit-Kompatibilität

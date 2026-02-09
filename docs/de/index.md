@@ -23,6 +23,7 @@ Diese Dokumentation ist ein offenes Projekt. Verbesserungen oder Ergänzungen k�
 ## Letzte Änderungen
 
 ### 2026-02-09
+- [X-Plane Konfiguration](xplane/config.md) überarbeitet: Fokus auf Linux-Spezifika — Vulkan/Zink, Shader-Cache, Umgebungsvariablen, Display-Server, Audio, Controller, szenariobasierte Fehlerbehebung mit CLI-Parametern
 - Neue Seite [Systemtuning](systemtuning.md) — Latenzoptimierung für X-Plane: Distributionen, Latenzquellen, zwei Kernel-Profile (Standardkernel vs. Liquorix) mit konkreten Konfigurationsschritten
 - [Liquorix](liquorix.md) ergänzt: neuer Abschnitt „Warum Liquorix?" mit Erklärung des EEVDF-Schedulers und Optimierungsmodells
 - [Linux-Übersicht](linux.md), [Performance](xplane/performance.md) und Navigation um Systemtuning-Verweise erweitert
