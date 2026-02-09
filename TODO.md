@@ -114,6 +114,12 @@ Jedes Thema durchläuft drei Phasen — **keine Phase darf übersprungen werden.
 
 ---
 
+## Notizen: nvidia.md — Ergänzungen
+
+- **NVIDIA Smooth Motion** (`NVPRESENT_ENABLE_SMOOTH_MOTION=1`): AI-basierte Frame-Generierung auf Treiberebene (Vulkan-Layer `VK_LAYER_NV_present`). Nur RTX 40/50, ab Treiber 580.82.07. Technisch kompatibel mit X-Plane 12 (Vulkan), aber Stabilitätsprobleme gemeldet (Flickering, Crashes). ~10ms zusätzliche Latenz. Offizielle Doku: [NVIDIA Linux README Ch. 39](https://download.nvidia.com/XFree86/Linux-x86_64/575.57.08/README/nvpresent.html). Eigener Abschnitt in nvidia.md sinnvoll.
+
+---
+
 ## 2. `mesa.md` — Mesa/AMD/Intel Grafiktreiber (Neue Seite)
 
 **Warum:** `nvidia.md` existiert und ist ausgezeichnet. Für AMD/Intel-GPUs (Mesa-Stack) gibt es nichts.

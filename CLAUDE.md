@@ -74,6 +74,7 @@ Phase 3 startet erst nach expliziter Freigabe.
 Projektspezifische Skills liegen in `.claude/skills/`:
 
 - **`/research-topic`** — Wählt ein Thema aus TODO.md, führt Phase 1 (Recherche), Phase 2 (Planung) und Lektorat durch. Nach der Umsetzung (Phase 3) folgt eine Faktenprüfung gegen Primärquellen. Startet NICHT die Umsetzung.
+- **`/faktencheck`** — Prüft eine fertige Dokumentationsseite gegen Primärquellen. Korrigiert Fehler, bereinigt Versionsspezifika, ergänzt Quellenabschnitt und analysiert freigegebene URLs auf Zuverlässigkeit.
 
 ### Freigegebene Quellen
 
