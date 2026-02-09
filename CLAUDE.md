@@ -1,89 +1,138 @@
 # CLAUDE.md
 
-This file provides guidance to Claude Code (claude.ai/code) when working with code in this repository.
+Guidance for Claude Code when working in this repository.
 
 ## Project Overview
 
-XoL (X-Plane on Linux) is a bilingual (German/English) documentation site for running X-Plane 12 on Linux. Built with MkDocs Material and hosted at https://emvisio.com/. The repo is the source for the entire site — there is no application code, just documentation content and build tooling.
+XoL (X-Plane on Linux) is a bilingual (German/English) documentation site for running X-Plane 12 on Linux. Built with MkDocs Material, hosted at https://emvisio.com/. No application code — only documentation content and build tooling.
 
 ## Key Commands
 
-- **Dev server:** `mkdocs serve` (or `./serve_dev.sh` which also copies VATSIM routes)
+- **Dev server:** `mkdocs serve` (or `./serve_dev.sh`)
 - **Build site:** `mkdocs build` (outputs to `site/`)
-- **Deploy:** `./update_emvisio.sh <hostname>` (rsync to remote) — dry run with `--dry` flag
+- **Deploy:** `./update_emvisio.sh <hostname>` — dry run with `--dry`
 - **Generate RSS:** `python scripts/generate_rss.py`
-
-Python version: 3.12.8 (see `.python-version`)
+- **Python:** 3.12.8 (see `.python-version`)
 
 ## Architecture
 
 ### Content Structure
 
-All documentation lives in `docs/` with parallel language folders:
-- `docs/de/` — German (default language)
-- `docs/en/` — English
-
-Every content page exists in both `de/` and `en/` with the same filename. The i18n plugin (`mkdocs-pub-plugins` i18n) handles language switching using `docs_structure: folder`.
+- `docs/de/` — German (default), `docs/en/` — English
+- Every page exists in both languages with identical filename
+- i18n plugin (`mkdocs-pub-plugins`) handles language switching
 
 ### Navigation
 
-Navigation is defined entirely in `mkdocs.yml` under `plugins > i18n > languages > nav` — there are separate nav trees for each locale. When adding a new page, it must be added to **both** nav trees in `mkdocs.yml`.
+Defined in `mkdocs.yml` under `plugins > i18n > languages > nav`. Separate nav trees per locale — new pages must be added to **both**.
 
-### Plugins
+### Formatting
 
-The site uses these MkDocs plugins (configured in `mkdocs.yml`):
-- **pub-blog** — blog functionality (posts in `docs/{lang}/blog/`)
-- **pub-obsidian** — Obsidian compatibility (backlinks disabled)
-- **i18n** — multi-language support with folder-based docs structure
-- **git-revision-date-localized** — last-updated dates from git history
+Rules in `docs/MARKDOWN_RULES.txt`: no colon at end of headings before lists, 4-space indent per level, blank line after every heading, consistent DE/EN formatting. Code blocks: `bash` for shell commands, `ini` for sysctl, no tag for kernel/GRUB parameters.
 
-### Static Files
+### Changelog
 
-- `maps.html` / `Maps.html` — redirect pages copied into `site/` during deploy
-- `vatsim_routes.html` — generated externally (from `ATC-Bookings` project), copied in during dev/deploy
-- Blog images stored in `docs/assets/images/blog/`
+`docs/{lang}/index.md` — "Letzte Änderungen" / "Recent Changes". New entries **above** old ones. Never delete history.
 
-### Markdown Extensions
+---
 
-Content uses Material for MkDocs extensions: admonitions, code highlighting with copy buttons, tabbed content, task lists, Mermaid diagrams, and emoji support. See `markdown_extensions` in `mkdocs.yml` for the full list.
+## Dokumentations-Workflow
 
-### Formatting Rules
+Jedes neue oder überarbeitete Thema durchläuft vier Phasen. Der aktuelle Stand jedes Themas steht in `TODO.md`.
 
-Markdown formatting rules are defined in `docs/MARKDOWN_RULES.txt`. Key points: no colon at end of headings before lists, list indentation in 4-space steps, blank line after every heading before a list, space after colons, consistent formatting across DE/EN.
+### Phase 1 — Recherche (`/research-topic`)
 
-### Research Sources
+Skill startet mit Thema-Auswahl aus `TODO.md`, dann parallele Subagent-Recherche.
 
-`research/` contains background papers used as source material for documentation pages. These are **not** published on the site — they serve as structured knowledge base for deriving documentation content (e.g., the systemtuning page was derived from two latency research papers).
+- Primärquellen: GitHub, offizielle Docs, Kernel-Docs, Arch Wiki
+- Keine Foren, keine Drittanbieter-Blogposts
+- Ergebnis: Research-Paper in `research/<thema>.md`
 
-### Changelog Convention
+### Phase 2 — Lektorat & Plan (`/research-topic`)
 
-`docs/{lang}/index.md` contains a "Letzte Änderungen" / "Recent Changes" section. New entries are added **above** existing ones under the current date heading. Old entries are preserved as a running history.
+Gleicher Skill-Durchlauf, direkt nach der Recherche.
 
-### TODO-Workflow
+- Bestehende Doku analysieren, Plan erstellen
+- Lektorat-Dokument: `research/LEKTORAT_<thema>.md`
+  - Bewertet Relevanz, Mehrwert, Haltbarkeit jeder Information
+  - Kennzeichnet versionsspezifische Inhalte
+  - Bewertet Quellen-Qualität
+- Plan wird in `TODO.md` beim Thema festgehalten
+- **Skill endet hier. Umsetzung erst nach User-Freigabe.**
 
-`TODO.md` im Projekt-Root enthält alle offenen Dokumentationsthemen. Jedes Thema durchläuft drei Phasen:
+### Phase 3 — Umsetzung (manuell)
 
-1. **Phase 1 — Recherche:** Tiefgehende, aktuelle Recherche. Ergebnis als Paper in `research/`. Primärquellen (GitHub, offizielle Docs, Kernel-Docs) — keine Foren, keine Drittanbieter-Blogposts.
-2. **Phase 2 — Analyse & Planung:** Bestehende Doku analysieren, konkreten Plan erstellen (was wohin, Querverweise, Nav-Einträge). Plan wird in TODO.md festgehalten. Lektorat-Dokument (`research/LEKTORAT_<thema>.md`) bewertet Relevanz, Mehrwert, Haltbarkeit und Quellen-Qualität.
-3. **Phase 3 — Umsetzung:** DE- und EN-Seiten schreiben, bestehende Seiten anpassen, mkdocs.yml, Glossar, Changelog. Danach Faktenprüfung: Behauptungen gegen Primärquellen verifizieren, versionsspezifische Informationen durch Meta-Formulierungen ersetzen.
+Wird vom User explizit gestartet, nicht durch einen Skill.
 
-Phase 3 startet erst nach expliziter Freigabe.
+- DE- und EN-Seiten schreiben (parallel, gleiche Struktur)
+- Bestehende Seiten anpassen (Querverweise, Glossar)
+- `mkdocs.yml` Navigation aktualisieren (beide Sprachbäume)
+- `docs/{lang}/index.md` Changelog ergänzen
+- `mkdocs build` zur Prüfung
 
-### Skills
+### Phase 4 — Faktencheck (`/faktencheck`)
 
-Projektspezifische Skills liegen in `.claude/skills/`:
+Eigener Skill, wird nach der Umsetzung aufgerufen.
 
-- **`/research-topic`** — Wählt ein Thema aus TODO.md, führt Phase 1 (Recherche), Phase 2 (Planung) und Lektorat durch. Nach der Umsetzung (Phase 3) folgt eine Faktenprüfung gegen Primärquellen. Startet NICHT die Umsetzung.
-- **`/faktencheck`** — Prüft eine fertige Dokumentationsseite gegen Primärquellen. Korrigiert Fehler, bereinigt Versionsspezifika, ergänzt Quellenabschnitt und analysiert freigegebene URLs auf Zuverlässigkeit.
+- EN-Seite als Prüfgrundlage (Quellen sind englisch)
+- Parallele Verifikation aller Behauptungen gegen Primärquellen
+- Korrekturen in DE + EN
+- Versionsspezifika bereinigen (Meta-Formulierungen statt Versionsnummern)
+- Quellenabschnitt am Seitenende ergänzen
+- URL-Analyse der freigegebenen Domains
 
-### Freigegebene Quellen
+### Status-Modell
 
-Die folgenden Domains sind in `.claude/settings.local.json` für WebFetch freigegeben und können ohne Rückfrage genutzt werden:
+Jedes Thema in `TODO.md` hat einen Status:
 
-- **Linux/Kernel:** docs.kernel.org, www.kernel.org, wiki.archlinux.org, docs.redhat.com, lwn.net
+| Status | Bedeutung | Nächster Schritt |
+|--------|-----------|------------------|
+| `offen` | Noch nicht begonnen | `/research-topic` |
+| `recherchiert` | Research-Paper liegt vor | Lektorat (Teil von `/research-topic`) |
+| `geplant` | Lektorat + Plan fertig | Phase 3 nach User-Freigabe |
+| `umgesetzt` | DE + EN geschrieben | `/faktencheck` |
+| `geprüft` | Faktencheck abgeschlossen | Commit + fertig |
+
+---
+
+## Dateistruktur
+
+| Pfad | Zweck |
+|------|-------|
+| `TODO.md` | Themen-Backlog mit Status. Nur **was** und **wo stehen wir**. |
+| `research/<thema>.md` | Research-Papers (Rohmaterial, nicht publiziert) |
+| `research/LEKTORAT_<thema>.md` | Redaktionelle Bewertung (Brücke Recherche → Umsetzung) |
+| `docs/MARKDOWN_RULES.txt` | Formatierungsregeln |
+| `.claude/skills/` | Skill-Definitionen (nicht committed, `.gitignore`) |
+| `.claude/settings.local.json` | Freigegebene WebFetch-Domains |
+
+---
+
+## Skills
+
+| Skill | Phase | Beschreibung |
+|-------|-------|-------------|
+| `/research-topic` | 1 + 2 | Recherche, Lektorat, Plan. Startet NICHT die Umsetzung. |
+| `/faktencheck` | 4 | Faktenprüfung gegen Primärquellen, Korrekturen, Quellenabschnitt. |
+
+---
+
+## Inhaltliche Regeln
+
+- **Nur Linux-Spezifika:** Plattformunabhängige X-Plane-Einstellungen nicht dokumentieren
+- **Keine Versionsnummern im Haupttext:** Meta-Formulierungen ("in neueren Versionen") verwenden
+- **Ausnahme:** Akademische Hintergrund-Blöcke (`??? abstract`) dürfen Versionsdetails enthalten
+- **Treiber-Mindestversionen** in Tabellen sind OK (ändern sich selten)
+- **Quellenabschnitt** am Seitenende: nur offizielle, belastbare Quellen (max 5-8)
+
+## Freigegebene Quellen
+
+Domains in `.claude/settings.local.json` — nutzbar ohne Rückfrage:
+
+- **Linux/Kernel:** docs.kernel.org, wiki.archlinux.org, lwn.net
 - **Debian:** wiki.debian.org, packages.debian.org, manpages.debian.org
-- **Grafik/Vulkan:** mesa3d.org, docs.mesa3d.org, vulkan.org, registry.khronos.org, www.khronos.org
-- **Desktop:** freedesktop.org, wayland.freedesktop.org, pipewire.org, docs.pipewire.org
-- **X-Plane:** www.x-plane.com, developer.x-plane.com, forums.x-plane.org
-- **Projekte:** github.com, raw.githubusercontent.com, liquorix.net, xearthlayer.app
+- **Grafik/Vulkan:** docs.mesa3d.org, vulkan.org, registry.khronos.org
+- **Desktop:** freedesktop.org, pipewire.org
+- **X-Plane:** www.x-plane.com, developer.x-plane.com
+- **Projekte:** github.com, liquorix.net, xearthlayer.app
 - **Suche:** WebSearch (unbeschränkt)
