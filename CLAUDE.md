@@ -58,3 +58,31 @@ Markdown formatting rules are defined in `docs/MARKDOWN_RULES.txt`. Key points: 
 ### Changelog Convention
 
 `docs/{lang}/index.md` contains a "Letzte Änderungen" / "Recent Changes" section. New entries are added **above** existing ones under the current date heading. Old entries are preserved as a running history.
+
+### TODO-Workflow
+
+`TODO.md` im Projekt-Root enthält alle offenen Dokumentationsthemen. Jedes Thema durchläuft drei Phasen:
+
+1. **Phase 1 — Recherche:** Tiefgehende, aktuelle Recherche. Ergebnis als Paper in `research/`. Primärquellen (GitHub, offizielle Docs, Kernel-Docs) — keine Foren, keine Drittanbieter-Blogposts.
+2. **Phase 2 — Analyse & Planung:** Bestehende Doku analysieren, konkreten Plan erstellen (was wohin, Querverweise, Nav-Einträge). Plan wird in TODO.md festgehalten. Lektorat-Dokument (`research/LEKTORAT_<thema>.md`) bewertet Relevanz, Mehrwert, Haltbarkeit und Quellen-Qualität.
+3. **Phase 3 — Umsetzung:** DE- und EN-Seiten schreiben, bestehende Seiten anpassen, mkdocs.yml, Glossar, Changelog. Danach Faktenprüfung: Behauptungen gegen Primärquellen verifizieren, versionsspezifische Informationen durch Meta-Formulierungen ersetzen.
+
+Phase 3 startet erst nach expliziter Freigabe.
+
+### Skills
+
+Projektspezifische Skills liegen in `.claude/skills/`:
+
+- **`/research-topic`** — Wählt ein Thema aus TODO.md, führt Phase 1 (Recherche), Phase 2 (Planung) und Lektorat durch. Nach der Umsetzung (Phase 3) folgt eine Faktenprüfung gegen Primärquellen. Startet NICHT die Umsetzung.
+
+### Freigegebene Quellen
+
+Die folgenden Domains sind in `.claude/settings.local.json` für WebFetch freigegeben und können ohne Rückfrage genutzt werden:
+
+- **Linux/Kernel:** docs.kernel.org, www.kernel.org, wiki.archlinux.org, docs.redhat.com, lwn.net
+- **Debian:** wiki.debian.org, packages.debian.org, manpages.debian.org
+- **Grafik/Vulkan:** mesa3d.org, docs.mesa3d.org, vulkan.org, registry.khronos.org, www.khronos.org
+- **Desktop:** freedesktop.org, wayland.freedesktop.org, pipewire.org, docs.pipewire.org
+- **X-Plane:** www.x-plane.com, developer.x-plane.com, forums.x-plane.org
+- **Projekte:** github.com, raw.githubusercontent.com, liquorix.net, xearthlayer.app
+- **Suche:** WebSearch (unbeschränkt)
