@@ -6,7 +6,7 @@ X-Plane 12 has no native Wayland support. How it connects to your screen depends
 
 ### X11 (Xorg)
 
-The classic display server protocol from 1984. A central X server manages all graphics and input. Applications send drawing commands to the server, which renders everything and forwards it to the GPU.
+The classic display server protocol, developed since 1984 (X11 version from 1987). A central X server manages all graphics and input. Applications send drawing commands to the server, which renders everything and forwards it to the GPU.
 
 X-Plane speaks X11 natively. When you run an X11 session, X-Plane communicates directly with the X server — no translation, no overhead.
 
@@ -14,7 +14,7 @@ X-Plane speaks X11 natively. When you run an X11 session, X-Plane communicates d
 
 The modern successor to X11. Instead of a central server, the **compositor** (e.g., Mutter for GNOME, KWin for KDE) acts as both display server and window manager. Applications render directly into GPU buffers and hand them to the compositor.
 
-Wayland offers better security (applications cannot spy on each other's input), per-monitor refresh rates, and native Variable Refresh Rate (VRR) support. It is the default session on Debian 12+ (GNOME) and Debian 13+ (KDE).
+Wayland offers per-monitor refresh rates and native Variable Refresh Rate (VRR) support. It is the default session on Debian 12+ (GNOME) and Debian 13+ (KDE).
 
 X-Plane **cannot** speak Wayland natively.
 
@@ -120,7 +120,7 @@ Mouse and keyboard input **does** differ between display servers:
 
 For X-Plane cockpit clicking, consider disabling mouse acceleration:
 
-- **X11:** `xinput --set-prop "device" "libinput Accel Speed" 0.0`
+- **X11:** `xinput --set-prop "device" "libinput Accel Profile Enabled" 0 1` (enables flat profile)
 - **Wayland:** Compositor settings (GNOME Settings → Mouse, KDE System Settings → Input Devices)
 
 ---

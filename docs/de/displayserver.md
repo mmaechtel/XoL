@@ -6,7 +6,7 @@ X-Plane 12 hat keine native Wayland-Unterstützung. Wie es sich mit dem Bildschi
 
 ### X11 (Xorg)
 
-Das klassische Display-Server-Protokoll von 1984. Ein zentraler X-Server verwaltet alle Grafik- und Eingabeoperationen. Anwendungen senden Zeichenbefehle an den Server, der alles rendert und an die GPU weiterleitet.
+Das klassische Display-Server-Protokoll, entwickelt seit 1984 (X11-Version von 1987). Ein zentraler X-Server verwaltet alle Grafik- und Eingabeoperationen. Anwendungen senden Zeichenbefehle an den Server, der alles rendert und an die GPU weiterleitet.
 
 X-Plane spricht X11 nativ. In einer X11-Session kommuniziert X-Plane direkt mit dem X-Server — keine Übersetzung, kein Overhead.
 
@@ -14,7 +14,7 @@ X-Plane spricht X11 nativ. In einer X11-Session kommuniziert X-Plane direkt mit 
 
 Der moderne Nachfolger von X11. Statt eines zentralen Servers übernimmt der **Compositor** (z.B. Mutter bei GNOME, KWin bei KDE) die Rolle von Display-Server und Fenstermanager gleichzeitig. Anwendungen rendern direkt in GPU-Puffer und übergeben sie dem Compositor.
 
-Wayland bietet bessere Sicherheit (Anwendungen können Eingaben anderer Apps nicht mitlesen), Per-Monitor-Refresh-Rates und native VRR-Unterstützung (Variable Refresh Rate). Seit Debian 12+ (GNOME) und Debian 13+ (KDE) ist Wayland die Standard-Session.
+Wayland bietet Per-Monitor-Refresh-Rates und native VRR-Unterstützung (Variable Refresh Rate). Seit Debian 12+ (GNOME) und Debian 13+ (KDE) ist Wayland die Standard-Session.
 
 X-Plane **kann** kein natives Wayland.
 
@@ -120,7 +120,7 @@ Maus- und Tastatur-Eingaben **unterscheiden** sich zwischen den Display-Servern:
 
 Für präzises Cockpit-Klicken in X-Plane empfiehlt es sich, die Mausbeschleunigung zu deaktivieren:
 
-- **X11:** `xinput --set-prop "Gerät" "libinput Accel Speed" 0.0`
+- **X11:** `xinput --set-prop "Gerät" "libinput Accel Profile Enabled" 0 1` (aktiviert Flat-Profil)
 - **Wayland:** Compositor-Einstellungen (GNOME Einstellungen → Maus, KDE Systemeinstellungen → Eingabegeräte)
 
 ---

@@ -49,7 +49,7 @@ If X-Plane appears in the list, it is running through XWayland. If nothing appea
 | Fullscreen wrong size or position on multi-monitor | XWayland cannot position windows freely across monitors | Run X-Plane windowed, or switch to an [X11 session](displayserver_x11.md) |
 | Identity login fails or shows blank page | Browser component needs X11 backend | Set `GDK_BACKEND=x11` (automatic since X-Plane 12.1.3) |
 | X-Plane pauses when switching workspace | Wayland compositors suspend non-visible applications | Stay on X-Plane's workspace, or use windowed mode |
-| Screen tearing | Compositor does not support tearing control | Enable VSync in X-Plane, or use KDE Plasma 6.4+ |
+| Screen tearing | Compositor does not support tearing control | Enable VSync in X-Plane, or use a recent KDE Plasma version |
 | Mouse escapes X-Plane window | Pointer constraints not fully implemented | Set `SDL_VIDEODRIVER=x11`, or use fullscreen |
 | Black screen after Alt-Tab | VRR interaction with XWayland fullscreen | Disable VRR, or use windowed mode |
 
@@ -66,7 +66,7 @@ export SDL_VIDEODRIVER=x11
 # Force X11 backend for GTK (identity login browser)
 export GDK_BACKEND=x11
 
-# Set Vulkan presentation mode (can reduce tearing)
+# Set Vulkan presentation mode (prevents tearing via vblank sync)
 export MESA_VK_WSI_PRESENT_MODE=mailbox
 ```
 
@@ -96,7 +96,7 @@ Replace `/path/to/` with the actual path to your X-Plane installation.
 
 ### AMD (RADV)
 
-Wayland works well on AMD. The XWayland overhead is minimal, and no special configuration is required. If X-Plane runs without issues in your Wayland session, there is no strong reason to switch to X11.
+Wayland works well on AMD with excellent driver support and no special configuration required. If X-Plane runs without issues in your Wayland session, there is no strong reason to switch to X11.
 
 ### NVIDIA
 
@@ -121,7 +121,7 @@ Intel officially recommends Wayland for Arc GPUs. X11/Xorg has known rendering g
 Setting `SDL_VIDEODRIVER=wayland` forces SDL2 to attempt a native Wayland connection. X-Plane 12 does not have a native Wayland backend, so this produces unpredictable results — crashes, rendering glitches, or a silent fallback to XWayland.
 
 !!! warning "Do not force native Wayland"
-    `SDL_VIDEODRIVER=wayland` is **not recommended** for X-Plane. Laminar Research does not test or support this configuration. If you encounter issues, the first troubleshooting step is to remove this variable.
+    `SDL_VIDEODRIVER=wayland` is **not recommended** for X-Plane. X-Plane 12 has no native Wayland backend, and this configuration produces unpredictable results. If you encounter issues, the first troubleshooting step is to remove this variable.
 
 ---
 

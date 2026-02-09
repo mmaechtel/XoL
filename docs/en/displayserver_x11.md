@@ -70,7 +70,7 @@ In an X11 session, fullscreen applications can bypass the compositor entirely. T
 
 **KDE Plasma**
 
-KDE automatically suspends compositing for fullscreen applications. No configuration needed.
+KDE suspends compositing when a fullscreen application requests it. The default setting "Allow applications to block compositing" handles this. No manual configuration needed.
 
 To verify, run X-Plane in fullscreen and check:
 
@@ -102,7 +102,7 @@ Comment=X-Plane 12 Flight Simulator (X11)
 
 Replace `/path/to/` with the actual path to your X-Plane installation.
 
-`SDL_VIDEODRIVER=x11` tells SDL2 to use the X11 backend. `GDK_BACKEND=x11` ensures the identity login browser also uses X11 (required since X-Plane 12.1.3).
+`SDL_VIDEODRIVER=x11` tells SDL2 to use the X11 backend. `GDK_BACKEND=x11` ensures the identity login browser also uses X11. X-Plane sets this internally since version 12.1.3, but specifying it in the desktop entry guarantees it for all launch methods.
 
 ---
 
@@ -117,7 +117,7 @@ Replace `/path/to/` with the actual path to your X-Plane installation.
 ## Limitations
 
 - **Single refresh rate** — all monitors share the same refresh rate under X11. If you have a 144 Hz and a 60 Hz monitor, both run at 60 Hz
-- **No VRR per monitor** — Variable Refresh Rate applies globally or not at all
+- **Limited VRR per monitor** — Variable Refresh Rate support exists but per-monitor VRR is problematic under X11
 - **Desktop security** — X11 allows applications to read each other's input (no isolation between windows)
 
 These limitations affect the **desktop experience**, not X-Plane itself. For a dedicated flight sim setup, they are rarely relevant.
