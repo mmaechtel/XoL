@@ -169,3 +169,4 @@ Basierend auf der FPS-Darstellung und dem Microprofiler können gezielte Optimie
     - Testen in einer einfachen Szenerie, um die Basis-FPS zu ermitteln
     - Verwendung von externen Tools für zusätzliche Metriken
     - Regelmäßige Überprüfung der Performance mit dem Microprofiler
+    - Linux-Systemtuning (CPU-Governor, Interrupt-Routing, Speicherparameter) — siehe [Systemtuning](../systemtuning.md)

@@ -170,10 +170,9 @@ Based on the FPS display and the Microprofiler, targeted optimizations can be ma
 
 ### System Optimization
 
-- Using the Liquorix kernel for better performance
-- NVIDIA driver settings optimization
-- CPU governor settings adjustment
-- Memory usage optimization
+- Using the [Liquorix kernel](../liquorix.md) for better scheduling and lower latency
+- [NVIDIA driver](../nvidia.md) settings optimization
+- CPU governor, interrupt routing, and memory parameters — see [System Tuning](../systemtuning.md) for kernel-specific configurations
 
 ### Addon Management
 

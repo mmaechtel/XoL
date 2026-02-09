@@ -75,6 +75,18 @@ In Bezug auf Sicherheit und Updates profitiert der Kernel von regelmäßigen Sic
 
 Die Hardware-Unterstützung ist umfassend und deckt moderne Hardware-Komponenten ab. Besonders die Treiber-Integration wurde optimiert, was zu einer verbesserten Kompatibilität mit Gaming-Peripherie führt. Diese Kombination aus Performance-Optimierungen, Sicherheitsupdates und breiter Hardware-Unterstützung macht den Liquorix-Kernel zu einer ausgezeichneten Wahl für Desktop-Systeme mit Fokus auf Gaming und Multimedia-Anwendungen.
 
+## Warum Liquorix?
+
+Die Vorteile des Liquorix-Kernels lassen sich auf einen zentralen Unterschied zurückführen: Er nutzt den **EEVDF-Scheduler** (Earliest Eligible Virtual Deadline First) mit kürzeren Preemption-Fenstern und einer höheren Timer-Frequenz als der Standard-Debian-Kernel.
+
+Das bedeutet in der Praxis: Liquorix erkennt Laständerungen schneller und reagiert selbstständig darauf. Latenzsensitive Threads — wie der Hauptthread eines Flugsimulators — werden automatisch bevorzugt, weil der Scheduler ihre Wake-Frequenz und Cache-Lokalität berücksichtigt.
+
+Der entscheidende Unterschied zum Standardkernel liegt im Optimierungsmodell. Ein generischer Kernel braucht **erzwungene Priorisierung** (feste CPU-Zuweisung, SCHED_FIFO), weil er konservativ reagiert. Liquorix hingegen braucht **Ruhe** — externe Störungen wie Interrupts, NVMe-Energiesparmodi und ungleichmäßiger Writeback müssen minimiert werden, damit der Scheduler frei optimieren kann.
+
+Feste CPU-Bindung oder aggressive Prioritätseskalation sind unter Liquorix kontraproduktiv: Sie verhindern genau die adaptive Optimierung, die den Kernel auszeichnet.
+
+Konkrete Konfigurationsschritte für beide Kernel-Typen finden sich auf der Seite [Systemtuning](systemtuning.md).
+
 ## Wartung
 
 ### Updates

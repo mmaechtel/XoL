@@ -23,6 +23,9 @@ Diese Dokumentation ist ein offenes Projekt. Verbesserungen oder Ergänzungen k�
 ## Letzte Änderungen
 
 ### 2026-02-09
+- Neue Seite [Systemtuning](systemtuning.md) — Latenzoptimierung für X-Plane: Distributionen, Latenzquellen, zwei Kernel-Profile (Standardkernel vs. Liquorix) mit konkreten Konfigurationsschritten
+- [Liquorix](liquorix.md) ergänzt: neuer Abschnitt „Warum Liquorix?" mit Erklärung des EEVDF-Schedulers und Optimierungsmodells
+- [Linux-Übersicht](linux.md), [Performance](xplane/performance.md) und Navigation um Systemtuning-Verweise erweitert
 - Neue [XEarthLayer](addon/xearthlayer.md)-Dokumentation — Rust-basierte Streaming-Alternative mit adaptivem Prefetch
 - [Orthofotographie-Einführung](addon/orthophotography_intro.md) neu strukturiert: Statische Generierung vs. Ortho-Streaming, Spielerprofile
 - [AutoOrtho](addon/autoortho.md) aktualisiert: Fork 2.0 (C-Pipeline, .aob2), Vergleich mit Ortho4XP überarbeitet

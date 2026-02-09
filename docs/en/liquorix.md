@@ -75,6 +75,18 @@ Regarding security and updates, the kernel benefits from regular security update
 
 Hardware support is comprehensive and covers modern hardware components. The driver integration has been particularly optimized, leading to improved compatibility with gaming peripherals. This combination of performance optimizations, security updates, and broad hardware support makes the Liquorix kernel an excellent choice for desktop systems focused on gaming and multimedia applications.
 
+## Why Liquorix?
+
+The advantages of the Liquorix kernel can be traced back to one central difference: it uses the **EEVDF scheduler** (Earliest Eligible Virtual Deadline First) with shorter preemption windows and a higher timer frequency than the standard Debian kernel.
+
+In practice, this means Liquorix detects load changes faster and responds to them autonomously. Latency-sensitive threads — like a flight simulator's main thread — are automatically prioritized because the scheduler considers their wake frequency and cache locality.
+
+The crucial difference from the standard kernel lies in the optimization model. A generic kernel needs **forced prioritization** (fixed CPU assignment, SCHED_FIFO) because it reacts conservatively. Liquorix, on the other hand, needs **quiet** — external disturbances like interrupts, NVMe power-saving modes, and uneven writeback must be minimized so the scheduler can optimize freely.
+
+Fixed CPU pinning or aggressive priority escalation are counterproductive under Liquorix: they prevent exactly the adaptive optimization that makes this kernel stand out.
+
+Concrete configuration steps for both kernel types can be found on the [System Tuning](systemtuning.md) page.
+
 ## Maintenance
 
 ### Updates
