@@ -6,16 +6,21 @@ Workflow und Phasen-Beschreibung: siehe `CLAUDE.md` → Dokumentations-Workflow.
 
 ## Übersicht
 
-| Prio | Datei | Status | Thema |
-|------|-------|--------|-------|
-| 1 | `xplane/config.md` | **geprüft** | X-Plane Konfiguration (Linux-Spezifika) |
-| 2 | `mesa.md` | offen | AMD/Intel GPU-Treiber (Mesa, RADV, Vulkan) |
-| 3 | `input_devices.md` | offen | Joystick, Throttle, Ruderpedal unter Linux |
-| 4 | `wayland.md` | offen | Display-Server-Wahl für X-Plane |
-| 5 | `audio.md` | offen | PipeWire/PulseAudio für X-Plane |
-| 6 | `multi_monitor.md` | offen | Multi-Monitor und Netzwerk-Rendering |
-| 7 | `xplane/plugins.md` | offen | Plugin-Verwaltung unter Linux |
-| 8 | `kvm.md` | offen | WiP-Abschnitt ausbauen oder entfernen |
+| Prio  | Datei               | Status      | Thema                                               |
+| ----- | ------------------- | ----------- | --------------------------------------------------- |
+| 1     | `xplane/config.md`  | **geprüft** | X-Plane Konfiguration (Linux-Spezifika)             |
+| **!** | `systemtuning.md`   | **offen**   | **Governor/Liquorix falsch + fehlende Erklärungen** |
+| 1b    | `systemtuning.md`   | offen       | Kernel-Wechsel (Debian, Standard ↔ Liquorix)        |
+| 1c    | `systemtools.md`    | offen       | Linux-Systemtools (htop, glances, iotop)            |
+| 2     | `mesa.md`           | offen       | AMD/Intel GPU-Treiber (Mesa, RADV, Vulkan)          |
+| 3     | `input_devices.md`  | offen       | Joystick, Throttle, Ruderpedal unter Linux          |
+| 4     | `wayland.md`        | offen       | Display-Server-Wahl für X-Plane                     |
+| 5     | `audio.md`          | offen       | PipeWire/PulseAudio für X-Plane                     |
+| 6     | `multi_monitor.md`  | offen       | Multi-Monitor und Netzwerk-Rendering                |
+| 7     | `xplane/plugins.md` | offen       | Plugin-Verwaltung unter Linux                       |
+| 8     | `kvm.md`            | offen       | WiP-Abschnitt ausbauen oder entfernen               |
+
+| 11 | `addon/xorganizer.md` | offen | Wine-Installation und Workflow-Hinweise |
 
 ---
 
@@ -91,6 +96,59 @@ Workflow und Phasen-Beschreibung: siehe `CLAUDE.md` → Dokumentations-Workflow.
 
 ---
 
+## Korrekturen: Bestehende Seiten
+
+### systemtuning.md — CPU-Governor / Liquorix falsch
+
+**Status:** offen
+**Priorität:** hoch (inhaltlicher Fehler)
+
+Liquorix nutzt den BORE-Scheduler statt CFS. `schedutil` wird nicht einkompiliert (`CONFIG_CPU_FREQ_GOV_SCHEDUTIL` nicht gesetzt). Die Doku empfiehlt derzeit `schedutil` für Profil B — das ist falsch.
+
+**Korrekturen:**
+
+- Profil B: `schedutil` → `ondemand` (Governor-Empfehlung + GRUB-Parameter)
+- Vergleichstabelle (Zeile 311): `schedutil` → `ondemand`
+- Bei allen GRUB-Parametern auch den temporären Terminal-Befehl zum Governor-Wechsel ergänzen
+
+### systemtuning.md — Fehlende Erklärungen
+
+**Status:** offen
+
+- **`IRQBALANCE_BANNED_CPULIST`** (Zeile 259): Wo genau wird das eingetragen? Konfigurations-Pfad dokumentieren
+- **`nvme_core.default_ps_max_latency_us=0`** (Zeile 268): Kann man das auch nachträglich per Terminal setzen? Klären und dokumentieren
+
+---
+
+## Neue Kapitel
+
+### systemtuning.md — Kernel-Wechsel (Debian)
+
+**Status:** offen
+**Nav-Position:** Hinter die beiden Kernel-Optimierungs-Profile
+
+Anleitung: Wie man unter Debian zwischen zwei installierten Kerneln (Standard + Liquorix) on-the-fly wechselt. Ergänzendes Kapitel zu den bestehenden Profilen.
+
+### systemtools.md — Linux-Systemtools
+
+**Status:** offen
+**Nav-Position:** Linux > Erweiterungen
+
+Übersicht über nützliche Monitoring-Tools für Performance-Analyse und Debugging: `htop`, `glances`, `iotop` und weitere relevante Tools.
+
+### addon/xorganizer.md — Wine-Installation und Workflow
+
+**Status:** offen
+
+**Ergänzungen:**
+
+- **Workflow-Hinweis:** XOrganizer kann X-Plane unter Linux nicht selbst starten (Windows-Programm). Ablauf: scenery.ini schreiben lassen → XOrganizer beenden → X-Plane starten
+- **Wine-Installationsanleitung:** Binary in Wine-App-Ordner anlegen, `winetricks` für .NET, ggf. ältere + neuere .NET-Version übereinander installieren
+- **Font-Anpassungen** bei hoher Auflösung (HiDPI)
+- Querverweis auf Wine-Seite
+
+---
+
 ## Notizen: Bestehende Seiten
 
 ### nvidia.md — Ergänzungen
@@ -101,15 +159,15 @@ Workflow und Phasen-Beschreibung: siehe `CLAUDE.md` → Dokumentations-Workflow.
 
 ## Querverweise (geplant)
 
-| Von | Nach | Grund |
-|-----|------|-------|
-| `config.md` | `audio.md`, `input_devices.md`, `mesa.md` | Themen-Vertiefung |
-| `input_devices.md` | `systemtuning.md` | USB-Energiemanagement |
-| `audio.md` | `flight_operations/vatsim.md` | VATSIM-Funk |
-| `wayland.md` | `multi_monitor.md` | Display-Server bei Multi-Monitor |
-| `mesa.md` | `systemtuning.md` | GPU Power Profile + Governor |
-| `plugins.md` | `addon/xorganizer.md` | Profil-basierte Verwaltung |
-| `linux.md` | Alle neuen Seiten | Übersichtsseite erweitern |
+| Von                | Nach                                      | Grund                            |
+| ------------------ | ----------------------------------------- | -------------------------------- |
+| `config.md`        | `audio.md`, `input_devices.md`, `mesa.md` | Themen-Vertiefung                |
+| `input_devices.md` | `systemtuning.md`                         | USB-Energiemanagement            |
+| `audio.md`         | `flight_operations/vatsim.md`             | VATSIM-Funk                      |
+| `wayland.md`       | `multi_monitor.md`                        | Display-Server bei Multi-Monitor |
+| `mesa.md`          | `systemtuning.md`                         | GPU Power Profile + Governor     |
+| `plugins.md`       | `addon/xorganizer.md`                     | Profil-basierte Verwaltung       |
+| `linux.md`         | Alle neuen Seiten                         | Übersichtsseite erweitern        |
 
 ## Nach Abschluss aller Seiten
 
