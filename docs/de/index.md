@@ -23,6 +23,9 @@ Diese Dokumentation ist ein offenes Projekt. Verbesserungen oder Ergänzungen k�
 ## Letzte Änderungen
 
 ### 2026-02-09
+- Neue Seiten [Display-Server](displayserver.md) — Übersicht, [X11-Session](displayserver_x11.md) und [Wayland-Session](displayserver_wayland.md): Protokollvergleich (X11/Wayland/XWayland), Hardware-Latenzmessungen, GPU-Empfehlungen, Session-Wechsel, Troubleshooting
+- [Glossar](glossary.md) erweitert: Compositor, Display-Server, Wayland, X11, XWayland
+- [X-Plane Konfiguration](xplane/config.md) Display-Server-Abschnitt gekürzt mit Verweis auf neue Seiten
 - Neue Seite [Systemtools](systemtools.md) — Monitoring-Tools (htop, turbostat, mpstat, iotop, ioping, glances u.a.) zur Verifikation der Tuning-Einstellungen. Alle Angaben gegen Primärquellen faktengeprüft
 - Neue Seite [Systemtuning](systemtuning.md) — Latenzoptimierung für X-Plane: zwei Kernel-Profile (Standardkernel vs. Liquorix), Governor, C-States, Interrupt-Shielding, NVMe-Energiesparen, Kernel-Wechsel via GRUB
 - [X-Plane Konfiguration](xplane/config.md) überarbeitet: Fokus auf Linux-Spezifika — Vulkan/Zink, Shader-Cache, Umgebungsvariablen, Display-Server, Audio, Controller, CLI-Fehlerbehebung. Quellenabschnitt mit Primärquellen ergänzt

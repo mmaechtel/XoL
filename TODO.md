@@ -14,7 +14,7 @@ Workflow und Phasen-Beschreibung: siehe `CLAUDE.md` → Dokumentations-Workflow.
 | 1c    | `systemtools.md`    | **umgesetzt** | Linux-Systemtools (htop, glances, iotop)            |
 | 2     | `mesa.md`           | offen       | AMD/Intel GPU-Treiber (Mesa, RADV, Vulkan)          |
 | 3     | `input_devices.md`  | offen       | Joystick, Throttle, Ruderpedal unter Linux          |
-| 4     | `wayland.md`        | offen       | Display-Server-Wahl für X-Plane                     |
+| 4     | `wayland.md`        | **geplant** | Display-Server-Wahl für X-Plane                     |
 | 5     | `audio.md`          | offen       | PipeWire/PulseAudio für X-Plane                     |
 | 6     | `multi_monitor.md`  | offen       | Multi-Monitor und Netzwerk-Rendering                |
 | 7     | `xplane/plugins.md` | offen       | Plugin-Verwaltung unter Linux                       |
@@ -60,9 +60,34 @@ Workflow und Phasen-Beschreibung: siehe `CLAUDE.md` → Dokumentations-Workflow.
 
 ### 4. `wayland.md` — Display-Server für X-Plane
 
-**Nav-Position:** Linux > Erweiterungen
+**Status:** geplant
+**Nav-Position:** Linux > Optimierungen (nach systemtools.md, vor filesystem.md)
 
-**Unterthemen:** X11 vs. Wayland Überblick, XWayland als Kompatibilitätsbrücke, Performance-Vergleich (Compositor-Overhead, Latenz), bekannte X-Plane-Probleme, Empfehlung (X11 für X-Plane), Wechsel zwischen Sessions, Fehlerbehebung
+**Research-Papers:**
+
+- `research/wayland_display_server.md` (konsolidiert)
+- `research/wayland_vs_x11.md` (Rohdaten: X-Plane-Kompatibilität)
+- `research/wayland_vs_x11_gaming.md` (Rohdaten: Performance/Latenz)
+- `research/LEKTORAT_wayland.md`
+
+**Kernaussage:** X-Plane 12 nutzt XWayland, nicht natives Wayland. X11-Session empfohlen, aber GPU-abhängig differenziert (AMD profitiert von Wayland).
+
+**Plan — Gliederung:**
+
+1. Drei Protokolle — was ist was? (Wayland, X11, XWayland klar abgrenzen)
+2. Was passiert bei X-Plane? (3 Szenarien durchspielen: X11-Session / Wayland+XWayland / Wayland+SDL nativ)
+3. Latenz im Vergleich (Hardware-Messungen: Justo + Hugl)
+4. GPU-spezifische Situation (AMD/NVIDIA/Intel — jeweils mit X-Plane-Empfehlung)
+5. Session wählen — Schritt für Schritt (Prüfen, Wechseln, Dauerhaft setzen)
+6. Bekannte Probleme unter Wayland (Szenario-Tabelle: Symptom → Ursache → Lösung)
+7. Eingabegeräte (Entwarnung: Joysticks unberührt)
+8. Klappbar: Architektur-Hintergrund, NVIDIA Explicit Sync
+9. Quellen
+
+**Änderungen an bestehenden Seiten:**
+- config.md: Display-Server-Abschnitt kürzen, Verweis auf wayland.md
+- glossary.md: Wayland, XWayland, Display-Server, Compositor
+- mkdocs.yml: Nav-Eintrag (DE + EN)
 
 ---
 

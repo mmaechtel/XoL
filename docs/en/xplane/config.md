@@ -80,16 +80,10 @@ MESA_VK_WSI_PRESENT_MODE=mailbox ./X-Plane-x86_64
 
 ## Display Server
 
-X-Plane 12 has no native Wayland support and runs under Wayland sessions via XWayland.
+X-Plane 12 has no native Wayland support. For details on session selection, latency measurements, and GPU-specific recommendations, see the [Display Server](../displayserver.md) guide.
 
 !!! tip "Recommendation: Use X11 session"
-    Under X11, fullscreen applications can bypass the compositor (compositor bypass), which eliminates overhead. Under XWayland this is not possible — an additional frame copy occurs per frame.
-
-    Which display server am I using?
-    ```bash
-    echo $XDG_SESSION_TYPE
-    ```
-    Output: `x11` or `wayland`.
+    Under X11, X-Plane communicates directly with the X server — no translation, no overhead. Details: [X11 Session for X-Plane](../displayserver_x11.md)
 
 For fullscreen issues under Wayland, `--window=1920x1080` can serve as a workaround (see [Troubleshooting](#diagnostic-launch-with-cli-parameters)).
 

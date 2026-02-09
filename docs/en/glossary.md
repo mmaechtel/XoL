@@ -28,10 +28,16 @@ A pre-compiled, executable file of a program. Unlike installation from source co
 A calculation method in aerodynamics where an aircraft is divided into many small segments to simulate airflow and forces in real-time.
 
 ## C
+### Compositor
+A program that combines the contents of multiple windows into the final screen image. Under Wayland, the compositor also serves as the display server and window manager (e.g., Mutter for GNOME, KWin for KDE). Under X11, the compositor is a separate program that can be bypassed by fullscreen applications.
+
 ### Custom Scenery
 A directory in X-Plane where additional scenery files are stored. This is also where AutoOrtho's generated ortho textures are integrated.
 
 ## D
+### Display Server
+Software that manages graphics output and input devices for applications. X11 (Xorg) and Wayland are the two display server protocols on Linux. X-Plane 12 supports only X11. See [Display Server](../displayserver.md).
+
 ### Docker
 A platform for containerizing applications that enables packaging and running software in standardized units (containers). Docker simplifies the deployment and management of applications across different environments.
 
@@ -121,12 +127,21 @@ The ability of a 64-bit Linux system to run and support 32-bit applications and 
 A modern, cross-platform graphics interface with low overhead used by X-Plane for graphics rendering. Compared to OpenGL, Vulkan often provides better performance through more efficient CPU usage and more direct GPU control.
 
 ## W
+### Wayland
+A modern display server protocol for Linux, successor to X11. The compositor handles both display server and window manager duties. Wayland offers better security and per-monitor refresh rates, but X-Plane 12 cannot speak Wayland natively and uses XWayland instead. See [Display Server](../displayserver.md).
+
 ### Wine (Wine Is Not an Emulator)
 A compatibility layer that enables running Windows programs on Linux. Wine translates Windows API calls to POSIX calls without emulating Windows itself.
 
 ## X
+### X11 (Xorg)
+The classic display server protocol for Linux, in use since 1984. A central X server manages all graphics and input. X-Plane speaks X11 natively. See [Display Server](../displayserver.md).
+
 ### X-Plane
 A highly realistic flight simulator available for various platforms (Windows, macOS, Linux).
+
+### XWayland
+A compatibility layer that runs a complete X11 server inside a Wayland session. When an X11 application (like X-Plane) starts on a Wayland desktop, XWayland handles the translation automatically. The extra translation adds latency. See [Wayland Session](../displayserver_wayland.md).
 
 ### Xroads
 A library for X-Plane 11 & 12 that optimizes the display of roads in Ortho4XP scenery.

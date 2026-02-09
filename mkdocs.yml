@@ -82,6 +82,10 @@ plugins:
                     - Liquorix Kernel: de/liquorix.md
                     - Systemtuning: de/systemtuning.md
                     - Systemtools: de/systemtools.md
+                    - Display-Server:
+                        - Übersicht: de/displayserver.md
+                        - X11-Session: de/displayserver_x11.md
+                        - Wayland-Session: de/displayserver_wayland.md
                     - Dateisystem: de/filesystem.md
                 - Erweiterungen:
                     - KVM: de/kvm.md
@@ -133,6 +137,10 @@ plugins:
                     - Liquorix Kernel: en/liquorix.md
                     - System Tuning: en/systemtuning.md
                     - System Tools: en/systemtools.md
+                    - Display Server:
+                        - Overview: en/displayserver.md
+                        - X11 Session: en/displayserver_x11.md
+                        - Wayland Session: en/displayserver_wayland.md
                     - Filesystem: en/filesystem.md
                 - Extensions:
                     - KVM: en/kvm.md

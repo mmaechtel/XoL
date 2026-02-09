@@ -1,0 +1,141 @@
+# Wayland Session with X-Plane
+
+If you use a Wayland session for your desktop, X-Plane will still work — via the XWayland compatibility layer. This page explains what happens, what to expect, and how to troubleshoot.
+
+## What Happens
+
+```
+Desktop  → Wayland → Compositor → GPU → Monitor   (native)
+X-Plane  → X11 → XWayland → Compositor → GPU → Monitor   (translated)
+```
+
+Your desktop applications speak native Wayland and communicate directly with the compositor. X-Plane cannot speak Wayland — it speaks X11. XWayland automatically steps in as a translator: a complete X11 server running inside the Wayland session.
+
+X-Plane does not notice the difference. It talks X11 as usual. But the extra translation step adds latency and an additional frame copy.
+
+---
+
+## XWayland Overhead
+
+Hardware measurements show that XWayland approximately doubles the input latency compared to native X11 or native Wayland.
+
+| Path | Median Latency |
+|------|---------------|
+| X11 (direct) | 6.88 ms |
+| Native Wayland | 7.14 ms |
+| XWayland | 14.45 ms |
+
+The ~7 ms additional latency comes from the translation between X11 and the Wayland compositor. Whether this is noticeable depends on the application and the user. For detailed measurements, see the [Display Server Overview](displayserver.md#latency-comparison).
+
+---
+
+## Verify X-Plane Uses XWayland
+
+In a Wayland session, X-Plane should appear as an XWayland client. To verify:
+
+```bash
+# List all X11/XWayland clients
+xlsclients -l
+```
+
+If X-Plane appears in the list, it is running through XWayland. If nothing appears, the tool `xprop` provides another check — click on the X-Plane window. If it shows X11 properties, the application runs via XWayland.
+
+---
+
+## Known Issues
+
+| Symptom | Cause | Solution |
+|---------|-------|----------|
+| Fullscreen wrong size or position on multi-monitor | XWayland cannot position windows freely across monitors | Run X-Plane windowed, or switch to an [X11 session](displayserver_x11.md) |
+| Identity login fails or shows blank page | Browser component needs X11 backend | Set `GDK_BACKEND=x11` (automatic since X-Plane 12.1.3) |
+| X-Plane pauses when switching workspace | Wayland compositors suspend non-visible applications | Stay on X-Plane's workspace, or use windowed mode |
+| Screen tearing | Compositor does not support tearing control | Enable VSync in X-Plane, or use KDE Plasma 6.4+ |
+| Mouse escapes X-Plane window | Pointer constraints not fully implemented | Set `SDL_VIDEODRIVER=x11`, or use fullscreen |
+| Black screen after Alt-Tab | VRR interaction with XWayland fullscreen | Disable VRR, or use windowed mode |
+
+---
+
+## Environment Variables
+
+These variables can help with XWayland-related issues. Set them before starting X-Plane:
+
+```bash
+# Force X11 backend in SDL2 (usually automatic)
+export SDL_VIDEODRIVER=x11
+
+# Force X11 backend for GTK (identity login browser)
+export GDK_BACKEND=x11
+
+# Set Vulkan presentation mode (can reduce tearing)
+export MESA_VK_WSI_PRESENT_MODE=mailbox
+```
+
+To make these permanent, add them to a [desktop entry](displayserver_x11.md#desktop-entry) or your shell profile.
+
+---
+
+## Desktop Entry
+
+A `.desktop` file can ensure consistent environment variables every time X-Plane starts:
+
+```ini
+# ~/.local/share/applications/x-plane-12.desktop
+[Desktop Entry]
+Name=X-Plane 12
+Exec=env SDL_VIDEODRIVER=x11 GDK_BACKEND=x11 /path/to/X-Plane-x86_64
+Type=Application
+Categories=Game;Simulation;
+Comment=X-Plane 12 Flight Simulator (XWayland)
+```
+
+Replace `/path/to/` with the actual path to your X-Plane installation.
+
+---
+
+## GPU-Specific Notes
+
+### AMD (RADV)
+
+Wayland works well on AMD. The XWayland overhead is minimal, and no special configuration is required. If X-Plane runs without issues in your Wayland session, there is no strong reason to switch to X11.
+
+### NVIDIA
+
+Wayland on NVIDIA requires current drivers with Explicit Sync support. Older drivers will cause visual glitches, input lag, or crashes under Wayland.
+
+**Minimum requirements for Wayland**
+
+- NVIDIA driver 555 or newer
+- Kernel 6.8 or newer
+- `nvidia_drm.modeset=1` in kernel parameters
+
+If your driver is older than 555, use an [X11 session](displayserver_x11.md) — Wayland will not work reliably.
+
+### Intel Arc
+
+Intel officially recommends Wayland for Arc GPUs. X11/Xorg has known rendering glitches on Arc hardware. If you use an Arc GPU, staying on Wayland (with X-Plane via XWayland) may be the better overall experience.
+
+---
+
+## What About Native Wayland?
+
+Setting `SDL_VIDEODRIVER=wayland` forces SDL2 to attempt a native Wayland connection. X-Plane 12 does not have a native Wayland backend, so this produces unpredictable results — crashes, rendering glitches, or a silent fallback to XWayland.
+
+!!! warning "Do not force native Wayland"
+    `SDL_VIDEODRIVER=wayland` is **not recommended** for X-Plane. Laminar Research does not test or support this configuration. If you encounter issues, the first troubleshooting step is to remove this variable.
+
+---
+
+## When to Switch to X11
+
+Consider switching to an [X11 session](displayserver_x11.md) if:
+
+- Fullscreen or multi-monitor problems persist
+- You notice input latency compared to Windows or X11
+- You use an NVIDIA GPU with drivers older than 555
+- You want the simplest, most reliable X-Plane setup
+
+For most users who already have a working Wayland desktop and no X-Plane issues, staying on Wayland is fine.
+
+---
+
+See [Display Server Overview](displayserver.md) for protocol comparison and latency measurements.
