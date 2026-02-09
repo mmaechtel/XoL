@@ -23,6 +23,7 @@ This documentation is an open project. Improvements or additions can be contribu
 ## Recent Changes
 
 ### 2026-02-09
+- [System Tuning](systemtuning.md): New section "Switching Between Kernels" — GRUB-based switching between standard Debian and Liquorix (one-time and permanent)
 - [System Tuning](systemtuning.md) corrected: CPU governor for Liquorix changed from `schedutil` to `ondemand` (BORE scheduler doesn't support schedutil), added temporary terminal commands for governor switching, documented IRQBALANCE config path and NVMe runtime parameter
 - [X-Plane Configuration](xplane/config.md): Sources section added with 6 primary references, cross-references to Device Losses documentation
 - [System Errors](xplane/systemfehler.md) reduced to navigation page: links to Configuration (CLI diagnostics), Device Losses, and Performance instead of generic content

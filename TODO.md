@@ -9,8 +9,8 @@ Workflow und Phasen-Beschreibung: siehe `CLAUDE.md` → Dokumentations-Workflow.
 | Prio  | Datei               | Status      | Thema                                               |
 | ----- | ------------------- | ----------- | --------------------------------------------------- |
 | 1     | `xplane/config.md`  | **geprüft** | X-Plane Konfiguration (Linux-Spezifika)             |
-| **!** | `systemtuning.md`   | **offen**   | **Governor/Liquorix falsch + fehlende Erklärungen** |
-| 1b    | `systemtuning.md`   | offen       | Kernel-Wechsel (Debian, Standard ↔ Liquorix)        |
+| **!** | `systemtuning.md`   | **umgesetzt** | **Governor/Liquorix korrigiert + Erklärungen ergänzt** |
+| 1b    | `systemtuning.md`   | umgesetzt   | Kernel-Wechsel (Debian, Standard ↔ Liquorix)        |
 | 1c    | `systemtools.md`    | offen       | Linux-Systemtools (htop, glances, iotop)            |
 | 2     | `mesa.md`           | offen       | AMD/Intel GPU-Treiber (Mesa, RADV, Vulkan)          |
 | 3     | `input_devices.md`  | offen       | Joystick, Throttle, Ruderpedal unter Linux          |

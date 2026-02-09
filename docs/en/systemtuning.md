@@ -329,6 +329,69 @@ Not maximum performance — but minimal frame-time spikes. The scheduler can opt
 
 ---
 
+## Switching Between Kernels
+
+If you have both kernels installed in parallel (standard Debian + Liquorix), you can choose which one to boot. This lets you use the matching tuning profile depending on your use case — without uninstalling either kernel.
+
+### List Installed Kernels
+
+```bash
+dpkg --list | grep linux-image
+```
+
+### Identify GRUB Menu Entries
+
+GRUB numbers entries starting from 0. Kernels in the "Advanced options" submenu are addressed with `>`:
+
+```bash
+grep -E "menuentry |submenu " /boot/grub/grub.cfg | head -20
+```
+
+The format for submenu entries is `"Parent>Entry"`, e.g.:
+
+```
+"Advanced options for Debian GNU/Linux>Debian GNU/Linux, with Linux 6.12.6-1-liquorix-amd64"
+```
+
+### One-Time Switch
+
+Boot a specific kernel on the next reboot, then return to the default:
+
+```bash
+sudo grub-reboot "Advanced options for Debian GNU/Linux>Debian GNU/Linux, with Linux 6.12.6-1-liquorix-amd64"
+sudo reboot
+```
+
+### Permanent Switch
+
+Change the default boot entry permanently:
+
+1. In `/etc/default/grub`, set:
+
+    ```
+    GRUB_DEFAULT=saved
+    ```
+
+2. Set the desired kernel as default:
+
+    ```bash
+    sudo grub-set-default "Advanced options for Debian GNU/Linux>Debian GNU/Linux, with Linux 6.12.6-1-liquorix-amd64"
+    sudo update-grub
+    ```
+
+After this setup, `grub-reboot` also works for one-time deviations from the saved default.
+
+### Check Current Kernel
+
+```bash
+uname -r
+```
+
+!!! warning "Match your tuning profile"
+    After switching kernels, use the matching profile: [Profile A](#profile-a-debian-standard-kernel) for the standard kernel, [Profile B](#profile-b-liquorix-kernel) for Liquorix. The governor and sysctl settings differ fundamentally — the wrong combination will degrade performance.
+
+---
+
 ## Overall Comparison
 
 | Area | Standard Kernel | Liquorix |

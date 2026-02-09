@@ -329,6 +329,69 @@ Keine maximale Leistung — sondern minimale Frame-Time-Spikes. Der Scheduler ka
 
 ---
 
+## Zwischen Kerneln wechseln
+
+Wer beide Kernel parallel installiert hat (Standard-Debian + Liquorix), kann beim Booten wählen, welcher geladen wird. So lässt sich das passende Tuning-Profil je nach Einsatzzweck nutzen — ohne einen der Kernel deinstallieren zu müssen.
+
+### Installierte Kernel anzeigen
+
+```bash
+dpkg --list | grep linux-image
+```
+
+### GRUB-Menüeinträge ermitteln
+
+GRUB nummeriert die Einträge ab 0. Kernel im Untermenü „Advanced options" werden mit `>` adressiert:
+
+```bash
+grep -E "menuentry |submenu " /boot/grub/grub.cfg | head -20
+```
+
+Das Format für Untermenü-Einträge ist `"Übermenü>Eintrag"`, z.B.:
+
+```
+"Advanced options for Debian GNU/Linux>Debian GNU/Linux, with Linux 6.12.6-1-liquorix-amd64"
+```
+
+### Einmaliger Wechsel
+
+Beim nächsten Neustart einen bestimmten Kernel starten, danach wieder den Standard:
+
+```bash
+sudo grub-reboot "Advanced options for Debian GNU/Linux>Debian GNU/Linux, with Linux 6.12.6-1-liquorix-amd64"
+sudo reboot
+```
+
+### Dauerhafter Wechsel
+
+Den Standard-Boot-Eintrag permanent ändern:
+
+1. In `/etc/default/grub` setzen:
+
+    ```
+    GRUB_DEFAULT=saved
+    ```
+
+2. Gewünschten Kernel als Standard setzen:
+
+    ```bash
+    sudo grub-set-default "Advanced options for Debian GNU/Linux>Debian GNU/Linux, with Linux 6.12.6-1-liquorix-amd64"
+    sudo update-grub
+    ```
+
+Nach dieser Einrichtung funktioniert auch `grub-reboot` für einmalige Abweichungen vom gespeicherten Standard.
+
+### Aktuellen Kernel prüfen
+
+```bash
+uname -r
+```
+
+!!! warning "Tuning-Profil anpassen"
+    Nach einem Kernel-Wechsel das passende Profil verwenden: [Profil A](#profil-a-debian-standardkernel) für den Standardkernel, [Profil B](#profil-b-liquorix-kernel) für Liquorix. Die Governor- und sysctl-Einstellungen unterscheiden sich grundlegend — falsche Kombination verschlechtert die Performance.
+
+---
+
 ## Gesamtvergleich
 
 | Bereich | Standardkernel | Liquorix |
