@@ -43,7 +43,7 @@ For the highest quality and detail accuracy, numerous commercial scenery options
 
 For better overview and planning of flight simulation, two self-created WorldMaps are available:
 
-- **[WorldMap of Scenery](../Maps/airportmap.html)** – An interactive map with over 1400 scenery options for X-Plane 12. The map provides detailed information about each airport to facilitate the search for suitable scenery. The search is done via a 4-digit valid ICAO code, which means smaller airfields such as grass strips and helipads are not displayed - this would make the map too confusing in some places already. Direct download links were deliberately omitted because:
+- **[WorldMap of Scenery](../Maps/airportmap.html)** – An interactive map with over 1700 scenery options for X-Plane 12. The map provides detailed information about each airport to facilitate the search for suitable scenery. The search is done via a 4-digit valid ICAO code, which means smaller airfields such as grass strips and helipads are not displayed - this would make the map too confusing in some places already. Direct download links were deliberately omitted because:
     - No purchase recommendations for specific shops should be given
     - Updating numerous links would be very time-consuming
     - The map focuses on X-Plane 12 scenery (XP11 scenery was only included if there are special adaptations that support XP12 scenery features)
