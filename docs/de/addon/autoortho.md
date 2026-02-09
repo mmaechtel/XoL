@@ -1,6 +1,6 @@
 # AutoOrtho
 
-Die visuelle Qualität der Landschaftsdarstellung ist ein entscheidender Faktor für **Sichtflüge (VFR)** in Flugsimulatoren. Während X-Plane mit Standardtexturen arbeitet, werden diese häufig als veraltet empfunden. **AutoOrtho** behebt diese Einschränkung durch die **Echtzeit-Integration** von Satellitenbildern und ermöglicht eine präzise Darstellung von Infrastruktur, Vegetation und weiteren Geländemerkmalen. Die letzte von kubilus1 veröffentlichte Version 0.7.2 (21. Januar 2024) optimierte die Integration mit X-Plane und minimiert typische Probleme wie **Szenerie-Konflikte** oder **Leistungseinbußen**.
+Die visuelle Qualität der Landschaftsdarstellung ist ein entscheidender Faktor für **Sichtflüge (VFR)** in Flugsimulatoren. Während X-Plane mit Standardtexturen arbeitet, werden diese häufig als veraltet empfunden. **AutoOrtho** behebt diese Einschränkung durch die **Echtzeit-Integration** von Satellitenbildern und ermöglicht eine präzise Darstellung von Infrastruktur, Vegetation und weiteren Geländemerkmalen. Die letzte von kubilus1 veröffentlichte Version 0.7.2 (21. Januar 2024) optimierte die Integration mit X-Plane und minimierte typische Probleme wie **Szenerie-Konflikte** oder **Leistungseinbußen**.
 
 Inzwischen existiert ein aktiver Fork unter [https://github.com/ProgrammingDinosaur/autoortho4xplane](https://github.com/ProgrammingDinosaur/autoortho4xplane), in dem AutoOrtho kontinuierlich weiterentwickelt wird.
 
@@ -16,16 +16,18 @@ Inzwischen existiert ein aktiver Fork unter [https://github.com/ProgrammingDinos
 
 Der **Streaming-Prozess** beeinflusst CPU-Auslastung, RAM-Verbrauch (bis zu 64 GB) und Festplattenleistung. Während SSDs Engpässe minimieren, können bei suboptimalen Verbindungen oder unzureichender Hardware **Frame-Drops** auftreten.
 
-### Erweiterte Funktionen des Forks
+### Erweiterte Funktionen des Forks (Version 2.0)
 
-Der [ProgrammingDinosaur Fork](https://github.com/ProgrammingDinosaur/autoortho4xplane) baut auf der ursprünglichen Codebasis auf und erweitert AutoOrtho um zusätzliche Funktionen:
+Der [ProgrammingDinosaur Fork](https://github.com/ProgrammingDinosaur/autoortho4xplane) baut auf der ursprünglichen Codebasis auf und hat sich mit Version 2.0 zu einer eigenständigen Weiterentwicklung mit signifikanten Verbesserungen entwickelt:
 
+- **C-Pipeline für Texturverarbeitung**: Neue native C-Implementierung mit bis zu 3-facher Verbesserung der Ladezeiten gegenüber der Python-Pipeline. Vier Pipeline-Modi verfügbar: Auto (automatische Auswahl), Native (reines C), Hybrid (C + Python) und Python (Fallback)
+- **.aob2 Bundle-Format**: Neues kompaktes Datenformat für Szenerie-Pakete
 - **Erhöhte Zoomstufen und Auflösung** für X-Plane 12
 - **Neue Benutzeroberfläche** mit modernen Frameworks
 - **Überarbeiteter Installer** mit Sicherheitsprüfungen für Zielverzeichnisse
 - **Verbesserte Szenerie-Download-Erfahrung** (schneller und benutzerfreundlicher)
 - **macOS-Kompatibilität** (nur Apple Silicon)
-- **Zusätzliche Kartenanbieter**: Yandex und Apple Maps
+- **Erweiterte Kartenanbieter**: Bing, Google, Here, Yandex und Apple Maps
 - **Automatische scenery_packs.ini-Konfiguration** für die Verwendung mit SimHeaven
 
 ## Installation und Konfiguration
@@ -59,7 +61,7 @@ Der [ProgrammingDinosaur Fork](https://github.com/ProgrammingDinosaur/autoortho4
 - **X-Plane-Pfad**: Verzeichnis des X-Plane-Installationsordners
 - **Cache-Verzeichnis**: Speicherort für Orthofoto-Cache (empfohlen: schnelle SSD)
 - **Kartenanbieter**: Auswahl zwischen Bing, Google, Here, Yandex und Apple Maps
-- **Cache-Größe**: Maximale Cache-Größe in GB
+- **Cache-Größe**: Maximale Cache-Größe in GB — wird das Limit erreicht, werden ältere Kacheln automatisch entfernt
 - **Wartezeit**: Balance zwischen Qualität und Reaktionszeit
 - **Zoom-Level**: Mindest- und Maximalzoom für Satellitenbilder
 - **Autostart**: Automatischer Start mit X-Plane
@@ -69,11 +71,30 @@ Für erweiterte Konfigurationen kann weiterhin die `.autoortho`-Konfigurationsda
 
 Für optimale Erfahrung fügt SimHeaven X-World 3D-Objekte und Autogen hinzu, während xOrganizer/xToolbox die Szenerie-Verwaltung vereinfacht. vStates bietet eine Alternative für vorgefertigte Orthophotos.
 
-### Vergleich mit Ortho4XP
+## Vergleich mit Ortho4XP
 
-AutoOrtho und Ortho4XP erfüllen unterschiedliche Zwecke im X-Plane-Ökosystem. AutoOrtho streamt Daten in Echtzeit von Bing/USGS, benötigt minimalen Speicher (wenige GB Cache) aber eine konstante Internetverbindung. Es arbeitet mit bis zu ZL16, was einen guten Kompromiss zwischen Detail und Leistung bietet. Im Gegensatz dazu verwendet Ortho4XP vorbereitete lokale Kacheln von Bing/Google, benötigt hunderte GB Speicher, unterstützt aber bis zu ZL19 für maximale Details.
+AutoOrtho und Ortho4XP verfolgen architektonisch unterschiedliche Ansätze, die jeweils für verschiedene Spielerprofile optimiert sind.
 
-AutoOrthos Leistung kann gelegentliches Ruckeln zeigen und stellt höhere Anforderungen an CPU/RAM, während Ortho4XP stabilere Leistung mit lokal gespeicherten Daten bietet. Die Einrichtung ist mit AutoOrtho nach der initialen Konfiguration einfacher, während Ortho4XP zeitaufwändige Kachelerstellung erfordert, aber detailliertere Szenerien für bestimmte Regionen bietet.
+| Dimension | AutoOrtho | Ortho4XP |
+|---|---|---|
+| Datenbeschaffung | On-Demand-Streaming zur Laufzeit | Vorab generiert (offline) |
+| Speicherbedarf | Cache mit automatischer Bereinigung (Limit konfigurierbar) | Dauerhaft pro Region (1–8 GB bei ZL17) |
+| Internetbedarf | Ja (bei Cache-Miss) | Nein (nach Generierung) |
+| Max. Zoomstufe | Bis ZL18 (Fork 2.0) | Bis ZL19 |
+| Spontanität | Sofort fliegbar, weltweit | Vorab-Generierung erforderlich (30 Min. bis Stunden) |
+| Visuelle Konsistenz | Progressives Laden bei Erstbesuch | Sofort volle Qualität |
+| Offline-Fähigkeit | Nur gecachte Regionen | Vollständig |
+
+**Welches System passt besser?**
+
+- **Habitueller Spieler** (wiederkehrende Stammflughäfen): Ortho4XP bietet hier strukturelle Vorteile — nach einmaliger Generierung liegt der gesamte Datenbestand lokal vor, die Cache-Trefferquote beträgt 100 %, und es bestehen keine Laufzeitabhängigkeiten von Netzwerk oder Kartenservern.
+
+- **Explorativer Spieler** (ständig neue Destinationen): AutoOrtho ist die bessere Wahl — keine Vorab-Generierung, spontanes Anfliegen weltweit möglich. Ortho4XP würde hier zu einem stetig wachsenden Datenbestand führen, der kaum wiederverwendet wird.
+
+- **Hybrider Spieler**: Die [Kombination beider Systeme](static_plus_streaming.md) bietet das Beste aus beiden Welten.
+
+!!! info "Cache-Verhalten"
+    AutoOrtho verfügt über eine automatische Cache-Bereinigung: Wird die konfigurierte Cache-Größe erreicht, werden ältere Kacheln automatisch entfernt, um Platz für neue zu schaffen. Im Gegensatz zu Ortho4XP, wo generierte Tiles dauerhaft auf der Festplatte verbleiben, reguliert AutoOrtho seinen Speicherverbrauch somit selbstständig.
 
 ### Häufige Probleme und Lösungen
 
@@ -215,5 +236,6 @@ Die Kombination von AutoOrtho mit SimHeaven X-World schafft eine umfassende Szen
 
 ## Ressourcen
 
-- [GitHub Repository](https://github.com/kubilus1/autoortho)
+- [GitHub Repository (Original)](https://github.com/kubilus1/autoortho)
+- [GitHub Repository (ProgrammingDinosaur Fork)](https://github.com/ProgrammingDinosaur/autoortho4xplane)
 - [X-Plane.org Forum](https://forums.x-plane.org/forums/forum/802-autoortho-streaming-ortho-imagery-for-x-plane/)

@@ -22,11 +22,8 @@ This documentation is an open project. Improvements or additions can be contribu
 
 ## Recent Changes
 
-### 2025-09-22
-- [AutoOrtho](addon/autoortho.md) documentation comprehensively revised
-  - Integration of ProgrammingDinosaur Fork with enhanced features
-  - Zoom level increased to ZL18 (previously ZL16)
-  - GUI-based configuration highlighted
-  - Python 3.12 updated for Linux installation
-  - macOS compatibility (Apple Silicon) added
-  - Troubleshooting redirected to current fork documentation
+### 2026-02-09
+- New [XEarthLayer](addon/xearthlayer.md) documentation — Rust-based streaming alternative with adaptive prefetch
+- [Orthophotography Introduction](addon/orthophotography_intro.md) restructured: Static Generation vs. Ortho Streaming, player profiles
+- [AutoOrtho](addon/autoortho.md) updated: Fork 2.0 (C-Pipeline, .aob2), comparison with Ortho4XP revised
+- [Static + Streaming](addon/static_plus_streaming.md) renamed and fully revised

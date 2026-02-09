@@ -2,6 +2,27 @@
 
 All notable changes to the XoL documentation will be documented in this file.
 
+## [2026-02-09]
+
+### Added
+- New [XEarthLayer](docs/de/addon/xearthlayer.md) documentation page (DE+EN)
+  - Rust-based streaming alternative with adaptive prefetch
+  - Binary packages, installation, usage, regional packages, comparison with AutoOrtho
+- [X-Plane Map Enhancement](https://github.com/derekhe/xplane-map-enhancement-release) (XPME) added as streaming solution
+
+### Changed
+- [Orthophotography Introduction](docs/de/addon/orthophotography_intro.md) restructured
+  - New categories: Static Generation vs Ortho Streaming
+  - Player profile recommendations with generic terms instead of product names
+- [AutoOrtho](docs/de/addon/autoortho.md) documentation updated
+  - ProgrammingDinosaur Fork 2.0: C-Pipeline, .aob2 bundle format, extended map providers
+  - Comparison with Ortho4XP promoted to H2 with player profile recommendations
+  - Cache eviction behavior clarified
+- [Static + Streaming](docs/de/addon/static_plus_streaming.md) renamed and rewritten
+  - Renamed from `autoortho_plus_zortho.md` to `static_plus_streaming.md`
+  - WIP banner removed, content fully revised
+  - AutoOrtho-specific examples marked as such
+
 ## [2025-06-05]
 
 ### Added
@@ -13,7 +34,7 @@ All notable changes to the XoL documentation will be documented in this file.
 ## [2025-05-08]
 
 ### Added
-- [Ortho4XP + AutoOrtho Guide](docs/de/addon/autoortho_plus_zortho.md) significantly expanded
+- [Statisch + Streaming Guide](docs/de/addon/static_plus_streaming.md) significantly expanded
   - Added comprehensive guide on combining Ortho4XP and AutoOrtho
   - Added practical examples and best practices
   - Improved structure and removed redundancies
