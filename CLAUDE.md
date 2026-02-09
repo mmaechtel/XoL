@@ -114,6 +114,7 @@ Jedes Thema in `TODO.md` hat einen Status:
 |-------|-------|-------------|
 | `/research-topic` | 1 + 2 | Recherche, Lektorat, Plan. Startet NICHT die Umsetzung. |
 | `/faktencheck` | 4 | Faktenprüfung gegen Primärquellen, Korrekturen, Quellenabschnitt. |
+| `/abschluss` | alle | Changelog in `index.md` (DE + EN) aktualisieren und Git-Commit erstellen. |
 
 ---
 

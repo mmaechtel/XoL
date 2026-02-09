@@ -23,6 +23,8 @@ This documentation is an open project. Improvements or additions can be contribu
 ## Recent Changes
 
 ### 2026-02-09
+- [X-Plane Configuration](xplane/config.md): Sources section added with 6 primary references, cross-references to Device Losses documentation
+- [System Errors](xplane/systemfehler.md) reduced to navigation page: links to Configuration (CLI diagnostics), Device Losses, and Performance instead of generic content
 - [X-Plane Configuration](xplane/config.md) revised: Focus on Linux specifics — Vulkan/Zink, shader cache, environment variables, display server, audio, controllers, scenario-based troubleshooting with CLI parameters. All claims verified against primary sources, version-specific information removed for long-term validity
 - [Glossary](glossary.md) expanded: Zink, FMOD, evdev, RADV
 - New [System Tuning](systemtuning.md) page — latency optimization for X-Plane: distributions, latency sources, two kernel profiles (standard kernel vs. Liquorix) with concrete configuration steps
