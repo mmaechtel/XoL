@@ -9,6 +9,7 @@ The following areas are optimized:
 - **Kernel**: Adjustment or switching to a more performant kernel like [Liquorix](liquorix.md)
 - **Graphics Drivers**: Installation and configuration of optimal [Nvidia drivers](nvidia.md)
 - **System Tuning**: CPU governor, interrupt routing, and memory parameters for minimal latency ([System Tuning](systemtuning.md))
+- **System Tools**: Monitoring tools to verify tuning settings ([System Tools](systemtools.md))
 - **Filesystem**: Optimization of storage structure and performance for X-Plane ([Filesystem](filesystem.md))
 
 ## Extensions Overview

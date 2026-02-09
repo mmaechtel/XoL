@@ -81,6 +81,7 @@ plugins:
                     - Nvidia Treiber: de/nvidia.md
                     - Liquorix Kernel: de/liquorix.md
                     - Systemtuning: de/systemtuning.md
+                    - Systemtools: de/systemtools.md
                     - Dateisystem: de/filesystem.md
                 - Erweiterungen:
                     - KVM: de/kvm.md
@@ -131,6 +132,7 @@ plugins:
                     - Nvidia Drivers: en/nvidia.md
                     - Liquorix Kernel: en/liquorix.md
                     - System Tuning: en/systemtuning.md
+                    - System Tools: en/systemtools.md
                     - Filesystem: en/filesystem.md
                 - Extensions:
                     - KVM: en/kvm.md

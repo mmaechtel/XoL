@@ -9,6 +9,7 @@ Folgende Bereiche werden optimiert:
 - **Kernel**: Anpassung oder Wechsel zu einem performanteren Kernel wie [Liquorix](liquorix.md)
 - **Grafiktreiber**: Installation und Konfiguration der optimalen [Nvidia-Treiber](nvidia.md)
 - **Systemtuning**: CPU-Governor, Interrupt-Routing und Speicherparameter für minimale Latenz ([Systemtuning](systemtuning.md))
+- **Systemtools**: Monitoring-Tools zur Verifikation der Tuning-Einstellungen ([Systemtools](systemtools.md))
 - **Dateisystem**: Optimierung der Speicherstruktur und -performance für X-Plane ([Dateisystem](filesystem.md))
 - **Systemfehler**: Diagnose und Behebung von [Systemfehlern](systemfehler.md)
 

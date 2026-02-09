@@ -11,7 +11,7 @@ Workflow und Phasen-Beschreibung: siehe `CLAUDE.md` → Dokumentations-Workflow.
 | 1     | `xplane/config.md`  | **geprüft** | X-Plane Konfiguration (Linux-Spezifika)             |
 | **!** | `systemtuning.md`   | **umgesetzt** | **Governor/Liquorix korrigiert + Erklärungen ergänzt** |
 | 1b    | `systemtuning.md`   | umgesetzt   | Kernel-Wechsel (Debian, Standard ↔ Liquorix)        |
-| 1c    | `systemtools.md`    | offen       | Linux-Systemtools (htop, glances, iotop)            |
+| 1c    | `systemtools.md`    | **umgesetzt** | Linux-Systemtools (htop, glances, iotop)            |
 | 2     | `mesa.md`           | offen       | AMD/Intel GPU-Treiber (Mesa, RADV, Vulkan)          |
 | 3     | `input_devices.md`  | offen       | Joystick, Throttle, Ruderpedal unter Linux          |
 | 4     | `wayland.md`        | offen       | Display-Server-Wahl für X-Plane                     |
@@ -131,10 +131,31 @@ Anleitung: Wie man unter Debian zwischen zwei installierten Kerneln (Standard + 
 
 ### systemtools.md — Linux-Systemtools
 
-**Status:** offen
-**Nav-Position:** Linux > Erweiterungen
+**Status:** geplant
+**Nav-Position:** Linux > Optimierungen (nach Systemtuning, vor Dateisystem)
 
-Übersicht über nützliche Monitoring-Tools für Performance-Analyse und Debugging: `htop`, `glances`, `iotop` und weitere relevante Tools.
+**Research-Papers:**
+
+- `research/cpu_monitoring_tools.md`
+- `research/io_monitoring_tools.md`
+- `research/interrupt_monitoring_tools.md`
+- `research/Linux_Monitoring_Tools_Combined.md`
+- `research/LEKTORAT_systemtools.md`
+
+**Plan:** Companion-Seite zu systemtuning.md — Tools zur Verifikation der dort beschriebenen Einstellungen.
+
+**Gliederung:**
+
+1. Einleitung + Installation (alle Pakete)
+2. CPU-Monitoring: htop, btop, cpupower, s-tui, turbostat, mpstat
+3. IO-Monitoring: iotop, iostat, ioping, nvme-cli
+4. Interrupt-Analyse: /proc/interrupts, irqtop/lsirq, mpstat -I, Shielding-Verifikation
+5. System-Dashboards: glances (Web-UI), powertop (C-States)
+6. Szenario-Tabelle: Frage → Tool → Befehl
+7. Klappbare Blöcke: nmon, fatrace, perf/ftrace (Fortgeschrittene)
+8. Quellenabschnitt
+
+**Querverweise:** Jedes Tool-Kapitel verweist auf den relevanten systemtuning.md-Abschnitt.
 
 ### addon/xorganizer.md — Wine-Installation und Workflow
 
