@@ -1,5 +1,8 @@
 # Systemtuning für X-Plane
 
+!!! danger "Work in Progress"
+    Die Parameter für das Kernel-Tuning sind aktuell noch in der Überprüfung und funktionieren möglicherweise nicht alle wie beschrieben. Änderungen vorbehalten.
+
 ## Distributionen und ihre Zielausrichtung
 
 Linux-Distributionen unterscheiden sich nicht nur in Paketmanager und Desktop-Umgebung, sondern vor allem in der **Abstimmung zwischen Kernel und Systemsoftware**. Jede Distribution trifft Konfigurationsentscheidungen für einen bestimmten Einsatzzweck:
@@ -260,22 +263,35 @@ processor.max_cstate=5
 
 Die wichtigste Maßnahme unter Liquorix. Hardware-Interrupts auf die ersten Kerne konzentrieren, damit der Scheduler die restlichen Kerne ungestört für die Anwendung nutzen kann.
 
-```bash
-sudo systemctl disable --now irqbalance
+!!! warning "IRQ-Affinität unter Liquorix"
+    Liquorix verwaltet die IRQ-Verteilung kernelintern. Auf AMD-Systemen sind `/proc/irq/*/smp_affinity_list` und `/proc/irq/*/smp_affinity` selbst als Root schreibgeschützt — manuelle Affinitätsänderungen zur Laufzeit sind nicht möglich.
+
+    Die Lösung ist der Kernel-Parameter `noirqbalance`, der die kernelinterne IRQ-Verteilung deaktiviert und die Kontrolle an den Userspace übergibt.
+
+In `/etc/default/grub` den Parameter `GRUB_CMDLINE_LINUX_DEFAULT` erweitern:
+
+```
+noirqbalance
 ```
 
 ```bash
-for i in /proc/irq/*/smp_affinity_list; do echo 0-3 | sudo tee "$i" 2>/dev/null; done
+sudo update-grub
 ```
 
-CPU 0–3 = System/Interrupts, Rest = Anwendung.
+Neustart erforderlich. Danach `irqbalance` mit gezielter Konfiguration nutzen. In `/etc/default/irqbalance` eintragen:
 
-!!! tip "Alternative: irqbalance konfigurieren"
-    Statt `irqbalance` komplett zu deaktivieren, kann es über `/etc/default/irqbalance` konfiguriert werden. Die Variable `IRQBALANCE_BANNED_CPULIST="4-15"` schließt die angegebenen Kerne von der Interrupt-Verteilung aus. Das ist wartungsfreundlicher und passt sich an neue Hardware-IRQs an. Nach der Änderung den Dienst neu starten:
+```
+IRQBALANCE_BANNED_CPULIST="4-15"
+```
 
-    ```bash
-    sudo systemctl restart irqbalance
-    ```
+Das schließt die angegebenen Kerne von der Interrupt-Verteilung aus. CPU 0–3 = System/Interrupts, Rest = Anwendung.
+
+```bash
+sudo systemctl enable --now irqbalance
+```
+
+!!! tip "Warum irqbalance statt manueller Affinität?"
+    `irqbalance` mit `BANNED_CPULIST` ist wartungsfreundlicher als manuelle Affinität: Es passt sich automatisch an neue Hardware-IRQs an und verteilt die Last intelligent auf die erlaubten Kerne.
 
 ### 4. NVMe Energiesparen deaktivieren
 
@@ -386,6 +402,21 @@ Nach dieser Einrichtung funktioniert auch `grub-reboot` für einmalige Abweichun
 ```bash
 uname -r
 ```
+
+### Was lässt sich zur Laufzeit umschalten?
+
+Nicht alle Einstellungen erfordern einen Neustart. Die folgende Tabelle zeigt, welche Parameter im laufenden Betrieb geändert werden können:
+
+| Parameter | Zur Laufzeit änderbar? | Methode |
+|---|---|---|
+| Governor | Ja | `echo ... \| sudo tee /sys/devices/system/cpu/cpu*/cpufreq/scaling_governor` |
+| NVMe APST | Ja | `echo 0 \| sudo tee /sys/module/nvme_core/parameters/default_ps_max_latency_us` |
+| sysctl (vm.*) | Ja | `sudo sysctl --system` |
+| irqbalance-Dienst | Ja | `sudo systemctl stop/start irqbalance` |
+| nice / chrt / taskset | Ja | Wird beim Anwendungsstart gesetzt |
+| IRQ-Affinität | **Nein** (Liquorix/AMD) | Kernel sperrt `/proc/irq/*/smp_affinity` — `noirqbalance` per GRUB nötig |
+| processor.max_cstate | **Nein** | Nur per GRUB, Neustart nötig |
+| isolcpus | **Nein** | Nur per GRUB (Alternative: cgroup v2 cpusets) |
 
 !!! warning "Tuning-Profil anpassen"
     Nach einem Kernel-Wechsel das passende Profil verwenden: [Profil A](#profil-a-debian-standardkernel) für den Standardkernel, [Profil B](#profil-b-liquorix-kernel) für Liquorix. Die Governor- und sysctl-Einstellungen unterscheiden sich grundlegend — falsche Kombination verschlechtert die Performance.
