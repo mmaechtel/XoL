@@ -124,6 +124,12 @@ Neustart erforderlich. Überprüfung:
 cat /sys/devices/system/cpu/cpu0/cpufreq/scaling_governor
 ```
 
+Zum sofortigen Umschalten ohne Neustart:
+
+```bash
+echo performance | sudo tee /sys/devices/system/cpu/cpu*/cpufreq/scaling_governor
+```
+
 ### 2. CPU Schlafzustände begrenzen
 
 In `/etc/default/grub` den Parameter `GRUB_CMDLINE_LINUX_DEFAULT` erweitern:
@@ -210,8 +216,11 @@ Der Kernel reagiert schneller, da Rechenzeit für die Anwendung garantiert wird.
 In `/etc/default/grub` den Parameter `GRUB_CMDLINE_LINUX_DEFAULT` erweitern:
 
 ```
-cpufreq.default_governor=schedutil
+cpufreq.default_governor=ondemand
 ```
+
+!!! note "Warum `ondemand` statt `schedutil`?"
+    `schedutil` bezieht Auslastungssignale direkt vom CFS-Scheduler. Liquorix nutzt jedoch den BORE-Scheduler, der diese Signale nicht bereitstellt — `schedutil` wird daher gar nicht erst einkompiliert. `ondemand` passt den CPU-Takt ebenfalls lastabhängig an, arbeitet aber unabhängig vom Scheduler.
 
 Anwenden:
 
@@ -225,8 +234,14 @@ Neustart erforderlich. Anschließend Energy Performance Preference setzen:
 echo balance_performance | sudo tee /sys/devices/system/cpu/cpu*/cpufreq/energy_performance_preference
 ```
 
+Zum sofortigen Umschalten ohne Neustart:
+
+```bash
+echo ondemand | sudo tee /sys/devices/system/cpu/cpu*/cpufreq/scaling_governor
+```
+
 !!! tip "Persistenz"
-    Für permanente EPP-Einstellung eine systemd-Unit oder udev-Regel erstellen.
+    Die GRUB-Variante setzt den Governor dauerhaft. Die Terminal-Befehle gelten nur bis zum nächsten Neustart. Für permanente EPP-Einstellung eine systemd-Unit oder udev-Regel erstellen.
 
 ### 2. C-States und Energiesteuerung
 
@@ -256,7 +271,11 @@ for i in /proc/irq/*/smp_affinity_list; do echo 0-3 | sudo tee "$i" 2>/dev/null;
 CPU 0–3 = System/Interrupts, Rest = Anwendung.
 
 !!! tip "Alternative: irqbalance konfigurieren"
-    Statt `irqbalance` komplett zu deaktivieren, kann es mit `IRQBALANCE_BANNED_CPULIST="4-15"` konfiguriert werden. Das ist wartungsfreundlicher und passt sich an neue Hardware-IRQs an.
+    Statt `irqbalance` komplett zu deaktivieren, kann es über `/etc/default/irqbalance` konfiguriert werden. Die Variable `IRQBALANCE_BANNED_CPULIST="4-15"` schließt die angegebenen Kerne von der Interrupt-Verteilung aus. Das ist wartungsfreundlicher und passt sich an neue Hardware-IRQs an. Nach der Änderung den Dienst neu starten:
+
+    ```bash
+    sudo systemctl restart irqbalance
+    ```
 
 ### 4. NVMe Energiesparen deaktivieren
 
@@ -272,6 +291,12 @@ Anwenden:
 
 ```bash
 sudo update-grub
+```
+
+Zum sofortigen Deaktivieren ohne Neustart:
+
+```bash
+echo 0 | sudo tee /sys/module/nvme_core/parameters/default_ps_max_latency_us
 ```
 
 ### 5. Speicher-Writeback glätten
@@ -308,7 +333,7 @@ Keine maximale Leistung — sondern minimale Frame-Time-Spikes. Der Scheduler ka
 
 | Bereich | Standardkernel | Liquorix |
 |---|---|---|
-| Governor | `performance` | `schedutil` |
+| Governor | `performance` | `ondemand` |
 | CPU-Bindung | Ja (`taskset`) | Nein |
 | Interrupt-Trennung | Optional | Wichtig |
 | NVMe APST | Optional deaktivieren | Deaktiviert |

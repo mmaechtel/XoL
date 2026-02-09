@@ -124,6 +124,12 @@ Reboot required. Verify:
 cat /sys/devices/system/cpu/cpu0/cpufreq/scaling_governor
 ```
 
+To switch immediately without rebooting:
+
+```bash
+echo performance | sudo tee /sys/devices/system/cpu/cpu*/cpufreq/scaling_governor
+```
+
 ### 2. Limit CPU Sleep States
 
 In `/etc/default/grub`, extend `GRUB_CMDLINE_LINUX_DEFAULT`:
@@ -210,8 +216,11 @@ The kernel reacts faster because CPU time is guaranteed for the application.
 In `/etc/default/grub`, extend `GRUB_CMDLINE_LINUX_DEFAULT`:
 
 ```
-cpufreq.default_governor=schedutil
+cpufreq.default_governor=ondemand
 ```
+
+!!! note "Why `ondemand` instead of `schedutil`?"
+    `schedutil` relies on utilization signals from the CFS scheduler. However, Liquorix uses the BORE scheduler, which doesn't provide these signals — `schedutil` is therefore not compiled in. `ondemand` also adjusts CPU frequency based on load but works independently of the scheduler.
 
 Apply:
 
@@ -225,8 +234,14 @@ Reboot required. Then set Energy Performance Preference:
 echo balance_performance | sudo tee /sys/devices/system/cpu/cpu*/cpufreq/energy_performance_preference
 ```
 
+To switch immediately without rebooting:
+
+```bash
+echo ondemand | sudo tee /sys/devices/system/cpu/cpu*/cpufreq/scaling_governor
+```
+
 !!! tip "Persistence"
-    For permanent EPP settings, create a systemd unit or udev rule.
+    The GRUB method sets the governor permanently. The terminal commands only apply until the next reboot. For permanent EPP settings, create a systemd unit or udev rule.
 
 ### 2. C-States and Power Management
 
@@ -256,7 +271,11 @@ for i in /proc/irq/*/smp_affinity_list; do echo 0-3 | sudo tee "$i" 2>/dev/null;
 CPU 0–3 = system/interrupts, rest = application.
 
 !!! tip "Alternative: configure irqbalance"
-    Instead of disabling `irqbalance` entirely, it can be configured with `IRQBALANCE_BANNED_CPULIST="4-15"`. This is more maintainable and adapts to new hardware IRQs.
+    Instead of disabling `irqbalance` entirely, it can be configured via `/etc/default/irqbalance`. The variable `IRQBALANCE_BANNED_CPULIST="4-15"` excludes the specified cores from interrupt distribution. This is more maintainable and adapts to new hardware IRQs. After changing, restart the service:
+
+    ```bash
+    sudo systemctl restart irqbalance
+    ```
 
 ### 4. Disable NVMe Power Saving
 
@@ -272,6 +291,12 @@ Apply:
 
 ```bash
 sudo update-grub
+```
+
+To disable immediately without rebooting:
+
+```bash
+echo 0 | sudo tee /sys/module/nvme_core/parameters/default_ps_max_latency_us
 ```
 
 ### 5. Smooth Memory Writeback
@@ -308,7 +333,7 @@ Not maximum performance — but minimal frame-time spikes. The scheduler can opt
 
 | Area | Standard Kernel | Liquorix |
 |---|---|---|
-| Governor | `performance` | `schedutil` |
+| Governor | `performance` | `ondemand` |
 | CPU pinning | Yes (`taskset`) | No |
 | Interrupt separation | Optional | Important |
 | NVMe APST | Optionally disabled | Disabled |
