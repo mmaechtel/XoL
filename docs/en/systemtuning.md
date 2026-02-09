@@ -109,28 +109,26 @@ For installing Liquorix, see [Liquorix Kernel](liquorix.md).
 
 Set the governor to a fixed high-performance clock to reduce reaction time and compensate for the lack of load prediction.
 
-In `/etc/default/grub`, extend `GRUB_CMDLINE_LINUX_DEFAULT`:
-
-```
-cpufreq.default_governor=performance
-```
-
-Apply:
+Switch immediately:
 
 ```bash
-sudo update-grub
+echo performance | sudo tee /sys/devices/system/cpu/cpu*/cpufreq/scaling_governor
 ```
 
-Reboot required. Verify:
+Verify:
 
 ```bash
 cat /sys/devices/system/cpu/cpu0/cpufreq/scaling_governor
 ```
 
-To switch immediately without rebooting:
+To make the setting persistent across reboots, extend `GRUB_CMDLINE_LINUX_DEFAULT` in `/etc/default/grub`:
+
+```
+cpufreq.default_governor=performance
+```
 
 ```bash
-echo performance | sudo tee /sys/devices/system/cpu/cpu*/cpufreq/scaling_governor
+sudo update-grub
 ```
 
 ### 2. Limit CPU Sleep States
@@ -216,35 +214,39 @@ The kernel reacts faster because CPU time is guaranteed for the application.
 
 ### 1. Adaptive CPU Governor
 
-In `/etc/default/grub`, extend `GRUB_CMDLINE_LINUX_DEFAULT`:
-
-```
-cpufreq.default_governor=ondemand
-```
-
-!!! note "Why `ondemand` instead of `schedutil`?"
-    `schedutil` relies on utilization signals from the CFS scheduler. However, Liquorix uses the BORE scheduler, which doesn't provide these signals — `schedutil` is therefore not compiled in. `ondemand` also adjusts CPU frequency based on load but works independently of the scheduler.
-
-Apply:
-
-```bash
-sudo update-grub
-```
-
-Reboot required. Then set Energy Performance Preference:
-
-```bash
-echo balance_performance | sudo tee /sys/devices/system/cpu/cpu*/cpufreq/energy_performance_preference
-```
-
-To switch immediately without rebooting:
+Switch immediately:
 
 ```bash
 echo ondemand | sudo tee /sys/devices/system/cpu/cpu*/cpufreq/scaling_governor
 ```
 
+Verify:
+
+```bash
+cat /sys/devices/system/cpu/cpu0/cpufreq/scaling_governor
+```
+
+!!! note "Why `ondemand` instead of `schedutil`?"
+    `schedutil` relies on utilization signals from the CFS scheduler. However, Liquorix uses the BORE scheduler, which doesn't provide these signals — `schedutil` is therefore not compiled in. `ondemand` also adjusts CPU frequency based on load but works independently of the scheduler.
+
+Optionally set Energy Performance Preference:
+
+```bash
+echo balance_performance | sudo tee /sys/devices/system/cpu/cpu*/cpufreq/energy_performance_preference
+```
+
+To make the setting persistent across reboots, extend `GRUB_CMDLINE_LINUX_DEFAULT` in `/etc/default/grub`:
+
+```
+cpufreq.default_governor=ondemand
+```
+
+```bash
+sudo update-grub
+```
+
 !!! tip "Persistence"
-    The GRUB method sets the governor permanently. The terminal commands only apply until the next reboot. For permanent EPP settings, create a systemd unit or udev rule.
+    The terminal commands apply until the next reboot. The GRUB method makes the setting permanent. For permanent EPP settings, create a systemd unit or udev rule.
 
 ### 2. C-States and Power Management
 
@@ -297,22 +299,20 @@ sudo systemctl enable --now irqbalance
 
 NVMe SSDs can have wake-up latencies of 5–22 ms in power-saving mode — longer than a complete frame at 60 Hz (e.g., Samsung 950 Pro State 4: 22 ms exit latency).
 
-In `/etc/default/grub`, extend `GRUB_CMDLINE_LINUX_DEFAULT`:
+Disable immediately:
+
+```bash
+echo 0 | sudo tee /sys/module/nvme_core/parameters/default_ps_max_latency_us
+```
+
+To make the setting persistent across reboots, extend `GRUB_CMDLINE_LINUX_DEFAULT` in `/etc/default/grub`:
 
 ```
 nvme_core.default_ps_max_latency_us=0
 ```
 
-Apply:
-
 ```bash
 sudo update-grub
-```
-
-To disable immediately without rebooting:
-
-```bash
-echo 0 | sudo tee /sys/module/nvme_core/parameters/default_ps_max_latency_us
 ```
 
 ### 5. Smooth Memory Writeback

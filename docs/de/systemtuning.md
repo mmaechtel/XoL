@@ -109,28 +109,26 @@ Für die Installation von Liquorix siehe [Liquorix Kernel](liquorix.md).
 
 Den Governor auf festen Hochleistungstakt setzen, um Reaktionszeit zu verkürzen und fehlende Lastvorhersage zu kompensieren.
 
-In `/etc/default/grub` den Parameter `GRUB_CMDLINE_LINUX_DEFAULT` erweitern:
-
-```
-cpufreq.default_governor=performance
-```
-
-Anwenden:
+Sofort umschalten:
 
 ```bash
-sudo update-grub
+echo performance | sudo tee /sys/devices/system/cpu/cpu*/cpufreq/scaling_governor
 ```
 
-Neustart erforderlich. Überprüfung:
+Überprüfung:
 
 ```bash
 cat /sys/devices/system/cpu/cpu0/cpufreq/scaling_governor
 ```
 
-Zum sofortigen Umschalten ohne Neustart:
+Für dauerhafte Einstellung über Neustarts hinweg in `/etc/default/grub` den Parameter `GRUB_CMDLINE_LINUX_DEFAULT` erweitern:
+
+```
+cpufreq.default_governor=performance
+```
 
 ```bash
-echo performance | sudo tee /sys/devices/system/cpu/cpu*/cpufreq/scaling_governor
+sudo update-grub
 ```
 
 ### 2. CPU Schlafzustände begrenzen
@@ -216,35 +214,39 @@ Der Kernel reagiert schneller, da Rechenzeit für die Anwendung garantiert wird.
 
 ### 1. Adaptiver CPU-Governor
 
-In `/etc/default/grub` den Parameter `GRUB_CMDLINE_LINUX_DEFAULT` erweitern:
-
-```
-cpufreq.default_governor=ondemand
-```
-
-!!! note "Warum `ondemand` statt `schedutil`?"
-    `schedutil` bezieht Auslastungssignale direkt vom CFS-Scheduler. Liquorix nutzt jedoch den BORE-Scheduler, der diese Signale nicht bereitstellt — `schedutil` wird daher gar nicht erst einkompiliert. `ondemand` passt den CPU-Takt ebenfalls lastabhängig an, arbeitet aber unabhängig vom Scheduler.
-
-Anwenden:
-
-```bash
-sudo update-grub
-```
-
-Neustart erforderlich. Anschließend Energy Performance Preference setzen:
-
-```bash
-echo balance_performance | sudo tee /sys/devices/system/cpu/cpu*/cpufreq/energy_performance_preference
-```
-
-Zum sofortigen Umschalten ohne Neustart:
+Sofort umschalten:
 
 ```bash
 echo ondemand | sudo tee /sys/devices/system/cpu/cpu*/cpufreq/scaling_governor
 ```
 
+Überprüfung:
+
+```bash
+cat /sys/devices/system/cpu/cpu0/cpufreq/scaling_governor
+```
+
+!!! note "Warum `ondemand` statt `schedutil`?"
+    `schedutil` bezieht Auslastungssignale direkt vom CFS-Scheduler. Liquorix nutzt jedoch den BORE-Scheduler, der diese Signale nicht bereitstellt — `schedutil` wird daher gar nicht erst einkompiliert. `ondemand` passt den CPU-Takt ebenfalls lastabhängig an, arbeitet aber unabhängig vom Scheduler.
+
+Optional Energy Performance Preference setzen:
+
+```bash
+echo balance_performance | sudo tee /sys/devices/system/cpu/cpu*/cpufreq/energy_performance_preference
+```
+
+Für dauerhafte Einstellung über Neustarts hinweg in `/etc/default/grub` den Parameter `GRUB_CMDLINE_LINUX_DEFAULT` erweitern:
+
+```
+cpufreq.default_governor=ondemand
+```
+
+```bash
+sudo update-grub
+```
+
 !!! tip "Persistenz"
-    Die GRUB-Variante setzt den Governor dauerhaft. Die Terminal-Befehle gelten nur bis zum nächsten Neustart. Für permanente EPP-Einstellung eine systemd-Unit oder udev-Regel erstellen.
+    Die Terminal-Befehle gelten bis zum nächsten Neustart. Die GRUB-Variante macht die Einstellung dauerhaft. Für permanente EPP-Einstellung eine systemd-Unit oder udev-Regel erstellen.
 
 ### 2. C-States und Energiesteuerung
 
@@ -297,22 +299,20 @@ sudo systemctl enable --now irqbalance
 
 NVMe-SSDs können im Energiesparmodus Aufwachlatenzen von 5–22 ms haben — länger als ein kompletter Frame bei 60 Hz (z.B. Samsung 950 Pro State 4: 22 ms Exit-Latenz).
 
-In `/etc/default/grub` den Parameter `GRUB_CMDLINE_LINUX_DEFAULT` erweitern:
+Sofort deaktivieren:
+
+```bash
+echo 0 | sudo tee /sys/module/nvme_core/parameters/default_ps_max_latency_us
+```
+
+Für dauerhafte Einstellung über Neustarts hinweg in `/etc/default/grub` den Parameter `GRUB_CMDLINE_LINUX_DEFAULT` erweitern:
 
 ```
 nvme_core.default_ps_max_latency_us=0
 ```
 
-Anwenden:
-
 ```bash
 sudo update-grub
-```
-
-Zum sofortigen Deaktivieren ohne Neustart:
-
-```bash
-echo 0 | sudo tee /sys/module/nvme_core/parameters/default_ps_max_latency_us
 ```
 
 ### 5. Speicher-Writeback glätten
