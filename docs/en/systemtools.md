@@ -9,10 +9,10 @@ This page describes monitoring tools that check exactly that. Each tool is prese
 All recommended tools in one command:
 
 ```bash
-sudo apt install htop btop sysstat linux-cpupower s-tui powertop iotop-c ioping nvme-cli glances util-linux-extra
+sudo apt install htop btop sysstat linux-cpupower s-tui powertop iotop-c ioping nvme-cli glances util-linux-extra nmon
 ```
 
-The `sysstat` package contains `mpstat` and `iostat`. The `linux-cpupower` package contains `cpupower` and `turbostat`.
+The `sysstat` package contains `mpstat` and `iostat`. The `linux-cpupower` package contains `cpupower` and `turbostat`. The `util-linux-extra` package contains `lsirq`.
 
 ---
 
@@ -234,20 +234,22 @@ Key columns
 
 Special entries: **LOC** = Local Timer Interrupts (per CPU), **RES** = Rescheduling Interrupts (IPI), **NMI** = Non-Maskable Interrupts.
 
-### irqtop and lsirq — More Comfortable View
+### lsirq — Sorted Interrupt Snapshot
 
-`irqtop` shows interrupts in `top`-style with automatic updates. `lsirq` provides a sorted snapshot.
+`lsirq` provides a sorted snapshot of interrupt counters. Part of `util-linux-extra`.
 
 ```bash
-# Real-time view, sorted by delta (active IRQs on top)
-sudo irqtop -s DELTA
+# Sorted by total count (most active IRQs on top)
+lsirq -s TOTAL
 
-# Snapshot, sorted by count
-lsirq -s COUNT
+# Show only counters for specific CPUs
+lsirq -C 0-3
+
+# Softirqs instead of hardware interrupts
+lsirq -S
 ```
 
-!!! note "Limitation"
-    irqtop/lsirq show only totals, not per-CPU counters. For per-CPU analysis use `/proc/interrupts` directly or `mpstat -I CPU`.
+For real-time monitoring, use `watch -n 1 lsirq -s TOTAL` or the `/proc/interrupts` methods described above.
 
 ### Verifying Interrupt Shielding
 
@@ -336,7 +338,7 @@ Verifies: [C-States](systemtuning.md#2-limit-cpu-sleep-states) and [C-States Liq
 | Real hardware frequency per core | turbostat | `sudo turbostat --show Core,CPU,Bzy_MHz,Busy%` |
 | Check C-state residency | powertop | `sudo powertop` (Tab: Idle Stats) |
 | Verify interrupt shielding | mpstat | `mpstat -I CPU -P ALL 1` |
-| Identify interrupt sources | irqtop | `sudo irqtop -s DELTA` |
+| Identify interrupt sources | lsirq | `watch -n 1 lsirq -s TOTAL` |
 | Which process is causing IO? | iotop | `sudo iotop -oPd 0.5` |
 | Measure NVMe latency | ioping | `ioping -c 20 -D /dev/nvme0n1` |
 | Test NVMe APST wake-up | ioping | `sleep 5 && ioping -c 1 -D /dev/nvme0n1` |

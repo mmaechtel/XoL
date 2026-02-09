@@ -23,6 +23,7 @@ This documentation is an open project. Improvements or additions can be contribu
 ## Recent Changes
 
 ### 2026-02-09
+- [System Tools](systemtools.md) fact-checked: removed irqtop references (not available as util-linux package), corrected lsirq sort column, added per-CPU options, added nmon to install command
 - New [System Tools](systemtools.md) page — companion to System Tuning: monitoring tools (htop, turbostat, mpstat, iotop, ioping, glances etc.) for verifying tuning settings
 - [System Tuning](systemtuning.md): New section "Switching Between Kernels" — GRUB-based switching between standard Debian and Liquorix (one-time and permanent)
 - [System Tuning](systemtuning.md) corrected: CPU governor for Liquorix changed from `schedutil` to `ondemand` (BORE scheduler doesn't support schedutil), added temporary terminal commands for governor switching, documented IRQBALANCE config path and NVMe runtime parameter

@@ -9,10 +9,10 @@ Diese Seite beschreibt Monitoring-Tools, die genau das prüfen. Jedes Tool wird 
 Alle empfohlenen Tools in einem Befehl:
 
 ```bash
-sudo apt install htop btop sysstat linux-cpupower s-tui powertop iotop-c ioping nvme-cli glances util-linux-extra
+sudo apt install htop btop sysstat linux-cpupower s-tui powertop iotop-c ioping nvme-cli glances util-linux-extra nmon
 ```
 
-Das Paket `sysstat` enthält `mpstat` und `iostat`. Das Paket `linux-cpupower` enthält `cpupower` und `turbostat`.
+Das Paket `sysstat` enthält `mpstat` und `iostat`. Das Paket `linux-cpupower` enthält `cpupower` und `turbostat`. Das Paket `util-linux-extra` enthält `lsirq`.
 
 ---
 
@@ -234,20 +234,22 @@ Wichtige Spalten
 
 Spezielle Einträge: **LOC** = Local Timer Interrupts (pro CPU), **RES** = Rescheduling Interrupts (IPI), **NMI** = Non-Maskable Interrupts.
 
-### irqtop und lsirq — Komfortablere Ansicht
+### lsirq — Sortierter Interrupt-Snapshot
 
-`irqtop` zeigt Interrupts im `top`-Stil mit automatischer Aktualisierung. `lsirq` liefert einen sortierten Snapshot.
+`lsirq` liefert einen sortierten Snapshot der Interrupt-Zähler. Teil des Pakets `util-linux-extra`.
 
 ```bash
-# Echtzeit-Ansicht, nach Delta sortiert (aktive IRQs oben)
-sudo irqtop -s DELTA
+# Nach Gesamtzähler sortiert (aktivste IRQs oben)
+lsirq -s TOTAL
 
-# Snapshot, nach Zähler sortiert
-lsirq -s COUNT
+# Nur Zähler für bestimmte CPUs anzeigen
+lsirq -C 0-3
+
+# Softirqs statt Hardware-Interrupts
+lsirq -S
 ```
 
-!!! note "Einschränkung"
-    irqtop/lsirq zeigen nur Gesamtwerte, keine Per-CPU-Zähler. Für Per-CPU-Analyse `/proc/interrupts` direkt oder `mpstat -I CPU` verwenden.
+Für Echtzeit-Monitoring `watch -n 1 lsirq -s TOTAL` oder die oben beschriebenen `/proc/interrupts`-Methoden verwenden.
 
 ### Interrupt-Shielding verifizieren
 
@@ -336,7 +338,7 @@ Verifiziert: [C-States](systemtuning.md#2-cpu-schlafzustände-begrenzen) und [C-
 | Echte Hardware-Frequenz pro Core | turbostat | `sudo turbostat --show Core,CPU,Bzy_MHz,Busy%` |
 | C-State-Residency prüfen | powertop | `sudo powertop` (Tab: Idle Stats) |
 | Interrupt-Shielding verifizieren | mpstat | `mpstat -I CPU -P ALL 1` |
-| Interrupt-Quellen identifizieren | irqtop | `sudo irqtop -s DELTA` |
+| Interrupt-Quellen identifizieren | lsirq | `watch -n 1 lsirq -s TOTAL` |
 | Welcher Prozess verursacht IO? | iotop | `sudo iotop -oPd 0.5` |
 | NVMe-Latenz messen | ioping | `ioping -c 20 -D /dev/nvme0n1` |
 | NVMe APST Wake-Up testen | ioping | `sleep 5 && ioping -c 1 -D /dev/nvme0n1` |
