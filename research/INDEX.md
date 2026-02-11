@@ -23,7 +23,7 @@ X-Plane Konfiguration, Grafikeinstellungen, Performance-Profile.
 ## display-server/
 
 Wayland, X11, XWayland — Display-Server-Wahl für X-Plane.
-**Zielseiten:** `displayserver.md`, `displayserver_wayland.md`, `displayserver_x11.md` | **Status:** Faktencheck done, Korrekturen offen
+**Zielseiten:** `displayserver.md`, `displayserver_wayland.md`, `displayserver_x11.md` | **Status:** geprüft
 
 | Datei | Typ | Inhalt |
 |-------|-----|--------|
@@ -31,7 +31,7 @@ Wayland, X11, XWayland — Display-Server-Wahl für X-Plane.
 | `wayland_vs_x11.md` | Rohdaten | X-Plane-Kompatibilität Wayland vs. X11 |
 | `wayland_vs_x11_gaming.md` | Rohdaten | Performance/Latenz-Vergleich Gaming |
 | `LEKTORAT_wayland.md` | Lektorat | Redaktionelle Bewertung und Gliederungsplan |
-| `FAKTENCHECK_displayserver.md` | Faktencheck | 6 Fehler, 4 Nuancen, 17 korrekt — Korrekturen ausstehend |
+| `FAKTENCHECK_displayserver.md` | Faktencheck | 6 Fehler, 4 Nuancen, 17 korrekt — Korrekturen eingearbeitet |
 
 ---
 

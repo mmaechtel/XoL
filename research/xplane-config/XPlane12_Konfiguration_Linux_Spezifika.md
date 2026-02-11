@@ -230,7 +230,7 @@ Unter Linux: `~/X-Plane 12/Output/preferences/`
 
 ### 7.2 Kommandozeilenparameter
 
-Vollständige Liste: `./X-Plane-x86_64 --help` (siehe auch `research/xplane-help.out`).
+Vollständige Liste: `./X-Plane-x86_64 --help` (siehe auch `research/xplane-config/xplane-help.out`).
 
 ```bash
 cd ~/X-Plane\ 12/

@@ -12,7 +12,22 @@ XoL (X-Plane on Linux) is a bilingual (German/English) documentation site for ru
 - **Build site:** `mkdocs build` (outputs to `site/`)
 - **Deploy:** `./update_emvisio.sh <hostname>` — dry run with `--dry`
 - **Generate RSS:** `python scripts/generate_rss.py`
-- **Python:** 3.12.8 (see `.python-version`)
+- **Python:** via `pyenv` — die `.python-version` im Repo-Root erzwingt automatisch die richtige Version
+
+### Pip-Abhängigkeiten
+
+Folgende Module müssen installiert sein (`pip install`):
+
+```
+mkdocs
+mkdocs-material
+mkdocs-material-extensions
+mkdocs-static-i18n
+mkdocs-git-revision-date-localized-plugin
+mkdocs-publisher
+pymdown-extensions
+pillow
+```
 
 ## Architecture
 
@@ -20,7 +35,7 @@ XoL (X-Plane on Linux) is a bilingual (German/English) documentation site for ru
 
 - `docs/de/` — German (default), `docs/en/` — English
 - Every page exists in both languages with identical filename
-- i18n plugin (`mkdocs-pub-plugins`) handles language switching
+- i18n plugin (`mkdocs-static-i18n`) handles language switching
 
 ### Navigation
 
@@ -46,14 +61,14 @@ Skill startet mit Thema-Auswahl aus `TODO.md`, dann parallele Subagent-Recherche
 
 - Primärquellen: GitHub, offizielle Docs, Kernel-Docs, Arch Wiki
 - Keine Foren, keine Drittanbieter-Blogposts
-- Ergebnis: Research-Paper in `research/<thema>.md`
+- Ergebnis: Research-Paper in `research/<kategorie>/<thema>.md`
 
 ### Phase 2 — Lektorat & Plan (`/research-topic`)
 
 Gleicher Skill-Durchlauf, direkt nach der Recherche.
 
 - Bestehende Doku analysieren, Plan erstellen
-- Lektorat-Dokument: `research/LEKTORAT_<thema>.md`
+- Lektorat-Dokument: `research/<kategorie>/LEKTORAT_<thema>.md`
   - Bewertet Relevanz, Mehrwert, Haltbarkeit jeder Information
   - Kennzeichnet versionsspezifische Inhalte
   - Bewertet Quellen-Qualität
@@ -100,8 +115,9 @@ Jedes Thema in `TODO.md` hat einen Status:
 | Pfad | Zweck |
 |------|-------|
 | `TODO.md` | Themen-Backlog mit Status. Nur **was** und **wo stehen wir**. |
-| `research/<thema>.md` | Research-Papers (Rohmaterial, nicht publiziert) |
-| `research/LEKTORAT_<thema>.md` | Redaktionelle Bewertung (Brücke Recherche → Umsetzung) |
+| `research/<kategorie>/` | Research-Papers nach Thema (siehe `research/INDEX.md`) |
+| `research/<kategorie>/LEKTORAT_<thema>.md` | Redaktionelle Bewertung (Brücke Recherche → Umsetzung) |
+| `research/INDEX.md` | Thematischer Index aller Research-Dokumente |
 | `docs/MARKDOWN_RULES.txt` | Formatierungsregeln |
 | `.claude/skills/` | Skill-Definitionen (nicht committed, `.gitignore`) |
 | `.claude/settings.local.json` | Freigegebene WebFetch-Domains |

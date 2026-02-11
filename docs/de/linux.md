@@ -11,7 +11,7 @@ Folgende Bereiche werden optimiert:
 - **Systemtuning**: CPU-Governor, Interrupt-Routing und Speicherparameter für minimale Latenz ([Systemtuning](systemtuning.md))
 - **Systemtools**: Monitoring-Tools zur Verifikation der Tuning-Einstellungen ([Systemtools](systemtools.md))
 - **Dateisystem**: Optimierung der Speicherstruktur und -performance für X-Plane ([Dateisystem](filesystem.md))
-- **Systemfehler**: Diagnose und Behebung von [Systemfehlern](systemfehler.md)
+- **Systemfehler**: Diagnose und Behebung von [Systemfehlern](xplane/systemfehler.md)
 
 ## Erweiterungen im Überblick
 

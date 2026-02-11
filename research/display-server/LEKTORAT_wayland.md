@@ -1,8 +1,8 @@
 # Lektorat: wayland.md — Display-Server für X-Plane
 
 **Datum:** 2026-02-09
-**Research-Paper:** `research/wayland_display_server.md`
-**Zusätzliche Rohdaten:** `research/wayland_vs_x11.md`, `research/wayland_vs_x11_gaming.md`
+**Research-Paper:** `research/display-server/wayland_display_server.md`
+**Zusätzliche Rohdaten:** `research/display-server/wayland_vs_x11.md`, `research/display-server/wayland_vs_x11_gaming.md`
 
 ---
 

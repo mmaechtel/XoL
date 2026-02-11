@@ -40,6 +40,22 @@ Workflow und Phasen-Beschreibung: siehe `CLAUDE.md` → Dokumentations-Workflow.
 
 ---
 
+### 4. Display-Server (displayserver.md, displayserver_wayland.md, displayserver_x11.md)
+
+**Status:** geprüft
+
+**Ergebnis:** Drei Seiten (Übersicht, X11-Session, Wayland-Session) in DE + EN. Latenz-Messungen (Justo + Hugl), GPU-spezifische Empfehlungen, Szenario-Tabellen. Faktencheck mit 6 Korrekturen eingearbeitet.
+
+**Research-Papers:**
+
+- `research/display-server/wayland_display_server.md` (konsolidiert)
+- `research/display-server/wayland_vs_x11.md` (Rohdaten: X-Plane-Kompatibilität)
+- `research/display-server/wayland_vs_x11_gaming.md` (Rohdaten: Performance/Latenz)
+- `research/display-server/LEKTORAT_wayland.md`
+- `research/display-server/FAKTENCHECK_displayserver.md`
+
+---
+
 ## Offene Themen
 
 ### 2. `mesa.md` — Mesa/AMD/Intel Grafiktreiber
@@ -55,40 +71,6 @@ Workflow und Phasen-Beschreibung: siehe `CLAUDE.md` → Dokumentations-Workflow.
 **Nav-Position:** Linux > Erweiterungen
 
 **Unterthemen:** evdev/udev-System, SDL2 Game Controller API, Geräteerkennung (lsusb, evtest, jstest-gtk), Linux-seitige Kalibrierung, udev-Regeln für persistente Zuordnung, bekannte Hardware (Thrustmaster, VKB, Virpil), USB-Autosuspend, Fehlerbehebung
-
----
-
-### 4. Display-Server (displayserver.md, displayserver_wayland.md, displayserver_x11.md)
-
-**Status:** geprüft
-**Nav-Position:** Linux > Optimierungen (nach systemtools.md, vor filesystem.md)
-
-**Research-Papers:**
-
-- `research/display-server/wayland_display_server.md` (konsolidiert)
-- `research/display-server/wayland_vs_x11.md` (Rohdaten: X-Plane-Kompatibilität)
-- `research/display-server/wayland_vs_x11_gaming.md` (Rohdaten: Performance/Latenz)
-- `research/display-server/LEKTORAT_wayland.md`
-- `research/display-server/FAKTENCHECK_displayserver.md` **(6 Fehler, 4 Nuancen, 17 korrekt)**
-
-**Kernaussage:** X-Plane 12 nutzt XWayland, nicht natives Wayland. X11-Session empfohlen, aber GPU-abhängig differenziert (AMD profitiert von Wayland).
-
-**Plan — Gliederung:**
-
-1. Drei Protokolle — was ist was? (Wayland, X11, XWayland klar abgrenzen)
-2. Was passiert bei X-Plane? (3 Szenarien durchspielen: X11-Session / Wayland+XWayland / Wayland+SDL nativ)
-3. Latenz im Vergleich (Hardware-Messungen: Justo + Hugl)
-4. GPU-spezifische Situation (AMD/NVIDIA/Intel — jeweils mit X-Plane-Empfehlung)
-5. Session wählen — Schritt für Schritt (Prüfen, Wechseln, Dauerhaft setzen)
-6. Bekannte Probleme unter Wayland (Szenario-Tabelle: Symptom → Ursache → Lösung)
-7. Eingabegeräte (Entwarnung: Joysticks unberührt)
-8. Klappbar: Architektur-Hintergrund, NVIDIA Explicit Sync
-9. Quellen
-
-**Änderungen an bestehenden Seiten:**
-- config.md: Display-Server-Abschnitt kürzen, Verweis auf wayland.md
-- glossary.md: Wayland, XWayland, Display-Server, Compositor
-- mkdocs.yml: Nav-Eintrag (DE + EN)
 
 ---
 
@@ -157,7 +139,7 @@ Anleitung: Wie man unter Debian zwischen zwei installierten Kerneln (Standard + 
 
 ### systemtools.md — Linux-Systemtools
 
-**Status:** geplant
+**Status:** umgesetzt
 **Nav-Position:** Linux > Optimierungen (nach Systemtuning, vor Dateisystem)
 
 **Research-Papers:**
@@ -211,7 +193,7 @@ Anleitung: Wie man unter Debian zwischen zwei installierten Kerneln (Standard + 
 | `config.md`        | `audio.md`, `input_devices.md`, `mesa.md` | Themen-Vertiefung                |
 | `input_devices.md` | `systemtuning.md`                         | USB-Energiemanagement            |
 | `audio.md`         | `flight_operations/vatsim.md`             | VATSIM-Funk                      |
-| `wayland.md`       | `multi_monitor.md`                        | Display-Server bei Multi-Monitor |
+| `displayserver.md` | `multi_monitor.md`                        | Display-Server bei Multi-Monitor |
 | `mesa.md`          | `systemtuning.md`                         | GPU Power Profile + Governor     |
 | `plugins.md`       | `addon/xorganizer.md`                     | Profil-basierte Verwaltung       |
 | `linux.md`         | Alle neuen Seiten                         | Übersichtsseite erweitern        |
