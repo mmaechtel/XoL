@@ -22,6 +22,9 @@ This documentation is an open project. Improvements or additions can be contribu
 
 ## Recent Changes
 
+### 2026-02-11
+- [Display Server](displayserver.md) pages fact-checked: Debian defaults corrected, XWayland row added to Hugl table, latency measurements clarified, NVIDIA modeset default updated, MESA variable scoped to Mesa drivers
+
 ### 2026-02-09
 - New [Display Server](displayserver.md) pages — overview, [X11 Session](displayserver_x11.md) and [Wayland Session](displayserver_wayland.md): protocol comparison (X11/Wayland/XWayland), hardware latency measurements, GPU recommendations, session switching, troubleshooting
 - [Glossary](glossary.md) expanded: Compositor, Display Server, Wayland, X11, XWayland

@@ -25,7 +25,7 @@ Hardware-Messungen zeigen, dass XWayland die Eingabelatenz im Vergleich zu nativ
 | Natives Wayland | 7,14 ms |
 | XWayland | 14,45 ms |
 
-Die ~7 ms zusätzliche Latenz entstehen durch die Übersetzung zwischen X11 und dem Wayland-Compositor. Ob das spürbar ist, hängt von der Anwendung und dem Nutzer ab. Detaillierte Messungen: [Display-Server-Übersicht](displayserver.md#latenz-im-vergleich).
+Die zusätzliche Latenz entsteht durch die Übersetzung zwischen X11 und dem Wayland-Compositor. Der genaue Overhead ist hardware-abhängig — Messungen zeigen je nach GPU, Display und Konfiguration ~2 ms bis ~7 ms. Detaillierte Messungen: [Display-Server-Übersicht](displayserver.md#latenz-im-vergleich).
 
 ---
 
@@ -46,7 +46,7 @@ Wenn X-Plane in der Liste erscheint, läuft es über XWayland. Falls nichts ersc
 
 | Symptom | Ursache | Lösung |
 |---------|---------|--------|
-| Fullscreen falsche Größe/Position bei Multi-Monitor | XWayland kann Fenster nicht frei über Monitore positionieren | X-Plane im Fenstermodus starten oder zu [X11-Session](displayserver_x11.md) wechseln |
+| Fullscreen falsche Größe/Position bei Multi-Monitor | Wayland erlaubt Anwendungen keine freie Fensterpositionierung — XWayland erbt diese Einschränkung | X-Plane im Fenstermodus starten oder zu [X11-Session](displayserver_x11.md) wechseln |
 | Identity-Login schlägt fehl oder zeigt leere Seite | Browser-Komponente braucht X11-Backend | `GDK_BACKEND=x11` setzen (automatisch seit X-Plane 12.1.3) |
 | X-Plane pausiert bei Workspace-Wechsel | Wayland-Compositors suspendieren nicht-sichtbare Anwendungen | Auf X-Planes Workspace bleiben oder Fenstermodus verwenden |
 | Screen Tearing | Compositor unterstützt kein Tearing-Control | VSync in X-Plane aktivieren oder eine aktuelle KDE-Plasma-Version verwenden |
@@ -66,7 +66,7 @@ export SDL_VIDEODRIVER=x11
 # X11-Backend für GTK erzwingen (Identity-Login-Browser)
 export GDK_BACKEND=x11
 
-# Vulkan-Presentation-Mode setzen (verhindert Tearing via VBlank-Sync)
+# Vulkan-Presentation-Mode setzen (nur Mesa-Treiber — AMD, Intel)
 export MESA_VK_WSI_PRESENT_MODE=mailbox
 ```
 
@@ -106,7 +106,7 @@ Wayland auf NVIDIA erfordert aktuelle Treiber mit Explicit-Sync-Unterstützung. 
 
 - NVIDIA-Treiber 555 oder neuer
 - Kernel 6.8 oder neuer
-- `nvidia_drm.modeset=1` in den Kernel-Parametern
+- `nvidia_drm.modeset=1` aktiv (Standard seit Treiber 560; prüfen mit `cat /sys/module/nvidia_drm/parameters/modeset`)
 
 Falls der Treiber älter als 555 ist, eine [X11-Session](displayserver_x11.md) verwenden — Wayland funktioniert dann nicht zuverlässig.
 
@@ -118,7 +118,7 @@ Intel empfiehlt offiziell Wayland für Arc-GPUs. X11/Xorg hat bekannte Rendering
 
 ## Was ist mit nativem Wayland?
 
-`SDL_VIDEODRIVER=wayland` zwingt SDL2, eine native Wayland-Verbindung zu versuchen. X-Plane 12 hat kein natives Wayland-Backend, daher sind die Ergebnisse unvorhersehbar — Abstürze, Rendering-Fehler oder ein stilles Zurückfallen auf XWayland.
+`SDL_VIDEODRIVER=wayland` zwingt SDL2, eine native Wayland-Verbindung zu versuchen. X-Plane 12 hat kein natives Wayland-Backend, und diese Konfiguration wird von Laminar Research weder getestet noch unterstützt — die Ergebnisse reichen von Abstürzen und Rendering-Fehlern bis zum stillen Zurückfallen auf XWayland.
 
 !!! warning "Natives Wayland nicht erzwingen"
     `SDL_VIDEODRIVER=wayland` ist für X-Plane **nicht empfohlen**. X-Plane 12 hat kein natives Wayland-Backend und diese Konfiguration liefert unvorhersehbare Ergebnisse. Bei Problemen ist der erste Troubleshooting-Schritt, diese Variable zu entfernen.

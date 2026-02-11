@@ -14,7 +14,7 @@ X-Plane spricht X11 nativ. In einer X11-Session kommuniziert X-Plane direkt mit 
 
 Der moderne Nachfolger von X11. Statt eines zentralen Servers übernimmt der **Compositor** (z.B. Mutter bei GNOME, KWin bei KDE) die Rolle von Display-Server und Fenstermanager gleichzeitig. Anwendungen rendern direkt in GPU-Puffer und übergeben sie dem Compositor.
 
-Wayland bietet Per-Monitor-Refresh-Rates und native VRR-Unterstützung (Variable Refresh Rate). Seit Debian 12+ (GNOME) und Debian 13+ (KDE) ist Wayland die Standard-Session.
+Wayland bietet Per-Monitor-Refresh-Rates und native VRR-Unterstützung (Variable Refresh Rate). Wayland ist seit Debian 10 die Standard-Session für GNOME. Für KDE wird Wayland ab Debian 13 (Plasma 6) der Standard.
 
 X-Plane **kann** kein natives Wayland.
 
@@ -52,7 +52,7 @@ Joysticks, Throttles und Ruderpedale umgehen den Display-Server komplett. Sie ko
 
 Testaufbau: AMD Ryzen 9 9950X3D, NVIDIA RTX 4090, Dell AW2725DF 360 Hz OLED
 
-| Display-Server | Median Input-to-Photon-Latenz |
+| Display-Server | Input-to-Photon-Latenz |
 |----------------|-------------------------------|
 | X11 | 6,88 ms |
 | Natives Wayland | 7,14 ms |
@@ -70,12 +70,13 @@ Messungen bei 120 Hz mit verschiedenen Vulkan-Presentation-Modes
 | X11 mit Compositor | 59 ms | 37 ms | — |
 | X11 ohne Compositor | 41 ms | 38 ms | 19 ms |
 | Wayland | 49 ms | 36 ms | 20 ms |
+| XWayland | 49 ms | 38 ms | 20 ms |
 
-Wayland mit aktivem Compositor erreicht die Werte von X11 **ohne** Compositor bei Mailbox und Immediate. X11 mit Compositor fügt einen vollen Frame Latenz hinzu.
+Wayland mit aktivem Compositor erreicht die Werte von X11 **ohne** Compositor bei Mailbox und Immediate. Im VSync-Modus (FIFO) fügt X11 mit Compositor einen vollen Frame Latenz hinzu. Im Mailbox-Modus verschwindet der Unterschied.
 
 ??? abstract "Zu diesen Messungen"
 
-    Die Messungen von David Justo verwenden einen Hardware-Sensor (Arduino Pro Micro + TEMT6000-Fototransistor) für die tatsächliche Input-to-Photon-Latenz. Testbedingungen: KWin 6.5.4, NVIDIA-Treiber 580.119.02, 100 Messungen pro Konfiguration.
+    Die Messungen von David Justo verwenden einen Hardware-Sensor (Arduino Pro Micro + TEMT6000-Fototransistor) für die tatsächliche Input-to-Photon-Latenz. Testanwendung: Counter-Strike 2 (400 fps Engine-Cap, VSync aus, VRR aus, Allow Tearing an). Testbedingungen: KWin 6.5.4, NVIDIA-Treiber 580.119.02, Fedora 43, 100 Messungen pro Konfiguration.
 
     Die Messungen von Xaver Hugl stammen vom KDE-Compositor-Entwickler und vergleichen Presentation-Modes auf einem 120-Hz-Display.
 

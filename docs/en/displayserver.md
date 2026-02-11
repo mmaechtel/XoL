@@ -14,7 +14,7 @@ X-Plane speaks X11 natively. When you run an X11 session, X-Plane communicates d
 
 The modern successor to X11. Instead of a central server, the **compositor** (e.g., Mutter for GNOME, KWin for KDE) acts as both display server and window manager. Applications render directly into GPU buffers and hand them to the compositor.
 
-Wayland offers per-monitor refresh rates and native Variable Refresh Rate (VRR) support. It is the default session on Debian 12+ (GNOME) and Debian 13+ (KDE).
+Wayland offers per-monitor refresh rates and native Variable Refresh Rate (VRR) support. It has been the default GNOME session since Debian 10. For KDE, Wayland becomes the default in Debian 13 (Plasma 6).
 
 X-Plane **cannot** speak Wayland natively.
 
@@ -52,7 +52,7 @@ Joysticks, throttles, and rudder pedals bypass the display server entirely. They
 
 Test setup: AMD Ryzen 9 9950X3D, NVIDIA RTX 4090, Dell AW2725DF 360 Hz OLED
 
-| Display Server | Median Input-to-Photon Latency |
+| Display Server | Input-to-Photon Latency |
 |----------------|-------------------------------|
 | X11 | 6.88 ms |
 | Native Wayland | 7.14 ms |
@@ -70,12 +70,13 @@ Measurements at 120 Hz with different Vulkan presentation modes
 | X11 with compositor | 59 ms | 37 ms | — |
 | X11 without compositor | 41 ms | 38 ms | 19 ms |
 | Wayland | 49 ms | 36 ms | 20 ms |
+| XWayland | 49 ms | 38 ms | 20 ms |
 
-Wayland with an active compositor matches X11 **without** a compositor in Mailbox and Immediate modes. X11 with a compositor adds a full frame of latency.
+Wayland with an active compositor matches X11 **without** a compositor in Mailbox and Immediate modes. In VSync (FIFO) mode, X11 with a compositor adds a full frame of latency compared to Wayland. In Mailbox mode, the difference disappears.
 
 ??? abstract "About these measurements"
 
-    The David Justo measurements used a hardware sensor (Arduino Pro Micro + TEMT6000 phototransistor) to measure actual input-to-photon latency. Test conditions: KWin 6.5.4, NVIDIA driver 580.119.02, 100 measurements per configuration.
+    The David Justo measurements used a hardware sensor (Arduino Pro Micro + TEMT6000 phototransistor) to measure actual input-to-photon latency. Test application: Counter-Strike 2 (400 fps engine cap, VSync off, VRR off, Allow Tearing on). Test conditions: KWin 6.5.4, NVIDIA driver 580.119.02, Fedora 43, 100 measurements per configuration.
 
     The Xaver Hugl measurements come from the KDE compositor developer and compare presentation modes on a 120 Hz display.
 

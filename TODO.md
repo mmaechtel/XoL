@@ -14,7 +14,7 @@ Workflow und Phasen-Beschreibung: siehe `CLAUDE.md` → Dokumentations-Workflow.
 | 1c    | `systemtools.md`    | **umgesetzt** | Linux-Systemtools (htop, glances, iotop)            |
 | 2     | `mesa.md`           | offen       | AMD/Intel GPU-Treiber (Mesa, RADV, Vulkan)          |
 | 3     | `input_devices.md`  | offen       | Joystick, Throttle, Ruderpedal unter Linux          |
-| 4     | `wayland.md`        | **geplant** | Display-Server-Wahl für X-Plane                     |
+| 4     | `displayserver*.md` | **geprüft** | Display-Server-Wahl für X-Plane |
 | 5     | `audio.md`          | offen       | PipeWire/PulseAudio für X-Plane                     |
 | 6     | `multi_monitor.md`  | offen       | Multi-Monitor und Netzwerk-Rendering                |
 | 7     | `xplane/plugins.md` | offen       | Plugin-Verwaltung unter Linux                       |
@@ -34,9 +34,9 @@ Workflow und Phasen-Beschreibung: siehe `CLAUDE.md` → Dokumentations-Workflow.
 
 **Research-Papers:**
 
-- `research/XPlane12_Konfiguration_Linux_Spezifika.md`
-- `research/LEKTORAT_config_md.md`
-- `research/xplane-help.out` (X-Plane CLI-Referenz)
+- `research/xplane-config/XPlane12_Konfiguration_Linux_Spezifika.md`
+- `research/xplane-config/LEKTORAT_config_md.md`
+- `research/xplane-config/xplane-help.out` (X-Plane CLI-Referenz)
 
 ---
 
@@ -58,17 +58,18 @@ Workflow und Phasen-Beschreibung: siehe `CLAUDE.md` → Dokumentations-Workflow.
 
 ---
 
-### 4. `wayland.md` — Display-Server für X-Plane
+### 4. Display-Server (displayserver.md, displayserver_wayland.md, displayserver_x11.md)
 
-**Status:** geplant
+**Status:** geprüft
 **Nav-Position:** Linux > Optimierungen (nach systemtools.md, vor filesystem.md)
 
 **Research-Papers:**
 
-- `research/wayland_display_server.md` (konsolidiert)
-- `research/wayland_vs_x11.md` (Rohdaten: X-Plane-Kompatibilität)
-- `research/wayland_vs_x11_gaming.md` (Rohdaten: Performance/Latenz)
-- `research/LEKTORAT_wayland.md`
+- `research/display-server/wayland_display_server.md` (konsolidiert)
+- `research/display-server/wayland_vs_x11.md` (Rohdaten: X-Plane-Kompatibilität)
+- `research/display-server/wayland_vs_x11_gaming.md` (Rohdaten: Performance/Latenz)
+- `research/display-server/LEKTORAT_wayland.md`
+- `research/display-server/FAKTENCHECK_displayserver.md` **(6 Fehler, 4 Nuancen, 17 korrekt)**
 
 **Kernaussage:** X-Plane 12 nutzt XWayland, nicht natives Wayland. X11-Session empfohlen, aber GPU-abhängig differenziert (AMD profitiert von Wayland).
 
@@ -161,11 +162,11 @@ Anleitung: Wie man unter Debian zwischen zwei installierten Kerneln (Standard + 
 
 **Research-Papers:**
 
-- `research/cpu_monitoring_tools.md`
-- `research/io_monitoring_tools.md`
-- `research/interrupt_monitoring_tools.md`
-- `research/Linux_Monitoring_Tools_Combined.md`
-- `research/LEKTORAT_systemtools.md`
+- `research/systemtools/cpu_monitoring_tools.md`
+- `research/systemtools/io_monitoring_tools.md`
+- `research/systemtools/interrupt_monitoring_tools.md`
+- `research/systemtools/Linux_Monitoring_Tools_Combined.md`
+- `research/systemtools/LEKTORAT_systemtools.md`
 
 **Plan:** Companion-Seite zu systemtuning.md — Tools zur Verifikation der dort beschriebenen Einstellungen.
 
