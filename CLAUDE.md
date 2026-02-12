@@ -96,6 +96,18 @@ Eigener Skill, wird nach der Umsetzung aufgerufen.
 - Quellenabschnitt am Seitenende ergänzen
 - URL-Analyse der freigegebenen Domains
 
+### Phase 5 — Content Audit (`/audit`)
+
+Systematische Nachprüfung bestehender EN-Seiten. Arbeitsplan: `research/AUDIT_FLOW.md`.
+
+- 27 Kapitel in 5 Runden, EN first, DE-Angleichung nach jeder Runde
+- Jedes Kapitel: Deep Analysis → Expert Review → User-Review → Korrekturen
+- Audit-Output pro Kapitel: `research/<kategorie>/AUDIT_<dateiname>.md`
+- 4 Prüfdimensionen: FAK (Fakten), AKT (Aktualität/Haltbarkeit), REL (Relevanz), DET (Detailgrad)
+- Quellenaktualität nach Typ differenziert (nicht pauschal), Versionsnummern nach Entscheidungsbaum
+- Referenzplattform: Debian Stable/Testing
+- **Startbefehl:** `Audit <dateiname> gemäß research/AUDIT_FLOW.md`
+
 ### Status-Modell
 
 Jedes Thema in `TODO.md` hat einen Status:
@@ -118,6 +130,8 @@ Jedes Thema in `TODO.md` hat einen Status:
 | `research/<kategorie>/` | Research-Papers nach Thema (siehe `research/INDEX.md`) |
 | `research/<kategorie>/LEKTORAT_<thema>.md` | Redaktionelle Bewertung (Brücke Recherche → Umsetzung) |
 | `research/INDEX.md` | Thematischer Index aller Research-Dokumente |
+| `research/AUDIT_FLOW.md` | Content-Audit Arbeitsplan (Flow, Template, Regeln, QS) |
+| `research/<kat>/AUDIT_<datei>.md` | Audit-Ergebnisse pro Kapitel |
 | `docs/MARKDOWN_RULES.txt` | Formatierungsregeln |
 | `.claude/skills/` | Skill-Definitionen (nicht committed, `.gitignore`) |
 | `.claude/settings.local.json` | Freigegebene WebFetch-Domains |
@@ -131,15 +145,15 @@ Jedes Thema in `TODO.md` hat einen Status:
 | `/research-topic` | 1 + 2 | Recherche, Lektorat, Plan. Startet NICHT die Umsetzung. |
 | `/faktencheck` | 4 | Faktenprüfung gegen Primärquellen, Korrekturen, Quellenabschnitt. |
 | `/abschluss` | alle | Changelog in `index.md` (DE + EN) aktualisieren und Git-Commit erstellen. |
+| `/audit` | 5 | Content Audit einer EN-Seite gemäß `research/AUDIT_FLOW.md`. |
 
 ---
 
 ## Inhaltliche Regeln
 
 - **Nur Linux-Spezifika:** Plattformunabhängige X-Plane-Einstellungen nicht dokumentieren
-- **Keine Versionsnummern im Haupttext:** Meta-Formulierungen ("in neueren Versionen") verwenden
+- **Versionsnummern minimieren:** Entscheidungsbaum in `research/AUDIT_FLOW.md` → Abschnitt "Versionsnummern". Kurzregel: Harte Mindestanforderungen und Verhaltens-Grenzen behalten, illustrative Versionen entfernen, Tabellen sind OK. Im Zweifel: Meta-Formulierung + Verifikationsbefehl.
 - **Ausnahme:** Akademische Hintergrund-Blöcke (`??? abstract`) dürfen Versionsdetails enthalten
-- **Treiber-Mindestversionen** in Tabellen sind OK (ändern sich selten)
 - **Quellenabschnitt** am Seitenende: nur offizielle, belastbare Quellen (max 5-8)
 
 ## Freigegebene Quellen

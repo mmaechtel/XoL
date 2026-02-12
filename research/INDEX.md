@@ -95,8 +95,20 @@ Externe Tools und Wine-basierte Addons.
 
 ---
 
+## Audit
+
+Content-Audit des gesamten EN-Books auf Faktenrichtigkeit, Aktualität, Relevanz, Detailgrad.
+
+| Datei | Typ | Inhalt |
+|-------|-----|--------|
+| `AUDIT_FLOW.md` | Arbeitsplan | Flow, Tabellen-Template, Kapitel-Reihenfolge, Regeln, QS |
+
+Audit-Ergebnisse pro Kapitel werden in den jeweiligen Kategorie-Ordnern als `AUDIT_<dateiname>.md` abgelegt.
+
+---
+
 ## Sonstige (Root)
 
 | Datei | Typ | Inhalt |
 |-------|-----|--------|
-| `IMPORTANT_TO_FIX.txt` | Notizen | Ursprüngliche Korrekturhinweise (migriert nach `TODO.md`) |
+| `IMPORTANT_TO_FIX.txt` | Notizen | Ursprüngliche Korrekturhinweise (vollständig migriert nach `TODO.md` — kann entfernt werden) |
