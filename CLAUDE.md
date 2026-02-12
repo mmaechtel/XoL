@@ -130,7 +130,8 @@ Jedes Thema in `TODO.md` hat einen Status:
 | `research/<kategorie>/` | Research-Papers nach Thema (siehe `research/INDEX.md`) |
 | `research/<kategorie>/LEKTORAT_<thema>.md` | Redaktionelle Bewertung (Brücke Recherche → Umsetzung) |
 | `research/INDEX.md` | Thematischer Index aller Research-Dokumente |
-| `research/AUDIT_FLOW.md` | Content-Audit Arbeitsplan (Flow, Template, Regeln, QS) |
+| `research/AUDIT_FLOW.md` | Content-Audit Prozess (Flow, Template, Regeln, QS) |
+| `research/AUDIT_STATUS.md` | Audit-Fortschritt + Zyklushistorie (lebende Datei) |
 | `research/<kat>/AUDIT_<datei>.md` | Audit-Ergebnisse pro Kapitel |
 | `docs/MARKDOWN_RULES.txt` | Formatierungsregeln |
 | `.claude/skills/` | Skill-Definitionen (nicht committed, `.gitignore`) |

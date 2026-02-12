@@ -101,7 +101,8 @@ Content-Audit des gesamten EN-Books auf Faktenrichtigkeit, Aktualität, Relevanz
 
 | Datei | Typ | Inhalt |
 |-------|-----|--------|
-| `AUDIT_FLOW.md` | Arbeitsplan | Flow, Tabellen-Template, Kapitel-Reihenfolge, Regeln, QS |
+| `AUDIT_FLOW.md` | Prozess | Flow, Tabellen-Template, Regeln, QS (ändert sich selten) |
+| `AUDIT_STATUS.md` | Status | Fortschritts-Tracker, Zyklushistorie (lebende Datei) |
 
 Audit-Ergebnisse pro Kapitel werden in den jeweiligen Kategorie-Ordnern als `AUDIT_<dateiname>.md` abgelegt.
 

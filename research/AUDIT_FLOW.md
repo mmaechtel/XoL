@@ -75,7 +75,7 @@ Systematische Prüfung aller EN-Kapitel auf Faktenrichtigkeit, Aktualität, Rele
 
 - Jedes Kapitel wird in einer eigenen Konversation auditiert (Schritt 1+2 zusammen).
 - Output wird persistiert nach `research/<kategorie>/AUDIT_<dateiname>.md`, bevor die Sitzung endet.
-- Fortschritts-Tracker in dieser Datei wird nach jedem abgeschlossenen Schritt mit Datum aktualisiert.
+- Fortschritts-Tracker in `AUDIT_STATUS.md` wird nach jedem abgeschlossenen Schritt mit Datum aktualisiert.
 - **Startbefehl pro Kapitel:** `Audit <dateiname> gemäß research/AUDIT_FLOW.md`
 - Schritt 3 (User-Review) kann in derselben oder einer neuen Sitzung stattfinden.
 - Schritt 4 (Korrekturen) erfolgt nach User-Freigabe, ggf. in neuer Sitzung.
@@ -316,42 +316,7 @@ Nach jeder Runde: DE-Angleichung für die Seiten dieser Runde.
 
 ## Fortschritts-Tracker
 
-Nach jedem abgeschlossenen Schritt: entsprechendes Feld mit Datum füllen.
-
-| # | Datei | Deep Analysis | Expert Review | User-Review | Korrekturen | Note |
-|---|-------|:---:|:---:|:---:|:---:|:---:|
-| 1 | `begin.md` | | | | | |
-| 2 | `nvidia.md` | | | | | |
-| 3 | `liquorix.md` | | | | | |
-| 4 | `systemtuning.md` | | | | | |
-| 5 | `systemtools.md` | | | | | |
-| 6 | `filesystem.md` | | | | | |
-| 7 | `xplane/performance.md` | | | | | |
-| — | **DE-Angleichung R1** | | | | | |
-| 8 | `xplane/config.md` | | | | | |
-| 9 | `displayserver.md` | | | | | |
-| 10 | `displayserver_x11.md` | | | | | |
-| 11 | `displayserver_wayland.md` | | | | | |
-| — | **DE-Angleichung R2** | | | | | |
-| 12 | `scenery_components.md` | | | | | |
-| 13 | `addon/ortho4xp.md` | | | | | |
-| 14 | `addon/autoortho.md` | | | | | |
-| 15 | `addon/xearthlayer.md` | | | | | |
-| 16 | `addon/static_plus_streaming.md` | | | | | |
-| — | **DE-Angleichung R3** | | | | | |
-| 17 | `kvm.md` | | | | | |
-| 18 | `docker.md` | | | | | |
-| 19 | `wine.md` | | | | | |
-| 20 | `addon/xorganizer.md` | | | | | |
-| 21 | `pyenv.md` | | | | | |
-| 22 | `zsh.md` | | | | | |
-| — | **DE-Angleichung R4** | | | | | |
-| 23 | `flight_operations/weather.md` | | | | | |
-| 24 | `flight_operations/clearance.md` | | | | | |
-| 25 | `flight_operations/vatsim.md` | | | | | |
-| 26 | `glossary.md` | | | | | |
-| 27 | `intro.md` | | | | | |
-| — | **DE-Angleichung R5** | | | | | |
+**→ Siehe `research/AUDIT_STATUS.md`** — lebende Statusdatei, getrennt von dieser Prozess-Definition. Wird über Audit-Zyklen hinweg geführt.
 
 ---
 
@@ -391,7 +356,7 @@ Nach jedem abgeschlossenen Schritt: entsprechendes Feld mit Datum füllen.
 1. Freigegebene Änderungen in EN-Seite einarbeiten
 2. Jede Korrektur gegen das entsprechende Audit-Finding gegenlesen (keine neuen Fehler einführen)
 3. `mkdocs build` zur Prüfung
-4. Fortschritts-Tracker in dieser Datei mit Datum aktualisieren
+4. Fortschritts-Tracker in `research/AUDIT_STATUS.md` mit Datum aktualisieren
 
 ---
 
