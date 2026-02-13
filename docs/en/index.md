@@ -7,8 +7,8 @@ The examples shown here are based on Debian Linux but can be easily adapted to o
 ## Featured Video
 
 <div class="video-container" markdown>
-<video controls width="100%" preload="metadata" poster="../assets/video/X11_vs_Wayland/X11_vs_Wayland.jpg">
-  <source src="../assets/video/X11_vs_Wayland/X11_vs_Wayland.mp4" type="video/mp4">
+<video controls width="100%" preload="metadata" poster="../assets/video/xplane_und_scenery_packs.ini/X-Planes_Welt__Richtig_gebaut.jpg">
+  <source src="../assets/video/xplane_und_scenery_packs.ini/X-Planes_Welt__Richtig_gebaut.mp4" type="video/mp4">
 </video>
 </div>
 
@@ -39,6 +39,7 @@ This documentation is an open project. Improvements or additions can be contribu
 - [Wayland Session](displayserver_wayland.md) streamlined: redundant latency table and desktop entry replaced with references to main pages
 - [Introduction](intro.md) expanded: overview video embedded
 - [Introduction to Orthophotography](addon/orthophotography_intro.md) expanded: New section on ortho streamer placement in scenery_packs.ini with example configurations for AutoOrtho, XEarthLayer, and XPME
+- [Scenery Components](scenery_components.md) and home page: New scenery_packs.ini video embedded
 
 ### 2026-02-11
 - [Display Server](displayserver.md) pages fact-checked: Debian defaults corrected, XWayland row added to Hugl table, latency measurements clarified, NVIDIA modeset default updated, MESA variable scoped to Mesa drivers

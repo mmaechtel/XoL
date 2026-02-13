@@ -7,8 +7,8 @@ Die hier gezeigten Beispiele basieren auf Debian Linux, lassen sich aber leicht 
 ## Featured Video
 
 <div class="video-container" markdown>
-<video controls width="100%" preload="metadata" poster="../assets/video/X11_vs_Wayland/X11_vs_Wayland.jpg">
-  <source src="../assets/video/X11_vs_Wayland/X11_vs_Wayland.mp4" type="video/mp4">
+<video controls width="100%" preload="metadata" poster="../assets/video/xplane_und_scenery_packs.ini/X-Planes_Welt__Richtig_gebaut.jpg">
+  <source src="../assets/video/xplane_und_scenery_packs.ini/X-Planes_Welt__Richtig_gebaut.mp4" type="video/mp4">
 </video>
 </div>
 
@@ -39,6 +39,7 @@ Diese Dokumentation ist ein offenes Projekt. Verbesserungen oder Ergänzungen k�
 - [Wayland-Session](displayserver_wayland.md) gestrafft: Redundante Latenztabelle und Desktop-Eintrag durch Verweise auf Hauptseiten ersetzt
 - [Einführung](intro.md) ergänzt: Übersichtsvideo eingebettet
 - [Einführung Orthofotografie](addon/orthophotography_intro.md) ergänzt: Neuer Abschnitt zur Einordnung der Ortho-Streamer in der scenery_packs.ini mit Beispiel-Konfigurationen für AutoOrtho, XEarthLayer und XPME
+- [Szenerien-Komponenten](scenery_components.md) und Startseite: Neues Video zur scenery_packs.ini eingebettet
 
 ### 2026-02-11
 - [Display-Server](displayserver.md) Seiten faktengeprüft: Debian-Defaults korrigiert, XWayland-Zeile in Hugl-Tabelle ergänzt, Latenzmessungen präzisiert, NVIDIA-Modeset-Default aktualisiert, MESA-Variable auf Mesa-Treiber eingeschränkt

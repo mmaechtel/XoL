@@ -28,4 +28,14 @@ Video collection for X-Plane on Linux.
 
 </div>
 
+<div class="video-card" markdown>
+
+### How X-Plane Builds Its World
+
+<video controls width="100%" preload="metadata" poster="../assets/video/xplane_und_scenery_packs.ini/X-Planes_Welt__Richtig_gebaut.jpg">
+  <source src="../assets/video/xplane_und_scenery_packs.ini/X-Planes_Welt__Richtig_gebaut.mp4" type="video/mp4">
+</video>
+
+</div>
+
 </div>

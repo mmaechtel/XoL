@@ -19,6 +19,7 @@ Bettet MP4-Videos aus `docs/assets/video/` als HTML5-`<video>`-Tags in die Dokum
 |---------------|---------|---------|
 | MP4-Dateien vorhanden | `Glob: docs/assets/video/**/*.mp4` liefert Treffer | Blocker |
 | `md_in_html` Extension | In `mkdocs.yml` unter `markdown_extensions` aktiv | Blocker |
+| ffmpeg installiert | `which ffmpeg` liefert Pfad | Blocker |
 | STATUS-Datei | `research/VIDEO_STATUS.md` existiert (sonst anlegen) | Auto-fix |
 
 Bei Blocker: AskUserQuestion — Problem melden, Abbruch anbieten.
@@ -97,13 +98,19 @@ Fuer jedes unverarbeitete Video einen Block an die Seite anfuegen (vor einem eve
 
 **EN:** Gleiche Struktur, Ueberschrift ggf. uebersetzt.
 
-### 2.3 Poster-Erkennung
+### 2.3 Poster-Bild erstellen oder erkennen
 
-Falls im selben Verzeichnis eine Bilddatei mit gleichem Basisnamen existiert (`.jpg`, `.jpeg`, `.png`, `.webp`):
+Fuer jedes unverarbeitete Video pruefen, ob bereits eine Bilddatei mit gleichem Basisnamen existiert (`.jpg`, `.jpeg`, `.png`, `.webp`):
 ```
 Glob: docs/assets/video/{dir}/{basename}.*
 ```
-→ `poster`-Attribut ergaenzen:
+
+**Falls kein Poster vorhanden:** Mit ffmpeg ein Poster-Bild aus dem Video generieren (Frame bei Sekunde 10):
+```bash
+ffmpeg -ss 10 -i "docs/assets/video/{dir}/{file}.mp4" -frames:v 1 -q:v 2 "docs/assets/video/{dir}/{basename}.jpg"
+```
+
+**In jedem Fall** das `poster`-Attribut in allen `<video>`-Tags setzen:
 ```html
 <video controls width="100%" preload="metadata" poster="../assets/video/{dir}/{basename}.jpg">
 ```

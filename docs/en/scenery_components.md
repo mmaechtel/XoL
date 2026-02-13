@@ -1,5 +1,11 @@
 # How X-Plane Builds the World: Meshes, Orthos, and Autogen Explained
 
+<div class="video-container" markdown>
+<video controls width="100%" preload="metadata" poster="../assets/video/xplane_und_scenery_packs.ini/X-Planes_Welt__Richtig_gebaut.jpg">
+  <source src="../assets/video/xplane_und_scenery_packs.ini/X-Planes_Welt__Richtig_gebaut.mp4" type="video/mp4">
+</video>
+</div>
+
 X-Plane is known for its realistic landscapes that immerse users in a living world while flying. Three central building blocks make up the scenery: **Meshes**, **Orthos**, and **Autogen**. This chapter explains what these terms mean and how they work together to create the impressive landscapes in X-Plane.
 
 ## Meshes: The 3D Framework of the World

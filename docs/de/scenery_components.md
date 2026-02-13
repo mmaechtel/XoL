@@ -1,5 +1,11 @@
 # Wie X-Plane die Welt aufbaut: Meshes, Orthos und Autogen einfach erklärt
 
+<div class="video-container" markdown>
+<video controls width="100%" preload="metadata" poster="../assets/video/xplane_und_scenery_packs.ini/X-Planes_Welt__Richtig_gebaut.jpg">
+  <source src="../assets/video/xplane_und_scenery_packs.ini/X-Planes_Welt__Richtig_gebaut.mp4" type="video/mp4">
+</video>
+</div>
+
 X-Plane ist bekannt für seine realistischen Landschaften, die den Nutzer beim Fliegen in eine lebendige Welt eintauchen lassen. Drei zentrale Bausteine machen die Szenerie aus: **Meshes**, **Orthos** und **Autogen**. In diesem Beitrag wird erklärt, was diese Begriffe bedeuten und wie sie zusammenwirken, um die beeindruckenden Landschaften in X-Plane zu schaffen.
 
 ## Meshes: Das 3D-Gerüst der Welt
