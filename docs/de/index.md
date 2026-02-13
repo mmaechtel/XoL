@@ -34,27 +34,21 @@ Diese Dokumentation ist ein offenes Projekt. Verbesserungen oder Ergänzungen k�
 
 ### 2026-02-13
 - Neue Seite [Videos](videos.md) — Videosammlung mit eingebetteten Übersichtsvideos
-- [XEarthLayer](addon/xearthlayer.md) ergänzt: CPU-Tuning-Abschnitt mit Thread-Konfiguration, Szenario-Tabelle und Disk-I/O-Profilen für den Parallelbetrieb mit X-Plane
-- [Display-Server](displayserver.md) und Startseite: Videos an den Kapitelanfang verschoben
-- [Wayland-Session](displayserver_wayland.md) gestrafft: Redundante Latenztabelle und Desktop-Eintrag durch Verweise auf Hauptseiten ersetzt
-- [Einführung](intro.md) ergänzt: Übersichtsvideo eingebettet
-- [Einführung Orthofotografie](addon/orthophotography_intro.md) ergänzt: Neuer Abschnitt zur Einordnung der Ortho-Streamer in der scenery_packs.ini mit Beispiel-Konfigurationen für AutoOrtho, XEarthLayer und XPME
-- [Szenerien-Komponenten](scenery_components.md) und Startseite: Neues Video zur scenery_packs.ini eingebettet
-- [Szenerien-Komponenten](scenery_components.md) ergänzt: Verweise auf Ortho-Streaming und Ortho4XP im Add-ons-Abschnitt
-- Markdown-Formatierung korrigiert: Überschriften, Listen-Einrückung und Leerzeilen in 18 Dateien an Projektregeln angepasst
-- [Über diese Dokumentation](about.md) überarbeitet: KI-Transparenzhinweis, Lizenz (CC0), Datenschutzerklärung und rechtliche Hinweise ergänzt, Zielgruppe präzisiert, Google Fonts durch System-Fonts ersetzt
+- [XEarthLayer](addon/xearthlayer.md) ergänzt: CPU-Tuning-Abschnitt für den Parallelbetrieb mit X-Plane
+- [Einführung Orthofotografie](addon/orthophotography_intro.md) ergänzt: Einordnung der Ortho-Streamer in der scenery_packs.ini
+- [Szenerien-Komponenten](scenery_components.md) ergänzt: Videos und Verweise auf Ortho-Streaming und Ortho4XP
+- [Wayland-Session](displayserver_wayland.md) gestrafft, [Display-Server](displayserver.md) und [Einführung](intro.md): Videos eingebettet
+- [Über diese Dokumentation](about.md) überarbeitet: Lizenz, Datenschutz, rechtliche Hinweise, Zielgruppe
+- [Glossar](glossary.md) ausgebaut: 40 neue Begriffe zu Kernel, Grafik, Dateisystem, Audio und Szenerien
+- Markdown-Formatierung und Google Fonts durch System-Fonts ersetzt
 
 ### 2026-02-11
 - [Display-Server](displayserver.md) Seiten faktengeprüft: Debian-Defaults korrigiert, XWayland-Zeile in Hugl-Tabelle ergänzt, Latenzmessungen präzisiert, NVIDIA-Modeset-Default aktualisiert, MESA-Variable auf Mesa-Treiber eingeschränkt
 
 ### 2026-02-09
-- Neue Seiten [Display-Server](displayserver.md) — Übersicht, [X11-Session](displayserver_x11.md) und [Wayland-Session](displayserver_wayland.md): Protokollvergleich (X11/Wayland/XWayland), Hardware-Latenzmessungen, GPU-Empfehlungen, Session-Wechsel, Troubleshooting
-- [Glossar](glossary.md) erweitert: Compositor, Display-Server, Wayland, X11, XWayland
-- [X-Plane Konfiguration](xplane/config.md) Display-Server-Abschnitt gekürzt mit Verweis auf neue Seiten
-- Neue Seite [Systemtools](systemtools.md) — Monitoring-Tools (htop, turbostat, mpstat, iotop, ioping, glances u.a.) zur Verifikation der Tuning-Einstellungen. Alle Angaben gegen Primärquellen faktengeprüft
-- Neue Seite [Systemtuning](systemtuning.md) — Latenzoptimierung für X-Plane: zwei Kernel-Profile (Standardkernel vs. Liquorix), Governor, C-States, Interrupt-Shielding, NVMe-Energiesparen, Kernel-Wechsel via GRUB
-- [X-Plane Konfiguration](xplane/config.md) überarbeitet: Fokus auf Linux-Spezifika — Vulkan/Zink, Shader-Cache, Umgebungsvariablen, Display-Server, Audio, Controller, CLI-Fehlerbehebung. Quellenabschnitt mit Primärquellen ergänzt
-- [Liquorix](liquorix.md) ergänzt: EEVDF-Scheduler und Optimierungsmodell erklärt
-- [Systemfehler](xplane/systemfehler.md) auf Navigationsseite reduziert, [Glossar](glossary.md) um Zink, FMOD, evdev, RADV erweitert
-- Neue [XEarthLayer](addon/xearthlayer.md)-Dokumentation — Rust-basierte Streaming-Alternative mit adaptivem Prefetch
-- [Orthofotografie](addon/orthophotography_intro.md) neu strukturiert, [AutoOrtho](addon/autoortho.md) aktualisiert (Fork 2.0), [Statisch + Streaming](addon/static_plus_streaming.md) vollständig überarbeitet
+- Neue Seiten [Display-Server](displayserver.md), [X11-Session](displayserver_x11.md) und [Wayland-Session](displayserver_wayland.md): Protokollvergleich, Latenzmessungen, GPU-Empfehlungen
+- Neue Seite [Systemtools](systemtools.md) — Monitoring-Tools zur Verifikation der Tuning-Einstellungen
+- Neue Seite [Systemtuning](systemtuning.md) — Latenzoptimierung: Kernel-Profile, Governor, C-States, Interrupt-Shielding
+- [X-Plane Konfiguration](xplane/config.md) überarbeitet: Fokus auf Linux-Spezifika (Vulkan/Zink, Shader-Cache, Audio, Controller)
+- Neue [XEarthLayer](addon/xearthlayer.md)-Dokumentation, [Orthofotografie](addon/orthophotography_intro.md) neu strukturiert, [AutoOrtho](addon/autoortho.md) aktualisiert
+- [Liquorix](liquorix.md) ergänzt, [Glossar](glossary.md) erweitert

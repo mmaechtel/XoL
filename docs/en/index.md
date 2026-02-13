@@ -34,27 +34,21 @@ This documentation is an open project. Improvements or additions can be contribu
 
 ### 2026-02-13
 - New [Videos](videos.md) page — video collection with embedded overview videos
-- [XEarthLayer](addon/xearthlayer.md) expanded: CPU tuning section with thread configuration, scenario table, and disk I/O profiles for parallel operation with X-Plane
-- [Display Server](displayserver.md) and home page: videos moved to beginning of chapters
-- [Wayland Session](displayserver_wayland.md) streamlined: redundant latency table and desktop entry replaced with references to main pages
-- [Introduction](intro.md) expanded: overview video embedded
-- [Introduction to Orthophotography](addon/orthophotography_intro.md) expanded: New section on ortho streamer placement in scenery_packs.ini with example configurations for AutoOrtho, XEarthLayer, and XPME
-- [Scenery Components](scenery_components.md) and home page: New scenery_packs.ini video embedded
-- [Scenery Components](scenery_components.md) expanded: Ortho Streaming and Ortho4XP links added to add-ons section
-- Markdown formatting corrected: headings, list indentation, and blank lines fixed across 18 files to match project rules
-- [About](about.md) revised: AI transparency note, license (CC0), privacy policy and legal notices added, target audience refined, Google Fonts replaced with system fonts
+- [XEarthLayer](addon/xearthlayer.md) expanded: CPU tuning section for parallel operation with X-Plane
+- [Introduction to Orthophotography](addon/orthophotography_intro.md) expanded: ortho streamer placement in scenery_packs.ini
+- [Scenery Components](scenery_components.md) expanded: videos and links to Ortho Streaming and Ortho4XP
+- [Wayland Session](displayserver_wayland.md) streamlined, [Display Server](displayserver.md) and [Introduction](intro.md): videos embedded
+- [About](about.md) revised: license, privacy policy, legal notices, target audience
+- [Glossary](glossary.md) expanded: 40 new terms covering kernel, graphics, filesystem, audio, and scenery
+- Markdown formatting fixes and Google Fonts replaced with system fonts
 
 ### 2026-02-11
 - [Display Server](displayserver.md) pages fact-checked: Debian defaults corrected, XWayland row added to Hugl table, latency measurements clarified, NVIDIA modeset default updated, MESA variable scoped to Mesa drivers
 
 ### 2026-02-09
-- New [Display Server](displayserver.md) pages — overview, [X11 Session](displayserver_x11.md) and [Wayland Session](displayserver_wayland.md): protocol comparison (X11/Wayland/XWayland), hardware latency measurements, GPU recommendations, session switching, troubleshooting
-- [Glossary](glossary.md) expanded: Compositor, Display Server, Wayland, X11, XWayland
-- [X-Plane Configuration](xplane/config.md) display server section shortened with references to new pages
-- New [System Tools](systemtools.md) page — monitoring tools (htop, turbostat, mpstat, iotop, ioping, glances etc.) for verifying tuning settings. All claims fact-checked against primary sources
-- New [System Tuning](systemtuning.md) page — latency optimization for X-Plane: two kernel profiles (standard kernel vs. Liquorix), governor, C-states, interrupt shielding, NVMe power saving, kernel switching via GRUB
-- [X-Plane Configuration](xplane/config.md) revised: focus on Linux specifics — Vulkan/Zink, shader cache, environment variables, display server, audio, controllers, CLI troubleshooting. Sources section with primary references added
-- [Liquorix](liquorix.md) updated: EEVDF scheduler and optimization model explained
-- [System Errors](xplane/systemfehler.md) reduced to navigation page, [Glossary](glossary.md) expanded with Zink, FMOD, evdev, RADV
-- New [XEarthLayer](addon/xearthlayer.md) documentation — Rust-based streaming alternative with adaptive prefetch
-- [Orthophotography](addon/orthophotography_intro.md) restructured, [AutoOrtho](addon/autoortho.md) updated (Fork 2.0), [Static + Streaming](addon/static_plus_streaming.md) fully revised
+- New [Display Server](displayserver.md), [X11 Session](displayserver_x11.md) and [Wayland Session](displayserver_wayland.md) pages: protocol comparison, latency measurements, GPU recommendations
+- New [System Tools](systemtools.md) page — monitoring tools for verifying tuning settings
+- New [System Tuning](systemtuning.md) page — latency optimization: kernel profiles, governor, C-states, interrupt shielding
+- [X-Plane Configuration](xplane/config.md) revised: focus on Linux specifics (Vulkan/Zink, shader cache, audio, controllers)
+- New [XEarthLayer](addon/xearthlayer.md) documentation, [Orthophotography](addon/orthophotography_intro.md) restructured, [AutoOrtho](addon/autoortho.md) updated
+- [Liquorix](liquorix.md) updated, [Glossary](glossary.md) expanded
