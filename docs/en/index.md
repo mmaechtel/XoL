@@ -34,7 +34,6 @@ This documentation is an open project. Improvements or additions can be contribu
 
 ### 2026-02-13
 - Video content separated by language: German videos on DE pages only, first English video [Mastering scenery packs](videos.md) embedded
-- Research framework restructured: relevance index, trusted sources, workflow documentation
 - New [Videos](videos.md) page — video collection with embedded overview videos
 - [XEarthLayer](addon/xearthlayer.md) expanded: CPU tuning section for parallel operation with X-Plane
 - [Introduction to Orthophotography](addon/orthophotography_intro.md) expanded: ortho streamer placement in scenery_packs.ini

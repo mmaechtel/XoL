@@ -33,8 +33,7 @@ Diese Dokumentation ist ein offenes Projekt. Verbesserungen oder Ergänzungen k�
 ## Letzte Änderungen
 
 ### 2026-02-13
-- Video-Inhalte sprachgetrennt: Deutsche Videos nur auf DE-Seiten, englisches Video [Mastering scenery packs](videos.md) auf EN-Seiten
-- Research-Framework überarbeitet: Relevanz-Index, Trusted Sources, Workflow-Dokumentation
+- Video-Inhalte sprachgetrennt: Deutsche Videos nur auf DE-Seiten, englisches Video auf EN-Seiten
 - Neue Seite [Videos](videos.md) — Videosammlung mit eingebetteten Übersichtsvideos
 - [XEarthLayer](addon/xearthlayer.md) ergänzt: CPU-Tuning-Abschnitt für den Parallelbetrieb mit X-Plane
 - [Einführung Orthofotografie](addon/orthophotography_intro.md) ergänzt: Einordnung der Ortho-Streamer in der scenery_packs.ini
