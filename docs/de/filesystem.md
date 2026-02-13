@@ -78,9 +78,9 @@ Für die Einrichtung eines **RAID-0**-Arrays werden drei identische SSDs (gleich
    ```bash
    sudo mkfs.btrfs -d raid0 -m raid1 /dev/sda /dev/sdb /dev/sdc
    ```
-   - `-d raid0`: Daten werden im **RAID-0**-Modus über alle drei SSDs gestreift
-   - `-m raid1`: Metadaten werden im **RAID-1**-Modus gespeichert (für zusätzliche Sicherheit der Dateisystem-Metadaten)
-   - `/dev/sda /dev/sdb /dev/sdc`: Die drei SSDs, die das Array bilden
+    - `-d raid0`: Daten werden im **RAID-0**-Modus über alle drei SSDs gestreift
+    - `-m raid1`: Metadaten werden im **RAID-1**-Modus gespeichert (für zusätzliche Sicherheit der Dateisystem-Metadaten)
+    - `/dev/sda /dev/sdb /dev/sdc`: Die drei SSDs, die das Array bilden
 
 4. **Mount-Punkt erstellen und Dateisystem mounten**
    ```bash

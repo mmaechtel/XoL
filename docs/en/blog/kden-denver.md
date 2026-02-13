@@ -17,7 +17,7 @@ Denver International Airport (KDEN) is one of the largest and most modern airpor
 
 Denver International Airport is the largest airport in the USA by area and the fifth busiest by passenger traffic. It serves as a major hub for United Airlines and Frontier Airlines.
 
-**Interesting Facts:**
+**Interesting Facts**
 
 - The airport features six runways, with the longest (16R/34L) measuring 4,877 meters
 - The characteristic tent roof of the terminal is the largest of its kind worldwide

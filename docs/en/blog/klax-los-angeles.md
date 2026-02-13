@@ -17,7 +17,7 @@ Los Angeles International Airport (KLAX) is one of the largest and busiest airpo
 
 Los Angeles International Airport is the largest airport in California and the third busiest in the USA by passenger traffic. It serves as a major hub for numerous international airlines.
 
-**Interesting Facts:**
+**Interesting Facts**
 
 - The airport features four parallel runways
 - The iconic Theme Building in the center of the airport is a landmark of the city

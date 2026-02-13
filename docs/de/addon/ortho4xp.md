@@ -46,9 +46,9 @@ Ortho4XP ist in zwei Hauptversionen verfügbar:
    ```
 
 2. Im Hauptfenster auswählen:
-   - Den Zielbereich (Tile)
-   - Die gewünschte Zoomstufe (ZL)
-   - Die Bildquelle (z.B. Bing, Google, Here)
+    - Den Zielbereich (Tile)
+    - Die gewünschte Zoomstufe (ZL)
+    - Die Bildquelle (z.B. Bing, Google, Here)
 
 3. Auf "Build" klicken, um den Prozess zu starten
 

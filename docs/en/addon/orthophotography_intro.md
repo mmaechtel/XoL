@@ -78,8 +78,8 @@ For selected regions, high-resolution Ortho4XP tiles can be combined with AutoOr
 
 Choosing the right system largely depends on your individual flying behavior:
 
-- **Regular flyer** (recurring home airports and routes): **Static generation** offers the greatest advantage here. After a one-time generation of home regions, all textures are stored locally — maximum quality without internet dependency and no latency fluctuations.
+- **Regular flyer** (recurring home airports and routes): **Static generation** offers the greatest advantage here. After a one-time generation of home regions, all textures are stored locally. Maximum quality without internet dependency and no latency fluctuations.
 
 - **Explorative player** (constantly changing destinations): **Streaming solutions** are the better choice. They eliminate time-consuming pre-generation and allow spontaneous flights to any region worldwide. Storage consumption remains stable through automatic cache eviction.
 
-- **Hybrid player** (home airports + occasional exploration): The **[combination of static generation and streaming](static_plus_streaming.md)** offers the best of both worlds — local tiles for home regions in highest quality, streaming for flexible global coverage.
+- **Hybrid player** (home airports + occasional exploration): The **[combination of static generation and streaming](static_plus_streaming.md)** offers the best of both worlds. Local tiles for home regions in highest quality, streaming for flexible global coverage.

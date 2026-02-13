@@ -107,7 +107,7 @@ Die direkte Installation von X-Plane bietet zahlreiche Vorteile für erfahrene N
     - Dieser Vorgang kann mehrere Stunden dauern
     - Der Download kann jederzeit unterbrochen und später fortgesetzt werden
 
-**Vorteile der Standalone-Version:**
+**Vorteile der Standalone-Version**
 - Volle Kontrolle über Installationsverzeichnis und -optionen
 - Direktes Update über den X-Plane Updater ohne Drittanbieter
 - Oft schnellere Updates bei neuen Versionen
@@ -121,12 +121,12 @@ Nach erfolgreicher Installation sollten Sie folgende Schritte durchführen:
 1. **Erstes Starten**: Starten Sie X-Plane einmal und schließen Sie es wieder, damit Konfigurationsdateien erstellt werden
 
 2. **Leistungseinstellungen optimieren**:
-   - Starten Sie X-Plane
-   - Gehen Sie zu "Einstellungen" > "Grafik"
-   - Passen Sie die Einstellungen entsprechend Ihrer Hardware an:
-     - Für höhere FPS: Reduzieren Sie Sichtweite und Objektdetails
-     - Für bessere Qualität: Erhöhen Sie Texturqualität und Anti-Aliasing
-     - Aktivieren Sie die Vulkan-Rendering-API für bessere Performance
+    - Starten Sie X-Plane
+    - Gehen Sie zu "Einstellungen" > "Grafik"
+    - Passen Sie die Einstellungen entsprechend Ihrer Hardware an:
+        - Für höhere FPS: Reduzieren Sie Sichtweite und Objektdetails
+        - Für bessere Qualität: Erhöhen Sie Texturqualität und Anti-Aliasing
+        - Aktivieren Sie die Vulkan-Rendering-API für bessere Performance
 
 3. **Speichern Sie ein benutzerdefiniertes Grafikprofil** für verschiedene Szenarien (Flugtraining, Fotografie, etc.)
 
@@ -149,8 +149,8 @@ Wenn X-Plane nicht startet oder unerwartet abstürzt, kann das an fehlenden Bibl
    ```
 
 3. **Die Ausgabe analysieren**:
-   - Normale Abhängigkeiten erscheinen im Format: `libname.so => /pfad/zu/libname.so`
-   - Problematische Abhängigkeiten zeigen `not found` oder fehlen komplett:
+    - Normale Abhängigkeiten erscheinen im Format: `libname.so => /pfad/zu/libname.so`
+    - Problematische Abhängigkeiten zeigen `not found` oder fehlen komplett:
      ```
      libvulkan.so.1 => not found
      ```

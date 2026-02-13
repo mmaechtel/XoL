@@ -17,7 +17,7 @@ Der Los Angeles International Airport (KLAX) ist einer der größten und verkehr
 
 Der Los Angeles International Airport ist der größte Flughafen in Kalifornien und der drittgrößte in den USA nach Passagieraufkommen. Er dient als wichtiges Drehkreuz für zahlreiche internationale Fluggesellschaften.
 
-**Interessante Fakten:**
+**Interessante Fakten**
 
 - Der Flughafen verfügt über vier parallele Start- und Landebahnen
 - Das ikonische Theme Building im Zentrum des Flughafens ist ein Wahrzeichen der Stadt

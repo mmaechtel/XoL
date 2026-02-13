@@ -17,7 +17,7 @@ Beim Einholen einer IFR-Clearance (Instrument Flight Rules) muss sich der Pilot 
 *ATC*:
 „Lufthansa 123, cleared to Munich via MARUN 3F departure, initial climb 5000 feet, squawk 4712, contact departure on 119.9."
 
-## Wo sind die nötigen Infos:
+## Wo sind die nötigen Infos
 1. **Clearance-Delivery Frequenz** - um die Freigabe anzufragen, steht auf der Airport Karte (10-9)
 2. **Flugnummer und Flugzeugkennung** - Flugplan bzw. programmierte FMGS/MCDU
 3. **Abflug- und Zielflughafen** - Flugplan bzw. programmierte FMGS/MCDU

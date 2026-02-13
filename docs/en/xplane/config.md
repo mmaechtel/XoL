@@ -20,7 +20,7 @@ For NVIDIA driver installation and optimization see [Nvidia Drivers](../nvidia.m
 
 Many X-Plane plugins use OpenGL for their rendering (e.g. cockpit displays, overlays). Since X-Plane 12 uses Vulkan exclusively, the plugins' OpenGL rendering needs to be translated. X-Plane ships the [Zink](../glossary.md#zink) driver for this purpose — a translation layer that converts OpenGL commands into Vulkan commands.
 
-**Why this is particularly relevant on Linux:**
+**Why this is particularly relevant on Linux**
 
 - Without Zink, the driver attempts to coordinate OpenGL and Vulkan simultaneously (Native Interop). This cost up to 10 ms per frame, in extreme cases 30 ms
 - With Zink: measurably 50 FPS → 80 FPS in Laminar Research tests

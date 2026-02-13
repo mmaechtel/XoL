@@ -17,7 +17,7 @@ Der Denver International Airport (KDEN) ist einer der größten und modernsten F
 
 Der Denver International Airport ist der größte Flughafen in den USA nach Fläche und der fünftgrößte nach Passagieraufkommen. Er dient als wichtiges Drehkreuz für United Airlines und Frontier Airlines.
 
-**Interessante Fakten:**
+**Interessante Fakten**
 
 - Der Flughafen verfügt über sechs Start- und Landebahnen, wobei die längste (16R/34L) 4.877 Meter misst
 - Das charakteristische Zeltdach des Terminals ist das größte seiner Art weltweit

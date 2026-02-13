@@ -78,8 +78,8 @@ Für ausgewählte Regionen können die hochauflösenden Ortho4XP-Kacheln mit der
 
 Die Wahl des geeigneten Systems hängt maßgeblich vom individuellen Flugverhalten ab:
 
-- **Stammflieger** (wiederkehrende Stammflughäfen und -routen): **Statische Generierung** bietet hier den größten Vorteil. Nach einmaliger Generierung der Stammregionen liegen alle Texturen lokal vor — maximale Qualität ohne Internetabhängigkeit und ohne Latenzschwankungen.
+- **Stammflieger** (wiederkehrende Stammflughäfen und -routen): **Statische Generierung** bietet hier den größten Vorteil. Nach einmaliger Generierung der Stammregionen liegen alle Texturen lokal vor. Maximale Qualität ohne Internetabhängigkeit und ohne Latenzschwankungen.
 
 - **Explorativer Spieler** (ständig wechselnde Destinationen): **Streaming-Lösungen** sind die bessere Wahl. Sie eliminieren die zeitintensive Vorab-Generierung und ermöglichen spontanes Anfliegen beliebiger Regionen weltweit. Der Speicherverbrauch bleibt durch automatische Cache-Bereinigung stabil.
 
-- **Hybrider Spieler** (Stammflughäfen + gelegentliche Exploration): Die **[Kombination aus statischer Generierung und Streaming](static_plus_streaming.md)** bietet das Beste aus beiden Welten — lokale Kacheln für die Stammregionen in höchster Qualität, Streaming für die flexible globale Abdeckung.
+- **Hybrider Spieler** (Stammflughäfen + gelegentliche Exploration): Die **[Kombination aus statischer Generierung und Streaming](static_plus_streaming.md)** bietet das Beste aus beiden Welten. Lokale Kacheln für die Stammregionen in höchster Qualität, Streaming für die flexible globale Abdeckung.

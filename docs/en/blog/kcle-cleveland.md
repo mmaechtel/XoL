@@ -17,7 +17,7 @@ Cleveland Hopkins International Airport (KCLE) is a significant commercial airpo
 
 Cleveland Hopkins International serves as the primary airport for the city of Cleveland, Ohio, and functions as a hub for several airlines. The airport features three runways and a modern terminal building.
 
-**Interesting Facts:**
+**Interesting Facts**
 
 - The longest runway (06R/24L) measures 3,048 meters and can accommodate all aircraft types
 - The airport was the first in the USA to feature a fully automated baggage handling system

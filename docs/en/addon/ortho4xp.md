@@ -46,9 +46,9 @@ Ortho4XP is available in two main versions:
    ```
 
 2. In the main window, select:
-   - The target area (Tile)
-   - The desired zoom level (ZL)
-   - The image source (e.g., Bing, Google, Here)
+    - The target area (Tile)
+    - The desired zoom level (ZL)
+    - The image source (e.g., Bing, Google, Here)
 
 3. Click "Build" to start the process
 

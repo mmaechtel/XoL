@@ -20,7 +20,7 @@ Für NVIDIA-Treiber-Installation und -Optimierung siehe [Nvidia Treiber](../nvid
 
 Viele X-Plane-Plugins nutzen OpenGL für ihre Darstellung (z.B. Cockpit-Displays, Overlays). Da X-Plane 12 aber ausschließlich Vulkan verwendet, muss das OpenGL-Rendering der Plugins übersetzt werden. X-Plane liefert dafür den [Zink](../glossary.md#zink)-Treiber mit — eine Übersetzungsschicht, die OpenGL-Befehle in Vulkan-Befehle umwandelt.
 
-**Warum das unter Linux besonders relevant ist:**
+**Warum das unter Linux besonders relevant ist**
 
 - Ohne Zink versucht der Treiber, OpenGL und Vulkan gleichzeitig zu koordinieren (Native Interop). Das kostete bis zu 10 ms pro Frame, in Extremfällen 30 ms
 - Mit Zink: messbar 50 FPS → 80 FPS in Tests von Laminar Research

@@ -17,7 +17,7 @@ When obtaining an IFR clearance (Instrument Flight Rules), the pilot must prepar
 *ATC*:
 "Lufthansa 123, cleared to Munich via MARUN 3F departure, initial climb 5000 feet, squawk 4712, contact departure on 119.9."
 
-## Where to find the necessary information:
+## Where to find the necessary information
 1. **Clearance-Delivery Frequency** - to request clearance, found on airport chart (10-9)
 2. **Flight number and aircraft identification** - flight plan or programmed FMGS/MCDU
 3. **Departure and destination airport** - flight plan or programmed FMGS/MCDU

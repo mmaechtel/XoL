@@ -17,7 +17,7 @@ Der Cleveland Hopkins International Airport (KCLE) ist ein bedeutender Verkehrsf
 
 Cleveland Hopkins International ist der Hauptflughafen der Stadt Cleveland, Ohio, und dient als Drehkreuz für mehrere Fluggesellschaften. Der Flughafen verfügt über drei Start- und Landebahnen und ein modernes Terminalgebäude.
 
-**Interessante Fakten:**
+**Interessante Fakten**
 
 - Die längste Landebahn (06R/24L) misst 3.048 Meter und ist für alle Flugzeugtypen geeignet
 - Der Flughafen war der erste in den USA mit einer vollständig automatisierten Gepäckförderanlage

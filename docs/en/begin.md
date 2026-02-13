@@ -107,7 +107,7 @@ Direct installation of X-Plane offers numerous advantages for experienced users:
     - This process can take several hours
     - The download can be interrupted and resumed later
 
-**Advantages of the standalone version:**
+**Advantages of the standalone version**
 - Full control over installation directory and options
 - Direct updates via the X-Plane updater without third parties
 - Often faster updates for new versions
@@ -121,12 +121,12 @@ After successful installation, you should perform the following steps:
 1. **First launch**: Start X-Plane once and close it again so that configuration files are created
 
 2. **Optimize performance settings**:
-   - Start X-Plane
-   - Go to "Settings" > "Graphics"
-   - Adjust settings according to your hardware:
-     - For higher FPS: Reduce visibility and object details
-     - For better quality: Increase texture quality and anti-aliasing
-     - Activate the Vulkan rendering API for better performance
+    - Start X-Plane
+    - Go to "Settings" > "Graphics"
+    - Adjust settings according to your hardware:
+        - For higher FPS: Reduce visibility and object details
+        - For better quality: Increase texture quality and anti-aliasing
+        - Activate the Vulkan rendering API for better performance
 
 3. **Save a custom graphics profile** for different scenarios (flight training, photography, etc.)
 
@@ -149,8 +149,8 @@ If X-Plane doesn't start or crashes unexpectedly, it might be due to missing lib
    ```
 
 3. **Analyze the output**:
-   - Normal dependencies appear in the format: `libname.so => /path/to/libname.so`
-   - Problematic dependencies show `not found` or are missing completely:
+    - Normal dependencies appear in the format: `libname.so => /path/to/libname.so`
+    - Problematic dependencies show `not found` or are missing completely:
      ```
      libvulkan.so.1 => not found
      ```
