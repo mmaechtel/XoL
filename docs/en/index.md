@@ -33,6 +33,7 @@ This documentation is an open project. Improvements or additions can be contribu
 ## Recent Changes
 
 ### 2026-02-13
+- [Getting Started](begin.md) corrected: Updated installer instructions, refined system recommendations, fixed outdated package names and single-core claims, added cross-references
 - Video content separated by language: German videos on DE pages only, first English video [Mastering scenery packs](videos.md) embedded
 - New [Videos](videos.md) page — video collection with embedded overview videos
 - [XEarthLayer](addon/xearthlayer.md) expanded: CPU tuning section for parallel operation with X-Plane

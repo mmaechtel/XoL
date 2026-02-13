@@ -43,7 +43,13 @@ Defined in `mkdocs.yml` under `plugins > i18n > languages > nav`. Separate nav t
 
 ### Formatting
 
-Rules in `docs/MARKDOWN_RULES.txt`: no colon at end of headings before lists, 4-space indent per level, blank line after every heading, consistent DE/EN formatting. Code blocks: `bash` for shell commands, `ini` for sysctl, no tag for kernel/GRUB parameters.
+**Pflicht:** Vor jeder Bearbeitung von `docs/` Dateien `docs/MARKDOWN_RULES.txt` lesen und anwenden. Kernregeln:
+
+- Leerzeile nach **jeder** Überschrift (auch `**Fett**`-Pseudo-Überschriften vor Listen)
+- Kein Doppelpunkt am Ende von Überschriften, die mit einer Liste folgen
+- Listen-Einrückung: 4 Spaces pro Ebene (0 → 4 → 8)
+- Identische Formatierung in DE und EN
+- Code-Blocks: `bash` für Shell-Befehle, `ini` für sysctl, kein Tag für Kernel/GRUB-Parameter
 
 ### Changelog
 

@@ -8,8 +8,8 @@ Prozess-Definition: siehe `AUDIT_FLOW.md`.
 ## Aktueller Zyklus
 
 **Gestartet:** 2026-02-12
-**Runde:** —
-**Nächstes Kapitel:** #1 `begin.md`
+**Runde:** 1
+**Nächstes Kapitel:** #2 `nvidia.md`
 
 ---
 
@@ -20,7 +20,7 @@ Nach jedem abgeschlossenen Schritt: Feld mit Datum füllen.
 | # | Datei | Zeilen | Deep Analysis | Expert Review | User-Review | Korrekturen | Note |
 |---|-------|--------|:---:|:---:|:---:|:---:|:---:|
 | | **Runde 1 — Kern-Dokumentation** | | | | | | |
-| 1 | `begin.md` | 228 | | | | | |
+| 1 | `begin.md` | 228 | 2026-02-13 | 2026-02-13 | 2026-02-13 | 2026-02-13 | C |
 | 2 | `nvidia.md` | 164 | | | | | |
 | 3 | `liquorix.md` | 139 | | | | | |
 | 4 | `systemtuning.md` | 441 | | | | | |
