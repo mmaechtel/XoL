@@ -2,21 +2,19 @@
 
 Guidance for Claude Code when working in this repository.
 
-## Project Overview
+## Projektübersicht
 
-XoL (X-Plane on Linux) is a bilingual (German/English) documentation site for running X-Plane 12 on Linux. Built with MkDocs Material, hosted at https://emvisio.com/. No application code — only documentation content and build tooling.
+XoL (X-Plane on Linux) ist eine bilinguale (Deutsch/Englisch) Dokumentationsseite für X-Plane 12 unter Linux. Gebaut mit MkDocs Material, gehostet auf https://emvisio.com/. Kein Applikationscode — nur Dokumentation und Build-Tooling.
 
-## Key Commands
+## Wichtige Befehle
 
-- **Dev server:** `mkdocs serve` (or `./serve_dev.sh`)
-- **Build site:** `mkdocs build` (outputs to `site/`)
-- **Deploy:** `./update_emvisio.sh <hostname>` — dry run with `--dry`
-- **Generate RSS:** `python scripts/generate_rss.py`
+- **Dev-Server:** `mkdocs serve` (oder `./serve_dev.sh`)
+- **Site bauen:** `mkdocs build` (Output: `site/`)
+- **Deploy:** `./update_emvisio.sh <hostname>` — Dry Run mit `--dry`
+- **RSS generieren:** `python scripts/generate_rss.py`
 - **Python:** via `pyenv` — die `.python-version` im Repo-Root erzwingt automatisch die richtige Version
 
 ### Pip-Abhängigkeiten
-
-Folgende Module müssen installiert sein (`pip install`):
 
 ```
 mkdocs
@@ -29,21 +27,21 @@ pymdown-extensions
 pillow
 ```
 
-## Architecture
+## Architektur
 
-### Content Structure
+### Inhaltsstruktur
 
-- `docs/de/` — German (default), `docs/en/` — English
-- Every page exists in both languages with identical filename
-- i18n plugin (`mkdocs-static-i18n`) handles language switching
+- `docs/de/` — Deutsch (Standard), `docs/en/` — Englisch
+- Jede Seite existiert in beiden Sprachen mit identischem Dateinamen
+- i18n-Plugin (`mkdocs-static-i18n`) steuert die Sprachumschaltung
 
 ### Navigation
 
-Defined in `mkdocs.yml` under `plugins > i18n > languages > nav`. Separate nav trees per locale — new pages must be added to **both**.
+Definiert in `mkdocs.yml` unter `plugins > i18n > languages > nav`. Separate Navigationsbaüme pro Sprache — neue Seiten müssen in **beide** eingetragen werden.
 
-### Formatting
+### Formatierung
 
-**Pflicht:** Vor jeder Bearbeitung von `docs/` Dateien `docs/MARKDOWN_RULES.txt` lesen und anwenden. Kernregeln:
+**Pflicht:** Vor jeder Bearbeitung von `docs/`-Dateien `docs/MARKDOWN_RULES.txt` lesen und anwenden. Kernregeln:
 
 - Leerzeile nach **jeder** Überschrift (auch `**Fett**`-Pseudo-Überschriften vor Listen)
 - Kein Doppelpunkt am Ende von Überschriften, die mit einer Liste folgen
@@ -51,9 +49,22 @@ Defined in `mkdocs.yml` under `plugins > i18n > languages > nav`. Separate nav t
 - Identische Formatierung in DE und EN
 - Code-Blocks: `bash` für Shell-Befehle, `ini` für sysctl, kein Tag für Kernel/GRUB-Parameter
 
-### Changelog
+### Changelog-Regeln
 
-`docs/{lang}/index.md` — "Letzte Änderungen" / "Recent Changes". New entries **above** old ones. Never delete history.
+`docs/{lang}/index.md` — "Letzte Änderungen" / "Recent Changes":
+
+- Neue Einträge **über** alten (neuer Datumsblock `### YYYY-MM-DD` oben)
+- Falls aktueller Tag bereits existiert: Einträge dort anfügen
+- Bestehende Einträge **nie** löschen
+- DE und EN müssen inhaltlich identisch (übersetzt) sein
+- **Nur leser-relevante Content-Änderungen** — keine internen Repo-/Research-/Skill-/Config-Änderungen
+- `index.md` wird immer zuletzt geändert (nach allen anderen Dateien)
+
+### Video-Struktur
+
+- `docs/assets/video/de/` — deutsche Videos (nur in `docs/de/` verlinkt)
+- `docs/assets/video/en/` — englische Videos (nur in `docs/en/` verlinkt)
+- Keine Kreuz-Verlinkung zwischen Sprachen
 
 ---
 
@@ -67,7 +78,7 @@ Skill startet mit Thema-Auswahl aus `TODO.md`, dann parallele Subagent-Recherche
 
 - Primärquellen: GitHub, offizielle Docs, Kernel-Docs, Arch Wiki
 - Keine Foren, keine Drittanbieter-Blogposts
-- **Quellenaktualität: nur Quellen ab 2024 aufwärts** (ältere nur bei nachweislich stabiler Information)
+- Quellenaktualität: siehe [Inhaltliche Regeln](#inhaltliche-regeln)
 - Ergebnis: Research-Paper in `research/<kategorie>/<thema>.md`
 
 ### Phase 2 — Lektorat & Plan (`/research-topic`)
@@ -76,9 +87,9 @@ Gleicher Skill-Durchlauf, direkt nach der Recherche.
 
 - Bestehende Doku analysieren, Plan erstellen
 - Lektorat-Dokument: `research/<kategorie>/LEKTORAT_<thema>.md`
-  - Bewertet Relevanz, Mehrwert, Haltbarkeit jeder Information
-  - Kennzeichnet versionsspezifische Inhalte
-  - Bewertet Quellen-Qualität
+    - Bewertet Relevanz, Mehrwert, Haltbarkeit jeder Information
+    - Kennzeichnet versionsspezifische Inhalte
+    - Bewertet Quellen-Qualität
 - Plan wird in `TODO.md` beim Thema festgehalten
 - **Skill endet hier. Umsetzung erst nach User-Freigabe.**
 
@@ -98,7 +109,7 @@ Eigener Skill, wird nach der Umsetzung aufgerufen.
 
 - EN-Seite als Prüfgrundlage (Quellen sind englisch)
 - Parallele Verifikation aller Behauptungen gegen Primärquellen
-- **Quellenaktualität: nur Quellen ab 2024 aufwärts** (ältere nur bei nachweislich stabiler Information)
+- Quellenaktualität: siehe [Inhaltliche Regeln](#inhaltliche-regeln)
 - Korrekturen in DE + EN
 - Versionsspezifika bereinigen (Meta-Formulierungen statt Versionsnummern)
 - Quellenabschnitt am Seitenende ergänzen
@@ -141,19 +152,30 @@ Jedes Thema in `TODO.md` hat einen Status:
 | `research/AUDIT_FLOW.md` | Content-Audit Prozess (Flow, Template, Regeln, QS) |
 | `research/AUDIT_STATUS.md` | Audit-Fortschritt + Zyklushistorie (lebende Datei) |
 | `research/<kat>/AUDIT_<datei>.md` | Audit-Ergebnisse pro Kapitel |
+| `research/glossar_check.log` | Glossar-Check Protokoll (Seite, Datum, Anzahl Änderungen) |
 | `docs/MARKDOWN_RULES.txt` | Formatierungsregeln |
-| `.claude/skills/` | Skill-Definitionen (nicht committed, `.gitignore`) |
-| `.claude/settings.local.json` | Freigegebene WebFetch-Domains |
+| `.claude/commands/` | Skill/Command-Definitionen (committed, von `.gitignore` ausgenommen) |
+| `.claude/settings.local.json` | Permissions: Tool-Freigaben + WebFetch-Domain-Allowlist |
 
 ---
 
 ## Skills
 
+### Implementierte Commands (`.claude/commands/`)
+
+| Skill | Phase | Beschreibung |
+|-------|-------|-------------|
+| `/abschluss` | alle | Changelog in `index.md` (DE + EN) aktualisieren und Git-Commit erstellen |
+| `/check-glossar` | nach Umsetzung | Glossar-Abdeckung prüfen, fehlende Verlinkungen ergänzen, Markdown-Check |
+| `/embed-videos` | Umsetzung | MP4-Videos einbetten (Video-Seite + thematische Seiten), Poster generieren |
+| `/generate-notebooklm` | nach Umsetzung | TTS-optimiertes Skript für Google NotebookLM Audio Overview erstellen |
+
+### Workflow-Phasen (noch keine Command-Files)
+
 | Skill | Phase | Beschreibung |
 |-------|-------|-------------|
 | `/research-topic` | 1 + 2 | Recherche, Lektorat, Plan. Startet NICHT die Umsetzung. |
 | `/faktencheck` | 4 | Faktenprüfung gegen Primärquellen, Korrekturen, Quellenabschnitt. |
-| `/abschluss` | alle | Changelog in `index.md` (DE + EN) aktualisieren und Git-Commit erstellen. |
 | `/audit` | 5 | Content Audit einer EN-Seite gemäß `research/AUDIT_FLOW.md`. |
 
 ---
@@ -166,14 +188,23 @@ Jedes Thema in `TODO.md` hat einen Status:
 - **Ausnahme:** Akademische Hintergrund-Blöcke (`??? abstract`) dürfen Versionsdetails enthalten
 - **Quellenabschnitt** am Seitenende: nur offizielle, belastbare Quellen (max 5-8)
 
+## Git-Regeln
+
+- Alles unter `research/` immer mitcommiten (Research-Papers, NotebookLM-Skripte, Audit-Dokumente)
+- `.DS_Store` ist in `.gitignore`
+- `.claude/*` ist in `.gitignore`, aber `!.claude/commands/` ist ausgenommen — Commands werden committed
+- `site/` ist in `.gitignore` (Build-Output)
+
 ## Freigegebene Quellen
 
 Domains in `.claude/settings.local.json` — nutzbar ohne Rückfrage:
 
-- **Linux/Kernel:** docs.kernel.org, wiki.archlinux.org, lwn.net
-- **Debian:** wiki.debian.org, packages.debian.org, manpages.debian.org
+- **Linux/Kernel:** docs.kernel.org, www.kernel.org, wiki.archlinux.org, lwn.net, man7.org
+- **Debian:** www.debian.org, wiki.debian.org, packages.debian.org, manpages.debian.org
 - **Grafik/Vulkan:** docs.mesa3d.org, vulkan.org, registry.khronos.org
-- **Desktop:** freedesktop.org, pipewire.org
-- **X-Plane:** www.x-plane.com, developer.x-plane.com
-- **Projekte:** github.com, liquorix.net, xearthlayer.app
+- **NVIDIA:** www.nvidia.com, download.nvidia.com, us.download.nvidia.com
+- **Desktop/Wayland:** freedesktop.org, www.freedesktop.org, gitlab.freedesktop.org, pipewire.org, zamundaaa.github.io, davidjusto.com
+- **X-Plane:** www.x-plane.com, developer.x-plane.com, forums.x-plane.org, store.steampowered.com
+- **Projekte:** github.com, raw.githubusercontent.com, liquorix.net, xearthlayer.app, sourceforge.net
+- **Flight Sim:** www.aiflygo.com, flightsimcoach.com, letsflyvfr.com, defkey.com
 - **Suche:** WebSearch (unbeschränkt)
