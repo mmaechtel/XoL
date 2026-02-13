@@ -113,6 +113,69 @@ xearthlayer packages update
 
 The packages are sourced from the [XEarthLayer Regional Scenery Repository](https://github.com/samsoir/xearthlayer-regional-scenery) and are based on the [Shred86 Ortho4XP fork](https://github.com/shred86/Ortho4XP).
 
+## CPU Tuning
+
+By default, XEarthLayer uses **all available CPU cores** for parallel tile generation and DDS compression. This is optimal when XEarthLayer runs alone — but causes problems when X-Plane is active at the same time.
+
+### The Problem
+
+X-Plane is heavily main-thread bound. When XEarthLayer saturates all cores, this leads to:
+
+- **Thread oversubscription**: More active threads than available cores force constant context switches
+- **Hyperthreading limitation**: Two CPU-intensive threads on the same physical core together reach only about 120–130% of a single thread's performance
+- **X-Plane stuttering**: Frame time increases because the X-Plane main thread competes for CPU time
+
+### Relevant Settings
+
+Three settings in `~/.xearthlayer/config.ini` form a hierarchy:
+
+| Setting | Section | Default | Function |
+|---|---|---|---|
+| `threads` | `[generation]` | Number of CPUs | Worker threads for tile generation |
+| `cpu_concurrent` | `[executor]` | CPUs × 1.25 | Concurrent CPU-intensive operations (DDS encoding) |
+| `max_concurrent_jobs` | `[control_plane]` | CPUs × 2 | Maximum concurrent tile jobs overall |
+
+The most effective lever is `cpu_concurrent` — it limits DDS encoding operations (BC1/BC3 compression), which account for the largest CPU share.
+
+### Recommended Values
+
+**Rule of thumb**: When running X-Plane in parallel, limit to half the *physical* cores.
+
+| Scenario | `threads` | `cpu_concurrent` | `max_concurrent_jobs` |
+|---|---|---|---|
+| XEL alone (default) | 16 | 20 | 32 |
+| XEL + X-Plane | 6–8 | 6–8 | 12–16 |
+| XEL + X-Plane + streaming | 4 | 4 | 8 |
+| XEL in background | 2 | 2 | 4 |
+
+*Example values for a system with 16 logical CPUs (8 cores + hyperthreading)*
+
+```ini
+# ~/.xearthlayer/config.ini — example for XEL + X-Plane
+[generation]
+threads = 6
+
+[executor]
+cpu_concurrent = 6
+
+[control_plane]
+max_concurrent_jobs = 12
+```
+
+!!! tip "Network is often the bottleneck"
+    With a slow internet connection, reducing CPU threads barely affects performance since the threads are waiting for downloads anyway. The prefetch system automatically adapts to the lower throughput.
+
+Additionally, the disk I/O profile indirectly affects CPU load:
+
+| `disk_io_profile` | Concurrent I/O ops | Recommended for |
+|---|---|---|
+| `hdd` | 1–4 | Traditional hard drives |
+| `ssd` | 32–64 | SATA/AHCI SSDs |
+| `nvme` | 128–256 | NVMe drives |
+| `auto` (default) | Auto-detected | Most systems |
+
+---
+
 ## Comparison with AutoOrtho
 
 | Dimension | XEarthLayer | AutoOrtho (ProgrammingDinosaur Fork) |

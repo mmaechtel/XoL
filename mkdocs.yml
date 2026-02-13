@@ -75,6 +75,7 @@ plugins:
             - Übersicht:
                 - Einführung: de/intro.md
                 - Erste Schritte: de/begin.md
+                - Videos: de/videos.md
             - Linux:
                 - Übersicht: de/linux.md
                 - Optimierungen:
@@ -130,6 +131,7 @@ plugins:
             - Overview:
                 - Introduction: en/intro.md
                 - Getting Started: en/begin.md
+                - Videos: en/videos.md
             - Linux:
                 - Overview: en/linux.md
                 - Optimizations:

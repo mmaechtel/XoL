@@ -4,6 +4,14 @@ Diese Dokumentation richtet sich an Linux-erfahrene Benutzer, die X-Plane unter 
 
 Die hier gezeigten Beispiele basieren auf Debian Linux, lassen sich aber leicht auf andere Distributionen übertragen. Die grundlegenden Konzepte und Vorgehensweisen bleiben dabei gleich - lediglich die spezifischen Paketmanager-Befehle oder Repository-Konfigurationen müssen entsprechend angepasst werden.
 
+<div class="video-container" markdown>
+<video controls width="100%" preload="metadata" poster="../assets/video/X11_vs_Wayland/X11_vs_Wayland.jpg">
+  <source src="../assets/video/X11_vs_Wayland/X11_vs_Wayland.mp4" type="video/mp4">
+</video>
+</div>
+
+[Alle Videos →](videos.md)
+
 ## Inhalt der Dokumentation
 
 Die Dokumentation umfasst die wichtigsten Bereiche der X-Plane-Konfiguration unter Linux. Im Fokus stehen die optimalen Einstellungen für X-Plane, die Performance-Optimierung durch Kernel, Treiber und Systemeinstellungen, sowie die Installation und Konfiguration wichtiger Erweiterungen wie AutoOrtho. Zusätzlich werden häufige Probleme und deren Lösungen ausführlich behandelt. Ein besonderer Schwerpunkt liegt auf der Performance-Analyse mit integrierten und externen Tools, der Optimierung des Dateisystems für schnelle Ladezeiten und der hardware-spezifischen Anpassung für maximale Leistung.
@@ -21,6 +29,11 @@ Diese Dokumentation ist ein offenes Projekt. Verbesserungen oder Ergänzungen k�
 - Erfahrungen in den Diskussionen im Footer dieser Webseite (z.B. über den Discord-Link) teilen
 
 ## Letzte Änderungen
+
+### 2026-02-13
+- Neue Seite [Videos](videos.md) — Videosammlung mit eingebetteten Übersichtsvideos
+- [XEarthLayer](addon/xearthlayer.md) ergänzt: CPU-Tuning-Abschnitt mit Thread-Konfiguration, Szenario-Tabelle und Disk-I/O-Profilen für den Parallelbetrieb mit X-Plane
+- [Display-Server](displayserver.md) und Startseite: Videos an den Kapitelanfang verschoben
 
 ### 2026-02-11
 - [Display-Server](displayserver.md) Seiten faktengeprüft: Debian-Defaults korrigiert, XWayland-Zeile in Hugl-Tabelle ergänzt, Latenzmessungen präzisiert, NVIDIA-Modeset-Default aktualisiert, MESA-Variable auf Mesa-Treiber eingeschränkt

@@ -2,6 +2,12 @@
 
 X-Plane 12 hat keine native Wayland-Unterstützung. Wie es sich mit dem Bildschirm verbindet, hängt davon ab, welche Display-Server-Session am Login-Screen gewählt wird. Diese Seite erklärt die drei beteiligten Protokolle und hilft bei der Entscheidung.
 
+<div class="video-container" markdown>
+<video controls width="100%" preload="metadata" poster="../assets/video/X11_vs_Wayland/X11_vs_Wayland.jpg">
+  <source src="../assets/video/X11_vs_Wayland/X11_vs_Wayland.mp4" type="video/mp4">
+</video>
+</div>
+
 ## Drei Protokolle
 
 ### X11 (Xorg)
