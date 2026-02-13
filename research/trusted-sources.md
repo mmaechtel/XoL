@@ -35,6 +35,7 @@ Vertrauenswürdige Quellen für die Research-Skills. Nur URLs von diesen Domains
 ## 4. Community-Wikis und Dokumentation
 
 - wiki.archlinux.org — Arch Linux Wiki (exzellente technische Doku)
+- www.debian.org — Debian Projektseite
 - wiki.debian.org — Debian Wiki
 - packages.debian.org — Debian Paket-Referenz
 - manpages.debian.org — Debian Man Pages
@@ -55,6 +56,10 @@ Vertrauenswürdige Quellen für die Research-Skills. Nur URLs von diesen Domains
 
 - phoronix.com — Linux Hardware, Benchmarks, Kernel-News
 - forums.x-plane.org — X-Plane Community Forum
+- store.steampowered.com — Steam Store (X-Plane Distribution)
 - www.aiflygo.com — AI-basierte Flugplanung
+- flightsimcoach.com — Flight Sim Tutorials und Guides
+- letsflyvfr.com — VFR-Flugplanung und Navigation
+- defkey.com — Keyboard Shortcuts Referenz
 - davidjusto.com — Linux Gaming Blog
 - zamundaaa.github.io — KDE/Wayland-Entwickler Blog

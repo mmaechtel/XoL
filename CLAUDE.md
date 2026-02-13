@@ -37,7 +37,7 @@ pillow
 
 ### Navigation
 
-Definiert in `mkdocs.yml` unter `plugins > i18n > languages > nav`. Separate Navigationsbaüme pro Sprache — neue Seiten müssen in **beide** eingetragen werden.
+Definiert in `mkdocs.yml` unter `plugins > i18n > languages > nav`. Separate Navigationsbäume pro Sprache — neue Seiten müssen in **beide** eingetragen werden.
 
 ### Formatierung
 
@@ -70,7 +70,7 @@ Definiert in `mkdocs.yml` unter `plugins > i18n > languages > nav`. Separate Nav
 
 ## Dokumentations-Workflow
 
-Jedes neue oder überarbeitete Thema durchläuft vier Phasen. Der aktuelle Stand jedes Themas steht in `TODO.md`.
+Jedes neue oder überarbeitete Thema durchläuft fünf Phasen. Der aktuelle Stand jedes Themas steht in `TODO.md`.
 
 ### Phase 1 — Recherche (`/research-topic`)
 
@@ -161,22 +161,17 @@ Jedes Thema in `TODO.md` hat einen Status:
 
 ## Skills
 
-### Implementierte Commands (`.claude/commands/`)
-
-| Skill | Phase | Beschreibung |
-|-------|-------|-------------|
-| `/abschluss` | alle | Changelog in `index.md` (DE + EN) aktualisieren und Git-Commit erstellen |
-| `/check-glossar` | nach Umsetzung | Glossar-Abdeckung prüfen, fehlende Verlinkungen ergänzen, Markdown-Check |
-| `/embed-videos` | Umsetzung | MP4-Videos einbetten (Video-Seite + thematische Seiten), Poster generieren |
-| `/generate-notebooklm` | nach Umsetzung | TTS-optimiertes Skript für Google NotebookLM Audio Overview erstellen |
-
-### Workflow-Phasen (noch keine Command-Files)
+### Commands (`.claude/commands/`)
 
 | Skill | Phase | Beschreibung |
 |-------|-------|-------------|
 | `/research-topic` | 1 + 2 | Recherche, Lektorat, Plan. Startet NICHT die Umsetzung. |
 | `/faktencheck` | 4 | Faktenprüfung gegen Primärquellen, Korrekturen, Quellenabschnitt. |
 | `/audit` | 5 | Content Audit einer EN-Seite gemäß `research/AUDIT_FLOW.md`. |
+| `/check-glossar` | nach Umsetzung | Glossar-Abdeckung prüfen, fehlende Verlinkungen ergänzen, Markdown-Check |
+| `/embed-videos` | Umsetzung | MP4-Videos einbetten (Video-Seite + thematische Seiten), Poster generieren |
+| `/generate-notebooklm` | nach Umsetzung | TTS-optimiertes Skript für Google NotebookLM Audio Overview erstellen |
+| `/abschluss` | alle | Changelog in `index.md` (DE + EN) aktualisieren und Git-Commit erstellen |
 
 ---
 
@@ -199,7 +194,8 @@ Jedes Thema in `TODO.md` hat einen Status:
 
 Domains in `.claude/settings.local.json` — nutzbar ohne Rückfrage:
 
-- **Linux/Kernel:** docs.kernel.org, www.kernel.org, wiki.archlinux.org, lwn.net, man7.org
+- **Referenz:** en.wikipedia.org, de.wikipedia.org
+- **Linux/Kernel:** docs.kernel.org, www.kernel.org, wiki.archlinux.org, lwn.net, man7.org, phoronix.com
 - **Debian:** www.debian.org, wiki.debian.org, packages.debian.org, manpages.debian.org
 - **Grafik/Vulkan:** docs.mesa3d.org, vulkan.org, registry.khronos.org
 - **NVIDIA:** www.nvidia.com, download.nvidia.com, us.download.nvidia.com
