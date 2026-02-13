@@ -16,6 +16,7 @@ docs/de/Maps/
 docs/vatsim_routes.html
 vatsim_routes.html
 download_images.py
-.claude/
+.claude/*
+!.claude/commands/
 
 .DS_Store
