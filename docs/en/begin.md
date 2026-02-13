@@ -9,15 +9,15 @@ X-Plane 12 is a demanding flight simulator that requires significant system reso
 ### Recommended Requirements
 
 - **CPU**: Current generation with high single-core and multi-core performance (Intel Core i7/i9 or AMD Ryzen 7/9)
-    - *Why?* X-Plane benefits from fast single-core speed and distributes rendering work across multiple cores. These recommendations target addon-heavy setups with orthophotos — Laminar Research's official minimum is lower (e.g., Intel i5-12600K).
+    - *Why?* X-Plane benefits from fast single-core speed and distributes rendering work across multiple cores. These recommendations target addon-heavy setups with [orthophotos](../glossary.md#orthophotos) — Laminar Research's official minimum is lower (e.g., Intel i5-12600K).
   
 - **RAM**: 32 GB or more
     - *Why?* Memory-hungry addons, detailed scenery, and orthophotos can dramatically increase RAM usage.
   
-- **Graphics Card**: High-performance GPU with at least 8 GB VRAM (e.g., NVIDIA RTX 3080/4080 or higher)
+- **Graphics Card**: High-performance GPU with at least 8 GB [VRAM](../glossary.md#vram-video-ram) (e.g., NVIDIA RTX 3080/4080 or higher)
     - *Why?* Especially for 4K resolution or multi-monitor setups, you need substantial graphics power and VRAM. High-resolution textures and complex lighting effects challenge even high-end GPUs.
   
-- **Storage Space**: 250 GB or more SSD storage (NVMe recommended)
+- **Storage Space**: 250 GB or more SSD storage ([NVMe](../glossary.md#nvme-non-volatile-memory-express) recommended)
     - *Why?* The base installation requires about 25 GB, a full install with all scenery regions around 75–80 GB. Orthophotos can quickly add hundreds of GB on top. SSD speed reduces loading times during flight.
   
 - **Network**: Fast internet connection for ortho streaming and map updates
@@ -50,10 +50,10 @@ This documentation assumes that you have already installed Debian Linux in the c
 
 ### Installation Tips
 
-- Any major desktop environment works with X-Plane. "GNOME" or "KDE Plasma" are recommended for newcomers due to large community support and mature Wayland integration
+- Any major desktop environment works with X-Plane. "GNOME" or "KDE Plasma" are recommended for newcomers due to large community support and mature [Wayland](../glossary.md#wayland) integration
 - When partitioning, configure swap space: approximately 4 GB is sufficient without hibernation, or equal to your RAM size if you plan to use hibernation
 - Set up separate partitions for `/` (root, at least 30 GB) and `/home` (remaining space)
-- Install the GRUB bootloader on the main drive
+- Install the [GRUB](../glossary.md#grub-grand-unified-bootloader) bootloader on the main drive
 
 ### After Installation
 
@@ -128,7 +128,7 @@ After successful installation, you should perform the following steps:
 
 2. **Optimize performance settings**: Adjust graphics settings according to your hardware. See the [X-Plane Configuration](xplane/config.md) page for detailed Linux-specific guidance.
 
-3. **Check the performance** with the built-in FPS display (activate with `Shift+Ctrl+F`)
+3. **Check the performance** with the built-in [FPS](../glossary.md#fps-frames-per-second) display (activate with `Shift+Ctrl+F`)
 
 ### Checking Library Dependencies
 

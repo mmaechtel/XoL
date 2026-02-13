@@ -34,6 +34,7 @@ Diese Dokumentation ist ein offenes Projekt. Verbesserungen oder Ergänzungen k�
 
 ### 2026-02-13
 - [Erste Schritte](begin.md) korrigiert: Installer-Anleitung aktualisiert, Systemempfehlungen präzisiert, veraltete Paketnamen und Single-Core-Aussagen korrigiert, Querverweise ergänzt
+- [Erste Schritte](begin.md) Glossar-Verlinkungen ergänzt: GRUB, NVMe, VRAM, Orthofotos, FPS, Wayland
 - Video-Inhalte sprachgetrennt: Deutsche Videos nur auf DE-Seiten, englisches Video auf EN-Seiten
 - Neue Seite [Videos](videos.md) — Videosammlung mit eingebetteten Übersichtsvideos
 - [XEarthLayer](addon/xearthlayer.md) ergänzt: CPU-Tuning-Abschnitt für den Parallelbetrieb mit X-Plane
