@@ -49,7 +49,8 @@ The result is a world that not only looks real but feels real. When flying over 
 
 Many X-Plane fans use add-ons to improve meshes, orthos, and autogen:
 
-- **Ortho4XP**: Downloads high-resolution satellite images and adapts them to meshes.
+- **[Ortho4XP](addon/ortho4xp.md)**: Downloads high-resolution satellite images and adapts them to meshes.
+- **[Ortho Streaming](addon/orthophotography_intro.md#ortho-streaming)**: Solutions like AutoOrtho, XEarthLayer, or XPME stream satellite imagery in real time from the internet — no pre-generation needed, instantly flyable worldwide.
 - **Custom Sceneries**: Bring better meshes or regional autogen objects, e.g., typical half-timbered houses for Germany.
 - **Autogen Libraries**: Expand the selection of objects to make the scenery even more realistic.
 

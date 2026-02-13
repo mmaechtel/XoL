@@ -40,6 +40,7 @@ Diese Dokumentation ist ein offenes Projekt. Verbesserungen oder Ergänzungen k�
 - [Einführung](intro.md) ergänzt: Übersichtsvideo eingebettet
 - [Einführung Orthofotografie](addon/orthophotography_intro.md) ergänzt: Neuer Abschnitt zur Einordnung der Ortho-Streamer in der scenery_packs.ini mit Beispiel-Konfigurationen für AutoOrtho, XEarthLayer und XPME
 - [Szenerien-Komponenten](scenery_components.md) und Startseite: Neues Video zur scenery_packs.ini eingebettet
+- [Szenerien-Komponenten](scenery_components.md) ergänzt: Verweise auf Ortho-Streaming und Ortho4XP im Add-ons-Abschnitt
 
 ### 2026-02-11
 - [Display-Server](displayserver.md) Seiten faktengeprüft: Debian-Defaults korrigiert, XWayland-Zeile in Hugl-Tabelle ergänzt, Latenzmessungen präzisiert, NVIDIA-Modeset-Default aktualisiert, MESA-Variable auf Mesa-Treiber eingeschränkt
