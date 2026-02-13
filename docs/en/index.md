@@ -42,6 +42,7 @@ This documentation is an open project. Improvements or additions can be contribu
 - [Scenery Components](scenery_components.md) and home page: New scenery_packs.ini video embedded
 - [Scenery Components](scenery_components.md) expanded: Ortho Streaming and Ortho4XP links added to add-ons section
 - Markdown formatting corrected: headings, list indentation, and blank lines fixed across 18 files to match project rules
+- [About](about.md) revised: AI transparency note, license (CC0), privacy policy and legal notices added, target audience refined, Google Fonts replaced with system fonts
 
 ### 2026-02-11
 - [Display Server](displayserver.md) pages fact-checked: Debian defaults corrected, XWayland row added to Hugl table, latency measurements clarified, NVIDIA modeset default updated, MESA variable scoped to Mesa drivers

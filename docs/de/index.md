@@ -42,6 +42,7 @@ Diese Dokumentation ist ein offenes Projekt. Verbesserungen oder Ergänzungen k�
 - [Szenerien-Komponenten](scenery_components.md) und Startseite: Neues Video zur scenery_packs.ini eingebettet
 - [Szenerien-Komponenten](scenery_components.md) ergänzt: Verweise auf Ortho-Streaming und Ortho4XP im Add-ons-Abschnitt
 - Markdown-Formatierung korrigiert: Überschriften, Listen-Einrückung und Leerzeilen in 18 Dateien an Projektregeln angepasst
+- [Über diese Dokumentation](about.md) überarbeitet: KI-Transparenzhinweis, Lizenz (CC0), Datenschutzerklärung und rechtliche Hinweise ergänzt, Zielgruppe präzisiert, Google Fonts durch System-Fonts ersetzt
 
 ### 2026-02-11
 - [Display-Server](displayserver.md) Seiten faktengeprüft: Debian-Defaults korrigiert, XWayland-Zeile in Hugl-Tabelle ergänzt, Latenzmessungen präzisiert, NVIDIA-Modeset-Default aktualisiert, MESA-Variable auf Mesa-Treiber eingeschränkt
