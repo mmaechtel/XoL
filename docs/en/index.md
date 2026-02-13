@@ -7,8 +7,8 @@ The examples shown here are based on Debian Linux but can be easily adapted to o
 ## Featured Video
 
 <div class="video-container" markdown>
-<video controls width="100%" preload="metadata" poster="../assets/video/xplane_und_scenery_packs.ini/X-Planes_Welt__Richtig_gebaut.jpg">
-  <source src="../assets/video/xplane_und_scenery_packs.ini/X-Planes_Welt__Richtig_gebaut.mp4" type="video/mp4">
+<video controls width="100%" preload="metadata" poster="../assets/video/en/Mastering_scenery_packs.jpg">
+  <source src="../assets/video/en/Mastering_scenery_packs.mp4" type="video/mp4">
 </video>
 </div>
 
@@ -33,6 +33,8 @@ This documentation is an open project. Improvements or additions can be contribu
 ## Recent Changes
 
 ### 2026-02-13
+- Video content separated by language: German videos on DE pages only, first English video [Mastering scenery packs](videos.md) embedded
+- Research framework restructured: relevance index, trusted sources, workflow documentation
 - New [Videos](videos.md) page — video collection with embedded overview videos
 - [XEarthLayer](addon/xearthlayer.md) expanded: CPU tuning section for parallel operation with X-Plane
 - [Introduction to Orthophotography](addon/orthophotography_intro.md) expanded: ortho streamer placement in scenery_packs.ini

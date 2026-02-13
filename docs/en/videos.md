@@ -10,30 +10,10 @@ Video collection for X-Plane on Linux.
 
 <div class="video-card" markdown>
 
-### X-Plane on Linux
+### Mastering scenery packs
 
-<video controls width="100%" preload="metadata" poster="../assets/video/xol_Xplane_on_Linux/X-Plane_unter_Linux.jpg">
-  <source src="../assets/video/xol_Xplane_on_Linux/X-Plane_unter_Linux.mp4" type="video/mp4">
-</video>
-
-</div>
-
-<div class="video-card" markdown>
-
-### X11 vs. Wayland for X-Plane
-
-<video controls width="100%" preload="metadata" poster="../assets/video/X11_vs_Wayland/X11_vs_Wayland.jpg">
-  <source src="../assets/video/X11_vs_Wayland/X11_vs_Wayland.mp4" type="video/mp4">
-</video>
-
-</div>
-
-<div class="video-card" markdown>
-
-### How X-Plane Builds Its World
-
-<video controls width="100%" preload="metadata" poster="../assets/video/xplane_und_scenery_packs.ini/X-Planes_Welt__Richtig_gebaut.jpg">
-  <source src="../assets/video/xplane_und_scenery_packs.ini/X-Planes_Welt__Richtig_gebaut.mp4" type="video/mp4">
+<video controls width="100%" preload="metadata" poster="../assets/video/en/Mastering_scenery_packs.jpg">
+  <source src="../assets/video/en/Mastering_scenery_packs.mp4" type="video/mp4">
 </video>
 
 </div>

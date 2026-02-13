@@ -7,8 +7,8 @@ Der Guide deckt die wichtigsten Aspekte der Systemoptimierung ab, einschließlic
 Die hier gezeigten Beispiele basieren auf Debian Linux, lassen sich aber leicht auf andere Distributionen übertragen. Die grundlegenden Konzepte und Vorgehensweisen bleiben dabei gleich - lediglich die spezifischen Paketmanager-Befehle oder Repository-Konfigurationen müssen entsprechend angepasst werden.
 
 <div class="video-container" markdown>
-<video controls width="100%" preload="metadata" poster="../assets/video/xol_Xplane_on_Linux/X-Plane_unter_Linux.jpg">
-  <source src="../assets/video/xol_Xplane_on_Linux/X-Plane_unter_Linux.mp4" type="video/mp4">
+<video controls width="100%" preload="metadata" poster="../assets/video/de/xol_Xplane_on_Linux/X-Plane_unter_Linux.jpg">
+  <source src="../assets/video/de/xol_Xplane_on_Linux/X-Plane_unter_Linux.mp4" type="video/mp4">
 </video>
 </div>
 

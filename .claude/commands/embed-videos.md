@@ -1,6 +1,6 @@
 # Embed Videos
 
-Bettet MP4-Videos aus `docs/assets/video/` als HTML5-`<video>`-Tags in die Dokumentation ein. Erstellt/aktualisiert eine zentrale Video-Seite und bettet Videos zusaetzlich in thematisch passende Seiten ein.
+Bettet MP4-Videos aus `docs/assets/video/{de,en}/` als HTML5-`<video>`-Tags in die Dokumentation ein. Videos sind sprachgetrennt: `video/de/` → nur `docs/de/`, `video/en/` → nur `docs/en/`. Erstellt/aktualisiert eine zentrale Video-Seite und bettet Videos zusaetzlich in thematisch passende Seiten ein.
 
 ## Argumente
 
@@ -30,23 +30,28 @@ Bei Blocker: AskUserQuestion — Problem melden, Abbruch anbieten.
 
 1. **Alle MP4s finden:**
 ```
-Glob: docs/assets/video/**/*.mp4
+Glob: docs/assets/video/{de,en}/**/*.mp4
 ```
 
-2. **Argument-Filter anwenden:**
-   - Wenn `$ARGUMENTS` gesetzt: Nur Videos deren Elternverzeichnis den Wert enthaelt
+2. **Sprache erkennen:**
+   - Pfad `docs/assets/video/de/...` → Sprache `de`
+   - Pfad `docs/assets/video/en/...` → Sprache `en`
+   - Videos ausserhalb von `de/` oder `en/` → Fehler melden
+
+3. **Argument-Filter anwenden:**
+   - Wenn `$ARGUMENTS` gesetzt: Nur Videos deren Pfad den Wert enthaelt
    - Wenn leer: Alle Videos
 
-3. **STATUS-Datei laden:**
+4. **STATUS-Datei laden:**
 ```
 Read: research/VIDEO_STATUS.md
 ```
 
-4. **Unverarbeitete identifizieren:**
+5. **Unverarbeitete identifizieren:**
    - Videos die noch nicht in der STATUS-Datei mit Status `eingebettet` stehen
    - Leere Verzeichnisse (ohne MP4) ignorieren
 
-**Ergebnis:** Liste unverarbeiteter Videos mit Verzeichnis und Dateiname.
+**Ergebnis:** Liste unverarbeiteter Videos mit Sprache, Verzeichnis und Dateiname.
 
 Falls keine unverarbeiteten Videos: Meldung ausgeben und Skill beenden.
 
@@ -82,37 +87,40 @@ Video collection for X-Plane on Linux.
 
 ### 2.2 Videos einbetten
 
-Fuer jedes unverarbeitete Video einen Block an die Seite anfuegen (vor einem eventuellen `## Quellen`/`## Sources` Abschnitt, sonst am Ende):
+**Sprachregel:** DE-Videos (`video/de/`) → nur `docs/de/videos.md`. EN-Videos (`video/en/`) → nur `docs/en/videos.md`.
 
-**DE:**
+Fuer jedes unverarbeitete Video einen Block an die passende Sprachversion anfuegen (vor einem eventuellen `## Quellen`/`## Sources` Abschnitt, sonst am Ende):
+
 ```html
 
-## {Video-Titel (aus Dateiname, Unterstriche durch Leerzeichen)}
+<div class="video-card" markdown>
 
-<div class="video-container" markdown>
+### {Video-Titel (aus Dateiname, Unterstriche durch Leerzeichen)}
+
 <video controls width="100%" preload="metadata">
-  <source src="../assets/video/{dir}/{file}.mp4" type="video/mp4">
+  <source src="../assets/video/{lang}/{subdir}/{file}.mp4" type="video/mp4">
 </video>
+
 </div>
 ```
 
-**EN:** Gleiche Struktur, Ueberschrift ggf. uebersetzt.
+Dabei ist `{lang}` = `de` oder `en`, `{subdir}` = Unterverzeichnis unter `de/` bzw. `en/` (entfaellt wenn Video direkt in `de/` oder `en/` liegt).
 
 ### 2.3 Poster-Bild erstellen oder erkennen
 
 Fuer jedes unverarbeitete Video pruefen, ob bereits eine Bilddatei mit gleichem Basisnamen existiert (`.jpg`, `.jpeg`, `.png`, `.webp`):
 ```
-Glob: docs/assets/video/{dir}/{basename}.*
+Glob: docs/assets/video/{lang}/{subdir}/{basename}.*
 ```
 
 **Falls kein Poster vorhanden:** Mit ffmpeg ein Poster-Bild aus dem Video generieren (Frame bei Sekunde 10):
 ```bash
-ffmpeg -ss 10 -i "docs/assets/video/{dir}/{file}.mp4" -frames:v 1 -q:v 2 "docs/assets/video/{dir}/{basename}.jpg"
+ffmpeg -ss 10 -i "docs/assets/video/{lang}/{subdir}/{file}.mp4" -frames:v 1 -q:v 2 "docs/assets/video/{lang}/{subdir}/{basename}.jpg"
 ```
 
 **In jedem Fall** das `poster`-Attribut in allen `<video>`-Tags setzen:
 ```html
-<video controls width="100%" preload="metadata" poster="../assets/video/{dir}/{basename}.jpg">
+<video controls width="100%" preload="metadata" poster="../assets/video/{lang}/{subdir}/{basename}.jpg">
 ```
 
 ### 2.4 Navigation in mkdocs.yml
@@ -137,44 +145,49 @@ Jedes Video wird zusaetzlich zur Video-Seite in die thematisch passende Dokument
 
 ### 3.0 Featured-Video auf der Startseite
 
-Die Startseite (`index.md`) zeigt immer genau EIN Video als Featured-Video (das neueste). Bei jedem Skill-Durchlauf:
+Jede Sprach-Startseite zeigt genau EIN Video als Featured-Video (das neueste der jeweiligen Sprache). Bei jedem Skill-Durchlauf:
 
 1. Das neueste eingebettete Video identifizieren (= das gerade verarbeitete)
-2. Den bestehenden `<video>`-Block im `## Video`-Abschnitt auf `index.md` (DE + EN) durch das neue Video **ersetzen** (nicht hinzufuegen)
-3. Der "Alle Videos →" / "All Videos →" Link bleibt bestehen
+2. **Sprachregel:** DE-Video → nur `docs/de/index.md`, EN-Video → nur `docs/en/index.md`
+3. Den bestehenden `<video>`-Block im `## Featured Video`-Abschnitt auf der passenden `index.md` durch das neue Video **ersetzen** (nicht hinzufuegen)
+4. Der "Alle Videos →" / "All Videos →" Link bleibt bestehen
 
 Das ersetzte Video ist weiterhin auf `videos.md` und ggf. seiner thematischen Seite verfuegbar.
 
 ### 3.1 Verzeichnis-Zuordnung
 
-Das Elternverzeichnis des Videos bestimmt die Zielseite(n):
+Das Unterverzeichnis (unterhalb von `de/` bzw. `en/`) bestimmt die Zielseite(n). Bei Videos direkt in `de/` oder `en/` (ohne Unterverzeichnis) wird der Dateiname fuer das Matching verwendet.
 
-| Verzeichnis enthaelt | Zielseite(n) |
-|----------------------|-------------|
+| Verzeichnis/Dateiname enthaelt | Zielseite(n) |
+|-------------------------------|-------------|
 | `xol`, `Xplane_on_Linux` | `index.md` (nur thematisch) |
 | `X11`, `Wayland`, `display` | `displayserver.md` |
 | `tuning`, `system` | `systemtuning.md` |
 | `nvidia` | `nvidia.md` |
 | `config` | `xplane/config.md` |
 | `liquorix` | `liquorix.md` |
-| `scenery`, `szenerie` | `scenery.md` |
+| `scenery`, `szenerie`, `scenery_packs` | `scenery_components.md` |
 | `ortho` | `addon/orthophotography_intro.md` |
 | `performance` | `xplane/performance.md` |
 
-**Matching:** Case-insensitive Teilstring-Suche im Verzeichnisnamen.
+**Matching:** Case-insensitive Teilstring-Suche im Unterverzeichnisnamen oder Dateinamen.
+
+**Sprachregel:** DE-Video → nur `docs/de/{zielseite}`, EN-Video → nur `docs/en/{zielseite}`.
 
 **Fallback:** Wenn kein Muster passt → AskUserQuestion mit Verzeichnisname und Liste der verfuegbaren Seiten.
 
 ### 3.2 Pfadlogik
 
-Der relative Pfad zum Video haengt von der Tiefe der Zielseite ab:
+Der relative Pfad zum Video haengt von der Tiefe der Zielseite ab. `{lang}` ist `de` oder `en`, `{subdir}` das optionale Unterverzeichnis:
 
 | Seite liegt in | Relativer Pfad |
 |----------------|---------------|
-| `docs/de/*.md` oder `docs/en/*.md` | `../assets/video/{dir}/{file}.mp4` |
-| `docs/de/xplane/*.md` oder `docs/en/xplane/*.md` | `../../assets/video/{dir}/{file}.mp4` |
-| `docs/de/addon/*.md` oder `docs/en/addon/*.md` | `../../assets/video/{dir}/{file}.mp4` |
-| `docs/de/flight_operations/*.md` | `../../assets/video/{dir}/{file}.mp4` |
+| `docs/{lang}/*.md` | `../assets/video/{lang}/{subdir}/{file}.mp4` |
+| `docs/{lang}/xplane/*.md` | `../../assets/video/{lang}/{subdir}/{file}.mp4` |
+| `docs/{lang}/addon/*.md` | `../../assets/video/{lang}/{subdir}/{file}.mp4` |
+| `docs/{lang}/flight_operations/*.md` | `../../assets/video/{lang}/{subdir}/{file}.mp4` |
+
+Falls das Video direkt in `video/{lang}/` liegt (kein Unterverzeichnis), entfaellt `{subdir}/`.
 
 ### 3.3 Einbettungsort
 
@@ -197,7 +210,7 @@ Das HTML-Fragment:
 
 Falls bereits ein `## Video`-Abschnitt existiert: Neues `<video>`-Tag unter den bestehenden anfuegen (kein doppelter Heading).
 
-**Wichtig:** Immer beide Sprachversionen (DE + EN) der Zielseite bearbeiten.
+**Wichtig:** Nur die zur Video-Sprache passende Docs-Version bearbeiten. DE-Video → nur `docs/de/`, EN-Video → nur `docs/en/`.
 
 ---
 
@@ -227,8 +240,8 @@ Falls bereits ein `## Video`-Abschnitt existiert: Neues `<video>`-Tag unter den 
 | Pruefung | Wie |
 |----------|-----|
 | HTML-Tags korrekt | Jeder `<video>`-Block hat `controls`, `width="100%"`, `preload="metadata"`, korrekte `<source>` |
-| Pfade korrekt | Relative Pfade stimmen mit der Verzeichnistiefe der jeweiligen Seite ueberein |
-| Bilingual | Jede Einbettung existiert in DE und EN |
+| Pfade korrekt | Relative Pfade stimmen mit der Verzeichnistiefe der jeweiligen Seite ueberein, `{lang}/` Segment vorhanden |
+| Sprachtrennung | DE-Videos nur in `docs/de/`, EN-Videos nur in `docs/en/` — keine Kreuz-Verlinkung |
 | Poster | Falls Bild vorhanden: `poster`-Attribut gesetzt |
 | STATUS aktuell | Alle verarbeiteten Videos in `research/VIDEO_STATUS.md` |
 | Build | `mkdocs build` ausfuehren — keine Fehler |

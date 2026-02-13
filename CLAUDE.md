@@ -61,6 +61,7 @@ Skill startet mit Thema-Auswahl aus `TODO.md`, dann parallele Subagent-Recherche
 
 - Primärquellen: GitHub, offizielle Docs, Kernel-Docs, Arch Wiki
 - Keine Foren, keine Drittanbieter-Blogposts
+- **Quellenaktualität: nur Quellen ab 2024 aufwärts** (ältere nur bei nachweislich stabiler Information)
 - Ergebnis: Research-Paper in `research/<kategorie>/<thema>.md`
 
 ### Phase 2 — Lektorat & Plan (`/research-topic`)
@@ -91,6 +92,7 @@ Eigener Skill, wird nach der Umsetzung aufgerufen.
 
 - EN-Seite als Prüfgrundlage (Quellen sind englisch)
 - Parallele Verifikation aller Behauptungen gegen Primärquellen
+- **Quellenaktualität: nur Quellen ab 2024 aufwärts** (ältere nur bei nachweislich stabiler Information)
 - Korrekturen in DE + EN
 - Versionsspezifika bereinigen (Meta-Formulierungen statt Versionsnummern)
 - Quellenabschnitt am Seitenende ergänzen
@@ -152,6 +154,7 @@ Jedes Thema in `TODO.md` hat einen Status:
 
 ## Inhaltliche Regeln
 
+- **Quellenaktualität:** Nur Quellen ab 2024 aufwärts verwenden. Ältere Quellen nur, wenn keine aktuellere Alternative existiert und die Information nachweislich stabil ist (z.B. Kernel-Docs, POSIX-Standards).
 - **Nur Linux-Spezifika:** Plattformunabhängige X-Plane-Einstellungen nicht dokumentieren
 - **Versionsnummern minimieren:** Entscheidungsbaum in `research/AUDIT_FLOW.md` → Abschnitt "Versionsnummern". Kurzregel: Harte Mindestanforderungen und Verhaltens-Grenzen behalten, illustrative Versionen entfernen, Tabellen sind OK. Im Zweifel: Meta-Formulierung + Verifikationsbefehl.
 - **Ausnahme:** Akademische Hintergrund-Blöcke (`??? abstract`) dürfen Versionsdetails enthalten

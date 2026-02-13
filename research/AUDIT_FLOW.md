@@ -177,7 +177,7 @@ Pro Kapitel wird diese Tabelle in `research/<kategorie>/AUDIT_<dateiname>.md` au
 
 ## Quellenaktualität (Tiered)
 
-Kein pauschaler Alters-Cutoff. Stattdessen nach Informationstyp differenziert:
+**Generelle Untergrenze: nur Quellen ab 2024 aufwärts.** Ältere Quellen nur, wenn keine aktuellere Alternative existiert und die Information nachweislich stabil ist (z.B. Kernel-Docs, POSIX-Standards, Architektur-Grundlagen). Zusätzlich nach Informationstyp differenziert:
 
 | Informationstyp | Anforderung | Beispiel |
 |-----------------|-------------|---------|
@@ -364,7 +364,7 @@ Nach jeder Runde: DE-Angleichung für die Seiten dieser Runde.
 
 - **EN first:** Alle Prüfungen und Korrekturen zuerst in EN. DE-Angleichung nach jeder Runde.
 - **Primärquellen:** Nur offizielle Docs, Kernel-Docs, Arch Wiki, GitHub. Keine Foren/Blogs.
-- **Quellenaktualität:** Nach Informationstyp differenziert (siehe Abschnitt "Quellenaktualität").
+- **Quellenaktualität:** Generell nur Quellen ab 2024 aufwärts. Zusätzlich nach Informationstyp differenziert (siehe Abschnitt "Quellenaktualität").
 - **Versionsnummern:** Nach Entscheidungsbaum (siehe Abschnitt "Versionsnummern").
 - **Belegpflicht:** FAIL/WARN-Findings brauchen Direkt-Zitate, nicht nur URLs. Sonst N/V.
 - **Referenzplattform:** Debian Stable/Testing. Distributionsabweichungen sind kein Fehler.
