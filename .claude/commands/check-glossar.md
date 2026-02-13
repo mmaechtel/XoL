@@ -1,0 +1,244 @@
+# Check Glossar
+
+Prueft eine Dokumentationsseite auf Glossar-Abdeckung, fehlende Verweise und Markdown-Konformitaet. Arbeitet bilingual (EN first, dann DE).
+
+## Argumente
+
+`$ARGUMENTS`: Dateiname der zu pruefenden Seite (ohne Pfad, ohne Sprachprefix)
+
+| Aufruf | Beschreibung |
+|--------|-------------|
+| `/check-glossar begin.md` | Prueft `docs/en/begin.md` + `docs/de/begin.md` |
+| `/check-glossar xplane/config.md` | Prueft `docs/en/xplane/config.md` + DE-Gegenstueck |
+
+---
+
+## Pre-Flight
+
+| Voraussetzung | Pruefung | Schwere |
+|---------------|---------|---------|
+| Argument gesetzt | `$ARGUMENTS` darf nicht leer sein | Blocker |
+| EN-Seite existiert | `docs/en/$ARGUMENTS` muss existieren | Blocker |
+| DE-Seite existiert | `docs/de/$ARGUMENTS` muss existieren | Blocker |
+| Glossare existieren | `docs/en/glossary.md` + `docs/de/glossary.md` | Blocker |
+
+Bei Blocker: Fehlermeldung ausgeben und abbrechen.
+
+---
+
+## Phase 1 — Log pruefen
+
+**Logdatei:** `research/glossar_check.log`
+
+1. Falls die Logdatei existiert, pruefen ob `$ARGUMENTS` bereits gecheckt wurde
+2. Falls ja: Datum des letzten Checks anzeigen und User fragen ob erneut geprüft werden soll
+3. Falls nein oder User bestaetigt: Weiter mit Phase 2
+
+**Log-Format** (eine Zeile pro Check):
+
+```
+YYYY-MM-DD  <dateiname>  <anzahl_neue_begriffe>  <anzahl_fixes>
+```
+
+---
+
+## Phase 2 — Bestandsaufnahme
+
+### 2.1 Glossare einlesen
+
+1. `docs/en/glossary.md` lesen — alle `### Begriffname` Eintraege extrahieren
+2. `docs/de/glossary.md` lesen — alle `### Begriffname` Eintraege extrahieren
+3. Mapping erstellen: EN-Begriff ↔ DE-Begriff (ueber Position/Reihenfolge)
+
+### 2.2 Seiten einlesen
+
+1. `docs/en/$ARGUMENTS` vollstaendig lesen
+2. `docs/de/$ARGUMENTS` vollstaendig lesen
+
+### 2.3 Vorhandene Glossar-Verweise erfassen
+
+Alle Links der Form `[Text](../glossary.md#anchor)` oder `[Text](glossary.md#anchor)` in beiden Seiten identifizieren.
+
+---
+
+## Phase 3 — Glossar-Abdeckung analysieren
+
+### 3.1 Bereits verlinkte Begriffe
+
+Fuer jede Seite (EN + DE) auflisten:
+
+- Welche Glossar-Begriffe sind bereits verlinkt?
+- Sind die Anchors korrekt (stimmt `#anchor` mit der tatsaechlichen Ueberschrift im Glossar ueberein)?
+- Gibt es tote Links (Anchor existiert nicht im Glossar)?
+
+### 3.2 Fehlende Verlinkungen
+
+Fuer jeden Glossar-Begriff pruefen:
+
+- Kommt der Begriff (oder sein Kern-Keyword) im Seitentext vor?
+- Ist er NICHT als Glossar-Link formatiert?
+- → Diese Begriffe als "fehlende Verlinkung" melden
+
+**Regeln:**
+
+- Nur die ERSTE Verwendung eines Begriffs pro Seite muss verlinkt sein
+- Begriffe in Code-Bloecken (`backticks` oder ```code fences```) nicht verlinken
+- Begriffe in Ueberschriften nicht verlinken
+- Begriffe die Teil eines bereits verlinkten Textes sind, nicht doppelt melden
+
+### 3.3 Wichtige Begriffe ohne Glossar-Eintrag
+
+Die Seite inhaltlich analysieren und zentrale technische Begriffe identifizieren, die:
+
+- Wiederholt auf der Seite verwendet werden
+- Fuer das Verstaendnis der Seite relevant sind
+- Noch KEINEN Glossar-Eintrag haben
+- Linux-spezifisch oder X-Plane-spezifisch sind (keine Allgemeinbegriffe)
+
+**Nicht vorschlagen:**
+
+- Allgemeinwissen (SSD, RAM, CPU, GPU — es sei denn, es gibt einen X-Plane-spezifischen Aspekt)
+- Begriffe die nur einmal beilaeufig erwaehnt werden
+- Begriffe die bereits durch einen anderen Glossar-Eintrag abgedeckt sind
+
+---
+
+## Phase 4 — Ergebnisse vorlegen
+
+Dem User eine strukturierte Uebersicht praesentieren:
+
+```
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+GLOSSAR-CHECK: <dateiname>
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+VERLINKTE BEGRIFFE:
+├─ EN: <anzahl> Glossar-Links
+└─ DE: <anzahl> Glossar-Links
+
+PROBLEME:
+├─ Tote Links: <anzahl> (Anchor existiert nicht)
+├─ Fehlende Verlinkungen: <anzahl> (Begriff kommt vor, ist aber nicht verlinkt)
+└─ DE/EN Asymmetrie: <anzahl> (Link in einer Sprache, aber nicht in der anderen)
+
+VORSCHLAEGE NEUE GLOSSAR-BEGRIFFE:
+│  <Nr>. <Begriff> — <Kurzbeschreibung warum relevant>
+│  ...
+
+FEHLENDE VERLINKUNGEN (bereits im Glossar, aber nicht verlinkt):
+│  <Nr>. <Begriff> in Zeile <x> (EN) / Zeile <y> (DE)
+│  ...
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+```
+
+---
+
+## Phase 5 — User-Entscheidung
+
+Per AskUserQuestion den User fragen:
+
+1. **Neue Glossar-Begriffe:** Welche der vorgeschlagenen Begriffe sollen ins Glossar aufgenommen werden?
+2. **Fehlende Verlinkungen:** Sollen alle fehlenden Verlinkungen automatisch ergaenzt werden?
+3. **Tote Links:** Sollen tote Links automatisch repariert oder entfernt werden?
+
+---
+
+## Phase 6 — Umsetzung
+
+### 6.1 Neue Glossar-Begriffe einfuegen
+
+Fuer jeden freigegebenen Begriff:
+
+1. EN-Definition schreiben und in `docs/en/glossary.md` alphabetisch einsortieren
+2. DE-Definition schreiben und in `docs/de/glossary.md` alphabetisch einsortieren
+3. Sicherstellen dass die Eintraege in beiden Sprachen identische Struktur haben
+4. Anchor-Name aus der `### Ueberschrift` ableiten
+
+### 6.2 Fehlende Verlinkungen ergaenzen
+
+Fuer jede freigegebene Verlinkung:
+
+1. In der EN-Seite: Erste Verwendung des Begriffs als `[Begriff](../glossary.md#anchor)` formatieren
+2. In der DE-Seite: Entsprechende Stelle mit DE-Anchor verlinken
+3. Nur die ERSTE Nennung verlinken, nicht jede
+
+### 6.3 Tote Links reparieren
+
+1. Anchor korrigieren falls der Begriff im Glossar existiert (Tippfehler)
+2. Link entfernen falls der Begriff nicht im Glossar existiert und kein neuer Eintrag erstellt wird
+
+---
+
+## Phase 7 — Markdown-Check
+
+`docs/MARKDOWN_RULES.txt` lesen und auf BEIDE Seiten (EN + DE) anwenden:
+
+### Pruefpunkte
+
+1. **Leerzeile nach jeder Ueberschrift** — auch `**Fett**`-Pseudo-Ueberschriften vor Listen
+2. **Kein Doppelpunkt** am Ende von Ueberschriften die mit einer Liste folgen
+3. **Listen-Einrueckung** — 4 Spaces pro Ebene (0 → 4 → 8)
+4. **Leerzeichen nach Doppelpunkten** — `**Label**: Text` nicht `**Label**:Text`
+5. **Code-Block-Tags** — `bash` fuer Shell, `ini` fuer sysctl, kein Tag fuer Kernel/GRUB-Parameter
+6. **Konsistenz DE/EN** — Gleiche Formatierung in beiden Sprachversionen
+
+Falls Verstoesse gefunden werden:
+
+- Auflisten mit Zeilennummer und Beschreibung
+- Automatisch korrigieren (keine Rueckfrage noetig — Markdown-Regeln sind nicht optional)
+
+---
+
+## Phase 8 — Abschluss
+
+### 8.1 Build pruefen
+
+```
+Bash: mkdocs build
+```
+
+Bei Fehlern: Korrigieren und erneut bauen.
+
+### 8.2 Log aktualisieren
+
+Eintrag in `research/glossar_check.log` schreiben:
+
+```
+YYYY-MM-DD  <dateiname>  <anzahl_neue_begriffe>  <anzahl_fixes>
+```
+
+### 8.3 Zusammenfassung
+
+```
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+GLOSSAR-CHECK ABGESCHLOSSEN: <dateiname>
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+AENDERUNGEN:
+├─ Neue Glossar-Begriffe: <anzahl> (EN + DE)
+├─ Verlinkungen ergaenzt: <anzahl>
+├─ Tote Links repariert:  <anzahl>
+└─ Markdown-Fixes:        <anzahl>
+
+DATEIEN GEAENDERT:
+├─ docs/en/glossary.md
+├─ docs/de/glossary.md
+├─ docs/en/<dateiname>
+├─ docs/de/<dateiname>
+└─ research/glossar_check.log
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+```
+
+**NICHT committen.** Der Commit erfolgt ueber `/abschluss`.
+
+---
+
+## Hinweise
+
+- **EN first:** Analyse und Ergaenzungen immer zuerst in EN, dann DE nachziehen
+- **Alphabetische Sortierung:** Glossar-Eintraege muessen alphabetisch sortiert bleiben
+- **Keine Allgemeinbegriffe:** Nur Linux-spezifische oder X-Plane-spezifische Begriffe aufnehmen
+- **Erste Nennung:** Nur die erste Verwendung eines Begriffs auf einer Seite verlinken
+- **Keine Links in Code-Bloecken:** Begriffe innerhalb von Backticks oder Code Fences nicht verlinken
+- **Keine Links in Ueberschriften:** Glossar-Links gehoeren in den Fliesstext, nicht in H2/H3/H4
+- **Markdown-Fixes sind automatisch:** Verstoesse gegen `docs/MARKDOWN_RULES.txt` werden ohne Rueckfrage korrigiert
