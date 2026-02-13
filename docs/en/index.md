@@ -4,6 +4,8 @@ This documentation is aimed at experienced Linux users who want to run X-Plane o
 
 The examples shown here are based on Debian Linux but can be easily adapted to other distributions. The basic concepts and approaches remain the same - only the specific package manager commands or repository configurations need to be adjusted accordingly.
 
+## Featured Video
+
 <div class="video-container" markdown>
 <video controls width="100%" preload="metadata" poster="../assets/video/X11_vs_Wayland/X11_vs_Wayland.jpg">
   <source src="../assets/video/X11_vs_Wayland/X11_vs_Wayland.mp4" type="video/mp4">
@@ -34,6 +36,8 @@ This documentation is an open project. Improvements or additions can be contribu
 - New [Videos](videos.md) page — video collection with embedded overview videos
 - [XEarthLayer](addon/xearthlayer.md) expanded: CPU tuning section with thread configuration, scenario table, and disk I/O profiles for parallel operation with X-Plane
 - [Display Server](displayserver.md) and home page: videos moved to beginning of chapters
+- [Wayland Session](displayserver_wayland.md) streamlined: redundant latency table and desktop entry replaced with references to main pages
+- [Introduction](intro.md) expanded: overview video embedded
 
 ### 2026-02-11
 - [Display Server](displayserver.md) pages fact-checked: Debian defaults corrected, XWayland row added to Hugl table, latency measurements clarified, NVIDIA modeset default updated, MESA variable scoped to Mesa drivers

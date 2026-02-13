@@ -6,6 +6,12 @@ Der Guide deckt die wichtigsten Aspekte der Systemoptimierung ab, einschließlic
 
 Die hier gezeigten Beispiele basieren auf Debian Linux, lassen sich aber leicht auf andere Distributionen übertragen. Die grundlegenden Konzepte und Vorgehensweisen bleiben dabei gleich - lediglich die spezifischen Paketmanager-Befehle oder Repository-Konfigurationen müssen entsprechend angepasst werden.
 
+<div class="video-container" markdown>
+<video controls width="100%" preload="metadata" poster="../assets/video/xol_Xplane_on_Linux/X-Plane_unter_Linux.jpg">
+  <source src="../assets/video/xol_Xplane_on_Linux/X-Plane_unter_Linux.mp4" type="video/mp4">
+</video>
+</div>
+
 ## Warum X-Plane?
 
 [X-Plane](glossary.md#x-plane) hebt sich von anderen Flugsimulatoren durch seinen simulationsorientierten Ansatz ab. Die realistische Flugsimulation basiert auf der [Blade Element Theory](glossary.md#blade-element-theory), die eine Echtzeit-Strömungssimulation ermöglicht. Statt vorgefertigter Tabellen werden Echtzeit-Flugphysikberechnungen durchgeführt, unterstützt durch detaillierte Simulationen von Triebwerken und Flugzeugsystemen sowie einer präzisen Wettersimulation mit atmosphärischen Effekten.

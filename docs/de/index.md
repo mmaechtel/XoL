@@ -4,6 +4,8 @@ Diese Dokumentation richtet sich an Linux-erfahrene Benutzer, die X-Plane unter 
 
 Die hier gezeigten Beispiele basieren auf Debian Linux, lassen sich aber leicht auf andere Distributionen übertragen. Die grundlegenden Konzepte und Vorgehensweisen bleiben dabei gleich - lediglich die spezifischen Paketmanager-Befehle oder Repository-Konfigurationen müssen entsprechend angepasst werden.
 
+## Featured Video
+
 <div class="video-container" markdown>
 <video controls width="100%" preload="metadata" poster="../assets/video/X11_vs_Wayland/X11_vs_Wayland.jpg">
   <source src="../assets/video/X11_vs_Wayland/X11_vs_Wayland.mp4" type="video/mp4">
@@ -34,6 +36,8 @@ Diese Dokumentation ist ein offenes Projekt. Verbesserungen oder Ergänzungen k�
 - Neue Seite [Videos](videos.md) — Videosammlung mit eingebetteten Übersichtsvideos
 - [XEarthLayer](addon/xearthlayer.md) ergänzt: CPU-Tuning-Abschnitt mit Thread-Konfiguration, Szenario-Tabelle und Disk-I/O-Profilen für den Parallelbetrieb mit X-Plane
 - [Display-Server](displayserver.md) und Startseite: Videos an den Kapitelanfang verschoben
+- [Wayland-Session](displayserver_wayland.md) gestrafft: Redundante Latenztabelle und Desktop-Eintrag durch Verweise auf Hauptseiten ersetzt
+- [Einführung](intro.md) ergänzt: Übersichtsvideo eingebettet
 
 ### 2026-02-11
 - [Display-Server](displayserver.md) Seiten faktengeprüft: Debian-Defaults korrigiert, XWayland-Zeile in Hugl-Tabelle ergänzt, Latenzmessungen präzisiert, NVIDIA-Modeset-Default aktualisiert, MESA-Variable auf Mesa-Treiber eingeschränkt

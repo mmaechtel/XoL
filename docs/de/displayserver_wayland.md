@@ -17,15 +17,7 @@ X-Plane merkt keinen Unterschied. Es spricht X11 wie gewohnt. Aber der zusätzli
 
 ## XWayland-Overhead
 
-Hardware-Messungen zeigen, dass XWayland die Eingabelatenz im Vergleich zu nativem X11 oder nativem Wayland ungefähr verdoppelt.
-
-| Pfad | Median-Latenz |
-|------|--------------|
-| X11 (direkt) | 6,88 ms |
-| Natives Wayland | 7,14 ms |
-| XWayland | 14,45 ms |
-
-Die zusätzliche Latenz entsteht durch die Übersetzung zwischen X11 und dem Wayland-Compositor. Der genaue Overhead ist hardware-abhängig — Messungen zeigen je nach GPU, Display und Konfiguration ~2 ms bis ~7 ms. Detaillierte Messungen: [Display-Server-Übersicht](displayserver.md#latenz-im-vergleich).
+XWayland verdoppelt die Eingabelatenz im Vergleich zu nativem X11 oder Wayland ungefähr (~7 ms vs. ~14 ms in Hardware-Messungen). Der genaue Overhead hängt von GPU, Display und Konfiguration ab. Detaillierte Messungen und Compositor-Vergleiche: [Display-Server-Übersicht](displayserver.md#latenz-im-vergleich).
 
 ---
 
@@ -76,19 +68,13 @@ Um diese dauerhaft zu setzen, in einen [Desktop-Eintrag](displayserver_x11.md#de
 
 ## Desktop-Eintrag
 
-Eine `.desktop`-Datei stellt konsistente Umgebungsvariablen bei jedem X-Plane-Start sicher:
+Die Grundeinrichtung ist identisch mit der [X11-Session](displayserver_x11.md#desktop-eintrag). Für Wayland mit AMD- oder Intel-GPUs zusätzlich die Presentation-Mode-Variable setzen:
 
 ```ini
-# ~/.local/share/applications/x-plane-12.desktop
-[Desktop Entry]
-Name=X-Plane 12
-Exec=env SDL_VIDEODRIVER=x11 GDK_BACKEND=x11 /path/to/X-Plane-x86_64
-Type=Application
-Categories=Game;Simulation;
-Comment=X-Plane 12 Flight Simulator (XWayland)
+Exec=env SDL_VIDEODRIVER=x11 GDK_BACKEND=x11 MESA_VK_WSI_PRESENT_MODE=mailbox /path/to/X-Plane-x86_64
 ```
 
-`/path/to/` durch den tatsächlichen Pfad zur X-Plane-Installation ersetzen.
+`MESA_VK_WSI_PRESENT_MODE=mailbox` gilt nur für Mesa-Treiber (AMD, Intel) und kann die Latenz unter XWayland reduzieren. NVIDIA-Nutzer sollten diese Variable weglassen.
 
 ---
 
