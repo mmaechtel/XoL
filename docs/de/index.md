@@ -41,7 +41,6 @@ Diese Dokumentation ist ein offenes Projekt. Verbesserungen oder Ergänzungen k�
 - [Wayland-Session](displayserver_wayland.md) gestrafft, [Display-Server](displayserver.md) und [Einführung](intro.md): Videos eingebettet
 - [Über diese Dokumentation](about.md) überarbeitet: Lizenz, Datenschutz, rechtliche Hinweise, Zielgruppe
 - [Glossar](glossary.md) ausgebaut: 40 neue Begriffe zu Kernel, Grafik, Dateisystem, Audio und Szenerien
-- Markdown-Formatierung und Google Fonts durch System-Fonts ersetzt
 
 ### 2026-02-11
 - [Display-Server](displayserver.md) Seiten faktengeprüft: Debian-Defaults korrigiert, XWayland-Zeile in Hugl-Tabelle ergänzt, Latenzmessungen präzisiert, NVIDIA-Modeset-Default aktualisiert, MESA-Variable auf Mesa-Treiber eingeschränkt

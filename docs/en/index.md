@@ -41,7 +41,6 @@ This documentation is an open project. Improvements or additions can be contribu
 - [Wayland Session](displayserver_wayland.md) streamlined, [Display Server](displayserver.md) and [Introduction](intro.md): videos embedded
 - [About](about.md) revised: license, privacy policy, legal notices, target audience
 - [Glossary](glossary.md) expanded: 40 new terms covering kernel, graphics, filesystem, audio, and scenery
-- Markdown formatting fixes and Google Fonts replaced with system fonts
 
 ### 2026-02-11
 - [Display Server](displayserver.md) pages fact-checked: Debian defaults corrected, XWayland row added to Hugl table, latency measurements clarified, NVIDIA modeset default updated, MESA variable scoped to Mesa drivers
