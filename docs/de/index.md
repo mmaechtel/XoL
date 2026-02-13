@@ -38,6 +38,7 @@ Diese Dokumentation ist ein offenes Projekt. Verbesserungen oder Ergänzungen k�
 - [Display-Server](displayserver.md) und Startseite: Videos an den Kapitelanfang verschoben
 - [Wayland-Session](displayserver_wayland.md) gestrafft: Redundante Latenztabelle und Desktop-Eintrag durch Verweise auf Hauptseiten ersetzt
 - [Einführung](intro.md) ergänzt: Übersichtsvideo eingebettet
+- [Einführung Orthofotografie](addon/orthophotography_intro.md) ergänzt: Neuer Abschnitt zur Einordnung der Ortho-Streamer in der scenery_packs.ini mit Beispiel-Konfigurationen für AutoOrtho, XEarthLayer und XPME
 
 ### 2026-02-11
 - [Display-Server](displayserver.md) Seiten faktengeprüft: Debian-Defaults korrigiert, XWayland-Zeile in Hugl-Tabelle ergänzt, Latenzmessungen präzisiert, NVIDIA-Modeset-Default aktualisiert, MESA-Variable auf Mesa-Treiber eingeschränkt

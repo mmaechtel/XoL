@@ -26,6 +26,50 @@ Bei diesem Ansatz werden Orthofoto-Texturen erst zur Laufzeit bei Bedarf von Kar
 
 - **[X-Plane Map Enhancement](https://github.com/derekhe/xplane-map-enhancement-release)** (XPME): Eine Streaming-Lösung mit eigener Benutzeroberfläche, die Satellitenbilder direkt auf das Terrain projiziert. Verfügbar für Windows, macOS und Linux (.deb und AppImage).
 
+### Einordnung in der scenery_packs.ini
+
+Alle drei Streaming-Lösungen haben eine Gemeinsamkeit: Ihre Einträge gehören in der `scenery_packs.ini` **ganz nach unten**.
+
+Der Grund liegt in der Prioritätenlogik von X-Plane. Einträge weiter oben in der Datei haben höhere Priorität und werden bevorzugt geladen. Lokale Szenerien — seien es Custom Airports, SimHeaven-Autogen oder lokale Ortho4XP-Kacheln — stehen weiter oben und werden daher immer zuerst verwendet. Nur wenn für einen bestimmten Bereich keine lokale Szenerie existiert, fällt X-Plane auf die weiter unten stehenden Streaming-Einträge zurück und lädt die Satellitenbilder aus dem Internet.
+
+Dieses Fallback-Prinzip hat einen entscheidenden Vorteil: Lokale Kacheln, die man aufwendig in hoher Auflösung generiert hat, werden nie von gestreamten Bildern überschrieben. Gleichzeitig erhält man eine weltweite Abdeckung für alle Gebiete, für die keine lokalen Daten vorhanden sind.
+
+Das folgende Beispiel zeigt eine typische `scenery_packs.ini` am Beispiel von AutoOrtho für Europa:
+
+```ini
+# Custom Airports und Landmarks
+SCENERY_PACK Custom Scenery/Aerosoft_EDDF_Frankfurt_3_Scenery/
+SCENERY_PACK Custom Scenery/X-Plane Landmarks - Paris/
+
+# Standard-Flughäfen
+SCENERY_PACK *GLOBAL_AIRPORTS*
+
+# Autogen (SimHeaven X-World)
+SCENERY_PACK Custom Scenery/simHeaven_X-World_Europe-6-scenery/
+SCENERY_PACK Custom Scenery/simHeaven_X-World_Europe-7-forests/
+
+# Lokale Ortho4XP-Kacheln (optional)
+SCENERY_PACK Custom Scenery/zOrtho4XP_+48+011/
+SCENERY_PACK Custom Scenery/zOrtho4XP_+47+011/
+
+# Mesh-Dateien
+SCENERY_PACK Custom Scenery/SFD_EDDM_Munich_2_Mesh/
+
+# Ortho-Streaming (ganz unten — Fallback für fehlende lokale Daten)
+SCENERY_PACK Custom Scenery/yAutoOrtho_Overlays/
+SCENERY_PACK Custom Scenery/z_ao_eur/
+SCENERY_PACK Custom Scenery/z_autoortho/
+```
+
+Bei **XEarthLayer** werden die regionalen Pakete über die CLI installiert (`xearthlayer packages install eu`). Die Einträge verwenden das Präfix `zzXEL_` und stehen ebenfalls am Ende der Datei:
+
+```ini
+# XEarthLayer Ortho-Streaming (ganz unten)
+SCENERY_PACK Custom Scenery/zzXEL_eu_ortho/
+```
+
+**XPME** platziert seine Einträge bei der Installation automatisch in der `scenery_packs.ini`. Das Prinzip ist identisch: Die Streaming-Einträge müssen am Ende stehen, damit lokale Szenerien Vorrang haben.
+
 ### Kombination
 
 Für ausgewählte Regionen können die hochauflösenden Ortho4XP-Kacheln mit der globalen Streaming-Abdeckung von AutoOrtho kombiniert werden. Dieses Verfahren wird im Kapitel [AutoOrtho + Ortho4XP](static_plus_streaming.md) detailliert beschrieben.
