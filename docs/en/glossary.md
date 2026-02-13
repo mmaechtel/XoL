@@ -299,7 +299,7 @@ A cache for compiled GPU shader programs. X-Plane compiles shaders when first lo
 
 ### Single-CPU
 
-Describes the current architecture of X-Plane, where the main simulation runs on a single processor core.
+A historical characterization of X-Plane's architecture. While single-core performance remains important, X-Plane 12 distributes substantial per-frame work across multiple cores since version 12.4.
 
 ### sysctl
 

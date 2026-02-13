@@ -299,7 +299,7 @@ Ein Zwischenspeicher für kompilierte GPU-Shader-Programme. X-Plane kompiliert S
 
 ### Single-CPU
 
-Beschreibt die aktuelle Architektur von X-Plane, bei der die Hauptsimulation auf einem einzelnen Prozessorkern läuft.
+Eine historische Bezeichnung für X-Planes Architektur. Single-Core-Performance bleibt zwar wichtig, aber X-Plane 12 verteilt seit Version 12.4 einen erheblichen Teil der Frame-Arbeit auf mehrere Kerne.
 
 ### sysctl
 
