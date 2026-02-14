@@ -22,6 +22,10 @@ Diese Dokumentation wird als statische Website betrieben. Es werden keine Cookie
 
 Beim Abruf der Seiten werden durch den Hosting-Anbieter automatisch technische Zugriffsdaten in Server-Logfiles gespeichert (z.B. IP-Adresse, Zeitpunkt des Zugriffs, abgerufene Seite). Diese Daten dienen ausschließlich der technischen Sicherstellung des Betriebs und werden nicht mit anderen Datenquellen zusammengeführt. Rechtsgrundlage ist Art. 6 Abs. 1 lit. f DSGVO (berechtigtes Interesse an einem sicheren Betrieb).
 
+### Externe Dienste (Karten)
+
+Die [interaktiven Karten](Maps.md) laden Inhalte von externen Diensten: Kartenkacheln von der OpenStreetMap Foundation (UK) und JavaScript-Bibliotheken über unpkg/Cloudflare (USA). Dabei werden IP-Adresse und technische Zugriffsdaten an diese Anbieter übermittelt. Die Einbindung erfolgt auf Grundlage von Art. 6 Abs. 1 lit. f DSGVO (berechtigtes Interesse an einer funktionalen Kartendarstellung). Für die Datenübermittlung in die USA gelten EU-Standardvertragsklauseln bzw. das EU-US Data Privacy Framework. Weitere Details sind direkt auf der Karten-Seite einsehbar.
+
 ## Rechtliche Hinweise
 
 Diese Dokumentation dient als Plattform zur Bereitstellung allgemein zugänglicher Informationen zu verschiedenen Themenbereichen. Die Inhalte werden mit größter Sorgfalt recherchiert und aufbereitet. Für die Richtigkeit, Vollständigkeit und Aktualität der veröffentlichten Informationen wird jedoch keine Gewähr übernommen. Die Beiträge stellen keine professionelle Beratung dar und ersetzen nicht die Konsultation entsprechender Fachpersonen.

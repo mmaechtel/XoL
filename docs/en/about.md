@@ -22,6 +22,10 @@ This documentation is operated as a static website. No cookies are set, no analy
 
 When accessing the pages, the hosting provider automatically stores technical access data in server log files (e.g., IP address, time of access, page requested). This data is used exclusively for ensuring secure technical operation and is not combined with other data sources. The legal basis is Art. 6(1)(f) GDPR (legitimate interest in secure operation).
 
+### External Services (Maps)
+
+The [interactive maps](Maps.md) load content from external services: map tiles from the OpenStreetMap Foundation (UK) and JavaScript libraries via unpkg/Cloudflare (USA). This transmits your IP address and technical access data to these providers. The integration is based on Art. 6(1)(f) GDPR (legitimate interest in functional map display). Data transfers to the USA are covered by EU Standard Contractual Clauses or the EU-US Data Privacy Framework. Further details are available directly on the maps page.
+
 ## Legal Notice
 
 This documentation serves as a platform for providing publicly accessible information on various topics. The content is researched and prepared with the utmost care. However, no guarantee is made for the accuracy, completeness, and timeliness of the published information. The content does not constitute professional advice and does not replace consultation with appropriate professionals.
