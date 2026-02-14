@@ -182,6 +182,7 @@ Jedes Thema in `TODO.md` hat einen Status:
 - **Versionsnummern minimieren:** Entscheidungsbaum in `research/AUDIT_FLOW.md` → Abschnitt "Versionsnummern". Kurzregel: Harte Mindestanforderungen und Verhaltens-Grenzen behalten, illustrative Versionen entfernen, Tabellen sind OK. Im Zweifel: Meta-Formulierung + Verifikationsbefehl.
 - **Ausnahme:** Akademische Hintergrund-Blöcke (`??? abstract`) dürfen Versionsdetails enthalten
 - **Quellenabschnitt** am Seitenende: nur offizielle, belastbare Quellen (max 5-8)
+- **Anredekonvention DE:** Unpersönlicher Stil (Infinitiv, Passiv, „lassen sich") statt „Sie"-Anrede. Bereits umgestellt: `begin.md`, `docker.md`. Restliche Dateien schrittweise bei Gelegenheit umstellen. EN bleibt unverändert („you" ist stilistisch neutral).
 
 ## Git-Regeln
 

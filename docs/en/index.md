@@ -32,6 +32,11 @@ This documentation is an open project. Improvements or additions can be contribu
 
 ## Recent Changes
 
+### 2026-02-14
+- [System Tuning](systemtuning.md) fact-checked: Corrected scheduler references, removed non-functional kernel parameter, clarified NVMe notes, added sources section
+- [Getting Started](begin.md) revised: Merged troubleshooting sections, clarified 32-bit note, added display server link
+- Language revision (DE): [Getting Started](begin.md) and [Docker](docker.md) converted to impersonal style
+
 ### 2026-02-13
 - [Getting Started](begin.md) corrected: Updated installer instructions, refined system recommendations, fixed outdated package names and single-core claims, added cross-references
 - [Getting Started](begin.md) glossary links added: GRUB, NVMe, VRAM, Orthophotos, FPS, Wayland

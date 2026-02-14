@@ -4,14 +4,14 @@
 
 ## Voraussetzungen
 
-Bevor Sie beginnen, stellen Sie sicher, dass:
+Voraussetzungen vor dem Start:
 
-- Sie Zugriff auf ein Debian-System haben
-- Sie über Root- oder Sudo-Rechte verfügen
+- Zugriff auf ein Debian-System
+- Root- oder Sudo-Rechte
 
 ## Schritt 1: System aktualisieren
 
-Zunächst sollten Sie sicherstellen, dass Ihr Debian-System auf dem neuesten Stand ist. Öffnen Sie ein Terminal und führen Sie folgende Befehle aus:
+Zunächst sicherstellen, dass das Debian-System auf dem neuesten Stand ist. Ein Terminal öffnen und folgende Befehle ausführen:
 
 ```bash
 sudo apt update
@@ -22,7 +22,7 @@ Dies aktualisiert die Paketlisten und installiert verfügbare Updates für berei
 
 ## Schritt 2: Erforderliche Abhängigkeiten installieren
 
-Docker benötigt einige grundlegende Pakete, um korrekt zu funktionieren. Installieren Sie diese mit:
+Docker benötigt einige grundlegende Pakete, um korrekt zu funktionieren. Installation mit:
 
 ```bash
 sudo apt install -y apt-transport-https ca-certificates curl gnupg lsb-release
@@ -32,7 +32,7 @@ Diese Pakete ermöglichen den sicheren Download von Software und die Verwaltung 
 
 ## Schritt 3: Docker-Repository hinzufügen
 
-Debian enthält zwar eine ältere Version von Docker im Standard-Repository, aber es ist empfehlenswert, das offizielle Docker-Repository zu verwenden, um die neueste Version zu erhalten. Folgen Sie diesen Schritten:
+Debian enthält zwar eine ältere Version von Docker im Standard-Repository, aber es ist empfehlenswert, das offizielle Docker-Repository zu verwenden, um die neueste Version zu erhalten. Dazu folgende Schritte:
 
 1. **GPG-Schlüssel hinzufügen:**
 
@@ -53,7 +53,7 @@ Debian enthält zwar eine ältere Version von Docker im Standard-Repository, abe
 
 ## Schritt 4: Docker installieren
 
-Jetzt können Sie Docker installieren. Führen Sie den folgenden Befehl aus, um die Hauptpakete zu installieren:
+Jetzt lässt sich Docker installieren. Folgenden Befehl ausführen, um die Hauptpakete zu installieren:
 
 ```bash
 sudo apt install -y docker-ce docker-ce-cli containerd.io
@@ -65,7 +65,7 @@ sudo apt install -y docker-ce docker-ce-cli containerd.io
 
 ## Schritt 5: Docker-Dienst starten und aktivieren
 
-Nach der Installation müssen Sie den Docker-Dienst starten und sicherstellen, dass er beim Systemstart automatisch läuft:
+Nach der Installation den Docker-Dienst starten und sicherstellen, dass er beim Systemstart automatisch läuft:
 
 ```bash
 sudo systemctl start docker
@@ -74,30 +74,30 @@ sudo systemctl enable docker
 
 ## Schritt 6: Installation überprüfen
 
-Um sicherzugehen, dass Docker korrekt installiert wurde, führen Sie diesen Befehl aus:
+Um sicherzugehen, dass Docker korrekt installiert wurde, folgenden Befehl ausführen:
 
 ```bash
 docker --version
 ```
 
-Sie sollten eine Ausgabe wie `Docker version 20.10.x, build ...` (oder eine neuere Version) sehen. Testen Sie außerdem, ob Docker funktioniert, indem Sie einen einfachen Container starten:
+Die Ausgabe sollte etwa `Docker version 20.10.x, build ...` (oder eine neuere Version) zeigen. Zusätzlich testen, ob Docker funktioniert, indem ein einfacher Container gestartet wird:
 
 ```bash
 sudo docker run hello-world
 ```
 
-Dieser Befehl lädt ein Test-Image herunter und führt es aus. Wenn alles korrekt läuft, erhalten Sie eine Bestätigungsnachricht von Docker.
+Dieser Befehl lädt ein Test-Image herunter und führt es aus. Wenn alles korrekt läuft, erscheint eine Bestätigungsnachricht von Docker.
 
 ## Schritt 7: Docker ohne Root-Rechte nutzen (optional)
 
-Standardmäßig erfordert Docker Root-Rechte. Wenn Sie Docker als normaler Benutzer ausführen möchten, fügen Sie Ihren Benutzer zur `docker`-Gruppe hinzu:
+Standardmäßig erfordert Docker Root-Rechte. Um Docker als normaler Benutzer auszuführen, den eigenen Benutzer zur `docker`-Gruppe hinzufügen:
 
 ```bash
 sudo usermod -aG docker $USER
 ```
 
-Melden Sie sich anschließend ab und wieder an (oder starten Sie das Terminal neu), damit die Änderungen wirksam werden. Danach können Sie Docker-Befehle ohne `sudo` ausführen.
+Anschließend ab- und wieder anmelden (oder das Terminal neu starten), damit die Änderungen wirksam werden. Danach lassen sich Docker-Befehle ohne `sudo` ausführen.
 
 ## Fazit
 
-Sie haben Docker nun erfolgreich auf Debian installiert. Mit dieser Installation können Sie Container erstellen, Images verwalten und Anwendungen in isolierten Umgebungen betreiben. Falls Sie weitere Anpassungen oder spezifische Konfigurationen benötigen, bietet die [offizielle Docker-Dokumentation](https://docs.docker.com) detaillierte Informationen.
+Docker ist nun erfolgreich auf Debian installiert. Mit dieser Installation lassen sich Container erstellen, Images verwalten und Anwendungen in isolierten Umgebungen betreiben. Für weitere Anpassungen oder spezifische Konfigurationen bietet die [offizielle Docker-Dokumentation](https://docs.docker.com) detaillierte Informationen.

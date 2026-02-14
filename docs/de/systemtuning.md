@@ -1,6 +1,6 @@
 # Systemtuning für X-Plane
 
-!!! danger "Work in Progress"
+!!! warning "Work in Progress"
     Die Parameter für das Kernel-Tuning sind aktuell noch in der Überprüfung und funktionieren möglicherweise nicht alle wie beschrieben. Änderungen vorbehalten.
 
 ## Distributionen und ihre Zielausrichtung
@@ -23,7 +23,7 @@ Das Zusammenspiel aus Kernel-Version, Scheduler-Konfiguration, Energieverwaltung
 
 Wer von „Performance" spricht, meint oft hohe FPS. Das ist bei Shootern oder Rennspielen richtig — dort zählt Durchsatz: möglichst viele Bilder pro Sekunde. Bei einem Flugsimulator wie X-Plane liegt der Fall anders.
 
-X-Plane berechnet eine komplexe Welt mit Physik, Wetter, Szenerie und Eingabegeräten. Einzelne Frames sind aufwändig, und die Ziel-Framerate liegt typisch bei 30–40 FPS. Entscheidend ist nicht der Durchschnitt, sondern die **Gleichmäßigkeit** — also die Frame-Time-Konsistenz. Ein System, das stabil 35 FPS liefert, fühlt sich besser an als eines, das zwischen 25 und 50 schwankt.
+X-Plane berechnet eine komplexe Welt mit Physik, Wetter, Szenerie und Eingabegeräten. Einzelne Frames sind aufwändig, und die Ziel-Framerate liegt typisch bei 25–35 FPS. Entscheidend ist nicht der Durchschnitt, sondern die **Gleichmäßigkeit** — also die Frame-Time-Konsistenz. Ein System, das stabil 35 FPS liefert, erzeugt flüssigere Bewegung als eines, das zwischen 25 und 50 schwankt.
 
 Die Ursache für Ungleichmäßigkeit ist in den meisten Fällen nicht fehlende Rechenleistung, sondern **Latenz** — kurze Verzögerungen durch Systemereignisse, die den Hauptthread unterbrechen.
 
@@ -48,7 +48,7 @@ Systemlatenz entsteht nicht an einer Stelle, sondern aus vier unabhängigen Kate
 
 ### Scheduling
 
-Der Linux-Scheduler entscheidet, wann ein Thread Rechenzeit bekommt. Ein konservativer Scheduler wartet länger, bevor er reagiert — das spart Energie, erhöht aber die Latenz. Moderne Scheduler (EEVDF) berücksichtigen Cache-Lokalität und Wake-Frequenz und platzieren latenzsensitive Threads automatisch besser.
+Der Linux-Scheduler entscheidet, wann ein Thread Rechenzeit bekommt. Ein konservativer Scheduler wartet länger, bevor er reagiert — das spart Energie, erhöht aber die Latenz. Moderne Scheduler nutzen Deadline-basierte Aufgabenauswahl und adaptive Preemption, sodass latenzsensitive Threads effizienter eingeplant werden.
 
 ### Energieverwaltung
 
@@ -76,10 +76,10 @@ Der generische Debian-Kernel priorisiert Fairness und Durchsatz. Er reagiert kon
 
 **Liquorix** = geschlossener Regelkreis → Störungen müssen entfernt werden
 
-Liquorix nutzt den EEVDF-Scheduler mit kürzeren Preemption-Fenstern und höherer Timer-Frequenz. Er reagiert selbstständig auf Laständerungen. Tuning bedeutet hier: externe Störquellen minimieren.
+Liquorix nutzt den PDS-Scheduler (Priority and Deadline based Skiplist) mit kürzeren Preemption-Fenstern und einer Timer-Frequenz von 1000 Hz. Er reagiert selbstständig auf Laständerungen. Tuning bedeutet hier: externe Störquellen minimieren.
 
 !!! warning "Gleiche Einstellung, gegenteiliges Ergebnis"
-    Identische Parameter können je nach Kernel gegensätzliche Effekte haben. Ein `performance`-Governor hilft beim Standardkernel, schadet aber unter Liquorix (thermischer Spielraum geht verloren). CPU-Isolation hilft beim Standardkernel, verhindert aber unter Liquorix die adaptive Optimierung.
+    Identische Parameter können je nach Kernel gegensätzliche Effekte haben. Ein `performance`-Governor hilft beim Standardkernel, kann aber unter Liquorix kontraproduktiv sein (thermischer Spielraum geht verloren). CPU-Isolation hilft beim Standardkernel, verhindert aber unter Liquorix die adaptive Optimierung.
 
 | Parameterbereich | Standardkernel | Liquorix |
 |---|---|---|
@@ -140,9 +140,9 @@ processor.max_cstate=2
 ```
 
 !!! note "AMD vs. Intel"
-    **AMD Zen:** Exportiert per ACPI nur C1 und C2 an das OS. Tiefere Hardware-C-States (C6) werden firmware-autonom verwaltet. Der Wert `2` stellt sicher, dass alle verfügbaren OS-sichtbaren C-States genutzt werden. Zusätzlich kann `amd_pstate=active` gesetzt werden (seit Kernel 6.5 Standard für Zen 2+).
+    **AMD Zen:** Exportiert per ACPI nur C1 und C2 an das OS. Tiefere Hardware-C-States (C6) werden firmware-autonom verwaltet. Der Wert `2` stellt sicher, dass alle verfügbaren OS-sichtbaren C-States genutzt werden. Zusätzlich kann `amd_pstate=active` für moderne Zen-Prozessoren mit CPPC-Unterstützung gesetzt werden.
 
-    **Intel:** Tiefere ACPI-C-States (C3, C6, C8, C10) sind sichtbar und steuerbar. Hier kann `processor.max_cstate=3` sinnvoll sein, um C6+ mit 170–680 µs Aufwachlatenz zu vermeiden.
+    **Intel:** Tiefere ACPI-C-States (C3, C6, C8, C10) sind sichtbar und steuerbar. Hier kann `processor.max_cstate=3` sinnvoll sein, um tiefe Zustände zu begrenzen. Auf Systemen mit dem `intel_idle`-Treiber (Standard bei modernem Intel) wird ggf. zusätzlich `intel_idle.max_cstate` benötigt.
 
 Anwenden:
 
@@ -172,7 +172,7 @@ Starten:
 ```
 
 !!! note "Zur Priorität"
-    `SCHED_FIFO` Priorität 45 liegt unterhalb kritischer Kernel-Migrations-Threads (Priorität 50), aber deutlich über normalen Prozessen. Werte über 50 können Kernel-Housekeeping preemptieren und zu Instabilität führen.
+    `SCHED_FIFO` Priorität 45 liegt unterhalb kritischer Kernel-Threads wie IRQ-Handler (Priorität 50), aber deutlich über normalen Prozessen. Werte über 50 können Kernel-Housekeeping preemptieren und zu Instabilität führen.
 
 ### 4. Optional: CPU-Isolation
 
@@ -183,7 +183,7 @@ isolcpus=4-11
 ```
 
 !!! note "Hinweis zur Abkündigung"
-    `isolcpus` gilt seit Kernel 5.4 als semi-deprecated. Die modernere Alternative sind **cgroup v2 cpusets**, die zur Laufzeit ohne Neustart konfiguriert werden können. Für einen einfachen Desktop-Anwendungsfall bleibt `isolcpus` jedoch die unkompliziertere Variante.
+    `isolcpus` ist in der Kernel-Dokumentation als deprecated gekennzeichnet. Die modernere Alternative sind **cpusets**, die zur Laufzeit ohne Neustart konfiguriert werden können. Für einen einfachen Desktop-Anwendungsfall bleibt `isolcpus` jedoch die unkompliziertere Variante.
 
 ### 5. Speicherverhalten
 
@@ -227,7 +227,7 @@ cat /sys/devices/system/cpu/cpu0/cpufreq/scaling_governor
 ```
 
 !!! note "Warum `ondemand` statt `schedutil`?"
-    `schedutil` bezieht Auslastungssignale direkt vom CFS-Scheduler. Liquorix nutzt jedoch den BORE-Scheduler, der diese Signale nicht bereitstellt — `schedutil` wird daher gar nicht erst einkompiliert. `ondemand` passt den CPU-Takt ebenfalls lastabhängig an, arbeitet aber unabhängig vom Scheduler.
+    `schedutil` bezieht Auslastungssignale direkt vom Mainline-CFS/EEVDF-Scheduler. Liquorix nutzt jedoch den alternativen PDS-Scheduler, der diese Signale nicht bereitstellt — `schedutil` wird daher gar nicht erst einkompiliert. `ondemand` passt den CPU-Takt ebenfalls lastabhängig an, arbeitet aber unabhängig vom Scheduler.
 
 Optional Energy Performance Preference setzen:
 
@@ -253,7 +253,7 @@ sudo update-grub
 !!! note "AMD vs. Intel"
     **AMD Zen:** Nur C1/C2 sind OS-sichtbar — keine C-State-Begrenzung nötig. Tiefere Hardware-C-States helfen dem thermischen Budget.
 
-    **Intel:** `processor.max_cstate=5` erlaubt moderate Schlafzustände und vermeidet tiefste Zustände (C8/C10 mit 280–680 µs Latenz).
+    **Intel:** `processor.max_cstate=5` erlaubt moderate Schlafzustände und vermeidet die tiefsten Zustände. Auf Systemen mit `intel_idle` (Standard) zusätzlich `intel_idle.max_cstate=5` setzen.
 
 In `/etc/default/grub` — für Intel:
 
@@ -265,22 +265,12 @@ processor.max_cstate=5
 
 Die wichtigste Maßnahme unter Liquorix. Hardware-Interrupts auf die ersten Kerne konzentrieren, damit der Scheduler die restlichen Kerne ungestört für die Anwendung nutzen kann.
 
-!!! warning "IRQ-Affinität unter Liquorix"
-    Liquorix verwaltet die IRQ-Verteilung kernelintern. Auf AMD-Systemen sind `/proc/irq/*/smp_affinity_list` und `/proc/irq/*/smp_affinity` selbst als Root schreibgeschützt — manuelle Affinitätsänderungen zur Laufzeit sind nicht möglich.
+!!! warning "IRQ-Affinität auf modernen Kerneln"
+    Moderne Kernel verwenden Managed Interrupts für MSI-X-Geräte (NVMe, GPU, etc.). Der Kernel steuert die Affinitätszuordnung dieser IRQs, und Schreibzugriffe auf `/proc/irq/*/smp_affinity` werden vom Kernel abgelehnt — unabhängig von der Kernel-Variante. Das ist kein Liquorix-Spezifikum, sondern ein allgemeiner Kernel-Mechanismus.
 
-    Die Lösung ist der Kernel-Parameter `noirqbalance`, der die kernelinterne IRQ-Verteilung deaktiviert und die Kontrolle an den Userspace übergibt.
+    Der Userspace-Daemon `irqbalance` übernimmt die Verteilung nicht verwalteter IRQs und berücksichtigt diese Kernel-Einschränkungen automatisch.
 
-In `/etc/default/grub` den Parameter `GRUB_CMDLINE_LINUX_DEFAULT` erweitern:
-
-```
-noirqbalance
-```
-
-```bash
-sudo update-grub
-```
-
-Neustart erforderlich. Danach `irqbalance` mit gezielter Konfiguration nutzen. In `/etc/default/irqbalance` eintragen:
+Für nicht verwaltete IRQs bietet `irqbalance` eine effektive CPU-Ausgrenzung. In `/etc/default/irqbalance` eintragen:
 
 ```
 IRQBALANCE_BANNED_CPULIST="4-15"
@@ -297,15 +287,9 @@ sudo systemctl enable --now irqbalance
 
 ### 4. NVMe Energiesparen deaktivieren
 
-NVMe-SSDs können im Energiesparmodus Aufwachlatenzen von 5–22 ms haben — länger als ein kompletter Frame bei 60 Hz (z.B. Samsung 950 Pro State 4: 22 ms Exit-Latenz).
+NVMe-SSDs können im Energiesparmodus Aufwachlatenzen im Millisekundenbereich haben — länger als ein kompletter Frame bei 60 Hz. Die Exit-Latenzen variieren je nach Hersteller und Energiesparstufe.
 
-Sofort deaktivieren:
-
-```bash
-echo 0 | sudo tee /sys/module/nvme_core/parameters/default_ps_max_latency_us
-```
-
-Für dauerhafte Einstellung über Neustarts hinweg in `/etc/default/grub` den Parameter `GRUB_CMDLINE_LINUX_DEFAULT` erweitern:
+Um NVMe-Energiesparen zu deaktivieren, in `/etc/default/grub` den Parameter `GRUB_CMDLINE_LINUX_DEFAULT` erweitern:
 
 ```
 nvme_core.default_ps_max_latency_us=0
@@ -314,6 +298,15 @@ nvme_core.default_ps_max_latency_us=0
 ```bash
 sudo update-grub
 ```
+
+Neustart erforderlich.
+
+!!! note "Laufzeitänderungen"
+    Der sysfs-Parameter `/sys/module/nvme_core/parameters/default_ps_max_latency_us` wirkt nur auf **neu initialisierte** NVMe-Geräte. Für bereits aktive Geräte per-Device PM QOS verwenden:
+    ```bash
+    for dev in /sys/class/nvme/nvme*/device/power/pm_qos_latency_tolerance_us; do echo 0 | sudo tee "$dev"; done
+    ```
+    Die GRUB-Methode ist der zuverlässigste Weg.
 
 ### 5. Speicher-Writeback glätten
 
@@ -371,6 +364,9 @@ Das Format für Untermenü-Einträge ist `"Übermenü>Eintrag"`, z.B.:
 
 ### Einmaliger Wechsel
 
+!!! note "Voraussetzung"
+    `grub-reboot` erfordert `GRUB_DEFAULT=saved` in `/etc/default/grub` (siehe [Dauerhafter Wechsel](#dauerhafter-wechsel) weiter unten). Ohne diese Einstellung ignoriert GRUB den gespeicherten Eintrag.
+
 Beim nächsten Neustart einen bestimmten Kernel starten, danach wieder den Standard:
 
 ```bash
@@ -410,13 +406,13 @@ Nicht alle Einstellungen erfordern einen Neustart. Die folgende Tabelle zeigt, w
 | Parameter | Zur Laufzeit änderbar? | Methode |
 |---|---|---|
 | Governor | Ja | `echo ... \| sudo tee /sys/devices/system/cpu/cpu*/cpufreq/scaling_governor` |
-| NVMe APST | Ja | `echo 0 \| sudo tee /sys/module/nvme_core/parameters/default_ps_max_latency_us` |
+| NVMe APST | **Nein** | Nur per GRUB — sysfs-Parameter wirkt nur auf neu initialisierte Geräte |
 | sysctl (vm.*) | Ja | `sudo sysctl --system` |
 | irqbalance-Dienst | Ja | `sudo systemctl stop/start irqbalance` |
 | nice / chrt / taskset | Ja | Wird beim Anwendungsstart gesetzt |
-| IRQ-Affinität | **Nein** (Liquorix/AMD) | Kernel sperrt `/proc/irq/*/smp_affinity` — `noirqbalance` per GRUB nötig |
+| IRQ-Affinität | **Nein** (Managed IRQs) | Kernel verwaltet MSI-X-Affinität — `irqbalance` mit `BANNED_CPULIST` für nicht verwaltete IRQs nutzen |
 | processor.max_cstate | **Nein** | Nur per GRUB, Neustart nötig |
-| isolcpus | **Nein** | Nur per GRUB (Alternative: cgroup v2 cpusets) |
+| isolcpus | **Nein** | Nur per GRUB (Alternative: cpusets) |
 
 !!! warning "Tuning-Profil anpassen"
     Nach einem Kernel-Wechsel das passende Profil verwenden: [Profil A](#profil-a-debian-standardkernel) für den Standardkernel, [Profil B](#profil-b-liquorix-kernel) für Liquorix. Die Governor- und sysctl-Einstellungen unterscheiden sich grundlegend — falsche Kombination verschlechtert die Performance.
@@ -439,3 +435,18 @@ Nicht alle Einstellungen erfordern einen Neustart. Die folgende Tabelle zeigt, w
     **Standardkernel braucht Priorisierung — Liquorix braucht Ruhe.**
 
     Wenn beide Kernel gleich konfiguriert werden, verschlechtert sich das Ergebnis fast immer.
+
+---
+
+## Quellen
+
+Die wichtigsten Quellen zu den auf dieser Seite behandelten Themen:
+
+- [CPU Performance Scaling — Linux Kernel Documentation](https://docs.kernel.org/admin-guide/pm/cpufreq.html) — CPU-Frequenz-Governor und Skalierungstreiber
+- [CPU Idle Time Management — Linux Kernel Documentation](https://docs.kernel.org/admin-guide/pm/cpuidle.html) — C-States und Idle-Treiber (acpi_idle, intel_idle)
+- [amd-pstate CPU Performance Scaling Driver — Linux Kernel Documentation](https://docs.kernel.org/admin-guide/pm/amd-pstate.html) — AMD P-State-Treiber und Modi
+- [Liquorix Kernel](https://liquorix.net/) — PDS-Scheduler, Zen Interactive Tuning, Kernel-Features
+- [irqbalance(1) — Debian Man Page](https://manpages.debian.org/testing/irqbalance/irqbalance.1.en.html) — IRQ-Verteilungs-Daemon-Konfiguration
+- [Solid State Drive/NVMe — Arch Wiki](https://wiki.archlinux.org/title/Solid_state_drive/NVMe) — NVMe-Energieverwaltung (APST)
+- [sysctl.d(5) — Linux Man Page](https://man7.org/linux/man-pages/man5/sysctl.d.5.html) — sysctl Drop-in-Konfiguration
+- [GNU GRUB Manual](https://www.gnu.org/software/grub/manual/grub/html_node/Simple-configuration.html) — GRUB-Konfiguration und Kernel-Auswahl

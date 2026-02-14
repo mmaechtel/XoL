@@ -32,6 +32,11 @@ Diese Dokumentation ist ein offenes Projekt. Verbesserungen oder Ergänzungen k�
 
 ## Letzte Änderungen
 
+### 2026-02-14
+- [Systemtuning](systemtuning.md) faktengeprüft: Scheduler-Angaben korrigiert, nicht funktionalen Kernel-Parameter entfernt, NVMe-Hinweise präzisiert, Quellenabschnitt ergänzt
+- [Erste Schritte](begin.md) überarbeitet: Fehlerbehebung zusammengeführt, 32-Bit-Hinweis präzisiert, Display-Server-Verweis ergänzt
+- Sprachliche Überarbeitung (DE): [Erste Schritte](begin.md) und [Docker](docker.md) auf unpersönlichen Stil umgestellt
+
 ### 2026-02-13
 - [Erste Schritte](begin.md) korrigiert: Installer-Anleitung aktualisiert, Systemempfehlungen präzisiert, veraltete Paketnamen und Single-Core-Aussagen korrigiert, Querverweise ergänzt
 - [Erste Schritte](begin.md) Glossar-Verlinkungen ergänzt: GRUB, NVMe, VRAM, Orthofotos, FPS, Wayland

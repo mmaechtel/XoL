@@ -1,6 +1,6 @@
 # Erste Schritte mit X-Plane unter Linux
 
-Diese Anleitung führt Sie durch die ersten Schritte, um X-Plane unter Linux optimal einzurichten. Sie richtet sich an Linux-erfahrene Benutzer und baut auf einer bestehenden Linux-Installation auf.
+Diese Anleitung beschreibt die ersten Schritte, um X-Plane unter Linux optimal einzurichten. Sie richtet sich an Linux-erfahrene Benutzer und baut auf einer bestehenden Linux-Installation auf.
 
 ## Systemvoraussetzungen
 
@@ -15,7 +15,7 @@ X-Plane 12 ist ein anspruchsvoller Flugsimulator, der erhebliche Systemressource
     - *Warum?* Speicherhungrige Addons, detaillierte Szenerien und Orthofotos können den RAM-Verbrauch drastisch erhöhen.
 
 - **Grafikkarte**: Hochleistungs-GPU mit mindestens 8 GB [VRAM](../glossary.md#vram-video-ram) (z.B. NVIDIA RTX 3080/4080 oder höher)
-    - *Warum?* Insbesondere für 4K-Auflösung oder Multi-Monitor-Setups benötigen Sie viel Grafikleistung und VRAM. Hochauflösende Texturen und komplexe Beleuchtungseffekte fordern selbst High-End-GPUs.
+    - *Warum?* Insbesondere für 4K-Auflösung oder Multi-Monitor-Setups wird viel Grafikleistung und VRAM benötigt. Hochauflösende Texturen und komplexe Beleuchtungseffekte fordern selbst High-End-GPUs.
 
 - **Speicherplatz**: 250 GB oder mehr SSD-Speicher ([NVMe](../glossary.md#nvme-non-volatile-memory-express) empfohlen)
     - *Warum?* Die Basisinstallation benötigt ca. 25 GB, eine Vollinstallation mit allen Szenerien-Regionen ca. 75–80 GB. Orthofotos können schnell Hunderte von GB hinzufügen. SSD-Geschwindigkeit reduziert Nachladezeiten während des Flugs.
@@ -34,26 +34,26 @@ X-Plane 12 ist ein anspruchsvoller Flugsimulator, der erhebliche Systemressource
 
 ## Debian Linux installieren
 
-Diese Dokumentation geht davon aus, dass Sie Debian Linux in der aktuellen Stable-Version bereits installiert haben und mit einer funktionierenden grafischen Benutzeroberfläche arbeiten. Falls Sie Debian noch installieren müssen, finden Sie hier die wichtigsten Ressourcen:
+Diese Dokumentation setzt eine bestehende Debian-Installation in der aktuellen Stable-Version mit funktionierender grafischer Benutzeroberfläche voraus. Falls Debian noch installiert werden muss, finden sich hier die wichtigsten Ressourcen:
 
 ### Offizielle Installationsquellen
 
-- [Debian-Hauptserver](https://www.debian.org/) — Hier finden Sie immer die aktuelle Stable-Version
-- [Weltweite Debian-Spiegelserver](https://www.debian.org/mirror/list) — Wählen Sie einen Server in Ihrer Nähe für schnellere Downloads
+- [Debian-Hauptserver](https://www.debian.org/) — Hier findet sich immer die aktuelle Stable-Version
+- [Weltweite Debian-Spiegelserver](https://www.debian.org/mirror/list) — Nahegelegenen Server für schnellere Downloads wählen
 - [Debian-Netzwerkinstallation](https://www.debian.org/distrib/netinst) — Minimale ISO für Netzwerkinstallation (empfohlen)
 
 ### Wahl der richtigen Version
 
-- Verwenden Sie stets die aktuelle **Stable**-Version von Debian für maximale Stabilität
+- Stets die aktuelle **Stable**-Version von Debian verwenden — maximale Stabilität
 - Die Stable-Version wird auf der [Debian-Hauptseite](https://www.debian.org/) prominent angezeigt
 - Für X-Plane-Performance immer die 64-Bit-Version (amd64) wählen
 
 ### Tipps für die Installation
 
 - Jede gängige Desktop-Umgebung funktioniert mit X-Plane. "GNOME" oder "KDE Plasma" werden für Einsteiger empfohlen — große Community-Unterstützung und ausgereifte [Wayland](../glossary.md#wayland)-Integration
-- Konfigurieren Sie bei der Partitionierung den Swap-Speicher: ca. 4 GB genügen ohne Hibernation, oder in Höhe Ihres RAMs, wenn Sie Hibernation nutzen möchten
-- Richten Sie separate Partitionen für `/` (root, mindestens 30 GB) und `/home` (restlicher Speicher) ein
-- Installieren Sie den [GRUB](../glossary.md#grub-grand-unified-bootloader)-Bootloader auf dem Hauptlaufwerk
+- Bei der Partitionierung den Swap-Speicher konfigurieren: ca. 4 GB genügen ohne Hibernation, oder in Höhe des vorhandenen RAMs bei geplanter Hibernation-Nutzung
+- Separate Partitionen für `/` (root, mindestens 30 GB) und `/home` (restlicher Speicher) einrichten
+- Den [GRUB](../glossary.md#grub-grand-unified-bootloader)-Bootloader auf dem Hauptlaufwerk installieren
 
 ### Nach der Installation
 
@@ -73,7 +73,7 @@ Die folgenden Kapitel dieser Dokumentation setzen eine funktionierende Debian-In
 
 ## X-Plane 12 unter Linux installieren
 
-X-Plane 12 ist sowohl über Steam als auch direkt vom Entwickler Laminar Research erhältlich. Obwohl die Steam-Version für Einsteiger bequem sein kann, konzentrieren wir uns in dieser Dokumentation auf die Standalone-Version, die mehr Kontrolle und Flexibilität bietet.
+X-Plane 12 ist sowohl über Steam als auch direkt vom Entwickler Laminar Research erhältlich. Obwohl die Steam-Version für Einsteiger bequem sein kann, konzentriert sich diese Dokumentation auf die Standalone-Version, die mehr Kontrolle und Flexibilität bietet.
 
 ### Installationsmethoden
 
@@ -82,30 +82,30 @@ X-Plane 12 ist sowohl über Steam als auch direkt vom Entwickler Laminar Researc
 Die direkte Installation von X-Plane bietet zahlreiche Vorteile für erfahrene Nutzer:
 
 1. **X-Plane herunterladen**
-    - Besuchen Sie die [offizielle X-Plane-Website](https://www.x-plane.com/)
-    - Erwerben Sie X-Plane 12 (oder laden Sie die Demo-Version herunter)
-    - Laden Sie den Linux-Installer herunter (`X-Plane12InstallerLinux.zip`, ca. 25 MB)
+    - Die [offizielle X-Plane-Website](https://www.x-plane.com/) aufrufen
+    - X-Plane 12 erwerben (oder die Demo-Version herunterladen)
+    - Den Linux-Installer herunterladen (`X-Plane12InstallerLinux.zip`, ca. 25 MB)
 
 2. **Installer vorbereiten**
-    - Wechseln Sie in den Download-Ordner und entpacken Sie die Datei:
+    - In den Download-Ordner wechseln und die Datei entpacken:
         ```bash
         cd ~/Downloads
         unzip X-Plane12InstallerLinux.zip
         ```
-    - Machen Sie den Installer ausführbar (falls nötig):
+    - Den Installer ausführbar machen (falls nötig):
         ```bash
         chmod +x "X-Plane 12 Installer Linux"
         ```
 
 3. **Installation starten**
-    - Führen Sie den Installer aus:
+    - Den Installer ausführen:
         ```bash
         ./"X-Plane 12 Installer Linux"
         ```
-    - Im grafischen Installer können Sie auswählen:
+    - Im grafischen Installer lassen sich auswählen:
         - Installationsverzeichnis (empfohlen: `/home/[username]/X-Plane 12/`)
         - Zu ladende Szeneriepakete
-        - Weltabdeckung (mindestens Ihr Hauptfluggebiet auswählen)
+        - Weltabdeckung (mindestens das Hauptfluggebiet auswählen)
 
 4. **Download-Prozess**
     - Der Installer lädt die ausgewählten Inhalte herunter (25–80 GB je nach Szenerien-Auswahl)
@@ -122,11 +122,11 @@ Die direkte Installation von X-Plane bietet zahlreiche Vorteile für erfahrene N
 
 ### Nach der Installation
 
-Nach erfolgreicher Installation sollten Sie folgende Schritte durchführen:
+Nach erfolgreicher Installation sind folgende Schritte empfehlenswert:
 
-1. **Erstes Starten**: Starten Sie X-Plane einmal und schließen Sie es wieder, damit Konfigurationsdateien erstellt werden
+1. **Erstes Starten**: X-Plane einmal starten und wieder schließen, damit Konfigurationsdateien erstellt werden
 
-2. **Leistungseinstellungen optimieren**: Passen Sie die Grafikeinstellungen entsprechend Ihrer Hardware an. Siehe die Seite [X-Plane-Konfiguration](xplane/config.md) für detaillierte Linux-spezifische Hinweise.
+2. **Leistungseinstellungen optimieren**: Grafikeinstellungen entsprechend der vorhandenen Hardware anpassen. Siehe die Seite [X-Plane-Konfiguration](xplane/config.md) für detaillierte Linux-spezifische Hinweise.
 
 3. **Performance prüfen** mit der eingebauten [FPS](../glossary.md#fps-frames-per-second)-Anzeige (Aktivierung mit `Shift+Strg+F`)
 
@@ -187,7 +187,7 @@ libvulkan.so.1 => not found
    sudo apt install libgl1 libgl1-mesa-dri
    ```
 
-4. **Beispiel: [32-Bit-Kompatibilität](../glossary.md#32-bit-kompatibilität) (falls notwendig)**:
+4. **Beispiel: [32-Bit-Kompatibilität](../glossary.md#32-bit-kompatibilität) (selten nötig — nur für bestimmte Drittanbieter-Plugins oder Wine-basierte Tools)**:
    ```bash
    sudo dpkg --add-architecture i386
    sudo apt update
@@ -204,27 +204,19 @@ libvulkan.so.1 => not found
 | libasound.so.2 | libasound2 | `sudo apt install libasound2` |
 | libpulse.so.0 | libpulse0 | `sudo apt install libpulse0` |
 
-Nach der Installation fehlender Bibliotheken sollten Sie X-Plane erneut starten. In den meisten Fällen werden dadurch Startprobleme behoben, die durch fehlende Abhängigkeiten verursacht wurden.
+Nach der Installation fehlender Bibliotheken X-Plane erneut starten. In den meisten Fällen werden dadurch Startprobleme behoben, die durch fehlende Abhängigkeiten verursacht wurden.
 
-### Fehlerbehebung bei X-Plane-Installation
+### Fehlerbehebung
 
 Falls Probleme auftreten:
 
-- **X-Plane startet nicht**: Prüfen Sie das Logfile in `~/X-Plane 12/Log.txt`
-- **Schlechte Performance**: Aktualisieren Sie die Grafiktreiber und reduzieren Sie die Grafikeinstellungen
-- **Abstürze**: Stellen Sie sicher, dass alle X-Plane-Dateien korrekt heruntergeladen wurden
-- **Eingabegeräte werden nicht erkannt**: Installieren Sie `jstest-gtk` zur Diagnose und Kalibrierung
+- **X-Plane startet nicht**: Logfile in `~/X-Plane 12/Log.txt` prüfen
+- **Schlechte Performance**: Grafiktreiber aktualisieren und Grafikeinstellungen reduzieren
+- **Abstürze**: Sicherstellen, dass alle X-Plane-Dateien korrekt heruntergeladen wurden
+- **Eingabegeräte werden nicht erkannt**: `jstest-gtk` zur Diagnose und Kalibrierung installieren
+- **Allgemeine Probleme**: GPU-Treiber-Kompatibilität prüfen, sicherstellen, dass alle Linux-Pakete aktuell sind, und X-Plane-Systemanforderungen auf der [offiziellen Website](https://www.x-plane.com/) überprüfen
 
-## Probleme bei der Installation
-
-Bei Problemen können folgende Schritte helfen:
-
-- Prüfen Sie die GPU-Treiber-Kompatibilität
-- Stellen Sie sicher, dass alle Linux-Pakete aktuell sind
-- Überprüfen Sie die X-Plane-Systemanforderungen auf der offiziellen Website
-- Konsultieren Sie das [Glossar](glossary.md) für technische Begriffe
-
-Je nach verwendeter Hardware und Linux-Distribution können spezifische Anpassungen erforderlich sein. Die hier gezeigten Beispiele wurden mit Debian getestet, funktionieren aber mit geringfügigen Änderungen auch auf anderen Distributionen.
+Je nach verwendeter Hardware und Linux-Distribution können spezifische Anpassungen erforderlich sein. Die hier gezeigten Beispiele wurden mit Debian getestet, funktionieren aber mit geringfügigen Änderungen auch auf anderen Distributionen. Für technische Begriffe steht das [Glossar](glossary.md) zur Verfügung.
 
 ## Nächste Schritte
 
@@ -233,4 +225,5 @@ Nach einer erfolgreichen Installation geht es mit folgenden Themen weiter:
 - [NVIDIA-Treiber](nvidia.md) — Proprietäre NVIDIA-Treiber installieren und konfigurieren
 - [Liquorix-Kernel](liquorix.md) — Low-Latency-Kernel optimiert für Desktop-Workloads
 - [System-Tuning](systemtuning.md) — CPU-Governor, Interrupt-Shielding und Kernel-Parameter
+- [Display-Server](displayserver.md) — Wayland vs. X11 für X-Plane
 - [X-Plane-Konfiguration](xplane/config.md) — Linux-spezifische Grafik- und Performance-Einstellungen

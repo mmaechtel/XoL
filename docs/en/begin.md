@@ -38,9 +38,9 @@ This documentation assumes that you have already installed Debian Linux in the c
 
 ### Official Installation Sources
 
-- [Debian Main Server](https://www.debian.org/) - Here you'll always find the current Stable version
-- [Worldwide Debian Mirror Servers](https://www.debian.org/mirror/list) - Choose a server near you for faster downloads
-- [Debian Network Installation](https://www.debian.org/distrib/netinst) - Minimal ISO for network installation (recommended)
+- [Debian Main Server](https://www.debian.org/) — Here you'll always find the current Stable version
+- [Worldwide Debian Mirror Servers](https://www.debian.org/mirror/list) — Choose a server near you for faster downloads
+- [Debian Network Installation](https://www.debian.org/distrib/netinst) — Minimal ISO for network installation (recommended)
 
 ### Choosing the Right Version
 
@@ -187,7 +187,7 @@ libvulkan.so.1 => not found
    sudo apt install libgl1 libgl1-mesa-dri
    ```
 
-4. **Example: [32-Bit Compatibility](../glossary.md#32-bit-compatibility) (if necessary)**:
+4. **Example: [32-Bit Compatibility](../glossary.md#32-bit-compatibility) (rarely needed — only for certain third-party plugins or Wine-based tools)**:
    ```bash
    sudo dpkg --add-architecture i386
    sudo apt update
@@ -206,7 +206,7 @@ libvulkan.so.1 => not found
 
 After installing missing libraries, you should restart X-Plane. In most cases, this will resolve startup issues caused by missing dependencies.
 
-### Troubleshooting X-Plane Installation
+### Troubleshooting
 
 If problems occur:
 
@@ -214,17 +214,9 @@ If problems occur:
 - **Poor performance**: Update graphics drivers and reduce graphics settings
 - **Crashes**: Ensure all X-Plane files were downloaded correctly
 - **Input devices not recognized**: Install `jstest-gtk` for diagnosis and calibration
+- **General issues**: Check GPU driver compatibility, make sure all Linux packages are up to date, and verify X-Plane system requirements on the [official website](https://www.x-plane.com/)
 
-## Installation Issues
-
-If you encounter problems, the following steps may help:
-
-- Check GPU driver compatibility
-- Make sure all Linux packages are up to date
-- Verify X-Plane system requirements on the official website
-- Consult the [Glossary](glossary.md) for technical terms
-
-Depending on the hardware and Linux distribution you use, specific adjustments may be necessary. The examples shown here have been tested with Debian but work with minor changes on other distributions.
+Depending on the hardware and Linux distribution you use, specific adjustments may be necessary. The examples shown here have been tested with Debian but work with minor changes on other distributions. For technical terms, consult the [Glossary](glossary.md).
 
 ## Next Steps
 
@@ -233,4 +225,5 @@ After a successful installation, continue with the following topics:
 - [NVIDIA Drivers](nvidia.md) — Install and configure proprietary NVIDIA drivers
 - [Liquorix Kernel](liquorix.md) — Low-latency kernel optimized for desktop workloads
 - [System Tuning](systemtuning.md) — CPU governor, interrupt shielding, and kernel parameters
+- [Display Server](displayserver.md) — Wayland vs. X11 for X-Plane
 - [X-Plane Configuration](xplane/config.md) — Linux-specific graphics and performance settings
