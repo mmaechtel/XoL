@@ -1,76 +1,105 @@
-## Offizieller Nvidia-Treiber
+# Offizieller Nvidia-Treiber
 
-Die Installation der [Nvidia-Treiber](../glossary.md#nvidia-treiber) direkt von der offiziellen Nvidia-Website ist eine weitere Option, um Nvidia-Grafikkarten unter Debian zu unterstützen – besonders für die neueste Treiberversion. Dieses Kapitel beschreibt den Prozess präzise, nutzt `systemctl set-default` für den Wechsel zwischen Nicht-Grafik- und Grafik-Modus und geht auf die Verwendung des [Liquorix-Kernel](../glossary.md#liquorix-kernel)s ein.
+Debian stellt NVIDIA-Treiber über den Paketmanager bereit — die empfohlene Methode für die meisten Anwender. Wer die allerneueste Treiberversion benötigt, kann alternativ den manuellen Installer (`.run`-Datei) von NVIDIA verwenden.
+
+Diese Seite behandelt beide Ansätze und enthält Hinweise für [Liquorix-Kernel](../glossary.md#liquorix-kernel)-Nutzer.
 
 ## Voraussetzungen
 
 - Kompatible Nvidia-Grafikkarte
 - Debian installiert und aktualisiert
-- Optional: Liquorix-Kernel (falls genutzt)
 - Root- oder Sudo-Rechte
+- Für die Paketmanager-Methode: `non-free` und `non-free-firmware` in `/etc/apt/sources.list` aktiviert
+- Optional: Liquorix-Kernel (falls genutzt)
 
-## Installation
+## Empfohlen: Paketmanager
+
+Die einfachste und zuverlässigste Methode. Der Debian-Pakettreiber integriert sich automatisch mit DKMS, initramfs und Secure Boot.
+
+```bash
+sudo apt update && sudo apt upgrade -y
+sudo apt install nvidia-driver
+```
+
+Nach der Installation das System neu starten. Verifikation mit:
+
+```bash
+nvidia-smi
+```
+
+Details und Fehlerbehebung im [Debian Wiki: NvidiaGraphicsDrivers](https://wiki.debian.org/NvidiaGraphicsDrivers/).
+
+## Alternative: Manuelle Installation (.run-Datei)
+
+Diese Methode nur verwenden, wenn der Debian-Pakettreiber zu alt ist oder Probleme mit bestimmter Hardware verursacht.
 
 ### System-Vorbereitung
 
 Das System wird aktualisiert:
+
 ```bash
 sudo apt update && sudo apt upgrade -y
 ```
 
 Für den Standard-Debian-Kernel werden Kernel-Header und Build-Tools installiert:
+
 ```bash
 sudo apt install linux-headers-$(uname -r) build-essential dkms
 ```
 
-**Hinweis zum [Liquorix-Kernel](../glossary.md#liquorix-kernel)**: Bei Nutzung des Liquorix-Kernels (eine optimierte Kernel-Variante für Performance) sind die Kernel-Header bereits über die Liquorix-Paketquellen verfügbar, nachdem der Kernel installiert wurde. Mit `uname -r` wird überprüft, ob der Liquorix-Kernel aktiv ist (z. B. `6.6.0-1-liquorix-amd64`). In diesem Fall muss nur sichergestellt werden, dass [DKMS](../glossary.md#dkms-dynamic-kernel-module-support) installiert ist, da der Nvidia-Treiber es benötigt, um das Kernel-Modul dynamisch zu kompilieren:
+**Hinweis zum [Liquorix-Kernel](../glossary.md#liquorix-kernel)**: Die Liquorix-Kernel-Header sind ein separates Paket und müssen explizit installiert werden. [DKMS](../glossary.md#dkms-dynamic-kernel-module-support) wird empfohlen, damit das NVIDIA-Modul bei Kernel-Updates automatisch neu kompiliert wird:
+
 ```bash
-sudo apt install dkms
+sudo apt install linux-headers-liquorix-amd64 dkms
 ```
+
+Mit `uname -r` lässt sich der aktive Kernel prüfen — die Ausgabe sollte `liquorix` enthalten.
 
 ### Treiber-Installation
 
-1. Die Seite [https://www.nvidia.com/Download/index.aspx](https://www.nvidia.com/Download/index.aspx) wird aufgerufen.
-2. Die Grafikkarte, "Linux 64-bit" und die Treiberversion werden ausgewählt.
-3. Die `.run`-Datei (z. B. `NVIDIA-Linux-x86_64-550.54.14.run`) wird im Home-Verzeichnis (`/home/user`) heruntergeladen.
+1. Die Seite [https://www.nvidia.com/Download/index.aspx](https://www.nvidia.com/Download/index.aspx) aufrufen
+2. Grafikkarte, „Linux 64-bit" und Treiberversion auswählen
+3. Die `.run`-Datei (z.B. `NVIDIA-Linux-x86_64-<VERSION>.run`) ins Home-Verzeichnis herunterladen
 
-Der Wechsel in den Nicht-Grafik-Modus erfolgt mit `systemctl`:
-1. Der Standard-Boot-Target wird geändert:
+Wechsel in den Nicht-Grafik-Modus mit `systemctl`:
+
+1. Standard-Boot-Target ändern:
+
 ```bash
 sudo systemctl set-default multi-user.target
 ```
-2. Das System wird neu gestartet:
+
+2. System neu starten:
+
 ```bash
 sudo reboot
 ```
 
 Das System bootet in eine Textkonsole ohne Grafikoberfläche.
 
-Zur `.run`-Datei wird navigiert:
+Zur `.run`-Datei navigieren und ausführbar machen:
+
 ```bash
-cd /home/user
+chmod +x NVIDIA-Linux-x86_64-*.run
 ```
 
-Die Datei wird ausführbar gemacht:
+Installation starten:
+
 ```bash
-chmod +x NVIDIA-Linux-x86_64-550.54.14.run
+sudo ./NVIDIA-Linux-x86_64-*.run
 ```
 
-Die Installation wird gestartet:
-```bash
-sudo ./NVIDIA-Linux-x86_64-550.54.14.run
-```
+Dem Installationsassistenten folgen:
 
-Dem Installationsassistenten wird gefolgt:
-- Die Lizenz wird akzeptiert.
-- Für 32-Bit-Kompatibilitätsbibliotheken wird "Ja" gewählt, falls nötig.
-- Die Deaktivierung des [Nouveau](../glossary.md#nouveau)-Treibers wird bestätigt, wenn gefragt.
-
-**Liquorix-Kernel**: Dank `dkms` wird das Nvidia-Modul automatisch für den Liquorix-Kernel kompiliert und bei Kernel-Updates aktualisiert.
+- Lizenz akzeptieren
+- Bei Bedarf „Ja" für 32-Bit-Kompatibilitätsbibliotheken wählen
+- Deaktivierung des [Nouveau](../glossary.md#nouveau)-Treibers bestätigen
+- Bei der DKMS-Registrierung den Standard („Yes") akzeptieren
 
 ### Installation prüfen
 
-Der Treiber wird überprüft:
+Treiber überprüfen:
+
 ```bash
 nvidia-smi
 ```
@@ -79,88 +108,82 @@ Eine Ausgabe mit GPU-Details bestätigt die erfolgreiche Installation.
 
 ### Zurück in den Grafik-Modus
 
-Der Standard-Boot-Target wird zurückgesetzt:
+Standard-Boot-Target zurücksetzen:
+
 ```bash
 sudo systemctl set-default graphical.target
 ```
 
-Das System wird erneut gestartet:
+System erneut starten:
+
 ```bash
 sudo reboot
 ```
 
 ## Fehlerbehebung
 
-- **Schwarzer Bildschirm**: Falls der Grafik-Modus nicht startet, wird `nouveau.modeset=0` in `/etc/default/grub` unter `GRUB_CMDLINE_LINUX_DEFAULT` hinzugefügt und `sudo update-grub` ausgeführt.
-- **Fehlende Abhängigkeiten**: Bei Standard-Kerneln wird `linux-headers-$(uname -r)` geprüft; beim Liquorix-Kernel wird sichergestellt, dass `dkms` vorhanden ist.
+- **Schwarzer Bildschirm**: Der `.run`-Installer blacklistet den Nouveau-Treiber automatisch über `/etc/modprobe.d/`. Falls der Grafik-Modus dennoch nicht startet (z.B. weil Nouveau im initramfs eingebettet ist), `nouveau.modeset=0` in `/etc/default/grub` unter `GRUB_CMDLINE_LINUX_DEFAULT` hinzufügen und `sudo update-grub` ausführen.
+- **Fehlende Abhängigkeiten**: Bei Standard-Kerneln `linux-headers-$(uname -r)` prüfen; beim Liquorix-Kernel sicherstellen, dass sowohl `linux-headers-liquorix-amd64` als auch `dkms` installiert sind.
 
 ## Performance-Optimierung
 
-### Treiber-Einstellungen
+### Treiber-Einstellungen (nur X11)
 
-Das NVIDIA-Einstellungsprogramm wird gestartet:
+Unter X11 bietet `nvidia-settings` Kompositions-Optionen zur Reduzierung von Screen Tearing. Diese Einstellungen sind **unter [Wayland](../displayserver_wayland.md) nicht verfügbar und nicht nötig**, da der Compositor dies nativ handhabt.
+
 ```bash
 nvidia-settings
 ```
 
-Im Programm stehen folgende optionale Einstellungen zur Verfügung, die je nach Bedarf getestet werden können:
-- Unter "X Server Display Configuration" → "Advanced" → "Force Full Composition Pipeline":
-    - Diese Einstellung verhindert Tearing (Bildschirmrisse) bei Spielen
-    - Kann zu leicht erhöhter Latenz führen
-    - Empfohlen für Spiele, die unter Tearing leiden
-- Unter "X Server Display Configuration" → "Advanced" → "Force Composition Pipeline":
-    - Verbessert die Bildqualität und Stabilität
-    - Kann die GPU-Auslastung leicht erhöhen
-    - Hilft bei Problemen mit der Bildschirmaktualisierung
+Unter „X Server Display Configuration" → „Advanced":
 
-**Hinweis**: Diese Einstellungen sind optional und können je nach Spiel und Systemkonfiguration unterschiedliche Auswirkungen haben. Es empfiehlt sich, die Einstellungen einzeln zu testen und nur die zu aktivieren, die tatsächlich eine Verbesserung bringen. Falls Performance-Probleme auftreten, können die Einstellungen jederzeit deaktiviert werden.
+- **Force Full Composition Pipeline**: Verhindert Tearing, indem die gesamte Bildausgabe über die Kompositions-Engine der GPU geleitet wird. Kann die Eingabelatenz erhöhen — einzeln testen.
+- **Force Composition Pipeline**: Ähnlich, aber weniger aggressiv. Verhindert die meisten Tearing-Artefakte mit geringerem Latenz-Einfluss.
 
-### Performance-Modi
-
-Der Performance-Modus kann optional über die Kommandozeile aktiviert werden:
-```bash
-sudo nvidia-smi -pm 1
-```
-
-Diese Einstellung hält die GPU in einem höheren Leistungszustand, was die Reaktionszeit verbessert, aber auch den Stromverbrauch erhöht. Sie kann besonders nützlich sein für:
-- Spiele mit hohen FPS-Anforderungen
-- Anwendungen, die von einer konstanten GPU-Leistung profitieren
-- Systeme, bei denen die GPU-Leistung schwankt
-
-**Hinweis**: Der Performance-Modus ist nicht zwingend erforderlich und sollte nur aktiviert werden, wenn tatsächlich Performance-Schwankungen bemerkt werden. Bei X-Plane kann er helfen, wenn die GPU-Leistung unregelmäßig ist oder wenn FPS-Einbrüche in bestimmten Situationen auftreten.
+Diese Einstellungen sind optional. Nur aktivieren, wenn Tearing beim Spielen tatsächlich sichtbar ist. Bei Performance-Problemen jederzeit deaktivierbar.
 
 ### Kernel-Parameter
 
-In Debian 12 sind die meisten NVIDIA-Optimierungen bereits standardmäßig aktiviert. Falls dennoch manuelle Anpassungen vorgenommen werden sollen, können in `/etc/default/grub` unter `GRUB_CMDLINE_LINUX_DEFAULT` folgende Parameter hinzugefügt werden:
+Beim `.run`-Installer ist `nvidia-drm.modeset=1` **nicht** standardmäßig aktiviert und muss manuell gesetzt werden. Dieser Parameter aktiviert Kernel Mode Setting (KMS) für NVIDIA, was für Wayland erforderlich ist und die Display-Handhabung verbessert.
+
+In `/etc/default/grub` unter `GRUB_CMDLINE_LINUX_DEFAULT` hinzufügen:
+
 ```
 nvidia-drm.modeset=1
 ```
 
-Dieser Parameter aktiviert den Direct Rendering Manager (DRM) für NVIDIA. Er ermöglicht:
-- Bessere Integration mit dem Linux-Grafik-Stack
-- Verbesserte Unterstützung für Wayland
-- Optimierte Bildschirmaktualisierung
-- Bessere Handhabung von Multi-Monitor-Setups
+Danach GRUB aktualisieren:
 
-Danach wird GRUB aktualisiert:
 ```bash
 sudo update-grub
 ```
 
-**Hinweis**: Die meisten dieser Parameter sind in Debian 12 bereits standardmäßig konfiguriert. Eine manuelle Anpassung ist nur in seltenen Fällen notwendig, z.B. bei spezifischen Performance-Problemen oder wenn Probleme mit der Bildschirmaktualisierung auftreten.
+Aktuelle Einstellung prüfen:
 
-### Zusätzliche Optimierungen
+```bash
+cat /sys/module/nvidia_drm/parameters/modeset
+```
 
-**MangoHud** (optional): Für erweiterte Performance-Monitoring-Funktionen:
+Ein Wert von `Y` bestätigt, dass KMS aktiv ist.
+
+!!! note "Paketmanager-Installation"
+    Bei Installation über `apt install nvidia-driver` konfiguriert Debian modeset möglicherweise automatisch über `/etc/modprobe.d/`. Den aktuellen Wert prüfen, bevor ein GRUB-Parameter hinzugefügt wird.
+
+### MangoHud (optional)
+
+Für erweitertes Performance-Monitoring über die eingebaute FPS-Anzeige von X-Plane (Strg+Shift+F) hinaus:
+
 ```bash
 sudo apt install mangohud
 ```
 
-**Hinweis**: X-Plane bietet bereits eine eingebaute FPS-Anzeige (Strg+Shift+F). MangoHud ist nur notwendig, wenn zusätzliche Monitoring-Funktionen benötigt werden.
+MangoHud liefert detaillierte GPU/CPU-Metriken, Frame-Time-Graphen und VRAM-Auslastung als In-Game-Overlay. Weitere Informationen zur Performance-Analyse unter [Systemtuning](../systemtuning.md) und [System-Monitoring](../systemtools.md).
 
-### Wichtige Hinweise
+---
 
-- Die Performance kann je nach Systemkonfiguration variieren
-- Regelmäßige Treiber-Updates können die Performance verbessern
-- Die Einstellungen im NVIDIA-Einstellungsprogramm (`nvidia-settings`) können je nach Treiberversion und Systemkonfiguration variieren
+## Quellen
 
+- [Debian Wiki: NvidiaGraphicsDrivers](https://wiki.debian.org/NvidiaGraphicsDrivers/) — Offizielle Debian-NVIDIA-Installationsanleitung
+- [NVIDIA Driver Download](https://www.nvidia.com/Download/index.aspx) — Offizielle Treiber-Download-Seite
+- [NVIDIA Driver README: KMS](https://download.nvidia.com/XFree86/Linux-x86_64/580.126.09/README/kms.html) — Kernel Mode Setting Dokumentation
+- [Arch Wiki: NVIDIA](https://wiki.archlinux.org/title/NVIDIA) — Umfassende NVIDIA-Konfigurationsreferenz
