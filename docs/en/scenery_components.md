@@ -1,8 +1,8 @@
 # How X-Plane Builds the World: Meshes, Orthos, and Autogen Explained
 
 <div class="video-container" markdown>
-<video controls width="100%" preload="metadata" poster="../assets/video/en/Mastering_scenery_packs.jpg">
-  <source src="../assets/video/en/Mastering_scenery_packs.mp4" type="video/mp4">
+<video controls width="100%" preload="metadata" poster="../assets/video/en/Mastering_scenery_packs/Mastering_scenery_packs.jpg">
+  <source src="../assets/video/en/Mastering_scenery_packs/Mastering_scenery_packs.mp4" type="video/mp4">
 </video>
 </div>
 

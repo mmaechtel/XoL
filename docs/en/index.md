@@ -7,8 +7,8 @@ The examples shown here are based on Debian Linux but can be easily adapted to o
 ## Featured Video
 
 <div class="video-container" markdown>
-<video controls width="100%" preload="metadata" poster="../assets/video/en/Mastering_scenery_packs.jpg">
-  <source src="../assets/video/en/Mastering_scenery_packs.mp4" type="video/mp4">
+<video controls width="100%" preload="metadata" poster="../assets/video/en/systemtools/Two_Paths_to_Smoother_Flight.jpg">
+  <source src="../assets/video/en/systemtools/Two_Paths_to_Smoother_Flight.mp4" type="video/mp4">
 </video>
 </div>
 
@@ -40,6 +40,7 @@ This documentation is an open project. Improvements or additions can be contribu
 - Language revision (DE): [Getting Started](begin.md) and [Docker](docker.md) converted to impersonal style
 - [Glossary](glossary.md) expanded: New terms PDS and irqbalance
 - [System Tuning](systemtuning.md) glossary links added: FPS, Frame Time, Latency, Preemption, NVMe, C-States, EEVDF, PDS, irqbalance
+- [System Tuning](systemtuning.md) and [Videos](videos.md): System tuning video embedded (DE + EN)
 - [Glossary](glossary.md) expanded: New term SoftIRQ
 - [System Tools](systemtools.md) glossary links added: NVMe, C-States, IRQ, CPU Governor, Latency, APST
 

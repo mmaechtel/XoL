@@ -12,8 +12,18 @@ Video collection for X-Plane on Linux.
 
 ### Mastering scenery packs
 
-<video controls width="100%" preload="metadata" poster="../assets/video/en/Mastering_scenery_packs.jpg">
-  <source src="../assets/video/en/Mastering_scenery_packs.mp4" type="video/mp4">
+<video controls width="100%" preload="metadata" poster="../assets/video/en/Mastering_scenery_packs/Mastering_scenery_packs.jpg">
+  <source src="../assets/video/en/Mastering_scenery_packs/Mastering_scenery_packs.mp4" type="video/mp4">
+</video>
+
+</div>
+
+<div class="video-card" markdown>
+
+### Two Paths to Smoother Flight
+
+<video controls width="100%" preload="metadata" poster="../assets/video/en/systemtools/Two_Paths_to_Smoother_Flight.jpg">
+  <source src="../assets/video/en/systemtools/Two_Paths_to_Smoother_Flight.mp4" type="video/mp4">
 </video>
 
 </div>
