@@ -75,6 +75,12 @@ Docs: `docs/en/addon/xorganizer.md`, `docs/en/addon/xearthlayer.md`
 ### HOCH
 - addons/XOrganizer_Wine_Linux.md -> addon/xorganizer.md
 - xearthlayer-cpu-settings.md -> addon/xearthlayer.md
+- addons/autoortho4xplane_fork.md -> addon/autoortho.md
+- addons/xearthlayer_current_state.md -> addon/xearthlayer.md
+- addons/XPME_research.md -> addon/orthophotography_intro.md
+
+### MITTEL
+- addons/LEKTORAT_ortho_streaming.md -> addon/autoortho.md, addon/xearthlayer.md, addon/orthophotography_intro.md
 
 ## notebooklm
 
