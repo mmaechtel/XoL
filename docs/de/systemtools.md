@@ -26,7 +26,7 @@ Interaktiver Prozess-Viewer mit farbigen Per-Core-Balken im Header. Zeigt auf ei
 htop
 ```
 
-Wichtige Hotkeys
+**Wichtige Hotkeys**
 
 | Taste | Funktion |
 |-------|----------|
@@ -47,7 +47,7 @@ Moderner System-Monitor mit Zeitverlaufs-Graphen für CPU, RAM, Disk-I/O und Net
 btop
 ```
 
-Unterstützt Maus-Bedienung, Prozess-Filter (`f`), Baumansicht (`t`) und Layout-Presets (`p`).
+Unterstützt Maus-Bedienung, Prozess-Filter (`f`), Baumansicht (`e`) und Layout-Presets (`p`).
 
 **Limitierung:** CPU-Frequenz nur als Gesamtwert, keine Per-Core-Frequenz. Keine IRQ-Statistiken.
 
@@ -56,7 +56,7 @@ Unterstützt Maus-Bedienung, Prozess-Filter (`f`), Baumansicht (`t`) und Layout-
 Zeigt den aktiven CPU-Frequenz-Governor und kann ihn ändern. Essentiell um zu prüfen, ob der im [Systemtuning](systemtuning.md#1-cpu-governor) konfigurierte Governor tatsächlich aktiv ist.
 
 ```bash
-# Governor aller Cores anzeigen
+# Aktive Policy (Governor und Frequenzbereich) aller Cores anzeigen
 cpupower -c all frequency-info -p
 
 # Verfügbare Governors
@@ -98,17 +98,17 @@ sudo turbostat --interval 1 --show Core,CPU,Avg_MHz,Bzy_MHz,Busy%,IRQ,CoreTmp
 sudo turbostat --interval 2 --out turbostat_session.log
 ```
 
-Wichtige Spalten
+**Wichtige Spalten**
 
 | Spalte | Bedeutung |
 |--------|-----------|
 | `Bzy_MHz` | Taktrate während aktiver Phasen — die echte Geschwindigkeit |
 | `Busy%` | Anteil der Zeit im aktiven Zustand (C0) |
-| `CPU%c1`–`CPU%c7` | C-State-Residency — wie tief schlafen die Kerne? |
+| `CPU%c1`, `CPU%c3`, … | C-State-Residency — verfügbare States hardware-abhängig |
 | `IRQ` | Interrupts pro Intervall und Core |
 
 !!! note "AMD-Hinweis"
-    turbostat funktioniert auf AMD Zen-Prozessoren mit eingeschränktem Funktionsumfang. Grundlegende Frequenz- und C-State-Daten sind verfügbar, einige Intel-spezifische Spalten fehlen.
+    turbostat funktioniert auf AMD Zen-Prozessoren. Die verfügbaren Spalten hängen von der MSR-Unterstützung des Prozessors ab — einige Intel-spezifische Spalten (z.B. bestimmte Package-Level-Metriken) erscheinen auf AMD-Systemen nicht.
 
 Verifiziert: [C-States](systemtuning.md#2-cpu-schlafzustände-begrenzen) und Governor-Wirksamkeit
 
@@ -120,7 +120,7 @@ Präziseste Per-Core-Aufschlüsselung: zeigt User-, System-, I/O-Wait-, **IRQ-**
 # Alle Cores, 1-Sekunden-Intervall
 mpstat -P ALL 1
 
-# Hardware-Interrupts pro Core pro Sekunde
+# Einzelne Interrupts pro CPU pro Sekunde
 mpstat -I CPU 1
 
 # Alles: CPU + Interrupts + NUMA
@@ -156,7 +156,7 @@ Zeigt Durchsatz, IOPS, Queue-Tiefe und **durchschnittliche Request-Latenz** pro 
 iostat -xdth -p nvme0n1 1
 ```
 
-Wichtige Felder
+**Wichtige Felder**
 
 | Feld | Bedeutung |
 |------|-----------|
@@ -223,7 +223,7 @@ cat /proc/interrupts
 watch -n 1 'grep nvme /proc/interrupts'
 ```
 
-Wichtige Spalten
+**Wichtige Spalten**
 
 | Spalte | Bedeutung |
 |--------|-----------|
@@ -297,7 +297,7 @@ glances
 glances -w
 ```
 
-Der **Web-UI-Modus** ist ideal für X-Plane im Vollbild: das Monitoring läuft auf einem zweiten Gerät (Tablet, Laptop) im Browser. Mit der Taste `L` wird die Disk-IO-Latenz-Ansicht aktiviert — direkt relevant für die Erkennung von NVMe-Aufwachlatenzen.
+Der **Web-UI-Modus** ist ideal für X-Plane im Vollbild: das Monitoring läuft auf einem zweiten Gerät (Tablet, Laptop) im Browser. Mit der Taste `L` (Großbuchstabe) wird die Disk-IO-Latenz-Ansicht aktiviert — direkt relevant für die Erkennung von NVMe-Aufwachlatenzen.
 
 ### powertop — C-States und Energieverhalten
 
@@ -307,7 +307,7 @@ Diagnostik-Tool für Energieverbrauch und Power-Management. Der wichtigste Tab i
 sudo powertop
 ```
 
-Relevante Tabs
+**Relevante Tabs**
 
 | Tab | Zeigt |
 |-----|-------|
@@ -372,10 +372,10 @@ Verifiziert: [C-States](systemtuning.md#2-cpu-schlafzustände-begrenzen) und [C-
     sudo apt install fatrace
 
     # Welche Dateien liest X-Plane gerade?
-    sudo fatrace -tf R -C X-Plane -o /tmp/xplane_reads.log
+    sudo fatrace -t -f R -C X-Plane -o /tmp/xplane_reads.log
 
     # Hintergrundprozesse die während des Flugs auf Disk schreiben
-    sudo fatrace -tf W -s 120 -o /tmp/writes_during_flight.log
+    sudo fatrace -t -f W -s 120 -o /tmp/writes_during_flight.log
     ```
 
     Ausgabe immer in Datei umleiten (`-o`), da Terminal-Ausgabe selbst Disk-IO erzeugt.

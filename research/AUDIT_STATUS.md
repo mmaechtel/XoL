@@ -9,7 +9,7 @@ Prozess-Definition: siehe `AUDIT_FLOW.md`.
 
 **Gestartet:** 2026-02-12
 **Runde:** 1
-**Nächstes Kapitel:** #2 `nvidia.md`
+**Nächstes Kapitel:** #6 `filesystem.md`
 
 ---
 
@@ -24,7 +24,7 @@ Nach jedem abgeschlossenen Schritt: Feld mit Datum füllen.
 | 2 | `nvidia.md` | 164 | | | | | |
 | 3 | `liquorix.md` | 139 | | | | | |
 | 4 | `systemtuning.md` | 441 | | | | | |
-| 5 | `systemtools.md` | 421 | | | | | |
+| 5 | `systemtools.md` | 421 | 2026-02-14 | 2026-02-14 | 2026-02-14 | 2026-02-14 | B |
 | 6 | `filesystem.md` | 160 | | | | | |
 | 7 | `xplane/performance.md` | 206 | | | | | |
 | — | **DE-Angleichung R1** | | | | | | |

@@ -26,7 +26,7 @@ Interactive process viewer with colored per-core bars in the header. Shows at a 
 htop
 ```
 
-Key hotkeys
+**Key hotkeys**
 
 | Key | Function |
 |-----|----------|
@@ -47,7 +47,7 @@ Modern system monitor with time-series graphs for CPU, RAM, disk I/O, and networ
 btop
 ```
 
-Supports mouse interaction, process filtering (`f`), tree view (`t`), and layout presets (`p`).
+Supports mouse interaction, process filtering (`f`), tree view (`e`), and layout presets (`p`).
 
 **Limitation:** CPU frequency only as an aggregate value, no per-core frequency. No IRQ statistics.
 
@@ -56,7 +56,7 @@ Supports mouse interaction, process filtering (`f`), tree view (`t`), and layout
 Shows the active CPU frequency governor and can change it. Essential for checking whether the governor configured in [System Tuning](systemtuning.md#1-cpu-governor) is actually active.
 
 ```bash
-# Show governor of all cores
+# Show active policy (governor and frequency range) of all cores
 cpupower -c all frequency-info -p
 
 # Available governors
@@ -98,17 +98,17 @@ sudo turbostat --interval 1 --show Core,CPU,Avg_MHz,Bzy_MHz,Busy%,IRQ,CoreTmp
 sudo turbostat --interval 2 --out turbostat_session.log
 ```
 
-Key columns
+**Key columns**
 
 | Column | Meaning |
 |--------|---------|
 | `Bzy_MHz` | Clock speed during active phases — the real speed |
 | `Busy%` | Percentage of time in active state (C0) |
-| `CPU%c1`–`CPU%c7` | C-state residency — how deeply are the cores sleeping? |
+| `CPU%c1`, `CPU%c3`, … | C-state residency — available states depend on hardware |
 | `IRQ` | Interrupts per interval and core |
 
 !!! note "AMD Note"
-    turbostat works on AMD Zen processors with limited functionality. Basic frequency and C-state data are available, but some Intel-specific columns are missing.
+    turbostat works on AMD Zen processors. Available columns depend on the processor's MSR support — some Intel-specific columns (e.g., certain package-level power metrics) may not appear on AMD systems.
 
 Verifies: [C-States](systemtuning.md#2-limit-cpu-sleep-states) and governor effectiveness
 
@@ -120,7 +120,7 @@ Most precise per-core breakdown: shows user, system, I/O wait, **IRQ**, and **So
 # All cores, 1-second interval
 mpstat -P ALL 1
 
-# Hardware interrupts per core per second
+# Individual interrupts per CPU per second
 mpstat -I CPU 1
 
 # Everything: CPU + interrupts + NUMA
@@ -156,7 +156,7 @@ Shows throughput, IOPS, queue depth, and **average request latency** per device.
 iostat -xdth -p nvme0n1 1
 ```
 
-Key fields
+**Key fields**
 
 | Field | Meaning |
 |-------|---------|
@@ -223,7 +223,7 @@ cat /proc/interrupts
 watch -n 1 'grep nvme /proc/interrupts'
 ```
 
-Key columns
+**Key columns**
 
 | Column | Meaning |
 |--------|---------|
@@ -297,7 +297,7 @@ glances
 glances -w
 ```
 
-The **web UI mode** is ideal for X-Plane in fullscreen: monitoring runs on a second device (tablet, laptop) in the browser. Press `L` to activate the disk IO latency view — directly relevant for detecting NVMe wake-up latencies.
+The **web UI mode** is ideal for X-Plane in fullscreen: monitoring runs on a second device (tablet, laptop) in the browser. Press `L` (uppercase) to activate the disk IO latency view — directly relevant for detecting NVMe wake-up latencies.
 
 ### powertop — C-States and Power Behavior
 
@@ -307,7 +307,7 @@ Diagnostic tool for power consumption and power management. The most important t
 sudo powertop
 ```
 
-Relevant tabs
+**Relevant tabs**
 
 | Tab | Shows |
 |-----|-------|
@@ -372,10 +372,10 @@ Verifies: [C-States](systemtuning.md#2-limit-cpu-sleep-states) and [C-States Liq
     sudo apt install fatrace
 
     # Which files is X-Plane reading right now?
-    sudo fatrace -tf R -C X-Plane -o /tmp/xplane_reads.log
+    sudo fatrace -t -f R -C X-Plane -o /tmp/xplane_reads.log
 
     # Background processes writing to disk during flight
-    sudo fatrace -tf W -s 120 -o /tmp/writes_during_flight.log
+    sudo fatrace -t -f W -s 120 -o /tmp/writes_during_flight.log
     ```
 
     Always redirect output to a file (`-o`), as terminal output itself causes disk IO.

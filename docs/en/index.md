@@ -33,6 +33,7 @@ This documentation is an open project. Improvements or additions can be contribu
 ## Recent Changes
 
 ### 2026-02-14
+- [System Tools](systemtools.md) audited: Fixed btop hotkey, clarified cpupower/turbostat/mpstat descriptions, improved glances and fatrace notation, bold table captions
 - [System Tuning](systemtuning.md) fact-checked: Corrected scheduler references, removed non-functional kernel parameter, clarified NVMe notes, added sources section
 - [Getting Started](begin.md) revised: Merged troubleshooting sections, clarified 32-bit note, added display server link
 - Language revision (DE): [Getting Started](begin.md) and [Docker](docker.md) converted to impersonal style
