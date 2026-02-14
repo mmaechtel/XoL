@@ -191,15 +191,13 @@ Falls das Video direkt in `video/{lang}/` liegt (kein Unterverzeichnis), entfael
 
 ### 3.3 Einbettungsort
 
-Das Video wird in der Zielseite platziert:
-- **Bevorzugt:** Vor dem Abschnitt `## Quellen` (DE) bzw. `## Sources` (EN)
-- **Fallback:** Am Ende der Seite
+Das Video wird **oben auf der Zielseite** platziert — nach Titel und ggf. Einleitungstext (Admonitions, Intro-Absaetze), aber **vor dem ersten inhaltlichen Abschnitt** (## Ueberschrift). Das entspricht der etablierten Konvention auf allen bestehenden Seiten (scenery_components.md, intro.md, displayserver.md).
 
-Das HTML-Fragment:
+**NICHT** unten vor `## Quellen`/`## Sources` — dort geht das Video unter und wird selten gesehen.
+
+Das HTML-Fragment (ohne eigene ## Ueberschrift, da es im Seitenkopf steht):
 
 ```html
-
-## Video
 
 <div class="video-container" markdown>
 <video controls width="100%" preload="metadata">
@@ -208,7 +206,7 @@ Das HTML-Fragment:
 </div>
 ```
 
-Falls bereits ein `## Video`-Abschnitt existiert: Neues `<video>`-Tag unter den bestehenden anfuegen (kein doppelter Heading).
+Falls die Seite bereits ein `<video>`-Tag im Kopfbereich hat: Neues Video darunter anfuegen.
 
 **Wichtig:** Nur die zur Video-Sprache passende Docs-Version bearbeiten. DE-Video → nur `docs/de/`, EN-Video → nur `docs/en/`.
 

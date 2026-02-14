@@ -3,6 +3,12 @@
 !!! warning "Work in Progress"
     Die Parameter für das Kernel-Tuning sind aktuell noch in der Überprüfung und funktionieren möglicherweise nicht alle wie beschrieben. Änderungen vorbehalten.
 
+<div class="video-container" markdown>
+<video controls width="100%" preload="metadata" poster="../assets/video/de/systemtools/System-Tuning_für_X-Plane.jpg">
+  <source src="../assets/video/de/systemtools/System-Tuning_für_X-Plane.mp4" type="video/mp4">
+</video>
+</div>
+
 ## Distributionen und ihre Zielausrichtung
 
 Linux-Distributionen unterscheiden sich nicht nur in Paketmanager und Desktop-Umgebung, sondern vor allem in der **Abstimmung zwischen Kernel und Systemsoftware**. Jede Distribution trifft Konfigurationsentscheidungen für einen bestimmten Einsatzzweck:
@@ -437,14 +443,6 @@ Nicht alle Einstellungen erfordern einen Neustart. Die folgende Tabelle zeigt, w
     Wenn beide Kernel gleich konfiguriert werden, verschlechtert sich das Ergebnis fast immer.
 
 ---
-
-## Video
-
-<div class="video-container" markdown>
-<video controls width="100%" preload="metadata" poster="../assets/video/de/systemtools/System-Tuning_für_X-Plane.jpg">
-  <source src="../assets/video/de/systemtools/System-Tuning_für_X-Plane.mp4" type="video/mp4">
-</video>
-</div>
 
 ## Quellen
 
