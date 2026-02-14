@@ -19,12 +19,6 @@ The combination of kernel version, scheduler configuration, power management, dr
 
     If you're using an already-tuned distribution like Nobara or Ubuntu Studio, you should **not blindly apply these recommendations**. There, a kernel swap can break existing optimizations, and double-tuning often leads to worse results. In that case, it's better to check individual parameters selectively rather than applying the entire profile.
 
-<div class="video-container" markdown>
-<video controls width="100%" preload="metadata" poster="../assets/video/en/systemtools/Two_Paths_to_Smoother_Flight.jpg">
-  <source src="../assets/video/en/systemtools/Two_Paths_to_Smoother_Flight.mp4" type="video/mp4">
-</video>
-</div>
-
 ## Performance and Latency — An Important Distinction
 
 When people talk about "performance," they usually mean high FPS. That's correct for shooters or racing games — throughput matters there: as many frames per second as possible. A flight simulator like X-Plane is different.

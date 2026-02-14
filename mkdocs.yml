@@ -82,8 +82,10 @@ plugins:
                 - Optimierungen:
                     - Nvidia Treiber: de/nvidia.md
                     - Liquorix Kernel: de/liquorix.md
-                    - Systemtuning: de/systemtuning.md
-                    - Systemtools: de/systemtools.md
+                    - System-Tuning:
+                        - Einführung: de/systemtuning_intro.md
+                        - Tuning: de/systemtuning.md
+                        - System Monitoring: de/systemtools.md
                     - Display-Server:
                         - Übersicht: de/displayserver.md
                         - X11-Session: de/displayserver_x11.md
@@ -138,8 +140,10 @@ plugins:
                 - Optimizations:
                     - Nvidia Drivers: en/nvidia.md
                     - Liquorix Kernel: en/liquorix.md
-                    - System Tuning: en/systemtuning.md
-                    - System Tools: en/systemtools.md
+                    - System Tuning:
+                        - Introduction: en/systemtuning_intro.md
+                        - Tuning: en/systemtuning.md
+                        - System Monitoring: en/systemtools.md
                     - Display Server:
                         - Overview: en/displayserver.md
                         - X11 Session: en/displayserver_x11.md

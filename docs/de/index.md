@@ -43,6 +43,8 @@ Diese Dokumentation ist ein offenes Projekt. Verbesserungen oder Erg채nzungen k�
 - [Systemtuning](systemtuning.md) und [Videos](videos.md): System-Tuning-Video eingebettet (DE + EN)
 - [Glossar](glossary.md) erweitert: Neuer Begriff SoftIRQ
 - [Systemtools](systemtools.md) Glossar-Verlinkungen erg채nzt: NVMe, C-States, IRQ, CPU-Governor, Latenz, APST
+- Neue Seite [System-Tuning Einf체hrung](systemtuning_intro.md): Video-Intro als Klammer f체r Tuning und Monitoring
+- Navigation: Systemtools umbenannt in System Monitoring, gruppiert unter System-Tuning
 
 ### 2026-02-13
 - [Erste Schritte](begin.md) korrigiert: Installer-Anleitung aktualisiert, Systemempfehlungen pr채zisiert, veraltete Paketnamen und Single-Core-Aussagen korrigiert, Querverweise erg채nzt
