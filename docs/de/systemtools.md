@@ -172,10 +172,10 @@ Misst individuelle IO-Request-Latenzen, ähnlich wie `ping` für Netzwerk. Direk
 
 ```bash
 # Direct IO-Latenz (Cache umgangen, wahre Device-Latenz)
-ioping -c 20 -D /dev/nvme0n1
+sudo ioping -c 20 -D /dev/nvme0n1
 
 # Ortho-Texture-Reads simulieren: 256K sequentiell
-ioping -c 50 -s 256k -D -L /dev/nvme0n1
+sudo ioping -c 50 -s 256k -D -L /dev/nvme0n1
 ```
 
 **NVMe APST Wake-Up-Test:**
@@ -184,7 +184,7 @@ ioping -c 50 -s 256k -D -L /dev/nvme0n1
 # 5x idle + Messung — erster Request nach Idle zeigt Wake-Up-Latenz
 for i in $(seq 1 5); do
     sleep 5
-    ioping -c 1 -D /dev/nvme0n1
+    sudo ioping -c 1 -D /dev/nvme0n1
 done
 ```
 
@@ -340,8 +340,8 @@ Verifiziert: [C-States](systemtuning.md#2-cpu-schlafzustände-begrenzen) und [C-
 | Interrupt-Shielding verifizieren | mpstat | `mpstat -I CPU -P ALL 1` |
 | Interrupt-Quellen identifizieren | lsirq | `watch -n 1 lsirq -s TOTAL` |
 | Welcher Prozess verursacht IO? | iotop | `sudo iotop -oPd 0.5` |
-| NVMe-Latenz messen | ioping | `ioping -c 20 -D /dev/nvme0n1` |
-| NVMe APST Wake-Up testen | ioping | `sleep 5 && ioping -c 1 -D /dev/nvme0n1` |
+| NVMe-Latenz messen | ioping | `sudo ioping -c 20 -D /dev/nvme0n1` |
+| NVMe APST Wake-Up testen | ioping | `sleep 5 && sudo ioping -c 1 -D /dev/nvme0n1` |
 | NVMe Power States anzeigen | nvme-cli | `sudo nvme get-feature /dev/nvme0 -f 0x02 -H` |
 | Alles überwachen (Web-UI) | glances | `glances -w` |
 | Session aufzeichnen | nmon | `nmon -f -s 5 -c 720` |

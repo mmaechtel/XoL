@@ -172,10 +172,10 @@ Measures individual IO request latencies, similar to `ping` for network. The mos
 
 ```bash
 # Direct IO latency (bypass cache, true device latency)
-ioping -c 20 -D /dev/nvme0n1
+sudo ioping -c 20 -D /dev/nvme0n1
 
 # Simulate ortho texture reads: 256K sequential
-ioping -c 50 -s 256k -D -L /dev/nvme0n1
+sudo ioping -c 50 -s 256k -D -L /dev/nvme0n1
 ```
 
 **NVMe APST wake-up test:**
@@ -184,7 +184,7 @@ ioping -c 50 -s 256k -D -L /dev/nvme0n1
 # 5x idle + measure — first request after idle shows wake-up latency
 for i in $(seq 1 5); do
     sleep 5
-    ioping -c 1 -D /dev/nvme0n1
+    sudo ioping -c 1 -D /dev/nvme0n1
 done
 ```
 
@@ -340,8 +340,8 @@ Verifies: [C-States](systemtuning.md#2-limit-cpu-sleep-states) and [C-States Liq
 | Verify interrupt shielding | mpstat | `mpstat -I CPU -P ALL 1` |
 | Identify interrupt sources | lsirq | `watch -n 1 lsirq -s TOTAL` |
 | Which process is causing IO? | iotop | `sudo iotop -oPd 0.5` |
-| Measure NVMe latency | ioping | `ioping -c 20 -D /dev/nvme0n1` |
-| Test NVMe APST wake-up | ioping | `sleep 5 && ioping -c 1 -D /dev/nvme0n1` |
+| Measure NVMe latency | ioping | `sudo ioping -c 20 -D /dev/nvme0n1` |
+| Test NVMe APST wake-up | ioping | `sleep 5 && sudo ioping -c 1 -D /dev/nvme0n1` |
 | Show NVMe power states | nvme-cli | `sudo nvme get-feature /dev/nvme0 -f 0x02 -H` |
 | Monitor everything (web UI) | glances | `glances -w` |
 | Record session | nmon | `nmon -f -s 5 -c 720` |

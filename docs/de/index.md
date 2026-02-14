@@ -33,6 +33,7 @@ Diese Dokumentation ist ein offenes Projekt. Verbesserungen oder Ergänzungen k�
 ## Letzte Änderungen
 
 ### 2026-02-14
+- [Systemtools](systemtools.md) verifiziert: Fehlendes `sudo` bei ioping-Befehlen ergänzt (direkter Device-Zugriff erfordert Root)
 - [Systemtools](systemtools.md) auditiert: btop-Hotkey korrigiert, cpupower/turbostat/mpstat-Beschreibungen präzisiert, glances- und fatrace-Notation verbessert, Tabellen-Beschriftungen formatiert
 - [Systemtuning](systemtuning.md) faktengeprüft: Scheduler-Angaben korrigiert, nicht funktionalen Kernel-Parameter entfernt, NVMe-Hinweise präzisiert, Quellenabschnitt ergänzt
 - [Erste Schritte](begin.md) überarbeitet: Fehlerbehebung zusammengeführt, 32-Bit-Hinweis präzisiert, Display-Server-Verweis ergänzt

@@ -1,8 +1,11 @@
 # Verify Commands
 
-Testet dokumentierte Shell-Befehle interaktiv auf dem aktuellen Debian-System. Prueft ob die in einer Docs-Seite gezeigten Befehle tatsaechlich funktionieren und die beschriebene Ausgabe erzeugen.
+Testet dokumentierte Shell-Befehle auf dem aktuellen Debian-System. Prueft ob die in einer Docs-Seite gezeigten Befehle tatsaechlich funktionieren und die beschriebene Ausgabe erzeugen.
 
-**Wichtig:** Jeder Befehl wird dem User VORHER gezeigt. Ausfuehrung NUR nach expliziter Freigabe.
+**Zwei-Phasen-Modell:**
+
+- **Phase 3 (autonom):** Read-only-Befehle ohne Root werden selbstaendig ausgefuehrt. Bei Fehlern wird der korrekte Befehl ermittelt.
+- **Phase 4 (interaktiv):** Befehle mit sudo oder Schreibzugriff werden dem User VORHER gezeigt. Ausfuehrung NUR nach expliziter Freigabe.
 
 ## Argumente
 
@@ -49,16 +52,21 @@ Alle `bash`-Code-Bloecke identifizieren. Pro Befehl erfassen:
 
 Jeden Befehl einer Kategorie zuordnen:
 
-| Kategorie | Beschreibung | Verhalten |
-|-----------|-------------|-----------|
-| `INSTALL` | `apt install` Befehle | Paket-Verfuegbarkeit mit `apt list` pruefen, NICHT installieren |
-| `SAFE` | Lesende Befehle ohne sudo | Direkt ausfuehrbar nach Freigabe |
-| `SUDO-READ` | Lesende Befehle mit sudo | Ausfuehrbar nach Freigabe, braucht Root |
-| `SUDO-WRITE` | Befehle die System-State aendern (z.B. Governor setzen) | Nur mit ausdruecklicher Warnung |
-| `INTERACTIVE` | Interaktive TUI-Programme (htop, btop, s-tui, glances) | Nicht ausfuehrbar — nur Installationscheck |
-| `LONG-RUNNING` | Dauer-Monitoring (watch, Endlos-Loops) | Timeout-Version anbieten |
-| `HARDWARE` | Braucht spezifische Hardware (NVMe, GPU) | Hardware-Pruefung vorschalten |
-| `LOOP` | For-Schleifen, mehrzeilige Skripte | Als Ganzes zeigen, User entscheidet |
+| Kategorie | Beschreibung | Phase |
+|-----------|-------------|-------|
+| `INSTALL` | `apt install` Befehle | **autonom** — Paket-Verfuegbarkeit mit `apt list` pruefen, NICHT installieren |
+| `SAFE` | Lesende Befehle ohne sudo | **autonom** — direkt ausfuehren |
+| `INTERACTIVE` | Interaktive TUI-Programme (htop, btop, s-tui, glances) | **autonom** — nur Installationscheck |
+| `LONG-RUNNING` | Dauer-Monitoring (watch, Endlos-Loops) ohne sudo | **autonom** — Timeout-Version |
+| `SUDO-READ` | Lesende Befehle mit sudo | **interaktiv** — braucht Root |
+| `SUDO-WRITE` | Befehle die System-State aendern (z.B. Governor setzen) | **interaktiv** — mit Warnung |
+| `HARDWARE` | Braucht spezifische Hardware (NVMe, GPU) | Phase haengt davon ab ob sudo noetig ist |
+| `LOOP` | For-Schleifen, mehrzeilige Skripte | Phase haengt davon ab ob sudo noetig ist |
+
+**Zuordnungsregel fuer Mischkategorien:**
+
+- HARDWARE/LOOP **ohne sudo** → autonom (Phase 3)
+- HARDWARE/LOOP **mit sudo** → interaktiv (Phase 4)
 
 ---
 
@@ -73,63 +81,39 @@ VERIFY COMMANDS: <dateiname>
 
 BEFEHLE GEFUNDEN: <Anzahl>
 
-│ #  │ Kategorie    │ Abschnitt        │ Befehl (gekuerzt)
-│  1 │ INSTALL      │ Installation     │ sudo apt install htop btop ...
-│  2 │ INTERACTIVE  │ htop             │ htop
-│  3 │ SAFE         │ cpupower         │ cpupower -c all frequency-info -p
+PHASE 3 — AUTONOM (read-only, kein Root):
+│ #  │ Kategorie       │ Abschnitt        │ Befehl (gekuerzt)
+│  1 │ INSTALL         │ Installation     │ sudo apt install htop btop ...
+│  2 │ SAFE            │ cpupower         │ cpupower -c all frequency-info -p
+│  3 │ INTERACTIVE     │ htop             │ htop
 │  ...
 
-KATEGORIEN:
-├─ SAFE / SUDO-READ:  <n> (testbar)
-├─ INSTALL:            <n> (Paket-Check)
-├─ INTERACTIVE:        <n> (nur Installationscheck)
-├─ SUDO-WRITE:         <n> (aendert System — mit Warnung)
-├─ LONG-RUNNING:       <n> (mit Timeout)
-├─ HARDWARE:           <n> (Hardware-Pruefung)
-└─ LOOP:               <n> (mehrzeilig)
+PHASE 4 — INTERAKTIV (sudo / schreibend):
+│ #  │ Kategorie       │ Abschnitt        │ Befehl (gekuerzt)
+│  8 │ SUDO-READ       │ turbostat        │ sudo turbostat --show ...
+│  9 │ SUDO-WRITE      │ cpupower         │ sudo cpupower frequency-set -g ...
+│  ...
+
+ZUSAMMENFASSUNG:
+├─ Autonom (Phase 3):     <n> Befehle
+└─ Interaktiv (Phase 4):  <n> Befehle
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 ```
 
-Per AskUserQuestion fragen:
+Per AskUserQuestion den User fragen:
 
-- **Welche Kategorien testen?** (Mehrfachauswahl)
+- **Phase 3 starten?** (Autonomer Durchlauf aller read-only Befehle)
 - Optional: **Bestimmte Nummern ueberspringen?**
 
 ---
 
-## Phase 3 — Interaktiver Test-Durchlauf
+## Phase 3 — Autonomer Test (read-only, kein Root)
 
-Fuer jeden freigegebenen Befehl, in der Reihenfolge der Quelldatei:
+Alle INSTALL, SAFE, INTERACTIVE, LONG-RUNNING (ohne sudo), HARDWARE (ohne sudo) und LOOP (ohne sudo) Befehle **selbstaendig** ausfuehren. Kein AskUserQuestion pro Befehl.
 
-### 3.1 Befehl vorstellen
+### 3.1 Ausfuehrung
 
-```
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-[<N>/<Total>] <Abschnitt>
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-Zeile:      <Zeilennummer>
-Kategorie:  <SAFE|SUDO-READ|...>
-Beschreibung: <Was der Befehl laut Doku tun soll>
-
-Befehl:
-  <exakter Befehl aus der Doku>
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-```
-
-### 3.2 User-Entscheidung
-
-Per AskUserQuestion fragen:
-
-| Option | Beschreibung |
-|--------|-------------|
-| **Ausfuehren** | Befehl wie gezeigt ausfuehren |
-| **Aendern** | User gibt modifizierten Befehl ein (z.B. anderes Device, anderer Intervall) |
-| **Ueberspringen** | Zum naechsten Befehl |
-| **Abbrechen** | Test-Durchlauf beenden |
-
-### 3.3 Befehl ausfuehren
-
-Kategorieabhaengige Ausfuehrung:
+Befehle parallel oder sequentiell via Bash-Tool ausfuehren:
 
 **INSTALL:**
 
@@ -140,16 +124,10 @@ apt list <paketname> 2>/dev/null
 dpkg -l <paketname> 2>/dev/null | grep -E "^ii"
 ```
 
-**SAFE / SUDO-READ:**
+**SAFE:**
 
 - Direkt ausfuehren via Bash-Tool
-- Timeout: 10 Sekunden (falls Befehl haengt)
-
-**SUDO-WRITE:**
-
-- Zusaetzliche Warnung: "Dieser Befehl aendert den System-State"
-- Aktuellen Zustand VORHER erfassen (z.B. aktuellen Governor lesen vor Governor-Wechsel)
-- Nach Test: Originalzustand wiederherstellen und User informieren
+- Timeout: 10 Sekunden
 
 **INTERACTIVE:**
 
@@ -158,28 +136,122 @@ dpkg -l <paketname> 2>/dev/null | grep -E "^ii"
   which <programm> && <programm> --version 2>/dev/null || <programm> --help 2>/dev/null | head -3
   ```
 
-**LONG-RUNNING:**
+**LONG-RUNNING (ohne sudo):**
 
-- Timeout-Version anbieten: z.B. `mpstat -P ALL 1 3` statt `mpstat -P ALL 1`
-- `watch`-Befehle: einmalig statt in Schleife ausfuehren
+- Begrenzte Version ausfuehren: z.B. `mpstat -P ALL 1 2` statt `mpstat -P ALL 1`
+- `watch`-Befehle: den inneren Befehl einmalig ausfuehren
 
-**HARDWARE:**
+**HARDWARE (ohne sudo):**
 
 - Vorher pruefen ob Hardware vorhanden:
   ```bash
-  # NVMe
-  ls /dev/nvme* 2>/dev/null
-  # GPU
-  lspci | grep -i "vga\|3d\|display"
+  ls /dev/nvme* 2>/dev/null  # NVMe
+  lspci | grep -i "vga\|3d\|display"  # GPU
   ```
+- Falls nicht vorhanden: als SKIP markieren
+
+**LOOP (ohne sudo):**
+
+- Ausfuehren mit angemessenem Timeout
+
+### 3.2 Bei Fehlern: Korrekten Befehl ermitteln
+
+Wenn ein Befehl fehlschlaegt (Exit-Code != 0, unerwarteter Output):
+
+1. **Ursache analysieren:** Falscher Parameter? Programm nicht installiert? Permission denied (→ braucht doch sudo)?
+2. **Korrekten Befehl ermitteln:** Hilfe-Seite pruefen (`--help`), Parameter anpassen, alternativen Befehl finden
+3. **Korrektur notieren:** Originaler Befehl, Fehler, korrigierter Befehl — fuer Phase 5
+
+### 3.3 Ergebnis-Tabelle
+
+Nach Abschluss dem User die Ergebnisse zeigen:
+
+```
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+PHASE 3 ABGESCHLOSSEN (autonom)
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+│  # │ Befehl (gekuerzt)              │ Ergebnis │ Anmerkung
+│  1 │ apt list htop btop ...          │ OK       │ alle Pakete installiert
+│  2 │ cpupower frequency-info -p      │ OK       │ Governor: ondemand
+│  3 │ ioping -c 20 -D /dev/nvme0n1   │ FAIL     │ Permission denied → braucht sudo
+│  ...
+
+KORREKTURBEDARF:
+│  3. Zeile 175: `ioping ...` → `sudo ioping ...` (Permission denied)
+│  ...
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+```
+
+Per AskUserQuestion fragen:
+
+- **Weiter mit Phase 4?** (Interaktiver Durchlauf der sudo/write-Befehle)
+
+---
+
+## Phase 4 — Interaktiver Test (sudo / schreibend)
+
+Fuer jeden sudo- oder schreibenden Befehl, in der Reihenfolge der Quelldatei:
+
+### 4.1 Befehl vorstellen
+
+```
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+[<N>/<Total>] <Abschnitt>
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+Zeile:      <Zeilennummer>
+Kategorie:  <SUDO-READ|SUDO-WRITE|...>
+Beschreibung: <Was der Befehl laut Doku tun soll>
+
+Befehl:
+  <exakter Befehl aus der Doku>
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+```
+
+### 4.2 User-Entscheidung
+
+Per AskUserQuestion fragen:
+
+| Option | Beschreibung |
+|--------|-------------|
+| **Ausfuehren** | Befehl wie gezeigt ausfuehren |
+| **Aendern** | User gibt modifizierten Befehl ein (z.B. anderes Device, anderer Intervall) |
+| **Ueberspringen** | Zum naechsten Befehl |
+| **Abbrechen** | Test-Durchlauf beenden |
+
+Befehle in Gruppen von 3-5 praesentieren wenn sie thematisch zusammengehoeren, damit der User mit einer Antwort mehrere freigeben kann.
+
+### 4.3 Befehl ausfuehren
+
+Kategorieabhaengige Ausfuehrung:
+
+**SUDO-READ:**
+
+- Direkt ausfuehren via Bash-Tool
+- Timeout: 10 Sekunden
+
+**SUDO-WRITE:**
+
+- Zusaetzliche Warnung: "Dieser Befehl aendert den System-State"
+- Aktuellen Zustand VORHER erfassen (z.B. aktuellen Governor lesen vor Governor-Wechsel)
+- Nach Test: Originalzustand wiederherstellen und User informieren
+
+**HARDWARE (mit sudo):**
+
+- Vorher pruefen ob Hardware vorhanden
 - Falls nicht vorhanden: ueberspringen mit Hinweis
 
-**LOOP:**
+**LOOP (mit sudo):**
 
 - Gesamtes Skript zeigen
 - Bei Freigabe: ausfuehren mit angemessenem Timeout
 
-### 3.4 Ergebnis bewerten
+**LONG-RUNNING (mit sudo):**
+
+- Timeout-Version anbieten: z.B. `mpstat -P ALL 1 3` statt `mpstat -P ALL 1`
+- `watch`-Befehle: inneren Befehl einmalig ausfuehren
+
+### 4.4 Ergebnis bewerten
 
 Nach der Ausfuehrung:
 
@@ -195,13 +267,13 @@ Nach der Ausfuehrung:
 
 - Bei WARN/FAIL: kurze Erklaerung was abweicht
 
-### 3.5 Weiter zum naechsten Befehl
+### 4.5 Weiter zum naechsten Befehl
 
-Automatisch mit dem naechsten Befehl fortfahren (zurueck zu 3.1).
+Automatisch mit dem naechsten Befehl fortfahren (zurueck zu 4.1).
 
 ---
 
-## Phase 4 — Zusammenfassung
+## Phase 5 — Zusammenfassung
 
 ```
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
@@ -222,17 +294,19 @@ DETAILS:
 │  5 │ turbostat --show ...            │ FAIL     │ Permission denied (kein sudo)
 │  ...
 
-FAILS/WARNS:
-│  <Nr>. <Befehl> — <Was schiefging oder abweicht>
+KORREKTURBEDARF:
+│  <Nr>. Zeile <N>: `<alter Befehl>` → `<korrigierter Befehl>` (<Grund>)
 │  ...
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 ```
 
 Falls FAIL/WARN-Befehle gefunden wurden, dem User vorschlagen:
 
-- Doku-Befehl korrigieren?
+- Doku-Befehl korrigieren? (EN + DE)
 - Fehlende Pakete installieren?
 - Hinweis in der Doku ergaenzen?
+
+Freigegebene Korrekturen direkt in `docs/en/$ARGUMENTS` und `docs/de/$ARGUMENTS` einarbeiten.
 
 **NICHT automatisch committen.** Falls Doku-Aenderungen noetig sind, `/abschluss` verwenden.
 
@@ -240,7 +314,7 @@ Falls FAIL/WARN-Befehle gefunden wurden, dem User vorschlagen:
 
 ## Hinweise
 
-- **Immer fragen:** Kein Befehl wird ohne explizite User-Freigabe ausgefuehrt
+- **Autonom vs. Interaktiv:** Kein sudo und read-only → autonom. Alles andere → User fragen.
 - **Kein Blind-Install:** `apt install` wird NIE ausgefuehrt — nur Verfuegbarkeits-Check
 - **State wiederherstellen:** Bei SUDO-WRITE den Originalzustand nach dem Test wiederherstellen
 - **Timeouts:** Alle Befehle mit angemessenem Timeout ausfuehren (Default: 10s)
@@ -248,3 +322,4 @@ Falls FAIL/WARN-Befehle gefunden wurden, dem User vorschlagen:
 - **NVMe-Device:** Falls `/dev/nvme0n1` nicht existiert, nach vorhandenen Block-Devices suchen und dem User alternatives Device vorschlagen
 - **Output-Laenge:** Lange Outputs auf 30 Zeilen kuerzen, vollen Output bei Bedarf zeigen
 - **Debian-Referenz:** Tests beziehen sich auf Debian Stable/Testing — andere Distros koennen abweichen
+- **Fehlerkorrektur:** Bei FAIL in Phase 3 den korrekten Befehl ermitteln (--help, manpage) und als Korrekturvorschlag notieren
