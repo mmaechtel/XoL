@@ -129,7 +129,7 @@ sudo reboot
 
 ### Driver Settings (X11 Only)
 
-On X11, the `nvidia-settings` tool offers composition options that can reduce screen tearing. These settings are **not available and not needed on [Wayland](../displayserver_wayland.md)**, where the compositor handles this natively.
+On X11, the `nvidia-settings` tool offers composition options that can reduce screen [tearing](../glossary.md#tearing). These settings are **not available and not needed on [Wayland](../displayserver_wayland.md)**, where the compositor handles this natively.
 
 ```bash
 nvidia-settings
@@ -144,7 +144,7 @@ These settings are optional. Only enable them if tearing is actually visible dur
 
 ### Kernel Parameters
 
-When using the `.run` installer, `nvidia-drm.modeset=1` is **not** enabled by default and must be set manually. This parameter enables kernel mode setting (KMS) for NVIDIA, which is required for Wayland and improves display handling.
+When using the `.run` installer, `nvidia-drm.modeset=1` is **not** enabled by default and must be set manually. This parameter enables [kernel mode setting (KMS)](../glossary.md#drmkms-direct-rendering-manager-kernel-mode-setting) for NVIDIA, which is required for Wayland and improves display handling.
 
 Add to `/etc/default/grub` under `GRUB_CMDLINE_LINUX_DEFAULT`:
 
@@ -152,7 +152,7 @@ Add to `/etc/default/grub` under `GRUB_CMDLINE_LINUX_DEFAULT`:
 nvidia-drm.modeset=1
 ```
 
-Then update GRUB:
+Then update [GRUB](../glossary.md#grub-grand-unified-bootloader):
 
 ```bash
 sudo update-grub
@@ -171,13 +171,13 @@ A value of `Y` confirms KMS is active.
 
 ### MangoHud (Optional)
 
-For advanced performance monitoring beyond X-Plane's built-in FPS display (Ctrl+Shift+F):
+For advanced performance monitoring beyond X-Plane's built-in [FPS](../glossary.md#fps-frames-per-second) display (Ctrl+Shift+F):
 
 ```bash
 sudo apt install mangohud
 ```
 
-MangoHud provides detailed GPU/CPU metrics, frame time graphs, and VRAM usage as an in-game overlay. See [System Tuning](../systemtuning.md) and [System Monitoring](../systemtools.md) for further performance analysis.
+MangoHud provides detailed GPU/CPU metrics, frame time graphs, and [VRAM](../glossary.md#vram-video-ram) usage as an in-game overlay. See [System Tuning](../systemtuning.md) and [System Monitoring](../systemtools.md) for further performance analysis.
 
 ---
 

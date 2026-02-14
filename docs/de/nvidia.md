@@ -129,7 +129,7 @@ sudo reboot
 
 ### Treiber-Einstellungen (nur X11)
 
-Unter X11 bietet `nvidia-settings` Kompositions-Optionen zur Reduzierung von Screen Tearing. Diese Einstellungen sind **unter [Wayland](../displayserver_wayland.md) nicht verfügbar und nicht nötig**, da der Compositor dies nativ handhabt.
+Unter X11 bietet `nvidia-settings` Kompositions-Optionen zur Reduzierung von Screen [Tearing](../glossary.md#tearing). Diese Einstellungen sind **unter [Wayland](../displayserver_wayland.md) nicht verfügbar und nicht nötig**, da der Compositor dies nativ handhabt.
 
 ```bash
 nvidia-settings
@@ -144,7 +144,7 @@ Diese Einstellungen sind optional. Nur aktivieren, wenn Tearing beim Spielen tat
 
 ### Kernel-Parameter
 
-Beim `.run`-Installer ist `nvidia-drm.modeset=1` **nicht** standardmäßig aktiviert und muss manuell gesetzt werden. Dieser Parameter aktiviert Kernel Mode Setting (KMS) für NVIDIA, was für Wayland erforderlich ist und die Display-Handhabung verbessert.
+Beim `.run`-Installer ist `nvidia-drm.modeset=1` **nicht** standardmäßig aktiviert und muss manuell gesetzt werden. Dieser Parameter aktiviert [Kernel Mode Setting (KMS)](../glossary.md#drmkms-direct-rendering-manager-kernel-mode-setting) für NVIDIA, was für Wayland erforderlich ist und die Display-Handhabung verbessert.
 
 In `/etc/default/grub` unter `GRUB_CMDLINE_LINUX_DEFAULT` hinzufügen:
 
@@ -152,7 +152,7 @@ In `/etc/default/grub` unter `GRUB_CMDLINE_LINUX_DEFAULT` hinzufügen:
 nvidia-drm.modeset=1
 ```
 
-Danach GRUB aktualisieren:
+Danach [GRUB](../glossary.md#grub-grand-unified-bootloader) aktualisieren:
 
 ```bash
 sudo update-grub
@@ -171,13 +171,13 @@ Ein Wert von `Y` bestätigt, dass KMS aktiv ist.
 
 ### MangoHud (optional)
 
-Für erweitertes Performance-Monitoring über die eingebaute FPS-Anzeige von X-Plane (Strg+Shift+F) hinaus:
+Für erweitertes Performance-Monitoring über die eingebaute [FPS](../glossary.md#fps-frames-per-second)-Anzeige von X-Plane (Strg+Shift+F) hinaus:
 
 ```bash
 sudo apt install mangohud
 ```
 
-MangoHud liefert detaillierte GPU/CPU-Metriken, Frame-Time-Graphen und VRAM-Auslastung als In-Game-Overlay. Weitere Informationen zur Performance-Analyse unter [Systemtuning](../systemtuning.md) und [System-Monitoring](../systemtools.md).
+MangoHud liefert detaillierte GPU/CPU-Metriken, Frame-Time-Graphen und [VRAM](../glossary.md#vram-video-ram)-Auslastung als In-Game-Overlay. Weitere Informationen zur Performance-Analyse unter [Systemtuning](../systemtuning.md) und [System-Monitoring](../systemtools.md).
 
 ---
 
