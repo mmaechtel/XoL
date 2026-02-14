@@ -33,6 +33,7 @@ This documentation is an open project. Improvements or additions can be contribu
 ## Recent Changes
 
 ### 2026-02-14
+- [X-Plane Configuration](xplane/config.md) expanded: Comprehensive udev rules for controllers (identify device IDs, rule examples, distinguish identical devices by USB port)
 - [Nvidia Driver](nvidia.md) audited: Added package manager method as recommended approach, corrected persistence mode and modeset claims, marked composition pipeline settings as X11-only, added sources section
 - [X-Plane Configuration](xplane/config.md) corrected: Differentiated `__GL_*` variables (`__GL_SYNC_TO_VBLANK` affects Vulkan), added NVIDIA Smooth Motion as experimental option
 - [System Tools](systemtools.md) verified: Added missing `sudo` to ioping commands (direct device access requires root)

@@ -125,7 +125,79 @@ X-Plane detects controllers on Linux via SDL2 with the [evdev](../glossary.md#ev
 
 ### udev Rules
 
-If a controller is not detected, permissions are usually missing. The official guide describes the required udev rules: [Using Joysticks on Linux](https://www.x-plane.com/kb/using-joysticks-x-plane-11-linux-systems/)
+If a controller is not detected, permissions are usually missing. The official guide covers the basics: [Using Joysticks on Linux](https://www.x-plane.com/kb/using-joysticks-x-plane-11-linux-systems/)
+
+Beyond that, custom udev rules can set permissions, create stable symlinks and lock down device assignment — particularly useful for multi-controller setups.
+
+**Step 1: Identify device IDs**
+
+List connected USB controllers:
+
+```bash
+lsusb | grep -i -E "thrustmaster|logitech|saitek|vkb|virpil|winwing"
+```
+
+The udev rule needs the vendor and product IDs. Display the details of a specific event device:
+
+```bash
+# Find the event number (filter for joystick devices):
+cat /proc/bus/input/devices | grep -A 4 "Thrustmaster"
+
+# Full attribute hierarchy for the udev rule:
+udevadm info --attribute-walk --name=/dev/input/event<N>
+```
+
+Relevant fields: `idVendor`, `idProduct`, optionally `serial` (most flight sim controllers do not expose a serial number).
+
+**Step 2: Create rule file**
+
+```bash
+sudo nano /etc/udev/rules.d/70-flight-controllers.rules
+```
+
+```ini
+# Thrustmaster T.16000M FCS — permissions + symlink
+KERNEL=="event*", SUBSYSTEM=="input", ATTRS{idVendor}=="044f", ATTRS{idProduct}=="b10a", \
+  MODE="0660", GROUP="input", SYMLINK+="input/flight-stick"
+
+# Logitech/Saitek Pro Flight Rudder Pedals
+KERNEL=="event*", SUBSYSTEM=="input", ATTRS{idVendor}=="06a3", ATTRS{idProduct}=="0764", \
+  MODE="0660", GROUP="input", SYMLINK+="input/flight-rudder"
+```
+
+Replace the vendor and product IDs (`044f:b10a` etc.) with the values from step 1.
+
+**Step 3: Activate rules**
+
+```bash
+sudo udevadm control --reload-rules
+sudo udevadm trigger --subsystem-match=input
+```
+
+Alternatively: unplug and re-plug the device. Verify symlinks:
+
+```bash
+ls -la /dev/input/flight-*
+```
+
+!!! tip "Distinguishing identical devices"
+    Two identical controllers (e.g. two TCA quadrants) share the same VID:PID and usually have no serial number. The only stable way to tell them apart is the **physical USB port path**.
+
+    Find the port path:
+
+    ```bash
+    udevadm info --query=path --name=/dev/input/event<N>
+    ```
+
+    Then add a `KERNELS` match to the rule (e.g. `KERNELS=="3-2.1"` for the port). **Important:** The devices must always be plugged into the same USB port.
+
+    X-Plane identifies controllers internally by VID:PID via SDL2 and does not use symlinks. With identical devices, the assignment may swap between reboots despite udev rules. As a workaround, the order can be forced via the SDL2 environment variable:
+
+    ```bash
+    SDL_JOYSTICK_DEVICE=/dev/input/by-path/<path-1>:/dev/input/by-path/<path-2> ./X-Plane-x86_64
+    ```
+
+    The stable paths under `/dev/input/by-path/` are tied to the physical USB port and do not change.
 
 ### Configuration Files
 

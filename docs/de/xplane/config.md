@@ -125,7 +125,79 @@ X-Plane erkennt Controller unter Linux über SDL2 mit [evdev](../glossary.md#evd
 
 ### udev-Regeln
 
-Wenn ein Controller nicht erkannt wird, fehlen meist die Berechtigungen. Die offizielle Anleitung beschreibt die nötigen udev-Regeln: [Using Joysticks on Linux](https://www.x-plane.com/kb/using-joysticks-x-plane-11-linux-systems/)
+Wenn ein Controller nicht erkannt wird, fehlen meist die Berechtigungen. Die offizielle Anleitung beschreibt die Grundlagen: [Using Joysticks on Linux](https://www.x-plane.com/kb/using-joysticks-x-plane-11-linux-systems/)
+
+Darüber hinaus lassen sich mit eigenen udev-Regeln Berechtigungen setzen, stabile Symlinks anlegen und die Gerätezuordnung dauerhaft festlegen — besonders nützlich bei Setups mit mehreren Controllern.
+
+**Schritt 1: Device-IDs ermitteln**
+
+Zunächst die angeschlossenen USB-Controller auflisten:
+
+```bash
+lsusb | grep -i -E "thrustmaster|logitech|saitek|vkb|virpil|winwing"
+```
+
+Für die udev-Regel werden Vendor-ID und Product-ID benötigt. Die Details eines bestimmten Event-Devices anzeigen:
+
+```bash
+# Event-Nummer ermitteln (Joystick-Devices filtern):
+cat /proc/bus/input/devices | grep -A 4 "Thrustmaster"
+
+# Vollständige Attribut-Hierarchie für die udev-Regel:
+udevadm info --attribute-walk --name=/dev/input/event<N>
+```
+
+Relevante Felder: `idVendor`, `idProduct`, optional `serial` (die meisten Flight-Sim-Controller haben keine Seriennummer).
+
+**Schritt 2: Regel-Datei erstellen**
+
+```bash
+sudo nano /etc/udev/rules.d/70-flight-controllers.rules
+```
+
+```ini
+# Thrustmaster T.16000M FCS — Berechtigungen + Symlink
+KERNEL=="event*", SUBSYSTEM=="input", ATTRS{idVendor}=="044f", ATTRS{idProduct}=="b10a", \
+  MODE="0660", GROUP="input", SYMLINK+="input/flight-stick"
+
+# Logitech/Saitek Pro Flight Rudder Pedals
+KERNEL=="event*", SUBSYSTEM=="input", ATTRS{idVendor}=="06a3", ATTRS{idProduct}=="0764", \
+  MODE="0660", GROUP="input", SYMLINK+="input/flight-rudder"
+```
+
+Die Vendor- und Product-IDs (`044f:b10a` etc.) durch die eigenen Werte aus Schritt 1 ersetzen.
+
+**Schritt 3: Regeln aktivieren**
+
+```bash
+sudo udevadm control --reload-rules
+sudo udevadm trigger --subsystem-match=input
+```
+
+Alternativ: Gerät abstecken und wieder einstecken. Symlinks prüfen:
+
+```bash
+ls -la /dev/input/flight-*
+```
+
+!!! tip "Identische Geräte unterscheiden"
+    Zwei gleiche Controller (z.B. zwei TCA-Quadranten) haben die gleiche VID:PID und meist keine Seriennummer. Die einzige stabile Unterscheidung ist der **physische USB-Port-Pfad**.
+
+    Port-Pfad ermitteln:
+
+    ```bash
+    udevadm info --query=path --name=/dev/input/event<N>
+    ```
+
+    In der Regel dann zusätzlich nach `KERNELS` filtern (z.B. `KERNELS=="3-2.1"` für den Port). **Wichtig:** Die Geräte müssen immer am gleichen USB-Port eingesteckt bleiben.
+
+    X-Plane identifiziert Controller intern per VID:PID über SDL2 und nutzt keine Symlinks. Bei identischen Geräten kann die Zuordnung trotz udev-Regeln zwischen Neustarts wechseln. Als Workaround lässt sich die Reihenfolge über die SDL2-Umgebungsvariable erzwingen:
+
+    ```bash
+    SDL_JOYSTICK_DEVICE=/dev/input/by-path/<pfad-1>:/dev/input/by-path/<pfad-2> ./X-Plane-x86_64
+    ```
+
+    Die stabilen Pfade unter `/dev/input/by-path/` sind an den physischen USB-Port gebunden und ändern sich nicht.
 
 ### Konfigurationsdateien
 
