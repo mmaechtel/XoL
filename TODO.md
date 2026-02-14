@@ -9,7 +9,7 @@ Workflow und Phasen-Beschreibung: siehe `CLAUDE.md` → Dokumentations-Workflow.
 | Prio  | Datei               | Status      | Thema                                               |
 | ----- | ------------------- | ----------- | --------------------------------------------------- |
 | 1     | `xplane/config.md`  | **geprüft** | X-Plane Konfiguration (Linux-Spezifika)             |
-| **!** | `systemtuning.md`   | **umgesetzt** | **Governor/Liquorix korrigiert + Erklärungen ergänzt** |
+| **!** | `systemtuning.md`   | **geprüft** | **Governor/Liquorix korrigiert + Erklärungen ergänzt** |
 | 1b    | `systemtuning.md`   | umgesetzt   | Kernel-Wechsel (Debian, Standard ↔ Liquorix)        |
 | 1c    | `systemtools.md`    | **umgesetzt** | Linux-Systemtools (htop, glances, iotop)            |
 | 2     | `mesa.md`           | offen       | AMD/Intel GPU-Treiber (Mesa, RADV, Vulkan)          |
@@ -106,25 +106,21 @@ Workflow und Phasen-Beschreibung: siehe `CLAUDE.md` → Dokumentations-Workflow.
 
 ## Korrekturen: Bestehende Seiten
 
-### systemtuning.md — CPU-Governor / Liquorix falsch
+### systemtuning.md — CPU-Governor / Liquorix ~~falsch~~ erledigt
 
-**Status:** offen
-**Priorität:** hoch (inhaltlicher Fehler)
+**Status:** erledigt (Commit e7a201a, 2026-02-14)
 
-Liquorix nutzt den BORE-Scheduler statt CFS. `schedutil` wird nicht einkompiliert (`CONFIG_CPU_FREQ_GOV_SCHEDUTIL` nicht gesetzt). Die Doku empfiehlt derzeit `schedutil` für Profil B — das ist falsch.
+- ✅ Profil B: `schedutil` → `ondemand` (Governor-Empfehlung + GRUB-Parameter)
+- ✅ Vergleichstabelle: `schedutil` → `ondemand`
+- ✅ Temporärer Terminal-Befehl zum Governor-Wechsel ergänzt
+- ✅ Erklärbox: Warum `ondemand` statt `schedutil` (PDS-Scheduler)
 
-**Korrekturen:**
+### systemtuning.md — Fehlende Erklärungen — erledigt
 
-- Profil B: `schedutil` → `ondemand` (Governor-Empfehlung + GRUB-Parameter)
-- Vergleichstabelle (Zeile 311): `schedutil` → `ondemand`
-- Bei allen GRUB-Parametern auch den temporären Terminal-Befehl zum Governor-Wechsel ergänzen
+**Status:** erledigt (Commit e7a201a, 2026-02-14)
 
-### systemtuning.md — Fehlende Erklärungen
-
-**Status:** offen
-
-- **`IRQBALANCE_BANNED_CPULIST`** (Zeile 259): Wo genau wird das eingetragen? Konfigurations-Pfad dokumentieren
-- **`nvme_core.default_ps_max_latency_us=0`** (Zeile 268): Kann man das auch nachträglich per Terminal setzen? Klären und dokumentieren
+- ✅ `IRQBALANCE_BANNED_CPULIST`: Pfad `/etc/default/irqbalance` dokumentiert
+- ✅ `nvme_core.default_ps_max_latency_us=0`: sysfs-Limitierung erklärt + PM-QOS-Workaround ergänzt
 
 ---
 
