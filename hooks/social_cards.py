@@ -32,10 +32,6 @@ def on_config(config):
     def _render_card(self, site_name, title, description):
         image = bg.copy()
 
-        # Semi-transparent overlay on lower third for text readability
-        overlay = Image.new("RGBA", (1200, 210), (0, 0, 0, 160))
-        image.alpha_composite(overlay, (0, 420))
-
         # Clean title text
         title = re.sub(r"(<[^>]+>)", "", title)
         title = unescape(title)
@@ -72,7 +68,7 @@ def on_config(config):
             font=font, fill="white",
             align="center", spacing=10
         )
-        image.alpha_composite(txt_layer, (0, 435))
+        image.alpha_composite(txt_layer, (0, 372))
 
         return image
 
