@@ -39,6 +39,8 @@ This documentation is an open project. Improvements or additions can be contribu
 - Language revision (DE): [Getting Started](begin.md) and [Docker](docker.md) converted to impersonal style
 - [Glossary](glossary.md) expanded: New terms PDS and irqbalance
 - [System Tuning](systemtuning.md) glossary links added: FPS, Frame Time, Latency, Preemption, NVMe, C-States, EEVDF, PDS, irqbalance
+- [Glossary](glossary.md) expanded: New term SoftIRQ
+- [System Tools](systemtools.md) glossary links added: NVMe, C-States, IRQ, CPU Governor, Latency, APST
 
 ### 2026-02-13
 - [Getting Started](begin.md) corrected: Updated installer instructions, refined system recommendations, fixed outdated package names and single-core claims, added cross-references

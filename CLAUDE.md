@@ -171,6 +171,7 @@ Jedes Thema in `TODO.md` hat einen Status:
 | `/check-glossar` | nach Umsetzung | Glossar-Abdeckung prüfen, fehlende Verlinkungen ergänzen, Markdown-Check |
 | `/embed-videos` | Umsetzung | MP4-Videos einbetten (Video-Seite + thematische Seiten), Poster generieren |
 | `/generate-notebooklm` | nach Umsetzung | TTS-optimiertes Skript für Google NotebookLM Audio Overview erstellen |
+| `/verify-commands` | nach Umsetzung | Dokumentierte Shell-Befehle interaktiv auf dem Debian-System testen |
 | `/abschluss` | alle | Changelog in `index.md` (DE + EN) aktualisieren und Git-Commit erstellen |
 
 ---

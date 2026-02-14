@@ -38,4 +38,14 @@ Videosammlung rund um X-Plane auf Linux.
 
 </div>
 
+<div class="video-card" markdown>
+
+### System-Tuning für X-Plane
+
+<video controls width="100%" preload="metadata" poster="../assets/video/de/systemtools/System-Tuning_für_X-Plane.jpg">
+  <source src="../assets/video/de/systemtools/System-Tuning_für_X-Plane.mp4" type="video/mp4">
+</video>
+
+</div>
+
 </div>

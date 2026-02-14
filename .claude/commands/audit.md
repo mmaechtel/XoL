@@ -146,7 +146,6 @@ Zweiter Durchgang mit Fokus auf Struktur und Vollstaendigkeit:
 | Zielgruppe | — | Passt Detailgrad zur Zielgruppe? |
 | Struktur | — | Logische Reihenfolge? Gute H2/H3-Gliederung? |
 | Querverweise | — | Links zu anderen Seiten korrekt und vollstaendig? |
-| Markdown/Format | — | Einhaltung der MARKDOWN_RULES.txt? |
 
 ### 2.2 Empfehlungen ergaenzen
 
@@ -208,21 +207,43 @@ Freigegebene Aenderungen in `docs/en/$ARGUMENTS` einarbeiten:
 2. Keine neuen Fehler einfuehren
 3. Versionsnummern nach Entscheidungsbaum bereinigen
 
-### 4.2 Markdown-Check
+### 4.2 Lektorat (Redaktioneller Review)
 
-`docs/MARKDOWN_RULES.txt` auf die EN-Seite anwenden. Verstoesse automatisch korrigieren.
+**Nach** den Korrekturen die Rolle eines erfahrenen Lektors fuer technische Dokumentation einnehmen. Die korrigierte EN-Seite von Anfang bis Ende lesen und als Ganzes bewerten:
 
-### 4.3 Build pruefen
+- **Lesbarkeit und Textfluss:** Liest sich das Dokument fluessig? Sind Uebergaenge zwischen Abschnitten logisch?
+- **Konsistenz:** Einheitlicher Ton, einheitliche Terminologie, einheitlicher Detailgrad?
+- **Klarheit:** Sind Erklaerungen verstaendlich? Werden Fachbegriffe beim ersten Auftreten erklaert oder verlinkt?
+- **Redundanz:** Gibt es unnoetige Wiederholungen oder Ueberschneidungen zwischen Abschnitten?
+- **Zielgruppen-Passung:** Stimmt der Detailgrad fuer erfahrene Linux-User? Nicht zu trivial, nicht zu akademisch?
+- **Zweckerfuellung:** Erreicht das Dokument sein erklaertes Ziel?
+
+Lektorat-Befunde mit Zeilennummern dokumentieren und direkt korrigieren (EN + DE). Ergebnisse im Audit-Dokument unter "Lektorat" festhalten.
+
+### 4.3 Markdown-Check
+
+`docs/MARKDOWN_RULES.txt` lesen und systematisch auf BEIDE Seiten (EN + DE) anwenden:
+
+1. **Leerzeile nach jeder Ueberschrift** — auch `**Fett**`-Pseudo-Ueberschriften vor Listen/Tabellen
+2. **Kein Doppelpunkt** am Ende von Ueberschriften die mit einer Liste folgen
+3. **Listen-Einrueckung** — 4 Spaces pro Ebene (0 → 4 → 8)
+4. **Leerzeichen nach Doppelpunkten** — `**Label**: Text` nicht `**Label**:Text`
+5. **Code-Block-Tags** — `bash` fuer Shell, `ini` fuer sysctl, kein Tag fuer Kernel/GRUB-Parameter
+6. **Konsistenz DE/EN** — Gleiche Formatierung in beiden Sprachversionen
+
+Verstoesse automatisch korrigieren. Ergebnisse im Audit-Dokument unter "Markdown-Check" festhalten.
+
+### 4.4 Build pruefen
 
 ```
 Bash: mkdocs build
 ```
 
-### 4.4 Fortschritts-Tracker aktualisieren
+### 4.5 Fortschritts-Tracker aktualisieren
 
 In `research/AUDIT_STATUS.md` die entsprechenden Felder mit Datum fuellen.
 
-### 4.5 Zusammenfassung
+### 4.6 Zusammenfassung
 
 ```
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
@@ -234,6 +255,7 @@ GESAMTBEWERTUNG: <Note>
 KORREKTUREN:
 ├─ FAIL korrigiert:        <Anzahl>
 ├─ WARN verbessert:        <Anzahl>
+├─ Lektorat-Fixes:         <Anzahl>
 ├─ Versionen bereinigt:    <Anzahl>
 ├─ Struktur-Aenderungen:   <Anzahl>
 └─ Markdown-Fixes:         <Anzahl>

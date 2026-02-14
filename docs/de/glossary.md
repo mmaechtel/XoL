@@ -309,6 +309,10 @@ Ein Zwischenspeicher für kompilierte GPU-Shader-Programme. X-Plane kompiliert S
 
 Eine historische Bezeichnung für X-Planes Architektur. Single-Core-Performance bleibt zwar wichtig, aber X-Plane 12 verteilt seit Version 12.4 einen erheblichen Teil der Frame-Arbeit auf mehrere Kerne.
 
+### SoftIRQ (Software Interrupt)
+
+Ein verzögerter Interrupt-Verarbeitungsmechanismus im Linux-Kernel. Anders als Hardware-IRQs, die sofort behandelt werden, werden SoftIRQs nach Abschluss des Hardware-Interrupt-Handlers verarbeitet und übernehmen weniger zeitkritische Aufgaben wie Netzwerkpaket-Verarbeitung und Block-Device-Completion. Die Spalte `%soft` in `mpstat` zeigt die SoftIRQ-Zeit pro Kern — relevant für die Verifikation, dass Interrupt-Shielding sowohl Hardware-IRQs als auch SoftIRQs von den Applikations-Kernen fernhält. Siehe [Systemtools](../systemtools.md).
+
 ### sysctl
 
 Ein Werkzeug zur Anzeige und Änderung von Kernel-Parametern zur Laufzeit. Im Gegensatz zu GRUB-Kernel-Parametern, die nur beim Booten wirken, können sysctl-Werte jederzeit angepasst werden. Relevante Einstellungen für X-Plane umfassen VM-Swappiness und Netzwerk-Buffer. Konfiguration über `/etc/sysctl.d/`.

@@ -7,8 +7,8 @@ Die hier gezeigten Beispiele basieren auf Debian Linux, lassen sich aber leicht 
 ## Featured Video
 
 <div class="video-container" markdown>
-<video controls width="100%" preload="metadata" poster="../assets/video/de/xplane_und_scenery_packs.ini/X-Planes_Welt__Richtig_gebaut.jpg">
-  <source src="../assets/video/de/xplane_und_scenery_packs.ini/X-Planes_Welt__Richtig_gebaut.mp4" type="video/mp4">
+<video controls width="100%" preload="metadata" poster="../assets/video/de/systemtools/System-Tuning_für_X-Plane.jpg">
+  <source src="../assets/video/de/systemtools/System-Tuning_für_X-Plane.mp4" type="video/mp4">
 </video>
 </div>
 
@@ -39,6 +39,9 @@ Diese Dokumentation ist ein offenes Projekt. Verbesserungen oder Ergänzungen k�
 - Sprachliche Überarbeitung (DE): [Erste Schritte](begin.md) und [Docker](docker.md) auf unpersönlichen Stil umgestellt
 - [Glossar](glossary.md) erweitert: Neue Begriffe PDS und irqbalance
 - [Systemtuning](systemtuning.md) Glossar-Verlinkungen ergänzt: FPS, Frame Time, Latenz, Preemption, NVMe, C-States, EEVDF, PDS, irqbalance
+- [Systemtuning](systemtuning.md) und [Videos](videos.md): System-Tuning-Video eingebettet
+- [Glossar](glossary.md) erweitert: Neuer Begriff SoftIRQ
+- [Systemtools](systemtools.md) Glossar-Verlinkungen ergänzt: NVMe, C-States, IRQ, CPU-Governor, Latenz, APST
 
 ### 2026-02-13
 - [Erste Schritte](begin.md) korrigiert: Installer-Anleitung aktualisiert, Systemempfehlungen präzisiert, veraltete Paketnamen und Single-Core-Aussagen korrigiert, Querverweise ergänzt

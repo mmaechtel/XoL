@@ -1,6 +1,6 @@
 # Linux-Systemtools
 
-Die Einstellungen aus dem [Systemtuning](systemtuning.md) lassen sich nicht blind anwenden — sie müssen verifiziert werden. Wirkt der Governor tatsächlich? Landen Interrupts auf den richtigen Kernen? Wacht die NVMe aus dem Schlafmodus auf?
+Die Einstellungen aus dem [Systemtuning](systemtuning.md) lassen sich nicht blind anwenden — sie müssen verifiziert werden. Wirkt der Governor tatsächlich? Landen Interrupts auf den richtigen Kernen? Wacht die [NVMe](glossary.md#nvme-non-volatile-memory-express) aus dem Schlafmodus auf?
 
 Diese Seite beschreibt Monitoring-Tools, die genau das prüfen. Jedes Tool wird mit seinem Hauptzweck und den wichtigsten Befehlen vorgestellt. Querverweise zum Systemtuning zeigen, welche Einstellung mit welchem Tool verifiziert wird.
 
@@ -37,7 +37,7 @@ htop
 
 Die Spalte **PROCESSOR** zeigt, auf welchem CPU-Kern ein Prozess zuletzt ausgeführt wurde — nützlich um zu prüfen, ob die Interrupt-Trennung aus dem [Systemtuning](systemtuning.md#3-interrupt-shielding) funktioniert.
 
-**Limitierung:** Zeigt keine CPU-Frequenz, keine C-States und keine Interrupt-Aufschlüsselung pro Core.
+**Limitierung:** Zeigt keine CPU-Frequenz, keine [C-States](glossary.md#c-states-cpu-idle-states) und keine Interrupt-Aufschlüsselung pro Core.
 
 ### btop — System-Dashboard
 
@@ -49,11 +49,11 @@ btop
 
 Unterstützt Maus-Bedienung, Prozess-Filter (`f`), Baumansicht (`e`) und Layout-Presets (`p`).
 
-**Limitierung:** CPU-Frequenz nur als Gesamtwert, keine Per-Core-Frequenz. Keine IRQ-Statistiken.
+**Limitierung:** CPU-Frequenz nur als Gesamtwert, keine Per-Core-Frequenz. Keine [IRQ](glossary.md#irq-interrupt-request)-Statistiken.
 
 ### cpupower — Governor prüfen und setzen
 
-Zeigt den aktiven CPU-Frequenz-Governor und kann ihn ändern. Essentiell um zu prüfen, ob der im [Systemtuning](systemtuning.md#1-cpu-governor) konfigurierte Governor tatsächlich aktiv ist.
+Zeigt den aktiven [CPU-Frequenz-Governor](glossary.md#cpu-governor) und kann ihn ändern. Essentiell um zu prüfen, ob der im [Systemtuning](systemtuning.md#1-cpu-governor) konfigurierte Governor tatsächlich aktiv ist.
 
 ```bash
 # Aktive Policy (Governor und Frequenzbereich) aller Cores anzeigen
@@ -149,7 +149,7 @@ sudo iotop -oPa
 
 ### iostat — Device-Level-Latenz
 
-Zeigt Durchsatz, IOPS, Queue-Tiefe und **durchschnittliche Request-Latenz** pro Device. Der Schlüsselwert ist `r_await` — die durchschnittliche Read-Latenz in Millisekunden.
+Zeigt Durchsatz, IOPS, Queue-Tiefe und **durchschnittliche Request-[Latenz](glossary.md#latenz)** pro Device. Der Schlüsselwert ist `r_await` — die durchschnittliche Read-Latenz in Millisekunden.
 
 ```bash
 # Extended Stats für NVMe, 1-Sekunden-Intervall
@@ -164,7 +164,7 @@ iostat -xdth -p nvme0n1 1
 | `%util` | Device-Auslastung — bei 100% ist das Device gesättigt |
 | `aqu-sz` | Queue-Länge — hohe Werte bedeuten wartende Requests |
 
-**NVMe APST-Signatur:** Ein plötzlicher Sprung in `r_await` von <1 ms auf 50–500 ms nach einer Idle-Phase deutet auf NVMe-Aufwachlatenz hin.
+**NVMe [APST](glossary.md#apst-autonomous-power-state-transitions)-Signatur:** Ein plötzlicher Sprung in `r_await` von <1 ms auf 50–500 ms nach einer Idle-Phase deutet auf NVMe-Aufwachlatenz hin.
 
 ### ioping — Disk-Latenz messen
 

@@ -309,6 +309,10 @@ A cache for compiled GPU shader programs. X-Plane compiles shaders when first lo
 
 A historical characterization of X-Plane's architecture. While single-core performance remains important, X-Plane 12 distributes substantial per-frame work across multiple cores since version 12.4.
 
+### SoftIRQ (Software Interrupt)
+
+A deferred interrupt processing mechanism in the Linux kernel. Unlike hardware IRQs that are handled immediately, SoftIRQs are processed after the hardware interrupt handler returns, handling less time-critical work like network packet processing and block device completion. The `%soft` column in `mpstat` shows SoftIRQ time per core — relevant for verifying that interrupt shielding keeps both hardware IRQs and SoftIRQs off application cores. See [System Tools](../systemtools.md).
+
 ### sysctl
 
 A tool for viewing and changing kernel parameters at runtime. Unlike GRUB kernel parameters that only take effect at boot, sysctl values can be adjusted at any time. Relevant settings for X-Plane include VM swappiness and network buffers. Configured via `/etc/sysctl.d/`.

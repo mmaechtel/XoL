@@ -438,6 +438,14 @@ Nicht alle Einstellungen erfordern einen Neustart. Die folgende Tabelle zeigt, w
 
 ---
 
+## Video
+
+<div class="video-container" markdown>
+<video controls width="100%" preload="metadata" poster="../assets/video/de/systemtools/System-Tuning_für_X-Plane.jpg">
+  <source src="../assets/video/de/systemtools/System-Tuning_für_X-Plane.mp4" type="video/mp4">
+</video>
+</div>
+
 ## Quellen
 
 Die wichtigsten Quellen zu den auf dieser Seite behandelten Themen:
