@@ -52,10 +52,3 @@ This documentation is an open project. Improvements or additions can be contribu
 ### 2026-02-11
 - [Display Server](displayserver.md) pages fact-checked: Debian defaults corrected, XWayland row added to Hugl table, latency measurements clarified, NVIDIA modeset default updated, MESA variable scoped to Mesa drivers
 
-### 2026-02-09
-- New [Display Server](displayserver.md), [X11 Session](displayserver_x11.md) and [Wayland Session](displayserver_wayland.md) pages: protocol comparison, latency measurements, GPU recommendations
-- New [System Tools](systemtools.md) page — monitoring tools for verifying tuning settings
-- New [System Tuning](systemtuning.md) page — latency optimization: kernel profiles, governor, C-states, interrupt shielding
-- [X-Plane Configuration](xplane/config.md) revised: focus on Linux specifics (Vulkan/Zink, shader cache, audio, controllers)
-- New [XEarthLayer](addon/xearthlayer.md) documentation, [Orthophotography](addon/orthophotography_intro.md) restructured, [AutoOrtho](addon/autoortho.md) updated
-- [Liquorix](liquorix.md) updated, [Glossary](glossary.md) expanded

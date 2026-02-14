@@ -52,10 +52,3 @@ Diese Dokumentation ist ein offenes Projekt. Verbesserungen oder Ergänzungen k�
 ### 2026-02-11
 - [Display-Server](displayserver.md) Seiten faktengeprüft: Debian-Defaults korrigiert, XWayland-Zeile in Hugl-Tabelle ergänzt, Latenzmessungen präzisiert, NVIDIA-Modeset-Default aktualisiert, MESA-Variable auf Mesa-Treiber eingeschränkt
 
-### 2026-02-09
-- Neue Seiten [Display-Server](displayserver.md), [X11-Session](displayserver_x11.md) und [Wayland-Session](displayserver_wayland.md): Protokollvergleich, Latenzmessungen, GPU-Empfehlungen
-- Neue Seite [Systemtools](systemtools.md) — Monitoring-Tools zur Verifikation der Tuning-Einstellungen
-- Neue Seite [Systemtuning](systemtuning.md) — Latenzoptimierung: Kernel-Profile, Governor, C-States, Interrupt-Shielding
-- [X-Plane Konfiguration](xplane/config.md) überarbeitet: Fokus auf Linux-Spezifika (Vulkan/Zink, Shader-Cache, Audio, Controller)
-- Neue [XEarthLayer](addon/xearthlayer.md)-Dokumentation, [Orthofotografie](addon/orthophotography_intro.md) neu strukturiert, [AutoOrtho](addon/autoortho.md) aktualisiert
-- [Liquorix](liquorix.md) ergänzt, [Glossar](glossary.md) erweitert

@@ -62,7 +62,7 @@ Eintraege beschreiben **was sich fuer den Leser aendert**, nicht die technische 
 Regeln:
 - Neuer Datumsblock (`### YYYY-MM-DD`) **ueber** allen bestehenden Eintraegen
 - Falls der aktuelle Tag bereits existiert: Eintraege dort anfuegen (nicht doppelt)
-- Bestehende Eintraege NIE loeschen
+- **Maximal 3 Datumsbloecke** behalten (die neuesten). Aeltere Datumsbloecke komplett entfernen
 - DE und EN muessen inhaltlich identisch sein (uebersetzt)
 
 ---
@@ -133,7 +133,7 @@ COMMIT:
 ## Hinweise
 
 - **Kein Push:** Niemals automatisch pushen. Nur auf explizite Anweisung
-- **Keine History loeschen:** Bestehende Changelog-Eintraege bleiben erhalten
+- **3-Datumsbloecke-Limit:** Nur die 3 neuesten Datumsbloecke behalten, aeltere entfernen
 - **Bilingual:** DE- und EN-Changelog muessen synchron aktualisiert werden
 - **Datumsformat:** ISO 8601 (`YYYY-MM-DD`)
 - **Commit-Stil:** Einzeilig, im Imperativ, beschreibt die Aenderung praegnant

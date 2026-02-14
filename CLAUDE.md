@@ -55,7 +55,7 @@ Definiert in `mkdocs.yml` unter `plugins > i18n > languages > nav`. Separate Nav
 
 - Neue Einträge **über** alten (neuer Datumsblock `### YYYY-MM-DD` oben)
 - Falls aktueller Tag bereits existiert: Einträge dort anfügen
-- Bestehende Einträge **nie** löschen
+- **Maximal 3 Datumsblöcke** behalten (die neuesten). Ältere Datumsblöcke komplett entfernen
 - DE und EN müssen inhaltlich identisch (übersetzt) sein
 - **Nur leser-relevante Content-Änderungen** — keine internen Repo-/Research-/Skill-/Config-Änderungen
 - `index.md` wird immer zuletzt geändert (nach allen anderen Dateien)
