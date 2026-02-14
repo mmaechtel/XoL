@@ -36,6 +36,8 @@ This documentation is an open project. Improvements or additions can be contribu
 - [System Tuning](systemtuning.md) fact-checked: Corrected scheduler references, removed non-functional kernel parameter, clarified NVMe notes, added sources section
 - [Getting Started](begin.md) revised: Merged troubleshooting sections, clarified 32-bit note, added display server link
 - Language revision (DE): [Getting Started](begin.md) and [Docker](docker.md) converted to impersonal style
+- [Glossary](glossary.md) expanded: New terms PDS and irqbalance
+- [System Tuning](systemtuning.md) glossary links added: FPS, Frame Time, Latency, Preemption, NVMe, C-States, EEVDF, PDS, irqbalance
 
 ### 2026-02-13
 - [Getting Started](begin.md) corrected: Updated installer instructions, refined system recommendations, fixed outdated package names and single-core claims, added cross-references

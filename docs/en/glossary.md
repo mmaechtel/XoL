@@ -173,6 +173,10 @@ The kernel algorithm that optimizes the order of read and write operations on st
 
 A signal used by hardware devices (GPU, NVMe SSD, USB controllers) to request the processor to handle data. Through targeted IRQ pinning, interrupts can be assigned to specific CPU cores to avoid disturbing X-Plane's main thread. See [System Tuning](../systemtuning.md).
 
+### irqbalance
+
+A userspace daemon that distributes hardware interrupts across CPU cores. irqbalance automatically adapts to new devices and respects kernel constraints for managed interrupts (MSI-X). The `IRQBALANCE_BANNED_CPULIST` setting in `/etc/default/irqbalance` excludes specific cores from interrupt distribution, keeping them free for the application. See [System Tuning](../systemtuning.md).
+
 ## K
 
 ### Kernel Module
@@ -256,6 +260,10 @@ A scenery layer in X-Plane that sits above a base scenery and supplements or rep
 ### PBR
 
 Physically Based Rendering - a graphics technique that simulates physical properties of materials and light to create realistic representations.
+
+### PDS (Priority and Deadline based Skiplist)
+
+The CPU scheduler used by the Liquorix kernel, replacing the mainline EEVDF scheduler. PDS uses a skiplist data structure for efficient task selection and prioritizes based on deadlines. Combined with shorter preemption windows and a 1000 Hz timer frequency, it provides lower latency for interactive applications. Unlike EEVDF, PDS does not provide the utilization signals that the `schedutil` governor relies on. See [System Tuning](../systemtuning.md).
 
 ### PipeWire
 
