@@ -114,7 +114,7 @@ Verifiziert: [C-States](systemtuning.md#2-cpu-schlafzustände-begrenzen) und Gov
 
 ### mpstat — Per-Core-Statistiken und Interrupt-Verteilung
 
-Präziseste Per-Core-Aufschlüsselung: zeigt User-, System-, I/O-Wait-, **IRQ-** und **SoftIRQ-Anteil** pro CPU-Kern. Unverzichtbar für die Verifikation des Interrupt-Shielding.
+Präziseste Per-Core-Aufschlüsselung: zeigt User-, System-, I/O-Wait-, **IRQ-** und **[SoftIRQ](glossary.md#softirq-software-interrupt)-Anteil** pro CPU-Kern. Unverzichtbar für die Verifikation des Interrupt-Shielding.
 
 ```bash
 # Alle Cores, 1-Sekunden-Intervall

@@ -33,6 +33,7 @@ This documentation is an open project. Improvements or additions can be contribu
 ## Recent Changes
 
 ### 2026-02-14
+- [X-Plane Configuration](xplane/config.md) corrected: Differentiated `__GL_*` variables (`__GL_SYNC_TO_VBLANK` affects Vulkan), added NVIDIA Smooth Motion as experimental option
 - [System Tools](systemtools.md) verified: Added missing `sudo` to ioping commands (direct device access requires root)
 - [System Tools](systemtools.md) audited: Fixed btop hotkey, clarified cpupower/turbostat/mpstat descriptions, improved glances and fatrace notation, bold table captions
 - [System Tuning](systemtuning.md) fact-checked: Corrected scheduler references, removed non-functional kernel parameter, clarified NVMe notes, added sources section

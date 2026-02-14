@@ -72,8 +72,21 @@ MESA_VK_WSI_PRESENT_MODE=mailbox ./X-Plane-x86_64
 | `MESA_SHADER_CACHE_MAX_SIZE` | `2G` | Increase shader cache (default: 1 GB) |
 | `MESA_SHADER_CACHE_DIR` | Path | Redirect shader cache to faster storage |
 
-!!! warning "NVIDIA: `__GL_*` variables are irrelevant"
-    The commonly recommended NVIDIA variables `__GL_THREADED_OPTIMIZATIONS` and `__GL_YIELD` affect OpenGL only. Since X-Plane 12 uses Vulkan, they have **no effect** on the rendering pipeline.
+!!! warning "NVIDIA: `__GL_*` variables — do not set blindly"
+    `__GL_THREADED_OPTIMIZATIONS` and `__GL_YIELD` affect OpenGL only and have **no effect** under X-Plane 12 (Vulkan).
+
+    `__GL_SYNC_TO_VBLANK`, however, does affect Vulkan — but only when VSync is active (FIFO present mode). Setting `__GL_SYNC_TO_VBLANK=0` overrides VSync at the driver level even though X-Plane has it enabled. **Recommendation:** Control VSync through X-Plane settings, not environment variables.
+
+    Other `__GL_*` variables with Vulkan effect: `__GL_SHARPEN_ENABLE` (image sharpening) and `__GL_SHOW_GRAPHICS_OSD` (performance overlay).
+
+!!! note "Experimental: NVIDIA Smooth Motion (RTX 40/50)"
+    `NVPRESENT_ENABLE_SMOOTH_MOTION=1` enables AI-based frame interpolation at the driver level. The NVIDIA driver uses Tensor Cores to generate an interpolated intermediate frame between each rendered frame, effectively doubling the perceived frame rate — without any engine integration.
+
+    X-Plane 12 has no native DLSS Frame Generation, making Smooth Motion currently the only option for driver-based frame generation. Requires at least driver 580.82 (RTX 40) or 575.51 (RTX 50). Low Latency Mode is automatically enabled to compensate for the additional input latency.
+
+    Launch via script: `NVPRESENT_ENABLE_SMOOTH_MOTION=1 ./X-Plane-x86_64`
+
+    **Known limitations:** Reports of flickering, Vulkan errors and artifacts during rapid view changes exist in the X-Plane community. Quality is below native DLSS Frame Generation since no motion vectors from the engine are used. That said, the author of this documentation has achieved very good results with Smooth Motion under X-Plane — it is worth trying out.
 
 !!! note "Experimental: Variable Rate Shading"
     `RADV_FORCE_VRS=2x2` can provide 10-30% FPS gain on RDNA2+ GPUs (RX 6000 and newer), but reduces image quality. **Not tested with X-Plane** — artifacts possible.
@@ -292,6 +305,8 @@ The most important sources on the topics covered on this page:
 - [PipeWire Audio Troubleshooting](https://www.x-plane.com/kb/troubleshooting-audio-issues-with-pipewire-on-linux/) — Official X-Plane KB article on FMOD and PipeWire compatibility
 - [Using Joysticks on Linux](https://www.x-plane.com/kb/using-joysticks-x-plane-11-linux-systems/) — Official X-Plane guide for udev rules and controller permissions
 - [Vulkan Specification](https://registry.khronos.org/vulkan/) — Khronos Group Vulkan API specification and reference
+- [NVIDIA Driver README: Environment Variables](https://download.nvidia.com/XFree86/Linux-x86_64/570.86.16/README/openglenvvariables.html) — Official documentation of `__GL_*` variables including Vulkan applicability
+- [NVIDIA Driver README: Smooth Motion](https://download.nvidia.com/XFree86/Linux-x86_64/580.95.05/README/nvpresent.html) — Official documentation for AI-based frame interpolation
 - [Arch Wiki: Vulkan](https://wiki.archlinux.org/title/Vulkan) — Practical guide to Vulkan setup, ICD selection and troubleshooting on Linux
 
 ## Background: Anti-Aliasing and Rendering

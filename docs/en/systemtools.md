@@ -114,7 +114,7 @@ Verifies: [C-States](systemtuning.md#2-limit-cpu-sleep-states) and governor effe
 
 ### mpstat — Per-Core Statistics and Interrupt Distribution
 
-Most precise per-core breakdown: shows user, system, I/O wait, **IRQ**, and **SoftIRQ percentage** per CPU core. Essential for verifying interrupt shielding.
+Most precise per-core breakdown: shows user, system, I/O wait, **IRQ**, and **[SoftIRQ](glossary.md#softirq-software-interrupt) percentage** per CPU core. Essential for verifying interrupt shielding.
 
 ```bash
 # All cores, 1-second interval
