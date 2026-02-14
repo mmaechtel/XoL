@@ -9,7 +9,7 @@ Prozess-Definition: siehe `AUDIT_FLOW.md`.
 
 **Gestartet:** 2026-02-12
 **Runde:** 1
-**Nächstes Kapitel:** #6 `filesystem.md`
+**Nächstes Kapitel:** #3 `liquorix.md`
 
 ---
 
@@ -21,7 +21,7 @@ Nach jedem abgeschlossenen Schritt: Feld mit Datum füllen.
 |---|-------|--------|:---:|:---:|:---:|:---:|:---:|
 | | **Runde 1 — Kern-Dokumentation** | | | | | | |
 | 1 | `begin.md` | 228 | 2026-02-13 | 2026-02-13 | 2026-02-13 | 2026-02-13 | C |
-| 2 | `nvidia.md` | 164 | | | | | |
+| 2 | `nvidia.md` | 164 | 2026-02-14 | 2026-02-14 | 2026-02-14 | 2026-02-14 | C |
 | 3 | `liquorix.md` | 139 | | | | | |
 | 4 | `systemtuning.md` | 441 | | | | | |
 | 5 | `systemtools.md` | 421 | 2026-02-14 | 2026-02-14 | 2026-02-14 | 2026-02-14 | B |

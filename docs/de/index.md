@@ -33,6 +33,7 @@ Diese Dokumentation ist ein offenes Projekt. Verbesserungen oder Ergänzungen k�
 ## Letzte Änderungen
 
 ### 2026-02-14
+- [Nvidia-Treiber](nvidia.md) auditiert: Paketmanager-Methode als empfohlenen Ansatz ergänzt, Persistence-Mode- und Modeset-Aussagen korrigiert, Composition-Pipeline-Einstellungen als X11-only gekennzeichnet, Quellenabschnitt ergänzt
 - [X-Plane Konfiguration](xplane/config.md) korrigiert: `__GL_*`-Variablen differenziert (`__GL_SYNC_TO_VBLANK` wirkt auf Vulkan), NVIDIA Smooth Motion als experimentelle Option ergänzt
 - [Systemtools](systemtools.md) verifiziert: Fehlendes `sudo` bei ioping-Befehlen ergänzt (direkter Device-Zugriff erfordert Root)
 - [Systemtools](systemtools.md) auditiert: btop-Hotkey korrigiert, cpupower/turbostat/mpstat-Beschreibungen präzisiert, glances- und fatrace-Notation verbessert, Tabellen-Beschriftungen formatiert

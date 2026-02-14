@@ -132,7 +132,7 @@ Diese Einstellung hält die GPU in einem höheren Leistungszustand, was die Reak
 ### Kernel-Parameter
 
 In Debian 12 sind die meisten NVIDIA-Optimierungen bereits standardmäßig aktiviert. Falls dennoch manuelle Anpassungen vorgenommen werden sollen, können in `/etc/default/grub` unter `GRUB_CMDLINE_LINUX_DEFAULT` folgende Parameter hinzugefügt werden:
-```bash
+```
 nvidia-drm.modeset=1
 ```
 
