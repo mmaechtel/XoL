@@ -1,5 +1,6 @@
 site_name: XoL - XPlane on Linux
 site_url: https://emvisio.com/
+site_description: X-Plane 12 on Linux — Tuning, Drivers, Scenery, and Tools
 repo_url: https://github.com/mmaechtel/XoL
 repo_name: XoL
 edit_uri: edit/main/docs/
@@ -55,6 +56,7 @@ theme:
   language: de
 
 plugins:
+  - social
   - search:
       lang:
         - en
