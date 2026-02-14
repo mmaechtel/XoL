@@ -62,9 +62,14 @@ Definiert in `mkdocs.yml` unter `plugins > i18n > languages > nav`. Separate Nav
 
 ### Video-Struktur
 
-- `docs/assets/video/de/` — deutsche Videos (nur in `docs/de/` verlinkt)
-- `docs/assets/video/en/` — englische Videos (nur in `docs/en/` verlinkt)
+- `docs/assets/video/` ist ein **Symlink** auf ein NFS/SMB-Share (nicht im Git-Repo)
+    - Linux: `/mnt/videos/XoL/video` (Share muss gemountet sein)
+    - macOS: Pfad wird separat konfiguriert
+- `de/` — deutsche Videos (nur in `docs/de/` verlinkt)
+- `en/` — englische Videos (nur in `docs/en/` verlinkt)
 - Keine Kreuz-Verlinkung zwischen Sprachen
+- Videos werden **nicht** ins Git-Repo committed — neue Videos direkt auf dem Share ablegen
+- `mkdocs build` löst den Symlink auf und kopiert die Dateien nach `site/`
 
 ---
 

@@ -290,6 +290,7 @@ open docs/assets/video/
 
 ## Hinweise
 
+- **Videos liegen auf NFS-Share**, nicht im Git-Repo. `docs/assets/video` ist ein Symlink auf `/mnt/videos/XoL/video` (Linux). Das Share muss gemountet sein, bevor der Skill laeuft. Neue Videos werden direkt auf dem Share abgelegt (nicht ins Repo committed).
 - **Kein Ueberschreiben:** Bereits eingebettete Videos (Status `eingebettet`) werden uebersprungen
 - **Leere Verzeichnisse:** Werden ignoriert (z.B. `X11_vs_Wayland/` ohne MP4)
 - **Dateiname als Titel:** Unterstriche werden durch Leerzeichen ersetzt, Extension entfernt

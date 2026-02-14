@@ -11,6 +11,9 @@ Maps/countries.geojson
 Maps/scenerymap.html
 Maps/styles.css
 
+# Videos (symlink to NFS share, not tracked)
+docs/assets/video
+
 # Generated/external files
 docs/de/Maps/
 docs/vatsim_routes.html
