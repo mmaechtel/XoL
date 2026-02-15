@@ -52,11 +52,7 @@ Bestehenden Inhalt als Ausgangsbasis fuer die Recherche erfassen.
 
 ### 1.3 Bestehende Research-Papers lesen
 
-```
-Glob: research/**/*<thema>*.md
-```
-
-Falls bereits Papers existieren: Lesen und als Basis verwenden, nicht duplizieren.
+Research-Papers laden gemaess `SKILL_RULES.md` → **Research-Papers laden**.
 
 ---
 
@@ -64,17 +60,7 @@ Falls bereits Papers existieren: Lesen und als Basis verwenden, nicht dupliziere
 
 ### 2.1 Quellenstrategie
 
-Primaerquellen in Reihenfolge der Zuverlaessigkeit:
-
-1. **Offizielle Projektdokumentation** (kernel.org, mesa3d.org, developer.x-plane.com)
-2. **GitHub-Repositories** (READMEs, Changelogs, Issues, Commit-Messages)
-3. **Arch Wiki** (umfassendste Linux-Dokumentation)
-4. **Debian-spezifisch** (wiki.debian.org, packages.debian.org, manpages.debian.org)
-5. **Man-Pages** (man7.org)
-
-**Nicht verwenden:** Foren-Posts, Drittanbieter-Blogposts, YouTube-Transkripte, ChatGPT-generierte Inhalte.
-
-**Quellenaktualitaet:** Nur Quellen ab 2024 aufwaerts. Aeltere nur bei nachweislich stabiler Information (Kernel-Docs, POSIX-Standards).
+Gemaess `SKILL_RULES.md` → **Quellenstrategie**.
 
 ### 2.2 Parallele Recherche-Subagents
 
@@ -238,8 +224,7 @@ PLAN:
 
 - **Keine Umsetzung:** Dieser Skill schreibt keine Dokumentationsseiten. Er liefert nur die Grundlage.
 - **EN first:** Research-Paper in Deutsch, aber EN-Quellen bevorzugen
-- **Keine Foren/Blogs:** Nur Primaerquellen (offizielle Docs, GitHub, Kernel-Docs, Arch Wiki)
-- **Quellenaktualitaet:** Nur ab 2024, aeltere nur bei stabiler Information
+- **Quellen:** Gemaess `SKILL_RULES.md` → **Quellenstrategie**
 - **Versionsnummern:** Entscheidungsbaum in `research/AUDIT_FLOW.md` beachten
 - **INDEX.md pflegen:** Jedes neue Paper muss im Index eingetragen werden
 - **Kein Commit:** Der Commit erfolgt ueber `/abschluss`

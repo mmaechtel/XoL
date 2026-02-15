@@ -69,11 +69,7 @@ Regeln:
 
 ## Phase 3 — Build pruefen
 
-```
-Bash: mkdocs build
-```
-
-Bei Fehlern: Korrigieren und erneut bauen. Erst nach erfolgreichem Build weiter.
+Gemaess `SKILL_RULES.md` → **Build pruefen**.
 
 ---
 

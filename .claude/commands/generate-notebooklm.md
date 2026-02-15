@@ -107,11 +107,7 @@ EN-Seiten als Arbeitsbasis — das Skript wird auf Deutsch generiert, aber EN is
 
 ### 0.3 Research-Papers laden
 
-```
-Read: research/<kat>/<datei>.md (fuer jedes identifizierte Paper)
-→ Nur Typ Research und Lektorat laden
-→ NICHT laden: AUDIT_*, FAKTENCHECK_* (sind Pruefprotokolle, kein Content)
-```
+Research-Papers laden gemaess `SKILL_RULES.md` → **Research-Papers laden**.
 
 Research-Papers liefern technische Tiefe und Hintergrund. Sie ergaenzen die Docs-Seiten, ersetzen sie nicht.
 
@@ -413,7 +409,7 @@ AUDIO OVERVIEW CUSTOMIZATION (in NotebookLM einfuegen):
 - **Kein Ueberschreiben**: Bestehende Dateien bleiben erhalten
 - **Quellen nur aus XoL**: Nur geladene Docs und Research verwenden, keine externen Quellen hinzuerfinden
 - **Debian-Kontext**: Referenzplattform ist Debian Stable/Testing — Befehle und Paketnamen entsprechend
-- **Versionsnummern**: Entscheidungsbaum aus research/AUDIT_FLOW.md beachten — im Zweifel weglassen
+- **Versionsnummern**: Gemaess `SKILL_RULES.md` → **Versionsnummern bereinigen** — im Zweifel weglassen
 - **Audio Customization**: Aussprachehilfen gehoeren NICHT in die NotebookLM-Datei, sondern in die Zusammenfassung
 
 ---

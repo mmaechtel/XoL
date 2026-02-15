@@ -69,37 +69,17 @@ Seite vollstaendig erfassen: Struktur, Ueberschriften, Abschnitte, Konfiguration
 
 ### 1.2 Bestehende Research-Papers laden
 
-```
-Glob: research/**/*<thema>*.md
-```
-
-Vorhandene Papers als Kontext laden (Research, Lektorat, vorherige Faktenchecks).
+Research-Papers laden gemaess `SKILL_RULES.md` → **Research-Papers laden**.
 
 ### 1.3 Pruefbare Behauptungen extrahieren
 
-Aus der EN-Seite alle pruefbaren Aussagen identifizieren (Kriterien aus AUDIT_FLOW.md):
-
-**Extrahieren:**
-
-- Konkrete Befehle und ihre beschriebene Wirkung
-- Konfigurationswerte und ihre behauptete Auswirkung
-- Kausalaussagen, Kompatibilitaetsaussagen, Vergleichsaussagen
-- Voraussetzungen und Abhaengigkeiten
-
-**Nicht pruefen:**
-
-- Allgemeinwissen, subjektive Wertungen, UI-Beschreibungen
-- Wiederholungen bereits anderswo gepruefter Aussagen
+Gemaess `SKILL_RULES.md` → **Behauptungen extrahieren**. Zusaetzliche Kriterien aus AUDIT_FLOW.md beachten.
 
 ### 1.4 Gegen Primaerquellen pruefen (parallele Subagents)
 
-Fuer thematische Gruppen von Behauptungen parallele Subagents starten:
+Gemaess `SKILL_RULES.md` → **Quellenstrategie** und **Parallele Verifikation (Subagents)**.
 
-- WebSearch fuer aktuelle Informationen
-- WebFetch fuer freigegebene Domains
-- Quellenaktualitaet nach Typ differenziert (Tabelle aus AUDIT_FLOW.md)
-- Jedes FAIL/WARN mit Direkt-Zitat aus der Quelle belegen
-- Nicht verifizierbare Claims als N/V markieren
+Zusaetzlich: Quellenaktualitaet nach Typ differenziert (Tabelle aus AUDIT_FLOW.md).
 
 ### 1.5 Audit-Tabelle erstellen
 
@@ -222,13 +202,11 @@ Lektorat-Befunde mit Zeilennummern dokumentieren und direkt korrigieren (EN + DE
 
 ### 4.3 Markdown-Check
 
-`docs/MARKDOWN_RULES.txt` lesen und systematisch auf BEIDE Seiten (EN + DE) anwenden. Verstoesse automatisch korrigieren (keine Rueckfrage noetig). Ergebnisse im Audit-Dokument unter "Markdown-Check" festhalten.
+Gemaess `SKILL_RULES.md` → **Markdown-Check**. Ergebnisse im Audit-Dokument unter "Markdown-Check" festhalten.
 
 ### 4.4 Build pruefen
 
-```
-Bash: mkdocs build
-```
+Gemaess `SKILL_RULES.md` → **Build pruefen**.
 
 ### 4.5 Fortschritts-Tracker aktualisieren
 
@@ -269,13 +247,10 @@ NAECHSTES KAPITEL: #<N> <dateiname>
 
 ## Hinweise
 
-- **EN first:** Audit immer auf der EN-Seite. DE-Angleichung erst nach Abschluss der Runde.
+- **Gemeinsame Regeln:** `SKILL_RULES.md` gilt (Quellenstrategie, EN first, Versionsnummern, Markdown-Check, Build)
 - **AUDIT_FLOW.md ist verbindlich:** Alle Regeln, Templates und Bewertungsskalen aus der Prozess-Definition gelten.
-- **Primaerquellen:** Nur offizielle Docs, Kernel-Docs, Arch Wiki, GitHub. Keine Foren/Blogs.
-- **Quellenaktualitaet:** Nach Informationstyp differenziert (Tabelle in AUDIT_FLOW.md).
 - **Belegpflicht:** FAIL/WARN-Findings brauchen Direkt-Zitate, nicht nur URLs. Sonst N/V.
 - **Referenzplattform:** Debian Stable/Testing. Distributionsabweichungen sind kein Fehler.
 - **Vollstaendigkeits-Bremse:** Fehlende Themen nur melden wenn fuer Kernziel unverzichtbar.
-- **Versionsnummern:** Entscheidungsbaum in AUDIT_FLOW.md beachten.
 - **Sitzungs-Management:** Output nach `research/<kat>/AUDIT_<datei>.md` persistieren bevor die Sitzung endet.
 - **Kein Commit:** Der Commit erfolgt ueber `/abschluss`.

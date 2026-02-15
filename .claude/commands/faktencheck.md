@@ -37,31 +37,11 @@ Read: docs/de/$ARGUMENTS  (wird spaeter angeglichen)
 
 ### 1.2 Research-Papers lesen
 
-```
-Glob: research/**/*<thema>*.md
-```
-
-Bestehende Research-Papers und Lektorate als Kontext laden. Nicht erneut recherchieren was bereits verifiziert wurde.
+Research-Papers laden gemaess `SKILL_RULES.md` → **Research-Papers laden**.
 
 ### 1.3 Pruefbare Behauptungen extrahieren
 
-Aus der EN-Seite alle pruefbaren Aussagen identifizieren:
-
-**Extrahieren:**
-
-- Konkrete Befehle und ihre beschriebene Wirkung
-- Konfigurationswerte und ihre behauptete Auswirkung
-- Kausalaussagen ("X bewirkt Y", "weil Z")
-- Kompatibilitaetsaussagen ("funktioniert mit/ohne Z")
-- Vergleichsaussagen ("X ist schneller/besser als Y")
-- Voraussetzungen und Abhaengigkeiten ("erfordert Paket X")
-
-**Nicht pruefen:**
-
-- Allgemeinwissen ("SSDs sind schneller als HDDs")
-- Subjektive Wertungen ("fuehlt sich fluessiger an")
-- Reine UI-Beschreibungen
-- Ueberschriften, Einleitungssaetze ohne faktischen Gehalt
+Gemaess `SKILL_RULES.md` → **Behauptungen extrahieren**.
 
 ### 1.4 Halluzinations-Erkennung
 
@@ -82,24 +62,13 @@ Besondere Aufmerksamkeit auf typische KI-Halluzinationsmuster:
 
 ### 2.1 Quellenstrategie
 
-Primaerquellen in Reihenfolge der Zuverlaessigkeit:
-
-1. Offizielle Projektdokumentation
-2. GitHub-Repositories (READMEs, Changelogs, Issues)
-3. Arch Wiki
-4. Debian-spezifisch (wiki, packages, manpages)
-5. Man-Pages
-
-**Quellenaktualitaet:** Nur ab 2024. Aeltere nur bei stabiler Information (Kernel-Docs, POSIX).
+Gemaess `SKILL_RULES.md` → **Quellenstrategie**.
 
 ### 2.2 Parallele Pruefung
 
-Fuer jede Behauptung (oder thematische Gruppe) einen Subagent starten:
+Gemaess `SKILL_RULES.md` → **Parallele Verifikation (Subagents)**.
 
-- WebSearch fuer aktuelle Informationen
-- WebFetch fuer freigegebene Domains
-- Jedes Finding mit Direkt-Zitat oder konkretem Datenpunkt belegen
-- Nicht verifizierbare Claims als N/V markieren
+Zusaetzlich: Jedes Finding mit Direkt-Zitat oder konkretem Datenpunkt belegen.
 
 ### 2.3 Bewertung
 
@@ -198,19 +167,11 @@ Fuer jedes freigegebene Finding:
 
 ### 5.2 DE-Seite anpassen
 
-DE-Seite an die korrigierte EN-Version angleichen:
-
-1. `docs/de/$ARGUMENTS` lesen
-2. Alle Korrekturen uebertragen (nicht 1:1 uebersetzen, sondern sinnerhaltend anpassen)
+Gemaess `SKILL_RULES.md` → **EN first — DE nachziehen**. `docs/de/$ARGUMENTS` entsprechend angleichen.
 
 ### 5.3 Versionsnummern bereinigen
 
-Entscheidungsbaum aus `research/AUDIT_FLOW.md` anwenden:
-
-- Harte Mindestanforderungen → behalten
-- Verhaltens-Grenzen → behalten + Verifikationsbefehl
-- Illustrative Versionen → entfernen oder Meta-Formulierung
-- Tabellen mit Versionen → behalten
+Gemaess `SKILL_RULES.md` → **Versionsnummern bereinigen**.
 
 ### 5.4 Quellenabschnitt ergaenzen
 
@@ -230,15 +191,11 @@ Nur offizielle, belastbare Quellen. Maximal 5-8 Eintraege.
 
 ### 6.1 Markdown-Check
 
-`docs/MARKDOWN_RULES.txt` lesen und systematisch auf beide Seiten (EN + DE) anwenden. Verstoesse automatisch korrigieren (keine Rueckfrage noetig).
+Gemaess `SKILL_RULES.md` → **Markdown-Check**.
 
 ### 6.2 Build pruefen
 
-```
-Bash: mkdocs build
-```
-
-Bei Fehlern: Korrigieren und erneut bauen.
+Gemaess `SKILL_RULES.md` → **Build pruefen**.
 
 ### 6.3 TODO.md aktualisieren
 
@@ -273,11 +230,7 @@ DATEIEN GEAENDERT:
 
 ## Hinweise
 
-- **EN first:** Pruefung immer auf der EN-Seite (Quellen sind englisch). DE wird nachgezogen.
-- **Primaerquellen:** Nur offizielle Docs, Kernel-Docs, Arch Wiki, GitHub. Keine Foren/Blogs.
-- **Quellenaktualitaet:** Nur ab 2024, aeltere nur bei stabiler Information.
+- **Gemeinsame Regeln:** `SKILL_RULES.md` gilt (Quellenstrategie, EN first, Versionsnummern, Markdown-Check, Build)
 - **Belegpflicht:** Jedes FAIL/WARN braucht ein Direkt-Zitat, nicht nur eine URL.
 - **Referenzplattform:** Debian Stable/Testing. Distributionsabweichungen sind kein Fehler.
-- **Versionsnummern:** Entscheidungsbaum in `research/AUDIT_FLOW.md` beachten.
-- **Markdown-Regeln:** `docs/MARKDOWN_RULES.txt` automatisch anwenden.
 - **Kein Commit:** Der Commit erfolgt ueber `/abschluss`.

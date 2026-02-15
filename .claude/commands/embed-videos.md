@@ -248,7 +248,7 @@ Falls die Seite bereits ein `<video>`-Tag im Kopfbereich hat: Neues Video darunt
 | Sprachtrennung | DE-Videos nur in `docs/de/`, EN-Videos nur in `docs/en/` — keine Kreuz-Verlinkung |
 | Poster | Falls Bild vorhanden: `poster`-Attribut gesetzt |
 | STATUS aktuell | Alle verarbeiteten Videos in `research/VIDEO_STATUS.md` |
-| Build | `mkdocs build` ausfuehren — keine Fehler |
+| Build | `SKILL_RULES.md` → **Build pruefen** |
 
 Bei Fehlern: Direkt korrigieren, dann Build wiederholen.
 

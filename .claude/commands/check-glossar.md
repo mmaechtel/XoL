@@ -176,7 +176,7 @@ Fuer jede freigegebene Verlinkung:
 
 ## Phase 7 — Markdown-Check
 
-`docs/MARKDOWN_RULES.txt` lesen und systematisch auf BEIDE Seiten (EN + DE) anwenden. Verstoesse automatisch korrigieren (keine Rueckfrage noetig).
+Gemaess `SKILL_RULES.md` → **Markdown-Check**.
 
 ---
 
@@ -184,11 +184,7 @@ Fuer jede freigegebene Verlinkung:
 
 ### 8.1 Build pruefen
 
-```
-Bash: mkdocs build
-```
-
-Bei Fehlern: Korrigieren und erneut bauen.
+Gemaess `SKILL_RULES.md` → **Build pruefen**.
 
 ### 8.2 Log aktualisieren
 
@@ -232,5 +228,5 @@ DATEIEN GEAENDERT:
 - **Erste Nennung:** Nur die erste Verwendung eines Begriffs auf einer Seite verlinken
 - **Keine Links in Code-Bloecken:** Begriffe innerhalb von Backticks oder Code Fences nicht verlinken
 - **Keine Links in Ueberschriften:** Glossar-Links gehoeren in den Fliesstext, nicht in H2/H3/H4
-- **Markdown-Fixes sind automatisch:** Verstoesse gegen `docs/MARKDOWN_RULES.txt` werden ohne Rueckfrage korrigiert
+- **Markdown-Check:** Gemaess `SKILL_RULES.md` → automatisch, ohne Rueckfrage
 - **Pfadtiefe beachten:** Glossar-Links muessen die Verzeichnistiefe der Seite beruecksichtigen (siehe Phase 6.2)
