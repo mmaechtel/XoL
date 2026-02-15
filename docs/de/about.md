@@ -14,7 +14,7 @@ Bei Fragen, Anregungen oder Feedback können Sie den Autor auf verschiedenen Weg
 
 ## Lizenz
 
-Die Inhalte dieser Dokumentation stehen unter der [CC0 1.0 Universal](https://creativecommons.org/publicdomain/zero/1.0/deed.de) Lizenz (Public Domain). Sie dürfen frei verwendet, kopiert, verändert und weiterverbreitet werden — ohne Einschränkungen und ohne Namensnennung.
+Die Inhalte dieser Dokumentation stehen unter der [Creative Commons Attribution 4.0 International](https://creativecommons.org/licenses/by/4.0/deed.de) Lizenz (CC BY 4.0). Sie dürfen frei verwendet, kopiert, verändert und weiterverbreitet werden — unter der Bedingung, dass eine angemessene Namensnennung erfolgt.
 
 ## Datenschutz
 

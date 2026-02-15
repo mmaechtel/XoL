@@ -14,7 +14,7 @@ If you have questions, suggestions, or feedback, you can reach the author in var
 
 ## License
 
-The contents of this documentation are released under the [CC0 1.0 Universal](https://creativecommons.org/publicdomain/zero/1.0/) license (Public Domain). You are free to use, copy, modify, and redistribute them without restrictions and without attribution.
+The contents of this documentation are released under the [Creative Commons Attribution 4.0 International](https://creativecommons.org/licenses/by/4.0/) license (CC BY 4.0). You are free to use, copy, modify, and redistribute them — provided that appropriate credit is given.
 
 ## Privacy
 
