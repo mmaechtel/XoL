@@ -1,5 +1,17 @@
 #!/bin/bash
 
+# Create video symlink if missing (OS-dependent path)
+if [ ! -L docs/assets/video ]; then
+    case "$(uname)" in
+        Linux)  VIDEO_SRC="/mnt/videos/XoL/video" ;;
+        Darwin) VIDEO_SRC="/Volumes/video/XoL/video" ;;
+    esac
+    if [ -d "$VIDEO_SRC" ]; then
+        ln -s "$VIDEO_SRC" docs/assets/video
+        echo "Created symlink: docs/assets/video -> $VIDEO_SRC"
+    fi
+fi
+
 # Check video symlink target is accessible (NFS/SMB share mounted?)
 if [ -L docs/assets/video ] && [ ! -d docs/assets/video/ ]; then
     echo "⚠  WARNING: docs/assets/video symlink target not accessible!"

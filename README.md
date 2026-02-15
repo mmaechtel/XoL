@@ -2,29 +2,10 @@
 
 Bilingual documentation site (German/English) for running [X-Plane 12](https://www.x-plane.com/) on Linux. Built with [MkDocs Material](https://squidfunk.github.io/mkdocs-material/), hosted at [emvisio.com](https://emvisio.com/).
 
-## Prerequisites
-
-- **pyenv** — Python version management. The `.python-version` in the repo root enforces the correct Python version automatically.
-- **pip** — Python package manager (comes with pyenv-installed Python).
-
 ## Setup
 
 ```bash
-# 1. Install pyenv (if not already installed)
-# See https://github.com/pyenv/pyenv#installation
-
-# 2. Install the Python version specified in .python-version
-pyenv install
-
-# 3. Install dependencies
-pip install mkdocs \
-            mkdocs-material \
-            mkdocs-material-extensions \
-            mkdocs-static-i18n \
-            mkdocs-git-revision-date-localized-plugin \
-            mkdocs-publisher \
-            pymdown-extensions \
-            pillow
+pip install -r requirements.txt
 ```
 
 ## Usage

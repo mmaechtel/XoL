@@ -12,20 +12,11 @@ XoL (X-Plane on Linux) ist eine bilinguale (Deutsch/Englisch) Dokumentationsseit
 - **Site bauen:** `mkdocs build` (Output: `site/`)
 - **Deploy:** `./update_emvisio.sh <hostname>` — Dry Run mit `--dry`
 - **RSS generieren:** `python scripts/generate_rss.py`
-- **Python:** via `pyenv` — die `.python-version` im Repo-Root erzwingt automatisch die richtige Version
+- **Python-Abhängigkeiten:** `pip install -r requirements.txt`
 
 ### Pip-Abhängigkeiten
 
-```
-mkdocs
-mkdocs-material
-mkdocs-material-extensions
-mkdocs-static-i18n
-mkdocs-git-revision-date-localized-plugin
-mkdocs-publisher
-pymdown-extensions
-pillow
-```
+Definiert in `requirements.txt`. Installation: `pip install -r requirements.txt`
 
 ## Architektur
 

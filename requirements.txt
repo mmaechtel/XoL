@@ -1,0 +1,11 @@
+mkdocs
+mkdocs-material
+mkdocs-material-extensions
+mkdocs-static-i18n
+mkdocs-git-revision-date-localized-plugin
+mkdocs-publisher
+pymdown-extensions
+pillow
+python-frontmatter
+jinja2
+cairosvg
