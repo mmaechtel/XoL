@@ -59,6 +59,7 @@ Beim Einholen einer IFR-Clearance (Instrument Flight Rules) muss sich der Pilot 
 
 
 ## Wie geht's weiter?
-Wenn man die Clearance korrekt zurückgelesen hat geht's weiter mit:
 
-* **Funkfrequenzen für Appron/Ground** - steht auf der Airport Karte (10-9) 
+Wenn man die Clearance korrekt zurückgelesen hat, geht's weiter mit:
+
+* [Pushback & Taxi](pushback_taxi.md) – Pushback und Taxi zur Startbahn

@@ -58,6 +58,7 @@ When obtaining an IFR clearance (Instrument Flight Rules), the pilot must prepar
 **Note**: Without a valid Hoppie code or if required fields are missing, sending the request is not possible.
 
 ## What's next?
+
 Once the clearance has been correctly read back, continue with:
 
-* **Radio frequencies for Ground** - found on the airport chart (10-9) 
+* [Pushback & Taxi](pushback_taxi.md) – request pushback and taxi to the runway

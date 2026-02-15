@@ -58,6 +58,9 @@ theme:
 
   language: de
 
+extra_css:
+  - stylesheets/nav.css
+
 plugins:
   - social
   - search:
@@ -144,12 +147,20 @@ plugins:
                 - Szenerie:
                     - XRoad: de/addon/xroad.md
                     - AEP: de/addon/aep.md
+                - Via KVM:
+                    - My FS Flights: de/addon/myfs_flights.md
             - Flugbetrieb:
                 - Übersicht: de/flight_operations/overview.md
                 - Wetter: de/flight_operations/weather.md
-                - ATC: 
+                - ATC:
                     - Clearance: de/flight_operations/clearance.md
-                - VATSim: 
+                    - Pushback & Taxi: de/flight_operations/pushback_taxi.md
+                    - Start: de/flight_operations/takeoff.md
+                    - Abflug & Steigflug: de/flight_operations/departure.md
+                    - Streckenflug: de/flight_operations/enroute.md
+                    - Anflug: de/flight_operations/approach.md
+                    - Landung & Abstellen: de/flight_operations/landing.md
+                - VATSim:
                     - Übersicht: de/flight_operations/vatsim.md
             - Glossar: de/glossary.md
             - Über: de/about.md
@@ -224,12 +235,20 @@ plugins:
                 - Scenery:
                     - XRoad: en/addon/xroad.md
                     - AEP: en/addon/aep.md
+                - Via KVM:
+                    - My FS Flights: en/addon/myfs_flights.md
             - Flight Operations:
                 - Overview: en/flight_operations/overview.md
                 - Weather: en/flight_operations/weather.md
-                - ATC: 
+                - ATC:
                     - Clearance: en/flight_operations/clearance.md
-                - VATSim: 
+                    - Pushback & Taxi: en/flight_operations/pushback_taxi.md
+                    - Takeoff: en/flight_operations/takeoff.md
+                    - Departure & Climb: en/flight_operations/departure.md
+                    - En Route: en/flight_operations/enroute.md
+                    - Approach: en/flight_operations/approach.md
+                    - Landing & Taxi In: en/flight_operations/landing.md
+                - VATSim:
                     - Intro: en/flight_operations/vatsim.md
             - Glossary: en/glossary.md
             - About: en/about.md
