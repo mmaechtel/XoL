@@ -9,7 +9,6 @@ DataRefTool (DRT) is a development and debugging tool for [X-Plane](../glossary.
 - **License:** v1 was open source (MIT, [GitHub](https://github.com/leecbaker/datareftool)); v2 is closed source
 - **Platforms:** Windows, macOS, Linux (native binaries)
 - **Compatibility:** X-Plane 12.1+ (v2); X-Plane 10/11 (v1)
-- **Price:** Free
 
 The [plugin](../glossary.md#plugin) has existed since X-Plane 10. Version 2 was released as a closed-source rewrite for X-Plane 12 and uses the dataref enumeration API (XPLM400) introduced in X-Plane 12.04.
 

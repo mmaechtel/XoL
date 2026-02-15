@@ -33,15 +33,14 @@ Diese Dokumentation ist ein offenes Projekt. Verbesserungen oder Ergänzungen k�
 ## Letzte Änderungen
 
 ### 2026-02-15
-- Neue Addon-Seiten: [SGES](addon/sges.md), [KabinXP](addon/kabinxp.md), [LST](addon/lst.md), [LinuxTrack](addon/linuxtrack.md), [XLinSpeak](addon/xlinspeak.md), [WINCTRL](addon/winctrl.md), [TerrainRadar](addon/terrainradar.md), [NOAA Weather](addon/noaa_weather.md)
-- Neue Addon-Seiten (Via KVM): [MobiFlight](addon/mobiflight.md), [SayIntentions.AI](addon/sayintentions.md)
+- Neue Addon-Seiten: [SGES](addon/sges.md), [KabinXP](addon/kabinxp.md), [LST](addon/lst.md), [LinuxTrack](addon/linuxtrack.md), [XLinSpeak](addon/xlinspeak.md), [WINCTRL](addon/winctrl.md), [TerrainRadar](addon/terrainradar.md), [NOAA Weather](addon/noaa_weather.md), [MobiFlight](addon/mobiflight.md), [SayIntentions.AI](addon/sayintentions.md)
+- Neue Sounds-Kategorie: [KOSP Project](addon/kosp_project.md), [Mango Studios](addon/mango_studios.md)
 - Neue Seite [Performance-Grundlagen](performance_overview.md)
-- ATC-Sektion: 6 neue Flugphasen-Seiten ([Pushback & Taxi](flight_operations/pushback_taxi.md), [Start](flight_operations/takeoff.md), [Abflug & Steigflug](flight_operations/departure.md), [Streckenflug](flight_operations/enroute.md), [Anflug](flight_operations/approach.md), [Landung & Abstellen](flight_operations/landing.md))
-- [ToLiss-Ökosystem](addon/toliss_ecosystem.md) umstrukturiert, Videos eingebettet (DE + EN)
-- Addon-Sektion ausgebaut: [FlyWithLua](addon/flywithlua.md), [AviTab](addon/avitab.md), [XCamera](addon/xcamera.md), [LiveTraffic](addon/livetraffic.md), [Better Pushback](addon/betterpushback.md), [AutoDGS](addon/autodgs.md), [openSAM](addon/opensam.md), [AutoGate](addon/autogate.md), [DataRefTool](addon/datareftool.md), [Little XpConnect](addon/littlexpconnect.md), [XTextureExtractor](addon/xtextureextractor.md), [SkunkCrafts Updater](addon/skunkcrafts_updater.md), [XPPython3](addon/xppython3.md), [ToLiss-Ökosystem](addon/toliss_ecosystem.md), [XGS](addon/xgs.md), [Follow the Greens](addon/followthegreens.md)
-- Navigation überarbeitet: Addon-Kategorien flachgezogen, Ortho Streaming und FlyWithLua-Skripte als eigene Kategorien
-- Addon-Seiten überarbeitet: Querverweise zwischen verwandten Plugins ergänzt, Übersetzungskorrekturen (DE), inhaltliche Korrekturen (Flugzeugbezeichnungen, Versionsangaben), veraltete Formulierungen aktualisiert
-- [ToLiss-Ökosystem](addon/toliss_ecosystem.md) ergänzt: Carda Realistic Engine Mods (hochdetaillierte 3D-Triebwerke für A319/A320/A321)
+- ATC-Sektion: 6 Flugphasen-Seiten ([Pushback & Taxi](flight_operations/pushback_taxi.md), [Start](flight_operations/takeoff.md), [Abflug & Steigflug](flight_operations/departure.md), [Streckenflug](flight_operations/enroute.md), [Anflug](flight_operations/approach.md), [Landung & Abstellen](flight_operations/landing.md))
+- [ToLiss-Ökosystem](addon/toliss_ecosystem.md) umstrukturiert, Videos eingebettet
+- Bestehende Addon-Seiten überarbeitet: Querverweise, Korrekturen, Preise und redundante Linux-Hinweise entfernt
+- Navigation: Kategorien flachgezogen, Sounds-Kategorie hinzugefügt
+- [FlyWithLua](addon/flywithlua.md): Allgemeine Skript-Installationsanleitung ergänzt
 
 ### 2026-02-14
 - Neue Seite [System-Tuning Einführung](systemtuning_intro.md), Videos eingebettet (DE + EN)

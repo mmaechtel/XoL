@@ -9,7 +9,6 @@ MobiFlight ist eine Open-Source-Middleware für den Bau von Home-Cockpits. Die S
 - **GitHub:** [MobiFlight/MobiFlight-Connector](https://github.com/MobiFlight/MobiFlight-Connector)
 - **Plattformen:** Nur Windows 10+ (.NET Framework 4.8, Windows Forms)
 - **Kompatibilität:** X-Plane 11/12, MSFS 2020/2024, Prepar3D
-- **Preis:** Kostenlos (Open Source)
 
 ## Funktionsumfang
 

@@ -9,7 +9,6 @@ Better Pushback ist ein [Plugin](../glossary.md#plugin) für [X-Plane](../glossa
 - **Lizenz:** CDDL 1.0 (Open Source)
 - **Plattformen:** Windows, macOS, Linux (native Binaries)
 - **Kompatibilität:** X-Plane 11 und X-Plane 12
-- **Preis:** Kostenlos
 
 Das Original-Repository wird nicht mehr gepflegt. Der olivierbutler-Fork (BetterPusbackMod) ist der empfohlene Download für X-Plane 12, mit Funktionserweiterungen wie manuellem Push-Modus und Magic-Squares-Shortcuts.
 

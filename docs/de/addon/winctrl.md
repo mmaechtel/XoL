@@ -9,7 +9,6 @@ WINCTRL ist ein natives [Plugin](../glossary.md#plugin), das Winwing-Cockpitpane
 - **Download:** [X-Plane.org](https://forums.x-plane.org/files/file/95987-winctrl-plugin-for-x-plane-mac-linux-windows/)
 - **Plattformen:** Linux, macOS, Windows
 - **Kompatibilität:** X-Plane 12
-- **Preis:** Kostenlos (Open Source)
 
 Das Plugin kommuniziert direkt über USB-HID mit der Hardware: es liest Tasten, Drehregler und Schalter aus und steuert im Gegenzug LCD-Displays, LED-Beleuchtung und Annunciatoren. Achsen (Schubhebel, Joystick) werden bewusst X-Planes interner Joystick-Konfiguration überlassen. Die Entwicklung ist sehr aktiv mit regelmäßigen Releases.
 

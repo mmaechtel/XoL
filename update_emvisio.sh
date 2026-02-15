@@ -9,7 +9,7 @@ DRY_RUN=false
 SKIP_HTML=false
 
 show_help() {
-    echo "Usage: $0 <hostname> [--dry] [--skip-html]"
+    echo "Usage: $0 [user@]<hostname> [--dry] [--skip-html]"
     echo "  -h, --help   Show this help message"
     echo "  --dry        Dry run (no files will be transferred)"
     echo "  --skip-html  Skip copying extra HTML files (maps, vatsim)"
@@ -26,14 +26,11 @@ for arg in "$@"; do
 done
 
 if [ -z "$REMOTE_HOST" ]; then
-    echo "Usage: $0 <hostname> [--dry] [--skip-html]"
+    echo "Usage: $0 [user@]<hostname> [--dry] [--skip-html]"
     echo "  --dry        Dry run (no files will be transferred)"
     echo "  --skip-html  Skip copying extra HTML files (maps, vatsim)"
     exit 1
 fi
-
-# Configuration
-REMOTE_USER="${DEPLOY_USER:-$(whoami)}"
 REMOTE_PATH="/var/www/html"
 LOCAL_PATH="./site"
 
@@ -74,9 +71,9 @@ fi
 # Sync to remote
 if [ "$DRY_RUN" = true ]; then
     echo "Performing dry run (no files will be transferred):"
-    rsync -avzn ./site/ ${REMOTE_USER}@${REMOTE_HOST}:${REMOTE_PATH}/
+    rsync -avzn ./site/ ${REMOTE_HOST}:${REMOTE_PATH}/
 else
     echo "Syncing site to ${REMOTE_HOST}..."
-    rsync -avz ./site/ ${REMOTE_USER}@${REMOTE_HOST}:${REMOTE_PATH}/
+    rsync -avz ./site/ ${REMOTE_HOST}:${REMOTE_PATH}/
     echo "Sync completed successfully!"
 fi

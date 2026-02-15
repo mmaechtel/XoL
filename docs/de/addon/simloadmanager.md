@@ -8,7 +8,6 @@ SimLoad Manager ist ein [FlyWithLua](flywithlua.md)-Skript, das realistisches Pa
 - **Download:** [X-Plane.org](https://forums.x-plane.org/files/file/93858-simload-manager-realistic-pax-cargo-fuel-ground-operations/)
 - **Plattformen:** Windows, macOS, Linux (reines Lua)
 - **Kompatibilität:** X-Plane 12
-- **Preis:** Kostenlos
 - **Abhängigkeiten:** [FlyWithLua NG+](flywithlua.md), SimBrief-Konto (erforderlich), [SGES](https://forums.x-plane.org/files/file/62296-simple-ground-equipment-services-low-tech-services/) (optional, für visuelles Bodenequipment)
 
 Das Skript wird aktiv gepflegt und häufig aktualisiert. Es funktioniert mit jedem Flugzeug — keine flugzeugspezifische Konfiguration nötig.
@@ -44,10 +43,6 @@ Einstellungen werden in `FlyWithLua/Modules/simload_settings.txt` gespeichert (w
 !!! warning "Update von Versionen vor v1.9.0"
 
     Vor dem Update `FlyWithLua/Modules/simload_settings.txt` löschen. Die Datei wird beim Start automatisch neu erstellt. Ohne Löschung können falsche Timings oder Interface-Fehler auftreten.
-
-### Linux-Hinweise
-
-Keine Linux-spezifischen Probleme bekannt. Das Skript ist reines Lua und läuft auf allen von FlyWithLua unterstützten Plattformen identisch.
 
 ## Quellen
 

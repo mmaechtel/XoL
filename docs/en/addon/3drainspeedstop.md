@@ -8,7 +8,6 @@
 - **Download:** [X-Plane.org](https://forums.x-plane.org/files/file/88602-3d-rain-stop-lua-script-xp12/)
 - **Platforms:** Windows, macOS, Linux (pure Lua)
 - **Compatibility:** X-Plane 12
-- **Price:** Free
 - **Dependency:** [FlyWithLua NG+](flywithlua.md)
 
 The download contains two scripts — only one should be active at a time:
@@ -34,10 +33,6 @@ At cruise speed, X-Plane 12's 3D rain particles streak across the screen unreali
 **Download:** [X-Plane.org](https://forums.x-plane.org/files/file/88602-3d-rain-stop-lua-script-xp12/)
 
 Place **one** of the two `.lua` files into `Resources/plugins/FlyWithLua/Scripts/`. Do not use both scripts simultaneously.
-
-### Linux Notes
-
-No Linux-specific issues are known. The script is a plain Lua text file and runs identically on all platforms supported by FlyWithLua.
 
 ## Sources
 

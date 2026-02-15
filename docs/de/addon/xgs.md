@@ -8,7 +8,6 @@ XGS (Landing Speed Plugin Reloaded) ist ein eigenständiges [Plugin](../glossary
 - **Repository:** [github.com/hotbso/xgs](https://github.com/hotbso/xgs) (Open Source, GPL-2.0)
 - **Plattformen:** Windows, macOS, Linux (native Binaries)
 - **Kompatibilität:** [X-Plane](../glossary.md#x-plane) 12
-- **Preis:** Kostenlos
 
 XGS ist eine Weiterentwicklung des ursprünglichen Landing Speed Plugins und wird aktiv gepflegt.
 

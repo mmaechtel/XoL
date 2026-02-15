@@ -136,6 +136,9 @@ plugins:
                     - SimScreen Overlay: de/addon/simscreenoverlay.md
                     - SGES: de/addon/sges.md
                 - ToLiss-Ökosystem: de/addon/toliss_ecosystem.md
+                - Sounds:
+                    - KOSP Project: de/addon/kosp_project.md
+                    - Mango Studios: de/addon/mango_studios.md
                 - Cockpit & Kamera:
                     - AviTab: de/addon/avitab.md
                     - XCamera: de/addon/xcamera.md
@@ -242,6 +245,9 @@ plugins:
                     - SimScreen Overlay: en/addon/simscreenoverlay.md
                     - SGES: en/addon/sges.md
                 - ToLiss Ecosystem: en/addon/toliss_ecosystem.md
+                - Sounds:
+                    - KOSP Project: en/addon/kosp_project.md
+                    - Mango Studios: en/addon/mango_studios.md
                 - Cockpit & Camera:
                     - AviTab: en/addon/avitab.md
                     - XCamera: en/addon/xcamera.md

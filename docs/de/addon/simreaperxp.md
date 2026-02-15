@@ -8,7 +8,6 @@ SimReaperXP ist ein [FlyWithLua](flywithlua.md)-Skript, das FPS in X-Plane 12 zu
 - **Repository:** [github.com/alstr/simreaperxp](https://github.com/alstr/simreaperxp) (MIT-Lizenz)
 - **Plattformen:** Windows, macOS, Linux (reines Lua)
 - **Kompatibilität:** X-Plane 12
-- **Preis:** Kostenlos (Open Source)
 - **Abhängigkeit:** [FlyWithLua NG+](flywithlua.md)
 
 !!! warning "Offizieller Download nur über GitHub"
@@ -35,10 +34,6 @@ Leistungshungrige Payware-Flugzeuge (Hot Start CL650, ToLiss A340) an detaillier
 **Download:** [GitHub Releases](https://github.com/alstr/simreaperxp)
 
 `simreaperxp.lua` in `Resources/plugins/FlyWithLua/Scripts/` ablegen.
-
-### Linux-Hinweise
-
-Keine Linux-spezifischen Probleme bekannt. Das Skript ist eine reine Lua-Textdatei und läuft auf allen von FlyWithLua unterstützten Plattformen identisch.
 
 ## Quellen
 

@@ -8,7 +8,6 @@ SGES is a [FlyWithLua](flywithlua.md) script that adds comprehensive ground hand
 - **Download:** [forums.x-plane.org](https://forums.x-plane.org/files/file/62296-simple-ground-equipment-services-low-tech-services/)
 - **Platforms:** Windows, macOS, Linux (pure Lua)
 - **Compatibility:** X-Plane 12
-- **Price:** Free (freeware, closed source)
 - **Dependency:** [FlyWithLua NG+](flywithlua.md)
 - **Updates:** Via [SkunkCrafts Updater](skunkcrafts_updater.md)
 
@@ -39,10 +38,6 @@ Place the SGES files into `Resources/plugins/FlyWithLua/Scripts/`. The included 
 After first launch, assign a keyboard key to toggle the SGES menu via `Settings > Keyboard`. Generate the airport cache via `Plugins > FlyWithLua > Macros > SGES refresh`.
 
 SGES ships with five PDF manuals covering general use, animated passengers, arresting systems, and marshaller functions.
-
-### Linux Notes
-
-No Linux-specific issues are known. The script is pure Lua with OBJ8 3D models and runs identically on all platforms supported by FlyWithLua.
 
 ## Sources
 

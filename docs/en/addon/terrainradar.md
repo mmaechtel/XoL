@@ -8,7 +8,6 @@ TerrainRadar is a native [plugin](../glossary.md#plugin) that provides an EGPWS 
 - **Download:** [X-Plane.org](https://forums.x-plane.org/files/file/37864-terrain-radar-vertical-situation-display/)
 - **Platforms:** Windows, macOS, Linux (native binaries)
 - **Compatibility:** X-Plane 12
-- **Price:** Free (closed source)
 
 The plugin operates in two modes: for supported aircraft, it integrates directly into the navigation display (TERR button); for all other aircraft, a freely positionable overlay window is available.
 
@@ -34,10 +33,6 @@ Terrain awareness is safety-critical during approaches in mountainous terrain an
 **Download:** [X-Plane.org](https://forums.x-plane.org/files/file/37864-terrain-radar-vertical-situation-display/)
 
 Extract the `TerrainRadar` folder to `Resources/plugins/`.
-
-### Linux Notes
-
-The Linux binary (`lin.xpl`) is included in the download. No Linux-specific issues are known.
 
 ## Sources
 

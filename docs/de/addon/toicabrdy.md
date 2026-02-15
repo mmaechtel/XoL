@@ -8,7 +8,6 @@ TOI Cabin Ready ist ein [FlyWithLua](flywithlua.md)-Skript, das automatisch die 
 - **Download:** [X-Plane.org](https://forums.x-plane.org/files/file/91876-toliss-airbus-cabin-ready-automatic-flywithlua-script/)
 - **Plattformen:** Windows, macOS, Linux (reines Lua)
 - **Kompatibilität:** X-Plane 12
-- **Preis:** Kostenlos
 - **Abhängigkeit:** [FlyWithLua NG+](flywithlua.md)
 
 Das Skript automatisiert zwei Cabin-Ready-Auslöser:
@@ -34,10 +33,6 @@ Der FWD CALL für Cabin Ready ist eine Routineaufgabe, die den Cockpit-Ablauf un
 **Download:** [X-Plane.org](https://forums.x-plane.org/files/file/91876-toliss-airbus-cabin-ready-automatic-flywithlua-script/)
 
 Die `.lua`-Datei in `Resources/plugins/FlyWithLua/Scripts/` ablegen.
-
-### Linux-Hinweise
-
-Keine Linux-spezifischen Probleme bekannt. Das Skript ist eine reine Lua-Textdatei und läuft auf allen von FlyWithLua unterstützten Plattformen identisch.
 
 ## Quellen
 

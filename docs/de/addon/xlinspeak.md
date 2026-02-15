@@ -9,7 +9,6 @@ XLinSpeak ist ein Linux-only [Plugin](../glossary.md#plugin), das Text-to-Speech
 - **Original:** [github.com/uglyDwarf/x-plane_plugins](https://github.com/uglyDwarf/x-plane_plugins/tree/master/XLinSpeak)
 - **Plattform:** Nur Linux
 - **Kompatibilität:** X-Plane 12 (sparker256-Fork)
-- **Preis:** Kostenlos
 
 X-Plane 12 verwendet für das eingebaute ATC voraufgezeichnete Audiodateien, die auch unter Linux funktionieren. XLinSpeak wird primär für **Plugin-generierte Sprache** benötigt — etwa XChecklist-Ansagen, 124thATC oder andere Plugins, die `XPLMSpeakString()` aufrufen.
 

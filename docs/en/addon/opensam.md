@@ -8,7 +8,6 @@ openSAM is an open-source replacement for the commercial SAM [plugin](../glossar
 - **Repository:** [github.com/hotbso/openSAM](https://github.com/hotbso/openSAM) (open source, LGPL-2.1)
 - **Platforms:** Windows, macOS, Linux (native binaries)
 - **Compatibility:** [X-Plane](../glossary.md#x-plane) 11 and X-Plane 12 (separate builds)
-- **Price:** Free
 
 openSAM is actively maintained and is the recommended successor to the commercial SAM plugin, which is no longer loaded starting with X-Plane 12.4. openSAM reads the original `sam.xml` configuration files from sceneries and serves as a drop-in replacement.
 

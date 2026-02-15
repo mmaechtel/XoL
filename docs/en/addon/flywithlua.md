@@ -8,7 +8,6 @@ FlyWithLua NG+ is a Lua scripting engine for [X-Plane](../glossary.md#x-plane) 1
 - **Repository:** [github.com/X-Friese/FlyWithLua](https://github.com/X-Friese/FlyWithLua) (open source, MIT license)
 - **Platforms:** Windows, macOS, Linux (native binaries)
 - **Compatibility:** X-Plane 12 (NG+ Edition), X-Plane 11 (older NG Edition)
-- **Price:** Free
 
 The [plugin](../glossary.md#plugin) has been in development since X-Plane 9 and is one of the most widely used X-Plane plugins. Many other plugins such as 3jFPS or AutoATC require FlyWithLua as a dependency.
 

@@ -8,7 +8,6 @@ SGES ist ein [FlyWithLua](flywithlua.md)-Skript, das umfangreiche Bodenabfertigu
 - **Download:** [forums.x-plane.org](https://forums.x-plane.org/files/file/62296-simple-ground-equipment-services-low-tech-services/)
 - **Plattformen:** Windows, macOS, Linux (reines Lua)
 - **Kompatibilität:** X-Plane 12
-- **Preis:** Kostenlos (Freeware, Closed Source)
 - **Abhängigkeit:** [FlyWithLua NG+](flywithlua.md)
 - **Updates:** Über [SkunkCrafts Updater](skunkcrafts_updater.md)
 
@@ -39,10 +38,6 @@ Die SGES-Dateien in `Resources/plugins/FlyWithLua/Scripts/` ablegen. Die mitgeli
 Nach dem ersten Start eine Taste für das SGES-Menü zuweisen über `Settings > Keyboard`. Den Flughafen-Cache über `Plugins > FlyWithLua > Macros > SGES refresh` generieren.
 
 SGES wird mit fünf PDF-Handbüchern geliefert, die allgemeine Nutzung, animierte Passagiere, Fangsysteme und Marshaller-Funktionen abdecken.
-
-### Linux-Hinweise
-
-Keine Linux-spezifischen Probleme bekannt. Das Skript ist reines Lua mit OBJ8-3D-Modellen und läuft auf allen von FlyWithLua unterstützten Plattformen identisch.
 
 ## Quellen
 

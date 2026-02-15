@@ -8,7 +8,6 @@ The [Airport Enhancement Package (AEP)](../glossary.md#airport-enhancement-packa
 - **Website:** [x-codrdesigns.com/xp-aep](https://www.x-codrdesigns.com/xp-aep)
 - **Platforms:** Windows, macOS, Linux
 - **Compatibility:** X-Plane 12
-- **Price:** Free
 
 ## Features
 

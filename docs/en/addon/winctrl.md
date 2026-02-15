@@ -9,7 +9,6 @@ WINCTRL is a native [plugin](../glossary.md#plugin) that connects Winwing cockpi
 - **Download:** [X-Plane.org](https://forums.x-plane.org/files/file/95987-winctrl-plugin-for-x-plane-mac-linux-windows/)
 - **Platforms:** Linux, macOS, Windows
 - **Compatibility:** X-Plane 12
-- **Price:** Free (open source)
 
 The plugin communicates directly with the hardware via USB HID: it reads button presses, knob rotations, and switch states while driving LCD screens, LED backlighting, and annunciator lights in return. Axes (throttle levers, joystick) are deliberately left to X-Plane's built-in joystick configuration. Development is very active with frequent releases.
 

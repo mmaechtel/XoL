@@ -9,7 +9,6 @@ AutoGate ist ein [Plugin](../glossary.md#plugin) für [X-Plane](../glossary.md#x
 - **Lizenz:** Plugin-Code LGPL-2.1, 3D-Objekte/Texturen CC-BY 3.0
 - **Plattformen:** Windows, macOS, Linux (native Binaries)
 - **Kompatibilität:** X-Plane 12 (hotbso-Fork)
-- **Preis:** Kostenlos
 
 !!! warning "Legacy-Plugin"
 

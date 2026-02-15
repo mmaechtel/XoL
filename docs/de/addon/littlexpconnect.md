@@ -8,7 +8,6 @@ Little XpConnect ist ein [Plugin](../glossary.md#plugin) für [X-Plane](../gloss
 - **Repository:** [github.com/albar965/littlexpconnect](https://github.com/albar965/littlexpconnect) (Open Source, GPL-3.0)
 - **Plattformen:** Windows, macOS, Linux (native Binaries)
 - **Kompatibilität:** X-Plane 11 und X-Plane 12
-- **Preis:** Kostenlos
 
 Das Plugin wird aktiv gepflegt und ist im Little-Navmap-Download-Archiv enthalten — es wird nicht separat heruntergeladen.
 

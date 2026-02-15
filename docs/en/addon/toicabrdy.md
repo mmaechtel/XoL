@@ -8,7 +8,6 @@ TOI Cabin Ready is a [FlyWithLua](flywithlua.md) script that automatically sends
 - **Download:** [X-Plane.org](https://forums.x-plane.org/files/file/91876-toliss-airbus-cabin-ready-automatic-flywithlua-script/)
 - **Platforms:** Windows, macOS, Linux (pure Lua)
 - **Compatibility:** X-Plane 12
-- **Price:** Free
 - **Dependency:** [FlyWithLua NG+](flywithlua.md)
 
 The script automates two cabin-ready triggers:
@@ -34,10 +33,6 @@ The FWD CALL for cabin ready is a routine task that interrupts cockpit flow — 
 **Download:** [X-Plane.org](https://forums.x-plane.org/files/file/91876-toliss-airbus-cabin-ready-automatic-flywithlua-script/)
 
 Place the `.lua` file into `Resources/plugins/FlyWithLua/Scripts/`.
-
-### Linux Notes
-
-No Linux-specific issues are known. The script is a plain Lua text file and runs identically on all platforms supported by FlyWithLua.
 
 ## Sources
 

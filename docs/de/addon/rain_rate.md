@@ -8,7 +8,6 @@ Dynamic Rain Rate ist ein [FlyWithLua](flywithlua.md)-Skript, das die Regeninten
 - **Download:** [X-Plane.org](https://forums.x-plane.org/files/file/97500-dynamic-rain-rate/)
 - **Plattformen:** Windows, macOS, Linux (reines Lua)
 - **Kompatibilität:** X-Plane 12
-- **Preis:** Kostenlos
 - **Abhängigkeit:** [FlyWithLua NG+](flywithlua.md)
 
 ## Funktionsumfang
@@ -26,10 +25,6 @@ X-Plane 12 verwendet eine feste Regenrate unabhängig von der Flugzeuggeschwindi
 **Download:** [X-Plane.org](https://forums.x-plane.org/files/file/97500-dynamic-rain-rate/)
 
 Die `.lua`-Datei in `Resources/plugins/FlyWithLua/Scripts/` ablegen.
-
-### Linux-Hinweise
-
-Keine Linux-spezifischen Probleme bekannt. Das Skript ist eine reine Lua-Textdatei und läuft auf allen von FlyWithLua unterstützten Plattformen identisch.
 
 ## Quellen
 

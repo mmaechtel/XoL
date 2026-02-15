@@ -8,7 +8,6 @@ SayIntentions.AI is an AI-based Air Traffic Control (ATC) system for flight simu
 - **Website:** [sayintentions.ai](https://www.sayintentions.ai/)
 - **Platforms:** Windows 10/11 only
 - **Compatibility:** X-Plane 11/12, MSFS 2020/2024, Prepar3D v5/v6
-- **Price:** Premium $18.95/month (or ~$16.25/month billed annually); Entourage (no ATC) $49.95 one-time; 24h free trial
 
 ## Features
 

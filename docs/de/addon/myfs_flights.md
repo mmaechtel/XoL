@@ -8,7 +8,6 @@ My FS Flights ist eine cloudbasierte Plattform für Flight Tracking und Fluganal
 - **Website:** [myfs.flights](https://myfs.flights/)
 - **Plattformen:** Nur Windows 10+ (Microsoft Store oder Direktdownload)
 - **Kompatibilität:** X-Plane 11/12, MSFS 2020/2024, Prepar3D v4–v6
-- **Preis:** Free-Tier (10 Flüge/Monat), Pro (2 GBP/Monat), Ultimate (3 GBP/Monat)
 
 ## Funktionsumfang
 

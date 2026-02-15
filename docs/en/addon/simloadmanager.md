@@ -8,7 +8,6 @@ SimLoad Manager is a [FlyWithLua](flywithlua.md) script that simulates realistic
 - **Download:** [X-Plane.org](https://forums.x-plane.org/files/file/93858-simload-manager-realistic-pax-cargo-fuel-ground-operations/)
 - **Platforms:** Windows, macOS, Linux (pure Lua)
 - **Compatibility:** X-Plane 12
-- **Price:** Free
 - **Dependencies:** [FlyWithLua NG+](flywithlua.md), SimBrief account (required), [SGES](https://forums.x-plane.org/files/file/62296-simple-ground-equipment-services-low-tech-services/) (optional, for visual ground equipment)
 
 The script is actively maintained with frequent updates. It works with any aircraft — no aircraft-specific configuration needed.
@@ -44,10 +43,6 @@ Settings are stored in `FlyWithLua/Modules/simload_settings.txt` (auto-created o
 !!! warning "Updating from versions prior to v1.9.0"
 
     Delete `FlyWithLua/Modules/simload_settings.txt` before updating. It gets auto-recreated on launch. Failing to do so may cause incorrect timings or interface errors.
-
-### Linux Notes
-
-No Linux-specific issues are known. The script is pure Lua and runs identically on all platforms supported by FlyWithLua.
 
 ## Sources
 

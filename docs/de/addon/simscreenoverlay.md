@@ -8,7 +8,6 @@ SimScreen Overlay ist ein [FlyWithLua](flywithlua.md)-Skript, das X-Plane-12-Scr
 - **Download:** [x-plane.to](https://x-plane.to/file/1910/simscreen-overlay)
 - **Plattformen:** Windows, macOS, Linux (reines Lua)
 - **Kompatibilität:** X-Plane 12
-- **Preis:** Kostenlos
 - **Abhängigkeiten:** [FlyWithLua NG+](flywithlua.md), SimBrief-Konto (optional, für automatischen Flugdaten-Import)
 
 ## Funktionsumfang
@@ -30,10 +29,6 @@ Screenshots ohne Kontext verlieren ihre Geschichte — Flugzeugtyp, Route und Be
 `SimScreenOverlay.lua` in `Resources/plugins/FlyWithLua/Scripts/` ablegen.
 
 Nach der Installation eine Taste für den Befehl `FlyWithLua / SimScreen_Overlay / Screenshot` in den X-Plane-Tastatureinstellungen zuweisen.
-
-### Linux-Hinweise
-
-Keine Linux-spezifischen Probleme bekannt. Das Skript ist eine reine Lua-Textdatei und läuft auf allen von FlyWithLua unterstützten Plattformen identisch.
 
 ## Quellen
 

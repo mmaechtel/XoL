@@ -9,7 +9,6 @@ LST is a native [plugin](../glossary.md#plugin) that brings airport scenery to l
 - **Download:** [X-Plane.org](https://forums.x-plane.org/files/file/82876-living-scenery-technology/)
 - **Platforms:** Windows, macOS, Linux (native binaries)
 - **Compatibility:** X-Plane 12
-- **Price:** Free (closed source)
 
 LST is the modern successor to the older GroundTraffic plugin. Where GroundTraffic required a separate plugin instance per scenery (limited to ~30–40), LST operates as a global plugin that serves any number of sceneries simultaneously. The plugin is actively maintained.
 

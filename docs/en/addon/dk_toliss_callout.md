@@ -8,7 +8,6 @@ DK Toliss Callout is a [FlyWithLua](flywithlua.md) script that provides automate
 - **Download:** [X-Plane.org](https://forums.x-plane.org/files/file/91367-toliss-airbus-fma-callout-flywithlua-script/)
 - **Platforms:** Windows, macOS, Linux (pure Lua)
 - **Compatibility:** X-Plane 12
-- **Price:** Free
 - **Dependency:** [FlyWithLua NG+](flywithlua.md)
 
 The script reads the blue FMA values from the upper FMA box on the PFD. Magenta values are not yet implemented. Due to the complexity of extracting FMA data from ToLiss aircraft, callouts may occasionally fail depending on variable changes. Verified on the A319 and A320neo — should work with other ToLiss Airbus types.

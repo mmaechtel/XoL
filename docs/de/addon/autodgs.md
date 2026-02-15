@@ -8,7 +8,6 @@ AutoDGS stellt an über 5.000 Gateway-Flughäfen automatisch ein Docking Guidanc
 - **Repository:** [github.com/hotbso/AutoDGS](https://github.com/hotbso/AutoDGS) (Open Source, LGPL-2.1)
 - **Plattformen:** Windows, macOS, Linux (native Binaries)
 - **Kompatibilität:** [X-Plane](../glossary.md#x-plane) 12
-- **Preis:** Kostenlos
 
 AutoDGS wird aktiv gepflegt und erhält regelmäßige Updates. Das [Plugin](../glossary.md#plugin) ist eigenständig und benötigt keine weiteren Plugins.
 

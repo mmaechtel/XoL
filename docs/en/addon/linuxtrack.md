@@ -9,7 +9,6 @@ LinuxTrack is a head-tracking software suite for Linux and macOS that translates
 - **Active fork:** [github.com/fwfa123/linuxtrackx-ir](https://github.com/fwfa123/linuxtrackx-ir)
 - **Platforms:** Linux, macOS
 - **Compatibility:** X-Plane 12
-- **Price:** Free (open source)
 
 The original project has not had a regular release since 2016 and relies on an outdated Qt4 dependency. The active fork **LinuxTrack X-IR** (v0.99.29, January 2026) addresses these issues: Qt5/Qt6 support, AppImage distribution, and a modernized X-Plane plugin.
 

@@ -8,7 +8,6 @@ XTextureExtractor turns tablets, monitors, or Raspberry Pis into live cockpit in
 - **Repository:** [github.com/waynepiekarski/XTextureExtractor](https://github.com/waynepiekarski/XTextureExtractor) (open source, GPL-3.0)
 - **Platforms:** Windows, macOS, Linux (native binaries)
 - **Compatibility:** X-Plane 11 and X-Plane 12 ([Vulkan](../glossary.md#vulkan-api) and OpenGL)
-- **Price:** Free
 
 The plugin receives occasional updates and supports over 40 preconfigured aircraft configurations, including Zibo 737, ToLiss A321, Flight Factor A320/757/767/777, and many Laminar default aircraft.
 

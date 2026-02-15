@@ -9,7 +9,6 @@ Der SkunkCrafts Updater ist das De-facto-Standard-Update-Tool für [X-Plane](../
 - **Lizenz:** Freeware, Closed Source (das Update-Protokoll ist offen und dokumentiert)
 - **Plattformen:** Windows, macOS, Linux (native Binaries)
 - **Kompatibilität:** X-Plane 11 und 12
-- **Preis:** Kostenlos
 
 Die aktuelle Standalone-Version ist eine komplette Neuentwicklung in Go mit Fyne-UI. Sie ersetzt das ältere In-Game-[Plugin](../glossary.md#plugin) und läuft unabhängig von X-Plane — kein laufender Simulator für Updates nötig.
 

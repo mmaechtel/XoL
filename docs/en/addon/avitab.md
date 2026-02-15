@@ -8,7 +8,6 @@ AviTab is an open-source [plugin](../glossary.md#plugin) for [X-Plane](../glossa
 - **Repository:** [github.com/fpw/avitab](https://github.com/fpw/avitab) (open source, AGPL-3.0)
 - **Platforms:** Windows, macOS, Linux (native binaries)
 - **Compatibility:** X-Plane 11.20+ and X-Plane 12
-- **Price:** Free
 
 Development activity is low — the last commit and the latest release (v0.7.1) date from September 2024. The repository is not archived, but there are no signs of upcoming updates.
 

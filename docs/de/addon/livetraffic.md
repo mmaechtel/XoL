@@ -8,7 +8,6 @@ LiveTraffic zeigt realen Flugverkehr in [X-Plane](../glossary.md#x-plane) 11 und
 - **Repository:** [github.com/TwinFan/LiveTraffic](https://github.com/TwinFan/LiveTraffic) (Open Source, MIT-Lizenz)
 - **Plattformen:** Windows, macOS, Linux (native Binaries)
 - **Kompatibilität:** X-Plane 11 und X-Plane 12
-- **Preis:** Kostenlos
 
 LiveTraffic wird aktiv gepflegt und nutzt die [XPMP2](https://github.com/TwinFan/XPMP2)-Bibliothek für GPU-Instancing und [Vulkan](../glossary.md#vulkan-api)-Kompatibilität.
 

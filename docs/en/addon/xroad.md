@@ -9,7 +9,6 @@
 - **Source:** [forums.x-plane.org](https://forums.x-plane.org/index.php?/files/file/67227-xroads-transparent-roads-for-ortho4xp/) (community project)
 - **Platforms:** Windows, macOS, Linux
 - **Compatibility:** X-Plane 11 and X-Plane 12
-- **Price:** Free
 
 ## Features
 

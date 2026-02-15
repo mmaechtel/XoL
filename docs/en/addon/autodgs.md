@@ -8,7 +8,6 @@ AutoDGS automatically provides a Docking Guidance System (VDGS or marshaller) at
 - **Repository:** [github.com/hotbso/AutoDGS](https://github.com/hotbso/AutoDGS) (open source, LGPL-2.1)
 - **Platforms:** Windows, macOS, Linux (native binaries)
 - **Compatibility:** [X-Plane](../glossary.md#x-plane) 12
-- **Price:** Free
 
 AutoDGS is actively maintained with regular updates. The [plugin](../glossary.md#plugin) is standalone and does not require any other plugins.
 

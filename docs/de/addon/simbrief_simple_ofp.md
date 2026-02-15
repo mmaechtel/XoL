@@ -8,7 +8,6 @@ SimBrief Simple OFP ist ein [FlyWithLua](flywithlua.md)-Skript, das den aktuelle
 - **Download:** [X-Plane.org](https://forums.x-plane.org/files/file/75422-simbrief-simple-operational-flight-plan-ofp-xp1112/)
 - **Plattformen:** Windows, macOS, Linux (reines Lua)
 - **Kompatibilität:** X-Plane 11/12
-- **Preis:** Kostenlos
 - **Abhängigkeiten:** [FlyWithLua NG+](flywithlua.md), SimBrief-Konto (kostenlos), xml2lua-Bibliothek (im Download enthalten)
 
 Das Skript verbindet sich über den SimBrief-Benutzernamen mit der SimBrief-API, lädt den Flugplan im XML-Format herunter und stellt ihn als formatierten OFP dar. Zwei Layout-Optionen stehen zur Verfügung. Aufruf über `Plugins > FlyWithLua > FlyWithLua Macros`.
@@ -36,10 +35,6 @@ Der Download enthält:
 - `xml2lua`-Modul — in `Resources/plugins/FlyWithLua/Modules/` ablegen
 
 Vor der ersten Nutzung den SimBrief-Benutzernamen in der Skript-Konfiguration eintragen.
-
-### Linux-Hinweise
-
-Keine Linux-spezifischen Probleme bekannt. Das Skript ist reines Lua und die enthaltene xml2lua-Bibliothek hat keine plattformspezifischen Komponenten.
 
 ## Quellen
 

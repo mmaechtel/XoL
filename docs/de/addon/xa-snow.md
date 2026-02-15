@@ -8,7 +8,6 @@ xa-snow ist ein eigenständiges [Plugin](../glossary.md#plugin) von hotbso, das 
 - **Repository:** [github.com/hotbso/xa-snow](https://github.com/hotbso/xa-snow) (Open Source, LGPL-2.1)
 - **Plattformen:** Windows, macOS, Linux (native Binaries)
 - **Kompatibilität:** [X-Plane](../glossary.md#x-plane) 12
-- **Preis:** Kostenlos
 
 xa-snow ersetzt X-Planes einheitlichen regionalen Schnee durch standortspezifische Bedeckung auf Basis tatsächlicher Wetterdaten. Das Plugin wird aktiv gepflegt und regelmäßig aktualisiert.
 

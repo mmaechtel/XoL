@@ -149,4 +149,6 @@ Die folgenden eigenständigen Plugins arbeiten mit der ToLiss-Flotte zusammen, s
 - **[openSAM](opensam.md)** — Jetways, VDGS, Marshaller für Custom-Szenerien
 - **[AutoDGS](autodgs.md)** — Docking Guidance für Default-Flughäfen
 - **[AviTab](avitab.md)** — Cockpit-Tablet mit PDF-Viewer und Moving Map
+- **[KOSP Project](kosp_project.md)** — FMOD-Soundscape für A319, A320, A321 (alle Triebwerksvarianten)
+- **[Mango Studios](mango_studios.md)** — FMOD-Sound-Packs für die gesamte ToLiss-Flotte
 

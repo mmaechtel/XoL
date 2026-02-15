@@ -8,7 +8,6 @@ Follow the Greens (FtG) ist ein Taxiway-Leitsystem nach realem Vorbild (A-SMGCS 
 - **Repository:** [github.com/devleaks/followthegreens](https://github.com/devleaks/followthegreens) (Open Source, MIT-Lizenz)
 - **Plattformen:** Windows, macOS, Linux (plattformunabhängig via Python)
 - **Kompatibilität:** [X-Plane](../glossary.md#x-plane) 12 (Release 2), X-Plane 11 + 12 (Release 1, nur noch kritische Fixes)
-- **Preis:** Kostenlos
 
 Das Plugin wird aktiv weiterentwickelt. Release 2 ("Follow the Greens 4D") fügt Geschwindigkeitsmanagement hinzu — ein A-SMGCS Level 4 Feature.
 

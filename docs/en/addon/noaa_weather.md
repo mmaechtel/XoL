@@ -9,7 +9,6 @@ NOAA Weather is a Python-based [plugin](../glossary.md#plugin) that adds real-wo
 - **Platforms:** Windows, macOS, Linux
 - **Compatibility:** X-Plane 12.1.2+
 - **Prerequisite:** [XPPython3](xppython3.md) 4.6.0+
-- **Price:** Free
 
 Since X-Plane 12 already uses NOAA GFS data for its own weather engine, this plugin does not act as a full weather replacement but as a supplement — primarily for snow depiction and weather monitoring. The plugin is actively maintained with regular releases.
 

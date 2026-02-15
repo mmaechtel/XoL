@@ -9,7 +9,6 @@ Better Pushback is a [plugin](../glossary.md#plugin) for [X-Plane](../glossary.m
 - **License:** CDDL 1.0 (open source)
 - **Platforms:** Windows, macOS, Linux (native binaries)
 - **Compatibility:** X-Plane 11 and X-Plane 12
-- **Price:** Free
 
 The original repository is no longer maintained. The olivierbutler fork (BetterPusbackMod) is the recommended download for X-Plane 12, with feature additions like manual push mode and Magic Squares shortcuts.
 
