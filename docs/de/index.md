@@ -33,6 +33,9 @@ Diese Dokumentation ist ein offenes Projekt. Verbesserungen oder Ergänzungen k�
 ## Letzte Änderungen
 
 ### 2026-02-15
+- Addon-Sektion ausgebaut: Neue Seiten [FlyWithLua](addon/flywithlua.md), [AviTab](addon/avitab.md), [XCamera](addon/xcamera.md), [LiveTraffic](addon/livetraffic.md), [Better Pushback](addon/betterpushback.md) — jeweils mit Hintergrund, Linux-Installation, bekannten Problemen und Quellen
+- Bestehende Seiten [XRoad](addon/xroad.md) und [AEP](addon/aep.md) nach einheitlichem Template überarbeitet
+- Navigation: Verschiedenes-Sektion mit Kategorien (Scripting, Cockpit & Kamera, Verkehr & Bodenbetrieb, Szenerie)
 - Neue Seite [Performance-Grundlagen](performance_overview.md): CPU-, I/O- und Netzwerk-Lastdimensionen, Wechselwirkungen, Frame Time als Maßeinheit, Optimierungsansätze im Überblick
 - [Orthofotographie](addon/orthophotography_intro.md), [Performance-Grundlagen](performance_overview.md) und [Videos](videos.md): Ortho-Streaming- und Performance-Videos eingebettet (DE + EN)
 - [Performance-Grundlagen](performance_overview.md) korrigiert: SSD-Latenzen, DDR5-Bandbreite und TCP-Congestion-Formulierung präzisiert

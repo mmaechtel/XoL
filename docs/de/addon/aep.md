@@ -1,31 +1,46 @@
 # Airport Enhancement Package (AEP)
 
-Das [Airport Enhancement Package (AEP)](../glossary.md#airport-enhancement-package-aep) von X-Codr Designs ist ein Szenerie-Addon für X-Plane. Es verbessert Standard-Flughäfen durch detailliertere Modelle, höher aufgelöste Texturen, neue Technologien wie PBR-Normalmaps und Regionalisierung.
+Das [Airport Enhancement Package (AEP)](../glossary.md#airport-enhancement-package-aep) von X-Codr Designs ist ein Szenerie-Addon für [X-Plane](../glossary.md#x-plane), das Standard-Flughäfen durch detailliertere Modelle und hochauflösende Texturen aufwertet.
 
-## Features
+## Hintergrund
 
-AEP ersetzt Standard-[Flughafenelemente](../glossary.md#flughafenelemente) durch neue Entwicklungen. Dies umfasst Flughafengebäude, Fassaden, Bodenobjekte, statische Fahrzeuge sowie Landebahnlichter, Baken und Navigationshilfen. 
+- **Entwickler:** X-Codr Designs
+- **Website:** [x-codrdesigns.com/xp-aep](https://www.x-codrdesigns.com/xp-aep)
+- **Plattformen:** Windows, macOS, Linux
+- **Kompatibilität:** X-Plane 12
+- **Preis:** Kostenlos
+
+## Funktionsumfang
+
+AEP ersetzt Standard-[Flughafenelemente](../glossary.md#flughafenelemente) durch neue Entwicklungen:
+
+- **Gebäude und Fassaden:** Flughafengebäude, Fassaden, statische Fahrzeuge und Bodenobjekte
+- **Landebahnausstattung:** Lichter, Baken und Navigationshilfen
+- **[Bodenmarkierungen](../glossary.md#bodenmarkierungen):** Überarbeitete Markierungen und Beläge mit Wettereffekt-Unterstützung (Weather Maps)
+- **Vegetation:** Standard-[Flughafenvegetation](../glossary.md#flughafenvegetation) durch neue 3D-Vegetation ersetzt
+- **Decals:** Realistische Muster zur Vermeidung von Wiederholungen
 
 Alle Modelle sind mit moderner Technologie ausgestattet:
 
-* UHD-Texturen zwischen 2 und 4 Pixeln pro Zoll
-* PBR-Normalmaps für Details und Reflexionen
-* LODs für gute Performance bei hoher Detailstufe
+- UHD-Texturen (2–4 Pixel pro Zoll)
+- [PBR](../glossary.md#pbr)-Normalmaps für Details und Reflexionen
+- LODs für gute Performance bei hoher Detailstufe
+- Einfache Innenräume für zusätzliche Tiefe
+- Regionalisierung
 
-Die Modelle verfügen über einfache Innenräume für zusätzliche Tiefe. Die Standard-[Flughafenvegetation](../glossary.md#flughafenvegetation) wurde durch neue 3D-Vegetation ersetzt.
+## Mehrwert in der Flugsimulation
 
-Die [Bodenmarkierungen](../glossary.md#bodenmarkierungen) und Beläge wurden durch neue Texturen ersetzt. Alle Bodentexturen sind in hoher Auflösung verfügbar und verfügen über PBR-Normalmaps. Die Markierungen wurden überarbeitet und alle Bodentexturen unterstützen X-Plane 12's Wettereffekte durch "Wetter-Maps". Decals sorgen für realistische Muster und vermeiden Wiederholungen.
+AEP wertet Standard-Flughäfen auf, ohne dass teure Payware-Szenerien gekauft werden müssen. Die PBR-Materialien und UHD-Texturen erzeugen ein deutlich realistischeres Erscheinungsbild als die Standard-Elemente. Durch die Regionalisierung passen sich die Gebäude und Objekte an die jeweilige Region an.
 
-## Systemanforderungen
+## Installation
 
-* Mehrkernprozessor
-* Grafikkarte mit 8GB VRAM (mindestens 4GB)
-* Mac, Windows oder Linux
-* 2.1GB Download-Größe
+Die ZIP-Datei von der [offiziellen Website](https://www.x-codrdesigns.com/xp-aep) herunterladen und den enthaltenen Ordner nach `Custom Scenery/` entpacken. Die `scenery_packs.ini` wird beim nächsten X-Plane-Start automatisch aktualisiert.
 
-## Support
+**Systemanforderungen:**
 
-Für Support und Updates:
+- Grafikkarte mit 8 GB [VRAM](../glossary.md#vram-video-ram) (mindestens 4 GB)
+- 2,1 GB Download-Größe
 
-* Die [offizielle Website](https://www.x-codrdesigns.com/xp-aep) besuchen
-* Der X-Codr Designs Discord-Community beitreten 
+## Quellen
+
+- [Airport Enhancement Package — X-Codr Designs](https://www.x-codrdesigns.com/xp-aep)

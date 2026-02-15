@@ -121,8 +121,17 @@ plugins:
                     - XEarthLayer: de/addon/xearthlayer.md
                     - Statisch + Streaming: de/addon/static_plus_streaming.md
                 - Verschiedenes:
-                    - XRoad: de/addon/xroad.md
-                    - AEP: de/addon/aep.md
+                    - Scripting:
+                        - FlyWithLua: de/addon/flywithlua.md
+                    - Cockpit & Kamera:
+                        - AviTab: de/addon/avitab.md
+                        - XCamera: de/addon/xcamera.md
+                    - Verkehr & Bodenbetrieb:
+                        - LiveTraffic: de/addon/livetraffic.md
+                        - Better Pushback: de/addon/betterpushback.md
+                    - Szenerie:
+                        - XRoad: de/addon/xroad.md
+                        - AEP: de/addon/aep.md
             - Flugbetrieb:
                 - Übersicht: de/flight_operations/overview.md
                 - Wetter: de/flight_operations/weather.md
@@ -180,8 +189,17 @@ plugins:
                     - XEarthLayer: en/addon/xearthlayer.md
                     - Static + Streaming: en/addon/static_plus_streaming.md
                 - Miscellaneous:
-                    - XRoad: en/addon/xroad.md
-                    - AEP: en/addon/aep.md
+                    - Scripting:
+                        - FlyWithLua: en/addon/flywithlua.md
+                    - Cockpit & Camera:
+                        - AviTab: en/addon/avitab.md
+                        - XCamera: en/addon/xcamera.md
+                    - Traffic & Ground Ops:
+                        - LiveTraffic: en/addon/livetraffic.md
+                        - Better Pushback: en/addon/betterpushback.md
+                    - Scenery:
+                        - XRoad: en/addon/xroad.md
+                        - AEP: en/addon/aep.md
             - Flight Operations:
                 - Overview: en/flight_operations/overview.md
                 - Weather: en/flight_operations/weather.md
