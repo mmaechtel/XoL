@@ -7,8 +7,8 @@ The examples shown here are based on Debian Linux but can be easily adapted to o
 ## Featured Video
 
 <div class="video-container" markdown>
-<video controls width="100%" preload="metadata" poster="../assets/video/en/performance_with_simulation_software/The_Performance_Puzzle.jpg">
-  <source src="../assets/video/en/performance_with_simulation_software/The_Performance_Puzzle.mp4" type="video/mp4">
+<video controls width="100%" preload="metadata" poster="../assets/video/en/toliss_flow_with_plugins/Beyond_the_Default_Cockpit.jpg">
+  <source src="../assets/video/en/toliss_flow_with_plugins/Beyond_the_Default_Cockpit.mp4" type="video/mp4">
 </video>
 </div>
 
@@ -33,6 +33,7 @@ This documentation is an open project. Improvements or additions can be contribu
 ## Recent Changes
 
 ### 2026-02-15
+- [ToLiss Ecosystem](addon/toliss_ecosystem.md) and [Videos](videos.md): "Beyond the Default Cockpit" video embedded (EN)
 - [ToLiss Ecosystem](addon/toliss_ecosystem.md) and [Videos](videos.md): "Vom Briefing zum Gate" video embedded (DE)
 - ATC section expanded: 6 new flight phase pages — [Pushback & Taxi](flight_operations/pushback_taxi.md), [Takeoff](flight_operations/takeoff.md), [Departure & Climb](flight_operations/departure.md), [En Route](flight_operations/enroute.md), [Approach](flight_operations/approach.md), [Landing & Taxi In](flight_operations/landing.md) — complete gate-to-gate ATC communication guide
 - New addon pages: [SkunkCrafts Updater](addon/skunkcrafts_updater.md) (update tool with glibc requirement and Wayland notes), [XPPython3](addon/xppython3.md) (Python 3 scripting engine with Debian dependencies)

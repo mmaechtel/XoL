@@ -1,5 +1,11 @@
 # ToLiss FlyWithLua Ecosystem
 
+<div class="video-container" markdown>
+<video controls width="100%" preload="metadata" poster="../../assets/video/en/toliss_flow_with_plugins/Beyond_the_Default_Cockpit.jpg">
+  <source src="../../assets/video/en/toliss_flow_with_plugins/Beyond_the_Default_Cockpit.mp4" type="video/mp4">
+</video>
+</div>
+
 The community has built an extensive ecosystem of [FlyWithLua](flywithlua.md) scripts around the ToLiss fleet (A319, A320 CEO/NEO, A321 CEO/NEO, A330neo, A340-600). These scripts extend the aircraft with callouts, cockpit automation, boarding simulation, and more. Additionally, several standalone plugins integrate with the ToLiss fleet.
 
 Most scripts require the X-Airbus Library as a foundation. Start by installing that library, then pick the scripts that match your workflow — from callouts and cockpit initialization to full First Officer assistance.

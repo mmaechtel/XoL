@@ -48,4 +48,14 @@ Video collection for X-Plane on Linux.
 
 </div>
 
+<div class="video-card" markdown>
+
+### Beyond the Default Cockpit
+
+<video controls width="100%" preload="metadata" poster="../assets/video/en/toliss_flow_with_plugins/Beyond_the_Default_Cockpit.jpg">
+  <source src="../assets/video/en/toliss_flow_with_plugins/Beyond_the_Default_Cockpit.mp4" type="video/mp4">
+</video>
+
+</div>
+
 </div>
