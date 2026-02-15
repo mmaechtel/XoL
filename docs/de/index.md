@@ -33,6 +33,8 @@ Diese Dokumentation ist ein offenes Projekt. Verbesserungen oder Ergänzungen k�
 ## Letzte Änderungen
 
 ### 2026-02-15
+- Neue Addon-Seiten: [LST](addon/lst.md) (animierter Bodenverkehr für Szenerien), [LinuxTrack](addon/linuxtrack.md) (Head-Tracking für Linux), [XLinSpeak](addon/xlinspeak.md) (TTS für Plugin-Sprachausgabe unter Linux), [WINCTRL](addon/winctrl.md) (Winwing-Hardware-Anbindung ohne SimAppPro), [TerrainRadar](addon/terrainradar.md) (EGPWS-Terrain-Display und VSD)
+- Neue Addon-Seiten (Via KVM): [MobiFlight](addon/mobiflight.md) (Open-Source-Cockpit-Hardware-Middleware, Netzwerk-Split-Setup) und [SayIntentions.AI](addon/sayintentions.md) (KI-basierte Flugsicherung mit Spracherkennung, VM-Setup mit UDP-Forwarding)
 - Neue Seite [NOAA Weather](addon/noaa_weather.md) — Python-Plugin für reale Schneebedeckung und METAR-Monitoring als Ergänzung zu X-Planes Real Weather
 - [ToLiss-Ökosystem](addon/toliss_ecosystem.md) und [Videos](videos.md): Video „Beyond the Default Cockpit" eingebettet (EN)
 - [ToLiss-Ökosystem](addon/toliss_ecosystem.md) und [Videos](videos.md): Video „Vom Briefing zum Gate" eingebettet (DE)

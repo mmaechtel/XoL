@@ -132,6 +132,8 @@ plugins:
                     - AviTab: de/addon/avitab.md
                     - XCamera: de/addon/xcamera.md
                     - XTextureExtractor: de/addon/xtextureextractor.md
+                    - LinuxTrack: de/addon/linuxtrack.md
+                    - TerrainRadar: de/addon/terrainradar.md
                 - Verkehr & Bodenbetrieb:
                     - LiveTraffic: de/addon/livetraffic.md
                     - Better Pushback: de/addon/betterpushback.md
@@ -144,13 +146,18 @@ plugins:
                     - Little XpConnect: de/addon/littlexpconnect.md
                     - SkunkCrafts Updater: de/addon/skunkcrafts_updater.md
                     - XGS: de/addon/xgs.md
+                    - XLinSpeak: de/addon/xlinspeak.md
+                    - WINCTRL: de/addon/winctrl.md
                 - Szenerie:
                     - XRoad: de/addon/xroad.md
                     - AEP: de/addon/aep.md
                     - xa-snow: de/addon/xa-snow.md
                     - NOAA Weather: de/addon/noaa_weather.md
+                    - LST: de/addon/lst.md
                 - Via KVM:
                     - My FS Flights: de/addon/myfs_flights.md
+                    - MobiFlight: de/addon/mobiflight.md
+                    - SayIntentions.AI: de/addon/sayintentions.md
             - Flugbetrieb:
                 - Übersicht: de/flight_operations/overview.md
                 - Wetter: de/flight_operations/weather.md
@@ -222,6 +229,8 @@ plugins:
                     - AviTab: en/addon/avitab.md
                     - XCamera: en/addon/xcamera.md
                     - XTextureExtractor: en/addon/xtextureextractor.md
+                    - LinuxTrack: en/addon/linuxtrack.md
+                    - TerrainRadar: en/addon/terrainradar.md
                 - Traffic & Ground Ops:
                     - LiveTraffic: en/addon/livetraffic.md
                     - Better Pushback: en/addon/betterpushback.md
@@ -234,13 +243,18 @@ plugins:
                     - Little XpConnect: en/addon/littlexpconnect.md
                     - SkunkCrafts Updater: en/addon/skunkcrafts_updater.md
                     - XGS: en/addon/xgs.md
+                    - XLinSpeak: en/addon/xlinspeak.md
+                    - WINCTRL: en/addon/winctrl.md
                 - Scenery:
                     - XRoad: en/addon/xroad.md
                     - AEP: en/addon/aep.md
                     - xa-snow: en/addon/xa-snow.md
                     - NOAA Weather: en/addon/noaa_weather.md
+                    - LST: en/addon/lst.md
                 - Via KVM:
                     - My FS Flights: en/addon/myfs_flights.md
+                    - MobiFlight: en/addon/mobiflight.md
+                    - SayIntentions.AI: en/addon/sayintentions.md
             - Flight Operations:
                 - Overview: en/flight_operations/overview.md
                 - Weather: en/flight_operations/weather.md
