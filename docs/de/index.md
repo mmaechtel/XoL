@@ -41,6 +41,7 @@ Diese Dokumentation ist ein offenes Projekt. Verbesserungen oder Ergänzungen k�
 - Addon-Sektion ausgebaut: [FlyWithLua](addon/flywithlua.md), [AviTab](addon/avitab.md), [XCamera](addon/xcamera.md), [LiveTraffic](addon/livetraffic.md), [Better Pushback](addon/betterpushback.md), [AutoDGS](addon/autodgs.md), [openSAM](addon/opensam.md), [AutoGate](addon/autogate.md), [DataRefTool](addon/datareftool.md), [Little XpConnect](addon/littlexpconnect.md), [XTextureExtractor](addon/xtextureextractor.md), [SkunkCrafts Updater](addon/skunkcrafts_updater.md), [XPPython3](addon/xppython3.md), [ToLiss-Ökosystem](addon/toliss_ecosystem.md), [XGS](addon/xgs.md), [Follow the Greens](addon/followthegreens.md)
 - Navigation überarbeitet: Addon-Kategorien flachgezogen, Ortho Streaming und FlyWithLua-Skripte als eigene Kategorien
 - Addon-Seiten überarbeitet: Querverweise zwischen verwandten Plugins ergänzt, Übersetzungskorrekturen (DE), inhaltliche Korrekturen (Flugzeugbezeichnungen, Versionsangaben), veraltete Formulierungen aktualisiert
+- [ToLiss-Ökosystem](addon/toliss_ecosystem.md) ergänzt: Carda Realistic Engine Mods (hochdetaillierte 3D-Triebwerke für A319/A320/A321)
 
 ### 2026-02-14
 - Neue Seite [System-Tuning Einführung](systemtuning_intro.md), Videos eingebettet (DE + EN)
