@@ -33,6 +33,7 @@ Diese Dokumentation ist ein offenes Projekt. Verbesserungen oder Ergänzungen k�
 ## Letzte Änderungen
 
 ### 2026-02-15
+- Addon-Sektion erweitert: [AutoDGS](addon/autodgs.md), [openSAM](addon/opensam.md), [AutoGate](addon/autogate.md), [DataRefTool](addon/datareftool.md), [Little XpConnect](addon/littlexpconnect.md), [XTextureExtractor](addon/xtextureextractor.md) — neue Kategorien Werkzeuge und erweiterte Verkehr & Bodenbetrieb
 - Addon-Sektion ausgebaut: Neue Seiten [FlyWithLua](addon/flywithlua.md), [AviTab](addon/avitab.md), [XCamera](addon/xcamera.md), [LiveTraffic](addon/livetraffic.md), [Better Pushback](addon/betterpushback.md) — jeweils mit Hintergrund, Linux-Installation, bekannten Problemen und Quellen
 - Bestehende Seiten [XRoad](addon/xroad.md) und [AEP](addon/aep.md) nach einheitlichem Template überarbeitet
 - Navigation: Verschiedenes-Sektion mit Kategorien (Scripting, Cockpit & Kamera, Verkehr & Bodenbetrieb, Szenerie)
