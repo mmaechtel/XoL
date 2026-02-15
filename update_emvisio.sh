@@ -1,0 +1,70 @@
+#!/bin/bash
+
+# Exit on error
+set -e
+
+# Parse arguments
+REMOTE_HOST=""
+DRY_RUN=false
+SKIP_HTML=false
+
+show_help() {
+    echo "Usage: $0 <hostname> [--dry] [--skip-html]"
+    echo "  -h, --help   Show this help message"
+    echo "  --dry        Dry run (no files will be transferred)"
+    echo "  --skip-html  Skip copying extra HTML files (maps, vatsim)"
+    exit 0
+}
+
+for arg in "$@"; do
+    case "$arg" in
+        -h|--help)   show_help ;;
+        --dry)       DRY_RUN=true ;;
+        --skip-html) SKIP_HTML=true ;;
+        *)           REMOTE_HOST="$arg" ;;
+    esac
+done
+
+if [ -z "$REMOTE_HOST" ]; then
+    echo "Usage: $0 <hostname> [--dry] [--skip-html]"
+    echo "  --dry        Dry run (no files will be transferred)"
+    echo "  --skip-html  Skip copying extra HTML files (maps, vatsim)"
+    exit 1
+fi
+
+# Configuration
+REMOTE_USER="${DEPLOY_USER:-$(whoami)}"
+REMOTE_PATH="/var/www/html"
+LOCAL_PATH="./site"
+
+# Check if site directory exists
+if [ ! -d "$LOCAL_PATH" ]; then
+    echo "Error: $LOCAL_PATH directory not found. Please run 'mkdocs build' first."
+    exit 1
+fi
+
+# Check video symlink target is accessible (NFS/SMB share mounted?)
+if [ -L docs/assets/video ] && [ ! -d docs/assets/video/ ]; then
+    echo "Error: docs/assets/video symlink target not accessible!"
+    echo "Mount the video share first, then re-run 'mkdocs build'."
+    exit 1
+fi
+
+# Copy extra HTML files unless --skip-html is set
+if [ "$SKIP_HTML" = false ]; then
+    cp maps.html site
+    cp Maps.html site
+    cp "$HOME/Work/ATC-Bookings/analyze_vatsim_booking/vatsim_routes.html" site/
+else
+    echo "Skipping extra HTML files (--skip-html)"
+fi
+
+# Sync to remote
+if [ "$DRY_RUN" = true ]; then
+    echo "Performing dry run (no files will be transferred):"
+    rsync -avzn ./site/ ${REMOTE_USER}@${REMOTE_HOST}:${REMOTE_PATH}/
+else
+    echo "Syncing site to ${REMOTE_HOST}..."
+    rsync -avz ./site/ ${REMOTE_USER}@${REMOTE_HOST}:${REMOTE_PATH}/
+    echo "Sync completed successfully!"
+fi
