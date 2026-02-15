@@ -50,14 +50,6 @@ Plays flight attendant and captain announcements and manages ECAM Cabin Ready. [
 
     ToLiss Announcements ships with a .exe switcher for airline-specific sound packs. Under Linux, this tool does not run — copy the desired sound files manually into the script's sound folder.
 
-### KabinXP
-
-Standalone [plugin](../glossary.md#plugin) for customizable cabin announcements with 3D spatial audio. Ships with an empty announcement library — custom audio files (WAV, MP3, FLAC) can be organized per livery. Does not require FlyWithLua and works with any aircraft.
-
-- **Developer:** Kadikoy34
-- **X-Plane 12 only**
-- **Download:** [forums.x-plane.org](https://forums.x-plane.org/files/file/98298-kabinxp/)
-
 ### DK Toliss Callout — FMA Callouts
 
 FlyWithLua script that announces autopilot mode changes (CLB, OP CLB, SPEED, NAV, G/S) via text-to-speech. Reads the blue FMA values from the upper PFD box. On Linux, [XLinSpeak](xlinspeak.md) is required for audible output. [→ Detail page](dk_toliss_callout.md)
@@ -120,14 +112,6 @@ Automatic chock and external power management. At departure: APU available + PAX
 - **Requires:** X-Airbus Library
 - **Download:** [forums.x-plane.org](https://forums.x-plane.org/files/file/94691-toliss-ground-services/)
 
-### SGES — Simple Ground Equipment & Services
-
-Shows or hides static ground objects around the aircraft: passenger buses, GPU, air start unit, cones, belt loader, ULD loaders, airstairs, deicing, catering, and more. Also includes a marshaller, simple pushback system, and active chocks. Integration with Speedy Copilot available. Works with any aircraft (not just ToLiss), X-Plane 11 and 12.
-
-- **Developer:** XPJavelin
-- **Requires:** FlyWithLua
-- **Download:** [forums.x-plane.org](https://forums.x-plane.org/files/file/62296-simple-ground-equipment-services-low-tech-services/)
-
 ## Mods
 
 ### Easy Freighter — A321 P2F Cargo Door Mod
@@ -178,5 +162,3 @@ There are no known Linux-specific issues with the FlyWithLua scripts. FlyWithLua
 - [PMCO — forums.x-plane.org](https://forums.x-plane.org/files/file/90074-pmco-pilot-monitoring-callouts-for-the-toliss-fleet/)
 - [Speedy Copilot — forums.x-plane.org](https://forums.x-plane.org/files/file/54069-speedy-copilot-for-toliss/)
 - [TOBUS — GitHub (hotbso fork)](https://github.com/hotbso/TOBUS)
-- [SGES — forums.x-plane.org](https://forums.x-plane.org/files/file/62296-simple-ground-equipment-services-low-tech-services/)
-- [KabinXP — forums.x-plane.org](https://forums.x-plane.org/files/file/98298-kabinxp/)

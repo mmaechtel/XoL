@@ -50,14 +50,6 @@ Spielt Flugbegleiter- und Kapitänsdurchsagen ab und verwaltet das ECAM Cabin Re
 
     ToLiss Announcements enthält einen .exe-Switcher für airline-spezifische Sound-Packs. Unter Linux funktioniert dieses Tool nicht — die gewünschten Sound-Dateien manuell in den Sound-Ordner des Skripts kopieren.
 
-### KabinXP
-
-Eigenständiges [Plugin](../glossary.md#plugin) für anpassbare Kabinendurchsagen mit 3D-Spatial-Audio. Es wird mit einer leeren Ansagen-Bibliothek ausgeliefert — eigene Audio-Dateien (WAV, MP3, FLAC) lassen sich pro Livery organisieren. Kein FlyWithLua erforderlich, funktioniert mit jedem Flugzeug.
-
-- **Entwickler:** Kadikoy34
-- **Nur X-Plane 12**
-- **Download:** [forums.x-plane.org](https://forums.x-plane.org/files/file/98298-kabinxp/)
-
 ### DK Toliss Callout — FMA-Ansagen
 
 FlyWithLua-Skript, das Autopilot-Modusänderungen (CLB, OP CLB, SPEED, NAV, G/S) per Text-to-Speech ansagt. Liest die blauen FMA-Werte aus dem oberen PFD-Feld. Unter Linux ist [XLinSpeak](xlinspeak.md) für hörbare Ausgabe erforderlich. [→ Detailseite](dk_toliss_callout.md)
@@ -120,14 +112,6 @@ Automatisches Setzen und Entfernen von Chocks und External Power. Beim Abflug: A
 - **Benötigt:** X-Airbus Library
 - **Download:** [forums.x-plane.org](https://forums.x-plane.org/files/file/94691-toliss-ground-services/)
 
-### SGES — Simple Ground Equipment & Services
-
-Zeigt oder versteckt statische Bodenobjekte rund um das Flugzeug: Passagierbusse, GPU, Air Start Unit, Pylonen, Belt Loader, ULD Loaders, Airstairs, Deicing, Catering und weitere. Enthält zudem einen Marshaller, ein einfaches Pushback-System und aktive Chocks. Integration mit Speedy Copilot möglich. Funktioniert mit jedem Flugzeug (nicht nur ToLiss), X-Plane 11 und 12.
-
-- **Entwickler:** XPJavelin
-- **Benötigt:** FlyWithLua
-- **Download:** [forums.x-plane.org](https://forums.x-plane.org/files/file/62296-simple-ground-equipment-services-low-tech-services/)
-
 ## Mods
 
 ### Easy Freighter — A321 P2F Cargo Door Mod
@@ -178,5 +162,3 @@ Es sind keine Linux-spezifischen Probleme mit den FlyWithLua-Skripten bekannt. F
 - [PMCO — forums.x-plane.org](https://forums.x-plane.org/files/file/90074-pmco-pilot-monitoring-callouts-for-the-toliss-fleet/)
 - [Speedy Copilot — forums.x-plane.org](https://forums.x-plane.org/files/file/54069-speedy-copilot-for-toliss/)
 - [TOBUS — GitHub (hotbso-Fork)](https://github.com/hotbso/TOBUS)
-- [SGES — forums.x-plane.org](https://forums.x-plane.org/files/file/62296-simple-ground-equipment-services-low-tech-services/)
-- [KabinXP — forums.x-plane.org](https://forums.x-plane.org/files/file/98298-kabinxp/)

@@ -33,6 +33,9 @@ This documentation is an open project. Improvements or additions can be contribu
 ## Recent Changes
 
 ### 2026-02-15
+- New page [SGES](addon/sges.md) — Ground equipment services (GPU, fuel truck, chocks, animated passengers) as FlyWithLua script
+- New page [KabinXP](addon/kabinxp.md) — Cabin announcement plugin with custom audio files and per-livery sound packs
+- [ToLiss Ecosystem](addon/toliss_ecosystem.md): SGES and KabinXP moved to standalone pages
 - New addon pages: [LST](addon/lst.md) (animated ground traffic for sceneries), [LinuxTrack](addon/linuxtrack.md) (head tracking for Linux), [XLinSpeak](addon/xlinspeak.md) (TTS for plugin speech output on Linux), [WINCTRL](addon/winctrl.md) (Winwing hardware integration without SimAppPro), [TerrainRadar](addon/terrainradar.md) (EGPWS terrain display and VSD)
 - New addon pages (Via KVM): [MobiFlight](addon/mobiflight.md) (open-source cockpit hardware middleware, network split setup) and [SayIntentions.AI](addon/sayintentions.md) (AI-based air traffic control with voice recognition, VM setup with UDP forwarding)
 - New page [NOAA Weather](addon/noaa_weather.md) — Python plugin for real-world snow coverage and METAR monitoring as a supplement to X-Plane's Real Weather

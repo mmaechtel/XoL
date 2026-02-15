@@ -134,6 +134,7 @@ plugins:
                         - SimLoad Manager: de/addon/simloadmanager.md
                         - SimReaperXP: de/addon/simreaperxp.md
                         - SimScreen Overlay: de/addon/simscreenoverlay.md
+                        - SGES: de/addon/sges.md
                 - ToLiss-Ökosystem: de/addon/toliss_ecosystem.md
                 - Cockpit & Kamera:
                     - AviTab: de/addon/avitab.md
@@ -141,6 +142,7 @@ plugins:
                     - XTextureExtractor: de/addon/xtextureextractor.md
                     - LinuxTrack: de/addon/linuxtrack.md
                     - TerrainRadar: de/addon/terrainradar.md
+                    - KabinXP: de/addon/kabinxp.md
                 - Verkehr & Bodenbetrieb:
                     - LiveTraffic: de/addon/livetraffic.md
                     - Better Pushback: de/addon/betterpushback.md
@@ -238,6 +240,7 @@ plugins:
                         - SimLoad Manager: en/addon/simloadmanager.md
                         - SimReaperXP: en/addon/simreaperxp.md
                         - SimScreen Overlay: en/addon/simscreenoverlay.md
+                        - SGES: en/addon/sges.md
                 - ToLiss Ecosystem: en/addon/toliss_ecosystem.md
                 - Cockpit & Camera:
                     - AviTab: en/addon/avitab.md
@@ -245,6 +248,7 @@ plugins:
                     - XTextureExtractor: en/addon/xtextureextractor.md
                     - LinuxTrack: en/addon/linuxtrack.md
                     - TerrainRadar: en/addon/terrainradar.md
+                    - KabinXP: en/addon/kabinxp.md
                 - Traffic & Ground Ops:
                     - LiveTraffic: en/addon/livetraffic.md
                     - Better Pushback: en/addon/betterpushback.md

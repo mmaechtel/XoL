@@ -81,6 +81,7 @@ Docs: `docs/en/addon/xorganizer.md`, `docs/en/addon/xearthlayer.md`
 
 ### MITTEL
 - addons/LEKTORAT_ortho_streaming.md -> addon/autoortho.md, addon/xearthlayer.md, addon/orthophotography_intro.md
+- addons/mobiflight.md -> (kein Docs-Mapping, Recherche zu Linux-Kompatibilität)
 
 ## notebooklm
 
