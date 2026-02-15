@@ -41,6 +41,7 @@ This documentation is an open project. Improvements or additions can be contribu
 - Existing addon pages revised: cross-references, corrections, prices and redundant Linux notes removed
 - Navigation: categories flattened, Sounds category added
 - [FlyWithLua](addon/flywithlua.md): general script installation guide added
+- [Performance](xplane/performance.md) revised: flowing text instead of nested lists, reference and Microprofiler tables, diagnostic workflows, sources section
 
 ### 2026-02-14
 - New page [System Tuning Introduction](systemtuning_intro.md), videos embedded (DE + EN)

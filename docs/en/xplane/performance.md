@@ -1,207 +1,162 @@
-# X-Plane Performance
+# X-Plane Performance on Linux
 
-The performance of X-Plane is a crucial factor for a smooth and realistic flight experience. In this chapter, various aspects of performance measurement and optimization are examined.
+X-Plane 12 is a cross-platform application — the general graphics settings (textures, shadows, clouds, anti-aliasing) work the same on all operating systems and are documented in the [official documentation](https://www.x-plane.com/kb/configuring-the-rendering-options/). This page covers performance **analysis** on Linux: internal diagnostic tools, Linux-specific monitoring utilities, and targeted optimization recommendations. The Linux-specific graphics settings are documented under [Configuration](config.md), system tuning under [System Tuning](../systemtuning.md).
 
-## Performance Metrics
+## Internal Diagnostic Tools
 
-X-Plane offers various ways to measure and monitor performance:
+### FPS Display
 
-### FPS (Frames per Second)
+The FPS display (Frames per Second) is the simplest tool for assessing performance. It shows how many frames are calculated per second — but the average value alone reveals little. What matters is the frame time: the time in milliseconds that a single frame requires. A stable 30 FPS (≈ 33 ms per frame) delivers a smoother experience than a fluctuating average of 40 FPS with regular spikes to 60 ms.
 
-The FPS display is the most basic metric for performance in X-Plane. It shows how many frames per second the system calculates and displays. The display is located in the upper left corner of the screen by default, but it is not activated. In some installations, the display is already assigned to a hotkey (e.g., Shift+Ctrl+F), but this can be customized in the keyboard settings. For a smooth flight experience, the FPS rate should be consistently above 30 FPS. A rate below 19 FPS results in choppy movements and impairs playability, while 25–35 FPS is acceptable for most users. From 50 FPS onwards, the simulation is perceived as very smooth.
+**Reference Values**
 
-### Frame Time
+| FPS | Frame Time | Rating |
+|-----|------------|--------|
+| 50+ | < 20 ms | Very smooth |
+| 30–49 | 20–33 ms | Smooth |
+| 20–29 | 33–50 ms | Acceptable |
+| < 20 | > 50 ms | Noticeable stuttering |
 
-Frame Time is an important metric that measures the time required to calculate a single frame. This measurement is particularly valuable for identifying performance bottlenecks, as it shows exactly where delays occur in the calculation process. The Frame Time can be viewed through the integrated X-Plane Performance Monitor, which provides detailed insights into the various phases of frame generation.
+**Activation:** In the menu under *Settings → Data Output*, enable the *frame rate* option. The display appears in the upper left corner of the screen. Alternatively, the FPS display can be toggled with the keyboard shortcut `Shift+Ctrl+F` — provided the binding has not been changed.
 
-### CPU and GPU Usage
+### Microprofiler
 
-Monitoring CPU and GPU utilization is a crucial aspect of performance analysis. These metrics help identify hardware bottlenecks and determine whether the processor or graphics card is the limiting factor. Various system monitoring tools are available for this purpose, such as `htop` for CPU utilization or `nvidia-smi` for NVIDIA graphics cards. These tools provide detailed information about current utilization and can assist in optimizing system resources.
+While the FPS display only shows the overall result, the Microprofiler breaks down frame generation into individual tasks. This reveals whether physics calculations, scenery rendering, plugins, or the GPU are causing the bottleneck.
 
-## Performance Measurement
+**Activation:** In the menu, select *Developer → Toggle Microprofiler*. A real-time graphical display appears showing the time distribution per frame.
 
-### Internal Tools
+**Task Categories**
 
-#### X-Plane Performance Monitor
+| Category | What is measured | Typical values (30 FPS) |
+|----------|-----------------|-------------------------|
+| Flight Model | Physics and aerodynamics | 5–15 ms |
+| Scenery | Landscapes, buildings, roads | 5–10 ms |
+| Clouds/Weather | Clouds, rain, fog | 3–8 ms |
+| Plugins | Installed plugins and addons | 2–10 ms |
+| Swapchain Acquire | CPU/GPU synchronization | 1–5 ms |
 
-The integrated Performance Monitor in X-Plane provides detailed insights into:
+**Identifying CPU-bound vs. GPU-bound**
 
-- Frame Time
-- CPU Usage
-- GPU Usage
-- Memory Usage
-- Network Performance
+The total time splits into CPU time (physics, plugins, scenery logic) and GPU time (textures, shadows, clouds). If CPU time is significantly higher than GPU time, the processor is the bottleneck — lowering graphics settings will have little effect. Conversely, GPU bottlenecks respond well to reducing texture quality, shadows, or anti-aliasing. The table in the [Optimization Tips](#optimization-tips) section maps each bottleneck to specific measures.
 
-#### Microprofiler
+**Calculation Example**
 
-The Microprofiler in X-Plane is a powerful diagnostic tool available in the Developer Menu that provides detailed insights into the simulation's performance. It helps identify bottlenecks in CPU and GPU performance by breaking down the time required for various tasks during frame generation.
+| Component | Time |
+|-----------|------|
+| **Total frame time** | **33.3 ms (30 FPS)** |
+| Physics calculation | 10 ms |
+| Scenery rendering | 8 ms |
+| Clouds/weather | 7 ms |
+| Plugins | 5 ms |
+| Swapchain Acquire | 3 ms |
+| **Total CPU time** | **20 ms** |
+| **Total GPU time** | **13 ms** |
 
-##### What is the Microprofiler?
+In this example, the CPU at 20 ms is the limiting factor. Physics calculations and plugin load are the largest individual items — this is where optimizations should focus.
 
-The Microprofiler is a developer tool that measures the time required for different parts of the X-Plane simulation to calculate and render a frame. Unlike the simple FPS display (Frames per Second), which only shows the frame rate and rough CPU/GPU times, the Microprofiler provides a detailed breakdown of the individual processes that contribute to frame creation.
+## External Tools
 
-The Microprofiler shows:
+X-Plane shows **what** is slow — Linux tools show **why**. The internal diagnostic tools (Microprofiler, FPS display) identify bottlenecks within the simulation. External tools provide the system perspective: GPU utilization, CPU frequency, I/O wait times, and thermal throttling.
 
-- Time per task: How much time (in milliseconds) is required for specific tasks such as physics calculations, scenery rendering, cloud display, or plugin processing
-- CPU and GPU utilization: Which component (CPU or GPU) limits the frame cycle
-- Bottlenecks: Which specific processes take the most time and thus reduce FPS
+### MangoHUD — In-Game Performance Overlay
 
-##### Activation and Usage
+MangoHUD is a Vulkan layer overlay that displays performance metrics directly in-game.
 
-To activate the Microprofiler in X-Plane, follow these steps:
+**Installation and Launch**
 
-1. Opening the Developer Menu:
+```bash
+sudo apt install mangohud
+mangohud ./X-Plane-x86_64
+```
 
-    - Start X-Plane and load any scene (e.g., an aircraft on a runway)
-    - Move the mouse to the top of the screen to display the menu bar
-    - Click on "Developer" (in some versions, it may be called "Developer" or similar, depending on the language)
+**Displayed Metrics**
 
-2. Activating the Microprofiler:
+- FPS and frame time graph
+- GPU load, temperature, clock speed, and [VRAM](../glossary.md#vram-video-ram) usage
+- CPU load, temperature, and frequency per core
+- RAM usage
 
-    - In the Developer menu, select the option "Toggle Microprofiler" or "Show Microprofiler"
-    - A graphical display appears on the screen, showing performance data in real-time
+**Frame time graph** — the most important tool: spikes reveal stutters that the average FPS hides. A stable graph at 33 ms (30 FPS) is better than a fluctuating one averaging 25 ms.
 
-3. Alternative method via configuration file:
+**Configuration**
 
-    - In X-Plane Professional or modified installations, the Microprofiler can be activated via the JSON configuration file
-    - Set the entry "developer::toggle_microprofiler": "visible" to make the option visible
-    - This requires access to the configuration file and is intended for advanced users
+MangoHUD can be customized via a configuration file. A compact layout works well for X-Plane:
 
-4. Keyboard Shortcut (optional):
+`~/.config/MangoHud/X-Plane-x86_64.conf`
 
-    - There is no standard keyboard shortcut for the Microprofiler in X-Plane
-    - Plugins like "FlyWithLua" can be used to define custom shortcuts
+```ini
+fps
+frame_timing
+gpu_stats
+gpu_temp
+gpu_core_clock
+gpu_mem_clock
+vram
+cpu_stats
+cpu_temp
+cpu_mhz
+ram
+position=top-left
+font_size=20
+```
 
-##### Displayed Data and Interpretation
+**Keyboard Shortcuts**
 
-The Microprofiler provides a visual representation of frame generation time, divided into various categories:
+| Shortcut | Function |
+|----------|----------|
+| `Shift_R+F12` | Toggle overlay |
+| `Shift_L+F2` | Start/stop CSV logging |
 
-1. Frame Time (Total Time per Frame):
+CSV logging records metrics for post-flight analysis — log files are saved under `/tmp/MangoHud/`.
 
-    - Definition: The total time in milliseconds required to calculate and render a frame
-    - Formula: Frame Time = 1000 ms / FPS
-    - Example: At 30 FPS, the frame time is 1000/30 ≈ 33.3 ms
+### GPU Monitoring
 
-2. Task Categories:
+| GPU | Tool | Installation | Command |
+|-----|------|-------------|---------|
+| NVIDIA | nvidia-smi | (included with driver) | `nvidia-smi dmon` |
+| AMD | radeontop | `sudo apt install radeontop` | `sudo radeontop` |
+| Intel | intel_gpu_top | `sudo apt install intel-gpu-tools` | `sudo intel_gpu_top` |
 
-    - Physics Calculations (Flight Model): Time for calculating flight behavior (e.g., aerodynamics, engines)
-    - Scenery Rendering: Time for drawing landscapes, buildings, roads
-    - Clouds and Weather: Time for displaying clouds, rain, or fog
-    - Plugins: Time consumed by installed plugins
-    - Swapchain Acquire: Time for synchronization between CPU and GPU
-    - Other Tasks: AI aircraft, ATC, network communication, or VR rendering
+For NVIDIA cards, a compact CSV monitor can be started:
 
-3. CPU and GPU Time:
+```bash
+nvidia-smi --query-gpu=utilization.gpu,utilization.memory,temperature.gpu,clocks.gr,power.draw --format=csv -l 2
+```
 
-    - CPU Time: Time for calculations on the CPU (e.g., physics, plugins, scenery logic)
-    - GPU Time: Time for rendering graphics (e.g., textures, shadows, clouds)
-    - Interpretation:
-        - High CPU Time: CPU is the bottleneck
-        - High GPU Time: GPU is the bottleneck
+**Identifying GPU Bottlenecks**
 
-##### Calculation Example
+- GPU 95–100% + low FPS → GPU-bound (reduce graphics settings)
+- GPU < 70% + low FPS → CPU-bound (check Microprofiler for blocking thread)
 
-Suppose the Microprofiler shows the following values:
+## Diagnostic Workflows
 
-- FPS: 30
-- Total Frame Time: 33.3 ms
-- Task Distribution:
-    - Physics Calculation: 10 ms
-    - Scenery Rendering: 8 ms
-    - Clouds/Weather: 7 ms
-    - Plugins: 5 ms
-    - Swapchain Acquire: 3 ms
-- Total CPU Time: 20 ms
-- Total GPU Time: 13 ms
+The following table connects typical symptoms with the appropriate toolchain. Details on the Linux tools can be found under [System Monitoring](../systemtools.md).
 
-Now it's possible to analyze in detail which parts (e.g., addons) contribute what kind of load to CPU and GPU.
+| Symptom | Toolchain | What to check |
+|---------|-----------|---------------|
+| Micro-stutters during flight | MangoHUD frame time + `iostat` | NVMe wake-up latency (APST) |
+| Low FPS with low GPU load | Microprofiler + `htop` | CPU-bound — which thread is blocking? |
+| Stutter during scenery transitions | `iotop` + `fatrace` | Which files are being read? |
+| FPS drop after driver update | MangoHUD comparison before/after | Clear shader cache, driver regression? |
+| Periodic stutters every ~30 s | `mpstat -I CPU 1` | IRQ storm on application cores? |
 
-### External Tools
+## Optimization Tips
 
-#### System Monitoring
+The Microprofiler shows where frame time is being lost. The following table maps each bottleneck to the most effective measure.
 
-- **htop**: Detailed CPU and memory usage
-- **nvidia-smi**: NVIDIA-specific performance metrics
-- **glxgears**: Simple tool for checking OpenGL performance
+| Bottleneck | Measure | Setting |
+|------------|---------|---------|
+| CPU (Physics) | Reduce flight models | Flight Models per Frame: 2–4 |
+| CPU (Plugins) | Disable resource-heavy addons | — |
+| CPU (Scenery) | Reduce objects and AI aircraft | Lower Object Density |
+| GPU (Textures) | Lower texture quality | Texture Quality: Medium or High |
+| GPU (Shadows) | Reduce shadows and anti-aliasing | Lower Shadow Quality and MSAA level |
+| GPU (Clouds) | Adjust cloud quality | Lower Cloud Quality |
 
-#### Overlay Tools
+For Linux-specific optimizations (CPU governor, interrupt routing, memory parameters) see [System Tuning](../systemtuning.md). Benchmarking methods and rendering options are documented under [Configuration](config.md).
 
-- **MangoHUD**: An overlay for Linux that displays performance metrics
-- **GOverlay**: Graphical user interface for MangoHUD
-- **vulkaninfo**: Detailed information about Vulkan implementation
+## Sources
 
-#### Benchmarking Tools
-
-- **Phoronix Test Suite**: Comprehensive benchmarking suite
-- **Unigine Heaven**: Graphics card benchmark
-- **GLmark2**: OpenGL benchmark
-
-## Practical Optimization Tips
-
-Based on the FPS display and the Microprofiler, targeted optimizations can be made:
-
-- **CPU Optimization**:
-
-    - Reduction of the number of scenery objects and AI aircraft
-    - Lowering of physics calculations per frame ("Flight Models per Frame" to 2–4)
-    - Use of less complex add-ons
-    - Reduction of cloud details
-
-- **GPU Optimization**:
-
-    - Reduction of texture resolution ("Texture Quality" to Medium or High)
-    - Disabling or reducing anti-aliasing and shadows
-    - Adjustment of cloud quality
-
-- **General**:
-
-    - Testing in a simple scenery to determine base FPS
-    - Use of external tools for additional metrics
-    - Regular performance checks with the Microprofiler
-
-## Performance Optimization
-
-### Graphics Settings
-
-- Texture quality adjustment
-- Object density optimization
-- Cloud density setting
-- Shadow quality adjustment
-
-### System Optimization
-
-- Using the [Liquorix kernel](../liquorix.md) for better scheduling and lower latency
-- [NVIDIA driver](../nvidia.md) settings optimization
-- CPU governor, interrupt routing, and memory parameters — see [System Tuning](../systemtuning.md) for kernel-specific configurations
-
-### Addon Management
-
-- Monitoring addon performance impact
-- Optimal addon loading order
-- Regular cleanup of unnecessary addons
-
-## Benchmarking
-
-For systematic performance analysis, it is recommended to:
-
-1. Create a standardized test flight
-2. Document base settings
-3. Conduct tests with different configurations
-4. Compare results
-
-## Troubleshooting
-
-Common performance issues and their solutions:
-
-- Stuttering and frame drops
-- High CPU usage
-- GPU overload
-- Memory leaks
-- Network latency
-
-## Best Practices
-
-- Conduct regular performance measurements
-- Document changes
-- Systematically test configuration changes
-- Backup settings before major changes 
+- [MangoHUD — GitHub](https://github.com/flightlessmango/MangoHud)
+- [X-Plane 12 — Rendering Options](https://www.x-plane.com/kb/configuring-the-rendering-options/)
+- [nvidia-smi Documentation](https://developer.nvidia.com/nvidia-system-management-interface)
