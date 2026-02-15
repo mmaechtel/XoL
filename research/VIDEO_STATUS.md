@@ -12,3 +12,4 @@
 | Das_Performance-Rätsel.mp4 | de/performance_with_simulation_software | videos.md (DE), index.md (DE, featured), performance_overview.md (DE) | eingebettet | 2026-02-15 |
 | Ortho-Streaming_on_Linux.mp4 | en/ortho_streaming | videos.md (EN), index.md (EN, featured), orthophotography_intro.md (EN) | eingebettet | 2026-02-15 |
 | The_Performance_Puzzle.mp4 | en/performance_with_simulation_software | videos.md (EN), index.md (EN, featured), performance_overview.md (EN) | eingebettet | 2026-02-15 |
+| Vom_Briefing_zum_Gate.mp4 | de/Toliss_Plugin_Flow | videos.md (DE), index.md (DE, featured), toliss_ecosystem.md (DE) | eingebettet | 2026-02-15 |

@@ -33,6 +33,7 @@ This documentation is an open project. Improvements or additions can be contribu
 ## Recent Changes
 
 ### 2026-02-15
+- [ToLiss Ecosystem](addon/toliss_ecosystem.md) and [Videos](videos.md): "Vom Briefing zum Gate" video embedded (DE)
 - ATC section expanded: 6 new flight phase pages — [Pushback & Taxi](flight_operations/pushback_taxi.md), [Takeoff](flight_operations/takeoff.md), [Departure & Climb](flight_operations/departure.md), [En Route](flight_operations/enroute.md), [Approach](flight_operations/approach.md), [Landing & Taxi In](flight_operations/landing.md) — complete gate-to-gate ATC communication guide
 - New addon pages: [SkunkCrafts Updater](addon/skunkcrafts_updater.md) (update tool with glibc requirement and Wayland notes), [XPPython3](addon/xppython3.md) (Python 3 scripting engine with Debian dependencies)
 - Navigation restructured: Addon categories flattened (removed Miscellaneous wrapper), [ToLiss Ecosystem](addon/toliss_ecosystem.md) as standalone menu item, Ortho Streaming as subcategory

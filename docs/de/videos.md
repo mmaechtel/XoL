@@ -68,4 +68,14 @@ Videosammlung rund um X-Plane auf Linux.
 
 </div>
 
+<div class="video-card" markdown>
+
+### Vom Briefing zum Gate
+
+<video controls width="100%" preload="metadata" poster="../assets/video/de/Toliss_Plugin_Flow/Vom_Briefing_zum_Gate.jpg">
+  <source src="../assets/video/de/Toliss_Plugin_Flow/Vom_Briefing_zum_Gate.mp4" type="video/mp4">
+</video>
+
+</div>
+
 </div>

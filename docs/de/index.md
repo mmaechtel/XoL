@@ -7,8 +7,8 @@ Die hier gezeigten Beispiele basieren auf Debian Linux, lassen sich aber leicht 
 ## Featured Video
 
 <div class="video-container" markdown>
-<video controls width="100%" preload="metadata" poster="../assets/video/de/performance_with_simulation_software/Das_Performance-Rätsel.jpg">
-  <source src="../assets/video/de/performance_with_simulation_software/Das_Performance-Rätsel.mp4" type="video/mp4">
+<video controls width="100%" preload="metadata" poster="../assets/video/de/Toliss_Plugin_Flow/Vom_Briefing_zum_Gate.jpg">
+  <source src="../assets/video/de/Toliss_Plugin_Flow/Vom_Briefing_zum_Gate.mp4" type="video/mp4">
 </video>
 </div>
 
@@ -33,6 +33,7 @@ Diese Dokumentation ist ein offenes Projekt. Verbesserungen oder Ergänzungen k�
 ## Letzte Änderungen
 
 ### 2026-02-15
+- [ToLiss-Ökosystem](addon/toliss_ecosystem.md) und [Videos](videos.md): Video „Vom Briefing zum Gate" eingebettet (DE)
 - ATC-Sektion erweitert: 6 neue Flugphasen-Seiten — [Pushback & Taxi](flight_operations/pushback_taxi.md), [Start](flight_operations/takeoff.md), [Abflug und Steigflug](flight_operations/departure.md), [Streckenflug](flight_operations/enroute.md), [Anflug](flight_operations/approach.md), [Landung und Abstellen](flight_operations/landing.md) — vollständige Gate-to-Gate ATC-Kommunikationsanleitung
 - Neue Addon-Seiten: [SkunkCrafts Updater](addon/skunkcrafts_updater.md) (Update-Tool mit glibc-Anforderung und Wayland-Hinweisen), [XPPython3](addon/xppython3.md) (Python-3-Scripting-Engine mit Debian-Abhängigkeiten)
 - Navigation umgebaut: Addon-Kategorien flachgezogen (Verschiedenes-Wrapper entfernt), [ToLiss-Ökosystem](addon/toliss_ecosystem.md) als eigener Menüpunkt, Ortho Streaming als Unterkapitel
