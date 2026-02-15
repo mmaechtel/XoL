@@ -33,6 +33,7 @@ Diese Dokumentation ist ein offenes Projekt. Verbesserungen oder Ergänzungen k�
 ## Letzte Änderungen
 
 ### 2026-02-15
+- Neue Seite [NOAA Weather](addon/noaa_weather.md) — Python-Plugin für reale Schneebedeckung und METAR-Monitoring als Ergänzung zu X-Planes Real Weather
 - [ToLiss-Ökosystem](addon/toliss_ecosystem.md) und [Videos](videos.md): Video „Beyond the Default Cockpit" eingebettet (EN)
 - [ToLiss-Ökosystem](addon/toliss_ecosystem.md) und [Videos](videos.md): Video „Vom Briefing zum Gate" eingebettet (DE)
 - ATC-Sektion erweitert: 6 neue Flugphasen-Seiten — [Pushback & Taxi](flight_operations/pushback_taxi.md), [Start](flight_operations/takeoff.md), [Abflug und Steigflug](flight_operations/departure.md), [Streckenflug](flight_operations/enroute.md), [Anflug](flight_operations/approach.md), [Landung und Abstellen](flight_operations/landing.md) — vollständige Gate-to-Gate ATC-Kommunikationsanleitung
