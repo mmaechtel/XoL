@@ -33,9 +33,13 @@ Diese Dokumentation ist ein offenes Projekt. Verbesserungen oder Ergänzungen k�
 ## Letzte Änderungen
 
 ### 2026-02-15
-- Addon-Seiten überarbeitet: Faktenkorrekturen ([Follow the Greens](addon/followthegreens.md), [ToLiss SimBrief](addon/toliss_simbrief.md), [XGS](addon/xgs.md), [AutoGate](addon/autogate.md)), Linux-Hinweise ergänzt ([ToLiss-Ökosystem](addon/toliss_ecosystem.md)), Intro-Umschreibung ([XTextureExtractor](addon/xtextureextractor.md))
+- Neue Addon-Seiten: [SkunkCrafts Updater](addon/skunkcrafts_updater.md) (Update-Tool mit glibc-Anforderung und Wayland-Hinweisen), [XPPython3](addon/xppython3.md) (Python-3-Scripting-Engine mit Debian-Abhängigkeiten)
+- Navigation umgebaut: Addon-Kategorien flachgezogen (Verschiedenes-Wrapper entfernt), [ToLiss-Ökosystem](addon/toliss_ecosystem.md) als eigener Menüpunkt, Ortho Streaming als Unterkapitel
+- ToLiss SimBrief Connector entfernt (veraltet), [simbrief_hub](https://github.com/hotbso/simbrief_hub)-Referenz im [ToLiss-Ökosystem](addon/toliss_ecosystem.md) ergänzt
+- [XRoad](addon/xroad.md): GitHub-Repository-Link ergänzt
+- Addon-Seiten überarbeitet: Faktenkorrekturen ([Follow the Greens](addon/followthegreens.md), [XGS](addon/xgs.md), [AutoGate](addon/autogate.md)), Linux-Hinweise ergänzt ([ToLiss-Ökosystem](addon/toliss_ecosystem.md)), Intro-Umschreibung ([XTextureExtractor](addon/xtextureextractor.md))
 - [ToLiss-Ökosystem](addon/toliss_ecosystem.md) umstrukturiert: Übersichts-Absatz, `###`-Überschriften statt Fettdruck für bessere Navigation
-- Neue Addon-Seiten: [ToLiss-Ökosystem](addon/toliss_ecosystem.md) (Callouts, Automatisierung, Boarding, Bodendienste), [ToLiss SimBrief Connector](addon/toliss_simbrief.md), [XGS](addon/xgs.md) (Landing-Speed-Analyse), [Follow the Greens](addon/followthegreens.md) (A-SMGCS Rollführung)
+- Neue Addon-Seiten: [ToLiss-Ökosystem](addon/toliss_ecosystem.md) (Callouts, Automatisierung, Boarding, Bodendienste), [XGS](addon/xgs.md) (Landing-Speed-Analyse), [Follow the Greens](addon/followthegreens.md) (A-SMGCS Rollführung)
 - Addon-Sektion erweitert: [AutoDGS](addon/autodgs.md), [openSAM](addon/opensam.md), [AutoGate](addon/autogate.md), [DataRefTool](addon/datareftool.md), [Little XpConnect](addon/littlexpconnect.md), [XTextureExtractor](addon/xtextureextractor.md) — neue Kategorien Werkzeuge und erweiterte Verkehr & Bodenbetrieb
 - Addon-Sektion ausgebaut: Neue Seiten [FlyWithLua](addon/flywithlua.md), [AviTab](addon/avitab.md), [XCamera](addon/xcamera.md), [LiveTraffic](addon/livetraffic.md), [Better Pushback](addon/betterpushback.md) — jeweils mit Hintergrund, Linux-Installation, bekannten Problemen und Quellen
 - Bestehende Seiten [XRoad](addon/xroad.md) und [AEP](addon/aep.md) nach einheitlichem Template überarbeitet

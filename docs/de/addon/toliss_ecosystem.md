@@ -127,7 +127,7 @@ Simuliert eine Cargo-Haupttür für den A321P2F/A321PCF mit rigider Cargo-Barrie
 
 Die folgenden eigenständigen Plugins arbeiten mit der ToLiss-Flotte zusammen, sind aber als separate Seiten dokumentiert:
 
-- **[ToLiss SimBrief Connector](toliss_simbrief.md)** — OFP-Abruf, Load/Fuel-Transfer, FMS-Datei-Laden, PDF-Export nach AviTab
+- **[simbrief_hub](https://github.com/hotbso/simbrief_hub)** — stellt SimBrief-Daten als Datarefs bereit, wird von [AutoDGS](autodgs.md), [openSAM](opensam.md) und weiteren Plugins genutzt
 - **[XGS](xgs.md)** — Landing-Speed-Analyse mit ToLiss-spezifischer Fahrwerksstreben-Erkennung
 - **[Follow the Greens](followthegreens.md)** — A-SMGCS Taxiway-Leitsystem
 - **[openSAM](opensam.md)** — Jetways, VDGS, Marshaller für Custom-Szenerien

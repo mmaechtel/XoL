@@ -33,9 +33,13 @@ This documentation is an open project. Improvements or additions can be contribu
 ## Recent Changes
 
 ### 2026-02-15
-- Addon pages revised: Fact corrections ([Follow the Greens](addon/followthegreens.md), [ToLiss SimBrief](addon/toliss_simbrief.md), [XGS](addon/xgs.md), [AutoGate](addon/autogate.md)), Linux notes added ([ToLiss Ecosystem](addon/toliss_ecosystem.md)), intro rewrite ([XTextureExtractor](addon/xtextureextractor.md))
+- New addon pages: [SkunkCrafts Updater](addon/skunkcrafts_updater.md) (update tool with glibc requirement and Wayland notes), [XPPython3](addon/xppython3.md) (Python 3 scripting engine with Debian dependencies)
+- Navigation restructured: Addon categories flattened (removed Miscellaneous wrapper), [ToLiss Ecosystem](addon/toliss_ecosystem.md) as standalone menu item, Ortho Streaming as subcategory
+- ToLiss SimBrief Connector removed (obsolete), [simbrief_hub](https://github.com/hotbso/simbrief_hub) reference added to [ToLiss Ecosystem](addon/toliss_ecosystem.md)
+- [XRoad](addon/xroad.md): GitHub repository link added
+- Addon pages revised: Fact corrections ([Follow the Greens](addon/followthegreens.md), [XGS](addon/xgs.md), [AutoGate](addon/autogate.md)), Linux notes added ([ToLiss Ecosystem](addon/toliss_ecosystem.md)), intro rewrite ([XTextureExtractor](addon/xtextureextractor.md))
 - [ToLiss Ecosystem](addon/toliss_ecosystem.md) restructured: Overview paragraph, `###` headings instead of bold for better navigation
-- New addon pages: [ToLiss Ecosystem](addon/toliss_ecosystem.md) (callouts, automation, boarding, ground services), [ToLiss SimBrief Connector](addon/toliss_simbrief.md), [XGS](addon/xgs.md) (landing speed analysis), [Follow the Greens](addon/followthegreens.md) (A-SMGCS taxi guidance)
+- New addon pages: [ToLiss Ecosystem](addon/toliss_ecosystem.md) (callouts, automation, boarding, ground services), [XGS](addon/xgs.md) (landing speed analysis), [Follow the Greens](addon/followthegreens.md) (A-SMGCS taxi guidance)
 - Addon section expanded: [AutoDGS](addon/autodgs.md), [openSAM](addon/opensam.md), [AutoGate](addon/autogate.md), [DataRefTool](addon/datareftool.md), [Little XpConnect](addon/littlexpconnect.md), [XTextureExtractor](addon/xtextureextractor.md) — new Tools category and expanded Traffic & Ground Ops
 - Addon section expanded: New pages [FlyWithLua](addon/flywithlua.md), [AviTab](addon/avitab.md), [XCamera](addon/xcamera.md), [LiveTraffic](addon/livetraffic.md), [Better Pushback](addon/betterpushback.md) — each with background, Linux installation, known issues, and sources
 - Existing pages [XRoad](addon/xroad.md) and [AEP](addon/aep.md) revised to follow unified template

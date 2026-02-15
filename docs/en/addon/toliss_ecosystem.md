@@ -127,7 +127,7 @@ Simulates a cargo main door for the A321P2F/A321PCF with rigid cargo barrier and
 
 The following standalone plugins integrate with the ToLiss fleet but are documented on separate pages:
 
-- **[ToLiss SimBrief Connector](toliss_simbrief.md)** — OFP retrieval, load/fuel transfer, FMS file loading, PDF export to AviTab
+- **[simbrief_hub](https://github.com/hotbso/simbrief_hub)** — provides SimBrief data as datarefs, used by [AutoDGS](autodgs.md), [openSAM](opensam.md), and other plugins
 - **[XGS](xgs.md)** — Landing speed analysis with ToLiss-specific gear strut detection
 - **[Follow the Greens](followthegreens.md)** — A-SMGCS taxiway guidance system
 - **[openSAM](opensam.md)** — Jetways, VDGS, marshaller for custom sceneries
