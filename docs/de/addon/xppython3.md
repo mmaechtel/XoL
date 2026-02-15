@@ -19,7 +19,7 @@ XPPython3 ist der Nachfolger von Sandy Barbours PythonInterface (nur Python 2). 
 - **Dear ImGui-Integration:** Moderne UI-Fenster über das `xp_imgui`-Modul
 - **Integriertes pip:** Python-Pakete (numpy, Pillow, requests) direkt aus X-Plane installieren
 - **Plugin-Typen:** Globale, flugzeug- und szenerie-spezifische Python-Plugins
-- **Hot Reload:** Alle Python-Plugins neu laden, ohne X-Plane zu starten
+- **Hot Reload:** Alle Python-Plugins neu laden, ohne X-Plane neu zu starten
 - **Integrierter Updater:** Prüft über das Plugins-Menü auf neue XPPython3-Versionen
 - **Kompilierte Plugins:** Unterstützung für `.pyc`- und verschlüsselte `.xpyce`-Dateien für kommerzielle Verbreitung
 

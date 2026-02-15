@@ -191,6 +191,6 @@ Additionally, the disk I/O profile indirectly affects CPU load:
 
 XEarthLayer is aimed at Linux users seeking maximum streaming performance who are willing to set up a Rust build environment. AutoOrtho offers broader platform support and easier setup.
 
-## Resources
+## Sources
 
 - [GitHub Repository](https://github.com/samsoir/xearthlayer)

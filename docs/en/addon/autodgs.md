@@ -4,7 +4,7 @@ AutoDGS automatically provides a Docking Guidance System (VDGS or marshaller) at
 
 ## Background
 
-- **Developer:** hotbso (also developer of openSAM and the Better Pushback Mod fork)
+- **Developer:** hotbso (also developer of [openSAM](opensam.md) and the [Better Pushback](betterpushback.md) Mod fork)
 - **Repository:** [github.com/hotbso/AutoDGS](https://github.com/hotbso/AutoDGS) (open source, LGPL-2.1)
 - **Platforms:** Windows, macOS, Linux (native binaries)
 - **Compatibility:** [X-Plane](../glossary.md#x-plane) 12
@@ -23,7 +23,7 @@ AutoDGS is actively maintained with regular updates. The [plugin](../glossary.md
 
 ## Value in Flight Simulation
 
-Default airports without custom scenery have no docking guidance system. AutoDGS fills this gap by providing a VDGS or marshaller at every gateway airport with a tower and stands. The plugin complements openSAM: AutoDGS handles default airports, openSAM takes care of SAM-enabled custom sceneries. Both plugins can run in parallel — AutoDGS automatically skips airports with a `sam.xml`.
+Default airports without custom scenery have no docking guidance system. AutoDGS fills this gap by providing a VDGS or marshaller at every gateway airport with a tower and stands. The plugin complements [openSAM](opensam.md): AutoDGS handles default airports, openSAM takes care of SAM-enabled custom sceneries. Both plugins can run in parallel — AutoDGS automatically skips airports with a `sam.xml`.
 
 ## Installation
 
@@ -31,7 +31,7 @@ Default airports without custom scenery have no docking guidance system. AutoDGS
 
 Extract the ZIP file to `Resources/plugins/`. This creates the `AutoDGS/` folder with the Linux binary at `lin_x64/AutoDGS.xpl`.
 
-No additional system packages are required. There are no known Linux-specific issues. Automatic updates via the Skunkcrafts Updater are supported.
+No additional system packages are required. There are no known Linux-specific issues. Automatic updates via the [SkunkCrafts Updater](skunkcrafts_updater.md) are supported.
 
 ## Sources
 

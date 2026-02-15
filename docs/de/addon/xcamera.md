@@ -23,7 +23,7 @@ XCamera wird aktiv gepflegt. Das [Plugin](../glossary.md#plugin) ist ein eigenst
 - **External Cameras:** Konfigurierbare Außenansichten mit Orbit und Fly-by
 - **AI Aircraft Views:** Blick aus der Perspektive von AI-Flugzeugen
 - **Mini Control Panel:** Farbkodiertes dynamisches Panel für schnelle Kameraauswahl
-- **Head Tracking:** TrackIR (Windows), OpenTrack (Linux/macOS, empfohlen), LinuxTrack (nicht mehr gepflegt), SimHat (iPhone)
+- **Head Tracking:** TrackIR (Windows), OpenTrack (Linux/macOS, empfohlen), [LinuxTrack](linuxtrack.md) (nicht mehr gepflegt), SimHat (iPhone)
 
 ### Free vs. Registriert
 
@@ -46,14 +46,14 @@ Es werden keine zusätzlichen Systempakete benötigt. Es sind keine Linux-spezif
 
 Für Head Tracking auf Linux wird **OpenTrack** empfohlen. LinuxTrack wird nicht mehr aktiv gepflegt.
 
-**OpenTrack-Einrichtung:**
+**OpenTrack-Einrichtung**
 
 1. OpenTrack installieren und konfigurieren (Eingabe: Webcam mit NeuralNet-Tracker, IR-Clip o.ä.)
 2. In OpenTrack: Output auf "UDP over network" setzen
 3. Das OpenTrack-eigene X-Plane-Plugin (im OpenTrack-Build enthalten) in `Resources/plugins/` ablegen und in X-Plane "Track Head Motion" aktivieren
 4. In XCamera: Die "TrackIR"-Checkbox bei den gewünschten Views aktivieren — XCamera behandelt OpenTrack-Daten wie TrackIR-Daten
 
-**OpenTrack auf Debian/Ubuntu installieren:**
+**OpenTrack auf Debian/Ubuntu installieren**
 
 ```bash
 sudo apt install cmake qtbase5-dev libopencv-dev libprocps-dev

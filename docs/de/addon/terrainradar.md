@@ -37,7 +37,7 @@ Den Ordner `TerrainRadar` nach `Resources/plugins/` entpacken.
 
 ### Linux-Hinweise
 
-Die Linux-Binary (`lin.xpl`) ist im Download enthalten. Weitere Linux-spezifische Probleme sind nicht bekannt.
+Die Linux-Binary (`lin.xpl`) ist im Download enthalten. Es sind keine Linux-spezifischen Probleme bekannt.
 
 ## Quellen
 

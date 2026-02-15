@@ -23,7 +23,7 @@ Sonderfälle wie Durchstarten und Durchgangsflüge werden berücksichtigt — im
 - **Automatischer Abflug-Auslöser:** Beacon-On startet einen PAX-skalierten Countdown
 - **Automatischer Anflug-Auslöser:** Klappen + Fahrwerk unten löst Cabin Ready aus
 - **Go-Around-sicher:** Verarbeitet Fehlanflüge ohne fehlerhafte Zustände
-- **Alle ToLiss-Flugzeuge:** Funktioniert mit der gesamten ToLiss-Airbus-Familie (A319, A320neo, A321/neo, A330neo, A340)
+- **Alle ToLiss-Flugzeuge:** Funktioniert mit der gesamten ToLiss-Airbus-Familie (A319, A320neo, A321/neo, A330neo, A340-600)
 
 ## Mehrwert in der Flugsimulation
 

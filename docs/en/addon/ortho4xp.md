@@ -9,7 +9,7 @@ Ortho4XP is available in two main versions:
 1. **Original version** by Oscar Pilote:
     * [GitHub Repository](https://github.com/oscarpilote/Ortho4XP)
     * The original version with basic features
-    * [Binaries available](https://github.com/kubilus1/autoortho/releases/tag/0.7.2)
+
 
 2. **shred86's fork** (recommended):
     * [GitHub Repository](https://github.com/shred86/Ortho4XP)
@@ -28,9 +28,9 @@ Ortho4XP is available in two main versions:
     - Download the desired version
     - Ensure Python 3.x is installed
     - Install required Python packages:
-     ```bash
-     pip install -r requirements.txt
-     ```
+        ```bash
+        pip install -r requirements.txt
+        ```
 
 3. **Alternative Installation for Linux**:
     - Installation with Docker (see [Docker Documentation](../docker.md))

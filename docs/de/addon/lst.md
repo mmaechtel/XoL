@@ -18,7 +18,7 @@ LST ist der moderne Nachfolger des älteren GroundTraffic-Plugins. Wo GroundTraf
 - **Routenbasierte Animation:** Objekte bewegen sich entlang entwicklerdefinierter Pfade mit realistischer Beschleunigung und Abbremsung
 - **Verzweigungen:** Objekte wechseln zufällig zwischen Routen für natürlichen Verkehrsfluss — kein plötzliches Erscheinen an unnatürlichen Stellen
 - **Mindestabstand:** Fahrzeuge halten automatisch Abstand und bremsen stufenweise ab (Stau-Simulation)
-- **Partikelsystem:** Zugriff auf X-Plane-12-Partikeleffekte (Abgase, Rauch) an Szeneriebjekten
+- **Partikelsystem:** Zugriff auf X-Plane-12-Partikeleffekte (Abgase, Rauch) an Szenerieobjekten
 - **FMOD-Sound:** Richtungsabhängige, entfernungsgedämpfte Sounds an bewegten und statischen Objekten
 - **Positions-Trigger:** Ereignisse an bestimmten Orten auslösen (z.B. Türen öffnen bei Fahrzeugankunft)
 - **Performance:** Tausende animierte Objekte bei weniger als 5–10 % Framerate-Einbuße
@@ -35,7 +35,7 @@ Den Ordner `Living Scenery Technology` nach `Resources/plugins/` kopieren. Das P
 
 ### Linux-Hinweise
 
-Die Linux-Binary ist im Download enthalten. Weitere Linux-spezifische Probleme sind nicht bekannt.
+Die Linux-Binary ist im Download enthalten. Es sind keine Linux-spezifischen Probleme bekannt.
 
 Die offiziellen Entwickler-Tools (Konverter, Generator) sind Windows-only. Für Linux existiert die Community-Alternative [lst-utils](https://github.com/devleaks/lst-utils) (Python, MIT-Lizenz).
 

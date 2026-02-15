@@ -49,6 +49,7 @@ For Qt5 support, also install `qtbase5-dev`.
 - TrackIR 4/5 requires firmware extraction on first launch
 - The GUI (`ltr_gui`) must **not** be running while flying — only the daemon `ltr_server1`
 - Alternative: [OpenTrack](https://github.com/opentrack/opentrack) offers similar functionality with broader platform support
+- [XCamera](xcamera.md) supports LinuxTrack as one of its head tracking inputs
 
 ## Sources
 

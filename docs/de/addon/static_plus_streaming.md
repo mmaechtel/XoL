@@ -102,7 +102,7 @@ Das `aa_`-Verzeichnis muss **vor** den `ao_`-Verzeichnissen stehen, damit die Or
 
 Wie im [Ortho4XP-Kapitel](ortho4xp.md) beschrieben, können LiDAR-Daten die Auflösung und Genauigkeit der Geländedarstellung weiter verbessern. Die LiDAR-Daten von [sonny.4lima.de](https://sonny.4lima.de) bieten eine hohe Auflösung für verschiedene Regionen.
 
-Siehe [LiDAR-Daten Integration](ortho4xp.md#Integration von LiDAR-Daten) im Ortho4XP-Kapitel.
+Siehe [LiDAR-Daten Integration](ortho4xp.md#integration-von-lidar-daten) im Ortho4XP-Kapitel.
 
 ## Fazit
 

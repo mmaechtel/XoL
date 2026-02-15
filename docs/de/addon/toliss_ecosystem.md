@@ -86,7 +86,7 @@ Initialisiert das Cockpit nach individuellen Vorlieben: ND-Mode, ND-Range, MKR B
 
 Umfangreicher FO/PM-Assistent, der die Aufgaben des First Officers und Pilot Monitoring von der Cockpit Preparation über Engine Start bis zur Landung übernimmt. Enthält ein PDF-Handbuch und verschiedene Sprachpakete (US, British, French, Australian, Egyptian). Funktioniert mit X-Plane 11 und 12.
 
-- **Kompatibel mit:** A319, A320 CEO/NEO, A321 CEO/NEO, A330-900, A340-600
+- **Kompatibel mit:** A319, A320 CEO/NEO, A321 CEO/NEO, A330neo, A340-600
 - **Download:** [forums.x-plane.org](https://forums.x-plane.org/files/file/54069-speedy-copilot-for-toliss/)
 
 ### Windshield & Window Icing Mod

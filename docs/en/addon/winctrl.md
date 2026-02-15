@@ -11,7 +11,7 @@ WINCTRL is a native [plugin](../glossary.md#plugin) that connects Winwing cockpi
 - **Compatibility:** X-Plane 12
 - **Price:** Free (open source)
 
-The plugin communicates directly with the hardware via USB HID: it reads button presses, knob rotations, and switch states while driving LCD screens, LED backlighting, and annunciator lights in return. Axes (throttle levers, joystick) are deliberately left to X-Plane's built-in joystick configuration. Development is very active (32 releases since July 2025).
+The plugin communicates directly with the hardware via USB HID: it reads button presses, knob rotations, and switch states while driving LCD screens, LED backlighting, and annunciator lights in return. Axes (throttle levers, joystick) are deliberately left to X-Plane's built-in joystick configuration. Development is very active with frequent releases.
 
 ## Features
 
@@ -40,7 +40,7 @@ Copy the `winctrl` folder to `Resources/plugins/`. The plugin auto-detects conne
 
 udev rules are required for non-root HID access. Create `/etc/udev/rules.d/99-winctrl.rules`:
 
-```bash
+```
 # Winwing/WINCTRL HID devices
 SUBSYSTEM=="hidraw", ATTRS{idVendor}=="1002", MODE="0666"
 ```

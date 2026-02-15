@@ -82,7 +82,7 @@ Eigene Kartenquellen werden über die Datei `online-maps/mapconfig.json` im Plug
     - Arch Linux / EndeavourOS
     - Ubuntu 24.04 / Kubuntu 24.10
 
-    **Debian Bookworm** (lcms2 2.14) ist möglicherweise nicht betroffen. Debian Trixie (lcms2 2.16) muss getestet werden.
+    **Debian Bookworm** (lcms2 2.14) ist nicht betroffen. Distributionen mit lcms2 ≥ 2.16 könnten ebenfalls betroffen sein.
 
     **Workaround:** Ein Community-Mitglied hat den Crash durch Neukompilierung von AviTab mit einer neueren MuPDF-Version (1.26.11) behoben. Dies erfordert allerdings Selbstkompilierung — ein offizielles Update steht aus. Moving Map und andere Apps funktionieren unabhängig davon normal.
 

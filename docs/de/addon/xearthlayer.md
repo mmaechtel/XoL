@@ -191,6 +191,6 @@ Zusätzlich beeinflusst das Disk-I/O-Profil die CPU-Last indirekt:
 
 XEarthLayer richtet sich an Linux-Nutzer, die maximale Streaming-Performance suchen und bereit sind, eine Rust-Build-Umgebung einzurichten. AutoOrtho bietet die breitere Plattformunterstützung und einfachere Einrichtung.
 
-## Ressourcen
+## Quellen
 
 - [GitHub Repository](https://github.com/samsoir/xearthlayer)

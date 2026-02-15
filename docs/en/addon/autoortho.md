@@ -127,7 +127,7 @@ Additional specific issues when using AutoOrtho:
 
 ### Log Analysis
 
-The user can analyze the autoortho.log using various methods:
+The autoortho.log can be analyzed using various methods:
 
 - View the entire log:
     ```bash
@@ -171,7 +171,7 @@ The example system runs Debian 12 (Bookworm) with X-Plane 12, featuring an SSD, 
 ### Step-by-Step Installation
 
 1. **System Preparation**:
-    The user updates the system and installs basic dependencies:
+    Update the system and install basic dependencies:
 
     ```bash
     sudo apt update && sudo apt upgrade -y
@@ -181,7 +181,7 @@ The example system runs Debian 12 (Bookworm) with X-Plane 12, featuring an SSD, 
     ```
 
 2. **pyenv Setup**:
-    After installing pyenv, the user configures their environment:
+    After installing pyenv, configure the environment:
 
     ```bash
     curl https://pyenv.run | bash
@@ -234,7 +234,7 @@ This installation example shows how to set up AutoOrtho in a Python environment 
 
 The combination of AutoOrtho with SimHeaven X-World creates a comprehensive scenery solution that provides both detailed orthophotos and precise 3D objects. While AutoOrtho handles ground textures, SimHeaven adds buildings, trees, and other 3D elements based on OpenStreetMap data.
 
-## Resources
+## Sources
 
 - [GitHub Repository (Original)](https://github.com/kubilus1/autoortho)
 - [GitHub Repository (ProgrammingDinosaur Fork)](https://github.com/ProgrammingDinosaur/autoortho4xplane)

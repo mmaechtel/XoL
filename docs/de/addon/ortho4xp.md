@@ -9,7 +9,7 @@ Ortho4XP ist in zwei Hauptversionen verfügbar:
 1. **Originalversion** von Oscar Pilote:
     * [GitHub Repository](https://github.com/oscarpilote/Ortho4XP)
     * Die ursprüngliche Version mit grundlegenden Funktionen
-    * [Binaries verfügbar](https://github.com/kubilus1/autoortho/releases/tag/0.7.2)
+
 
 2. **Fork von shred86** (empfohlen):
     * [GitHub Repository](https://github.com/shred86/Ortho4XP)
@@ -28,9 +28,9 @@ Ortho4XP ist in zwei Hauptversionen verfügbar:
     - Die gewünschte Version herunterladen
     - Sicherstellen, dass Python 3.x installiert ist
     - Die erforderlichen Python-Pakete installieren:
-     ```bash
-     pip install -r requirements.txt
-     ```
+        ```bash
+        pip install -r requirements.txt
+        ```
 
 3. **Alternative Installation für Linux**:
     - Installation mit Docker (siehe [Docker Dokumentation](../docker.md))
@@ -103,8 +103,6 @@ Ortho4XP ist in zwei Hauptversionen verfügbar:
 * `min_area`: 0.1
 * `apt_smoothing_pix`: 32
 
-#### 
-
 ## Integration von LiDAR-Daten
 
 Ortho4XP unterstützt die Integration von hochauflösenden LiDAR-Daten für eine verbesserte Geländedarstellung. Diese Daten sind besonders für Gebiete mit komplexer Topographie wie die Alpen oder andere Bergregionen nützlich.
@@ -135,10 +133,10 @@ Die LiDAR-Daten von [sonny.4lima.de](https://sonny.4lima.de) bieten eine hohe Au
         ```bash
         #!/bin/bash
 
-        # Target path for symbolic links
+        # Zielpfad für symbolische Links
         TARGET_PATH="../GlobalElevationData"
 
-        # Create target directory if it doesn't exist
+        # Zielverzeichnis erstellen, falls nicht vorhanden
         mkdir -p "$TARGET_PATH"
 
         # Funktion zum Erstellen eines Linknamens

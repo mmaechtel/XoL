@@ -23,7 +23,7 @@ Edge cases like go-arounds and through-flights are handled — in worst case, th
 - **Automatic departure trigger:** Beacon-on starts a PAX-scaled countdown
 - **Automatic approach trigger:** Flaps + gear down triggers cabin ready
 - **Go-around safe:** Handles missed approaches without incorrect states
-- **All ToLiss aircraft:** Works with the entire ToLiss Airbus family (A319, A320neo, A321/neo, A330neo, A340)
+- **All ToLiss aircraft:** Works with the entire ToLiss Airbus family (A319, A320neo, A321/neo, A330neo, A340-600)
 
 ## Value in Flight Simulation
 

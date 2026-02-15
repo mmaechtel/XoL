@@ -67,7 +67,7 @@ Beim Laden von Flugzeugen mit FMOD-Soundpaket (z.B. ToLiss A321) kann im `Log.tx
 FlyWithLua Error: Error in ../Fmod/FmodIntegration.cpp, line 732: An invalid parameter was passed to this function.
 ```
 
-Der Fehler ist nicht-fatal — das Plugin funktioniert weiterhin. Ein Fix steht noch aus.
+Der Fehler ist nicht-fatal — das Plugin funktioniert weiterhin. Siehe [Issue #126](https://github.com/X-Friese/FlyWithLua/issues/126) für den aktuellen Stand.
 
 ## Skript-Installation
 

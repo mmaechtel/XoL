@@ -4,7 +4,7 @@ AutoDGS stellt an über 5.000 Gateway-Flughäfen automatisch ein Docking Guidanc
 
 ## Hintergrund
 
-- **Entwickler:** hotbso (auch Entwickler von openSAM und Better Pushback Mod-Fork)
+- **Entwickler:** hotbso (auch Entwickler von [openSAM](opensam.md) und [Better Pushback](betterpushback.md) Mod-Fork)
 - **Repository:** [github.com/hotbso/AutoDGS](https://github.com/hotbso/AutoDGS) (Open Source, LGPL-2.1)
 - **Plattformen:** Windows, macOS, Linux (native Binaries)
 - **Kompatibilität:** [X-Plane](../glossary.md#x-plane) 12
@@ -23,7 +23,7 @@ AutoDGS wird aktiv gepflegt und erhält regelmäßige Updates. Das [Plugin](../g
 
 ## Mehrwert in der Flugsimulation
 
-Standard-Flughäfen ohne Custom-Szenerie haben kein Docking Guidance System. AutoDGS füllt diese Lücke, indem es an jedem Gateway-Flughafen mit Tower und Stands ein VDGS oder einen Marshaller bereitstellt. Das Plugin ergänzt openSAM: AutoDGS übernimmt Default-Flughäfen, openSAM kümmert sich um SAM-fähige Custom-Szenerien. Beide Plugins können parallel betrieben werden — AutoDGS überspringt automatisch Flughäfen mit `sam.xml`.
+Standard-Flughäfen ohne Custom-Szenerie haben kein Docking Guidance System. AutoDGS füllt diese Lücke, indem es an jedem Gateway-Flughafen mit Tower und Stands ein VDGS oder einen Marshaller bereitstellt. Das Plugin ergänzt [openSAM](opensam.md): AutoDGS übernimmt Default-Flughäfen, openSAM kümmert sich um SAM-fähige Custom-Szenerien. Beide Plugins können parallel betrieben werden — AutoDGS überspringt automatisch Flughäfen mit `sam.xml`.
 
 ## Installation
 
@@ -31,7 +31,7 @@ Standard-Flughäfen ohne Custom-Szenerie haben kein Docking Guidance System. Aut
 
 Die ZIP-Datei nach `Resources/plugins/` entpacken. Es entsteht der Ordner `AutoDGS/` mit der Linux-Binary unter `lin_x64/AutoDGS.xpl`.
 
-Es werden keine zusätzlichen Systempakete benötigt. Es sind keine Linux-spezifischen Probleme bekannt. Automatische Updates über den Skunkcrafts Updater werden unterstützt.
+Es werden keine zusätzlichen Systempakete benötigt. Es sind keine Linux-spezifischen Probleme bekannt. Automatische Updates über den [SkunkCrafts Updater](skunkcrafts_updater.md) werden unterstützt.
 
 ## Quellen
 

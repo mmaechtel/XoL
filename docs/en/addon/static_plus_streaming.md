@@ -102,7 +102,7 @@ The `aa_` directory must be listed **before** the `ao_` directories so that Orth
 
 As described in the [Ortho4XP chapter](ortho4xp.md), LiDAR data can further improve the resolution and accuracy of terrain representation. The LiDAR data from [sonny.4lima.de](https://sonny.4lima.de) offers high resolution for various regions.
 
-See [LiDAR Data Integration](ortho4xp.md#Integration of LiDAR Data) in the Ortho4XP chapter.
+See [LiDAR Data Integration](ortho4xp.md#lidar-data-integration) in the Ortho4XP chapter.
 
 ## Conclusion
 

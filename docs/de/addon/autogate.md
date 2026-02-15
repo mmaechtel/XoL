@@ -13,7 +13,7 @@ AutoGate ist ein [Plugin](../glossary.md#plugin) für [X-Plane](../glossary.md#x
 
 !!! warning "Legacy-Plugin"
 
-    AutoGate befindet sich im Wartungsmodus. Für neue Szenerien wird **openSAM** empfohlen. AutoGate ist nur noch für ältere Szenerie-Pakete relevant, die mit dem AutoGate-Bausatz erstellt wurden.
+    AutoGate befindet sich im Wartungsmodus. Für neue Szenerien wird **[openSAM](opensam.md)** empfohlen. AutoGate ist nur noch für ältere Szenerie-Pakete relevant, die mit dem AutoGate-Bausatz erstellt wurden.
 
 ## Funktionsumfang
 
@@ -23,7 +23,7 @@ AutoGate ist ein [Plugin](../glossary.md#plugin) für [X-Plane](../glossary.md#x
 
 ## Mehrwert in der Flugsimulation
 
-AutoGate war das erste Open-Source-Jetway-System für X-Plane und hat den Grundstein für openSAM gelegt. Einige ältere Custom-Szenerien setzen AutoGate-Assets ein. Für diese Szenerien bleibt der hotbso-Fork die einzige X-Plane-12-kompatible Option. AutoGate kann parallel zu openSAM und AutoDGS betrieben werden.
+AutoGate war das erste Open-Source-Jetway-System für X-Plane und hat den Grundstein für openSAM gelegt. Einige ältere Custom-Szenerien setzen AutoGate-Assets ein. Für diese Szenerien bleibt der hotbso-Fork die einzige X-Plane-12-kompatible Option. AutoGate kann parallel zu [openSAM](opensam.md) und [AutoDGS](autodgs.md) betrieben werden.
 
 ## Installation
 

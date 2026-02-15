@@ -1,6 +1,6 @@
 # SimReaperXP
 
-SimReaperXP is a [FlyWithLua](flywithlua.md) script that recovers FPS in X-Plane 12 by selectively disabling resource-heavy rendering features. It provides toggleable switches for six expensive rendering systems, recovering approximately 10 FPS without reducing object density.
+SimReaperXP is a [FlyWithLua](flywithlua.md) script that recovers FPS in X-Plane 12 by selectively disabling resource-heavy rendering features. It provides toggleable switches for six expensive rendering systems, recovering up to ~10 FPS (depending on system and settings) without reducing object density.
 
 ## Background
 

@@ -21,7 +21,7 @@ X-Plane 12 verwendet für das eingebaute ATC voraufgezeichnete Audiodateien, die
 
 ## Mehrwert in der Flugsimulation
 
-Ohne XLinSpeak bleibt Linux-Nutzern bei Plugin-Sprachausgabe nur der Textoverlap auf dem Bildschirm — keine Audioausgabe. Das Plugin stellt die Gleichwertigkeit mit Windows und macOS her, sodass Checklisten-Ansagen, ATC-Plugins und andere sprachgesteuerte Erweiterungen auch unter Linux hörbar sind.
+Ohne XLinSpeak bleibt Linux-Nutzern bei Plugin-Sprachausgabe nur das Text-Overlay auf dem Bildschirm — keine Audioausgabe. Das Plugin stellt die Gleichwertigkeit mit Windows und macOS her, sodass Checklisten-Ansagen, ATC-Plugins und andere sprachgesteuerte Erweiterungen auch unter Linux hörbar sind.
 
 ## Installation
 
@@ -35,7 +35,7 @@ Die vorkompilierte Binary befindet sich im Repository unter `XLinSpeak/lin_x64/X
 sudo apt install speech-dispatcher
 ```
 
-Der Standard-Backend espeak-ng funktioniert zuverlässig. Piper als alternatives TTS-Backend verursacht derzeit einen Absturz.
+Das Standard-Backend espeak-ng funktioniert zuverlässig. Piper als alternatives TTS-Backend verursacht derzeit einen Absturz.
 
 ### Build aus Quellcode
 

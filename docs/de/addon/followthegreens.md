@@ -21,7 +21,7 @@ Das Plugin wird aktiv weiterentwickelt. Release 2 ("Follow the Greens 4D") fügt
 - **Taxiway-Anzeige:** ShowTaxiways-Modus zum Hervorheben des gesamten Rollbahnnetzes
 - **Pistenbeleuchtung:** Intensität der Pistenbeleuchtung einstellbar
 - **Command-Bindings:** Aktionen (OK, Cancel, Clearance, Speed, Bookmark, NewGreens) lassen sich an Tasten oder Buttons binden
-- **SkunkCrafts Updater:** Automatische Updates werden unterstützt
+- **[SkunkCrafts Updater](skunkcrafts_updater.md):** Automatische Updates werden unterstützt
 
 ## Mehrwert in der Flugsimulation
 
@@ -29,7 +29,7 @@ Die gelben Bodenpfeile in X-Plane zeigen zwar die allgemeine Taxi-Richtung, biet
 
 ## Installation
 
-**Voraussetzung:** [XPPython3](https://xppython3.readthedocs.io/) (ab Version 4.5). XPPython3 enthält einen eigenen Python-Interpreter — eine separate Python-Installation ist nicht erforderlich.
+**Voraussetzung:** [XPPython3](xppython3.md) (ab Version 4.5). XPPython3 enthält einen eigenen Python-Interpreter — eine separate Python-Installation ist nicht erforderlich.
 
 **Download:** [GitHub Releases](https://github.com/devleaks/followthegreens/releases)
 

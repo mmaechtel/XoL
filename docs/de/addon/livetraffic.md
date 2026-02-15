@@ -1,6 +1,6 @@
 # LiveTraffic
 
-LiveTraffic zeigt realen Flugverkehr in [X-Plane](../glossary.md#x-plane) 12 an, indem es ADS-B-Daten aus öffentlichen und kommerziellen Quellen in Echtzeit darstellt.
+LiveTraffic zeigt realen Flugverkehr in [X-Plane](../glossary.md#x-plane) 11 und 12 an, indem es ADS-B-Daten aus öffentlichen und kommerziellen Quellen in Echtzeit darstellt.
 
 ## Hintergrund
 

@@ -21,7 +21,7 @@ The plugin is actively developed. Release 2 ("Follow the Greens 4D") adds speed 
 - **Taxiway display:** ShowTaxiways mode to highlight the entire taxiway network
 - **Runway lighting:** Runway light intensity adjustable
 - **Command bindings:** Actions (OK, Cancel, Clearance, Speed, Bookmark, NewGreens) can be bound to keys or buttons
-- **SkunkCrafts Updater:** Automatic updates are supported
+- **[SkunkCrafts Updater](skunkcrafts_updater.md):** Automatic updates are supported
 
 ## Value in Flight Simulation
 
@@ -29,7 +29,7 @@ The yellow ground arrows in X-Plane show the general taxi direction but offer no
 
 ## Installation
 
-**Prerequisite:** [XPPython3](https://xppython3.readthedocs.io/) (version 4.5 or above). XPPython3 includes its own Python interpreter — a separate Python installation is not required.
+**Prerequisite:** [XPPython3](xppython3.md) (version 4.5 or above). XPPython3 includes its own Python interpreter — a separate Python installation is not required.
 
 **Download:** [GitHub Releases](https://github.com/devleaks/followthegreens/releases)
 
