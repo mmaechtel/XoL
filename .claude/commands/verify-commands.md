@@ -300,6 +300,14 @@ KORREKTURBEDARF:
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 ```
 
+### 5.1 Ergebnis-Dokument schreiben
+
+**Datei:** `research/<kategorie>/VERIFY_<dateiname>.md`
+
+Kategorie gemaess CLAUDE.md Research-Kategorien bestimmen. Ergebnis-Tabelle, Korrekturbedarf und Datum festhalten. Falls die Datei existiert: **ueberschreiben** (Verify-Ergebnisse sind immer systemspezifisch und nur der letzte Lauf ist relevant).
+
+### 5.2 Korrekturen vorschlagen
+
 Falls FAIL/WARN-Befehle gefunden wurden, dem User vorschlagen:
 
 - Doku-Befehl korrigieren? (EN + DE)
@@ -323,3 +331,4 @@ Freigegebene Korrekturen direkt in `docs/en/$ARGUMENTS` und `docs/de/$ARGUMENTS`
 - **Output-Laenge:** Lange Outputs auf 30 Zeilen kuerzen, vollen Output bei Bedarf zeigen
 - **Debian-Referenz:** Tests beziehen sich auf Debian Stable/Testing — andere Distros koennen abweichen
 - **Fehlerkorrektur:** Bei FAIL in Phase 3 den korrekten Befehl ermitteln (--help, manpage) und als Korrekturvorschlag notieren
+- **Platzhalter erkennen:** Befehle mit `<device>`, `<pid>`, `<path>` oder aehnlichen Platzhaltern in spitzen Klammern sind keine woertlichen Befehle. Vor Ausfuehrung durch echte Systemwerte ersetzen (z.B. `/dev/nvme0n1`, aktuelle PID). Bei Unsicherheit: User fragen

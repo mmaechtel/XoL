@@ -158,9 +158,14 @@ Fuer jeden freigegebenen Begriff:
 
 Fuer jede freigegebene Verlinkung:
 
-1. In der EN-Seite: Erste Verwendung des Begriffs als `[Begriff](../glossary.md#anchor)` formatieren
-2. In der DE-Seite: Entsprechende Stelle mit DE-Anchor verlinken
-3. Nur die ERSTE Nennung verlinken, nicht jede
+1. Relativen Pfad anhand der Verzeichnistiefe bestimmen:
+   - Seite in `docs/{lang}/*.md` → `../glossary.md#anchor`
+   - Seite in `docs/{lang}/xplane/*.md` → `../../glossary.md#anchor`
+   - Seite in `docs/{lang}/addon/*.md` → `../../glossary.md#anchor`
+   - Seite in `docs/{lang}/flight_operations/*.md` → `../../glossary.md#anchor`
+2. In der EN-Seite: Erste Verwendung des Begriffs als `[Begriff](<pfad>#anchor)` formatieren
+3. In der DE-Seite: Entsprechende Stelle mit DE-Anchor verlinken
+4. Nur die ERSTE Nennung verlinken, nicht jede
 
 ### 6.3 Tote Links reparieren
 
@@ -171,21 +176,7 @@ Fuer jede freigegebene Verlinkung:
 
 ## Phase 7 — Markdown-Check
 
-`docs/MARKDOWN_RULES.txt` lesen und auf BEIDE Seiten (EN + DE) anwenden:
-
-### Pruefpunkte
-
-1. **Leerzeile nach jeder Ueberschrift** — auch `**Fett**`-Pseudo-Ueberschriften vor Listen
-2. **Kein Doppelpunkt** am Ende von Ueberschriften die mit einer Liste folgen
-3. **Listen-Einrueckung** — 4 Spaces pro Ebene (0 → 4 → 8)
-4. **Leerzeichen nach Doppelpunkten** — `**Label**: Text` nicht `**Label**:Text`
-5. **Code-Block-Tags** — `bash` fuer Shell, `ini` fuer sysctl, kein Tag fuer Kernel/GRUB-Parameter
-6. **Konsistenz DE/EN** — Gleiche Formatierung in beiden Sprachversionen
-
-Falls Verstoesse gefunden werden:
-
-- Auflisten mit Zeilennummer und Beschreibung
-- Automatisch korrigieren (keine Rueckfrage noetig — Markdown-Regeln sind nicht optional)
+`docs/MARKDOWN_RULES.txt` lesen und systematisch auf BEIDE Seiten (EN + DE) anwenden. Verstoesse automatisch korrigieren (keine Rueckfrage noetig).
 
 ---
 
@@ -242,3 +233,4 @@ DATEIEN GEAENDERT:
 - **Keine Links in Code-Bloecken:** Begriffe innerhalb von Backticks oder Code Fences nicht verlinken
 - **Keine Links in Ueberschriften:** Glossar-Links gehoeren in den Fliesstext, nicht in H2/H3/H4
 - **Markdown-Fixes sind automatisch:** Verstoesse gegen `docs/MARKDOWN_RULES.txt` werden ohne Rueckfrage korrigiert
+- **Pfadtiefe beachten:** Glossar-Links muessen die Verzeichnistiefe der Seite beruecksichtigen (siehe Phase 6.2)

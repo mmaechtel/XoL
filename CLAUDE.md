@@ -151,7 +151,7 @@ Jedes Thema in `TODO.md` hat einen Status:
 | Pfad | Zweck |
 |------|-------|
 | `TODO.md` | Themen-Backlog mit Status. Nur **was** und **wo stehen wir**. |
-| `research/<kategorie>/` | Research-Papers nach Thema (siehe `research/INDEX.md`) |
+| `research/<kategorie>/` | Research-Papers nach Thema (Kategorien siehe unten) |
 | `research/<kategorie>/LEKTORAT_<thema>.md` | Redaktionelle Bewertung (Brücke Recherche → Umsetzung) |
 | `research/INDEX.md` | Thematischer Index aller Research-Dokumente |
 | `research/AUDIT_FLOW.md` | Content-Audit Prozess (Flow, Template, Regeln, QS) |
@@ -161,6 +161,26 @@ Jedes Thema in `TODO.md` hat einen Status:
 | `docs/MARKDOWN_RULES.txt` | Formatierungsregeln |
 | `.claude/commands/` | Skill/Command-Definitionen (committed, von `.gitignore` ausgenommen) |
 | `.claude/settings.local.json` | Permissions: Tool-Freigaben + WebFetch-Domain-Allowlist |
+
+### Research-Kategorien
+
+Zuordnung von Docs-Seiten zu `research/<kategorie>/`:
+
+| Kategorie | Docs-Seiten |
+|-----------|------------|
+| `addons/` | `addon/*.md` |
+| `audio/` | (Audio/PipeWire-Themen) |
+| `display-server/` | `displayserver.md`, `displayserver_wayland.md`, `displayserver_x11.md` |
+| `performance_overview/` | `performance_overview.md` |
+| `proton/` | `wine.md` |
+| `systemtools/` | `systemtools.md` |
+| `systemtuning/` | `systemtuning.md`, `systemtuning_intro.md`, `filesystem.md`, `liquorix.md` |
+| `szenerie/` | `scenery.md`, `scenery_components.md` |
+| `xplane-config/` | `xplane/*.md` |
+| `analyses/` | Querschnitts-Analysen (kein festes Docs-Mapping) |
+| `notebooklm/` | NotebookLM-Skripte (Output von `/generate-notebooklm`) |
+
+Bei neuen Themen: bestehende Kategorie verwenden oder neue anlegen. `research/INDEX.md` mitpflegen.
 
 ---
 

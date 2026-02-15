@@ -63,6 +63,19 @@ Aus der EN-Seite alle pruefbaren Aussagen identifizieren:
 - Reine UI-Beschreibungen
 - Ueberschriften, Einleitungssaetze ohne faktischen Gehalt
 
+### 1.4 Halluzinations-Erkennung
+
+Besondere Aufmerksamkeit auf typische KI-Halluzinationsmuster:
+
+- **Erfundene Features oder Optionen:** Plausibel klingende Funktionen, CLI-Flags oder Konfigurationsparameter die es nicht gibt
+- **Nicht existierende Pfade oder Dateien:** Konfigurationspfade die logisch erscheinen, aber auf keinem realen System existieren
+- **Erfundene Paketnamen oder Tools:** Tools die es nicht gibt oder die verwechselt werden
+- **Falsche Defaults oder Zahlenwerte:** Konkrete Werte (Schwellenwerte, Speichergroessen, Prozentwerte) die nirgends belegt sind
+- **Plausible aber falsche Kausalitaeten:** "X fuehrt zu Y" — klingt logisch, ist aber nicht belegt oder sogar falsch
+- **Zusammengewuerfelte Informationen:** Korrekte Einzelfakten aus verschiedenen Kontexten die falsch kombiniert werden
+
+**Pruefstrategie:** Wenn eine Behauptung sehr spezifisch und detailliert ist, aber keine Primaerquelle gefunden werden kann, ist das ein starkes Indiz fuer eine KI-Halluzination. Solche Stellen als **HALLUZINIERT** bewerten — sofort entfernen oder durch belegbare Fakten ersetzen.
+
 ---
 
 ## Phase 2 — Verifikation (parallele Subagents)
@@ -97,6 +110,7 @@ Pro Behauptung eine Bewertung vergeben:
 | **OK** | Korrekt und angemessen |
 | **WARN** | Technisch nicht falsch, aber ungenau/unvollstaendig/veraltet |
 | **FAIL** | Falsch oder irrefuehrend, muss korrigiert werden |
+| **HALLUZINIERT** | Keine Primaerquelle auffindbar — wahrscheinlich KI-generiert. Sofort entfernen oder ersetzen |
 | **N/V** | Nicht verifizierbar (keine oeffentliche Quelle) |
 
 ---
@@ -146,11 +160,12 @@ FAKTENCHECK: <dateiname>
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
 BEHAUPTUNGEN:
-├─ Geprueft:  <Anzahl>
-├─ OK:        <Anzahl>
-├─ WARN:      <Anzahl>
-├─ FAIL:      <Anzahl>
-└─ N/V:       <Anzahl>
+├─ Geprueft:      <Anzahl>
+├─ OK:            <Anzahl>
+├─ WARN:          <Anzahl>
+├─ FAIL:          <Anzahl>
+├─ HALLUZINIERT:  <Anzahl>
+└─ N/V:           <Anzahl>
 
 FEHLER (Korrekturbedarf):
 │  1. <Kurzbezeichnung> (Zeile <N>)
@@ -165,9 +180,10 @@ NUANCEN (verbesserbar):
 
 Per AskUserQuestion den User fragen:
 
-1. **Fehler:** Welche FAIL-Findings sollen korrigiert werden? (Default: alle)
-2. **Nuancen:** Welche WARN-Findings sollen verbessert werden?
-3. **N/V:** Behauptungen belassen oder entfernen?
+1. **Halluzinationen:** HALLUZINIERT-Findings werden entfernt oder ersetzt (Default: alle)
+2. **Fehler:** Welche FAIL-Findings sollen korrigiert werden? (Default: alle)
+3. **Nuancen:** Welche WARN-Findings sollen verbessert werden?
+4. **N/V:** Behauptungen belassen oder entfernen?
 
 ---
 
@@ -214,7 +230,7 @@ Nur offizielle, belastbare Quellen. Maximal 5-8 Eintraege.
 
 ### 6.1 Markdown-Check
 
-`docs/MARKDOWN_RULES.txt` lesen und auf beide Seiten anwenden. Verstoesse automatisch korrigieren.
+`docs/MARKDOWN_RULES.txt` lesen und systematisch auf beide Seiten (EN + DE) anwenden. Verstoesse automatisch korrigieren (keine Rueckfrage noetig).
 
 ### 6.2 Build pruefen
 
@@ -236,10 +252,11 @@ FAKTENCHECK ABGESCHLOSSEN: <dateiname>
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
 KORREKTUREN:
-├─ FAIL korrigiert:     <Anzahl>
-├─ WARN verbessert:     <Anzahl>
-├─ Versionen bereinigt: <Anzahl>
-└─ Quellen ergaenzt:    <Anzahl>
+├─ HALLUZINIERT entfernt: <Anzahl>
+├─ FAIL korrigiert:       <Anzahl>
+├─ WARN verbessert:       <Anzahl>
+├─ Versionen bereinigt:   <Anzahl>
+└─ Quellen ergaenzt:      <Anzahl>
 
 DATEIEN GEAENDERT:
 ├─ docs/en/<dateiname>

@@ -222,16 +222,7 @@ Lektorat-Befunde mit Zeilennummern dokumentieren und direkt korrigieren (EN + DE
 
 ### 4.3 Markdown-Check
 
-`docs/MARKDOWN_RULES.txt` lesen und systematisch auf BEIDE Seiten (EN + DE) anwenden:
-
-1. **Leerzeile nach jeder Ueberschrift** — auch `**Fett**`-Pseudo-Ueberschriften vor Listen/Tabellen
-2. **Kein Doppelpunkt** am Ende von Ueberschriften die mit einer Liste folgen
-3. **Listen-Einrueckung** — 4 Spaces pro Ebene (0 → 4 → 8)
-4. **Leerzeichen nach Doppelpunkten** — `**Label**: Text` nicht `**Label**:Text`
-5. **Code-Block-Tags** — `bash` fuer Shell, `ini` fuer sysctl, kein Tag fuer Kernel/GRUB-Parameter
-6. **Konsistenz DE/EN** — Gleiche Formatierung in beiden Sprachversionen
-
-Verstoesse automatisch korrigieren. Ergebnisse im Audit-Dokument unter "Markdown-Check" festhalten.
+`docs/MARKDOWN_RULES.txt` lesen und systematisch auf BEIDE Seiten (EN + DE) anwenden. Verstoesse automatisch korrigieren (keine Rueckfrage noetig). Ergebnisse im Audit-Dokument unter "Markdown-Check" festhalten.
 
 ### 4.4 Build pruefen
 

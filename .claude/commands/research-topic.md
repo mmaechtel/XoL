@@ -36,7 +36,7 @@ Read: TODO.md
 ```
 
 1. Thema-Keyword gegen Eintraege in `TODO.md` matchen
-2. Status pruefen: `offen` → voller Durchlauf. `recherchiert` → nur Phase 2 (Lektorat)
+2. Status pruefen: `offen` → voller Durchlauf (Phase 2 + 3). `recherchiert` → nur Phase 3 (Lektorat). `geplant` oder hoeher → Warnung ausgeben
 3. Falls kein Argument: Die naechsten 3 offenen Themen nach Prioritaet vorschlagen (AskUserQuestion)
 
 ### 1.2 Bestehende Dokumentation lesen
@@ -78,12 +78,17 @@ Primaerquellen in Reihenfolge der Zuverlaessigkeit:
 
 ### 2.2 Parallele Recherche-Subagents
 
-Fuer jedes Unterthema einen Subagent starten (Task-Tool mit subagent_type=general-purpose):
+**2-3 Subagents** starten (Task-Tool mit subagent_type=general-purpose), aufgeteilt nach Themenblöcken:
 
-- Jeder Subagent recherchiert ein Unterthema
+- **Agent A — Technische Grundlagen:** Architektur, Spezifikationen, Debian-Aspekte
+- **Agent B — Praxis und X-Plane:** Konfiguration, Kompatibilitaet, Diagnose
+- **Agent C (optional):** Hardware-Unterschiede, Performance, Alternativen
+
+Jeder Subagent:
+
 - WebSearch fuer aktuelle Informationen
 - WebFetch fuer freigegebene Domains (siehe `.claude/settings.local.json`)
-- Jeder Subagent liefert: Fakten, Konfigurationsbeispiele, Befehle, Quellen-URLs
+- Liefert: Fakten, Konfigurationsbeispiele, Befehle, Quellen-URLs
 
 ### 2.3 Research-Paper schreiben
 
@@ -130,6 +135,10 @@ Neues Paper in den passenden Kategorie-Abschnitt eintragen:
 ```markdown
 - <kategorie>/<dateiname>.md -> <zielseite>.md
 ```
+
+### 2.5 Status aktualisieren
+
+In `TODO.md` den Status des Themas auf `recherchiert` setzen.
 
 ---
 

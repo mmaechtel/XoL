@@ -423,5 +423,5 @@ AUDIO OVERVIEW CUSTOMIZATION (in NotebookLM einfuegen):
 Nach Abschluss das Output-Verzeichnis im Dateimanager oeffnen:
 
 ```bash
-open research/notebooklm/
+xdg-open research/notebooklm/
 ```

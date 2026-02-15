@@ -169,6 +169,12 @@ Das Unterverzeichnis (unterhalb von `de/` bzw. `en/`) bestimmt die Zielseite(n).
 | `scenery`, `szenerie`, `scenery_packs` | `scenery_components.md` |
 | `ortho` | `addon/orthophotography_intro.md` |
 | `performance` | `performance_overview.md` |
+| `toliss`, `ecosystem` | `addon/toliss_ecosystem.md` |
+| `atc`, `vatsim`, `flight_ops` | `flight_operations/overview.md` |
+| `network`, `kvm` | `kvm.md` |
+| `filesystem`, `nvme`, `storage` | `filesystem.md` |
+| `wine`, `proton` | `wine.md` |
+| `addon`, `plugin` | AskUserQuestion (zu viele moegliche Zielseiten unter `addon/`) |
 
 **Matching:** Case-insensitive Teilstring-Suche im Unterverzeichnisnamen oder Dateinamen.
 
@@ -293,7 +299,7 @@ VERLINKUNGEN (wohin und warum):
 ## Phase 7 — Video-Verzeichnis oeffnen
 
 ```bash
-open docs/assets/video/
+xdg-open docs/assets/video/
 ```
 
 ---
