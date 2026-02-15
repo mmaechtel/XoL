@@ -33,47 +33,18 @@ Diese Dokumentation ist ein offenes Projekt. Verbesserungen oder Ergänzungen k�
 ## Letzte Änderungen
 
 ### 2026-02-15
-- Neue Seite [SGES](addon/sges.md) — Bodenabfertigungs-Ausrüstung (GPU, Tankwagen, Chocks, animierte Passagiere) als FlyWithLua-Skript
-- Neue Seite [KabinXP](addon/kabinxp.md) — Cabin-Announcement-Plugin mit eigenen Audiodateien und Livery-spezifischen Sound-Packs
-- [ToLiss-Ökosystem](addon/toliss_ecosystem.md): SGES und KabinXP in eigene Seiten ausgelagert
-- [FlyWithLua](addon/flywithlua.md) ergänzt: Allgemeine Skript-Installationsanleitung (Scripts, Modules, Sound-Ordner)
-- Navigation: Ortho Streaming und FlyWithLua-Skripte als eigene Kategorien
-- Neue Addon-Seiten: [LST](addon/lst.md) (animierter Bodenverkehr für Szenerien), [LinuxTrack](addon/linuxtrack.md) (Head-Tracking für Linux), [XLinSpeak](addon/xlinspeak.md) (TTS für Plugin-Sprachausgabe unter Linux), [WINCTRL](addon/winctrl.md) (Winwing-Hardware-Anbindung ohne SimAppPro), [TerrainRadar](addon/terrainradar.md) (EGPWS-Terrain-Display und VSD)
-- Neue Addon-Seiten (Via KVM): [MobiFlight](addon/mobiflight.md) (Open-Source-Cockpit-Hardware-Middleware, Netzwerk-Split-Setup) und [SayIntentions.AI](addon/sayintentions.md) (KI-basierte Flugsicherung mit Spracherkennung, VM-Setup mit UDP-Forwarding)
-- Neue Seite [NOAA Weather](addon/noaa_weather.md) — Python-Plugin für reale Schneebedeckung und METAR-Monitoring als Ergänzung zu X-Planes Real Weather
-- [ToLiss-Ökosystem](addon/toliss_ecosystem.md) und [Videos](videos.md): Video „Beyond the Default Cockpit" eingebettet (EN)
-- [ToLiss-Ökosystem](addon/toliss_ecosystem.md) und [Videos](videos.md): Video „Vom Briefing zum Gate" eingebettet (DE)
-- ATC-Sektion erweitert: 6 neue Flugphasen-Seiten — [Pushback & Taxi](flight_operations/pushback_taxi.md), [Start](flight_operations/takeoff.md), [Abflug und Steigflug](flight_operations/departure.md), [Streckenflug](flight_operations/enroute.md), [Anflug](flight_operations/approach.md), [Landung und Abstellen](flight_operations/landing.md) — vollständige Gate-to-Gate ATC-Kommunikationsanleitung
-- Neue Addon-Seiten: [SkunkCrafts Updater](addon/skunkcrafts_updater.md) (Update-Tool mit glibc-Anforderung und Wayland-Hinweisen), [XPPython3](addon/xppython3.md) (Python-3-Scripting-Engine mit Debian-Abhängigkeiten)
-- Navigation umgebaut: Addon-Kategorien flachgezogen (Verschiedenes-Wrapper entfernt), [ToLiss-Ökosystem](addon/toliss_ecosystem.md) als eigener Menüpunkt, Ortho Streaming als Unterkapitel
-- ToLiss SimBrief Connector entfernt (veraltet), [simbrief_hub](https://github.com/hotbso/simbrief_hub)-Referenz im [ToLiss-Ökosystem](addon/toliss_ecosystem.md) ergänzt
-- [XRoad](addon/xroad.md): GitHub-Repository-Link ergänzt
-- Addon-Seiten überarbeitet: Faktenkorrekturen ([Follow the Greens](addon/followthegreens.md), [XGS](addon/xgs.md), [AutoGate](addon/autogate.md)), Linux-Hinweise ergänzt ([ToLiss-Ökosystem](addon/toliss_ecosystem.md)), Intro-Umschreibung ([XTextureExtractor](addon/xtextureextractor.md))
-- [ToLiss-Ökosystem](addon/toliss_ecosystem.md) umstrukturiert: Übersichts-Absatz, `###`-Überschriften statt Fettdruck für bessere Navigation
-- Neue Addon-Seiten: [ToLiss-Ökosystem](addon/toliss_ecosystem.md) (Callouts, Automatisierung, Boarding, Bodendienste), [XGS](addon/xgs.md) (Landing-Speed-Analyse), [Follow the Greens](addon/followthegreens.md) (A-SMGCS Rollführung)
-- Addon-Sektion erweitert: [AutoDGS](addon/autodgs.md), [openSAM](addon/opensam.md), [AutoGate](addon/autogate.md), [DataRefTool](addon/datareftool.md), [Little XpConnect](addon/littlexpconnect.md), [XTextureExtractor](addon/xtextureextractor.md) — neue Kategorien Werkzeuge und erweiterte Verkehr & Bodenbetrieb
-- Addon-Sektion ausgebaut: Neue Seiten [FlyWithLua](addon/flywithlua.md), [AviTab](addon/avitab.md), [XCamera](addon/xcamera.md), [LiveTraffic](addon/livetraffic.md), [Better Pushback](addon/betterpushback.md) — jeweils mit Hintergrund, Linux-Installation, bekannten Problemen und Quellen
-- Bestehende Seiten [XRoad](addon/xroad.md) und [AEP](addon/aep.md) nach einheitlichem Template überarbeitet
-- Navigation: Verschiedenes-Sektion mit Kategorien (Scripting, Cockpit & Kamera, Verkehr & Bodenbetrieb, Szenerie)
-- Neue Seite [Performance-Grundlagen](performance_overview.md): CPU-, I/O- und Netzwerk-Lastdimensionen, Wechselwirkungen, Frame Time als Maßeinheit, Optimierungsansätze im Überblick
-- [Orthofotographie](addon/orthophotography_intro.md), [Performance-Grundlagen](performance_overview.md) und [Videos](videos.md): Ortho-Streaming- und Performance-Videos eingebettet (DE + EN)
-- [Performance-Grundlagen](performance_overview.md) korrigiert: SSD-Latenzen, DDR5-Bandbreite und TCP-Congestion-Formulierung präzisiert
+- Neue Addon-Seiten: [SGES](addon/sges.md), [KabinXP](addon/kabinxp.md), [LST](addon/lst.md), [LinuxTrack](addon/linuxtrack.md), [XLinSpeak](addon/xlinspeak.md), [WINCTRL](addon/winctrl.md), [TerrainRadar](addon/terrainradar.md), [NOAA Weather](addon/noaa_weather.md)
+- Neue Addon-Seiten (Via KVM): [MobiFlight](addon/mobiflight.md), [SayIntentions.AI](addon/sayintentions.md)
+- Neue Seite [Performance-Grundlagen](performance_overview.md)
+- ATC-Sektion: 6 neue Flugphasen-Seiten ([Pushback & Taxi](flight_operations/pushback_taxi.md), [Start](flight_operations/takeoff.md), [Abflug & Steigflug](flight_operations/departure.md), [Streckenflug](flight_operations/enroute.md), [Anflug](flight_operations/approach.md), [Landung & Abstellen](flight_operations/landing.md))
+- [ToLiss-Ökosystem](addon/toliss_ecosystem.md) umstrukturiert, Videos eingebettet (DE + EN)
+- Addon-Sektion ausgebaut: [FlyWithLua](addon/flywithlua.md), [AviTab](addon/avitab.md), [XCamera](addon/xcamera.md), [LiveTraffic](addon/livetraffic.md), [Better Pushback](addon/betterpushback.md), [AutoDGS](addon/autodgs.md), [openSAM](addon/opensam.md), [AutoGate](addon/autogate.md), [DataRefTool](addon/datareftool.md), [Little XpConnect](addon/littlexpconnect.md), [XTextureExtractor](addon/xtextureextractor.md), [SkunkCrafts Updater](addon/skunkcrafts_updater.md), [XPPython3](addon/xppython3.md), [ToLiss-Ökosystem](addon/toliss_ecosystem.md), [XGS](addon/xgs.md), [Follow the Greens](addon/followthegreens.md)
+- Navigation überarbeitet: Addon-Kategorien flachgezogen, Ortho Streaming und FlyWithLua-Skripte als eigene Kategorien
 
 ### 2026-02-14
-- [X-Plane Konfiguration](xplane/config.md) erweitert: udev-Regeln für Controller ausführlich dokumentiert (Device-IDs ermitteln, Regel-Beispiel, identische Geräte per USB-Port unterscheiden)
-- [Nvidia-Treiber](nvidia.md) auditiert: Paketmanager-Methode als empfohlenen Ansatz ergänzt, Persistence-Mode- und Modeset-Aussagen korrigiert, Composition-Pipeline-Einstellungen als X11-only gekennzeichnet, Quellenabschnitt ergänzt
-- [X-Plane Konfiguration](xplane/config.md) korrigiert: `__GL_*`-Variablen differenziert (`__GL_SYNC_TO_VBLANK` wirkt auf Vulkan), NVIDIA Smooth Motion als experimentelle Option ergänzt
-- [Systemtools](systemtools.md) verifiziert: Fehlendes `sudo` bei ioping-Befehlen ergänzt (direkter Device-Zugriff erfordert Root)
-- [Systemtools](systemtools.md) auditiert: btop-Hotkey korrigiert, cpupower/turbostat/mpstat-Beschreibungen präzisiert, glances- und fatrace-Notation verbessert, Tabellen-Beschriftungen formatiert
-- [Systemtuning](systemtuning.md) faktengeprüft: Scheduler-Angaben korrigiert, nicht funktionalen Kernel-Parameter entfernt, NVMe-Hinweise präzisiert, Quellenabschnitt ergänzt
-- [Erste Schritte](begin.md) überarbeitet: Fehlerbehebung zusammengeführt, 32-Bit-Hinweis präzisiert, Display-Server-Verweis ergänzt
-- Sprachliche Überarbeitung (DE): [Erste Schritte](begin.md) und [Docker](docker.md) auf unpersönlichen Stil umgestellt
-- [Glossar](glossary.md) erweitert: Neue Begriffe PDS und irqbalance
-- [Systemtuning](systemtuning.md) Glossar-Verlinkungen ergänzt: FPS, Frame Time, Latenz, Preemption, NVMe, C-States, EEVDF, PDS, irqbalance
-- [Systemtuning](systemtuning.md) und [Videos](videos.md): System-Tuning-Video eingebettet (DE + EN)
-- [Glossar](glossary.md) erweitert: Neuer Begriff SoftIRQ
-- [Systemtools](systemtools.md) Glossar-Verlinkungen ergänzt: NVMe, C-States, IRQ, CPU-Governor, Latenz, APST
-- Neue Seite [System-Tuning Einführung](systemtuning_intro.md): Video-Intro als Klammer für Tuning und Monitoring
-- Navigation: Systemtools umbenannt in System Monitoring, gruppiert unter System-Tuning
+- Neue Seite [System-Tuning Einführung](systemtuning_intro.md), Videos eingebettet (DE + EN)
+- [Nvidia-Treiber](nvidia.md), [Systemtuning](systemtuning.md), [Systemtools](systemtools.md), [X-Plane Konfiguration](xplane/config.md) auditiert und faktengeprüft
+- [Erste Schritte](begin.md) überarbeitet, [Glossar](glossary.md) erweitert
+- Navigation: System Monitoring unter System-Tuning gruppiert
 
 
