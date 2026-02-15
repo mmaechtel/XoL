@@ -32,6 +32,9 @@ Diese Dokumentation ist ein offenes Projekt. Verbesserungen oder Ergänzungen k�
 
 ## Letzte Änderungen
 
+### 2026-02-15
+- Neue Seite [Performance-Grundlagen](performance_overview.md): CPU-, I/O- und Netzwerk-Lastdimensionen, Wechselwirkungen, Frame Time als Maßeinheit, Optimierungsansätze im Überblick
+
 ### 2026-02-14
 - [X-Plane Konfiguration](xplane/config.md) erweitert: udev-Regeln für Controller ausführlich dokumentiert (Device-IDs ermitteln, Regel-Beispiel, identische Geräte per USB-Port unterscheiden)
 - [Nvidia-Treiber](nvidia.md) auditiert: Paketmanager-Methode als empfohlenen Ansatz ergänzt, Persistence-Mode- und Modeset-Aussagen korrigiert, Composition-Pipeline-Einstellungen als X11-only gekennzeichnet, Quellenabschnitt ergänzt
@@ -61,6 +64,4 @@ Diese Dokumentation ist ein offenes Projekt. Verbesserungen oder Ergänzungen k�
 - [Über diese Dokumentation](about.md) überarbeitet: Lizenz, Datenschutz, rechtliche Hinweise, Zielgruppe
 - [Glossar](glossary.md) ausgebaut: 40 neue Begriffe zu Kernel, Grafik, Dateisystem, Audio und Szenerien
 
-### 2026-02-11
-- [Display-Server](displayserver.md) Seiten faktengeprüft: Debian-Defaults korrigiert, XWayland-Zeile in Hugl-Tabelle ergänzt, Latenzmessungen präzisiert, NVIDIA-Modeset-Default aktualisiert, MESA-Variable auf Mesa-Treiber eingeschränkt
 
