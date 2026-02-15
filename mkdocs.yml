@@ -127,6 +127,13 @@ plugins:
                 - Scripting:
                     - FlyWithLua: de/addon/flywithlua.md
                     - XPPython3: de/addon/xppython3.md
+                    - FlyWithLua-Skripte:
+                        - 3D Rain Stop: de/addon/3drainspeedstop.md
+                        - Dynamic Rain Rate: de/addon/rain_rate.md
+                        - SimBrief Simple OFP: de/addon/simbrief_simple_ofp.md
+                        - SimLoad Manager: de/addon/simloadmanager.md
+                        - SimReaperXP: de/addon/simreaperxp.md
+                        - SimScreen Overlay: de/addon/simscreenoverlay.md
                 - ToLiss-Ökosystem: de/addon/toliss_ecosystem.md
                 - Cockpit & Kamera:
                     - AviTab: de/addon/avitab.md
@@ -224,6 +231,13 @@ plugins:
                 - Scripting:
                     - FlyWithLua: en/addon/flywithlua.md
                     - XPPython3: en/addon/xppython3.md
+                    - FlyWithLua Scripts:
+                        - 3D Rain Stop: en/addon/3drainspeedstop.md
+                        - Dynamic Rain Rate: en/addon/rain_rate.md
+                        - SimBrief Simple OFP: en/addon/simbrief_simple_ofp.md
+                        - SimLoad Manager: en/addon/simloadmanager.md
+                        - SimReaperXP: en/addon/simreaperxp.md
+                        - SimScreen Overlay: en/addon/simscreenoverlay.md
                 - ToLiss Ecosystem: en/addon/toliss_ecosystem.md
                 - Cockpit & Camera:
                     - AviTab: en/addon/avitab.md

@@ -58,13 +58,13 @@ Eigenständiges [Plugin](../glossary.md#plugin) für anpassbare Kabinendurchsage
 - **Nur X-Plane 12**
 - **Download:** [forums.x-plane.org](https://forums.x-plane.org/files/file/98298-kabinxp/)
 
-### Cabin Ready
+### DK Toliss Callout — FMA-Ansagen
 
-Sendet automatisch den Cabin-Ready-Call: Bei Abflug nach 4–8 Minuten (basierend auf Passagierzahl), im Anflug wenige Sekunden nach Klappen- und Fahrwerksausfahren.
+FlyWithLua-Skript, das Autopilot-Modusänderungen (CLB, OP CLB, SPEED, NAV, G/S) per Text-to-Speech ansagt. Liest die blauen FMA-Werte aus dem oberen PFD-Feld. Unter Linux ist [XLinSpeak](xlinspeak.md) für hörbare Ausgabe erforderlich. [→ Detailseite](dk_toliss_callout.md)
 
 - **Entwickler:** cxn0026
 - **Benötigt:** FlyWithLua
-- **Download:** [forums.x-plane.org](https://forums.x-plane.org/files/file/91876-toliss-airbus-cabin-ready-automatic-flywithlua-script/)
+- **Download:** [forums.x-plane.org](https://forums.x-plane.org/files/file/91367-toliss-airbus-fma-callout-flywithlua-script/)
 
 ### Cockpit Rain Noise
 
@@ -74,6 +74,14 @@ Fügt Regengeräusche zum Cockpit hinzu. Die Lautstärke skaliert mit der Nieder
 - **Download:** [forums.x-plane.org](https://forums.x-plane.org/files/file/94901-toliss-cockpit-rain-noise/)
 
 ## Cockpit-Automatisierung
+
+### TOI Cabin Ready
+
+Sendet automatisch den Cabin-Ready-Call: Bei Abflug nach 4–8 Minuten (basierend auf Passagierzahl), im Anflug wenige Sekunden nach Klappen- und Fahrwerksausfahren. Verarbeitet Sonderfälle wie Durchstarten sicher. [→ Detailseite](toicabrdy.md)
+
+- **Entwickler:** cxn0026
+- **Benötigt:** FlyWithLua
+- **Download:** [forums.x-plane.org](https://forums.x-plane.org/files/file/91876-toliss-airbus-cabin-ready-automatic-flywithlua-script/)
 
 ### ToLiss Init
 
