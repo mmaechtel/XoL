@@ -4,7 +4,7 @@ AutoGate is a [plugin](../glossary.md#plugin) for [X-Plane](../glossary.md#x-pla
 
 ## Background
 
-- **Original:** [Marginal/AutoGate](https://github.com/Marginal/AutoGate) by Jonathan Harris (2006–2016, no longer maintained)
+- **Original:** [Marginal/AutoGate](https://github.com/Marginal/AutoGate) by Jonathan Harris (2006–2017, no longer maintained)
 - **XP12 fork:** [hotbso/AutoGate](https://github.com/hotbso/AutoGate) (X-Plane 12 compatible)
 - **License:** Plugin code LGPL-2.1, 3D objects/textures CC-BY 3.0
 - **Platforms:** Windows, macOS, Linux (native binaries)
@@ -17,14 +17,13 @@ AutoGate is a [plugin](../glossary.md#plugin) for [X-Plane](../glossary.md#x-pla
 
 ## Features
 
-- **Animated jetways:** Two types (perpendicular, parallel) in various lengths (10–18 m)
+- **Animated jetways:** Two material types (glass, steel) in various lengths (12–32 m)
 - **Docking guidance systems:** Safedock types, standalone DGS, and marshaller
-- **Automatic docking:** Jetway docks when engines are shut down and aircraft is within 0.5 m of the stop position
-- **Beacon control:** Jetway detaches on beacon on, docks on beacon off
+- **Beacon control:** Jetway docks on beacon off (aircraft within 0.5 m of the stop position), detaches on beacon on
 
 ## Value in Flight Simulation
 
-AutoGate was the first open-source jetway system for X-Plane and laid the foundation for SAM and openSAM. Some older custom sceneries use AutoGate assets. For these sceneries, the hotbso fork remains the only X-Plane 12 compatible option. AutoGate can run alongside openSAM and AutoDGS.
+AutoGate was the first open-source jetway system for X-Plane and laid the foundation for openSAM. Some older custom sceneries use AutoGate assets. For these sceneries, the hotbso fork remains the only X-Plane 12 compatible option. AutoGate can run alongside openSAM and AutoDGS.
 
 ## Installation
 

@@ -11,7 +11,7 @@ DataRefTool (DRT) is a development and debugging tool for [X-Plane](../glossary.
 - **Compatibility:** X-Plane 12.1+ (v2); X-Plane 10/11 (v1)
 - **Price:** Free
 
-The [plugin](../glossary.md#plugin) has existed since X-Plane 10. Version 2 was released as a closed-source rewrite for X-Plane 12 and uses the native dataref registration API from X-Plane 12.04.
+The [plugin](../glossary.md#plugin) has existed since X-Plane 10. Version 2 was released as a closed-source rewrite for X-Plane 12 and uses the dataref enumeration API (XPLM400) introduced in X-Plane 12.04.
 
 ## Features
 
@@ -22,11 +22,11 @@ The [plugin](../glossary.md#plugin) has existed since X-Plane 10. Version 2 was 
 - **Regex search:** Multiple search terms, regular expressions, optional case sensitivity
 - **Plugin/scenery reload:** Trigger reloads directly from DRT
 - **Multi-window:** Multiple DRT windows can be open simultaneously
-- **Ignore list:** `drt_ignore.txt` in the plugin directory to exclude problematic datarefs
+- **Ignore list:** `drt_ignore.txt` in the `Resources/plugins/` directory to exclude problematic datarefs
 
 ## Value in Flight Simulation
 
-DRT is the standard tool for plugin development and troubleshooting in X-Plane. It enables real-time observation of all datarefs, which is invaluable for analyzing plugin conflicts, configuring FSUIPC mappings, or developing custom FlyWithLua scripts. With windows open, DRT reads all datarefs every frame, which can reduce [FPS](../glossary.md#fps-frames-per-second) — with windows closed, the performance impact is zero.
+DRT is the standard tool for plugin development and troubleshooting in X-Plane. It enables real-time observation of all datarefs, which is invaluable for analyzing plugin conflicts or developing custom FlyWithLua scripts. With windows open, DRT reads all datarefs every frame, which can reduce [FPS](../glossary.md#fps-frames-per-second) — with windows closed, the performance impact is zero.
 
 ## Installation
 

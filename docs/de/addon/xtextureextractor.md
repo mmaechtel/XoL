@@ -1,6 +1,6 @@
 # XTextureExtractor
 
-XTextureExtractor extrahiert Cockpit-Instrumenten-Texturen aus [X-Plane](../glossary.md#x-plane) und streamt sie über das Netzwerk an externe Displays — Tablets, Monitore oder Raspberry Pis.
+XTextureExtractor verwandelt Tablets, Monitore oder Raspberry Pis in Live-Cockpit-Instrumenten-Displays für [X-Plane](../glossary.md#x-plane). Das [Plugin](../glossary.md#plugin) extrahiert Instrumenten-Texturen in Echtzeit und streamt sie über das Netzwerk an verbundene Geräte.
 
 ## Hintergrund
 
@@ -10,7 +10,7 @@ XTextureExtractor extrahiert Cockpit-Instrumenten-Texturen aus [X-Plane](../glos
 - **Kompatibilität:** X-Plane 11 und X-Plane 12 ([Vulkan](../glossary.md#vulkan-api) und OpenGL)
 - **Preis:** Kostenlos
 
-Das [Plugin](../glossary.md#plugin) wird gepflegt und unterstützt über 35 vorkonfigurierte Flugzeuge, darunter Zibo 737, ToLiss A320/A321, Flight Factor 757/767/777 und viele Laminar-Standardflugzeuge.
+Das Plugin wird gelegentlich aktualisiert und unterstützt über 40 vorkonfigurierte Flugzeugkonfigurationen, darunter Zibo 737, ToLiss A321, Flight Factor A320/757/767/777 und viele Laminar-Standardflugzeuge.
 
 ## Funktionsumfang
 
@@ -18,7 +18,7 @@ Das [Plugin](../glossary.md#plugin) wird gepflegt und unterstützt über 35 vork
 - **Lokale Fenster:** Instrumente in separaten X-Plane-Fenstern anzeigen, auf externe Monitore verschieben, Positionen speichern
 - **Netzwerk-Streaming:** Streamt PNG-kodierte Instrumenten-Frames über TCP an verbundene Clients
 - **Aircraft-Definitionen:** Einfache `.tex`-Textdateien definieren Instrumentbereiche — eigene Flugzeuge können leicht ergänzt werden
-- **Android-App:** [Google Play](https://play.google.com/store/apps/details?id=net.waynepiekarski.xtextureextractor) — zeigt 2 Panels gleichzeitig, automatische X-Plane-Erkennung
+- **Android-App:** Zeigt 2 Panels gleichzeitig mit automatischer X-Plane-Erkennung (seit März 2025 nicht mehr im Google Play Store — APK über den Quellcode kompilierbar)
 - **Java-Desktop-Client:** Plattformübergreifend (Windows, Linux, macOS, Raspberry Pi), im Download enthalten
 
 ### Einschränkungen
@@ -45,4 +45,3 @@ Der Plugin-Server lauscht auf TCP-Port **52500**. Für den Empfang auf externen 
 ## Quellen
 
 - [XTextureExtractor — GitHub](https://github.com/waynepiekarski/XTextureExtractor)
-- [XTextureExtractor — Google Play](https://play.google.com/store/apps/details?id=net.waynepiekarski.xtextureextractor)

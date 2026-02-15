@@ -18,7 +18,7 @@ Das Plugin wird aktiv gepflegt und ist im Little-Navmap-Download-Archiv enthalte
 - **Wetterdaten:** Temperatur, Druck, Sichtweite, Wind, Vereisung
 - **AI/Multiplayer-Flugzeuge:** Positionen über TCAS-Interface
 - **Schiffspositionen:** Träger und Fregatte
-- **Shared Memory IPC:** Kommunikation über POSIX Shared Memory (`/dev/shm/`) — kein Netzwerkport für lokale Verbindungen
+- **Shared Memory IPC:** Kommunikation über Shared Memory — kein Netzwerkport für lokale Verbindungen
 - **Konfigurierbare Abtastrate:** 50–500 ms Intervall für Dataref-Abfragen
 
 ### Netzwerk-Betrieb

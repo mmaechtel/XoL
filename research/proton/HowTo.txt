@@ -1,0 +1,8 @@
+1. XOrganizer entpacken,
+2. In Steam unter Spiele - Steam-fremdes Spiel meiner Bibliothek hinzufügen ...,
+3. Auf Durchsuchen, dann xOrginizer.exe suchen und aswählen, dann auf öffnen,
+4. Danach auf Ausgewählte Programme hinzufügen,
+5. Rechtsklick auf  xOrginizer in der Spieleliste und auf Eigenschaften,
+6. unter Kompatibilität den Haken bei "Die Verwendung eines bestimmten Kompatibilitätswerkzeugs für Steam Play erzwingen" - Bei mir hat "Proton Experimental", "GE-Proton10-28" oder auch "Proton 10.0-4" funktioniert,
+7. im Terminal mit "protontricks -l" die ID eures Prefixes für xOrganizer suchen (Nummer in klammern). Falls xOrganizer nicht angezeigt wird, einmal starten (Fehlermeldungen egal),
+-- alternativ in eurer Stesmbibliothek

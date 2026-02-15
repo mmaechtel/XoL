@@ -33,6 +33,9 @@ This documentation is an open project. Improvements or additions can be contribu
 ## Recent Changes
 
 ### 2026-02-15
+- Addon pages revised: Fact corrections ([Follow the Greens](addon/followthegreens.md), [ToLiss SimBrief](addon/toliss_simbrief.md), [XGS](addon/xgs.md), [AutoGate](addon/autogate.md)), Linux notes added ([ToLiss Ecosystem](addon/toliss_ecosystem.md)), intro rewrite ([XTextureExtractor](addon/xtextureextractor.md))
+- [ToLiss Ecosystem](addon/toliss_ecosystem.md) restructured: Overview paragraph, `###` headings instead of bold for better navigation
+- New addon pages: [ToLiss Ecosystem](addon/toliss_ecosystem.md) (callouts, automation, boarding, ground services), [ToLiss SimBrief Connector](addon/toliss_simbrief.md), [XGS](addon/xgs.md) (landing speed analysis), [Follow the Greens](addon/followthegreens.md) (A-SMGCS taxi guidance)
 - Addon section expanded: [AutoDGS](addon/autodgs.md), [openSAM](addon/opensam.md), [AutoGate](addon/autogate.md), [DataRefTool](addon/datareftool.md), [Little XpConnect](addon/littlexpconnect.md), [XTextureExtractor](addon/xtextureextractor.md) — new Tools category and expanded Traffic & Ground Ops
 - Addon section expanded: New pages [FlyWithLua](addon/flywithlua.md), [AviTab](addon/avitab.md), [XCamera](addon/xcamera.md), [LiveTraffic](addon/livetraffic.md), [Better Pushback](addon/betterpushback.md) — each with background, Linux installation, known issues, and sources
 - Existing pages [XRoad](addon/xroad.md) and [AEP](addon/aep.md) revised to follow unified template
@@ -57,17 +60,5 @@ This documentation is an open project. Improvements or additions can be contribu
 - [System Tools](systemtools.md) glossary links added: NVMe, C-States, IRQ, CPU Governor, Latency, APST
 - New page [System Tuning Introduction](systemtuning_intro.md): Video intro bridging tuning and monitoring topics
 - Navigation: System Tools renamed to System Monitoring, grouped under System Tuning
-
-### 2026-02-13
-- [Getting Started](begin.md) corrected: Updated installer instructions, refined system recommendations, fixed outdated package names and single-core claims, added cross-references
-- [Getting Started](begin.md) glossary links added: GRUB, NVMe, VRAM, Orthophotos, FPS, Wayland
-- Video content separated by language: German videos on DE pages only, first English video [Mastering scenery packs](videos.md) embedded
-- New [Videos](videos.md) page — video collection with embedded overview videos
-- [XEarthLayer](addon/xearthlayer.md) expanded: CPU tuning section for parallel operation with X-Plane
-- [Introduction to Orthophotography](addon/orthophotography_intro.md) expanded: ortho streamer placement in scenery_packs.ini
-- [Scenery Components](scenery_components.md) expanded: videos and links to Ortho Streaming and Ortho4XP
-- [Wayland Session](displayserver_wayland.md) streamlined, [Display Server](displayserver.md) and [Introduction](intro.md): videos embedded
-- [About](about.md) revised: license, privacy policy, legal notices, target audience
-- [Glossary](glossary.md) expanded: 40 new terms covering kernel, graphics, filesystem, audio, and scenery
 
 

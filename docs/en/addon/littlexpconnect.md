@@ -18,7 +18,7 @@ The plugin is actively maintained and is included in the Little Navmap download 
 - **Weather data:** Temperature, pressure, visibility, wind, icing
 - **AI/multiplayer aircraft:** Positions via TCAS interface
 - **Ship positions:** Carrier and frigate
-- **Shared memory IPC:** Communication via POSIX shared memory (`/dev/shm/`) — no network port for local connections
+- **Shared memory IPC:** Communication via shared memory — no network port for local connections
 - **Configurable fetch rate:** 50–500 ms interval for dataref queries
 
 ### Network Operation

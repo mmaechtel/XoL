@@ -1,6 +1,6 @@
 # XTextureExtractor
 
-XTextureExtractor extracts cockpit instrument textures from [X-Plane](../glossary.md#x-plane) and streams them over the network to external displays — tablets, monitors, or Raspberry Pis.
+XTextureExtractor turns tablets, monitors, or Raspberry Pis into live cockpit instrument displays for [X-Plane](../glossary.md#x-plane). The [plugin](../glossary.md#plugin) extracts instrument textures in real time and streams them over the network to connected devices.
 
 ## Background
 
@@ -10,7 +10,7 @@ XTextureExtractor extracts cockpit instrument textures from [X-Plane](../glossar
 - **Compatibility:** X-Plane 11 and X-Plane 12 ([Vulkan](../glossary.md#vulkan-api) and OpenGL)
 - **Price:** Free
 
-The [plugin](../glossary.md#plugin) is maintained and supports over 35 preconfigured aircraft, including Zibo 737, ToLiss A320/A321, Flight Factor 757/767/777, and many Laminar default aircraft.
+The plugin receives occasional updates and supports over 40 preconfigured aircraft configurations, including Zibo 737, ToLiss A321, Flight Factor A320/757/767/777, and many Laminar default aircraft.
 
 ## Features
 
@@ -18,7 +18,7 @@ The [plugin](../glossary.md#plugin) is maintained and supports over 35 preconfig
 - **Local windows:** Display instruments in separate X-Plane windows, move to external monitors, save positions
 - **Network streaming:** Streams PNG-encoded instrument frames over TCP to connected clients
 - **Aircraft definitions:** Simple `.tex` text files define instrument regions — custom aircraft can be added easily
-- **Android app:** [Google Play](https://play.google.com/store/apps/details?id=net.waynepiekarski.xtextureextractor) — displays 2 panels simultaneously, automatic X-Plane discovery
+- **Android app:** Displays 2 panels simultaneously with automatic X-Plane discovery (removed from Google Play in March 2025 — APK can be built from source)
 - **Java desktop client:** Cross-platform (Windows, Linux, macOS, Raspberry Pi), included in the download
 
 ### Limitations
@@ -45,4 +45,3 @@ The plugin server listens on TCP port **52500**. To receive data on external dev
 ## Sources
 
 - [XTextureExtractor — GitHub](https://github.com/waynepiekarski/XTextureExtractor)
-- [XTextureExtractor — Google Play](https://play.google.com/store/apps/details?id=net.waynepiekarski.xtextureextractor)

@@ -123,6 +123,7 @@ plugins:
                 - Verschiedenes:
                     - Scripting:
                         - FlyWithLua: de/addon/flywithlua.md
+                        - ToLiss-Ökosystem: de/addon/toliss_ecosystem.md
                     - Cockpit & Kamera:
                         - AviTab: de/addon/avitab.md
                         - XCamera: de/addon/xcamera.md
@@ -133,9 +134,12 @@ plugins:
                         - AutoDGS: de/addon/autodgs.md
                         - openSAM: de/addon/opensam.md
                         - AutoGate: de/addon/autogate.md
+                        - Follow the Greens: de/addon/followthegreens.md
                     - Werkzeuge:
                         - DataRefTool: de/addon/datareftool.md
                         - Little XpConnect: de/addon/littlexpconnect.md
+                        - XGS: de/addon/xgs.md
+                        - ToLiss SimBrief: de/addon/toliss_simbrief.md
                     - Szenerie:
                         - XRoad: de/addon/xroad.md
                         - AEP: de/addon/aep.md
@@ -198,6 +202,7 @@ plugins:
                 - Miscellaneous:
                     - Scripting:
                         - FlyWithLua: en/addon/flywithlua.md
+                        - ToLiss Ecosystem: en/addon/toliss_ecosystem.md
                     - Cockpit & Camera:
                         - AviTab: en/addon/avitab.md
                         - XCamera: en/addon/xcamera.md
@@ -208,9 +213,12 @@ plugins:
                         - AutoDGS: en/addon/autodgs.md
                         - openSAM: en/addon/opensam.md
                         - AutoGate: en/addon/autogate.md
+                        - Follow the Greens: en/addon/followthegreens.md
                     - Tools:
                         - DataRefTool: en/addon/datareftool.md
                         - Little XpConnect: en/addon/littlexpconnect.md
+                        - XGS: en/addon/xgs.md
+                        - ToLiss SimBrief: en/addon/toliss_simbrief.md
                     - Scenery:
                         - XRoad: en/addon/xroad.md
                         - AEP: en/addon/aep.md

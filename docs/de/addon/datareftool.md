@@ -11,7 +11,7 @@ DataRefTool (DRT) ist ein Entwicklungs- und Debugging-Werkzeug für [X-Plane](..
 - **Kompatibilität:** X-Plane 12.1+ (v2); X-Plane 10/11 (v1)
 - **Preis:** Kostenlos
 
-Das [Plugin](../glossary.md#plugin) existiert seit X-Plane 10. Version 2 wurde als Closed-Source-Neuentwicklung für X-Plane 12 veröffentlicht und nutzt die native Dataref-Registrierungs-API von X-Plane 12.04.
+Das [Plugin](../glossary.md#plugin) existiert seit X-Plane 10. Version 2 wurde als Closed-Source-Neuentwicklung für X-Plane 12 veröffentlicht und nutzt die Dataref-Enumerations-API (XPLM400) von X-Plane 12.04.
 
 ## Funktionsumfang
 
@@ -22,11 +22,11 @@ Das [Plugin](../glossary.md#plugin) existiert seit X-Plane 10. Version 2 wurde a
 - **Regex-Suche:** Mehrere Suchbegriffe, reguläre Ausdrücke, Groß-/Kleinschreibung optional
 - **Plugin-/Szenerie-Reload:** Neuladen direkt aus DRT anstoßen
 - **Multi-Window:** Mehrere DRT-Fenster gleichzeitig möglich
-- **Ignore-Liste:** `drt_ignore.txt` im Plugin-Verzeichnis zum Ausschließen problematischer Datarefs
+- **Ignore-Liste:** `drt_ignore.txt` im Verzeichnis `Resources/plugins/` zum Ausschließen problematischer Datarefs
 
 ## Mehrwert in der Flugsimulation
 
-DRT ist das Standardwerkzeug für Plugin-Entwicklung und Fehlersuche in X-Plane. Es ermöglicht die Echtzeitbeobachtung aller Datarefs, was bei der Analyse von Plugin-Konflikten, der Konfiguration von FSUIPC-Mappings oder der Entwicklung eigener FlyWithLua-Skripte unverzichtbar ist. Bei geöffnetem Fenster liest DRT jeden Frame alle Datarefs, was die [FPS](../glossary.md#fps-frames-per-second) reduzieren kann — bei geschlossenen Fenstern liegt der Performance-Einfluss bei null.
+DRT ist das Standardwerkzeug für Plugin-Entwicklung und Fehlersuche in X-Plane. Es ermöglicht die Echtzeitbeobachtung aller Datarefs, was bei der Analyse von Plugin-Konflikten oder der Entwicklung eigener FlyWithLua-Skripte unverzichtbar ist. Bei geöffneten Fenstern liest DRT jeden Frame alle Datarefs, was die [FPS](../glossary.md#fps-frames-per-second) reduzieren kann — bei geschlossenen Fenstern liegt der Performance-Einfluss bei null.
 
 ## Installation
 

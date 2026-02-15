@@ -4,7 +4,7 @@ AutoGate ist ein [Plugin](../glossary.md#plugin) für [X-Plane](../glossary.md#x
 
 ## Hintergrund
 
-- **Original:** [Marginal/AutoGate](https://github.com/Marginal/AutoGate) von Jonathan Harris (2006–2016, nicht mehr gepflegt)
+- **Original:** [Marginal/AutoGate](https://github.com/Marginal/AutoGate) von Jonathan Harris (2006–2017, nicht mehr gepflegt)
 - **XP12-Fork:** [hotbso/AutoGate](https://github.com/hotbso/AutoGate) (X-Plane 12 kompatibel)
 - **Lizenz:** Plugin-Code LGPL-2.1, 3D-Objekte/Texturen CC-BY 3.0
 - **Plattformen:** Windows, macOS, Linux (native Binaries)
@@ -17,14 +17,13 @@ AutoGate ist ein [Plugin](../glossary.md#plugin) für [X-Plane](../glossary.md#x
 
 ## Funktionsumfang
 
-- **Animierte Jetways:** Zwei Typen (senkrecht, parallel) in verschiedenen Längen (10–18 m)
+- **Animierte Jetways:** Zwei Materialtypen (Glas, Stahl) in verschiedenen Längen (12–32 m)
 - **Docking Guidance Systems:** Safedock-Typen, eigenständiges DGS und Marshaller
-- **Automatisches Andocken:** Jetway dockt an, wenn Triebwerke abgestellt und Flugzeug innerhalb 0,5 m der Stoppposition ist
-- **Beacon-Steuerung:** Jetway löst sich bei Beacon-Einschalten, dockt bei Beacon-Ausschalten an
+- **Beacon-Steuerung:** Jetway dockt an bei Beacon-Ausschalten (Flugzeug innerhalb 0,5 m der Stoppposition), löst sich bei Beacon-Einschalten
 
 ## Mehrwert in der Flugsimulation
 
-AutoGate war das erste Open-Source-Jetway-System für X-Plane und hat den Grundstein für SAM und openSAM gelegt. Einige ältere Custom-Szenerien setzen AutoGate-Assets ein. Für diese Szenerien bleibt der hotbso-Fork die einzige X-Plane-12-kompatible Option. AutoGate kann parallel zu openSAM und AutoDGS betrieben werden.
+AutoGate war das erste Open-Source-Jetway-System für X-Plane und hat den Grundstein für openSAM gelegt. Einige ältere Custom-Szenerien setzen AutoGate-Assets ein. Für diese Szenerien bleibt der hotbso-Fork die einzige X-Plane-12-kompatible Option. AutoGate kann parallel zu openSAM und AutoDGS betrieben werden.
 
 ## Installation
 
