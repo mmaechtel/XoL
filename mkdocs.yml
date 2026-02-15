@@ -147,6 +147,7 @@ plugins:
                 - Szenerie:
                     - XRoad: de/addon/xroad.md
                     - AEP: de/addon/aep.md
+                    - xa-snow: de/addon/xa-snow.md
                 - Via KVM:
                     - My FS Flights: de/addon/myfs_flights.md
             - Flugbetrieb:
@@ -235,6 +236,7 @@ plugins:
                 - Scenery:
                     - XRoad: en/addon/xroad.md
                     - AEP: en/addon/aep.md
+                    - xa-snow: en/addon/xa-snow.md
                 - Via KVM:
                     - My FS Flights: en/addon/myfs_flights.md
             - Flight Operations:
