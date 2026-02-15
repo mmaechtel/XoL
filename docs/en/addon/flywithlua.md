@@ -69,6 +69,23 @@ FlyWithLua Error: Error in ../Fmod/FmodIntegration.cpp, line 732: An invalid par
 
 The error is non-fatal — the plugin continues to function. A fix is pending.
 
+## Script Installation
+
+FlyWithLua scripts (`.lua` files) go into `Resources/plugins/FlyWithLua/Scripts/`. Lua libraries shared by multiple scripts belong in `Modules/` — not in `Scripts/`.
+
+Many scripts ship with sound folders or configuration files. These must reside in the same directory as the script so they can be found.
+
+```
+Resources/plugins/FlyWithLua/
+    Modules/
+        SharedLibrary.lua
+    Scripts/
+        MyScript.lua
+        MyScript_Sounds/
+```
+
+Pure Lua scripts are platform-independent and run identically on Linux, Windows, and macOS. Linux-specific issues only occur when a script calls external binaries or operating system functions.
+
 ## Sources
 
 - [FlyWithLua — GitHub](https://github.com/X-Friese/FlyWithLua)

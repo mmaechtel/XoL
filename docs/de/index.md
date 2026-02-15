@@ -36,6 +36,8 @@ Diese Dokumentation ist ein offenes Projekt. Verbesserungen oder Ergänzungen k�
 - Neue Seite [SGES](addon/sges.md) — Bodenabfertigungs-Ausrüstung (GPU, Tankwagen, Chocks, animierte Passagiere) als FlyWithLua-Skript
 - Neue Seite [KabinXP](addon/kabinxp.md) — Cabin-Announcement-Plugin mit eigenen Audiodateien und Livery-spezifischen Sound-Packs
 - [ToLiss-Ökosystem](addon/toliss_ecosystem.md): SGES und KabinXP in eigene Seiten ausgelagert
+- [FlyWithLua](addon/flywithlua.md) ergänzt: Allgemeine Skript-Installationsanleitung (Scripts, Modules, Sound-Ordner)
+- Navigation: Ortho Streaming und FlyWithLua-Skripte als eigene Kategorien
 - Neue Addon-Seiten: [LST](addon/lst.md) (animierter Bodenverkehr für Szenerien), [LinuxTrack](addon/linuxtrack.md) (Head-Tracking für Linux), [XLinSpeak](addon/xlinspeak.md) (TTS für Plugin-Sprachausgabe unter Linux), [WINCTRL](addon/winctrl.md) (Winwing-Hardware-Anbindung ohne SimAppPro), [TerrainRadar](addon/terrainradar.md) (EGPWS-Terrain-Display und VSD)
 - Neue Addon-Seiten (Via KVM): [MobiFlight](addon/mobiflight.md) (Open-Source-Cockpit-Hardware-Middleware, Netzwerk-Split-Setup) und [SayIntentions.AI](addon/sayintentions.md) (KI-basierte Flugsicherung mit Spracherkennung, VM-Setup mit UDP-Forwarding)
 - Neue Seite [NOAA Weather](addon/noaa_weather.md) — Python-Plugin für reale Schneebedeckung und METAR-Monitoring als Ergänzung zu X-Planes Real Weather
