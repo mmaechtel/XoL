@@ -168,7 +168,7 @@ Das Unterverzeichnis (unterhalb von `de/` bzw. `en/`) bestimmt die Zielseite(n).
 | `liquorix` | `liquorix.md` |
 | `scenery`, `szenerie`, `scenery_packs` | `scenery_components.md` |
 | `ortho` | `addon/orthophotography_intro.md` |
-| `performance` | `xplane/performance.md` |
+| `performance` | `performance_overview.md` |
 
 **Matching:** Case-insensitive Teilstring-Suche im Unterverzeichnisnamen oder Dateinamen.
 
@@ -274,6 +274,16 @@ NAVIGATION:
 
 STATUS:
 └─ research/VIDEO_STATUS.md: {Aktualisiert}
+
+VERLINKUNGEN (wohin und warum):
+├─ {video1.mp4}
+│   ├─ videos.md ({lang})        — zentrale Videosammlung
+│   ├─ {zielseite.md} ({lang})   — thematisch: Verzeichnis "{subdir}" matched Regel "{muster}" → {zielseite}
+│   └─ index.md ({lang}, featured) — neuestes Video dieser Sprache ersetzt bisheriges Featured
+├─ {video2.mp4}
+│   ├─ ...
+│   └─ ...
+└─ Zuordnungsregeln: siehe Phase 3.1 (Verzeichnis-Zuordnung)
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 ```

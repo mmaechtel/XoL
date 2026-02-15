@@ -28,4 +28,14 @@ Video collection for X-Plane on Linux.
 
 </div>
 
+<div class="video-card" markdown>
+
+### Ortho-Streaming on Linux
+
+<video controls width="100%" preload="metadata" poster="../assets/video/en/ortho_streaming/Ortho-Streaming_on_Linux.jpg">
+  <source src="../assets/video/en/ortho_streaming/Ortho-Streaming_on_Linux.mp4" type="video/mp4">
+</video>
+
+</div>
+
 </div>

@@ -2,6 +2,12 @@
 
 Die Orthofotographie stellt einen zentralen Bestandteil moderner Flugsimulationsumgebungen dar, da sie hochauflösende und realistische Bodentexturen ermöglicht. Dieser Abschnitt erläutert die methodischen Ansätze zur Integration qualitativ hochwertiger Orthofotos in die Flugsimulationssoftware X-Plane.
 
+<div class="video-container" markdown>
+<video controls width="100%" preload="metadata" poster="../../assets/video/de/ortho_streamer_software/Ortho-Streaming_für_X-Plane.jpg">
+  <source src="../../assets/video/de/ortho_streamer_software/Ortho-Streaming_für_X-Plane.mp4" type="video/mp4">
+</video>
+</div>
+
 ## Bedeutung der Orthofotographie
 
 In der Flugsimulation ist eine präzise Darstellung des Geländes essenziell, um realitätsnahe Lande- und Flugbedingungen zu gewährleisten. X-Plane enthält standardmäßig ein globales Höhenmodell („Mesh"), dessen Auflösung jedoch aufgrund von Speicherbeschränkungen oft begrenzt ist. Dieses Höhenmodell, das im Menü „Komponenten" der Szenerien detailliert beschrieben wird, bildet die Grundlage für die Geländedarstellung. Durch den Einsatz spezifischer Erweiterungen (Add-ons) können sowohl die Präzision des Meshes als auch die Qualität der projizierten Bodentexturen signifikant verbessert werden. Das primäre Ziel besteht in der Erhöhung der topografischen Genauigkeit, wobei die visuelle Optimierung der Szenerie als sekundärer Vorteil resultiert.

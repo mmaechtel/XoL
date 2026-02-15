@@ -20,7 +20,7 @@ X-Plane stresses three hardware subsystems simultaneously, each with its own bot
 
 ## CPU-Bound Performance
 
-X-Plane's physics model is based on [Blade Element Theory](../glossary.md#blade-element-theory): the aircraft is divided into hundreds of segments, with airflow and forces calculated in real-time for each one. This computation runs on the main thread, making it heavily dependent on single-core performance.
+X-Plane's physics model is based on [Blade Element Theory](../glossary.md#blade-element-theory): the aircraft is divided into numerous segments, with airflow and forces calculated in real-time for each one. This computation runs on the main thread, making it heavily dependent on single-core performance.
 
 ### IPC and Microarchitecture
 
@@ -40,7 +40,7 @@ The symptom in X-Plane: FPS drops at densely built-up scenery or complex airport
 
 ??? abstract "Background: Memory Wall"
 
-    On a typical DDR5 system with approximately 50 GB/s bandwidth per channel, a single core can already demand several GB/s of memory bandwidth. When all cores are active and accessing data outside the L3 cache, the shared memory bandwidth becomes the limiting factor. More cores don't help in this scenario — they make the problem worse.
+    On a typical DDR5 system with 35–50 GB/s bandwidth per channel (depending on clock speed), a single core can already demand several GB/s of memory bandwidth. When all cores are active and accessing data outside the L3 cache, the shared memory bandwidth becomes the limiting factor. More cores don't help in this scenario — they make the problem worse.
 
 ### Interrupt Load and Context Switches
 
@@ -57,11 +57,11 @@ Local I/O load comes from loading scenery data, textures, meshes, and autogen ob
 | Storage Type | Seq. Read | Random 4K IOPS | Latency |
 |---|---|---|---|
 | HDD (7200 RPM) | ~200 MB/s | ~100–200 | 5–10 ms |
-| SATA SSD | ~550 MB/s | ~80,000–100,000 | 50–100 µs |
-| NVMe SSD (PCIe 4.0) | ~7,000 MB/s | ~800,000–1,000,000 | 10–20 µs |
-| NVMe SSD (PCIe 5.0) | ~12,000 MB/s | ~1,500,000+ | 8–15 µs |
+| SATA SSD | ~550 MB/s | ~80,000–100,000 | 75–150 µs |
+| NVMe SSD (PCIe 4.0) | ~7,000 MB/s | ~800,000–1,000,000 | 20–50 µs |
+| NVMe SSD (PCIe 5.0) | ~12,000 MB/s | ~1,500,000+ | 15–40 µs |
 
-For X-Plane, both sequential throughput (large texture files) and IOPS (many small scenery files) matter. [NVMe](../glossary.md#nvme-non-volatile-memory-express) SSDs offer an advantage over SATA SSDs by a factor of 10 or more in both categories.
+For X-Plane, both sequential throughput (large texture files) and IOPS (many small scenery files) matter. [NVMe](../glossary.md#nvme-non-volatile-memory-express) SSDs offer a 10x+ advantage over SATA SSDs in sequential throughput; the gap in IOPS is similarly large.
 
 ### Filesystem and I/O Scheduler
 
@@ -85,7 +85,7 @@ Network I/O plays a growing role in X-Plane. Three typical scenarios generate co
 
 Streaming software assumes that data flows at a steady rate. In practice, that's rarely the case:
 
-- **TCP Congestion Control:** A single lost packet can halve throughput for several round-trip times. The flow control algorithm throttles preemptively — even when the connection is actually clear.
+- **TCP Congestion Control:** A single lost packet can significantly reduce throughput for several round-trip times. The flow control algorithm throttles preemptively — even when the connection is actually clear.
 - **Jitter:** Even with stable average bandwidth, the actual data rate fluctuates significantly. Typical jitter values on WAN connections range from 1 to 50 ms.
 - **Shared Bandwidth:** With cloud-hosted data sources, many users share the same infrastructure. "Noisy neighbors" can unpredictably reduce available throughput.
 

@@ -7,8 +7,8 @@ The examples shown here are based on Debian Linux but can be easily adapted to o
 ## Featured Video
 
 <div class="video-container" markdown>
-<video controls width="100%" preload="metadata" poster="../assets/video/en/systemtools/Two_Paths_to_Smoother_Flight.jpg">
-  <source src="../assets/video/en/systemtools/Two_Paths_to_Smoother_Flight.mp4" type="video/mp4">
+<video controls width="100%" preload="metadata" poster="../assets/video/en/ortho_streaming/Ortho-Streaming_on_Linux.jpg">
+  <source src="../assets/video/en/ortho_streaming/Ortho-Streaming_on_Linux.mp4" type="video/mp4">
 </video>
 </div>
 
@@ -34,6 +34,8 @@ This documentation is an open project. Improvements or additions can be contribu
 
 ### 2026-02-15
 - New page [Performance Fundamentals](performance_overview.md): CPU, I/O, and network load dimensions, interactions, frame time as a metric, optimization approaches overview
+- [Orthophotography](addon/orthophotography_intro.md), [Performance Fundamentals](performance_overview.md), and [Videos](videos.md): Ortho streaming and performance videos embedded (DE + EN)
+- [Performance Fundamentals](performance_overview.md) corrected: SSD latencies, DDR5 bandwidth, and TCP congestion wording refined
 
 ### 2026-02-14
 - [X-Plane Configuration](xplane/config.md) expanded: Comprehensive udev rules for controllers (identify device IDs, rule examples, distinguish identical devices by USB port)

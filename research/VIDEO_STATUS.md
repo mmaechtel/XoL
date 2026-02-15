@@ -8,3 +8,6 @@
 | Mastering_scenery_packs.mp4 | en/Mastering_scenery_packs | videos.md (EN), scenery_components.md (EN) | eingebettet | 2026-02-13 |
 | System-Tuning_für_X-Plane.mp4 | de/systemtools | videos.md (DE), index.md (DE, featured), systemtuning_intro.md (DE) | eingebettet | 2026-02-14 |
 | Two_Paths_to_Smoother_Flight.mp4 | en/systemtools | videos.md (EN), index.md (EN, featured), systemtuning_intro.md (EN) | eingebettet | 2026-02-14 |
+| Ortho-Streaming_für_X-Plane.mp4 | de/ortho_streamer_software | videos.md (DE), orthophotography_intro.md (DE) | eingebettet | 2026-02-15 |
+| Das_Performance-Rätsel.mp4 | de/performance_with_simulation_software | videos.md (DE), index.md (DE, featured), performance_overview.md (DE) | eingebettet | 2026-02-15 |
+| Ortho-Streaming_on_Linux.mp4 | en/ortho_streaming | videos.md (EN), index.md (EN, featured), orthophotography_intro.md (EN) | eingebettet | 2026-02-15 |

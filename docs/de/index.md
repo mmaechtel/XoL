@@ -7,8 +7,8 @@ Die hier gezeigten Beispiele basieren auf Debian Linux, lassen sich aber leicht 
 ## Featured Video
 
 <div class="video-container" markdown>
-<video controls width="100%" preload="metadata" poster="../assets/video/de/systemtools/System-Tuning_für_X-Plane.jpg">
-  <source src="../assets/video/de/systemtools/System-Tuning_für_X-Plane.mp4" type="video/mp4">
+<video controls width="100%" preload="metadata" poster="../assets/video/de/performance_with_simulation_software/Das_Performance-Rätsel.jpg">
+  <source src="../assets/video/de/performance_with_simulation_software/Das_Performance-Rätsel.mp4" type="video/mp4">
 </video>
 </div>
 
@@ -34,6 +34,8 @@ Diese Dokumentation ist ein offenes Projekt. Verbesserungen oder Ergänzungen k�
 
 ### 2026-02-15
 - Neue Seite [Performance-Grundlagen](performance_overview.md): CPU-, I/O- und Netzwerk-Lastdimensionen, Wechselwirkungen, Frame Time als Maßeinheit, Optimierungsansätze im Überblick
+- [Orthofotographie](addon/orthophotography_intro.md), [Performance-Grundlagen](performance_overview.md) und [Videos](videos.md): Ortho-Streaming- und Performance-Videos eingebettet (DE + EN)
+- [Performance-Grundlagen](performance_overview.md) korrigiert: SSD-Latenzen, DDR5-Bandbreite und TCP-Congestion-Formulierung präzisiert
 
 ### 2026-02-14
 - [X-Plane Konfiguration](xplane/config.md) erweitert: udev-Regeln für Controller ausführlich dokumentiert (Device-IDs ermitteln, Regel-Beispiel, identische Geräte per USB-Port unterscheiden)

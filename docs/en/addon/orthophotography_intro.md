@@ -2,6 +2,12 @@
 
 Orthophotography represents a central component of modern flight simulation environments, as it enables high-resolution and realistic ground textures. This section explains the methodological approaches for integrating high-quality orthophotos into the X-Plane flight simulation software.
 
+<div class="video-container" markdown>
+<video controls width="100%" preload="metadata" poster="../../assets/video/en/ortho_streaming/Ortho-Streaming_on_Linux.jpg">
+  <source src="../../assets/video/en/ortho_streaming/Ortho-Streaming_on_Linux.mp4" type="video/mp4">
+</video>
+</div>
+
 ## Significance of Orthophotography
 
 In flight simulation, precise terrain representation is essential to ensure realistic landing and flight conditions. X-Plane includes a standard global elevation model ("mesh") by default, whose resolution is often limited due to storage constraints. This elevation model, which is described in detail in the "Components" menu of the scenery settings, forms the basis for terrain representation. Through the use of specific add-ons, both the precision of the mesh and the quality of the projected ground textures can be significantly improved. The primary goal is to increase topographic accuracy, with the visual optimization of the scenery resulting as a secondary benefit.

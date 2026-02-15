@@ -48,4 +48,24 @@ Videosammlung rund um X-Plane auf Linux.
 
 </div>
 
+<div class="video-card" markdown>
+
+### Ortho-Streaming für X-Plane
+
+<video controls width="100%" preload="metadata" poster="../assets/video/de/ortho_streamer_software/Ortho-Streaming_für_X-Plane.jpg">
+  <source src="../assets/video/de/ortho_streamer_software/Ortho-Streaming_für_X-Plane.mp4" type="video/mp4">
+</video>
+
+</div>
+
+<div class="video-card" markdown>
+
+### Das Performance-Rätsel
+
+<video controls width="100%" preload="metadata" poster="../assets/video/de/performance_with_simulation_software/Das_Performance-Rätsel.jpg">
+  <source src="../assets/video/de/performance_with_simulation_software/Das_Performance-Rätsel.mp4" type="video/mp4">
+</video>
+
+</div>
+
 </div>

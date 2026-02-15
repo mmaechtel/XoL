@@ -1,5 +1,11 @@
 # Performance-Grundlagen
 
+<div class="video-container" markdown>
+<video controls width="100%" preload="metadata" poster="../assets/video/de/performance_with_simulation_software/Das_Performance-Rätsel.jpg">
+  <source src="../assets/video/de/performance_with_simulation_software/Das_Performance-Rätsel.mp4" type="video/mp4">
+</video>
+</div>
+
 ## Einleitung
 
 Szenerien laden langsam, Texturen fehlen beim Überflug, Mikroruckler tauchen ohne erkennbare Ursache auf — typische Symptome, die X-Plane-Nutzer unter Linux kennen. Die Ursache liegt selten an einer einzelnen Komponente. X-Plane ist ein Hybrid aus rechenintensiver Physiksimulation, massivem Daten-I/O und — bei Ortho-Streaming — kontinuierlichem Netzwerkverkehr. Drei Lastdimensionen konkurrieren dabei um gemeinsame Ressourcen, und das schwächste Glied bestimmt, was auf dem Bildschirm ankommt.
@@ -20,7 +26,7 @@ X-Plane beansprucht drei Hardware-Subsysteme gleichzeitig, die jeweils eigene En
 
 ## CPU-gebundene Performance
 
-X-Planes Physikmodell basiert auf der [Blade Element Theory](../glossary.md#blade-element-theory): Das Flugzeug wird in hunderte Segmente zerlegt, für die in Echtzeit Luftströmung und Kräfte berechnet werden. Diese Berechnung erfolgt im Hauptthread und ist daher stark von der Single-Core-Performance abhängig.
+X-Planes Physikmodell basiert auf der [Blade Element Theory](../glossary.md#blade-element-theory): Das Flugzeug wird in zahlreiche Segmente zerlegt, für die in Echtzeit Luftströmung und Kräfte berechnet werden. Diese Berechnung erfolgt im Hauptthread und ist daher stark von der Single-Core-Performance abhängig.
 
 ### IPC und Mikroarchitektur
 
@@ -40,7 +46,7 @@ Das Symptom in X-Plane: FPS-Einbrüche in dicht bebauten Szenerien oder an kompl
 
 ??? abstract "Hintergrund: Memory Wall"
 
-    Auf einem typischen DDR5-System mit ca. 50 GB/s Bandbreite pro Kanal kann ein einzelner Kern bereits mehrere GB/s an Speicherbandbreite fordern. Sind alle Kerne aktiv und greifen auf Daten außerhalb des L3-Cache zu, wird die gemeinsame Speicherbandbreite zum limitierenden Faktor. Mehr Kerne helfen in diesem Szenario nicht — sie verschärfen das Problem.
+    Auf einem typischen DDR5-System mit 35–50 GB/s Bandbreite pro Kanal (je nach Taktrate) kann ein einzelner Kern bereits mehrere GB/s an Speicherbandbreite fordern. Sind alle Kerne aktiv und greifen auf Daten außerhalb des L3-Cache zu, wird die gemeinsame Speicherbandbreite zum limitierenden Faktor. Mehr Kerne helfen in diesem Szenario nicht — sie verschärfen das Problem.
 
 ### Interrupt-Last und Kontextwechsel
 
@@ -57,11 +63,11 @@ Die lokale E/A-Last entsteht beim Laden von Szenerie-Daten, Texturen, Meshes und
 | Speichertyp | Seq. Lesen | Random 4K IOPS | Latenz |
 |---|---|---|---|
 | HDD (7200 RPM) | ~200 MB/s | ~100–200 | 5–10 ms |
-| SATA SSD | ~550 MB/s | ~80.000–100.000 | 50–100 µs |
-| NVMe SSD (PCIe 4.0) | ~7.000 MB/s | ~800.000–1.000.000 | 10–20 µs |
-| NVMe SSD (PCIe 5.0) | ~12.000 MB/s | ~1.500.000+ | 8–15 µs |
+| SATA SSD | ~550 MB/s | ~80.000–100.000 | 75–150 µs |
+| NVMe SSD (PCIe 4.0) | ~7.000 MB/s | ~800.000–1.000.000 | 20–50 µs |
+| NVMe SSD (PCIe 5.0) | ~12.000 MB/s | ~1.500.000+ | 15–40 µs |
 
-Für X-Plane sind sowohl der sequentielle Durchsatz (große Texturdateien) als auch die IOPS (viele kleine Szenerie-Dateien) relevant. [NVMe](../glossary.md#nvme-non-volatile-memory-express)-SSDs bieten in beiden Kategorien einen Vorteil gegenüber SATA-SSDs um den Faktor 10 und mehr.
+Für X-Plane sind sowohl der sequentielle Durchsatz (große Texturdateien) als auch die IOPS (viele kleine Szenerie-Dateien) relevant. [NVMe](../glossary.md#nvme-non-volatile-memory-express)-SSDs bieten beim sequentiellen Durchsatz einen Vorteil um den Faktor 10+ gegenüber SATA-SSDs; bei den IOPS ist der Abstand ähnlich groß.
 
 ### Dateisystem und I/O-Scheduler
 
@@ -85,7 +91,7 @@ Netzwerk-I/O spielt in X-Plane eine wachsende Rolle. Drei typische Szenarien erz
 
 Streaming-Software setzt voraus, dass Daten gleichmäßig fließen. In der Praxis stimmt das selten:
 
-- **TCP-Congestion-Control:** Ein einzelnes verlorenes Paket kann den Durchsatz für mehrere Round-Trip-Times halbieren. Der Flusskontroll-Algorithmus drosselt vorsorglich — auch wenn die Leitung eigentlich frei ist.
+- **TCP-Congestion-Control:** Ein einzelnes verlorenes Paket kann den Durchsatz für mehrere Round-Trip-Times deutlich reduzieren. Der Flusskontroll-Algorithmus drosselt vorsorglich — auch wenn die Leitung eigentlich frei ist.
 - **Jitter:** Selbst bei stabiler mittlerer Bandbreite schwankt die tatsächliche Datenrate erheblich. Typische Jitter-Werte auf WAN-Verbindungen liegen zwischen 1 und 50 ms.
 - **Shared Bandwidth:** Bei Cloud-gehosteten Datenquellen teilen sich viele Nutzer dieselbe Infrastruktur. „Noisy Neighbors" können den verfügbaren Durchsatz unvorhersehbar reduzieren.
 
