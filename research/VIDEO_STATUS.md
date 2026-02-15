@@ -11,3 +11,4 @@
 | Ortho-Streaming_für_X-Plane.mp4 | de/ortho_streamer_software | videos.md (DE), orthophotography_intro.md (DE) | eingebettet | 2026-02-15 |
 | Das_Performance-Rätsel.mp4 | de/performance_with_simulation_software | videos.md (DE), index.md (DE, featured), performance_overview.md (DE) | eingebettet | 2026-02-15 |
 | Ortho-Streaming_on_Linux.mp4 | en/ortho_streaming | videos.md (EN), index.md (EN, featured), orthophotography_intro.md (EN) | eingebettet | 2026-02-15 |
+| The_Performance_Puzzle.mp4 | en/performance_with_simulation_software | videos.md (EN), index.md (EN, featured), performance_overview.md (EN) | eingebettet | 2026-02-15 |

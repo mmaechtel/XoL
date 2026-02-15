@@ -1,5 +1,11 @@
 # Performance Fundamentals
 
+<div class="video-container" markdown>
+<video controls width="100%" preload="metadata" poster="../assets/video/en/performance_with_simulation_software/The_Performance_Puzzle.jpg">
+  <source src="../assets/video/en/performance_with_simulation_software/The_Performance_Puzzle.mp4" type="video/mp4">
+</video>
+</div>
+
 ## Introduction
 
 Scenery loads slowly, textures are missing during flyovers, micro-stutters appear without any obvious cause — typical symptoms that X-Plane users on Linux will recognize. The root cause is rarely a single component. X-Plane is a hybrid of compute-intensive physics simulation, massive data I/O, and — with ortho streaming — continuous network traffic. Three load dimensions compete for shared resources, and the weakest link determines what makes it to the screen.

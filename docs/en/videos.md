@@ -38,4 +38,14 @@ Video collection for X-Plane on Linux.
 
 </div>
 
+<div class="video-card" markdown>
+
+### The Performance Puzzle
+
+<video controls width="100%" preload="metadata" poster="../assets/video/en/performance_with_simulation_software/The_Performance_Puzzle.jpg">
+  <source src="../assets/video/en/performance_with_simulation_software/The_Performance_Puzzle.mp4" type="video/mp4">
+</video>
+
+</div>
+
 </div>

@@ -7,8 +7,8 @@ The examples shown here are based on Debian Linux but can be easily adapted to o
 ## Featured Video
 
 <div class="video-container" markdown>
-<video controls width="100%" preload="metadata" poster="../assets/video/en/ortho_streaming/Ortho-Streaming_on_Linux.jpg">
-  <source src="../assets/video/en/ortho_streaming/Ortho-Streaming_on_Linux.mp4" type="video/mp4">
+<video controls width="100%" preload="metadata" poster="../assets/video/en/performance_with_simulation_software/The_Performance_Puzzle.jpg">
+  <source src="../assets/video/en/performance_with_simulation_software/The_Performance_Puzzle.mp4" type="video/mp4">
 </video>
 </div>
 
