@@ -151,6 +151,7 @@ Pro Kapitel wird diese Tabelle in `research/<kategorie>/AUDIT_<dateiname>.md` au
 | Struktur | — | Logische Reihenfolge? Gute H2/H3-Gliederung? |
 | Querverweise | — | Verweise auf andere Seiten korrekt und vollständig? |
 | Markdown/Format | — | Einhaltung der MARKDOWN_RULES.txt? |
+| **Stilkonsistenz** | — | Stimmt der Textfluss mit bereits auditierten Seiten überein? Prüfpunkte: H1 für Seitentitel, Prose↔Tabelle↔Code-Wechsel, `!!! note/warning` für Caveats, `---` zwischen Hauptsektionen, Sources-Abschnitt am Ende, einordnender Einstiegssatz. Referenzseiten: begin.md, nvidia.md, systemtools.md. |
 
 ---
 

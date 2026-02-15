@@ -1,6 +1,6 @@
-## Liquorix Kernel on Debian
+# Liquorix Kernel on Debian
 
-The [Liquorix Kernel](../glossary.md#liquorix-kernel) is an optimized version of the Linux kernel focused on desktop and gaming performance. It offers improved response times and performance through special configurations and patches. The kernel is maintained by the community and is not officially supported by Debian. Before installation, it is recommended to create a system backup, as using a non-official kernel may involve certain risks.
+The standard Debian kernel is configured for broad compatibility and server workloads. The [Liquorix Kernel](../glossary.md#liquorix-kernel) takes a different approach — it is based on the Zen kernel patchset and tuned specifically for desktop responsiveness and low-latency workloads like gaming and flight simulation. It is maintained by Steven Barrett and not part of the official Debian archive. Before installation, creating a system backup is recommended.
 
 ## Installation
 
@@ -8,133 +8,163 @@ The [Liquorix Kernel](../glossary.md#liquorix-kernel) is an optimized version of
 
 - Debian installed and updated
 - Root or sudo rights
-- Minimum 8 GB RAM for optimal performance
-- Compatible hardware (especially important for specific drivers)
 
-### Installation Steps
+### Quick Install (Recommended)
 
-1. **Update System**
+The official installer script handles key import, repository setup, and installation automatically:
 
-The system is first updated
 ```bash
-sudo apt update && sudo apt upgrade -y
+curl -s 'https://liquorix.net/install-liquorix.sh' | sudo bash
 ```
 
-2. **Add Repository**
+### Manual Installation
 
-The Liquorix repository is added as follows
+1. **Update system**
 
-- **Install dependencies**
-```bash
-sudo apt install -y curl gpg
-```
+    ```bash
+    sudo apt update && sudo apt upgrade -y
+    ```
 
-- **Add repository key**
-```bash
-curl -s 'https://liquorix.net/linux-liquorix-keyring.gpg' | sudo gpg --dearmor -o /usr/share/keyrings/liquorix-keyring.gpg
-```
+2. **Add repository**
 
-- **Set up repository**
-```bash
-echo 'deb [signed-by=/usr/share/keyrings/liquorix-keyring.gpg] https://liquorix.net/debian $(lsb_release -cs) main' | sudo tee /etc/apt/sources.list.d/liquorix.list
-```
+    - **Install dependencies**
 
-- **Update package sources**
-```bash
-sudo apt update
-```
+        ```bash
+        sudo apt install -y curl gpg ca-certificates
+        ```
 
-3. **Install Kernel**
+    - **Add repository key**
 
-The Liquorix kernel and headers are installed
-```bash
-sudo apt install linux-image-liquorix-amd64 linux-headers-liquorix-amd64
-```
+        ```bash
+        sudo mkdir -p /etc/apt/keyrings
+        curl -s 'https://liquorix.net/liquorix-keyring.gpg' | sudo gpg --batch --yes --dearmor -o /etc/apt/keyrings/liquorix-keyring.gpg
+        ```
 
-4. **Reboot System**
+    - **Set up repository**
 
-The system is restarted to load the new kernel
-```bash
-sudo reboot
-```
+        ```bash
+        CODENAME="$(. /etc/os-release && echo "$VERSION_CODENAME")"
+        echo "deb [arch=amd64 signed-by=/etc/apt/keyrings/liquorix-keyring.gpg] https://liquorix.net/debian $CODENAME main" | sudo tee /etc/apt/sources.list.d/liquorix.list
+        ```
 
-5. **Verify Installation**
+    - **Update package sources**
 
-After reboot, the active kernel version can be checked
-```bash
-uname -r
-```
+        ```bash
+        sudo apt update
+        ```
 
-The output should show a Liquorix kernel version (e.g., `6.6.0-1-liquorix-amd64`).
+3. **Install kernel**
 
-## Features and Compatibility
+    ```bash
+    sudo apt install linux-image-liquorix-amd64 linux-headers-liquorix-amd64
+    ```
 
-The Liquorix kernel offers a range of advantages and features that make it particularly interesting for desktop and gaming applications. Through special performance optimizations such as improved process scheduling mechanisms, optimized timer interrupts, and adjusted CPU governor settings, improved response times for desktop applications are achieved. Gaming performance benefits from these optimizations as they are focused on reducing latency and frame-time variance.
+4. **Reboot system**
 
-Regarding security and updates, the kernel benefits from regular security updates by the community. The rapid integration of kernel patches and compatibility with Debian Security Advisories ensures a high level of security and stability. However, it should be noted that using a non-official kernel potentially carries higher security risks than the standard kernel, as security updates may not be immediately available.
+    ```bash
+    sudo reboot
+    ```
 
-Hardware support is comprehensive and covers modern hardware components. The driver integration has been particularly optimized, leading to improved compatibility with gaming peripherals. This combination of performance optimizations, security updates, and broad hardware support makes the Liquorix kernel an excellent choice for desktop systems focused on gaming and multimedia applications.
+5. **Verify installation**
+
+    After reboot, check the active kernel version:
+
+    ```bash
+    uname -r
+    ```
+
+    The output should show a Liquorix kernel version (e.g., `6.18.10-1-liquorix-amd64`).
 
 ## Why Liquorix?
 
-The advantages of the Liquorix kernel can be traced back to one central difference: it uses the **EEVDF scheduler** (Earliest Eligible Virtual Deadline First) with shorter preemption windows and a higher timer frequency than the standard Debian kernel.
+The advantages of the Liquorix kernel come from a fundamentally different configuration compared to the standard Debian kernel:
 
-In practice, this means Liquorix detects load changes faster and responds to them autonomously. Latency-sensitive threads — like a flight simulator's main thread — are automatically prioritized because the scheduler considers their wake frequency and cache locality.
+| Setting | Debian Stock | Liquorix |
+|---------|-------------|----------|
+| **Scheduler** | EEVDF (mainline) | PDS (Priority and Deadline based Skiplist) |
+| **Timer Frequency** | 250 Hz | 1000 Hz |
+| **Preemption** | Lazy / Dynamic | Full Preempt |
+| **Default Governor** | `schedutil` | `performance` |
+| **Tick Model** | Idle (NO_HZ_IDLE) | Full adaptive (NO_HZ_FULL) |
 
-The crucial difference from the standard kernel lies in the optimization model. A generic kernel needs **forced prioritization** (fixed CPU assignment, SCHED_FIFO) because it reacts conservatively. Liquorix, on the other hand, needs **quiet** — external disturbances like interrupts, NVMe power-saving modes, and uneven writeback must be minimized so the scheduler can optimize freely.
+The **PDS scheduler** (by Alfred Chen, part of the Project C patchset) replaces the mainline EEVDF scheduler entirely. It uses a skiplist data structure to manage task priorities and deadlines, enabling fast scheduling decisions with low overhead. Combined with the 1000 Hz timer and full kernel preemption, Liquorix can react to load changes within 1 ms — four times faster than the stock kernel at 250 Hz.
 
-Fixed CPU pinning or aggressive priority escalation are counterproductive under Liquorix: they prevent exactly the adaptive optimization that makes this kernel stand out.
+### Optimization Model
+
+The key difference lies in what each kernel type needs for best results:
+
+- A **stock kernel** benefits from explicit tuning — CPU affinity, `SCHED_FIFO`, or `nice` values — because its conservative defaults prioritize throughput over latency.
+- **Liquorix** benefits from a **quiet system** — minimizing external disturbances like interrupt storms, NVMe power-saving transitions, and uneven writeback pressure allows PDS to optimize task placement autonomously.
+
+Manual CPU pinning or aggressive priority escalation can be counterproductive under Liquorix: they override exactly the adaptive decisions that PDS is designed to make.
 
 Concrete configuration steps for both kernel types can be found on the [System Tuning](systemtuning.md) page.
+
+!!! warning "Security consideration"
+    Liquorix tracks the latest upstream kernel series, which means it includes upstream security fixes present in those releases. However, it is **not covered by Debian Security Advisories** — DSAs apply only to packages in the official Debian archive. Security updates depend on a single maintainer's release cycle, which may lag behind Debian's security team. Switching back to the stock kernel is always possible via the GRUB boot menu.
+
+---
 
 ## Maintenance
 
 ### Updates
 
-The kernel is updated like other system packages
+The kernel is updated like other system packages:
+
 ```bash
 sudo apt update && sudo apt upgrade
 ```
 
 ### Removal
 
-If switching back to the standard kernel is necessary
+If switching back to the standard kernel is necessary:
 
 1. **Install standard kernel**
-```bash
-sudo apt install linux-image-amd64 linux-headers-amd64
-```
+
+    ```bash
+    sudo apt install linux-image-amd64 linux-headers-amd64
+    ```
 
 2. **Remove Liquorix kernel**
-```bash
-sudo apt remove linux-image-liquorix-amd64 linux-headers-liquorix-amd64
-```
+
+    ```bash
+    sudo apt remove linux-image-liquorix-amd64 linux-headers-liquorix-amd64
+    ```
 
 3. **Reboot system**
-```bash
-sudo reboot
-```
+
+    ```bash
+    sudo reboot
+    ```
 
 ## Support
 
 ### Troubleshooting
 
-- **Boot Issues**: If the new kernel doesn't start, the standard Debian kernel can be selected in the GRUB menu
-- **DKMS Modules**: For drivers like [Nvidia](nvidia.md), [DKMS](../glossary.md#dkms-dynamic-kernel-module-support) is important
+- **Boot issues**: If the new kernel doesn't start, the standard Debian kernel can be selected in the GRUB menu
+- **DKMS modules**: For drivers like [Nvidia](nvidia.md), [DKMS](../glossary.md#dkms-dynamic-kernel-module-support) is important
+
     ```bash
     sudo apt install dkms
     ```
-- **Performance Issues**
+
+- **Performance issues**
+
     - Check system logs: `dmesg | grep -i error`
-    - Monitor CPU frequency and temperature
-    - Check memory usage
+    - Monitor CPU frequency: `cpupower frequency-info`
+    - Verify active scheduler: `dmesg | grep sched`
 
-### Documentation and Resources
+### Resources
 
-- Official Documentation: [Liquorix Wiki](https://liquorix.net)
-- Community Support: [Liquorix Forum](https://techpatterns.com/forums/forum-34.html)
-- Bug Reports: [GitHub Issues](https://github.com/damentz/liquorix-package/issues)
+- Official website: [liquorix.net](https://liquorix.net)
+- Community forum: [Liquorix Forum](https://techpatterns.com/forums/forum-34.html)
+- Bug reports: [GitHub Issues](https://github.com/damentz/liquorix-package/issues)
 
-## Conclusion
+---
 
-The Liquorix kernel can improve system performance, especially for desktop applications and gaming. If problems occur, one can always switch back to the standard kernel. The community-based development provides fast updates and optimizations but requires some willingness to troubleshoot issues. 
+## Sources
+
+- [Liquorix Kernel](https://liquorix.net) — Official project page with feature list and installation instructions
+- [Project C / PDS Scheduler](https://gitlab.com/alfredchen/projectc) — Alfred Chen's alternative CPU scheduler patchset
+- [Liquorix Package Repository](https://github.com/damentz/liquorix-package) — Build configuration and release history
+- [Arch Wiki: Kernel](https://wiki.archlinux.org/title/Kernel) — Linux kernel overview including alternative schedulers

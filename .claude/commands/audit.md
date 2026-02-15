@@ -126,6 +126,7 @@ Zweiter Durchgang mit Fokus auf Struktur und Vollstaendigkeit:
 | Zielgruppe | — | Passt Detailgrad zur Zielgruppe? |
 | Struktur | — | Logische Reihenfolge? Gute H2/H3-Gliederung? |
 | Querverweise | — | Links zu anderen Seiten korrekt und vollstaendig? |
+| Stilkonsistenz | — | Textfluss wie bereits auditierte Seiten? H1-Titel, Prose-Tabelle-Code-Wechsel, Admonitions, Trennlinien, Sources-Abschnitt, einordnender Einstieg. Referenz: begin.md, nvidia.md, systemtools.md |
 
 ### 2.2 Empfehlungen ergaenzen
 

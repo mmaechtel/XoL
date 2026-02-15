@@ -1,6 +1,6 @@
-## Liquorix Kernel unter Debian
+# Liquorix Kernel unter Debian
 
-Der [Liquorix-Kernel](../glossary.md#liquorix-kernel) ist eine optimierte Version des Linux-Kernels, die auf Desktop- und Gaming-Performance ausgerichtet ist. Er bietet verbesserte Reaktionszeiten und Leistung durch spezielle Konfigurationen und Patches. Der Kernel wird von der Community gepflegt und ist nicht offiziell von Debian unterstützt. Vor der Installation wird empfohlen, ein System-Backup zu erstellen, da die Verwendung eines nicht-offiziellen Kernels mit gewissen Risiken verbunden sein kann.
+Der Standard-Debian-Kernel ist auf breite Kompatibilität und Server-Workloads ausgelegt. Der [Liquorix-Kernel](../glossary.md#liquorix-kernel) geht einen anderen Weg — er basiert auf dem Zen-Kernel-Patchset und ist gezielt auf Desktop-Reaktionsfähigkeit und latenzempfindliche Anwendungen wie Gaming und Flugsimulation optimiert. Er wird von Steven Barrett gepflegt und ist nicht Teil des offiziellen Debian-Archivs. Vor der Installation empfiehlt sich ein System-Backup.
 
 ## Installation
 
@@ -8,112 +8,134 @@ Der [Liquorix-Kernel](../glossary.md#liquorix-kernel) ist eine optimierte Versio
 
 - Debian installiert und aktualisiert
 - Root- oder Sudo-Rechte
-- Mindestens 8 GB RAM für optimale Performance
-- Kompatible Hardware (besonders wichtig bei speziellen Treibern)
 
-### Installationsschritte
+### Schnellinstallation (empfohlen)
+
+Das offizielle Installer-Skript übernimmt Schlüsselimport, Repository-Einrichtung und Installation automatisch:
+
+```bash
+curl -s 'https://liquorix.net/install-liquorix.sh' | sudo bash
+```
+
+### Manuelle Installation
 
 1. **System aktualisieren**
 
-Das System wird zunächst aktualisiert
-```bash
-sudo apt update && sudo apt upgrade -y
-```
+    ```bash
+    sudo apt update && sudo apt upgrade -y
+    ```
 
 2. **Repository hinzufügen**
 
-Das Liquorix-Repository wird wie folgt hinzugefügt
+    - **Abhängigkeiten installieren**
 
-- **Abhängigkeiten installieren**
-```bash
-sudo apt install -y curl gpg
-```
+        ```bash
+        sudo apt install -y curl gpg ca-certificates
+        ```
 
-- **Repository-Schlüssel hinzufügen**
-```bash
-curl -s 'https://liquorix.net/linux-liquorix-keyring.gpg' | sudo gpg --dearmor -o /usr/share/keyrings/liquorix-keyring.gpg
-```
+    - **Repository-Schlüssel hinzufügen**
 
-- **Repository einrichten**
-```bash
-echo 'deb [signed-by=/usr/share/keyrings/liquorix-keyring.gpg] https://liquorix.net/debian $(lsb_release -cs) main' | sudo tee /etc/apt/sources.list.d/liquorix.list
-```
+        ```bash
+        sudo mkdir -p /etc/apt/keyrings
+        curl -s 'https://liquorix.net/liquorix-keyring.gpg' | sudo gpg --batch --yes --dearmor -o /etc/apt/keyrings/liquorix-keyring.gpg
+        ```
 
-- **Paketquellen aktualisieren**
-```bash
-sudo apt update
-```
+    - **Repository einrichten**
+
+        ```bash
+        CODENAME="$(. /etc/os-release && echo "$VERSION_CODENAME")"
+        echo "deb [arch=amd64 signed-by=/etc/apt/keyrings/liquorix-keyring.gpg] https://liquorix.net/debian $CODENAME main" | sudo tee /etc/apt/sources.list.d/liquorix.list
+        ```
+
+    - **Paketquellen aktualisieren**
+
+        ```bash
+        sudo apt update
+        ```
 
 3. **Kernel installieren**
 
-Der Liquorix-Kernel und Header werden installiert
-```bash
-sudo apt install linux-image-liquorix-amd64 linux-headers-liquorix-amd64
-```
+    ```bash
+    sudo apt install linux-image-liquorix-amd64 linux-headers-liquorix-amd64
+    ```
 
 4. **System neu starten**
 
-Das System wird neu gestartet, um den neuen Kernel zu laden
-```bash
-sudo reboot
-```
+    ```bash
+    sudo reboot
+    ```
 
 5. **Installation überprüfen**
 
-Nach dem Neustart kann die aktive Kernel-Version überprüft werden
-```bash
-uname -r
-```
+    Nach dem Neustart die aktive Kernel-Version prüfen:
 
-Die Ausgabe sollte eine Liquorix-Kernel-Version anzeigen (z.B. `6.6.0-1-liquorix-amd64`).
+    ```bash
+    uname -r
+    ```
 
-## Features und Kompatibilität
-
-Der Liquorix-Kernel bietet eine Reihe von Vorteilen und Besonderheiten, die ihn besonders für Desktop- und Gaming-Anwendungen interessant machen. Durch spezielle Performance-Optimierungen wie verbesserte Prozess-Scheduling-Mechanismen, optimierte Timer-Interrupts und angepasste CPU-Governor-Einstellungen werden verbesserte Reaktionszeiten für Desktop-Anwendungen erreicht. Die Gaming-Performance profitiert von diesen Optimierungen, da sie auf eine Reduzierung von Latenz und Frame-Time-Varianz ausgerichtet sind.
-
-In Bezug auf Sicherheit und Updates profitiert der Kernel von regelmäßigen Sicherheitsupdates durch die Community. Die schnelle Integration von Kernel-Patches und die Kompatibilität mit Debian Security Advisories gewährleisten ein hohes Maß an Sicherheit und Stabilität. Dennoch sollte beachtet werden, dass die Verwendung eines nicht-offiziellen Kernels potenziell höhere Sicherheitsrisiken birgt als der Standard-Kernel, da Sicherheitsupdates möglicherweise nicht sofort verfügbar sind.
-
-Die Hardware-Unterstützung ist umfassend und deckt moderne Hardware-Komponenten ab. Besonders die Treiber-Integration wurde optimiert, was zu einer verbesserten Kompatibilität mit Gaming-Peripherie führt. Diese Kombination aus Performance-Optimierungen, Sicherheitsupdates und breiter Hardware-Unterstützung macht den Liquorix-Kernel zu einer ausgezeichneten Wahl für Desktop-Systeme mit Fokus auf Gaming und Multimedia-Anwendungen.
+    Die Ausgabe sollte eine Liquorix-Kernel-Version anzeigen (z.B. `6.18.10-1-liquorix-amd64`).
 
 ## Warum Liquorix?
 
-Die Vorteile des Liquorix-Kernels lassen sich auf einen zentralen Unterschied zurückführen: Er nutzt den **EEVDF-Scheduler** (Earliest Eligible Virtual Deadline First) mit kürzeren Preemption-Fenstern und einer höheren Timer-Frequenz als der Standard-Debian-Kernel.
+Die Vorteile des Liquorix-Kernels ergeben sich aus einer grundlegend anderen Konfiguration im Vergleich zum Standard-Debian-Kernel:
 
-Das bedeutet in der Praxis: Liquorix erkennt Laständerungen schneller und reagiert selbstständig darauf. Latenzsensitive Threads — wie der Hauptthread eines Flugsimulators — werden automatisch bevorzugt, weil der Scheduler ihre Wake-Frequenz und Cache-Lokalität berücksichtigt.
+| Einstellung | Debian Stock | Liquorix |
+|-------------|-------------|----------|
+| **Scheduler** | EEVDF (Mainline) | PDS (Priority and Deadline based Skiplist) |
+| **Timer-Frequenz** | 250 Hz | 1000 Hz |
+| **Preemption** | Lazy / Dynamic | Full Preempt |
+| **Standard-Governor** | `schedutil` | `performance` |
+| **Tick-Modell** | Idle (NO_HZ_IDLE) | Full adaptive (NO_HZ_FULL) |
 
-Der entscheidende Unterschied zum Standardkernel liegt im Optimierungsmodell. Ein generischer Kernel braucht **erzwungene Priorisierung** (feste CPU-Zuweisung, SCHED_FIFO), weil er konservativ reagiert. Liquorix hingegen braucht **Ruhe** — externe Störungen wie Interrupts, NVMe-Energiesparmodi und ungleichmäßiger Writeback müssen minimiert werden, damit der Scheduler frei optimieren kann.
+Der **PDS-Scheduler** (von Alfred Chen, Teil des Project-C-Patchsets) ersetzt den Mainline-EEVDF-Scheduler vollständig. Er nutzt eine Skiplist-Datenstruktur zur Verwaltung von Task-Prioritäten und Deadlines und ermöglicht schnelle Scheduling-Entscheidungen mit geringem Overhead. In Kombination mit dem 1000-Hz-Timer und Full-Kernel-Preemption kann Liquorix auf Laständerungen innerhalb von 1 ms reagieren — viermal schneller als der Stock-Kernel mit 250 Hz.
 
-Feste CPU-Bindung oder aggressive Prioritätseskalation sind unter Liquorix kontraproduktiv: Sie verhindern genau die adaptive Optimierung, die den Kernel auszeichnet.
+### Optimierungsmodell
+
+Der entscheidende Unterschied liegt darin, was jeder Kernel-Typ für optimale Ergebnisse braucht:
+
+- Ein **Stock-Kernel** profitiert von explizitem Tuning — CPU-Affinität, `SCHED_FIFO` oder `nice`-Werte — weil seine konservativen Defaults Durchsatz über Latenz priorisieren.
+- **Liquorix** profitiert von einem **ruhigen System** — werden externe Störungen wie Interrupt-Stürme, NVMe-Energiespar-Übergänge und ungleichmäßiger Writeback-Druck minimiert, kann PDS die Task-Platzierung autonom optimieren.
+
+Manuelles CPU-Pinning oder aggressive Prioritätseskalation können unter Liquorix kontraproduktiv sein: Sie überschreiben genau die adaptiven Entscheidungen, für die PDS ausgelegt ist.
 
 Konkrete Konfigurationsschritte für beide Kernel-Typen finden sich auf der Seite [Systemtuning](systemtuning.md).
+
+!!! warning "Sicherheitshinweis"
+    Liquorix folgt der jeweils aktuellen Upstream-Kernel-Reihe und enthält damit die dort enthaltenen Sicherheitskorrekturen. Er wird jedoch **nicht von Debian Security Advisories abgedeckt** — DSAs gelten nur für Pakete im offiziellen Debian-Archiv. Sicherheitsupdates hängen vom Release-Zyklus eines einzelnen Maintainers ab, der hinter dem Debian-Sicherheitsteam zurückbleiben kann. Ein Wechsel zurück zum Stock-Kernel ist jederzeit über das GRUB-Bootmenü möglich.
+
+---
 
 ## Wartung
 
 ### Updates
 
-Der Kernel wird wie andere Systempakete aktualisiert
+Der Kernel wird wie andere Systempakete aktualisiert:
+
 ```bash
 sudo apt update && sudo apt upgrade
 ```
 
 ### Deinstallation
 
-Falls ein Wechsel zurück zum Standard-Kernel notwendig ist
+Falls ein Wechsel zurück zum Standard-Kernel notwendig ist:
 
 1. **Standard-Kernel installieren**
-```bash
-sudo apt install linux-image-amd64 linux-headers-amd64
-```
+
+    ```bash
+    sudo apt install linux-image-amd64 linux-headers-amd64
+    ```
 
 2. **Liquorix-Kernel entfernen**
-```bash
-sudo apt remove linux-image-liquorix-amd64 linux-headers-liquorix-amd64
-```
+
+    ```bash
+    sudo apt remove linux-image-liquorix-amd64 linux-headers-liquorix-amd64
+    ```
 
 3. **System neu starten**
-```bash
-sudo reboot
-```
+
+    ```bash
+    sudo reboot
+    ```
 
 ## Support
 
@@ -121,20 +143,28 @@ sudo reboot
 
 - **Bootprobleme**: Falls der neue Kernel nicht startet, kann im GRUB-Menü der Standard-Debian-Kernel ausgewählt werden
 - **DKMS-Module**: Für Treiber wie [Nvidia](nvidia.md) ist [DKMS](../glossary.md#dkms-dynamic-kernel-module-support) wichtig
+
     ```bash
     sudo apt install dkms
     ```
+
 - **Performance-Probleme**
-    - System-Logs überprüfen: `dmesg | grep -i error`
-    - CPU-Frequenz und Temperatur überwachen
-    - Speichernutzung kontrollieren
 
-### Dokumentation und Ressourcen
+    - System-Logs prüfen: `dmesg | grep -i error`
+    - CPU-Frequenz überwachen: `cpupower frequency-info`
+    - Aktiven Scheduler prüfen: `dmesg | grep sched`
 
-- Offizielle Dokumentation: [Liquorix Wiki](https://liquorix.net)
-- Community-Support: [Liquorix Forum](https://techpatterns.com/forums/forum-34.html)
+### Ressourcen
+
+- Offizielle Website: [liquorix.net](https://liquorix.net)
+- Community-Forum: [Liquorix Forum](https://techpatterns.com/forums/forum-34.html)
 - Bug-Reports: [GitHub Issues](https://github.com/damentz/liquorix-package/issues)
 
-## Fazit
+---
 
-Der Liquorix-Kernel kann die System-Performance verbessern, besonders für Desktop-Anwendungen und Gaming. Bei Problemen kann jederzeit zum Standard-Kernel zurückgewechselt werden. Die Community-basierte Entwicklung bietet schnelle Updates und Optimierungen, erfordert aber auch eine gewisse Bereitschaft zur Fehlerbehebung. 
+## Quellen
+
+- [Liquorix Kernel](https://liquorix.net) — Offizielle Projektseite mit Feature-Liste und Installationsanleitung
+- [Project C / PDS Scheduler](https://gitlab.com/alfredchen/projectc) — Alfred Chens alternativer CPU-Scheduler-Patchset
+- [Liquorix Package Repository](https://github.com/damentz/liquorix-package) — Build-Konfiguration und Release-Historie
+- [Arch Wiki: Kernel](https://wiki.archlinux.org/title/Kernel) — Linux-Kernel-Übersicht inkl. alternativer Scheduler
