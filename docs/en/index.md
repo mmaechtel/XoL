@@ -33,6 +33,8 @@ This documentation is an open project. Improvements or additions can be contribu
 ## Recent Changes
 
 ### 2026-02-16
+- Accessibility improved: larger fonts, keyboard focus indicators, skip link, video ARIA labels
+- Source sections revised: Arch Wiki links replaced with distro-independent sources
 - [Scenery Components](scenery_components.md) audited: priority direction corrected, DDS format, OSM clarification, tone aligned
 - New video: [Display Server](displayserver.md) — X11 vs Wayland decision guide
 - New videos: [Introduction](intro.md) — guided tour through XoL (DE + EN)
