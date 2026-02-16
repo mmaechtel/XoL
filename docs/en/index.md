@@ -33,6 +33,7 @@ This documentation is an open project. Improvements or additions can be contribu
 ## Recent Changes
 
 ### 2026-02-16
+- [Scenery Components](scenery_components.md) audited: priority direction corrected, DDS format, OSM clarification, tone aligned
 - New video: [Display Server](displayserver.md) — X11 vs Wayland decision guide
 - New videos: [Introduction](intro.md) — guided tour through XoL (DE + EN)
 

@@ -35,7 +35,7 @@ Nach jedem abgeschlossenen Schritt: Feld mit Datum füllen.
 | 11 | `displayserver_wayland.md` | 141 | | | | | |
 | — | **DE-Angleichung R2** | | | | | | |
 | | **Runde 3 — Scenery & Addons** | | | | | | |
-| 12 | `scenery_components.md` | 163 | | | | | |
+| 12 | `scenery_components.md` | 163 | 2026-02-16 | 2026-02-16 | 2026-02-16 | 2026-02-16 | C |
 | 13 | `addon/ortho4xp.md` | 221 | | | | | |
 | 14 | `addon/autoortho.md` | 242 | | | | | |
 | 15 | `addon/xearthlayer.md` | 133 | | | | | |

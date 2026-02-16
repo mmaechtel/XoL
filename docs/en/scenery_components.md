@@ -6,7 +6,7 @@
 </video>
 </div>
 
-X-Plane's scenery system is built from three layers that stack on top of each other: the terrain **Mesh** defines elevation, **Orthos** provide satellite imagery as ground textures, and **Autogen** populates the landscape with 3D objects. Understanding these layers is essential for managing scenery packs, troubleshooting load order issues, and configuring `scenery_packs.ini` correctly.
+X-Plane ships with a scenery that looks plausible from altitude, but it is far from photorealistic. With the right add-ons, however, the visual quality can be transformed dramatically. To get there, it helps to understand the three layers that make up X-Plane's scenery system: the terrain **Mesh** defines elevation, **Orthos** provide satellite imagery as ground textures, and **Autogen** populates the landscape with 3D objects.
 
 ## Meshes
 
