@@ -1,68 +1,63 @@
-# How X-Plane Builds the World: Meshes, Orthos, and Autogen Explained
+# How X-Plane Builds the World
 
 <div class="video-container" markdown>
-<video controls width="100%" preload="metadata" poster="../assets/video/en/Mastering_scenery_packs/Mastering_scenery_packs.jpg">
+<video controls width="100%" preload="metadata" aria-label="Video: Mastering Scenery Packs" poster="../assets/video/en/Mastering_scenery_packs/Mastering_scenery_packs.jpg">
   <source src="../assets/video/en/Mastering_scenery_packs/Mastering_scenery_packs.mp4" type="video/mp4">
 </video>
 </div>
 
-X-Plane is known for its realistic landscapes that immerse users in a living world while flying. Three central building blocks make up the scenery: **Meshes**, **Orthos**, and **Autogen**. This chapter explains what these terms mean and how they work together to create the impressive landscapes in X-Plane.
+X-Plane's scenery system is built from three layers that stack on top of each other: the terrain **Mesh** defines elevation, **Orthos** provide satellite imagery as ground textures, and **Autogen** populates the landscape with 3D objects. Understanding these layers is essential for managing scenery packs, troubleshooting load order issues, and configuring `scenery_packs.ini` correctly.
 
-## Meshes: The 3D Framework of the World
+## Meshes
 
-The X-Plane world can be imagined as a giant 3D puzzle. It all starts with the **Mesh**. A mesh is the basic shape of the landscape – the digital framework that defines heights and forms of the terrain. It determines how mountains, valleys, hills, or plains look.
+The mesh is the terrain's elevation model — a network of triangles (a Triangulated Irregular Network, or TIN) that defines heights and slopes. Each triangle vertex carries a coordinate with longitude, latitude, and elevation. Together, these triangles shape mountains, valleys, and plains.
 
-- **What is a Mesh?** It consists of many small triangles (polygons) that together form a network – hence the name "Mesh" (English for network). These triangles define for X-Plane how high or low a point is and how steep a slope should be.
-- **Example**: A mountain in X-Plane is defined by a mesh that describes its height, shape, and inclination. Without a mesh, the world would just be a flat plane.
+Mesh data is stored in X-Plane's DSF (Distribution Scenery Format) files. The default mesh ships with the simulator; higher-resolution alternatives (e.g., HD Mesh Scenery) can be installed as scenery packs.
 
-The mesh is thus the first step: It gives the landscape its structure, but no colors or details yet.
+The mesh provides structure only — no textures or objects.
 
-## Orthos: The Satellite Images for Realism
+## Orthos
 
-The second building block is **Orthos**. While the mesh provides the shape, orthos provide the visual surface – like a giant photo glued onto the mesh.
+Orthos (orthophotos) are aerial or satellite images projected onto the mesh as ground textures. They replace X-Plane's procedural land classes with photorealistic imagery — roads, fields, forests, and buildings become visible from altitude.
 
-- **What are Orthos?** Orthos are aerial or satellite images that show the earth from above. They contain details like houses, roads, forests, fields, or rivers. In X-Plane, they are placed as image files (e.g., .jpg or .png) on the mesh.
-- **Why are they important?** Without orthos, the mesh would only look like gray, lifeless hills. Orthos bring the colors and patterns of the real world into play.
-- **Example**: When flying over a city, thanks to orthos, one can see roofs, streets, and green spaces that look realistic.
+X-Plane uses DDS (DirectDraw Surface) textures internally. Source images from map providers (JPEG, PNG) are converted to GPU-compressed DDS format (DXT1/BC1 or DXT5/BC3) before X-Plane can use them.
 
-Tools like **Ortho4XP** help download high-resolution ortho images and integrate them into X-Plane. This makes the scenery even more detailed.
+Tools like **[Ortho4XP](addon/ortho4xp.md)** generate these DDS tiles offline, while streaming solutions deliver them on demand (see below).
 
-## Autogen: The World Comes to Life
+## Autogen
 
-Mesh and orthos already create an impressive base, but something is still missing: depth. This is where **Autogen** comes into play. Autogen (short for "automatically generated") adds 3D objects to the landscape that make it come alive – like houses, trees, cars, or power poles.
+Autogen (automatically generated scenery) adds 3D objects — buildings, trees, vehicles, power lines — to the landscape. X-Plane reads placement information from its DSF scenery files and distributes objects accordingly: trees in forest areas, buildings in residential zones, factories in industrial areas.
 
-- **What is Autogen?** X-Plane analyzes the landscape (mesh and ortho) and automatically places appropriate objects. It often uses data sources like OpenStreetMap to know where cities, forests, or roads are.
-- **How does it work?** Autogen "reads" the scenery and distributes objects: trees in forest areas, houses in residential areas, factories in industrial zones. These objects come from libraries provided by X-Plane or add-ons.
-- **Example**: In a village, thanks to autogen, one can see houses with gardens, trees along the roadside, and maybe a few parked cars. Without autogen, the landscape would be flat – just a satellite image without depth.
+The placement data in X-Plane's default scenery is derived from OpenStreetMap and other geographic datasets during Laminar Research's scenery build pipeline. This data is baked into the DSF files — X-Plane does not query OSM at runtime. Third-party add-ons like SimHeaven X-World use OSM data separately to generate more detailed autogen coverage.
 
-## Interaction: How Everything Comes Together
+## How the Layers Interact
 
-The three building blocks work hand in hand:
+The three layers build on each other in a fixed order:
 
-1. **Mesh**: Provides the 3D shape of the landscape, e.g., the height of a mountain or the depth of a valley.
-2. **Ortho**: Delivers the realistic image that is placed on the mesh, e.g., forests or roads on the mountain.
-3. **Autogen**: Adds the 3D objects, e.g., trees and houses that perfectly match the scenery.
+1. **Mesh** — defines elevation and terrain shape
+2. **Ortho** — projects satellite imagery onto the mesh surface
+3. **Autogen** — places 3D objects based on land use data
 
-The result is a world that not only looks real but feels real. When flying over a valley, the mesh forms the hills, the ortho shows green meadows and paths, and autogen scatters cows, trees, and small huts – and there one has the living scenery!
+Each layer depends on the one below it. Orthos need the mesh to be projected correctly, and autogen needs both mesh and ortho data to place objects at the right positions and elevations.
 
-## Add-ons and the Next Level
+## Add-ons
 
-Many X-Plane fans use add-ons to improve meshes, orthos, and autogen:
+Several add-ons extend the default scenery layers:
 
-- **[Ortho4XP](addon/ortho4xp.md)**: Downloads high-resolution satellite images and adapts them to meshes.
-- **[Ortho Streaming](addon/orthophotography_intro.md#ortho-streaming)**: Solutions like AutoOrtho, XEarthLayer, or XPME stream satellite imagery in real time from the internet — no pre-generation needed, instantly flyable worldwide.
-- **Custom Sceneries**: Bring better meshes or regional autogen objects, e.g., typical half-timbered houses for Germany.
-- **Autogen Libraries**: Expand the selection of objects to make the scenery even more realistic.
+- **[Ortho4XP](addon/ortho4xp.md)** — generates high-resolution ortho tiles offline from satellite imagery
+- **[Ortho Streaming](addon/orthophotography_intro.md#ortho-streaming)** — AutoOrtho, XEarthLayer, and XPME stream satellite imagery on demand, no pre-generation needed
+- **Custom Sceneries** — higher-resolution meshes or regional autogen objects (e.g., SimHeaven X-World)
+- **Autogen Libraries** — additional object sets for more varied building and vegetation placement
 
-With such tools, the X-Plane world can be shaped in even more detail – perfect for everyone who wants to dive deep into scenery design.
+---
 
-# The Correct Order in scenery_packs.ini: Mesh, Orthos, Autogen, and More
+## The scenery_packs.ini Load Order
 
-The landscapes in X-Plane are created through the interaction of various components: meshes, orthos, autogen, and special sceneries like airports. For everything to be displayed correctly, the order in the `scenery_packs.ini` file is crucial. This chapter explains how the order should be structured, why it's important, and how to avoid errors.
+The landscapes in X-Plane are created through the interaction of various components: meshes, orthos, autogen, and special sceneries like airports. For everything to be displayed correctly, the order in the `scenery_packs.ini` file is crucial.
 
 ## The Correct Order of Components
 
-X-Plane loads sceneries from bottom to top in the `scenery_packs.ini`. This means: entries further down have higher priority and can overwrite entries further up. Based on the main components, the following order results (from bottom to top):
+X-Plane processes `scenery_packs.ini` from top to bottom. Entries listed higher in the file have higher priority and override entries below them. The following list describes the layers from lowest priority (bottom of the file) to highest (top):
 
 1. **Mesh Files (e.g., HD Mesh, UHD Mesh)**  
     - **Function**: Meshes form the 3D basic structure of the landscape, i.e., heights, valleys, and hills.  
@@ -141,31 +136,40 @@ SCENERY_PACK Custom Scenery/KDEN-Denver International Airport_Mesh/
 SCENERY_PACK Custom Scenery/SFD_EDDM_Munich_2_Mesh/
 ```
 
-## The Special Role of Global Airports
+### The Special Role of Global Airports
 
 The line `SCENERY_PACK *GLOBAL_AIRPORTS*` deserves special attention:
 
-- **Position**: It should be **after** custom sceneries and landmarks, but **before** SimHeaven components and orthos.  
-- **Function**: Global Airports contains the standard airports of X-Plane, often created by the community through the X-Plane Gateway.  
-- **Why this position?**  
-    - Custom Sceneries (e.g., a detailed EDDF or EGLL) can override the standard airports if they are higher in the list.  
-    - Global Airports must be above SimHeaven components to ensure airports are not covered by autogen objects.  
-    - At the same time, Global Airports must be above orthos and meshes so airports are correctly placed on the landscape.  
-- **Important Note**: An incorrect position can lead to problems like "floating" airports, missing taxiways, or covered details.
+- **Position**: It should be **below** custom sceneries and landmarks, but **above** SimHeaven components, orthos, and meshes.
+- **Function**: Global Airports contains the standard airports of X-Plane, often created by the community through the X-Plane Gateway.
+- **Why this position?**
+    - Custom sceneries (e.g., a detailed EDDF or EGLL) override the standard airports because they are listed higher.
+    - Global Airports must be above SimHeaven components to ensure airports are not covered by autogen objects.
+    - At the same time, Global Airports must be above orthos and meshes so airports are correctly placed on the landscape.
+- **Important Note**: An incorrect position can lead to "floating" airports, missing taxiways, or covered details.
 
-## Why the Order is So Important
+---
 
-The correct order in the `scenery_packs.ini` is crucial for several reasons:
+## Why the Order Matters
 
-- **Overlay**: Entries further up (with higher priority) overwrite entries further down. An incorrectly placed entry can, for example, make an airport invisible or cover orthos.  
-- **Correctness**: Only the right order ensures that objects are placed correctly – houses stand on the ground, not in the air, and airports fit the mesh.  
-- **Performance**: A logical order helps X-Plane load sceneries more efficiently, which can improve loading times and performance.  
+The order in `scenery_packs.ini` directly affects visual correctness:
 
-## Tips for Maintaining the scenery_packs.ini
+- **Overlay**: Entries higher in the file override entries below them. An incorrectly placed entry can make an airport invisible or cover orthos with autogen objects.
+- **Correctness**: Only the right order ensures that objects are placed correctly — houses stand on the ground, not in the air, and airports align with the mesh.
 
-To ensure sceneries are always displayed correctly, here are some practical tips:
+---
 
-- **Use Tools**: Programs like **[XOrganizer](addon/xorganizer.md)** can automatically optimize the order and detect conflicts.  
-- **Create Backup**: Before changing the `scenery_packs.ini`, a backup copy should be created to be able to undo errors.  
-- **Test**: After changes, a scenery should be loaded in X-Plane and checked to see if airports, orthos, and autogen are displayed correctly. Special attention should be paid to "floating" objects or missing details.  
-- **Watch for Updates**: New sceneries or add-ons can disrupt the order. The file should be checked regularly, especially after installations. 
+## Tips for Maintaining scenery_packs.ini
+
+- **Use Tools**: Programs like **[XOrganizer](addon/xorganizer.md)** can automatically optimize the order and detect conflicts.
+- **Create Backup**: Before changing `scenery_packs.ini`, create a backup copy to be able to undo errors.
+- **Test**: After changes, load a scenery in X-Plane and check whether airports, orthos, and autogen are displayed correctly. Pay special attention to "floating" objects or missing details.
+- **Watch for Updates**: New sceneries or add-ons can disrupt the order. Check the file regularly, especially after installations.
+
+---
+
+## Sources
+
+- [X-Plane Scenery Developer Documentation](https://developer.x-plane.com/article/dsf-usage-in-x-plane/) — DSF file format and scenery structure
+- [X-Plane Manual — Custom Scenery](https://www.x-plane.com/manuals/) — scenery_packs.ini load order
+- [Arch Wiki — X-Plane](https://wiki.archlinux.org/title/X-Plane) — Linux-specific configuration

@@ -23,7 +23,7 @@ This documentation is an open project. Improvements or additions can be contribu
 ## Featured Video: X-Plane: Display Server Choice
 
 <div class="video-container" style="max-width: 640px;" markdown>
-<video controls width="100%" preload="metadata" poster="../assets/video/en/X-Plane__Display_Server_Choice/X-Plane__Display_Server_Choice.jpg">
+<video controls width="100%" preload="metadata" aria-label="Video: X-Plane — Display Server Choice" poster="../assets/video/en/X-Plane__Display_Server_Choice/X-Plane__Display_Server_Choice.jpg">
   <source src="../assets/video/en/X-Plane__Display_Server_Choice/X-Plane__Display_Server_Choice.mp4" type="video/mp4">
 </video>
 </div>

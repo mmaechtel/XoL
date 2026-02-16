@@ -1,7 +1,7 @@
 # ToLiss FlyWithLua Ecosystem
 
 <div class="video-container" markdown>
-<video controls width="100%" preload="metadata" poster="../../assets/video/en/Beyond_the_Default_Cockpit/Beyond_the_Default_Cockpit.jpg">
+<video controls width="100%" preload="metadata" aria-label="Video: Beyond the Default Cockpit" poster="../../assets/video/en/Beyond_the_Default_Cockpit/Beyond_the_Default_Cockpit.jpg">
   <source src="../../assets/video/en/Beyond_the_Default_Cockpit/Beyond_the_Default_Cockpit.mp4" type="video/mp4">
 </video>
 </div>

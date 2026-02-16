@@ -1,7 +1,7 @@
 # Einführung
 
 <div class="video-container" markdown>
-<video controls width="100%" preload="metadata" poster="../assets/video/de/X-Plane_unter_Linux__Doku-Tour/X-Plane_unter_Linux__Doku-Tour.jpg">
+<video controls width="100%" preload="metadata" aria-label="Video: X-Plane unter Linux — Doku-Tour" poster="../assets/video/de/X-Plane_unter_Linux__Doku-Tour/X-Plane_unter_Linux__Doku-Tour.jpg">
   <source src="../assets/video/de/X-Plane_unter_Linux__Doku-Tour/X-Plane_unter_Linux__Doku-Tour.mp4" type="video/mp4">
 </video>
 </div>

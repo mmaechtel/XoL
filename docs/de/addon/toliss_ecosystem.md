@@ -1,7 +1,7 @@
 # ToLiss FlyWithLua-Ökosystem
 
 <div class="video-container" markdown>
-<video controls width="100%" preload="metadata" poster="../../assets/video/de/Vom_Briefing_zum_Gate/Vom_Briefing_zum_Gate.jpg">
+<video controls width="100%" preload="metadata" aria-label="Video: Vom Briefing zum Gate" poster="../../assets/video/de/Vom_Briefing_zum_Gate/Vom_Briefing_zum_Gate.jpg">
   <source src="../../assets/video/de/Vom_Briefing_zum_Gate/Vom_Briefing_zum_Gate.mp4" type="video/mp4">
 </video>
 </div>

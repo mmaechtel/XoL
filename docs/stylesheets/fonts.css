@@ -51,11 +51,11 @@
     --md-default-bg-color--light: #1e293b;
 }
 
-/* ── Typography: compact ── */
+/* ── Typography: compact but accessible ── */
 
 .md-typeset {
-    font-size: 0.78rem;
-    line-height: 1.55;
+    font-size: 0.85rem;
+    line-height: 1.6;
 }
 
 .md-typeset h1 {
@@ -106,13 +106,13 @@
 }
 
 .md-tabs {
-    font-size: 0.72rem;
+    font-size: 0.78rem;
 }
 
 /* ── Compact sidebar ── */
 
 .md-nav__link {
-    font-size: 0.72rem;
+    font-size: 0.78rem;
     padding: 0.3em 0.6em;
 }
 
@@ -122,7 +122,7 @@
 .md-typeset details {
     margin-top: 0.6em;
     margin-bottom: 0.6em;
-    font-size: 0.76rem;
+    font-size: 0.82rem;
 }
 
 /* ── Links: smooth hover transitions ── */
@@ -282,7 +282,7 @@
 /* ── Announcement bar ── */
 
 .md-banner {
-    font-size: 0.78rem;
+    font-size: 0.85rem;
     letter-spacing: 0.02em;
 }
 
@@ -322,6 +322,38 @@
 
 [data-md-color-scheme="slate"] ::selection {
     background: rgba(251, 191, 36, 0.2);
+}
+
+/* ── Skip-to-content link (accessibility) ── */
+
+.skip-link {
+    position: absolute;
+    top: -100%;
+    left: 1rem;
+    z-index: 999;
+    padding: 0.5rem 1rem;
+    background: var(--md-primary-fg-color);
+    color: var(--md-primary-bg-color);
+    border-radius: 0 0 4px 4px;
+    font-size: 0.85rem;
+    text-decoration: none;
+}
+
+.skip-link:focus {
+    top: 0;
+}
+
+/* ── Keyboard focus indicators (accessibility) ── */
+
+.md-typeset a:focus-visible,
+.md-nav__link:focus-visible,
+.md-tabs__link:focus-visible,
+.md-footer__link:focus-visible,
+.md-clipboard:focus-visible,
+.md-top:focus-visible {
+    outline: 2px solid var(--md-accent-fg-color);
+    outline-offset: 2px;
+    border-radius: 2px;
 }
 
 /* ── Footer links ── */

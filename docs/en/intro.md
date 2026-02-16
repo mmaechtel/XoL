@@ -1,7 +1,7 @@
 # Introduction
 
 <div class="video-container" markdown>
-<video controls width="100%" preload="metadata" poster="../assets/video/en/X-Plane_on_Linux/X-Plane_on_Linux.jpg">
+<video controls width="100%" preload="metadata" aria-label="Video: X-Plane on Linux" poster="../assets/video/en/X-Plane_on_Linux/X-Plane_on_Linux.jpg">
   <source src="../assets/video/en/X-Plane_on_Linux/X-Plane_on_Linux.mp4" type="video/mp4">
 </video>
 </div>
