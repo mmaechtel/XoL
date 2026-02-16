@@ -16,7 +16,7 @@ AutoDGS is actively maintained with regular updates. The [plugin](../glossary.md
 - **Automatic DGS:** Activates after landing (beacon on, airtime required) and searches for suitable stands in taxi direction
 - **Two DGS types:** Animated marshaller (ground crew) or electronic VDGS (Safedock-style with azimuth and distance guidance)
 - **Preselect mode:** Manual stand selection while on the ground
-- **SimBrief integration:** Displays flight number, destination, and timing data on the VDGS (requires the optional [simbrief_hub](https://github.com/hotbso/simbrief_hub) plugin)
+- **SimBrief integration:** Displays flight number, destination, and timing data on the VDGS (requires the optional [simbrief_hub](toliss_ecosystem.md#simbrief_hub) plugin)
 - **Jetway docking:** Automatic X-Plane 12 jetway animation on arrival
 - **Per-airport configuration:** GUI settings are saved locally
 

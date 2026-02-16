@@ -23,6 +23,24 @@ Die X-Airbus Library ist eine Lua-Bibliothek, die als Fundament für viele ToLis
 
     Die X-Airbus Library gehört in den Ordner `Modules/` von FlyWithLua — nicht in `Scripts/`. Skripte, die X-Airbus voraussetzen, funktionieren ohne die Library nicht.
 
+## simbrief_hub
+
+Ein zentraler Datenprovider, der den aktuellen SimBrief OFP (Operational Flight Plan) abruft und anderen Plugins über Datarefs bereitstellt. Fungiert als Grundlage — Plugins wie [AutoDGS](autodgs.md) und [openSAM](opensam.md) lesen Flugplandaten aus simbrief_hub, statt SimBrief einzeln abzufragen.
+
+- **Entwickler:** hotbso
+- **Repository:** [github.com/hotbso/simbrief_hub](https://github.com/hotbso/simbrief_hub) (Open Source, LGPL-2.1)
+- **Plattformen:** Windows, macOS, Linux (native Binaries)
+- **Download:** [GitHub Releases](https://github.com/hotbso/simbrief_hub/releases)
+
+**Funktionsumfang:**
+
+- OFP-Auto-Fetch beim Start, gespeichert als Byte-Arrays in Datarefs
+- Status-Datarefs: `sbh/seqno` (Sequenznummer für OFP-Updates) und `sbh/stale` (Indikator für fehlgeschlagenen Download)
+- VATSIM-CDM-Unterstützung: ruft Collaborative Departure Management-Daten (TOBT, TSAT, CTOT) für kompatible VDGS-Plugins ab
+- Fake-CDM-Modus für Offline-Flüge — wird bei VATSIM-Verbindung automatisch durch echte Daten ersetzt
+
+**Installation:** Nach `Resources/plugins/` entpacken. Die Linux-Binary liegt unter `lin_x64/simbrief_hub.xpl`. Das Plugin enthält `cdm_cfg.default.json` für regionale CDM-Server — zum Anpassen als `cdm_cfg.json` kopieren.
+
 ## Callouts & Sound
 
 ### ToLiss V-Speeds
@@ -112,38 +130,10 @@ Automatisches Setzen und Entfernen von Chocks und External Power. Beim Abflug: A
 - **Benötigt:** X-Airbus Library
 - **Download:** [forums.x-plane.org](https://forums.x-plane.org/files/file/94691-toliss-ground-services/)
 
-## Mods
-
-### Easy Freighter — A321 P2F Cargo Door Mod
-
-Simuliert eine Cargo-Haupttür für den A321P2F/A321PCF mit rigider Cargo-Barriere und Fenster-Plugs als FlyWithLua-Objekt. Enthält Liveries für Frachtfluggesellschaften. Eine separate Version existiert auch für den A320. Nicht offiziell von ToLiss genehmigt.
-
-- **Entwickler:** XPJavelin
-- **Download:** [forums.x-plane.org](https://forums.x-plane.org/files/file/92976-easy-freighter-conversion-kit-for-the-toliss-321/)
-
-### Carda Realistic Engine Mods
-
-Hochdetaillierte 3D-Triebwerksmodelle von Carda Jowol mit 4K-Texturen, animierter Schubumkehr, Engine-Flex-Animationen und eigenen Partikeleffekten. Verfügbar für A319, A320 CEO/NEO und A321 CEO/NEO. Die Triebwerksmodelle sind kostenlos und plattformunabhängig (OBJ-Dateien im `objects/`-Ordner des Flugzeugs).
-
-Verfügbare Triebwerke: CFM56-5A, CFM56-5B, IAE V2500 (CEO-Varianten), CFM LEAP-1A, PW1100G (NEO-Varianten).
-
-Die Installation erfordert zwei Schritte: Die Engine-OBJ-Dateien von den Threshold-Foren herunterladen und anschließend die `.acf`-Datei patchen, damit sie auf die neuen Modelle verweist. Der **Carda Engine Installer** von Todaloo automatisiert das `.acf`-Patching. Der separate **Carda Engines Mod Fix** von Travis wird empfohlen, um Animationsfehler zu beheben.
-
-- **Triebwerksmod-Entwickler:** Carda Jowol
-- **Installer-Entwickler:** Todaloo
-- **Engine-Downloads:** [Threshold Forums](https://forum.thresholdx.net/files/category/36-mods/) (kostenlos)
-- **Installer-Download:** [forums.x-plane.org](https://forums.x-plane.org/files/file/94704-carda-engine-installer-for-toliss-a320-family/)
-- **Mod-Fix-Download:** [Threshold Forums](https://forum.thresholdx.net/files/file/3685-carda-engines-mod-fix-for-toliss-airbus/)
-
-!!! warning "Linux: Installer ist Windows-only"
-
-    Der Carda Engine Installer ist eine Windows-`.exe`. Unter Linux lässt er sich in einer [KVM](../kvm.md)-Windows-VM ausführen. Die Triebwerksmodelle selbst (OBJ/DDS) sind plattformunabhängig und funktionieren unter Linux ohne Anpassung. Nach jedem ToLiss-Update muss der Patch erneut angewendet werden.
-
 ## Verwandte Plugins
 
 Die folgenden eigenständigen Plugins arbeiten mit der ToLiss-Flotte zusammen, sind aber als separate Seiten dokumentiert:
 
-- **[simbrief_hub](https://github.com/hotbso/simbrief_hub)** — stellt SimBrief-Daten als Datarefs bereit, wird von [AutoDGS](autodgs.md), [openSAM](opensam.md) und weiteren Plugins genutzt
 - **[XGS](xgs.md)** — Landing-Speed-Analyse mit ToLiss-spezifischer Fahrwerksstreben-Erkennung
 - **[Follow the Greens](followthegreens.md)** — A-SMGCS Taxiway-Leitsystem
 - **[openSAM](opensam.md)** — Jetways, VDGS, Marshaller für Custom-Szenerien

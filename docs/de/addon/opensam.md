@@ -18,7 +18,7 @@ openSAM wird aktiv gepflegt und ist der empfohlene Nachfolger des kommerziellen 
 - **Marshallers:** Animierte Bodenpersonal-Führung
 - **Custom-Animationen:** Unterstützung für SAM Custom Animations
 - **SAM-Seasons-Emulator:** Integriert (separates SAM-Seasons-Plugin sollte entfernt werden)
-- **SimBrief-Integration:** Über das Companion-Plugin [simbrief_hub](https://github.com/hotbso/simbrief_hub)
+- **SimBrief-Integration:** Über das Companion-Plugin [simbrief_hub](toliss_ecosystem.md#simbrief_hub)
 - **Multiplayer-Support:** Kompatibel mit xPilot, Traffic Global XP und [LiveTraffic](livetraffic.md)
 - **Zero-Configuration-Modus:** Szenerie-Entwickler können openSAM-Library-Assets in WED platzieren, ohne eigene Konfigurationsdateien zu schreiben
 

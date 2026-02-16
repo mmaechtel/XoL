@@ -18,7 +18,7 @@ openSAM is actively maintained and is the recommended successor to the commercia
 - **Marshallers:** Animated ground crew guidance
 - **Custom animations:** Support for SAM custom animations
 - **SAM Seasons emulator:** Built-in (separate SAM Seasons plugin should be removed)
-- **SimBrief integration:** Via the companion plugin [simbrief_hub](https://github.com/hotbso/simbrief_hub)
+- **SimBrief integration:** Via the companion plugin [simbrief_hub](toliss_ecosystem.md#simbrief_hub)
 - **Multiplayer support:** Compatible with xPilot, Traffic Global XP, and [LiveTraffic](livetraffic.md)
 - **Zero-configuration mode:** Scenery developers can place openSAM library assets in WED without writing custom config files
 

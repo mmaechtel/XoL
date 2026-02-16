@@ -147,7 +147,9 @@ plugins:
                     - SimReaperXP: de/addon/simreaperxp.md
                     - SimScreen Overlay: de/addon/simscreenoverlay.md
                     - SGES: de/addon/sges.md
-                - ToLiss-Ökosystem: de/addon/toliss_ecosystem.md
+                - ToLiss-Ökosystem:
+                    - Skripte & Plugins: de/addon/toliss_ecosystem.md
+                    - Mods: de/addon/toliss_mods.md
                 - Sounds:
                     - KOSP Project: de/addon/kosp_project.md
                     - Mango Studios: de/addon/mango_studios.md
@@ -256,7 +258,9 @@ plugins:
                     - SimReaperXP: en/addon/simreaperxp.md
                     - SimScreen Overlay: en/addon/simscreenoverlay.md
                     - SGES: en/addon/sges.md
-                - ToLiss Ecosystem: en/addon/toliss_ecosystem.md
+                - ToLiss Ecosystem:
+                    - Scripts & Plugins: en/addon/toliss_ecosystem.md
+                    - Mods: en/addon/toliss_mods.md
                 - Sounds:
                     - KOSP Project: en/addon/kosp_project.md
                     - Mango Studios: en/addon/mango_studios.md

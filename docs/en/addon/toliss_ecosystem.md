@@ -23,6 +23,24 @@ The X-Airbus Library is a Lua library that serves as the foundation for many ToL
 
     The X-Airbus Library goes into the FlyWithLua `Modules/` folder — not into `Scripts/`. Scripts that depend on X-Airbus will not work without the library.
 
+## simbrief_hub
+
+A central data provider that fetches the current SimBrief OFP (Operational Flight Plan) and makes it available to other plugins via datarefs. It acts as a foundation layer — plugins like [AutoDGS](autodgs.md) and [openSAM](opensam.md) read flight plan data from simbrief_hub instead of querying SimBrief individually.
+
+- **Developer:** hotbso
+- **Repository:** [github.com/hotbso/simbrief_hub](https://github.com/hotbso/simbrief_hub) (open source, LGPL-2.1)
+- **Platforms:** Windows, macOS, Linux (native binaries)
+- **Download:** [GitHub Releases](https://github.com/hotbso/simbrief_hub/releases)
+
+**Features:**
+
+- OFP auto-fetch at startup, stored in datarefs as byte arrays
+- Status datarefs: `sbh/seqno` (sequence number for OFP updates) and `sbh/stale` (failed download indicator)
+- VATSIM CDM support: pulls Collaborative Departure Management data (TOBT, TSAT, CTOT) for compatible VDGS plugins
+- Fake CDM mode for offline flying — replaced automatically when connecting to VATSIM
+
+**Installation:** Extract to `Resources/plugins/`. The Linux binary is at `lin_x64/simbrief_hub.xpl`. The plugin ships with `cdm_cfg.default.json` for regional CDM servers — copy to `cdm_cfg.json` to customize.
+
 ## Callouts & Sound
 
 ### ToLiss V-Speeds
@@ -112,38 +130,10 @@ Automatic chock and external power management. At departure: APU available + PAX
 - **Requires:** X-Airbus Library
 - **Download:** [forums.x-plane.org](https://forums.x-plane.org/files/file/94691-toliss-ground-services/)
 
-## Mods
-
-### Easy Freighter — A321 P2F Cargo Door Mod
-
-Simulates a cargo main door for the A321P2F/A321PCF with rigid cargo barrier and window plugs as a FlyWithLua object. Includes freight airline liveries. A separate version also exists for the A320. Not officially approved by ToLiss.
-
-- **Developer:** XPJavelin
-- **Download:** [forums.x-plane.org](https://forums.x-plane.org/files/file/92976-easy-freighter-conversion-kit-for-the-toliss-321/)
-
-### Carda Realistic Engine Mods
-
-High-detail 3D engine replacements by Carda Jowol with 4K textures, animated thrust reversers, engine flex animations, and custom particle effects. Available for A319, A320 CEO/NEO, and A321 CEO/NEO. The engine models are free and platform-independent (OBJ files placed in the aircraft's `objects/` folder).
-
-Available engines: CFM56-5A, CFM56-5B, IAE V2500 (CEO variants), CFM LEAP-1A, PW1100G (NEO variants).
-
-Installation requires two steps: downloading the engine OBJ files from the Threshold Forums, then patching the `.acf` file to reference the new models. The **Carda Engine Installer** by Todaloo automates the `.acf` patching step. The separate **Carda Engines Mod Fix** by Travis is recommended to fix animation bugs.
-
-- **Engine mod developer:** Carda Jowol
-- **Installer developer:** Todaloo
-- **Engine downloads:** [Threshold Forums](https://forum.thresholdx.net/files/category/36-mods/) (free)
-- **Installer download:** [forums.x-plane.org](https://forums.x-plane.org/files/file/94704-carda-engine-installer-for-toliss-a320-family/)
-- **Mod Fix download:** [Threshold Forums](https://forum.thresholdx.net/files/file/3685-carda-engines-mod-fix-for-toliss-airbus/)
-
-!!! warning "Linux: Installer is Windows-only"
-
-    The Carda Engine Installer is a Windows `.exe`. On Linux, it can be run inside a [KVM](../kvm.md) Windows VM. The engine models themselves (OBJ/DDS) are platform-independent and work on Linux without modification. The installer must be re-run after every ToLiss aircraft update.
-
 ## Related Plugins
 
 The following standalone plugins integrate with the ToLiss fleet but are documented on separate pages:
 
-- **[simbrief_hub](https://github.com/hotbso/simbrief_hub)** — provides SimBrief data as datarefs, used by [AutoDGS](autodgs.md), [openSAM](opensam.md), and other plugins
 - **[XGS](xgs.md)** — Landing speed analysis with ToLiss-specific gear strut detection
 - **[Follow the Greens](followthegreens.md)** — A-SMGCS taxiway guidance system
 - **[openSAM](opensam.md)** — Jetways, VDGS, marshaller for custom sceneries

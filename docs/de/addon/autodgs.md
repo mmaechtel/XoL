@@ -16,7 +16,7 @@ AutoDGS wird aktiv gepflegt und erhält regelmäßige Updates. Das [Plugin](../g
 - **Automatisches DGS:** Aktiviert sich nach der Landung (Beacon an, Flugzeit erforderlich) und sucht passende Stands in Rollrichtung
 - **Zwei DGS-Typen:** Animierter Marshaller (Bodenpersonal) oder elektronisches VDGS (Safedock-Stil mit Azimut- und Distanzanzeige)
 - **Vorauswahl-Modus:** Manuelle Stand-Auswahl am Boden
-- **SimBrief-Integration:** Zeigt Flugnummer, Ziel und Zeitdaten auf dem VDGS an (erfordert das optionale Plugin [simbrief_hub](https://github.com/hotbso/simbrief_hub))
+- **SimBrief-Integration:** Zeigt Flugnummer, Ziel und Zeitdaten auf dem VDGS an (erfordert das optionale Plugin [simbrief_hub](toliss_ecosystem.md#simbrief_hub))
 - **Jetway-Andocken:** Automatische X-Plane-12-Jetway-Animation bei Ankunft
 - **Pro-Flughafen-Konfiguration:** GUI-Einstellungen werden lokal gespeichert
 
