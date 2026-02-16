@@ -18,7 +18,7 @@ Das Debugging von Geräteverlusten ist komplex aufgrund folgender Faktoren:
 
 ## Maßnahmen zur Problemlösung
 
-Zur Untersuchung von Geräteverlusten wird der Kommandozeilenparameter `--aftermath` empfohlen (siehe auch [Konfiguration → GPU-Debugging](config.md#gpu-debugging) für den schnellen CLI-Einstieg). Dies aktiviert die Aftermath-Bibliothek (unterstützt für Nvidia, AMD und Intel GPUs), die detaillierte Diagnosedaten sammelt. Bei einem Absturz wird die Meldung "Encountered a GPU crash!" angezeigt, und die gesammelten Daten unterstützen Entwickler bei der Ursachenfindung. Aftermath verursacht jedoch einen Leistungseinbruch und sollte gezielt eingesetzt werden.
+Zur Untersuchung von Geräteverlusten wird der Kommandozeilenparameter `--aftermath` empfohlen (siehe auch [Konfiguration → GPU-Debugging](../config.md#gpu-debugging) für den schnellen CLI-Einstieg). Dies aktiviert die Aftermath-Bibliothek (unterstützt für Nvidia, AMD und Intel GPUs), die detaillierte Diagnosedaten sammelt. Bei einem Absturz wird die Meldung "Encountered a GPU crash!" angezeigt, und die gesammelten Daten unterstützen Entwickler bei der Ursachenfindung. Aftermath verursacht jedoch einen Leistungseinbruch und sollte gezielt eingesetzt werden.
 
 In X-Plane 12.2 wurde die Aftermath-Unterstützung überarbeitet, um pro Zeichen- oder Dispatch-Befehl Checkpoints in den Befehlsstrom einzufügen. Diese feingranularen Daten ermöglichen eine präzisere Analyse des GPU-Zustands nach einem Absturz. Frühere Versionen wie 12.06 und 12.1.0 reduzierten Geräteverluste signifikant, etwa durch Workarounds für Nvidia-Treiberfehler.
 

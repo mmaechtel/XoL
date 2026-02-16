@@ -9,5 +9,5 @@ This section covers X-Plane-specific configuration and performance optimization 
 
 ## Troubleshooting
 
-- **[System Errors](systemfehler.md)** — Common problems and their solutions
-- **[Device Losses](geraeteverluste.md)** — Diagnosing GPU Device Lost and Vulkan errors
+- **[System Errors](systemfehler/index.md)** — Common problems and their solutions
+- **[Device Losses](systemfehler/geraeteverluste.md)** — Diagnosing GPU Device Lost and Vulkan errors

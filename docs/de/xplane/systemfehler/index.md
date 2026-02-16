@@ -6,7 +6,7 @@ Wenn X-Plane unter Linux nicht wie erwartet funktioniert, hilft eine systematisc
 
 Die Kommandozeile ist unter Linux das mächtigste Werkzeug zur Fehlersuche. Log-Dateien, Safe Mode, gezielte Subsystem-Deaktivierung und reproduzierbare Benchmarks werden ausführlich behandelt in:
 
-**[Konfiguration → Fehlerbehebung](config.md#fehlerbehebung)**
+**[Konfiguration → Fehlerbehebung](../config.md#fehlerbehebung)**
 
 - Log-Dateien lesen und interpretieren (`Log.txt`, Rotation, was suchen)
 - Safe Mode mit `--safe_mode=GFX`, `--safe_mode=PLG` etc.
@@ -30,7 +30,7 @@ Ein Device Loss ist ein Crash der GPU, signalisiert durch `VK_ERROR_DEVICE_LOST`
 
 FPS-Einbrüche, Stutter und Engpässe werden behandelt in:
 
-**[Performance](performance.md)**
+**[Performance](../performance.md)**
 
 ## Support
 

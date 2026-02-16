@@ -6,7 +6,7 @@ When X-Plane on Linux doesn't work as expected, systematic diagnosis helps. This
 
 The command line is the most powerful troubleshooting tool on Linux. Log files, safe mode, targeted subsystem isolation, and reproducible benchmarks are covered in detail in:
 
-**[Configuration → Troubleshooting](config.md#troubleshooting)**
+**[Configuration → Troubleshooting](../config.md#troubleshooting)**
 
 - Reading and interpreting log files (`Log.txt`, rotation, what to look for)
 - Safe mode with `--safe_mode=GFX`, `--safe_mode=PLG` etc.
@@ -30,7 +30,7 @@ A device loss is a GPU crash, signaled by `VK_ERROR_DEVICE_LOST`. Causes, debugg
 
 FPS drops, stutter, and bottlenecks are covered in:
 
-**[Performance](performance.md)**
+**[Performance](../performance.md)**
 
 ## Support
 

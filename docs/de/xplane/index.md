@@ -9,5 +9,5 @@ Dieser Abschnitt behandelt die X-Plane-spezifische Konfiguration und Performance
 
 ## Fehlerdiagnose
 
-- **[Systemfehler](systemfehler.md)** — Häufige Probleme und deren Behebung
-- **[Geräteverluste](geraeteverluste.md)** — GPU Device Lost und Vulkan-Fehler diagnostizieren
+- **[Systemfehler](systemfehler/index.md)** — Häufige Probleme und deren Behebung
+- **[Geräteverluste](systemfehler/geraeteverluste.md)** — GPU Device Lost und Vulkan-Fehler diagnostizieren

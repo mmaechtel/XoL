@@ -330,7 +330,7 @@ X-Plane can collect detailed diagnostic data during GPU crashes (Device Loss) â€
 ./X-Plane-x86_64 --aftermath
 ```
 
-Aftermath injects checkpoints into the GPU command stream. During a Device Loss, these markers help reconstruct the GPU state at the time of the error. Performance overhead is present, but the diagnostic data is invaluable for recurring GPU crashes. For a deeper understanding of Device Losses and their causes, see [Device Losses](geraeteverluste.md).
+Aftermath injects checkpoints into the GPU command stream. During a Device Loss, these markers help reconstruct the GPU state at the time of the error. Performance overhead is present, but the diagnostic data is invaluable for recurring GPU crashes. For a deeper understanding of Device Losses and their causes, see [Device Losses](systemfehler/geraeteverluste.md).
 
 **Vulkan Validation Layers**
 

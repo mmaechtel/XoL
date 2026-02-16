@@ -124,8 +124,8 @@ plugins:
                 - Konfiguration: de/xplane/config.md
                 - Performance: de/xplane/performance.md
                 - Systemfehler:
-                    - Einführung: de/xplane/systemfehler.md
-                    - Geräteverluste: de/xplane/geraeteverluste.md
+                    - de/xplane/systemfehler/index.md
+                    - Geräteverluste: de/xplane/systemfehler/geraeteverluste.md
             - Szenerien:
                 - Komponenten: de/scenery_components.md
                 - Szenerien: de/scenery.md
@@ -237,8 +237,8 @@ plugins:
                 - Configuration: en/xplane/config.md
                 - Performance: en/xplane/performance.md
                 - System Errors:
-                    - Introduction: en/xplane/systemfehler.md
-                    - Device Losses: en/xplane/geraeteverluste.md
+                    - en/xplane/systemfehler/index.md
+                    - Device Losses: en/xplane/systemfehler/geraeteverluste.md
             - Scenerien:
                 - Komponenten: en/scenery_components.md
                 - Scenerien: en/scenery.md
