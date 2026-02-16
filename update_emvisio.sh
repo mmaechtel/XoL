@@ -59,6 +59,9 @@ if [ -L docs/assets/video ] && [ ! -d docs/assets/video/ ]; then
     exit 1
 fi
 
+# Copy .htaccess to disable directory listing
+cp .htaccess site/
+
 # Copy extra HTML files unless --skip-html is set
 if [ "$SKIP_HTML" = false ]; then
     cp maps.html site
