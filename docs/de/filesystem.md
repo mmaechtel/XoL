@@ -56,7 +56,7 @@ Ein Nutzer, der X-Plane auf einem Linux-System mit drei SSDs betreibt, kann ein 
 
 ### Voraussetzungen
 
-Für die Einrichtung eines **RAID-0**-Arrays werden drei identische SSDs (gleiche Kapazität und Geschwindigkeit) benötigt, idealerweise **NVMe**-SSDs. Das System sollte eine aktuelle Linux-Distribution wie Ubuntu 24.04 verwenden und das Paket **btrfs-progs** installiert haben. Root- oder Sudo-Rechte sind erforderlich. Wichtig zu beachten ist, dass alle Daten auf den SSDs gelöscht werden – vorab sollten daher unbedingt Backups erstellt werden.
+Für die Einrichtung eines **RAID-0**-Arrays werden drei identische SSDs (gleiche Kapazität und Geschwindigkeit) benötigt, idealerweise **NVMe**-SSDs. Das System sollte eine aktuelle Linux-Distribution wie Debian 13 (Trixie) verwenden und das Paket **btrfs-progs** installiert haben. Root- oder Sudo-Rechte sind erforderlich. Wichtig zu beachten ist, dass alle Daten auf den SSDs gelöscht werden – vorab sollten daher unbedingt Backups erstellt werden.
 
 ### Schritt-für-Schritt-Anleitung
 

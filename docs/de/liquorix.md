@@ -167,4 +167,4 @@ Falls ein Wechsel zurück zum Standard-Kernel notwendig ist:
 - [Liquorix Kernel](https://liquorix.net) — Offizielle Projektseite mit Feature-Liste und Installationsanleitung
 - [Project C / PDS Scheduler](https://gitlab.com/alfredchen/projectc) — Alfred Chens alternativer CPU-Scheduler-Patchset
 - [Liquorix Package Repository](https://github.com/damentz/liquorix-package) — Build-Konfiguration und Release-Historie
-- [Arch Wiki: Kernel](https://wiki.archlinux.org/title/Kernel) — Linux-Kernel-Übersicht inkl. alternativer Scheduler
+- [Linux Kernel Scheduler Documentation](https://docs.kernel.org/scheduler/index.html) — Offizielle Kernel-Dokumentation zum CPU-Scheduling

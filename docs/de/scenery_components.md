@@ -172,4 +172,3 @@ Die Reihenfolge in der `scenery_packs.ini` beeinflusst direkt die visuelle Korre
 
 - [X-Plane Scenery Developer Documentation](https://developer.x-plane.com/article/dsf-usage-in-x-plane/) — DSF-Dateiformat und Szeneriestruktur
 - [X-Plane Manual — Custom Scenery](https://www.x-plane.com/manuals/) — scenery_packs.ini-Ladereihenfolge
-- [Arch Wiki — X-Plane](https://wiki.archlinux.org/title/X-Plane) — Linux-spezifische Konfiguration

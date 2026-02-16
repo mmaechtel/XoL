@@ -172,4 +172,3 @@ The order in `scenery_packs.ini` directly affects visual correctness:
 
 - [X-Plane Scenery Developer Documentation](https://developer.x-plane.com/article/dsf-usage-in-x-plane/) — DSF file format and scenery structure
 - [X-Plane Manual — Custom Scenery](https://www.x-plane.com/manuals/) — scenery_packs.ini load order
-- [Arch Wiki — X-Plane](https://wiki.archlinux.org/title/X-Plane) — Linux-specific configuration

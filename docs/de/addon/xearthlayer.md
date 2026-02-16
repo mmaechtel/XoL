@@ -53,14 +53,9 @@ XEarthLayer unterstützt folgende Kartenanbieter:
 
 ## Installation
 
-Auf der [GitHub Releases-Seite](https://github.com/samsoir/xearthlayer/releases) stehen vorkompilierte Pakete für verschiedene Distributionen bereit:
+Auf der [GitHub Releases-Seite](https://github.com/samsoir/xearthlayer/releases) stehen vorkompilierte Pakete bereit (`.deb`, `.rpm`, `.tar.gz`, AUR).
 
-- **Debian/Ubuntu**: `.deb`-Paket
-- **Fedora**: `.rpm`-Paket
-- **Arch Linux**: AUR-Paket
-- **Andere Distributionen**: generisches `.tar.gz`-Archiv
-
-Beispiel für Debian/Ubuntu:
+Installation auf Debian:
 
 ```bash
 # .deb-Paket herunterladen und installieren

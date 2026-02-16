@@ -186,4 +186,4 @@ MangoHud liefert detaillierte GPU/CPU-Metriken, Frame-Time-Graphen und [VRAM](..
 - [Debian Wiki: NvidiaGraphicsDrivers](https://wiki.debian.org/NvidiaGraphicsDrivers/) — Offizielle Debian-NVIDIA-Installationsanleitung
 - [NVIDIA Driver Download](https://www.nvidia.com/Download/index.aspx) — Offizielle Treiber-Download-Seite
 - [NVIDIA Driver README: KMS](https://download.nvidia.com/XFree86/Linux-x86_64/580.126.09/README/kms.html) — Kernel Mode Setting Dokumentation
-- [Arch Wiki: NVIDIA](https://wiki.archlinux.org/title/NVIDIA) — Umfassende NVIDIA-Konfigurationsreferenz
+- [NVIDIA Open GPU Kernel Modules](https://github.com/NVIDIA/open-gpu-kernel-modules) — Open-Source-Kernelmodul-Architektur und unterstützte GPUs

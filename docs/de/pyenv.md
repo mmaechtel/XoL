@@ -6,15 +6,16 @@ pyenv ist ein Python-Versionsverwaltungstool, das es ermöglicht, mehrere Python
 
 ### Abhängigkeiten und Installation
 
-Bevor pyenv installiert werden kann, müssen einige Abhängigkeiten installiert werden. Die benötigten Pakete unterscheiden sich je nach Linux-Distribution:
+Bevor pyenv installiert werden kann, müssen einige Abhängigkeiten installiert werden:
 
-#### Ubuntu/Debian
 ```bash
 sudo apt-get update
 sudo apt-get install -y make build-essential libssl-dev zlib1g-dev \
 libbz2-dev libreadline-dev libsqlite3-dev wget curl llvm \
 libncursesw5-dev xz-utils tk-dev libxml2-dev libxmlsec1-dev libffi-dev liblzma-dev
 ```
+
+Für andere Distributionen siehe das [pyenv Wiki](https://github.com/pyenv/pyenv/wiki#suggested-build-environment).
 
 Die Installation von pyenv erfolgt in drei Schritten:
 

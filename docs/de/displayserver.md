@@ -157,5 +157,4 @@ Ausgabe: `x11` oder `wayland`
 - [Arch Wiki — Wayland](https://wiki.archlinux.org/title/Wayland) — Umfassende Referenz
 - [David Justo — Input-to-Photon Latency](https://davidjusto.com/articles/m2p-latency/) — Hardware-Latenzmessungen
 - [Xaver Hugl — Gaming on Wayland](https://zamundaaa.github.io/wayland/2021/12/14/about-gaming-on-wayland.html) — KDE-Entwickler-Analyse
-- [Phoronix — Ubuntu 25.04 Gaming](https://www.phoronix.com/review/ubuntu-2504-x11-gaming) — Wayland vs. X11 Benchmarks
 - [libinput — What is libinput](https://wayland.freedesktop.org/libinput/doc/latest/what-is-libinput.html) — Eingabegeräte-Handling

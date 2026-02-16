@@ -379,7 +379,7 @@ Die wichtigsten Quellen zu den auf dieser Seite behandelten Themen:
 - [Vulkan Specification](https://registry.khronos.org/vulkan/) — Khronos-Group-Vulkan-API-Spezifikation und -Referenz
 - [NVIDIA Driver README: Environment Variables](https://download.nvidia.com/XFree86/Linux-x86_64/570.86.16/README/openglenvvariables.html) — Offizielle Dokumentation der `__GL_*`-Variablen inkl. Vulkan-Wirkung
 - [NVIDIA Driver README: Smooth Motion](https://download.nvidia.com/XFree86/Linux-x86_64/580.95.05/README/nvpresent.html) — Offizielle Dokumentation der KI-basierten Frame-Interpolation
-- [Arch Wiki: Vulkan](https://wiki.archlinux.org/title/Vulkan) — Praktischer Guide zu Vulkan-Setup, ICD-Auswahl und Fehlerbehebung unter Linux
+- [Mesa Vulkan Drivers](https://docs.mesa3d.org/vulkan.html) — Mesa-Dokumentation für RADV, ANV und andere Vulkan-Treiberimplementierungen
 
 ## Hintergrund: Antialiasing und Rendering
 

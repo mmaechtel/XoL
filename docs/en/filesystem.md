@@ -56,7 +56,7 @@ A user running X-Plane on a Linux system with three SSDs can set up a **RAID-0**
 
 ### Prerequisites
 
-Setting up a **RAID-0** array requires three identical SSDs (same capacity and speed), ideally **NVMe** SSDs. The system should use a current Linux distribution such as Ubuntu 24.04 and have the **btrfs-progs** package installed. Root or sudo privileges are required. It is important to note that all data on the SSDs will be deleted – backups should therefore be created beforehand.
+Setting up a **RAID-0** array requires three identical SSDs (same capacity and speed), ideally **NVMe** SSDs. The system should use a current Linux distribution such as Debian 13 (Trixie) and have the **btrfs-progs** package installed. Root or sudo privileges are required. It is important to note that all data on the SSDs will be deleted – backups should therefore be created beforehand.
 
 ### Step-by-Step Guide
 
