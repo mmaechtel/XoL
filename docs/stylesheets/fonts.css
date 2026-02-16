@@ -54,7 +54,6 @@
 /* ── Typography: compact but accessible ── */
 
 .md-typeset {
-    font-size: 0.85rem;
     line-height: 1.6;
 }
 
@@ -105,14 +104,9 @@
     height: 2.4rem;
 }
 
-.md-tabs {
-    font-size: 0.78rem;
-}
-
 /* ── Compact sidebar ── */
 
 .md-nav__link {
-    font-size: 0.78rem;
     padding: 0.3em 0.6em;
 }
 
@@ -122,7 +116,6 @@
 .md-typeset details {
     margin-top: 0.6em;
     margin-bottom: 0.6em;
-    font-size: 0.82rem;
 }
 
 /* ── Links: smooth hover transitions ── */
@@ -139,7 +132,6 @@
 
 .md-typeset code {
     border-radius: 4px;
-    font-size: 0.82em;
     transition: background-color 0.2s ease;
 }
 
@@ -282,7 +274,6 @@
 /* ── Announcement bar ── */
 
 .md-banner {
-    font-size: 0.85rem;
     letter-spacing: 0.02em;
 }
 
