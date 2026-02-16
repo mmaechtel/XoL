@@ -46,25 +46,95 @@
 
 ## Dateistruktur / File Structure
 
-Dokumentationsseiten unter docs/{lang}/ sind in thematische Unterverzeichnisse gegliedert.
-Jedes Unterverzeichnis hat eine index.md als Übersichtsseite (Section Index via navigation.indexes).
+### Prinzip
 
-Verzeichnisse unter Linux:
-  system/         — Tuning (systemtuning.md) und Monitoring (systemtools.md)
-  optimizations/  — Nvidia, Liquorix, Display-Server, Dateisystem
-  extensions/     — KVM, Docker, Wine, pyenv, zsh
+Jede Nav-Section hat ein eigenes Unterverzeichnis unter `docs/{lang}/`.
+Jedes Unterverzeichnis enthält eine `index.md` als Übersichtsseite
+(MkDocs-Feature `navigation.indexes` in mkdocs.yml).
+Alle Inhaltsseiten einer Section liegen im selben Verzeichnis wie ihre `index.md`.
 
-Weitere Verzeichnisse:
-  linux/          — Linux Section Index
-  xplane/         — X-Plane Konfiguration, Performance, Systemfehler
-  addon/          — Alle Add-on-Seiten
-  flight_operations/ — Flugbetrieb und ATC
+Jede Seite existiert bilingual: `docs/de/<pfad>` und `docs/en/<pfad>` mit identischem
+Dateinamen und identischer Verzeichnisstruktur.
 
-Relative Links zwischen Verzeichnissen:
-  - Selbes Verzeichnis: datei.md (kein Prefix)
-  - Nachbar-Verzeichnis: ../zielverz/datei.md
-  - Eltern-Verzeichnis: ../datei.md
-  - Neue Seiten IMMER ins passende Unterverzeichnis legen, nicht ins Root
+### Verzeichnisbaum
+
+```
+docs/{lang}/
+├── index.md                  # Homepage / Changelog (KEIN Section Index)
+├── glossary.md               # Glossar (standalone, keiner Section zugeordnet)
+├── about.md                  # Über das Projekt (standalone)
+├── Maps.md                   # Kartenlinks (standalone)
+│
+├── linux/                    # Section: Linux (Tab)
+│   └── index.md              #   Section Index
+│
+├── system/                   # Subsection: System
+│   ├── index.md              #   Section Index
+│   ├── systemtuning.md
+│   └── systemtools.md
+│
+├── optimizations/            # Subsection: Optimierungen
+│   ├── index.md              #   Section Index
+│   ├── nvidia.md
+│   ├── liquorix.md
+│   ├── displayserver.md
+│   ├── displayserver_x11.md
+│   ├── displayserver_wayland.md
+│   └── filesystem.md
+│
+├── extensions/               # Subsection: Erweiterungen
+│   ├── index.md              #   Section Index
+│   ├── kvm.md
+│   ├── docker.md
+│   ├── wine.md
+│   ├── pyenv.md
+│   └── zsh.md
+│
+├── xplane/                   # Section: X-Plane
+│   ├── index.md              #   Section Index
+│   ├── config.md
+│   ├── performance.md
+│   ├── systemfehler.md
+│   └── geraeteverluste.md
+│
+├── addon/                    # Section: Addons
+│   ├── autoortho.md
+│   ├── xearthlayer.md
+│   └── ...                   #   (viele Addon-Seiten)
+│
+└── flight_operations/        # Section: Flugbetrieb
+    ├── overview.md
+    ├── weather.md
+    └── ...                   #   (ATC-Seiten)
+```
+
+### Noch im Root — ausstehende Verschiebungen
+
+Folgende Dateien liegen noch flach in `docs/{lang}/` und sollen in Unterverzeichnisse
+verschoben werden (siehe TODO.md):
+
+- `intro.md`, `begin.md`, `performance_overview.md`, `videos.md`
+  → Gehören zur Nav-Section "Übersicht", brauchen ein eigenes Verzeichnis
+- `scenery.md`, `scenery_components.md`
+  → Gehören zur Nav-Section "Szenerien", brauchen ein eigenes Verzeichnis
+
+### Root-Level: Was dort bleibt
+
+Nur diese Dateien bleiben dauerhaft im Root:
+
+- `index.md` — Site-Homepage und Changelog (nicht Section Index)
+- `glossary.md` — Querverweisziel aus allen Sections, keiner Section zugeordnet
+- `about.md` — Standalone
+- `Maps.md` — Standalone (Links zu externen HTML-Dateien auf dem Server)
+
+### Relative Links zwischen Verzeichnissen
+
+- Selbes Verzeichnis: `datei.md` (kein Prefix)
+- Nachbar-Verzeichnis: `../zielverz/datei.md`
+- Eltern-Verzeichnis: `../datei.md`
+- Glossar vom Root: `glossary.md`
+- Glossar aus Unterverzeichnis: `../glossary.md`
+- Neue Seiten IMMER ins passende Unterverzeichnis legen, nicht ins Root
 
 ## Textfluss und Strukturelemente
 
