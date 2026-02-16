@@ -3,7 +3,7 @@
 Mapping: Research-Dateien -> Docs-Seiten.
 Wird von `/research` genutzt, um nur relevante Dateien zu lesen.
 
-**Letzte Aktualisierung:** 2026-02-13
+**Letzte Aktualisierung:** 2026-02-16
 
 ## xplane-config
 
@@ -51,8 +51,8 @@ Docs: `docs/en/system/systemtools.md`
 Docs: `docs/en/system/systemtuning.md`
 
 ### HOCH
-- systemtuning/Empfohlene Systemkonfigurationen zur Latenzreduktion unter Linux -> systemtuning.md
-- systemtuning/Systemlatenz unter Linux-Desktop-Workloads -> systemtuning.md
+- systemtuning/Empfohlene_Systemkonfigurationen_Latenzreduktion.md -> systemtuning.md
+- systemtuning/Systemlatenz_Linux_Desktop_Workloads.md -> systemtuning.md
 
 ## audio
 
@@ -74,14 +74,20 @@ Docs: `docs/en/addon/xorganizer.md`, `docs/en/addon/xearthlayer.md`
 
 ### HOCH
 - addons/XOrganizer_Wine_Linux.md -> addon/xorganizer.md
-- xearthlayer-cpu-settings.md -> addon/xearthlayer.md
+- addons/xearthlayer-cpu-settings.md -> addon/xearthlayer.md
 - addons/autoortho4xplane_fork.md -> addon/autoortho.md
 - addons/xearthlayer_current_state.md -> addon/xearthlayer.md
 - addons/XPME_research.md -> addon/orthophotography_intro.md
 
 ### MITTEL
 - addons/LEKTORAT_ortho_streaming.md -> addon/autoortho.md, addon/xearthlayer.md, addon/orthophotography_intro.md
-- addons/mobiflight.md -> (kein Docs-Mapping, Recherche zu Linux-Kompatibilität)
+- addons/avitab_research.md -> addon/avitab.md
+- addons/BetterPushback_Linux.md -> addon/betterpushback.md
+- addons/xcamera_research.md -> addon/xcamera.md
+- addons/skunkcrafts_updater.md -> addon/skunkcrafts_updater.md
+- addons/toliss_flywithlua_scripts.md -> addon/toliss_ecosystem.md
+- addons/mobiflight.md -> addon/mobiflight.md
+- addons/sayintentions.md -> addon/sayintentions.md
 
 ## notebooklm
 
@@ -90,6 +96,10 @@ TTS-optimierte Skripte für Google NotebookLM Audio Overview. Kein direktes Docs
 ### KEINE
 - notebooklm/NOTEBOOKLM_display-server_qa.md
 - notebooklm/NOTEBOOKLM_scenery-ini_summary.md
+- notebooklm/NOTEBOOKLM_ortho-streaming_summary.md
+- notebooklm/NOTEBOOKLM_systemtuning_summary.md
+- notebooklm/NOTEBOOKLM_toliss-flight_summary.md
+- notebooklm/NOTEBOOKLM_xol-intro_summary_v2.md
 
 ## audit
 
@@ -98,6 +108,20 @@ Prozess-Dateien für Content Audit. Kein direktes Docs-Mapping.
 ### KEINE
 - AUDIT_FLOW.md
 - AUDIT_STATUS.md
+- AUDIT_begin.md
+
+### MITTEL
+- systemtools/AUDIT_systemtools.md -> systemtools.md
+- systemtuning/AUDIT_liquorix.md -> liquorix.md
+- xplane-config/AUDIT_nvidia.md -> nvidia.md
+- szenerie/AUDIT_scenery_components.md -> scenery_components.md
+
+## performance_overview
+
+Docs: `docs/en/performance_overview.md`
+
+### HOCH
+- performance_overview/performance-analyse-simulationssoftware.md -> performance_overview.md
 
 ## sonstige
 
@@ -105,3 +129,5 @@ Tracker und Arbeitsdateien im Research-Root.
 
 ### KEINE
 - VIDEO_STATUS.md
+- glossar_check.log
+- PLAN_scenery_move.md
