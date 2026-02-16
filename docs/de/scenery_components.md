@@ -53,41 +53,21 @@ Mehrere Add-ons erweitern die Standard-Szenerieschichten:
 
 ## Die scenery_packs.ini-Ladereihenfolge
 
-Die Landschaften in X-Plane entstehen durch das Zusammenspiel verschiedener Komponenten: Meshes, Orthos, Autogen und spezielle Szenerien wie Flughäfen. Damit alles korrekt dargestellt wird, ist die Reihenfolge in der `scenery_packs.ini`-Datei entscheidend.
+Die Landschaften in X-Plane entstehen durch das Zusammenspiel verschiedener Komponenten: Meshes, Orthos, Autogen und spezielle Szenerien wie Flughäfen. X-Plane verarbeitet die `scenery_packs.ini` von oben nach unten — Einträge weiter oben haben höhere Priorität und überschreiben Einträge darunter. Eine falsche Reihenfolge kann zu schwebenden Flughäfen, unsichtbaren Szenerien oder Autogen-Objekten auf Landebahnen führen.
 
-## Die richtige Reihenfolge der Komponenten
+**Schicht-Priorität (unten → oben in der Datei)**
 
-X-Plane verarbeitet die `scenery_packs.ini` von oben nach unten. Einträge weiter oben in der Datei haben höhere Priorität und überschreiben Einträge darunter. Die folgende Liste beschreibt die Schichten von der niedrigsten Priorität (unten in der Datei) zur höchsten (oben):
+| Priorität | Schicht | Funktion | Beispiel |
+|-----------|---------|----------|----------|
+| 6 (oben) | Custom Sceneries & Landmarks | Detaillierte Flughäfen, Landmarken | `Aerosoft_EDDF_Frankfurt_3_Scenery` |
+| 5 | [Global Airports](glossary.md#global-airports) | Standard-Flughäfen (X-Plane Gateway) | `*GLOBAL_AIRPORTS*` |
+| 4 | Spezielle Objekte | Funkmasten, Windräder | `world_wind_turbines` |
+| 3 | Autogen & Bibliotheken | 3D-Objekte (Gebäude, Bäume, Fahrzeuge) | `simHeaven_X-World_Europe-6-scenery` |
+| 2 | Ortho-Szenerien | Satellitenbilder auf dem Mesh | `z_ortho_California` |
+| 1 (unten) | Mesh-Dateien | 3D-Geländestruktur (Höhen, Täler) | `HD_Mesh_Scenery` |
 
-1. **Mesh-Dateien (z. B. HD Mesh, UHD Mesh)**
-    - **Funktion**: Meshes bilden die 3D-Grundstruktur der Landschaft — Höhen, Täler und Hügel.
-    - **Warum unten?** Sie sind die Basis für alles andere. Ohne ein Mesh lassen sich Orthos und Objekte nicht korrekt platzieren.
-    - **Beispiel**: `FlyTampa_Athens_3_mesh` oder `SFD_EDDM_Munich_2_Mesh`.
-
-2. **Ortho-Szenerien**
-    - **Funktion**: Orthos sind Satelliten- oder Luftbilder, die auf das Mesh gelegt werden, um realistische Texturen wie Straßen oder Wälder darzustellen.
-    - **Warum darüber?** Orthos brauchen das Mesh für korrekte Projektion, müssen aber über den Meshes und unter Autogen liegen.
-    - **Beispiel**: `z_ortho_California` oder `zz_Ortho_SpainUHDv2_1`.
-
-3. **Autogen-Objekte und Bibliotheken**
-    - **Funktion**: Autogen fügt 3D-Objekte wie Gebäude, Bäume oder Fahrzeuge hinzu, die die Landschaft beleben.
-    - **Warum darüber?** Autogen basiert auf Mesh und Ortho, um Objekte korrekt zu platzieren (z. B. Häuser auf ebenem Grund, keine Bäume auf Straßen).
-    - **Beispiel**: `simHeaven_X-World_Europe-6-scenery` oder `simHeaven_X-World_Europe-7-forests`.
-
-4. **Spezielle Objekte und Masten**
-    - **Funktion**: Spezielle Objekte wie Funkmasten, Windräder oder andere markante Strukturen.
-    - **Warum darüber?** Diese Objekte sollten über dem Autogen liegen, um sichtbar zu bleiben.
-    - **Beispiel**: `Usa_Radio_Masts_01` oder `world_wind_turbines`.
-
-5. **[Global Airports](glossary.md#global-airports)**
-    - **Funktion**: Enthält die Standard-Flughäfen von X-Plane.
-    - **Warum darüber?** Muss über Autogen und Orthos liegen, aber unter Custom Sceneries.
-    - **Beispiel**: `*GLOBAL_AIRPORTS*`.
-
-6. **Custom Sceneries und Landmarks**
-    - **Funktion**: Spezielle Szenerien wie Flughäfen oder Landmarken (z. B. der Eiffelturm) enthalten detaillierte Objekte und Texturen.
-    - **Warum ganz oben?** Sie haben die höchste Priorität, damit sie nicht von anderen Komponenten überdeckt werden.
-    - **Beispiel**: `Aerosoft_EDDF_Frankfurt_3_Scenery` oder `X-Plane Landmarks - Paris`.
+!!! warning "Global Airports — Position beachten"
+    Die Zeile `SCENERY_PACK *GLOBAL_AIRPORTS*` muss **unter** Custom Sceneries, aber **über** Autogen, Orthos und Meshes stehen. Steht sie zu tief, überdecken Autogen-Objekte Landebahnen und Rollwege; steht sie zu hoch, verlieren Custom Airports ihren Vorrang. Eine falsche Position verursacht häufig „schwebende" Flughäfen oder fehlende Details.
 
 ### Beispiel einer korrekten Reihenfolge
 
@@ -136,35 +116,11 @@ SCENERY_PACK Custom Scenery/KDEN-Denver International Airport_Mesh/
 SCENERY_PACK Custom Scenery/SFD_EDDM_Munich_2_Mesh/
 ```
 
-### Die besondere Rolle der Global Airports
-
-Die Zeile `SCENERY_PACK *GLOBAL_AIRPORTS*` verdient besondere Aufmerksamkeit:
-
-- **Position**: Sie sollte **unter** den Custom Sceneries und Landmarks stehen, aber **über** den SimHeaven-Komponenten, Orthos und Meshes.
-- **Funktion**: Global Airports enthält die Standard-Flughäfen von X-Plane, die oft von der Community über das X-Plane Gateway erstellt wurden.
-- **Warum diese Position?**
-    - Custom Sceneries (z. B. ein detailliertes EDDF oder EGLL) überschreiben die Standard-Flughäfen, weil sie weiter oben gelistet sind.
-    - Global Airports muss über den SimHeaven-Komponenten stehen, damit Flughäfen nicht von Autogen-Objekten überdeckt werden.
-    - Gleichzeitig muss Global Airports über Orthos und Meshes liegen, damit Flughäfen korrekt auf der Landschaft platziert werden.
-- **Wichtiger Hinweis**: Eine falsche Position kann zu „schwebenden" Flughäfen, fehlenden Rollwegen oder überdeckten Details führen.
-
----
-
-## Warum die Reihenfolge wichtig ist
-
-Die Reihenfolge in der `scenery_packs.ini` beeinflusst direkt die visuelle Korrektheit:
-
-- **Überlagerung**: Einträge weiter oben in der Datei überschreiben Einträge darunter. Ein falsch platzierter Eintrag kann einen Flughafen unsichtbar machen oder Orthos mit Autogen-Objekten verdecken.
-- **Korrektheit**: Nur die richtige Reihenfolge stellt sicher, dass Objekte korrekt platziert werden — Häuser stehen auf dem Boden, nicht in der Luft, und Flughäfen passen zum Mesh.
-
----
-
-## Tipps für die Pflege der scenery_packs.ini
-
-- **Tools nutzen**: Programme wie **[XOrganizer](addon/xorganizer.md)** können die Reihenfolge automatisch optimieren und Konflikte erkennen.
-- **Backup erstellen**: Vor Änderungen an der `scenery_packs.ini` eine Sicherungskopie erstellen, um Fehler rückgängig machen zu können.
-- **Testen**: Nach Änderungen eine Szenerie in X-Plane laden und prüfen, ob Flughäfen, Orthos und Autogen korrekt angezeigt werden. Besonders auf „schwebende" Objekte oder fehlende Details achten.
-- **Updates im Blick behalten**: Neue Szenerien oder Add-ons können die Reihenfolge durcheinanderbringen. Die Datei regelmäßig prüfen, besonders nach Installationen.
+!!! tip "Pflege der scenery_packs.ini"
+    - **Tools nutzen** — Programme wie **[XOrganizer](addon/xorganizer.md)** können die Reihenfolge automatisch optimieren und Konflikte erkennen.
+    - **Backup erstellen** vor Änderungen an der `scenery_packs.ini`, um Fehler rückgängig machen zu können.
+    - **Nach Änderungen testen** — eine Szenerie in X-Plane laden und Flughäfen, Orthos und Autogen prüfen. Besonders auf „schwebende" Objekte oder fehlende Details achten.
+    - **Updates im Blick behalten** — neue Szenerien oder Add-ons können die Reihenfolge durcheinanderbringen. Die Datei regelmäßig prüfen, besonders nach Installationen.
 
 ---
 

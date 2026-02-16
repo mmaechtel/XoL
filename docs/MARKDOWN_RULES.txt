@@ -43,3 +43,30 @@
 
 6. Mehrere Auszählungsebenen:
    - Gibt es mehrere Ebenen so ist die erste Ebene typischerweise nicht eingerückt, sondern entspricht dem aktuellen Textfluss. Aber die nächste Ebende (2. Ebene) hat dann zur ersten Ebene mindest 4 Leerzeichen einrückung. Die 3. Ebene 8 Zeichen zur 1. Ebene
+
+## Textfluss und Strukturelemente
+
+Ziel: Seiten sollen einen abwechslungsreichen, gut scanbaren Textfluss haben — kein
+Wall-of-Text, keine endlosen Listen. Referenzseiten: config.md, nvidia.md, systemtools.md.
+
+7. Tabellen statt langer Listen:
+   - Wenn Einträge gleichförmige Attribute haben (Name + Funktion + Beispiel o.ä.), Tabelle verwenden
+   - Nummerierte Listen nur für echte Abfolgen/Schritte (z.B. "Schritt 1, 2, 3")
+   - Verschachtelte Listen mit mehr als 2 Ebenen vermeiden — oft ist eine Tabelle klarer
+
+8. Admonition-Boxen (`!!! typ "Titel"`):
+   - `!!! tip` — Empfehlungen, Best Practices, Pflegehinweise
+   - `!!! warning` — Häufige Fehler, kritische Konfigurationshinweise
+   - `!!! note` — Experimentelle Features, Sonderfälle, Hintergrundinformation
+   - `??? abstract "Titel"` (klappbar) — Optionaler technischer Hintergrund, der den Lesefluss nicht stören soll
+   - Nicht übertreiben: max. 3-4 Boxen pro Seite (Ausnahme: config.md als Sammelseite)
+
+9. Abschnitte strukturieren:
+   - Kurzer Einleitungssatz vor Tabellen/Listen (Kontext geben)
+   - **Fett-Labels** vor Tabellen als Kontext-Einleitung (z.B. "**Treiber-Anforderungen (Vulkan 1.3)**")
+   - `---` (Trennlinie) zwischen thematisch eigenständigen Hauptsektionen
+   - Redundante Abschnitte vermeiden — Information gehört an genau eine Stelle
+
+10. Guter Textfluss-Wechsel:
+    - Prose → Tabelle → Code-Block → Admonition-Box (abwechselnd, nicht monoton)
+    - Jede Seite sollte mindestens 2 verschiedene Strukturelemente nutzen (nicht nur Fließtext + Listen)
