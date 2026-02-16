@@ -8,16 +8,6 @@ This documentation covers setup and optimization of X-Plane 12 (Laminar Research
 - **New to X-Plane on Linux?** [Getting Started](begin.md) covers system requirements, installation, and first launch.
 - **X-Plane already running?** [Performance Fundamentals](performance_overview.md) explains the three load dimensions (CPU, I/O, network) before diving into [System Tuning](systemtuning.md).
 
-## Featured Video: Beyond the Default Cockpit
-
-<div class="video-container" markdown>
-<video controls width="100%" preload="metadata" poster="../assets/video/en/Beyond_the_Default_Cockpit/Beyond_the_Default_Cockpit.jpg">
-  <source src="../assets/video/en/Beyond_the_Default_Cockpit/Beyond_the_Default_Cockpit.mp4" type="video/mp4">
-</video>
-</div>
-
-[All Videos →](videos.md)
-
 ## About This Documentation
 
 The core focus is on Linux system tuning — kernel parameters, CPU governor, GPU drivers, display server selection, and filesystem optimization — complemented by performance analysis using both X-Plane's built-in tools and Linux monitoring utilities. Additional sections cover scenery management with orthophoto streaming, flight operations including ATC procedures, and a reference catalog of Linux-compatible addons and plugins. The guides are modular — individual topics can be implemented independently or combined as needed.
@@ -29,6 +19,16 @@ This documentation is an open project. Improvements or additions can be contribu
 - Create issues for bugs or suggestions
 - Submit pull requests for changes
 - Share experiences in the discussions in the footer of this website (e.g., via the Discord link)
+
+## Featured Video: Beyond the Default Cockpit
+
+<div class="video-container" style="max-width: 640px;" markdown>
+<video controls width="100%" preload="metadata" poster="../assets/video/en/Beyond_the_Default_Cockpit/Beyond_the_Default_Cockpit.jpg">
+  <source src="../assets/video/en/Beyond_the_Default_Cockpit/Beyond_the_Default_Cockpit.mp4" type="video/mp4">
+</video>
+</div>
+
+[All Videos →](videos.md)
 
 ## Recent Changes
 
