@@ -70,22 +70,161 @@
     padding-bottom: 0.3em;
 }
 
+/* ── Links: smooth hover transitions ── */
+
+.md-typeset a {
+    transition: color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.md-typeset a:hover {
+    box-shadow: 0 2px 0 0 var(--md-accent-fg-color);
+}
+
 /* ── Code blocks ── */
 
 .md-typeset code {
     border-radius: 4px;
     font-size: 0.82em;
+    transition: background-color 0.2s ease;
 }
 
 .md-typeset pre {
     border-radius: 8px;
+    transition: box-shadow 0.3s ease;
+}
+
+.md-typeset pre:hover {
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+}
+
+[data-md-color-scheme="slate"] .md-typeset pre:hover {
+    box-shadow: 0 4px 24px rgba(0, 0, 0, 0.4);
 }
 
 [data-md-color-scheme="default"] .md-typeset code {
     background-color: #f1f5f9;
 }
 
-/* ── Announcement bar styling ── */
+/* ── Tables: hover rows + shadow ── */
+
+.md-typeset table:not([class]) {
+    border-radius: 8px;
+    overflow: hidden;
+    transition: box-shadow 0.3s ease;
+}
+
+.md-typeset table:not([class]):hover {
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
+}
+
+[data-md-color-scheme="slate"] .md-typeset table:not([class]):hover {
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+}
+
+.md-typeset table:not([class]) tr {
+    transition: background-color 0.15s ease;
+}
+
+.md-typeset table:not([class]) tbody tr:hover {
+    background-color: rgba(0, 0, 0, 0.03);
+}
+
+[data-md-color-scheme="slate"] .md-typeset table:not([class]) tbody tr:hover {
+    background-color: rgba(255, 255, 255, 0.04);
+}
+
+/* ── Admonitions: lift on hover ── */
+
+.md-typeset .admonition,
+.md-typeset details {
+    border-radius: 8px;
+    transition: box-shadow 0.3s ease, transform 0.3s ease;
+}
+
+.md-typeset .admonition:hover,
+.md-typeset details:hover {
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
+    transform: translateY(-1px);
+}
+
+[data-md-color-scheme="slate"] .md-typeset .admonition:hover,
+[data-md-color-scheme="slate"] .md-typeset details:hover {
+    box-shadow: 0 6px 24px rgba(0, 0, 0, 0.35);
+}
+
+/* ── Navigation: smooth hover ── */
+
+.md-nav__link {
+    transition: color 0.15s ease, padding-left 0.15s ease;
+}
+
+.md-nav__link:hover {
+    padding-left: 4px;
+}
+
+/* ── Tabs: active indicator glow ── */
+
+.md-tabs__link {
+    transition: color 0.2s ease, opacity 0.2s ease;
+}
+
+.md-tabs__link--active {
+    border-bottom: 2px solid var(--md-accent-fg-color);
+}
+
+/* ── Content cards: code copy button ── */
+
+.md-clipboard {
+    transition: color 0.2s ease, transform 0.2s ease;
+}
+
+.md-clipboard:hover {
+    transform: scale(1.15);
+    color: var(--md-accent-fg-color);
+}
+
+/* ── Back-to-top button ── */
+
+.md-top {
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.md-top:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}
+
+/* ── Search input ── */
+
+.md-search__input {
+    transition: box-shadow 0.2s ease;
+}
+
+.md-search__input:focus {
+    box-shadow: 0 0 0 3px rgba(245, 158, 11, 0.25);
+}
+
+[data-md-color-scheme="slate"] .md-search__input:focus {
+    box-shadow: 0 0 0 3px rgba(251, 191, 36, 0.2);
+}
+
+/* ── Video containers ── */
+
+.video-container {
+    border-radius: 8px;
+    overflow: hidden;
+    transition: box-shadow 0.3s ease;
+}
+
+.video-container:hover {
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.15);
+}
+
+[data-md-color-scheme="slate"] .video-container:hover {
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.4);
+}
+
+/* ── Announcement bar ── */
 
 .md-banner {
     font-size: 0.78rem;
@@ -94,4 +233,53 @@
 
 .md-banner a {
     color: var(--md-accent-fg-color);
+    transition: color 0.2s ease;
+}
+
+.md-banner a:hover {
+    color: var(--md-typeset-a-color);
+}
+
+/* ── Smooth scrollbar (dark mode) ── */
+
+[data-md-color-scheme="slate"] ::-webkit-scrollbar {
+    width: 8px;
+}
+
+[data-md-color-scheme="slate"] ::-webkit-scrollbar-track {
+    background: var(--md-default-bg-color);
+}
+
+[data-md-color-scheme="slate"] ::-webkit-scrollbar-thumb {
+    background: #334155;
+    border-radius: 4px;
+}
+
+[data-md-color-scheme="slate"] ::-webkit-scrollbar-thumb:hover {
+    background: #475569;
+}
+
+/* ── Selection ── */
+
+::selection {
+    background: rgba(245, 158, 11, 0.2);
+}
+
+[data-md-color-scheme="slate"] ::selection {
+    background: rgba(251, 191, 36, 0.2);
+}
+
+/* ── Footer links ── */
+
+.md-footer__link {
+    transition: transform 0.2s ease, opacity 0.2s ease;
+}
+
+.md-footer__link:hover {
+    transform: translateX(3px);
+    opacity: 0.8;
+}
+
+.md-footer__link--prev:hover {
+    transform: translateX(-3px);
 }
