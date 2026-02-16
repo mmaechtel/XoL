@@ -2,18 +2,11 @@
 
 When X-Plane on Linux doesn't work as expected, systematic diagnosis helps. This page points to the relevant sections of the documentation.
 
-## Diagnostics and CLI Parameters
+## Performance Issues
 
-The command line is the most powerful troubleshooting tool on Linux. Log files, safe mode, targeted subsystem isolation, and reproducible benchmarks are covered in detail in:
+FPS drops, stutter, and bottlenecks are covered in:
 
-**[Configuration → Troubleshooting](../config.md#troubleshooting)**
-
-- Reading and interpreting log files (`Log.txt`, rotation, what to look for)
-- Safe mode with `--safe_mode=GFX`, `--safe_mode=PLG` etc.
-- Isolating audio (`--no_sound`), isolating controllers (`--no_joysticks`)
-- Fullscreen issues under Wayland (`--window`, `--full`)
-- Performance testing (`--fps_test`, `--require_fps`)
-- Launch scripts with profiles (`--pref`, `--dref`)
+**[Performance](../performance.md)**
 
 ## GPU Crashes (Device Loss)
 
@@ -26,11 +19,11 @@ A device loss is a GPU crash, signaled by `VK_ERROR_DEVICE_LOST`. Causes, debugg
 - `--aftermath` for detailed GPU crash analysis
 - Common misconceptions (VRAM is not the cause)
 
-## Performance Issues
+## Diagnostics and CLI Parameters
 
-FPS drops, stutter, and bottlenecks are covered in:
+Log files, safe mode, targeted subsystem isolation, and reproducible benchmarks:
 
-**[Performance](../performance.md)**
+**[Diagnostics and CLI Parameters](diagnose.md)**
 
 ## Support
 

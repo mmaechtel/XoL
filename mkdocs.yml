@@ -125,6 +125,7 @@ plugins:
                 - Performance: de/xplane/performance.md
                 - Systemfehler:
                     - de/xplane/systemfehler/index.md
+                    - Diagnose: de/xplane/systemfehler/diagnose.md
                     - Geräteverluste: de/xplane/systemfehler/geraeteverluste.md
             - Szenerien:
                 - Komponenten: de/scenery_components.md
@@ -238,6 +239,7 @@ plugins:
                 - Performance: en/xplane/performance.md
                 - System Errors:
                     - en/xplane/systemfehler/index.md
+                    - Diagnostics: en/xplane/systemfehler/diagnose.md
                     - Device Losses: en/xplane/systemfehler/geraeteverluste.md
             - Scenerien:
                 - Komponenten: en/scenery_components.md

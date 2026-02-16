@@ -96,7 +96,8 @@ docs/{lang}/
 │   ├── performance.md
 │   └── systemfehler/         # Subsection: Systemfehler
 │       ├── index.md          #   Section Index
-│       └── geraeteverluste.md
+│       ├── geraeteverluste.md
+│       └── diagnose.md
 │
 ├── addon/                    # Section: Addons
 │   ├── autoortho.md
