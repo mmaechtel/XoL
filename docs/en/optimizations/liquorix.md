@@ -98,7 +98,7 @@ The key difference lies in what each kernel type needs for best results:
 
 Manual CPU pinning or aggressive priority escalation can be counterproductive under Liquorix: they override exactly the adaptive decisions that PDS is designed to make.
 
-Concrete configuration steps for both kernel types can be found on the [System Tuning](systemtuning.md) page.
+Concrete configuration steps for both kernel types can be found on the [System Tuning](../system/systemtuning.md) page.
 
 !!! warning "Security consideration"
     Liquorix tracks the latest upstream kernel series, which means it includes upstream security fixes present in those releases. However, it is **not covered by Debian Security Advisories** — DSAs apply only to packages in the official Debian archive. Security updates depend on a single maintainer's release cycle, which may lag behind Debian's security team. Switching back to the stock kernel is always possible via the GRUB boot menu.

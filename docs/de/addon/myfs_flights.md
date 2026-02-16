@@ -29,7 +29,7 @@ Da My FS Flights keinen Linux-Build bietet, muss die App in einer Windows-VM lau
 
 **Voraussetzungen**
 
-- Windows 10+ Guest in KVM/QEMU (siehe [Docker & Virtualisierung](../docker.md) für KVM-Grundlagen)
+- Windows 10+ Guest in KVM/QEMU (siehe [Docker & Virtualisierung](../extensions/docker.md) für KVM-Grundlagen)
 - Bridged oder NAT-Netzwerk mit Host-Zugriff
 - X-Plane auf dem Linux-Host
 

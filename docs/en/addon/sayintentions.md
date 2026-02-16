@@ -29,7 +29,7 @@ A community project for macOS ([SayIntentionsForMac](https://github.com/paulfish
 
 **Requirements**
 
-- Windows 10+ guest in KVM/QEMU (see [Docker & Virtualization](../docker.md) for KVM basics)
+- Windows 10+ guest in KVM/QEMU (see [Docker & Virtualization](../extensions/docker.md) for KVM basics)
 - Bridged or NAT networking with host access
 - Microphone passthrough to the VM (for speech recognition)
 - X-Plane running on the Linux host

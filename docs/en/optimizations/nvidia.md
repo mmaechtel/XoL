@@ -129,7 +129,7 @@ sudo reboot
 
 ### Driver Settings (X11 Only)
 
-On X11, the `nvidia-settings` tool offers composition options that can reduce screen [tearing](../glossary.md#tearing). These settings are **not available and not needed on [Wayland](../displayserver_wayland.md)**, where the compositor handles this natively.
+On X11, the `nvidia-settings` tool offers composition options that can reduce screen [tearing](../glossary.md#tearing). These settings are **not available and not needed on [Wayland](displayserver_wayland.md)**, where the compositor handles this natively.
 
 ```bash
 nvidia-settings
@@ -177,7 +177,7 @@ For advanced performance monitoring beyond X-Plane's built-in [FPS](../glossary.
 sudo apt install mangohud
 ```
 
-MangoHud provides detailed GPU/CPU metrics, frame time graphs, and [VRAM](../glossary.md#vram-video-ram) usage as an in-game overlay. See [System Tuning](../systemtuning.md) and [System Monitoring](../systemtools.md) for further performance analysis.
+MangoHud provides detailed GPU/CPU metrics, frame time graphs, and [VRAM](../glossary.md#vram-video-ram) usage as an in-game overlay. See [System Tuning](../system/systemtuning.md) and [System Monitoring](../system/systemtools.md) for further performance analysis.
 
 ---
 

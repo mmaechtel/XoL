@@ -29,7 +29,7 @@ Ein Community-Projekt für macOS ([SayIntentionsForMac](https://github.com/paulf
 
 **Voraussetzungen**
 
-- Windows 10+ Guest in KVM/QEMU (siehe [Docker & Virtualisierung](../docker.md) für KVM-Grundlagen)
+- Windows 10+ Guest in KVM/QEMU (siehe [Docker & Virtualisierung](../extensions/docker.md) für KVM-Grundlagen)
 - Bridged oder NAT-Netzwerk mit Host-Zugriff
 - Mikrofon-Passthrough an die VM (für Spracherkennung)
 - X-Plane auf dem Linux-Host

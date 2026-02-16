@@ -129,7 +129,7 @@ sudo reboot
 
 ### Treiber-Einstellungen (nur X11)
 
-Unter X11 bietet `nvidia-settings` Kompositions-Optionen zur Reduzierung von Screen [Tearing](../glossary.md#tearing). Diese Einstellungen sind **unter [Wayland](../displayserver_wayland.md) nicht verfügbar und nicht nötig**, da der Compositor dies nativ handhabt.
+Unter X11 bietet `nvidia-settings` Kompositions-Optionen zur Reduzierung von Screen [Tearing](../glossary.md#tearing). Diese Einstellungen sind **unter [Wayland](displayserver_wayland.md) nicht verfügbar und nicht nötig**, da der Compositor dies nativ handhabt.
 
 ```bash
 nvidia-settings
@@ -177,7 +177,7 @@ Für erweitertes Performance-Monitoring über die eingebaute [FPS](../glossary.m
 sudo apt install mangohud
 ```
 
-MangoHud liefert detaillierte GPU/CPU-Metriken, Frame-Time-Graphen und [VRAM](../glossary.md#vram-video-ram)-Auslastung als In-Game-Overlay. Weitere Informationen zur Performance-Analyse unter [Systemtuning](../systemtuning.md) und [System-Monitoring](../systemtools.md).
+MangoHud liefert detaillierte GPU/CPU-Metriken, Frame-Time-Graphen und [VRAM](../glossary.md#vram-video-ram)-Auslastung als In-Game-Overlay. Weitere Informationen zur Performance-Analyse unter [Systemtuning](../system/systemtuning.md) und [System-Monitoring](../system/systemtools.md).
 
 ---
 

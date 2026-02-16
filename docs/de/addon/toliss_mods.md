@@ -25,4 +25,4 @@ Die Installation erfordert zwei Schritte: Die Engine-OBJ-Dateien von den Thresho
 
 !!! warning "Linux: Installer ist Windows-only"
 
-    Der Carda Engine Installer ist eine Windows-`.exe`. Unter Linux lässt er sich in einer [KVM](../kvm.md)-Windows-VM ausführen. Die Triebwerksmodelle selbst (OBJ/DDS) sind plattformunabhängig und funktionieren unter Linux ohne Anpassung. Nach jedem ToLiss-Update muss der Patch erneut angewendet werden.
+    Der Carda Engine Installer ist eine Windows-`.exe`. Unter Linux lässt er sich in einer [KVM](../extensions/kvm.md)-Windows-VM ausführen. Die Triebwerksmodelle selbst (OBJ/DDS) sind plattformunabhängig und funktionieren unter Linux ohne Anpassung. Nach jedem ToLiss-Update muss der Patch erneut angewendet werden.

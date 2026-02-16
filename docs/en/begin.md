@@ -177,8 +177,8 @@ For technical terms, consult the [Glossary](glossary.md).
 After a successful installation, continue with:
 
 1. [Performance Fundamentals](performance_overview.md) — Understand the three load dimensions (CPU, I/O, network)
-2. [NVIDIA Drivers](nvidia.md) — Install and configure proprietary NVIDIA drivers
-3. [Liquorix Kernel](liquorix.md) — Low-latency kernel optimized for desktop workloads
-4. [System Tuning](systemtuning.md) — CPU governor, interrupt shielding, and kernel parameters
-5. [Display Server](displayserver.md) — Wayland vs. X11 for X-Plane
+2. [NVIDIA Drivers](optimizations/nvidia.md) — Install and configure proprietary NVIDIA drivers
+3. [Liquorix Kernel](optimizations/liquorix.md) — Low-latency kernel optimized for desktop workloads
+4. [System Tuning](system/systemtuning.md) — CPU governor, interrupt shielding, and kernel parameters
+5. [Display Server](optimizations/displayserver.md) — Wayland vs. X11 for X-Plane
 6. [X-Plane Configuration](xplane/config.md) — Linux-specific graphics and performance settings

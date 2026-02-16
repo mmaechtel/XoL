@@ -1,6 +1,6 @@
 # X-Plane Performance on Linux
 
-X-Plane 12 is a cross-platform application — the general graphics settings (textures, shadows, clouds, anti-aliasing) work the same on all operating systems and are documented in the [official documentation](https://www.x-plane.com/kb/configuring-the-rendering-options/). This page covers performance **analysis** on Linux: internal diagnostic tools, Linux-specific monitoring utilities, and targeted optimization recommendations. The Linux-specific graphics settings are documented under [Configuration](config.md), system tuning under [System Tuning](../systemtuning.md).
+X-Plane 12 is a cross-platform application — the general graphics settings (textures, shadows, clouds, anti-aliasing) work the same on all operating systems and are documented in the [official documentation](https://www.x-plane.com/kb/configuring-the-rendering-options/). This page covers performance **analysis** on Linux: internal diagnostic tools, Linux-specific monitoring utilities, and targeted optimization recommendations. The Linux-specific graphics settings are documented under [Configuration](config.md), system tuning under [System Tuning](../system/systemtuning.md).
 
 ## Internal Diagnostic Tools
 
@@ -130,7 +130,7 @@ nvidia-smi --query-gpu=utilization.gpu,utilization.memory,temperature.gpu,clocks
 
 ## Diagnostic Workflows
 
-The following table connects typical symptoms with the appropriate toolchain. Details on the Linux tools can be found under [System Monitoring](../systemtools.md).
+The following table connects typical symptoms with the appropriate toolchain. Details on the Linux tools can be found under [System Monitoring](../system/systemtools.md).
 
 | Symptom | Toolchain | What to check |
 |---------|-----------|---------------|
@@ -153,7 +153,7 @@ The Microprofiler shows where frame time is being lost. The following table maps
 | GPU (Shadows) | Reduce shadows and anti-aliasing | Lower Shadow Quality and MSAA level |
 | GPU (Clouds) | Adjust cloud quality | Lower Cloud Quality |
 
-For Linux-specific optimizations (CPU governor, interrupt routing, memory parameters) see [System Tuning](../systemtuning.md). Benchmarking methods and rendering options are documented under [Configuration](config.md).
+For Linux-specific optimizations (CPU governor, interrupt routing, memory parameters) see [System Tuning](../system/systemtuning.md). Benchmarking methods and rendering options are documented under [Configuration](config.md).
 
 ## Sources
 

@@ -100,22 +100,25 @@ plugins:
                 - Videos: de/videos.md
             - Linux:
                 - de/linux/index.md
+                - System:
+                    - de/system/index.md
+                    - Tuning: de/system/systemtuning.md
+                    - Monitoring: de/system/systemtools.md
                 - Optimierungen:
-                    - Nvidia Treiber: de/nvidia.md
-                    - Liquorix Kernel: de/liquorix.md
-                    - System-Tuning Einführung: de/systemtuning_intro.md
-                    - System-Tuning: de/systemtuning.md
-                    - System Monitoring: de/systemtools.md
-                    - Display-Server: de/displayserver.md
-                    - X11-Session: de/displayserver_x11.md
-                    - Wayland-Session: de/displayserver_wayland.md
-                    - Dateisystem: de/filesystem.md
+                    - de/optimizations/index.md
+                    - Nvidia Treiber: de/optimizations/nvidia.md
+                    - Liquorix Kernel: de/optimizations/liquorix.md
+                    - Display-Server: de/optimizations/displayserver.md
+                    - X11-Session: de/optimizations/displayserver_x11.md
+                    - Wayland-Session: de/optimizations/displayserver_wayland.md
+                    - Dateisystem: de/optimizations/filesystem.md
                 - Erweiterungen:
-                    - KVM: de/kvm.md
-                    - Docker: de/docker.md
-                    - Wine: de/wine.md
-                    - pyenv: de/pyenv.md
-                    - zsh: de/zsh.md
+                    - de/extensions/index.md
+                    - KVM: de/extensions/kvm.md
+                    - Docker: de/extensions/docker.md
+                    - Wine: de/extensions/wine.md
+                    - pyenv: de/extensions/pyenv.md
+                    - zsh: de/extensions/zsh.md
             - X-Plane:
                 - de/xplane/index.md
                 - Konfiguration: de/xplane/config.md
@@ -210,22 +213,25 @@ plugins:
                 - Videos: en/videos.md
             - Linux:
                 - en/linux/index.md
+                - System:
+                    - en/system/index.md
+                    - Tuning: en/system/systemtuning.md
+                    - Monitoring: en/system/systemtools.md
                 - Optimizations:
-                    - Nvidia Drivers: en/nvidia.md
-                    - Liquorix Kernel: en/liquorix.md
-                    - System Tuning Intro: en/systemtuning_intro.md
-                    - System Tuning: en/systemtuning.md
-                    - System Monitoring: en/systemtools.md
-                    - Display Server: en/displayserver.md
-                    - X11 Session: en/displayserver_x11.md
-                    - Wayland Session: en/displayserver_wayland.md
-                    - Filesystem: en/filesystem.md
+                    - en/optimizations/index.md
+                    - Nvidia Drivers: en/optimizations/nvidia.md
+                    - Liquorix Kernel: en/optimizations/liquorix.md
+                    - Display Server: en/optimizations/displayserver.md
+                    - X11 Session: en/optimizations/displayserver_x11.md
+                    - Wayland Session: en/optimizations/displayserver_wayland.md
+                    - Filesystem: en/optimizations/filesystem.md
                 - Extensions:
-                    - KVM: en/kvm.md
-                    - Docker: en/docker.md
-                    - Wine: en/wine.md
-                    - pyenv: en/pyenv.md
-                    - zsh: en/zsh.md
+                    - en/extensions/index.md
+                    - KVM: en/extensions/kvm.md
+                    - Docker: en/extensions/docker.md
+                    - Wine: en/extensions/wine.md
+                    - pyenv: en/extensions/pyenv.md
+                    - zsh: en/extensions/zsh.md
             - X-Plane:
                 - en/xplane/index.md
                 - Configuration: en/xplane/config.md

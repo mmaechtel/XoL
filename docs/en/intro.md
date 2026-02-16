@@ -22,11 +22,11 @@ Every optimization described in this documentation — from CPU scheduling to in
 
 This transparency has concrete consequences for flight simulation:
 
-- **Kernel tuning:** Precise control over CPU governor, interrupt affinity, and scheduling — covered in [System Tuning](systemtuning.md) and [Liquorix Kernel](liquorix.md)
+- **Kernel tuning:** Precise control over CPU governor, interrupt affinity, and scheduling — covered in [System Tuning](system/systemtuning.md) and [Liquorix Kernel](optimizations/liquorix.md)
 - **No background interference:** No automatic updates or telemetry competing for CPU cycles during flight. System performance is predictable.
-- **Display server choice:** [Wayland or X11](displayserver.md) can be selected based on GPU and compositor behavior
-- **Driver control:** GPU driver version, persistence mode, and power management are fully configurable — see [Nvidia Drivers](nvidia.md)
-- **Filesystem optimization:** Mount options, I/O scheduler, and TRIM can be tuned for fast scenery loading — see [Filesystem](filesystem.md)
+- **Display server choice:** [Wayland or X11](optimizations/displayserver.md) can be selected based on GPU and compositor behavior
+- **Driver control:** GPU driver version, persistence mode, and power management are fully configurable — see [Nvidia Drivers](optimizations/nvidia.md)
+- **Filesystem optimization:** Mount options, I/O scheduler, and TRIM can be tuned for fast scenery loading — see [Filesystem](optimizations/filesystem.md)
 - **Debuggability:** When micro-stutters occur, the cause can be traced down to the kernel level — scheduler decisions, interrupt timing, driver behavior. Nothing is a black box.
 - **Stability:** Debian Stable provides a predictable base with no surprise OS upgrades, no forced reboots, no breaking changes mid-session.
 

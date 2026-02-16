@@ -14,7 +14,7 @@ X-Plane 12 uses Vulkan exclusively as its rendering API. There is no OpenGL fall
 | AMD | Mesa RADV | 22.0+ |
 | Intel Arc | Mesa ANV | Supported in recent versions |
 
-For NVIDIA driver installation and optimization see [Nvidia Drivers](../nvidia.md).
+For NVIDIA driver installation and optimization see [Nvidia Drivers](../optimizations/nvidia.md).
 
 ### Zink — Plugin Compatibility
 
@@ -93,10 +93,10 @@ MESA_VK_WSI_PRESENT_MODE=mailbox ./X-Plane-x86_64
 
 ## Display Server
 
-X-Plane 12 has no native Wayland support. For details on session selection, latency measurements, and GPU-specific recommendations, see the [Display Server](../displayserver.md) guide.
+X-Plane 12 has no native Wayland support. For details on session selection, latency measurements, and GPU-specific recommendations, see the [Display Server](../optimizations/displayserver.md) guide.
 
 !!! tip "Recommendation: Use X11 session"
-    Under X11, X-Plane communicates directly with the X server — no translation, no overhead. Details: [X11 Session for X-Plane](../displayserver_x11.md)
+    Under X11, X-Plane communicates directly with the X server — no translation, no overhead. Details: [X11 Session for X-Plane](../optimizations/displayserver_x11.md)
 
 For fullscreen issues under Wayland, `--window=1920x1080` can serve as a workaround (see [Troubleshooting](#diagnostic-launch-with-cli-parameters)).
 
@@ -211,7 +211,7 @@ Backup: Save the entire `Output/preferences/` directory. Reset: Delete `X-Plane 
 ### Common Problems
 
 - **Device not detected:** SDL2 uses `/dev/input/event*`, not `/dev/input/js*`. If the device works in `jstest-gtk` but not in X-Plane → check udev rules for evdev nodes
-- **Device disappears after suspend:** Disable USB autosuspend — see [System Tuning](../systemtuning.md)
+- **Device disappears after suspend:** Disable USB autosuspend — see [System Tuning](../system/systemtuning.md)
 - **Phantom axes / multiple detection:** Some devices register as multiple input devices. In the `.joy` file, phantom controls can be marked as "hidden"
 - **Axes inverted:** "Reverse" checkbox in X-Plane axis settings
 

@@ -98,7 +98,7 @@ Der entscheidende Unterschied liegt darin, was jeder Kernel-Typ für optimale Er
 
 Manuelles CPU-Pinning oder aggressive Prioritätseskalation können unter Liquorix kontraproduktiv sein: Sie überschreiben genau die adaptiven Entscheidungen, für die PDS ausgelegt ist.
 
-Konkrete Konfigurationsschritte für beide Kernel-Typen finden sich auf der Seite [Systemtuning](systemtuning.md).
+Konkrete Konfigurationsschritte für beide Kernel-Typen finden sich auf der Seite [Systemtuning](../system/systemtuning.md).
 
 !!! warning "Sicherheitshinweis"
     Liquorix folgt der jeweils aktuellen Upstream-Kernel-Reihe und enthält damit die dort enthaltenen Sicherheitskorrekturen. Er wird jedoch **nicht von Debian Security Advisories abgedeckt** — DSAs gelten nur für Pakete im offiziellen Debian-Archiv. Sicherheitsupdates hängen vom Release-Zyklus eines einzelnen Maintainers ab, der hinter dem Debian-Sicherheitsteam zurückbleiben kann. Ein Wechsel zurück zum Stock-Kernel ist jederzeit über das GRUB-Bootmenü möglich.

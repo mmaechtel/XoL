@@ -52,7 +52,7 @@ Das Symptom in X-Plane: FPS-Einbrüche in dicht bebauten Szenerien oder an kompl
 
 Wenn der Hauptprozessor gleichzeitig [IRQ](../glossary.md#irq-interrupt-request)-Anfragen von [NVMe](../glossary.md#nvme-non-volatile-memory-express)-SSDs und der Netzwerkkarte verarbeiten muss, werden Rechenkerne aus ihren Berechnungsschleifen gerissen. Jeder Kontextwechsel kostet nicht nur CPU-Zyklen, sondern invalidiert auch Cache-Lines und stört das Pipelining. Ohne dediziertes IRQ-Pinning kann dies zu sporadischen Mikrorucklern führen — kurze [Frame-Time](../glossary.md#frame-time)-Spikes, die sich nicht reproduzieren lassen.
 
-Siehe [Systemtuning](systemtuning.md) für IRQ-Pinning und [CPU-Affinität](../glossary.md#cpu-affinität)
+Siehe [Systemtuning](system/systemtuning.md) für IRQ-Pinning und [CPU-Affinität](../glossary.md#cpu-affinität)
 
 ## Lokale E/A-Performance
 
@@ -73,7 +73,7 @@ Für X-Plane sind sowohl der sequentielle Durchsatz (große Texturdateien) als a
 
 Selbst mit schneller Hardware kann der I/O-Stack zum Engpass werden. Der [I/O-Scheduler](../glossary.md#io-scheduler) beeinflusst die Latenz bei gemischten Lese-/Schreib-Workloads, und das Dateisystem — [Ext4](../glossary.md#ext4-fourth-extended-filesystem), [Btrfs](../glossary.md#btrfs-b-tree-filesystem) oder XFS — bringt unterschiedliche Journaling-Strategien mit.
 
-Siehe [Dateisystem](filesystem.md) für I/O-Scheduler, [noatime](../glossary.md#noatime) und [TRIM](../glossary.md#trim)-Konfiguration
+Siehe [Dateisystem](optimizations/filesystem.md) für I/O-Scheduler, [noatime](../glossary.md#noatime) und [TRIM](../glossary.md#trim)-Konfiguration
 
 ### Page-Cache-Druck
 
@@ -129,7 +129,7 @@ Dieses Muster kann das System kurzfristig überlasten und die nächsten Frames v
 
 Alle drei Lastdimensionen wirken sich auf dieselbe Messgröße aus: die [Frame Time](../glossary.md#frame-time). Eine Frame Time von 33 ms entspricht ~30 [FPS](../glossary.md#fps-frames-per-second), 16,6 ms entspricht ~60 FPS. Jeder Spike in einer der drei Dimensionen — ein Cache-Miss, ein I/O-Stall, ein Netzwerk-Aussetzer — schlägt direkt auf die Frame Time durch.
 
-Warum gleichmäßige Frame Times wichtiger sind als hohe FPS und wie sich Frame-Time-Probleme mit dem Microprofiler diagnostizieren lassen, beschreiben die Kapitel [Systemtuning](systemtuning.md) und [X-Plane Performance](xplane/performance.md).
+Warum gleichmäßige Frame Times wichtiger sind als hohe FPS und wie sich Frame-Time-Probleme mit dem Microprofiler diagnostizieren lassen, beschreiben die Kapitel [Systemtuning](system/systemtuning.md) und [X-Plane Performance](xplane/performance.md).
 
 ## Optimierungsansätze im Überblick
 
@@ -140,29 +140,29 @@ Die folgenden Strategien adressieren die beschriebenen Lastdimensionen. Jede wir
 - AutoOrtho puffert gestreamte Texturen lokal auf der [NVMe](../glossary.md#nvme-non-volatile-memory-express)-SSD, bevor X-Plane sie anfordert — der wichtigste Schutz gegen Streaming-Aussetzer
 - Cache-Größe und Prefetch-Verhalten lassen sich in AutoOrtho konfigurieren
 - Dateisystem mit [noatime](../glossary.md#noatime) und passendem [I/O-Scheduler](../glossary.md#io-scheduler) entlasten den I/O-Pfad zusätzlich
-- Siehe [AutoOrtho](addon/autoortho.md) und [Dateisystem](filesystem.md)
+- Siehe [AutoOrtho](addon/autoortho.md) und [Dateisystem](optimizations/filesystem.md)
 
 **IRQ-Pinning und Thread-Affinität**
 
 - Netzwerk-[IRQs](../glossary.md#irq-interrupt-request) und I/O-Threads auf dedizierte CPU-Kerne legen, damit der X-Plane-Hauptthread ungestört rechnen kann
 - [irqbalance](../glossary.md#irqbalance) konfigurieren, um bestimmte Kerne von Interrupts freizuhalten
-- Siehe [Systemtuning](systemtuning.md)
+- Siehe [Systemtuning](system/systemtuning.md)
 
 **Monitoring und Profiling**
 
 - CPU-Auslastung pro Kern überwachen — Idle-Kerne bei laufender Simulation deuten auf I/O-Stalls hin
 - I/O-Latenz und Netzwerk-Durchsatz parallel messen, um die aktive Engpassdimension zu identifizieren
-- Siehe [System Monitoring](systemtools.md)
+- Siehe [System Monitoring](system/systemtools.md)
 
 ## Weiterführende Kapitel
 
 | Thema | Seite | Schwerpunkt |
 |---|---|---|
-| System-Tuning | [Einführung](systemtuning_intro.md) | Überblick und Video |
-| CPU & Interrupts | [Tuning](systemtuning.md) | [CPU Governor](../glossary.md#cpu-governor), IRQ-Pinning, [Kernel-Parameter](../glossary.md#kernel-parameter) |
-| Storage & Dateisystem | [Dateisystem](filesystem.md) | I/O-Scheduler, Mount-Optionen, TRIM |
-| Monitoring | [System Monitoring](systemtools.md) | CPU-, I/O- und Netzwerk-Analyse |
+| System-Tuning | [Einführung](system/index.md) | Überblick und Video |
+| CPU & Interrupts | [Tuning](system/systemtuning.md) | [CPU Governor](../glossary.md#cpu-governor), IRQ-Pinning, [Kernel-Parameter](../glossary.md#kernel-parameter) |
+| Storage & Dateisystem | [Dateisystem](optimizations/filesystem.md) | I/O-Scheduler, Mount-Optionen, TRIM |
+| Monitoring | [System Monitoring](system/systemtools.md) | CPU-, I/O- und Netzwerk-Analyse |
 | X-Plane intern | [Performance](xplane/performance.md) | Microprofiler, FPS-Anzeige, Grafikeinstellungen |
 | Ortho-Streaming | [AutoOrtho](addon/autoortho.md) | Cache-Konfiguration, Prefetching |
-| GPU-Treiber | [Nvidia](nvidia.md) | Treiberoptimierung, Persistence Mode |
-| Kernel | [Liquorix](liquorix.md) | Low-Latency-Kernel, Scheduler |
+| GPU-Treiber | [Nvidia](optimizations/nvidia.md) | Treiberoptimierung, Persistence Mode |
+| Kernel | [Liquorix](optimizations/liquorix.md) | Low-Latency-Kernel, Scheduler |

@@ -161,11 +161,11 @@ Zuordnung von Docs-Seiten zu `research/<kategorie>/`:
 |-----------|------------|
 | `addons/` | `addon/*.md` |
 | `audio/` | (Audio/PipeWire-Themen) |
-| `display-server/` | `displayserver.md`, `displayserver_wayland.md`, `displayserver_x11.md` |
+| `display-server/` | `optimizations/displayserver.md`, `optimizations/displayserver_wayland.md`, `optimizations/displayserver_x11.md` |
 | `performance_overview/` | `performance_overview.md` |
-| `proton/` | `wine.md` |
-| `systemtools/` | `systemtools.md` |
-| `systemtuning/` | `systemtuning.md`, `systemtuning_intro.md`, `filesystem.md`, `liquorix.md` |
+| `proton/` | `extensions/wine.md` |
+| `systemtools/` | `system/systemtools.md` |
+| `systemtuning/` | `system/systemtuning.md`, `system/index.md`, `optimizations/filesystem.md`, `optimizations/liquorix.md` |
 | `szenerie/` | `scenery.md`, `scenery_components.md` |
 | `xplane-config/` | `xplane/*.md` |
 | `analyses/` | Querschnitts-Analysen (kein festes Docs-Mapping) |

@@ -15,7 +15,7 @@ Linux distributions differ not just in package manager and desktop environment, 
 The combination of kernel version, scheduler configuration, power management, drivers, and sysctl parameters determines system behavior. Distributions that are already optimized for low latency or gaming include many of the settings described here out of the box.
 
 !!! info "Debian as baseline"
-    The following guides are based on **Debian** (Trixie/13) as the starting point — a general-purpose distribution that requires no adjustment for general use but can be specifically optimized for latency-sensitive applications like X-Plane. The standard kernel is replaced with the optimized [Liquorix Kernel](liquorix.md).
+    The following guides are based on **Debian** (Trixie/13) as the starting point — a general-purpose distribution that requires no adjustment for general use but can be specifically optimized for latency-sensitive applications like X-Plane. The standard kernel is replaced with the optimized [Liquorix Kernel](../optimizations/liquorix.md).
 
     If you're using an already-tuned distribution like Nobara or Ubuntu Studio, you should **not blindly apply these recommendations**. There, a kernel swap can break existing optimizations, and double-tuning often leads to worse results. In that case, it's better to check individual parameters selectively rather than applying the entire profile.
 
@@ -99,7 +99,7 @@ uname -r
 - Contains `liquorix` → Profile B (Liquorix)
 - Otherwise → Profile A (Standard kernel)
 
-For installing Liquorix, see [Liquorix Kernel](liquorix.md).
+For installing Liquorix, see [Liquorix Kernel](../optimizations/liquorix.md).
 
 ## Profile A: Debian Standard Kernel
 

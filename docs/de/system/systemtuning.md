@@ -15,7 +15,7 @@ Linux-Distributionen unterscheiden sich nicht nur in Paketmanager und Desktop-Um
 Das Zusammenspiel aus Kernel-Version, Scheduler-Konfiguration, Energieverwaltung, Treibern und sysctl-Parametern ergibt das Systemverhalten. Distributionen, die bereits auf niedrige Latenz oder Gaming optimiert sind, bringen viele der hier beschriebenen Einstellungen bereits mit.
 
 !!! info "Debian als Basis"
-    Die folgenden Anleitungen beziehen sich auf **Debian** (Trixie/13) als Ausgangspunkt — eine Allzweck-Distribution, die für allgemeine Nutzung keine Anpassung erfordert, aber für latenzsensitive Anwendungen wie X-Plane gezielt optimiert werden kann. Der Standardkernel wird dabei durch den optimierten [Liquorix Kernel](liquorix.md) ersetzt.
+    Die folgenden Anleitungen beziehen sich auf **Debian** (Trixie/13) als Ausgangspunkt — eine Allzweck-Distribution, die für allgemeine Nutzung keine Anpassung erfordert, aber für latenzsensitive Anwendungen wie X-Plane gezielt optimiert werden kann. Der Standardkernel wird dabei durch den optimierten [Liquorix Kernel](../optimizations/liquorix.md) ersetzt.
 
     Wer eine bereits getunte Distribution wie Nobara oder Ubuntu Studio verwendet, sollte die Empfehlungen **nicht pauschal übernehmen**. Dort kann ein Kerneltausch bestehende Optimierungen zerstören, und doppeltes Tuning führt oft zu schlechteren Ergebnissen. In diesem Fall ist es sinnvoller, einzelne Parameter gezielt zu prüfen, anstatt das gesamte Profil anzuwenden.
 
@@ -99,7 +99,7 @@ uname -r
 - Enthält `liquorix` → Profil B (Liquorix)
 - Sonst → Profil A (Standardkernel)
 
-Für die Installation von Liquorix siehe [Liquorix Kernel](liquorix.md).
+Für die Installation von Liquorix siehe [Liquorix Kernel](../optimizations/liquorix.md).
 
 ## Profil A: Debian Standardkernel
 

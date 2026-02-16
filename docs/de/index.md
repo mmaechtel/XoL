@@ -6,7 +6,7 @@ Diese Dokumentation behandelt Einrichtung und Optimierung von X-Plane 12 (Lamina
 
 - **Warum Linux?** [Einführung](intro.md) erklärt, was X-Plane unter Linux besonders macht.
 - **Neu mit X-Plane unter Linux?** [Erste Schritte](begin.md) behandelt Systemvoraussetzungen, Installation und ersten Start.
-- **X-Plane läuft bereits?** [Performance-Grundlagen](performance_overview.md) erklärt die drei Lastdimensionen (CPU, I/O, Netzwerk) als Basis für das [System-Tuning](systemtuning.md).
+- **X-Plane läuft bereits?** [Performance-Grundlagen](performance_overview.md) erklärt die drei Lastdimensionen (CPU, I/O, Netzwerk) als Basis für das [System-Tuning](system/systemtuning.md).
 
 ## Über diese Dokumentation
 
@@ -33,7 +33,7 @@ Diese Dokumentation ist ein offenes Projekt. Verbesserungen oder Ergänzungen k�
 ## Letzte Änderungen
 
 ### 2026-02-16
-- Neues Video: [Display-Server](displayserver.md) — Entscheidungshilfe X11 vs Wayland
+- Neues Video: [Display-Server](optimizations/displayserver.md) — Entscheidungshilfe X11 vs Wayland
 - Neue Videos: [Einführung](intro.md) — Doku-Tour durch XoL (DE + EN)
 - [ToLiss-Ökosystem](addon/toliss_ecosystem.md): simbrief_hub-Abschnitt ergänzt, neue Seite [ToLiss Mods](addon/toliss_mods.md)
 
@@ -45,7 +45,7 @@ Diese Dokumentation ist ein offenes Projekt. Verbesserungen oder Ergänzungen k�
 - [FlyWithLua](addon/flywithlua.md): Allgemeine Skript-Installationsanleitung ergänzt
 
 ### 2026-02-14
-- Neue Seite [System-Tuning Einführung](systemtuning_intro.md), Videos eingebettet (DE + EN)
+- Neue Seite [System-Tuning Einführung](system/index.md), Videos eingebettet (DE + EN)
 - [Glossar](glossary.md) erweitert
 
 

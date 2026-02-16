@@ -25,4 +25,4 @@ Installation requires two steps: downloading the engine OBJ files from the Thres
 
 !!! warning "Linux: Installer is Windows-only"
 
-    The Carda Engine Installer is a Windows `.exe`. On Linux, it can be run inside a [KVM](../kvm.md) Windows VM. The engine models themselves (OBJ/DDS) are platform-independent and work on Linux without modification. The installer must be re-run after every ToLiss aircraft update.
+    The Carda Engine Installer is a Windows `.exe`. On Linux, it can be run inside a [KVM](../extensions/kvm.md) Windows VM. The engine models themselves (OBJ/DDS) are platform-independent and work on Linux without modification. The installer must be re-run after every ToLiss aircraft update.
