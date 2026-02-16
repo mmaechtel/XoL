@@ -26,6 +26,24 @@ Bei Blocker: AskUserQuestion — Problem melden, Abbruch anbieten.
 
 ---
 
+## Phase 0 — INBOX verarbeiten
+
+Neue Videos werden in `docs/assets/video/{de,en}/INBOX/` abgelegt. Vor dem Scan pruefen, ob dort MP4-Dateien liegen:
+
+```
+Glob: docs/assets/video/{de,en}/INBOX/*.mp4
+```
+
+Fuer jede gefundene MP4-Datei:
+
+1. Zielverzeichnis erstellen: `docs/assets/video/{lang}/{basisname}/` (Basisname = Dateiname ohne `.mp4`)
+2. Datei verschieben: `mv INBOX/{datei}.mp4 {basisname}/{datei}.mp4`
+3. Meldung ausgeben: "Video `{datei}.mp4` aus INBOX verschoben nach `{basisname}/`"
+
+Falls INBOX leer oder nicht vorhanden: Ueberspringen, weiter mit Phase 1.
+
+---
+
 ## Phase 1 — Scan
 
 1. **Alle MP4s finden:**

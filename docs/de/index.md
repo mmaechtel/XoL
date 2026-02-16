@@ -32,6 +32,9 @@ Diese Dokumentation ist ein offenes Projekt. Verbesserungen oder Ergänzungen k�
 
 ## Letzte Änderungen
 
+### 2026-02-16
+- Neue Videos: [Einführung](intro.md) — Doku-Tour durch XoL (DE + EN)
+
 ### 2026-02-15
 - Neue Addon-Seiten: [SGES](addon/sges.md), [KabinXP](addon/kabinxp.md), [LST](addon/lst.md), [LinuxTrack](addon/linuxtrack.md), [XLinSpeak](addon/xlinspeak.md), [WINCTRL](addon/winctrl.md), [TerrainRadar](addon/terrainradar.md), [NOAA Weather](addon/noaa_weather.md), [MobiFlight](addon/mobiflight.md), [SayIntentions.AI](addon/sayintentions.md)
 - Neue Sounds-Kategorie: [KOSP Project](addon/kosp_project.md), [Mango Studios](addon/mango_studios.md)

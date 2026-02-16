@@ -10,6 +10,16 @@ Video collection for X-Plane on Linux.
 
 <div class="video-card" markdown>
 
+### X-Plane on Linux
+
+<video controls width="100%" preload="metadata" poster="../assets/video/en/X-Plane_on_Linux/X-Plane_on_Linux.jpg">
+  <source src="../assets/video/en/X-Plane_on_Linux/X-Plane_on_Linux.mp4" type="video/mp4">
+</video>
+
+</div>
+
+<div class="video-card" markdown>
+
 ### Mastering scenery packs
 
 <video controls width="100%" preload="metadata" poster="../assets/video/en/Mastering_scenery_packs/Mastering_scenery_packs.jpg">

@@ -1,5 +1,11 @@
 # Introduction
 
+<div class="video-container" markdown>
+<video controls width="100%" preload="metadata" poster="../assets/video/en/X-Plane_on_Linux/X-Plane_on_Linux.jpg">
+  <source src="../assets/video/en/X-Plane_on_Linux/X-Plane_on_Linux.mp4" type="video/mp4">
+</video>
+</div>
+
 ??? abstract "What makes X-Plane different"
 
     [X-Plane](glossary.md#x-plane) stands out from other flight simulators through its simulation-oriented approach. The flight physics are based on [Blade Element Theory](glossary.md#blade-element-theory) — instead of pre-made lookup tables, airflow and forces are calculated in real-time for each aircraft segment. This extends to engine and systems simulation as well as weather with atmospheric effects.

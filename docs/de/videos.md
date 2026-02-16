@@ -10,6 +10,16 @@ Videosammlung rund um X-Plane auf Linux.
 
 <div class="video-card" markdown>
 
+### X-Plane unter Linux: Doku-Tour
+
+<video controls width="100%" preload="metadata" poster="../assets/video/de/X-Plane_unter_Linux__Doku-Tour/X-Plane_unter_Linux__Doku-Tour.jpg">
+  <source src="../assets/video/de/X-Plane_unter_Linux__Doku-Tour/X-Plane_unter_Linux__Doku-Tour.mp4" type="video/mp4">
+</video>
+
+</div>
+
+<div class="video-card" markdown>
+
 ### X11 vs. Wayland für X-Plane
 
 <video controls width="100%" preload="metadata" poster="../assets/video/de/X11_vs_Wayland/X11_vs_Wayland.jpg">

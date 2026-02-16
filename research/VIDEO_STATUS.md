@@ -13,3 +13,5 @@
 | The_Performance_Puzzle.mp4 | en/The_Performance_Puzzle | videos.md (EN), index.md (EN, featured), performance_overview.md (EN) | eingebettet | 2026-02-15 |
 | Vom_Briefing_zum_Gate.mp4 | de/Vom_Briefing_zum_Gate | videos.md (DE), index.md (DE, featured), toliss_ecosystem.md (DE) | eingebettet | 2026-02-15 |
 | Beyond_the_Default_Cockpit.mp4 | en/Beyond_the_Default_Cockpit | videos.md (EN), index.md (EN, featured), toliss_ecosystem.md (EN) | eingebettet | 2026-02-15 |
+| X-Plane_unter_Linux__Doku-Tour.mp4 | de/X-Plane_unter_Linux__Doku-Tour | videos.md (DE), intro.md (DE) | eingebettet | 2026-02-16 |
+| X-Plane_on_Linux.mp4 | en/X-Plane_on_Linux | videos.md (EN), intro.md (EN) | eingebettet | 2026-02-16 |
