@@ -33,31 +33,19 @@ Diese Dokumentation ist ein offenes Projekt. Verbesserungen oder Ergänzungen k�
 ## Letzte Änderungen
 
 ### 2026-02-16
-- Barrierefreiheit verbessert: größere Schrift, Tastatur-Focus-Indikatoren, Skip-Link, Video-ARIA-Labels
-- Quellenabschnitte überarbeitet: Arch-Wiki-Links durch distro-unabhängige Quellen ersetzt
-- [Szenerie-Komponenten](scenery_components.md) auditiert: Prioritätsrichtung korrigiert, DDS-Format, OSM-Klarstellung, Ton angeglichen
 - Neues Video: [Display-Server](displayserver.md) — Entscheidungshilfe X11 vs Wayland
 - Neue Videos: [Einführung](intro.md) — Doku-Tour durch XoL (DE + EN)
-- [Szenerien-Komponenten](scenery_components.md): Fachbegriffe mit [Glossar](glossary.md) verlinkt, neuer Eintrag Global Airports
-- [Szenerie-Komponenten](scenery_components.md) umstrukturiert: Ladereihenfolge als Tabelle, Admonition-Boxen statt verschachtelter Listen
-- [ToLiss-Ökosystem](addon/toliss_ecosystem.md) umstrukturiert: simbrief_hub-Abschnitt ergänzt, Mods auf [eigene Seite](addon/toliss_mods.md) ausgelagert
+- [ToLiss-Ökosystem](addon/toliss_ecosystem.md): simbrief_hub-Abschnitt ergänzt, neue Seite [ToLiss Mods](addon/toliss_mods.md)
 
 ### 2026-02-15
 - Neue Addon-Seiten: [SGES](addon/sges.md), [KabinXP](addon/kabinxp.md), [LST](addon/lst.md), [LinuxTrack](addon/linuxtrack.md), [XLinSpeak](addon/xlinspeak.md), [WINCTRL](addon/winctrl.md), [TerrainRadar](addon/terrainradar.md), [NOAA Weather](addon/noaa_weather.md), [MobiFlight](addon/mobiflight.md), [SayIntentions.AI](addon/sayintentions.md)
 - Neue Sounds-Kategorie: [KOSP Project](addon/kosp_project.md), [Mango Studios](addon/mango_studios.md)
 - Neue Seite [Performance-Grundlagen](performance_overview.md)
 - ATC-Sektion: 6 Flugphasen-Seiten ([Pushback & Taxi](flight_operations/pushback_taxi.md), [Start](flight_operations/takeoff.md), [Abflug & Steigflug](flight_operations/departure.md), [Streckenflug](flight_operations/enroute.md), [Anflug](flight_operations/approach.md), [Landung & Abstellen](flight_operations/landing.md))
-- [ToLiss-Ökosystem](addon/toliss_ecosystem.md) umstrukturiert, Videos eingebettet
-- Bestehende Addon-Seiten überarbeitet: Querverweise, Korrekturen, Preise und redundante Linux-Hinweise entfernt
-- Navigation: Kategorien flachgezogen, Sounds-Kategorie hinzugefügt
 - [FlyWithLua](addon/flywithlua.md): Allgemeine Skript-Installationsanleitung ergänzt
-- [Performance](xplane/performance.md) überarbeitet: Fließtext statt verschachtelter Listen, Richtwert- und Microprofiler-Tabellen, Diagnose-Workflows, Quellenabschnitt
 
 ### 2026-02-14
 - Neue Seite [System-Tuning Einführung](systemtuning_intro.md), Videos eingebettet (DE + EN)
-- [Liquorix-Kernel](liquorix.md) auditiert: Scheduler-Beschreibung korrigiert, Schnellinstallation ergänzt, Seite überarbeitet
-- [Nvidia-Treiber](nvidia.md), [Systemtuning](systemtuning.md), [Systemtools](systemtools.md), [X-Plane Konfiguration](xplane/config.md) auditiert und faktengeprüft
-- [Erste Schritte](begin.md) überarbeitet, [Glossar](glossary.md) erweitert
-- Navigation: System Monitoring unter System-Tuning gruppiert
+- [Glossar](glossary.md) erweitert
 
 

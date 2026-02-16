@@ -33,31 +33,19 @@ This documentation is an open project. Improvements or additions can be contribu
 ## Recent Changes
 
 ### 2026-02-16
-- Accessibility improved: larger fonts, keyboard focus indicators, skip link, video ARIA labels
-- Source sections revised: Arch Wiki links replaced with distro-independent sources
-- [Scenery Components](scenery_components.md) audited: priority direction corrected, DDS format, OSM clarification, tone aligned
 - New video: [Display Server](displayserver.md) — X11 vs Wayland decision guide
 - New videos: [Introduction](intro.md) — guided tour through XoL (DE + EN)
-- [Scenery Components](scenery_components.md): key terms linked to [Glossary](glossary.md), new entry Global Airports
-- [Scenery Components](scenery_components.md) restructured: load order as table, admonition boxes instead of nested lists
-- [ToLiss Ecosystem](addon/toliss_ecosystem.md) restructured: simbrief_hub section added, Mods split to [own page](addon/toliss_mods.md)
+- [ToLiss Ecosystem](addon/toliss_ecosystem.md): simbrief_hub section added, new page [ToLiss Mods](addon/toliss_mods.md)
 
 ### 2026-02-15
 - New addon pages: [SGES](addon/sges.md), [KabinXP](addon/kabinxp.md), [LST](addon/lst.md), [LinuxTrack](addon/linuxtrack.md), [XLinSpeak](addon/xlinspeak.md), [WINCTRL](addon/winctrl.md), [TerrainRadar](addon/terrainradar.md), [NOAA Weather](addon/noaa_weather.md), [MobiFlight](addon/mobiflight.md), [SayIntentions.AI](addon/sayintentions.md)
 - New Sounds category: [KOSP Project](addon/kosp_project.md), [Mango Studios](addon/mango_studios.md)
 - New page [Performance Fundamentals](performance_overview.md)
 - ATC section: 6 flight phase pages ([Pushback & Taxi](flight_operations/pushback_taxi.md), [Takeoff](flight_operations/takeoff.md), [Departure & Climb](flight_operations/departure.md), [En Route](flight_operations/enroute.md), [Approach](flight_operations/approach.md), [Landing & Taxi In](flight_operations/landing.md))
-- [ToLiss Ecosystem](addon/toliss_ecosystem.md) restructured, videos embedded
-- Existing addon pages revised: cross-references, corrections, prices and redundant Linux notes removed
-- Navigation: categories flattened, Sounds category added
 - [FlyWithLua](addon/flywithlua.md): general script installation guide added
-- [Performance](xplane/performance.md) revised: flowing text instead of nested lists, reference and Microprofiler tables, diagnostic workflows, sources section
 
 ### 2026-02-14
 - New page [System Tuning Introduction](systemtuning_intro.md), videos embedded (DE + EN)
-- [Liquorix Kernel](liquorix.md) audited: scheduler description corrected, quick install method added, page rewritten
-- [Nvidia Driver](nvidia.md), [System Tuning](systemtuning.md), [System Tools](systemtools.md), [X-Plane Configuration](xplane/config.md) audited and fact-checked
-- [Getting Started](begin.md) revised, [Glossary](glossary.md) expanded
-- Navigation: System Monitoring grouped under System Tuning
+- [Glossary](glossary.md) expanded
 
 
