@@ -16,11 +16,11 @@ The examples shown here are based on Debian Linux but can be easily adapted to o
 
 ## Documentation Content
 
-The documentation covers the most important areas of X-Plane configuration under Linux. The focus is on optimal settings for X-Plane, performance optimization through kernel, drivers, and system settings, as well as the installation and configuration of important extensions like AutoOrtho. Additionally, common problems and their solutions are thoroughly addressed. A special emphasis is placed on performance analysis using integrated and external tools, filesystem optimization for fast loading times, and hardware-specific adjustments for maximum performance.
+The documentation covers X-Plane configuration and optimization under Linux. The core focus is on system tuning — kernel parameters, CPU governor, GPU drivers, display server selection, and filesystem optimization — complemented by performance analysis using both X-Plane's built-in tools and Linux monitoring utilities. Additional sections cover scenery management with orthophoto streaming, flight operations including ATC procedures across all flight phases, and a reference catalog of Linux-compatible addons and plugins.
 
 ## Guide Structure
 
-The technical guides are modular in design and enable flexible implementation. You can implement individual components as needed or adapt the entire system according to your requirements. Each guide describes the goal and benefit of the change, shows the necessary steps, explains important configuration options, and provides troubleshooting tips. The guides are organized into logical sections: Basic system optimization, performance monitoring and analysis, hardware-specific adjustments, and advanced configurations for special use cases.
+The guides are modular — individual topics can be implemented independently or combined as needed. Each guide explains the goal, shows the necessary steps, and provides troubleshooting tips. The content is organized into sections covering Linux system optimization, X-Plane configuration and performance, scenery management, addons and plugins, and flight operations.
 
 ## Contributing
 
@@ -45,6 +45,7 @@ This documentation is an open project. Improvements or additions can be contribu
 
 ### 2026-02-14
 - New page [System Tuning Introduction](systemtuning_intro.md), videos embedded (DE + EN)
+- [Liquorix Kernel](liquorix.md) audited: scheduler description corrected, quick install method added, page rewritten
 - [Nvidia Driver](nvidia.md), [System Tuning](systemtuning.md), [System Tools](systemtools.md), [X-Plane Configuration](xplane/config.md) audited and fact-checked
 - [Getting Started](begin.md) revised, [Glossary](glossary.md) expanded
 - Navigation: System Monitoring grouped under System Tuning
