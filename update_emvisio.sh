@@ -86,6 +86,13 @@ RSYNC_OPTS=(
     --exclude='Maps/'
 )
 
+# macOS stores filenames in NFD (decomposed Unicode: u + combining ¨)
+# Linux expects NFC (composed: ü). Without conversion, filenames with
+# umlauts get 404s on the server.
+if [ "$(uname)" = "Darwin" ]; then
+    RSYNC_OPTS+=(--iconv=utf-8-mac,utf-8)
+fi
+
 # Sync to remote
 if [ "$DRY_RUN" = true ]; then
     echo "Performing dry run (no files will be transferred):"
