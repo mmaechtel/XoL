@@ -1,8 +1,8 @@
 # Performance-Grundlagen
 
 <div class="video-container" markdown>
-<video controls width="100%" preload="metadata" poster="../assets/video/de/performance_with_simulation_software/Das_Performance-Rätsel.jpg">
-  <source src="../assets/video/de/performance_with_simulation_software/Das_Performance-Rätsel.mp4" type="video/mp4">
+<video controls width="100%" preload="metadata" poster="../assets/video/de/Das_Performance-Rätsel/Das_Performance-Rätsel.jpg">
+  <source src="../assets/video/de/Das_Performance-Rätsel/Das_Performance-Rätsel.mp4" type="video/mp4">
 </video>
 </div>
 

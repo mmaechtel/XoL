@@ -11,8 +11,8 @@ This documentation covers setup and optimization of X-Plane 12 (Laminar Research
 ## Featured Video: Beyond the Default Cockpit
 
 <div class="video-container" markdown>
-<video controls width="100%" preload="metadata" poster="../assets/video/en/toliss_flow_with_plugins/Beyond_the_Default_Cockpit.jpg">
-  <source src="../assets/video/en/toliss_flow_with_plugins/Beyond_the_Default_Cockpit.mp4" type="video/mp4">
+<video controls width="100%" preload="metadata" poster="../assets/video/en/Beyond_the_Default_Cockpit/Beyond_the_Default_Cockpit.jpg">
+  <source src="../assets/video/en/Beyond_the_Default_Cockpit/Beyond_the_Default_Cockpit.mp4" type="video/mp4">
 </video>
 </div>
 

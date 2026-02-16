@@ -12,8 +12,8 @@ Videosammlung rund um X-Plane auf Linux.
 
 ### X-Plane unter Linux
 
-<video controls width="100%" preload="metadata" poster="../assets/video/de/xol_Xplane_on_Linux/X-Plane_unter_Linux.jpg">
-  <source src="../assets/video/de/xol_Xplane_on_Linux/X-Plane_unter_Linux.mp4" type="video/mp4">
+<video controls width="100%" preload="metadata" poster="../assets/video/de/X-Plane_unter_Linux/X-Plane_unter_Linux.jpg">
+  <source src="../assets/video/de/X-Plane_unter_Linux/X-Plane_unter_Linux.mp4" type="video/mp4">
 </video>
 
 </div>
@@ -32,8 +32,8 @@ Videosammlung rund um X-Plane auf Linux.
 
 ### X-Planes Welt: Richtig gebaut
 
-<video controls width="100%" preload="metadata" poster="../assets/video/de/xplane_und_scenery_packs.ini/X-Planes_Welt__Richtig_gebaut.jpg">
-  <source src="../assets/video/de/xplane_und_scenery_packs.ini/X-Planes_Welt__Richtig_gebaut.mp4" type="video/mp4">
+<video controls width="100%" preload="metadata" poster="../assets/video/de/X-Planes_Welt__Richtig_gebaut/X-Planes_Welt__Richtig_gebaut.jpg">
+  <source src="../assets/video/de/X-Planes_Welt__Richtig_gebaut/X-Planes_Welt__Richtig_gebaut.mp4" type="video/mp4">
 </video>
 
 </div>
@@ -42,8 +42,8 @@ Videosammlung rund um X-Plane auf Linux.
 
 ### System-Tuning für X-Plane
 
-<video controls width="100%" preload="metadata" poster="../assets/video/de/systemtools/System-Tuning_für_X-Plane.jpg">
-  <source src="../assets/video/de/systemtools/System-Tuning_für_X-Plane.mp4" type="video/mp4">
+<video controls width="100%" preload="metadata" poster="../assets/video/de/System-Tuning_für_X-Plane/System-Tuning_für_X-Plane.jpg">
+  <source src="../assets/video/de/System-Tuning_für_X-Plane/System-Tuning_für_X-Plane.mp4" type="video/mp4">
 </video>
 
 </div>
@@ -52,8 +52,8 @@ Videosammlung rund um X-Plane auf Linux.
 
 ### Ortho-Streaming für X-Plane
 
-<video controls width="100%" preload="metadata" poster="../assets/video/de/ortho_streamer_software/Ortho-Streaming_für_X-Plane.jpg">
-  <source src="../assets/video/de/ortho_streamer_software/Ortho-Streaming_für_X-Plane.mp4" type="video/mp4">
+<video controls width="100%" preload="metadata" poster="../assets/video/de/Ortho-Streaming_für_X-Plane/Ortho-Streaming_für_X-Plane.jpg">
+  <source src="../assets/video/de/Ortho-Streaming_für_X-Plane/Ortho-Streaming_für_X-Plane.mp4" type="video/mp4">
 </video>
 
 </div>
@@ -62,8 +62,8 @@ Videosammlung rund um X-Plane auf Linux.
 
 ### Das Performance-Rätsel
 
-<video controls width="100%" preload="metadata" poster="../assets/video/de/performance_with_simulation_software/Das_Performance-Rätsel.jpg">
-  <source src="../assets/video/de/performance_with_simulation_software/Das_Performance-Rätsel.mp4" type="video/mp4">
+<video controls width="100%" preload="metadata" poster="../assets/video/de/Das_Performance-Rätsel/Das_Performance-Rätsel.jpg">
+  <source src="../assets/video/de/Das_Performance-Rätsel/Das_Performance-Rätsel.mp4" type="video/mp4">
 </video>
 
 </div>
@@ -72,8 +72,8 @@ Videosammlung rund um X-Plane auf Linux.
 
 ### Vom Briefing zum Gate
 
-<video controls width="100%" preload="metadata" poster="../assets/video/de/Toliss_Plugin_Flow/Vom_Briefing_zum_Gate.jpg">
-  <source src="../assets/video/de/Toliss_Plugin_Flow/Vom_Briefing_zum_Gate.mp4" type="video/mp4">
+<video controls width="100%" preload="metadata" poster="../assets/video/de/Vom_Briefing_zum_Gate/Vom_Briefing_zum_Gate.jpg">
+  <source src="../assets/video/de/Vom_Briefing_zum_Gate/Vom_Briefing_zum_Gate.mp4" type="video/mp4">
 </video>
 
 </div>

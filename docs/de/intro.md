@@ -1,8 +1,8 @@
 # Einführung
 
 <div class="video-container" markdown>
-<video controls width="100%" preload="metadata" poster="../assets/video/de/xol_Xplane_on_Linux/X-Plane_unter_Linux.jpg">
-  <source src="../assets/video/de/xol_Xplane_on_Linux/X-Plane_unter_Linux.mp4" type="video/mp4">
+<video controls width="100%" preload="metadata" poster="../assets/video/de/X-Plane_unter_Linux/X-Plane_unter_Linux.jpg">
+  <source src="../assets/video/de/X-Plane_unter_Linux/X-Plane_unter_Linux.mp4" type="video/mp4">
 </video>
 </div>
 

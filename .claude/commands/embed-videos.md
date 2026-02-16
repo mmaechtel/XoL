@@ -57,6 +57,25 @@ Falls keine unverarbeiteten Videos: Meldung ausgeben und Skill beenden.
 
 ---
 
+## Phase 1.5 — Namenskonvention pruefen
+
+Fuer jedes gefundene Video-Verzeichnis pruefen, ob der Verzeichnisname dem Basisnamen der enthaltenen MP4-Datei entspricht (ohne `.mp4`).
+
+1. **Verzeichnisname ermitteln:** Der letzte Pfadbestandteil unter `video/{lang}/`
+2. **Video-Basisname ermitteln:** Dateiname der MP4-Datei ohne Extension
+3. **Vergleich:** Verzeichnisname == Video-Basisname?
+
+**Falls nicht:**
+
+- AskUserQuestion: "Verzeichnis `{alt}` enthaelt Video `{videoname}.mp4`. Umbenennen zu `{videoname}`?"
+- Bei Zustimmung:
+    1. `mv docs/assets/video/{lang}/{alt} docs/assets/video/{lang}/{videoname}` auf dem Share ausfuehren
+    2. Alle bestehenden `<video>`/`<source>`/`poster`-Pfade in `docs/{lang}/` anpassen (alte Verzeichnisnamen durch neue ersetzen)
+    3. `research/VIDEO_STATUS.md` aktualisieren (Spalte "Verzeichnis")
+- Bei Ablehnung: Warnung ausgeben, mit altem Namen weiterarbeiten
+
+---
+
 ## Phase 2 — Video-Seite
 
 Zentrale Seite `docs/de/videos.md` und `docs/en/videos.md` anlegen oder aktualisieren.
@@ -160,16 +179,16 @@ Das Unterverzeichnis (unterhalb von `de/` bzw. `en/`) bestimmt die Zielseite(n).
 
 | Verzeichnis/Dateiname enthaelt | Zielseite(n) |
 |-------------------------------|-------------|
-| `xol`, `Xplane_on_Linux` | `index.md` (nur thematisch) |
+| `xol`, `Xplane_on_Linux`, `X-Plane_unter`, `X-Plane_on` | `intro.md` |
 | `X11`, `Wayland`, `display` | `displayserver.md` |
-| `tuning`, `system` | `systemtuning.md` |
+| `tuning`, `system`, `smoother`, `two_paths` | `systemtuning_intro.md` |
 | `nvidia` | `nvidia.md` |
 | `config` | `xplane/config.md` |
 | `liquorix` | `liquorix.md` |
-| `scenery`, `szenerie`, `scenery_packs` | `scenery_components.md` |
-| `ortho` | `addon/orthophotography_intro.md` |
-| `performance` | `performance_overview.md` |
-| `toliss`, `ecosystem` | `addon/toliss_ecosystem.md` |
+| `scenery`, `szenerie`, `scenery_packs`, `welt`, `richtig_gebaut`, `mastering` | `scenery_components.md` |
+| `ortho`, `streaming` | `addon/orthophotography_intro.md` |
+| `performance`, `puzzle`, `rätsel` | `performance_overview.md` |
+| `toliss`, `ecosystem`, `briefing`, `gate`, `cockpit` | `addon/toliss_ecosystem.md` |
 | `atc`, `vatsim`, `flight_ops` | `flight_operations/overview.md` |
 | `network`, `kvm` | `kvm.md` |
 | `filesystem`, `nvme`, `storage` | `filesystem.md` |
@@ -307,6 +326,7 @@ xdg-open docs/assets/video/
 ## Hinweise
 
 - **Videos liegen auf NFS-Share**, nicht im Git-Repo. `docs/assets/video` ist ein Symlink auf `/mnt/videos/XoL/video` (Linux). Das Share muss gemountet sein, bevor der Skill laeuft. Neue Videos werden direkt auf dem Share abgelegt (nicht ins Repo committed).
+- **Namenskonvention:** Der Verzeichnisname muss dem Video-Basisnamen entsprechen (ohne `.mp4`). Neue Videos direkt in ein gleichnamiges Verzeichnis legen (z.B. `Mein_Video.mp4` → `video/de/Mein_Video/Mein_Video.mp4`). Phase 1.5 prueft die Konvention und bietet Umbenennung an.
 - **Kein Ueberschreiben:** Bereits eingebettete Videos (Status `eingebettet`) werden uebersprungen
 - **Leere Verzeichnisse:** Werden ignoriert (z.B. `X11_vs_Wayland/` ohne MP4)
 - **Dateiname als Titel:** Unterstriche werden durch Leerzeichen ersetzt, Extension entfernt

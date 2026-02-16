@@ -22,8 +22,8 @@ Video collection for X-Plane on Linux.
 
 ### Two Paths to Smoother Flight
 
-<video controls width="100%" preload="metadata" poster="../assets/video/en/systemtools/Two_Paths_to_Smoother_Flight.jpg">
-  <source src="../assets/video/en/systemtools/Two_Paths_to_Smoother_Flight.mp4" type="video/mp4">
+<video controls width="100%" preload="metadata" poster="../assets/video/en/Two_Paths_to_Smoother_Flight/Two_Paths_to_Smoother_Flight.jpg">
+  <source src="../assets/video/en/Two_Paths_to_Smoother_Flight/Two_Paths_to_Smoother_Flight.mp4" type="video/mp4">
 </video>
 
 </div>
@@ -32,8 +32,8 @@ Video collection for X-Plane on Linux.
 
 ### Ortho-Streaming on Linux
 
-<video controls width="100%" preload="metadata" poster="../assets/video/en/ortho_streaming/Ortho-Streaming_on_Linux.jpg">
-  <source src="../assets/video/en/ortho_streaming/Ortho-Streaming_on_Linux.mp4" type="video/mp4">
+<video controls width="100%" preload="metadata" poster="../assets/video/en/Ortho-Streaming_on_Linux/Ortho-Streaming_on_Linux.jpg">
+  <source src="../assets/video/en/Ortho-Streaming_on_Linux/Ortho-Streaming_on_Linux.mp4" type="video/mp4">
 </video>
 
 </div>
@@ -42,8 +42,8 @@ Video collection for X-Plane on Linux.
 
 ### The Performance Puzzle
 
-<video controls width="100%" preload="metadata" poster="../assets/video/en/performance_with_simulation_software/The_Performance_Puzzle.jpg">
-  <source src="../assets/video/en/performance_with_simulation_software/The_Performance_Puzzle.mp4" type="video/mp4">
+<video controls width="100%" preload="metadata" poster="../assets/video/en/The_Performance_Puzzle/The_Performance_Puzzle.jpg">
+  <source src="../assets/video/en/The_Performance_Puzzle/The_Performance_Puzzle.mp4" type="video/mp4">
 </video>
 
 </div>
@@ -52,8 +52,8 @@ Video collection for X-Plane on Linux.
 
 ### Beyond the Default Cockpit
 
-<video controls width="100%" preload="metadata" poster="../assets/video/en/toliss_flow_with_plugins/Beyond_the_Default_Cockpit.jpg">
-  <source src="../assets/video/en/toliss_flow_with_plugins/Beyond_the_Default_Cockpit.mp4" type="video/mp4">
+<video controls width="100%" preload="metadata" poster="../assets/video/en/Beyond_the_Default_Cockpit/Beyond_the_Default_Cockpit.jpg">
+  <source src="../assets/video/en/Beyond_the_Default_Cockpit/Beyond_the_Default_Cockpit.mp4" type="video/mp4">
 </video>
 
 </div>
