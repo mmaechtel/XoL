@@ -3,13 +3,3 @@
     text-transform: uppercase;
     letter-spacing: 0.05em;
 }
-
-/* Blatt-Einträge (einzelne Seiten): eng innerhalb der Gruppe */
-.md-nav--primary .md-nav .md-nav__link {
-    margin-top: 0.1em;
-}
-
-/* Gruppen-Header (Einträge mit Untermenü): Abstand darüber für Cluster-Trennung */
-.md-nav--primary .md-nav .md-nav__item--nested > .md-nav__link {
-    margin-top: 0.6em;
-}
