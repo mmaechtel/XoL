@@ -1,0 +1,97 @@
+/* Self-hosted fonts (GDPR/DSGVO compliant — no Google Fonts requests) */
+
+@font-face {
+    font-family: "Inter";
+    font-style: normal;
+    font-weight: 400;
+    font-display: swap;
+    src: url("../assets/fonts/inter-v18-latin-regular.woff2") format("woff2");
+}
+
+@font-face {
+    font-family: "Inter";
+    font-style: normal;
+    font-weight: 700;
+    font-display: swap;
+    src: url("../assets/fonts/inter-v18-latin-700.woff2") format("woff2");
+}
+
+@font-face {
+    font-family: "JetBrains Mono";
+    font-style: normal;
+    font-weight: 400;
+    font-display: swap;
+    src: url("../assets/fonts/jetbrains-mono.woff2") format("woff2");
+}
+
+:root {
+    --md-text-font: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    --md-code-font: "JetBrains Mono", "SFMono-Regular", Consolas, monospace;
+}
+
+/* ── Custom Color Overrides ── */
+
+/* Light mode: deep navy header, warm amber accents */
+[data-md-color-scheme="default"] {
+    --md-primary-fg-color: #1a237e;
+    --md-primary-fg-color--light: #3949ab;
+    --md-primary-fg-color--dark: #0d1252;
+    --md-accent-fg-color: #f59e0b;
+    --md-typeset-a-color: #2962ff;
+}
+
+/* Dark mode: rich dark with amber accents */
+[data-md-color-scheme="slate"] {
+    --md-primary-fg-color: #1e293b;
+    --md-primary-fg-color--light: #334155;
+    --md-primary-fg-color--dark: #0f172a;
+    --md-accent-fg-color: #fbbf24;
+    --md-typeset-a-color: #60a5fa;
+    --md-default-bg-color: #0f172a;
+    --md-default-bg-color--light: #1e293b;
+}
+
+/* ── Typography ── */
+
+.md-typeset {
+    font-size: 0.82rem;
+    line-height: 1.7;
+}
+
+.md-typeset h1 {
+    font-weight: 700;
+    letter-spacing: -0.02em;
+}
+
+.md-typeset h2 {
+    font-weight: 700;
+    letter-spacing: -0.01em;
+    border-bottom: 2px solid var(--md-accent-fg-color);
+    padding-bottom: 0.3em;
+}
+
+/* ── Code blocks ── */
+
+.md-typeset code {
+    border-radius: 4px;
+    font-size: 0.82em;
+}
+
+.md-typeset pre {
+    border-radius: 8px;
+}
+
+[data-md-color-scheme="default"] .md-typeset code {
+    background-color: #f1f5f9;
+}
+
+/* ── Announcement bar styling ── */
+
+.md-banner {
+    font-size: 0.78rem;
+    letter-spacing: 0.02em;
+}
+
+.md-banner a {
+    color: var(--md-accent-fg-color);
+}

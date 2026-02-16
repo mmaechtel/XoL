@@ -12,6 +12,7 @@ hooks:
 
 theme:
   name: material
+  custom_dir: overrides
   icon:
     repo: fontawesome/brands/github
   logo: assets/favicon.png
@@ -25,6 +26,8 @@ theme:
     - navigation.indexes
     - navigation.top
     - navigation.sidebar
+    #- navigation.instant          # incompatible with i18n language switcher
+    #- navigation.instant.progress
     - toc.follow
     - search.suggest
     - search.highlight
@@ -32,10 +35,12 @@ theme:
     - toc.integrate
     - content.code.copy
     - content.tabs.link
+    - announce.dismiss
   palette:
     # Palette toggle for automatic mode
     - media: "(prefers-color-scheme)"
-      primary: light blue
+      primary: indigo
+      accent: amber
       toggle:
         icon: material/brightness-auto
         name: Switch to light mode
@@ -43,7 +48,8 @@ theme:
     # Palette toggle for light mode
     - media: "(prefers-color-scheme: light)"
       scheme: default
-      primary: light blue
+      primary: indigo
+      accent: amber
       toggle:
         icon: material/brightness-7
         name: Switch to dark mode
@@ -51,7 +57,8 @@ theme:
     # Palette toggle for dark mode
     - media: "(prefers-color-scheme: dark)"
       scheme: slate
-      primary: light blue
+      primary: indigo
+      accent: amber
       toggle:
         icon: material/brightness-4
         name: Switch to system preference
@@ -59,6 +66,7 @@ theme:
   language: de
 
 extra_css:
+  - stylesheets/fonts.css
   - stylesheets/nav.css
 
 plugins:
@@ -312,9 +320,6 @@ extra:
     - icon: fontawesome/brands/github
       link: https://github.com/mmaechtel/XoL/issues/new/choose
       name: NewIssue
-    - icon: fontawesome/brands/twitter
-      link: https://x.com/HeDragonist
-      name: X
     - icon: fontawesome/brands/discord
       #link: https://discord.gg/2CZWSBprDd
       link: https://discord.gg/S6VkndbfVX

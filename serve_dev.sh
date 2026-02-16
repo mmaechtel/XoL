@@ -1,25 +1,24 @@
 #!/bin/bash
 
-# Create video symlink if missing (OS-dependent path)
-if [ ! -L docs/assets/video ]; then
-    case "$(uname)" in
-        Linux)  VIDEO_SRC="/mnt/videos/XoL/video" ;;
-        Darwin) VIDEO_SRC="/Volumes/video/XoL/video" ;;
-    esac
-    if [ -d "$VIDEO_SRC" ]; then
-        ln -s "$VIDEO_SRC" docs/assets/video
-        echo "Created symlink: docs/assets/video -> $VIDEO_SRC"
-    fi
-fi
+# Video symlink setup (OS-dependent path)
+case "$(uname)" in
+    Linux)  VIDEO_SRC="/mnt/videos/XoL/video" ;;
+    Darwin) VIDEO_SRC="/Volumes/video/XoL/video" ;;
+esac
 
-# Check video symlink target is accessible (NFS/SMB share mounted?)
-if [ -L docs/assets/video ] && [ ! -d docs/assets/video/ ]; then
-    echo "⚠  WARNING: docs/assets/video symlink target not accessible!"
-    echo "   Mount the video share first (e.g. /mnt/videos/XoL/video)."
-    echo "   Videos will be missing from the site."
+if [ ! -d "$VIDEO_SRC" ]; then
+    echo "WARNING: Video share not mounted at: $VIDEO_SRC"
+    echo "  Videos and poster images will be missing."
     echo ""
     read -r -p "Continue anyway? [y/N] " answer
     [[ "$answer" =~ ^[Yy]$ ]] || exit 1
+elif [ ! -L docs/assets/video ]; then
+    ln -s "$VIDEO_SRC" docs/assets/video
+    echo "Created symlink: docs/assets/video -> $VIDEO_SRC"
+elif [ ! -d docs/assets/video/ ]; then
+    rm docs/assets/video
+    ln -s "$VIDEO_SRC" docs/assets/video
+    echo "Recreated symlink: docs/assets/video -> $VIDEO_SRC"
 fi
 
 # Development server script that includes VATSIM routes
