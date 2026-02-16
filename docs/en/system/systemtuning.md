@@ -46,15 +46,15 @@ System latency doesn't originate from a single source but from four independent 
 | **Interrupts** | Competition for CPU time | Stutters during I/O or input |
 | **Memory/IO** | Blocking background operations | Stutters when loading new scenery |
 
-### Scheduling
+**Scheduling**
 
 The Linux scheduler decides when a thread gets CPU time. A conservative scheduler waits longer before reacting — this saves power but increases latency. Modern schedulers use deadline-based task selection and adaptive [preemption](../glossary.md#preemption), allowing latency-sensitive threads to be scheduled more efficiently.
 
-### Power Management
+**Power Management**
 
-CPU load doesn't cause stutters — transitions between power states do. When a core wakes from a deep sleep state, delays of up to several hundred microseconds occur. [NVMe](../glossary.md#nvme-non-volatile-memory-express) SSDs in power-saving mode also produce noticeable wake-up latencies (details under [Disable NVMe Power Saving](#4-disable-nvme-power-saving)).
+CPU load doesn't cause stutters — transitions between power states do. When a core wakes from a deep sleep state, delays of up to several hundred microseconds occur. [NVMe](../glossary.md#nvme-non-volatile-memory-express) SSDs in power-saving mode also produce noticeable wake-up latencies (details under [Disable NVMe Power Saving](#disable-nvme-power-saving)).
 
-### Interrupts
+**Interrupts**
 
 Hardware interrupts (USB devices, network, storage) preempt the running thread. A single interrupt at the wrong time can violate a frame deadline:
 
@@ -62,7 +62,7 @@ Hardware interrupts (USB devices, network, storage) preempt the running thread. 
 periodic main thread + random interrupt = missed deadline
 ```
 
-### Memory/IO
+**Memory/IO**
 
 The kernel optimizes throughput through batched background work (writeback, cache cleanup, paging). This creates rare but noticeable blocks — especially when loading large ortho textures.
 
@@ -90,7 +90,7 @@ Liquorix uses the [PDS](../glossary.md#pds-priority-and-deadline-based-skiplist)
 | Power saving | Limit | Fine-tune |
 | Writeback | Neutral | Smooth |
 
-### Which kernel am I using?
+**Which kernel am I using?**
 
 ```bash
 uname -r
@@ -105,7 +105,9 @@ For installing Liquorix, see [Liquorix Kernel](../optimizations/liquorix.md).
 
 **Goal:** Scheduler reacts conservatively → actively prioritize the application.
 
-### 1. CPU Governor
+### CPU Clock and Sleep States
+
+**Governor**
 
 Set the governor to a fixed high-performance clock to reduce reaction time and compensate for the lack of load prediction.
 
@@ -131,7 +133,7 @@ cpufreq.default_governor=performance
 sudo update-grub
 ```
 
-### 2. Limit CPU Sleep States
+**Limit CPU Sleep States**
 
 In `/etc/default/grub`, extend `GRUB_CMDLINE_LINUX_DEFAULT`:
 
@@ -152,7 +154,7 @@ sudo update-grub
 
 Reboot required.
 
-### 3. Prioritize the Application (Affinity + Priority)
+### Prioritize the Application (Affinity + Priority)
 
 A launcher script that pins X-Plane to specific cores and starts it with elevated scheduling priority:
 
@@ -174,7 +176,7 @@ Launch:
 !!! note "About the priority"
     `SCHED_FIFO` priority 45 is below critical kernel threads such as IRQ handlers (priority 50) but well above normal processes. Values above 50 can preempt kernel housekeeping and cause instability.
 
-### 4. Optional: CPU Isolation
+**Optional: CPU Isolation**
 
 Only useful under high background load. Add to `/etc/default/grub`:
 
@@ -185,7 +187,7 @@ isolcpus=4-11
 !!! note "Deprecation notice"
     `isolcpus` is marked as deprecated in the kernel documentation. The modern alternative is **cpusets**, which can be configured at runtime without rebooting. For a simple desktop use case, `isolcpus` remains the more straightforward option.
 
-### 5. Memory Behavior
+**Memory Behavior**
 
 ```ini title="/etc/sysctl.d/60-desktop.conf"
 vm.swappiness=20
@@ -212,7 +214,9 @@ The kernel reacts faster because CPU time is guaranteed for the application.
 
 **Important:** No `isolcpus`, no `taskset` — these would prevent the scheduler's adaptive optimization.
 
-### 1. Adaptive CPU Governor
+### CPU Clock and Power Management
+
+**Governor**
 
 Switch immediately:
 
@@ -248,7 +252,7 @@ sudo update-grub
 !!! tip "Persistence"
     The terminal commands apply until the next reboot. The GRUB method makes the setting permanent. For permanent EPP settings, create a systemd unit or udev rule.
 
-### 2. C-States and Power Management
+**C-States and Power Management**
 
 !!! note "AMD vs. Intel"
     **AMD Zen:** Only C1/C2 are OS-visible — no C-state limitation needed. Deeper hardware C-states benefit the thermal budget.
@@ -261,7 +265,7 @@ In `/etc/default/grub` — for Intel:
 processor.max_cstate=5
 ```
 
-### 3. Interrupt Shielding
+### Interrupt Shielding
 
 The most important measure under Liquorix. Concentrate hardware interrupts on the first cores so the scheduler can use the remaining cores undisturbed for the application.
 
@@ -285,7 +289,7 @@ sudo systemctl enable --now irqbalance
 !!! tip "Why irqbalance instead of manual affinity?"
     `irqbalance` with `BANNED_CPULIST` is more maintainable than manual affinity: it automatically adapts to new hardware IRQs and distributes load intelligently across the allowed cores.
 
-### 4. Disable NVMe Power Saving
+### Disable NVMe Power Saving
 
 NVMe SSDs in power-saving mode can have wake-up latencies in the millisecond range — longer than a complete frame at 60 Hz. Exit latencies vary by manufacturer and power state.
 
@@ -308,7 +312,7 @@ Reboot required.
     ```
     The GRUB method is the most reliable approach.
 
-### 5. Smooth Memory Writeback
+**Smooth Memory Writeback**
 
 ```ini title="/etc/sysctl.d/99-lowlatency.conf"
 vm.swappiness=10
@@ -323,7 +327,7 @@ Apply:
 sudo sysctl --system
 ```
 
-### 6. Light Prioritization
+**Light Prioritization**
 
 Under Liquorix, a moderate `nice` adjustment is sufficient:
 
@@ -342,13 +346,13 @@ Not maximum performance — but minimal frame-time spikes. The scheduler can opt
 
 If you have both kernels installed in parallel (standard Debian + Liquorix), you can choose which one to boot. This lets you use the matching tuning profile depending on your use case — without uninstalling either kernel.
 
-### List Installed Kernels
+**List Installed Kernels**
 
 ```bash
 dpkg --list | grep linux-image
 ```
 
-### Identify GRUB Menu Entries
+**Identify GRUB Menu Entries**
 
 GRUB numbers entries starting from 0. Kernels in the "Advanced options" submenu are addressed with `>`:
 
@@ -362,7 +366,7 @@ The format for submenu entries is `"Parent>Entry"`, e.g.:
 "Advanced options for Debian GNU/Linux>Debian GNU/Linux, with Linux 6.12.6-1-liquorix-amd64"
 ```
 
-### One-Time Switch
+**One-Time Switch**
 
 !!! note "Prerequisite"
     `grub-reboot` requires `GRUB_DEFAULT=saved` in `/etc/default/grub` (see [Permanent Switch](#permanent-switch) below). Without it, GRUB ignores the saved entry.
@@ -393,7 +397,7 @@ Change the default boot entry permanently:
 
 After this setup, `grub-reboot` also works for one-time deviations from the saved default.
 
-### Check Current Kernel
+**Check Current Kernel**
 
 ```bash
 uname -r

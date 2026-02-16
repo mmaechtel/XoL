@@ -46,15 +46,15 @@ Systemlatenz entsteht nicht an einer Stelle, sondern aus vier unabhängigen Kate
 | **Interrupts** | Konkurrenz um CPU-Zeit | Ruckler bei I/O oder Eingabe |
 | **Speicher/IO** | Blockierende Hintergrundoperationen | Stotterer beim Laden neuer Szenerien |
 
-### Scheduling
+**Scheduling**
 
 Der Linux-Scheduler entscheidet, wann ein Thread Rechenzeit bekommt. Ein konservativer Scheduler wartet länger, bevor er reagiert — das spart Energie, erhöht aber die Latenz. Moderne Scheduler nutzen Deadline-basierte Aufgabenauswahl und adaptive [Preemption](../glossary.md#preemption), sodass latenzsensitive Threads effizienter eingeplant werden.
 
-### Energieverwaltung
+**Energieverwaltung**
 
-Nicht die CPU-Last verursacht Ruckler, sondern Übergänge zwischen Energiestufen. Wenn ein Kern aus einem tiefen Schlafzustand aufwacht, entstehen Verzögerungen von bis zu mehreren hundert Mikrosekunden. Auch [NVMe](../glossary.md#nvme-non-volatile-memory-express)-SSDs im Energiesparmodus erzeugen spürbare Aufwachlatenzen (Details unter [NVMe Energiesparen deaktivieren](#4-nvme-energiesparen-deaktivieren)).
+Nicht die CPU-Last verursacht Ruckler, sondern Übergänge zwischen Energiestufen. Wenn ein Kern aus einem tiefen Schlafzustand aufwacht, entstehen Verzögerungen von bis zu mehreren hundert Mikrosekunden. Auch [NVMe](../glossary.md#nvme-non-volatile-memory-express)-SSDs im Energiesparmodus erzeugen spürbare Aufwachlatenzen (Details unter [NVMe Energiesparen deaktivieren](#nvme-energiesparen-deaktivieren)).
 
-### Interrupts
+**Interrupts**
 
 Hardware-Interrupts (USB-Geräte, Netzwerk, Storage) unterbrechen den laufenden Thread. Ein einzelner Interrupt zur falschen Zeit kann eine Frame-Deadline verletzen:
 
@@ -62,7 +62,7 @@ Hardware-Interrupts (USB-Geräte, Netzwerk, Storage) unterbrechen den laufenden 
 periodischer Hauptthread + zufälliger Interrupt = verpasste Deadline
 ```
 
-### Speicher/IO
+**Speicher/IO**
 
 Der Kernel optimiert Durchsatz durch gebündelte Hintergrundarbeit (Writeback, Cache-Bereinigung, Paging). Das erzeugt seltene, aber spürbare Blockierungen — besonders beim Laden großer Ortho-Texturen.
 
@@ -90,7 +90,7 @@ Liquorix nutzt den [PDS](../glossary.md#pds-priority-and-deadline-based-skiplist
 | Energiesparen | Begrenzen | Fein abstimmen |
 | Writeback | Neutral | Glätten |
 
-### Welchen Kernel nutze ich?
+**Welchen Kernel nutze ich?**
 
 ```bash
 uname -r
@@ -105,7 +105,9 @@ Für die Installation von Liquorix siehe [Liquorix Kernel](../optimizations/liqu
 
 **Ziel:** Scheduler reagiert konservativ → Anwendung aktiv bevorzugen.
 
-### 1. CPU Governor
+### CPU-Takt und Schlafzustände
+
+**Governor**
 
 Den Governor auf festen Hochleistungstakt setzen, um Reaktionszeit zu verkürzen und fehlende Lastvorhersage zu kompensieren.
 
@@ -131,7 +133,7 @@ cpufreq.default_governor=performance
 sudo update-grub
 ```
 
-### 2. CPU Schlafzustände begrenzen
+**Schlafzustände begrenzen**
 
 In `/etc/default/grub` den Parameter `GRUB_CMDLINE_LINUX_DEFAULT` erweitern:
 
@@ -152,7 +154,7 @@ sudo update-grub
 
 Neustart erforderlich.
 
-### 3. Anwendung bevorzugen (Affinität + Priorität)
+### Anwendung bevorzugen (Affinität + Priorität)
 
 Ein Starter-Script, das X-Plane auf bestimmte Kerne bindet und mit erhöhter Scheduling-Priorität startet:
 
@@ -174,7 +176,7 @@ Starten:
 !!! note "Zur Priorität"
     `SCHED_FIFO` Priorität 45 liegt unterhalb kritischer Kernel-Threads wie IRQ-Handler (Priorität 50), aber deutlich über normalen Prozessen. Werte über 50 können Kernel-Housekeeping preemptieren und zu Instabilität führen.
 
-### 4. Optional: CPU-Isolation
+**Optional: CPU-Isolation**
 
 Nur sinnvoll bei hoher Hintergrundlast. In `/etc/default/grub` ergänzen:
 
@@ -185,7 +187,7 @@ isolcpus=4-11
 !!! note "Hinweis zur Abkündigung"
     `isolcpus` ist in der Kernel-Dokumentation als deprecated gekennzeichnet. Die modernere Alternative sind **cpusets**, die zur Laufzeit ohne Neustart konfiguriert werden können. Für einen einfachen Desktop-Anwendungsfall bleibt `isolcpus` jedoch die unkompliziertere Variante.
 
-### 5. Speicherverhalten
+**Speicherverhalten**
 
 ```ini title="/etc/sysctl.d/60-desktop.conf"
 vm.swappiness=20
@@ -212,7 +214,9 @@ Der Kernel reagiert schneller, da Rechenzeit für die Anwendung garantiert wird.
 
 **Wichtig:** Kein `isolcpus`, kein `taskset` — diese würden die adaptive Optimierung des Schedulers verhindern.
 
-### 1. Adaptiver CPU-Governor
+### CPU-Takt und Energiesteuerung
+
+**Governor**
 
 Sofort umschalten:
 
@@ -248,7 +252,7 @@ sudo update-grub
 !!! tip "Persistenz"
     Die Terminal-Befehle gelten bis zum nächsten Neustart. Die GRUB-Variante macht die Einstellung dauerhaft. Für permanente EPP-Einstellung eine systemd-Unit oder udev-Regel erstellen.
 
-### 2. C-States und Energiesteuerung
+**C-States und Energiesteuerung**
 
 !!! note "AMD vs. Intel"
     **AMD Zen:** Nur C1/C2 sind OS-sichtbar — keine C-State-Begrenzung nötig. Tiefere Hardware-C-States helfen dem thermischen Budget.
@@ -261,7 +265,7 @@ In `/etc/default/grub` — für Intel:
 processor.max_cstate=5
 ```
 
-### 3. Interrupt-Shielding
+### Interrupt-Shielding
 
 Die wichtigste Maßnahme unter Liquorix. Hardware-Interrupts auf die ersten Kerne konzentrieren, damit der Scheduler die restlichen Kerne ungestört für die Anwendung nutzen kann.
 
@@ -285,7 +289,7 @@ sudo systemctl enable --now irqbalance
 !!! tip "Warum irqbalance statt manueller Affinität?"
     `irqbalance` mit `BANNED_CPULIST` ist wartungsfreundlicher als manuelle Affinität: Es passt sich automatisch an neue Hardware-IRQs an und verteilt die Last intelligent auf die erlaubten Kerne.
 
-### 4. NVMe Energiesparen deaktivieren
+### NVMe Energiesparen deaktivieren
 
 NVMe-SSDs können im Energiesparmodus Aufwachlatenzen im Millisekundenbereich haben — länger als ein kompletter Frame bei 60 Hz. Die Exit-Latenzen variieren je nach Hersteller und Energiesparstufe.
 
@@ -308,7 +312,7 @@ Neustart erforderlich.
     ```
     Die GRUB-Methode ist der zuverlässigste Weg.
 
-### 5. Speicher-Writeback glätten
+**Speicher-Writeback glätten**
 
 ```ini title="/etc/sysctl.d/99-lowlatency.conf"
 vm.swappiness=10
@@ -323,7 +327,7 @@ Anwenden:
 sudo sysctl --system
 ```
 
-### 6. Leichte Priorisierung
+**Leichte Priorisierung**
 
 Unter Liquorix genügt eine moderate `nice`-Anpassung:
 
@@ -342,13 +346,13 @@ Keine maximale Leistung — sondern minimale Frame-Time-Spikes. Der Scheduler ka
 
 Wer beide Kernel parallel installiert hat (Standard-Debian + Liquorix), kann beim Booten wählen, welcher geladen wird. So lässt sich das passende Tuning-Profil je nach Einsatzzweck nutzen — ohne einen der Kernel deinstallieren zu müssen.
 
-### Installierte Kernel anzeigen
+**Installierte Kernel anzeigen**
 
 ```bash
 dpkg --list | grep linux-image
 ```
 
-### GRUB-Menüeinträge ermitteln
+**GRUB-Menüeinträge ermitteln**
 
 GRUB nummeriert die Einträge ab 0. Kernel im Untermenü „Advanced options" werden mit `>` adressiert:
 
@@ -362,7 +366,7 @@ Das Format für Untermenü-Einträge ist `"Übermenü>Eintrag"`, z.B.:
 "Advanced options for Debian GNU/Linux>Debian GNU/Linux, with Linux 6.12.6-1-liquorix-amd64"
 ```
 
-### Einmaliger Wechsel
+**Einmaliger Wechsel**
 
 !!! note "Voraussetzung"
     `grub-reboot` erfordert `GRUB_DEFAULT=saved` in `/etc/default/grub` (siehe [Dauerhafter Wechsel](#dauerhafter-wechsel) weiter unten). Ohne diese Einstellung ignoriert GRUB den gespeicherten Eintrag.
@@ -393,7 +397,7 @@ Den Standard-Boot-Eintrag permanent ändern:
 
 Nach dieser Einrichtung funktioniert auch `grub-reboot` für einmalige Abweichungen vom gespeicherten Standard.
 
-### Aktuellen Kernel prüfen
+**Aktuellen Kernel prüfen**
 
 ```bash
 uname -r

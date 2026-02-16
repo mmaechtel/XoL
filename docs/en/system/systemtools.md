@@ -35,7 +35,7 @@ htop
 | `P` | Sort by CPU usage |
 | `F4` | Filter (e.g., for "X-Plane") |
 
-The **PROCESSOR** column shows which CPU core a process last ran on — useful for checking whether the interrupt separation from [System Tuning](systemtuning.md#3-interrupt-shielding) is working.
+The **PROCESSOR** column shows which CPU core a process last ran on — useful for checking whether the interrupt separation from [System Tuning](systemtuning.md#interrupt-shielding) is working.
 
 **Limitation:** Shows no CPU frequency, no [C-states](../glossary.md#c-states-cpu-idle-states), and no per-core interrupt breakdown.
 
@@ -53,7 +53,7 @@ Supports mouse interaction, process filtering (`f`), tree view (`e`), and layout
 
 ### cpupower — Check and Set Governor
 
-Shows the active [CPU frequency governor](../glossary.md#cpu-governor) and can change it. Essential for checking whether the governor configured in [System Tuning](systemtuning.md#1-cpu-governor) is actually active.
+Shows the active [CPU frequency governor](../glossary.md#cpu-governor) and can change it. Essential for checking whether the governor configured in [System Tuning](systemtuning.md#cpu-clock-and-sleep-states) is actually active.
 
 ```bash
 # Show active policy (governor and frequency range) of all cores
@@ -81,7 +81,7 @@ sudo s-tui
 
 Optional stress test: `sudo apt install stress-ng`, then activate stress mode in the s-tui menu.
 
-Verifies: [Profile A Governor](systemtuning.md#1-cpu-governor) and [Profile B Governor](systemtuning.md#1-adaptive-cpu-governor)
+Verifies: [Profile A Governor](systemtuning.md#cpu-clock-and-sleep-states) and [Profile B Governor](systemtuning.md#cpu-clock-and-power-management)
 
 ### turbostat — Hardware Frequencies and C-States
 
@@ -110,7 +110,7 @@ sudo turbostat --interval 2 --out turbostat_session.log
 !!! note "AMD Note"
     turbostat works on AMD Zen processors. Available columns depend on the processor's MSR support — some Intel-specific columns (e.g., certain package-level power metrics) may not appear on AMD systems.
 
-Verifies: [C-States](systemtuning.md#2-limit-cpu-sleep-states) and governor effectiveness
+Verifies: [C-States](systemtuning.md#cpu-clock-and-sleep-states) and governor effectiveness
 
 ### mpstat — Per-Core Statistics and Interrupt Distribution
 
@@ -129,7 +129,7 @@ mpstat -A 1
 
 **Checking interrupt shielding:** The application cores (e.g., CPU 4–15) should show close to 0% in the `%irq` and `%soft` columns. If values rise there, interrupts are reaching the protected cores.
 
-Verifies: [Interrupt Shielding](systemtuning.md#3-interrupt-shielding) (Profile B)
+Verifies: [Interrupt Shielding](systemtuning.md#interrupt-shielding) (Profile B)
 
 ---
 
@@ -190,7 +190,7 @@ done
 
 If the first request shows 10–500 ms while subsequent requests show <0.1 ms, APST wake-up is the cause.
 
-Verifies: [NVMe Power Saving](systemtuning.md#4-disable-nvme-power-saving) (Profile B)
+Verifies: [NVMe Power Saving](systemtuning.md#disable-nvme-power-saving) (Profile B)
 
 ### nvme-cli — Query NVMe Power States
 
@@ -253,7 +253,7 @@ For real-time monitoring, use `watch -n 1 lsirq -s TOTAL` or the `/proc/interrup
 
 ### Verifying Interrupt Shielding
 
-After configuring [Interrupt Shielding](systemtuning.md#3-interrupt-shielding) (Profile B), you need to verify that the application cores are actually free from interrupts.
+After configuring [Interrupt Shielding](systemtuning.md#interrupt-shielding) (Profile B), you need to verify that the application cores are actually free from interrupts.
 
 **Step 1 — Check IRQ percentage per core:**
 
@@ -323,7 +323,7 @@ sudo powertop --html=powertop_report.html
 !!! warning "Avoid auto-tune"
     `powertop --auto-tune` enables aggressive power-saving settings — the **opposite** of the recommendations in [System Tuning](systemtuning.md). Do not use for latency-sensitive applications.
 
-Verifies: [C-States](systemtuning.md#2-limit-cpu-sleep-states) and [C-States Liquorix](systemtuning.md#2-c-states-and-power-management)
+Verifies: [C-States](systemtuning.md#cpu-clock-and-sleep-states) and [C-States Liquorix](systemtuning.md#cpu-clock-and-power-management)
 
 ---
 

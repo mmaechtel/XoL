@@ -35,7 +35,7 @@ htop
 | `P` | Nach CPU-Verbrauch sortieren |
 | `F4` | Filter (z.B. nach "X-Plane") |
 
-Die Spalte **PROCESSOR** zeigt, auf welchem CPU-Kern ein Prozess zuletzt ausgeführt wurde — nützlich um zu prüfen, ob die Interrupt-Trennung aus dem [Systemtuning](systemtuning.md#3-interrupt-shielding) funktioniert.
+Die Spalte **PROCESSOR** zeigt, auf welchem CPU-Kern ein Prozess zuletzt ausgeführt wurde — nützlich um zu prüfen, ob die Interrupt-Trennung aus dem [Systemtuning](systemtuning.md#interrupt-shielding) funktioniert.
 
 **Limitierung:** Zeigt keine CPU-Frequenz, keine [C-States](../glossary.md#c-states-cpu-idle-states) und keine Interrupt-Aufschlüsselung pro Core.
 
@@ -53,7 +53,7 @@ Unterstützt Maus-Bedienung, Prozess-Filter (`f`), Baumansicht (`e`) und Layout-
 
 ### cpupower — Governor prüfen und setzen
 
-Zeigt den aktiven [CPU-Frequenz-Governor](../glossary.md#cpu-governor) und kann ihn ändern. Essentiell um zu prüfen, ob der im [Systemtuning](systemtuning.md#1-cpu-governor) konfigurierte Governor tatsächlich aktiv ist.
+Zeigt den aktiven [CPU-Frequenz-Governor](../glossary.md#cpu-governor) und kann ihn ändern. Essentiell um zu prüfen, ob der im [Systemtuning](systemtuning.md#cpu-takt-und-schlafzustände) konfigurierte Governor tatsächlich aktiv ist.
 
 ```bash
 # Aktive Policy (Governor und Frequenzbereich) aller Cores anzeigen
@@ -81,7 +81,7 @@ sudo s-tui
 
 Optional mit Stress-Test: `sudo apt install stress-ng`, dann im s-tui-Menü den Stress-Modus aktivieren.
 
-Verifiziert: [Profil A Governor](systemtuning.md#1-cpu-governor) und [Profil B Governor](systemtuning.md#1-adaptiver-cpu-governor)
+Verifiziert: [Profil A Governor](systemtuning.md#cpu-takt-und-schlafzustände) und [Profil B Governor](systemtuning.md#cpu-takt-und-energiesteuerung)
 
 ### turbostat — Hardware-Frequenzen und C-States
 
@@ -110,7 +110,7 @@ sudo turbostat --interval 2 --out turbostat_session.log
 !!! note "AMD-Hinweis"
     turbostat funktioniert auf AMD Zen-Prozessoren. Die verfügbaren Spalten hängen von der MSR-Unterstützung des Prozessors ab — einige Intel-spezifische Spalten (z.B. bestimmte Package-Level-Metriken) erscheinen auf AMD-Systemen nicht.
 
-Verifiziert: [C-States](systemtuning.md#2-cpu-schlafzustände-begrenzen) und Governor-Wirksamkeit
+Verifiziert: [C-States](systemtuning.md#cpu-takt-und-schlafzustände) und Governor-Wirksamkeit
 
 ### mpstat — Per-Core-Statistiken und Interrupt-Verteilung
 
@@ -129,7 +129,7 @@ mpstat -A 1
 
 **Interrupt-Shielding prüfen:** Die Applikations-Kerne (z.B. CPU 4–15) sollten nahe 0% in den Spalten `%irq` und `%soft` zeigen. Steigen die Werte dort an, erreichen Interrupts die geschützten Kerne.
 
-Verifiziert: [Interrupt-Shielding](systemtuning.md#3-interrupt-shielding) (Profil B)
+Verifiziert: [Interrupt-Shielding](systemtuning.md#interrupt-shielding) (Profil B)
 
 ---
 
@@ -190,7 +190,7 @@ done
 
 Zeigt der erste Request 10–500 ms während Folgeanfragen <0.1 ms zeigen, ist APST Wake-Up die Ursache.
 
-Verifiziert: [NVMe Energiesparen](systemtuning.md#4-nvme-energiesparen-deaktivieren) (Profil B)
+Verifiziert: [NVMe Energiesparen](systemtuning.md#nvme-energiesparen-deaktivieren) (Profil B)
 
 ### nvme-cli — NVMe Power States abfragen
 
@@ -253,7 +253,7 @@ Für Echtzeit-Monitoring `watch -n 1 lsirq -s TOTAL` oder die oben beschriebenen
 
 ### Interrupt-Shielding verifizieren
 
-Nach dem Konfigurieren des [Interrupt-Shielding](systemtuning.md#3-interrupt-shielding) (Profil B) muss geprüft werden, ob die Applikations-Kerne tatsächlich von Interrupts verschont bleiben.
+Nach dem Konfigurieren des [Interrupt-Shielding](systemtuning.md#interrupt-shielding) (Profil B) muss geprüft werden, ob die Applikations-Kerne tatsächlich von Interrupts verschont bleiben.
 
 **Schritt 1 — IRQ-Anteil pro Core prüfen:**
 
@@ -323,7 +323,7 @@ sudo powertop --html=powertop_report.html
 !!! warning "auto-tune vermeiden"
     `powertop --auto-tune` aktiviert aggressive Energiespar-Einstellungen — das **Gegenteil** der Empfehlungen aus dem [Systemtuning](systemtuning.md). Nicht für latenz-sensitive Anwendungen verwenden.
 
-Verifiziert: [C-States](systemtuning.md#2-cpu-schlafzustände-begrenzen) und [C-States Liquorix](systemtuning.md#2-c-states-und-energiesteuerung)
+Verifiziert: [C-States](systemtuning.md#cpu-takt-und-schlafzustände) und [C-States Liquorix](systemtuning.md#cpu-takt-und-energiesteuerung)
 
 ---
 
