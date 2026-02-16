@@ -10,13 +10,13 @@ X-Plane 12 requires significant system resources, especially for realistic simul
 
 - **CPU**: Current generation with high single-core and multi-core performance (Intel Core i7/i9 or AMD Ryzen 7/9)
 - **RAM**: 32 GB or more
-- **Graphics Card**: High-performance GPU with at least 8 GB [VRAM](../glossary.md#vram-video-ram) (e.g., NVIDIA RTX 3080/4080 or higher)
-- **Storage Space**: 250 GB or more SSD storage ([NVMe](../glossary.md#nvme-non-volatile-memory-express) recommended)
+- **Graphics Card**: High-performance GPU with at least 8 GB [VRAM](glossary.md#vram-video-ram) (e.g., NVIDIA RTX 3080/4080 or higher)
+- **Storage Space**: 250 GB or more SSD storage ([NVMe](glossary.md#nvme-non-volatile-memory-express) recommended)
 - **Network**: Fast internet connection for ortho streaming and map updates
 
 ??? info "Why these specifications?"
 
-    - **CPU**: X-Plane benefits from fast single-core speed and distributes rendering work across multiple cores. These recommendations target addon-heavy setups with [orthophotos](../glossary.md#orthophotos) — Laminar Research's official minimum is lower (e.g., Intel i5-12600K).
+    - **CPU**: X-Plane benefits from fast single-core speed and distributes rendering work across multiple cores. These recommendations target addon-heavy setups with [orthophotos](glossary.md#orthophotos) — Laminar Research's official minimum is lower (e.g., Intel i5-12600K).
     - **RAM**: Memory-hungry addons, detailed scenery, and orthophotos can dramatically increase RAM usage.
     - **GPU**: Especially for 4K resolution or multi-monitor setups, high-resolution textures and complex lighting effects challenge even high-end GPUs.
     - **Storage**: The base installation requires about 25 GB, a full install with all scenery regions around 75–80 GB. Orthophotos can quickly add hundreds of GB on top. SSD speed reduces loading times during flight.
@@ -47,10 +47,10 @@ X-Plane 12 requires significant system resources, especially for realistic simul
 
     **Installation Tips**
 
-    - Any major desktop environment works with X-Plane. "GNOME" or "KDE Plasma" are recommended for newcomers due to large community support and mature [Wayland](../glossary.md#wayland) integration
+    - Any major desktop environment works with X-Plane. "GNOME" or "KDE Plasma" are recommended for newcomers due to large community support and mature [Wayland](glossary.md#wayland) integration
     - When partitioning, configure swap space: approximately 4 GB is sufficient without hibernation, or equal to your RAM size if you plan to use hibernation
     - Set up separate partitions for `/` (root, at least 30 GB) and `/home` (remaining space)
-    - Install the [GRUB](../glossary.md#grub-grand-unified-bootloader) bootloader on the main drive
+    - Install the [GRUB](glossary.md#grub-grand-unified-bootloader) bootloader on the main drive
 
     **After Installation**
 
@@ -120,11 +120,11 @@ The standalone version provides:
 
 2. **Optimize performance settings**: Adjust graphics settings according to your hardware. See [X-Plane Configuration](xplane/config.md) for Linux-specific guidance.
 
-3. **Check the performance** with the built-in [FPS](../glossary.md#fps-frames-per-second) display (activate with `Shift+Ctrl+F`)
+3. **Check the performance** with the built-in [FPS](glossary.md#fps-frames-per-second) display (activate with `Shift+Ctrl+F`)
 
 ??? note "Troubleshooting: Library Dependencies (ldd)"
 
-    If X-Plane doesn't start or crashes unexpectedly, it might be due to missing libraries. Check dependencies with [ldd](../glossary.md#ldd):
+    If X-Plane doesn't start or crashes unexpectedly, it might be due to missing libraries. Check dependencies with [ldd](glossary.md#ldd):
 
     ```bash
     cd ~/X-Plane\ 12/
