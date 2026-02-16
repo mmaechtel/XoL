@@ -162,6 +162,16 @@ Zeile anfuegen:
 
 Bei Fehlern: Direkt korrigieren, Build wiederholen.
 
+### Featured-Video aktualisieren?
+
+Nach erfolgreichem Build per AskUserQuestion fragen:
+
+> "Soll das Featured-Video auf der Startseite aktualisiert werden?"
+> - Option 1: "{neuestes Video}" als Featured setzen (mit Angabe welches Video)
+> - Option 2: Nein, Featured-Video beibehalten
+
+Bei Zustimmung: Den bestehenden `<video>`-Block im Featured-Abschnitt auf `docs/{lang}/index.md` durch das neue Video **ersetzen**. Sprachregel beachten (DE-Video → DE-index, EN-Video → EN-index).
+
 ---
 
 ## Phase 4 — Zusammenfassung
@@ -183,6 +193,16 @@ EINGEBETTET:
 BUILD: {OK / Fehler}
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 ```
+
+### Video-Link-Check (optional)
+
+Per AskUserQuestion fragen:
+
+> "Sollen alle Video-Links in den Docs geprueft werden?"
+> - Option 1: Ja, alle pruefen
+> - Option 2: Nein, direkt zum Commit
+
+Bei Zustimmung: Alle `<source src="...">` und `poster="..."` Attribute in `docs/{de,en}/` extrahieren. Fuer jeden Pfad pruefen, ob die referenzierte Datei tatsaechlich existiert (per `ls` auf dem aufgeloesten Pfad). Defekte Links auflisten und Korrektur anbieten.
 
 ---
 
@@ -232,4 +252,4 @@ Falls Video direkt in `video/{lang}/` liegt (kein Unterverzeichnis), entfaellt `
 - **Kein Ueberschreiben:** Bereits eingebettete Videos (Status `eingebettet`) werden uebersprungen
 - **Dateiname als Titel:** Unterstriche → Leerzeichen, Extension entfernt
 - **Keine Auto-Commits:** Nutze `/abschluss` fuer Git-Commits
-- **Featured-Video:** Wird manuell gepflegt, nicht durch diesen Skill
+- **Featured-Video:** Wird am Ende per Rueckfrage angeboten, nicht automatisch ersetzt

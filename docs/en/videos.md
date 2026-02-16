@@ -68,4 +68,14 @@ Video collection for X-Plane on Linux.
 
 </div>
 
+<div class="video-card" markdown>
+
+### X-Plane: Display Server Choice
+
+<video controls width="100%" preload="metadata" poster="../assets/video/en/X-Plane__Display_Server_Choice/X-Plane__Display_Server_Choice.jpg">
+  <source src="../assets/video/en/X-Plane__Display_Server_Choice/X-Plane__Display_Server_Choice.mp4" type="video/mp4">
+</video>
+
+</div>
+
 </div>

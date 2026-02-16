@@ -15,3 +15,4 @@
 | Beyond_the_Default_Cockpit.mp4 | en/Beyond_the_Default_Cockpit | videos.md (EN), index.md (EN, featured), toliss_ecosystem.md (EN) | eingebettet | 2026-02-15 |
 | X-Plane_unter_Linux__Doku-Tour.mp4 | de/X-Plane_unter_Linux__Doku-Tour | videos.md (DE), intro.md (DE) | eingebettet | 2026-02-16 |
 | X-Plane_on_Linux.mp4 | en/X-Plane_on_Linux | videos.md (EN), intro.md (EN) | eingebettet | 2026-02-16 |
+| X-Plane__Display_Server_Choice.mp4 | en/X-Plane__Display_Server_Choice | videos.md (EN), displayserver.md (EN) | eingebettet | 2026-02-16 |
