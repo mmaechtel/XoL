@@ -6,7 +6,7 @@ VATSIM (Virtual Air Traffic Simulation Network) is the world's largest network f
 
 Based on VATSIM Bookings and Events, current flight routes are regularly calculated and made available:
 
-📄 **[View Current VATSIM Flight Routes](../../vatsim_routes.html)**
+📄 **[View Current VATSIM Flight Routes](/Maps/vatsim_routes.html)**
 
 ### How does it work?
 

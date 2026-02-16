@@ -2,7 +2,6 @@
 
 | Video | Verzeichnis | Zielseiten | Status | Datum |
 |-------|-------------|------------|--------|-------|
-| X-Plane_unter_Linux.mp4 | de/X-Plane_unter_Linux | videos.md (DE), intro.md (DE) | eingebettet | 2026-02-13 |
 | X11_vs_Wayland.mp4 | de/X11_vs_Wayland | videos.md (DE), displayserver.md (DE) | eingebettet | 2026-02-13 |
 | X-Planes_Welt__Richtig_gebaut.mp4 | de/X-Planes_Welt__Richtig_gebaut | videos.md (DE), index.md (DE, featured), scenery_components.md (DE) | eingebettet | 2026-02-13 |
 | Mastering_scenery_packs.mp4 | en/Mastering_scenery_packs | videos.md (EN), scenery_components.md (EN) | eingebettet | 2026-02-13 |

@@ -16,8 +16,6 @@ docs/assets/video
 
 # Generated/external files
 docs/de/Maps/
-docs/vatsim_routes.html
-vatsim_routes.html
 download_images.py
 server/
 .claude/*

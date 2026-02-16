@@ -21,14 +21,6 @@ elif [ ! -d docs/assets/video/ ]; then
     echo "Recreated symlink: docs/assets/video -> $VIDEO_SRC"
 fi
 
-# Development server script that includes VATSIM routes
-if [[ "$(uname)" == "Linux" ]]; then
-    echo "Copying VATSIM routes for development..."
-    cp "$HOME/Work/ATC-Bookings/analyze_vatsim_booking/vatsim_routes.html" ./
-    echo "Starting MkDocs development server..."
-    mkdocs serve --livereload
-else
-    # --livereload: workaround for Click 8.x + Python 3.14 bug (flag_value default ignored)
-    echo "Starting MkDocs development server (macOS)..."
-    mkdocs serve --livereload
-fi
+# --livereload: workaround for Click 8.x + Python 3.14 bug (flag_value default ignored)
+echo "Starting MkDocs development server..."
+mkdocs serve --livereload
