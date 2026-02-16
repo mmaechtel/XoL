@@ -92,25 +92,23 @@ plugins:
           build: true
           default: true
           nav:
-            - Startseite: de/index.md
             - Übersicht:
+                - de/index.md
                 - Einführung: de/intro.md
                 - Erste Schritte: de/begin.md
                 - Performance-Grundlagen: de/performance_overview.md
                 - Videos: de/videos.md
             - Linux:
-                - Übersicht: de/linux.md
+                - de/linux/index.md
                 - Optimierungen:
                     - Nvidia Treiber: de/nvidia.md
                     - Liquorix Kernel: de/liquorix.md
-                    - System-Tuning:
-                        - Einführung: de/systemtuning_intro.md
-                        - Tuning: de/systemtuning.md
-                        - System Monitoring: de/systemtools.md
-                    - Display-Server:
-                        - Übersicht: de/displayserver.md
-                        - X11-Session: de/displayserver_x11.md
-                        - Wayland-Session: de/displayserver_wayland.md
+                    - System-Tuning Einführung: de/systemtuning_intro.md
+                    - System-Tuning: de/systemtuning.md
+                    - System Monitoring: de/systemtools.md
+                    - Display-Server: de/displayserver.md
+                    - X11-Session: de/displayserver_x11.md
+                    - Wayland-Session: de/displayserver_wayland.md
                     - Dateisystem: de/filesystem.md
                 - Erweiterungen:
                     - KVM: de/kvm.md
@@ -119,6 +117,7 @@ plugins:
                     - pyenv: de/pyenv.md
                     - zsh: de/zsh.md
             - X-Plane:
+                - de/xplane/index.md
                 - Konfiguration: de/xplane/config.md
                 - Performance: de/xplane/performance.md
                 - Systemfehler:
@@ -203,25 +202,23 @@ plugins:
           name: English
           build: true
           nav:
-            - Home: en/index.md
             - Overview:
+                - en/index.md
                 - Introduction: en/intro.md
                 - Getting Started: en/begin.md
                 - Performance Fundamentals: en/performance_overview.md
                 - Videos: en/videos.md
             - Linux:
-                - Overview: en/linux.md
+                - en/linux/index.md
                 - Optimizations:
                     - Nvidia Drivers: en/nvidia.md
                     - Liquorix Kernel: en/liquorix.md
-                    - System Tuning:
-                        - Introduction: en/systemtuning_intro.md
-                        - Tuning: en/systemtuning.md
-                        - System Monitoring: en/systemtools.md
-                    - Display Server:
-                        - Overview: en/displayserver.md
-                        - X11 Session: en/displayserver_x11.md
-                        - Wayland Session: en/displayserver_wayland.md
+                    - System Tuning Intro: en/systemtuning_intro.md
+                    - System Tuning: en/systemtuning.md
+                    - System Monitoring: en/systemtools.md
+                    - Display Server: en/displayserver.md
+                    - X11 Session: en/displayserver_x11.md
+                    - Wayland Session: en/displayserver_wayland.md
                     - Filesystem: en/filesystem.md
                 - Extensions:
                     - KVM: en/kvm.md
@@ -230,6 +227,7 @@ plugins:
                     - pyenv: en/pyenv.md
                     - zsh: en/zsh.md
             - X-Plane:
+                - en/xplane/index.md
                 - Configuration: en/xplane/config.md
                 - Performance: en/xplane/performance.md
                 - System Errors:
