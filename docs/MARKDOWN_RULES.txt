@@ -112,19 +112,17 @@ docs/{lang}/
 
 ### Noch im Root — ausstehende Verschiebungen
 
-Folgende Dateien liegen noch flach in `docs/{lang}/` und sollen in Unterverzeichnisse
-verschoben werden (siehe TODO.md):
-
-- `intro.md`, `begin.md`, `performance_overview.md`, `videos.md`
-  → Gehören zur Nav-Section "Übersicht", brauchen ein eigenes Verzeichnis
 - `scenery.md`, `scenery_components.md`
   → Gehören zur Nav-Section "Szenerien", brauchen ein eigenes Verzeichnis
 
 ### Root-Level: Was dort bleibt
 
-Nur diese Dateien bleiben dauerhaft im Root:
+Folgende Dateien bleiben dauerhaft im Root:
 
-- `index.md` — Site-Homepage und Changelog (nicht Section Index)
+- `index.md` — Site-Homepage und Changelog (gleichzeitig Section Index für "Übersicht")
+- `intro.md`, `begin.md`, `performance_overview.md`, `videos.md` — Gehören zur
+  Nav-Section "Übersicht", deren Section Index die Homepage ist. Ein eigenes Verzeichnis
+  würde zwei Tiefen innerhalb einer Section erzeugen, da die Homepage im Root bleiben muss.
 - `glossary.md` — Querverweisziel aus allen Sections, keiner Section zugeordnet
 - `about.md` — Standalone
 - `Maps.md` — Standalone (Links zu externen HTML-Dateien auf dem Server)

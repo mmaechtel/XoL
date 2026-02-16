@@ -109,11 +109,11 @@ Workflow und Phasen-Beschreibung: siehe `CLAUDE.md` → Dokumentations-Workflow.
 Konvention: Jede Nav-Section hat ein eigenes Unterverzeichnis mit `index.md`.
 Folgende Dateien liegen noch im Root und müssen verschoben werden:
 
-### "Übersicht"-Section → neues Verzeichnis (z.B. `overview/`)
+### "Übersicht"-Section — bleibt im Root
 
-- `intro.md`, `begin.md`, `performance_overview.md`, `videos.md`
-- Braucht `overview/index.md` als Section Index
-- `index.md` (Homepage) bleibt im Root — ist KEIN Section Index
+- `intro.md`, `begin.md`, `performance_overview.md`, `videos.md` bleiben im Root
+- Der Section Index der "Übersicht" ist die Homepage (`index.md`)
+- Ein eigenes Verzeichnis würde zwei Tiefen innerhalb einer Section erzeugen
 
 ### "Szenerien"-Section → neues Verzeichnis (z.B. `scenery/`)
 
