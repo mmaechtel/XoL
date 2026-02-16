@@ -149,6 +149,10 @@ An interface that allows implementing filesystems in user space rather than in t
 
 ## G
 
+### Global Airports
+
+The entry `*GLOBAL_AIRPORTS*` in X-Plane's scenery_packs.ini that contains the default airports, many of which are community-contributed via the X-Plane Gateway. In the load order, Global Airports should sit below custom airport sceneries but above autogen, orthophotos, and mesh layers. An incorrect position can cause floating airports or covered taxiways. See [Scenery Components](../scenery_components.md).
+
 ### Ground Markings
 
 The markings and pavements on airports in X-Plane. In the [Airport Enhancement Package (AEP)](../addon/aep.md), these are replaced with new, high-resolution textures that support X-Plane 12's weather effects and create realistic patterns without repetition.

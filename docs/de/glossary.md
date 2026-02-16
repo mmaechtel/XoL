@@ -153,6 +153,10 @@ Eine Schnittstelle, die es erlaubt, Dateisysteme im Benutzerraum statt im Kernel
 
 ## G
 
+### Global Airports
+
+Der Eintrag `*GLOBAL_AIRPORTS*` in X-Planes scenery_packs.ini, der die Standard-Flughäfen enthält — viele davon von der Community über das X-Plane Gateway beigesteuert. In der Ladereihenfolge sollte Global Airports unterhalb von Custom-Airport-Szenerien, aber über Autogen, Orthofotos und Mesh-Schichten stehen. Eine falsche Position kann zu schwebenden Flughäfen oder verdeckten Rollwegen führen. Siehe [Szenerien-Komponenten](../scenery_components.md).
+
 ### GRUB (Grand Unified Bootloader)
 
 Der Standard-Bootloader der meisten Linux-Distributionen. Kernel-Parameter für Performance-Optimierungen (C-States, NVMe-Einstellungen, CPU-Isolation) werden in der GRUB-Konfiguration unter `/etc/default/grub` im Parameter `GRUB_CMDLINE_LINUX_DEFAULT` eingetragen. Siehe [Systemtuning](../systemtuning.md).

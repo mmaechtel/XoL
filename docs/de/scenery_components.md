@@ -10,23 +10,23 @@ X-Plane liefert eine Szenerie, die aus der Höhe plausibel wirkt, aber weit entf
 
 ## Meshes
 
-Das Mesh ist das Höhenmodell des Geländes — ein Netzwerk aus Dreiecken (ein Triangulated Irregular Network, kurz TIN), das Höhen und Neigungen definiert. Jeder Dreieckspunkt trägt eine Koordinate mit Längengrad, Breitengrad und Höhe. Zusammen formen diese Dreiecke Berge, Täler und Ebenen.
+Das [Mesh](glossary.md#mesh) ist das Höhenmodell des Geländes — ein Netzwerk aus Dreiecken (ein Triangulated Irregular Network, kurz TIN), das Höhen und Neigungen definiert. Jeder Dreieckspunkt trägt eine Koordinate mit Längengrad, Breitengrad und Höhe. Zusammen formen diese Dreiecke Berge, Täler und Ebenen.
 
-Mesh-Daten sind in X-Planes DSF-Dateien (Distribution Scenery Format) gespeichert. Das Standard-Mesh wird mit dem Simulator ausgeliefert; höher aufgelöste Alternativen (z. B. HD Mesh Scenery) lassen sich als Scenery Packs installieren.
+Mesh-Daten sind in X-Planes [DSF](glossary.md#dsf-distribution-scenery-format)-Dateien (Distribution Scenery Format) gespeichert. Das Standard-Mesh wird mit dem Simulator ausgeliefert; höher aufgelöste Alternativen (z. B. HD Mesh Scenery) lassen sich als Scenery Packs installieren.
 
 Das Mesh liefert nur die Struktur — keine Texturen oder Objekte.
 
 ## Orthos
 
-Orthos (Orthophotos) sind Luft- oder Satellitenbilder, die als Bodentexturen auf das Mesh projiziert werden. Sie ersetzen X-Planes prozedurale Landklassen durch fotorealistische Darstellungen — Straßen, Felder, Wälder und Gebäude werden aus der Höhe sichtbar.
+Orthos ([Orthofotos](glossary.md#orthofotos)) sind Luft- oder Satellitenbilder, die als Bodentexturen auf das Mesh projiziert werden. Sie ersetzen X-Planes prozedurale Landklassen durch fotorealistische Darstellungen — Straßen, Felder, Wälder und Gebäude werden aus der Höhe sichtbar.
 
-X-Plane verwendet intern DDS-Texturen (DirectDraw Surface). Quellbilder von Kartendiensten (JPEG, PNG) werden vor der Nutzung in GPU-komprimiertes DDS-Format (DXT1/BC1 oder DXT5/BC3) konvertiert.
+X-Plane verwendet intern [DDS](glossary.md#dds-directdraw-surface)-Texturen (DirectDraw Surface). Quellbilder von Kartendiensten (JPEG, PNG) werden vor der Nutzung in GPU-komprimiertes DDS-Format (DXT1/BC1 oder DXT5/BC3) konvertiert.
 
 Tools wie **[Ortho4XP](addon/ortho4xp.md)** generieren diese DDS-Kacheln offline, während Streaming-Lösungen sie bei Bedarf liefern (siehe unten).
 
 ## Autogen
 
-Autogen (automatisch generierte Szenerie) fügt der Landschaft 3D-Objekte hinzu — Gebäude, Bäume, Fahrzeuge, Stromleitungen. X-Plane liest Platzierungsinformationen aus seinen DSF-Szeneriedateien und verteilt Objekte entsprechend: Bäume in Waldgebieten, Gebäude in Wohnzonen, Fabriken in Industriegebieten.
+[Autogen](glossary.md#autogen) (automatisch generierte Szenerie) fügt der Landschaft 3D-Objekte hinzu — Gebäude, Bäume, Fahrzeuge, Stromleitungen. X-Plane liest Platzierungsinformationen aus seinen DSF-Szeneriedateien und verteilt Objekte entsprechend: Bäume in Waldgebieten, Gebäude in Wohnzonen, Fabriken in Industriegebieten.
 
 Die Platzierungsdaten in X-Planes Standardszenerie stammen aus OpenStreetMap und anderen geografischen Datensätzen, die während Laminar Researchs Szenerie-Build-Pipeline verarbeitet werden. Diese Daten sind in die DSF-Dateien eingebacken — X-Plane fragt OSM nicht zur Laufzeit ab. Drittanbieter-Add-ons wie SimHeaven X-World nutzen OSM-Daten separat, um detailliertere Autogen-Abdeckung zu erzeugen.
 
@@ -46,7 +46,7 @@ Mehrere Add-ons erweitern die Standard-Szenerieschichten:
 
 - **[Ortho4XP](addon/ortho4xp.md)** — generiert hochauflösende Ortho-Kacheln offline aus Satellitenbildern
 - **[Ortho-Streaming](addon/orthophotography_intro.md#ortho-streaming)** — AutoOrtho, XEarthLayer und XPME streamen Satellitenbilder bei Bedarf, ohne Vorabgenerierung
-- **Custom Sceneries** — höher aufgelöste Meshes oder regionale Autogen-Objekte (z. B. SimHeaven X-World)
+- **[Custom Sceneries](glossary.md#custom-scenery)** — höher aufgelöste Meshes oder regionale Autogen-Objekte (z. B. SimHeaven X-World)
 - **Autogen-Bibliotheken** — zusätzliche Objektsets für vielfältigere Gebäude- und Vegetationsplatzierung
 
 ---
@@ -79,7 +79,7 @@ X-Plane verarbeitet die `scenery_packs.ini` von oben nach unten. Einträge weite
     - **Warum darüber?** Diese Objekte sollten über dem Autogen liegen, um sichtbar zu bleiben.
     - **Beispiel**: `Usa_Radio_Masts_01` oder `world_wind_turbines`.
 
-5. **Global Airports**
+5. **[Global Airports](glossary.md#global-airports)**
     - **Funktion**: Enthält die Standard-Flughäfen von X-Plane.
     - **Warum darüber?** Muss über Autogen und Orthos liegen, aber unter Custom Sceneries.
     - **Beispiel**: `*GLOBAL_AIRPORTS*`.

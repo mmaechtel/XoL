@@ -38,6 +38,7 @@ This documentation is an open project. Improvements or additions can be contribu
 - [Scenery Components](scenery_components.md) audited: priority direction corrected, DDS format, OSM clarification, tone aligned
 - New video: [Display Server](displayserver.md) — X11 vs Wayland decision guide
 - New videos: [Introduction](intro.md) — guided tour through XoL (DE + EN)
+- [Scenery Components](scenery_components.md): key terms linked to [Glossary](glossary.md), new entry Global Airports
 
 ### 2026-02-15
 - New addon pages: [SGES](addon/sges.md), [KabinXP](addon/kabinxp.md), [LST](addon/lst.md), [LinuxTrack](addon/linuxtrack.md), [XLinSpeak](addon/xlinspeak.md), [WINCTRL](addon/winctrl.md), [TerrainRadar](addon/terrainradar.md), [NOAA Weather](addon/noaa_weather.md), [MobiFlight](addon/mobiflight.md), [SayIntentions.AI](addon/sayintentions.md)
