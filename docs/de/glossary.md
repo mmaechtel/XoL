@@ -21,6 +21,10 @@ Das Standard-Audio-Subsystem im Linux-Kernel, das die Schnittstelle zwischen Aud
 
 Ein NVMe-Energiespar-Feature, das SSDs automatisch in stromsparende Zustände versetzt. Kann zu Mikro-Rucklern führen, wenn die SSD für das Laden von Szenerie-Daten aus dem Tiefschlaf aufgeweckt werden muss. Für X-Plane empfiehlt sich die Deaktivierung über den Kernel-Parameter `nvme_core.default_ps_max_latency_us=0`.
 
+### ANV
+
+Der Open-Source-Vulkan-Treiber für Intel-GPUs innerhalb des Mesa-Treiberstacks. ANV ist der Standard-Vulkan-Treiber auf Linux-Systemen mit Intel-Arc- und integrierten Intel-Grafikkarten und wird von X-Plane 12 direkt genutzt.
+
 ### Autogen
 
 Automatisch generierte 3D-Objekte (Gebäude, Vegetation) in X-Plane, die auf Basis von Landnutzungsdaten platziert werden. Autogen füllt die Landschaft abseits handmodellierter Flughäfen und Städte. Die Darstellungsdichte wird in den X-Plane-Grafikeinstellungen über „Objects" gesteuert.

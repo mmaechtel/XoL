@@ -29,6 +29,10 @@ The standard audio subsystem in the Linux kernel that provides the interface bet
 
 An NVMe power-saving feature that automatically transitions SSDs into low-power states. Can cause micro-stutters when the SSD needs to wake from deep sleep to load scenery data. For X-Plane, disabling via the kernel parameter `nvme_core.default_ps_max_latency_us=0` is recommended.
 
+### ANV
+
+The open-source Vulkan driver for Intel GPUs within the Mesa driver stack. ANV is the default Vulkan driver on Linux systems with Intel Arc and integrated Intel graphics and is used directly by X-Plane 12.
+
 ### Autogen
 
 Automatically generated 3D objects (buildings, vegetation) in X-Plane placed based on land use data. Autogen fills the landscape outside hand-modeled airports and cities. Density is controlled in X-Plane's graphics settings via "Objects".

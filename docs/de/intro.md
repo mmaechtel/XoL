@@ -1,10 +1,4 @@
-## Einführung
-
-Diese Dokumentation beschreibt die optimale Einrichtung und Konfiguration von [X-Plane](glossary.md#x-plane) unter [Linux](glossary.md#linux). Sie richtet sich an Linux-erfahrene Benutzer und setzt eine funktionierende Linux-Installation voraus.
-
-Der Guide deckt die wichtigsten Aspekte der Systemoptimierung ab, einschließlich der Kernel-Konfiguration, Treiber-Optimierung und Performance-Tuning. Im Bereich des X-Plane Setups werden die optimale Konfiguration, Performance-Einstellungen und Hardware-Integration behandelt. Zusätzlich werden Erweiterungen wie Addon-Integration, Plugin-Konfiguration und die Einrichtung einer Entwicklungsumgebung beschrieben.
-
-Die hier gezeigten Beispiele basieren auf Debian Linux, lassen sich aber leicht auf andere Distributionen übertragen. Die grundlegenden Konzepte und Vorgehensweisen bleiben dabei gleich - lediglich die spezifischen Paketmanager-Befehle oder Repository-Konfigurationen müssen entsprechend angepasst werden.
+# Einführung
 
 <div class="video-container" markdown>
 <video controls width="100%" preload="metadata" poster="../assets/video/de/xol_Xplane_on_Linux/X-Plane_unter_Linux.jpg">
@@ -12,27 +6,32 @@ Die hier gezeigten Beispiele basieren auf Debian Linux, lassen sich aber leicht 
 </video>
 </div>
 
-## Warum X-Plane?
+??? abstract "Was X-Plane besonders macht"
 
-[X-Plane](glossary.md#x-plane) hebt sich von anderen Flugsimulatoren durch seinen simulationsorientierten Ansatz ab. Die realistische Flugsimulation basiert auf der [Blade Element Theory](glossary.md#blade-element-theory), die eine Echtzeit-Strömungssimulation ermöglicht. Statt vorgefertigter Tabellen werden Echtzeit-Flugphysikberechnungen durchgeführt, unterstützt durch detaillierte Simulationen von Triebwerken und Flugzeugsystemen sowie einer präzisen Wettersimulation mit atmosphärischen Effekten.
+    [X-Plane](glossary.md#x-plane) hebt sich von anderen Flugsimulatoren durch seinen simulationsorientierten Ansatz ab. Die Flugphysik basiert auf der [Blade Element Theory](glossary.md#blade-element-theory) — statt vorgefertigter Tabellen werden Strömung und Kräfte in Echtzeit für jedes Flugzeugsegment berechnet. Das erstreckt sich auf Triebwerks- und Systemsimulation sowie Wetter mit atmosphärischen Effekten.
 
-Im professionellen Bereich findet X-Plane breite Anwendung in Flugschulen und der Pilotenausbildung. Es existieren zertifizierte Versionen für professionelle Simulatoren, die auch in Forschung und Entwicklung eingesetzt werden. Diese Versionen bilden die Basis für [FAA](glossary.md#faa)-zertifizierte Trainingsgeräte.
+    Die Rendering-Engine nutzt [PBR](glossary.md#pbr) für physikalisch korrekte Materialdarstellung, kombiniert mit dynamischer Beleuchtung, atmosphärischen Effekten, Echtzeit-Reflexionen und [HDR](glossary.md#hdr)-Rendering. Der Fokus liegt auf realistischer statt künstlerischer Interpretation.
 
-Die grafische Darstellung in X-Plane folgt einem einzigartigen Ansatz. Im Gegensatz zu typischen Simulatoren liegt der Fokus auf physikalisch korrekter Lichtdarstellung und realistischer statt künstlerischer Interpretation. Die Basis-Darstellung ist plausibel und kann durch Addons erweitert werden. Technisch wird dies durch [PBR](glossary.md#pbr) für realistische Materialdarstellung, dynamische Beleuchtung, atmosphärische Effekte, Echtzeit-Reflexionen und [HDR](glossary.md#hdr)-Rendering umgesetzt.
-
-Die Anpassung und Entwicklung von X-Plane wird durch eine offene [Plugin](glossary.md#plugin)-Architektur und umfangreiche Entwicklungswerkzeuge unterstützt. Externe Flugmodelle können integriert werden, und die Simulationsengine wird regelmäßig aktualisiert. Eine aktive Entwickler-Community unterstützt die kontinuierliche Weiterentwicklung.
-
-Aktuell bestehen einige Einschränkungen, wie die Performance-Limitierung durch die [Single-CPU](glossary.md#single-cpu)-Architektur, wobei die Multi-Core-Unterstützung in Entwicklung ist. Die Systemkonfiguration ist komplexer als bei anderen Simulatoren, und die optimale Nutzung erfordert eine längere Lernkurve.
+    Die offene [Plugin](glossary.md#plugin)-Architektur von X-Plane ermöglicht tiefgreifende Anpassungen — von eigenen Flugzeugmodellen über FlyWithLua-Skripte bis hin zu Tools von Drittanbietern. Die Simulations-Engine wird aktiv weiterentwickelt, wobei X-Plane 12 einen erheblichen Teil der Rendering-Arbeit auf mehrere CPU-Kerne verteilt, während der Physik-Hauptthread an einen einzelnen Kern gebunden bleibt.
 
 ## Warum X-Plane unter Linux?
 
-Linux als Betriebssystem bietet für X-Plane besondere Vorteile. Die Performance-Optimierung ermöglicht eine präzise Kontrolle über CPU- und GPU-Ressourcen, minimale System-Latenz durch angepasste Kernel-Konfiguration, effiziente Speichernutzung und optimierte Treiberunterstützung für Grafikhardware.
+Die kurze Antwort: Weil der gesamte Stack offen ist. Der Linux-Kernel, die GPU-Treiber ([Mesa](glossary.md#mesa)/[RADV](glossary.md#radv) für AMD, [ANV](glossary.md#anv) für Intel), der Display-Server, das Dateisystem — alles Open Source. Das ist kein ideologischer Punkt, sondern ein praktischer: Open Source ist der Grund, warum sich ein Linux-System für X-Plane auf eine Weise optimieren lässt, die auf einer geschlossenen Plattform schlicht nicht möglich ist.
 
-Die Stabilität und Zuverlässigkeit des Systems wird durch das Fehlen automatischer Updates oder Hintergrundprozesse während des Fluges gewährleistet. Die Systemleistung ist vorhersehbar ohne unerwartete Einbrüche, und die robuste Fehlerbehandlung ermöglicht lange Laufzeiten ohne Performance-Degradation.
+Jede Optimierung, die diese Dokumentation beschreibt — vom CPU-Scheduling über Interrupt-Routing bis zur Shader-Cache-Konfiguration — existiert, weil der Quellcode verfügbar ist, die Schnittstellen dokumentiert sind und die Community den Stack kontinuierlich verbessert. [Zink](glossary.md#zink), die OpenGL-zu-Vulkan-Übersetzungsschicht, die für die Plugin-Kompatibilität von X-Plane entscheidend ist, ist ein Open-Source-Mesa-Projekt. Die Vulkan-Treiber, die X-Planes Rendering antreiben, werden offen entwickelt. Performance-Verbesserungen fließen direkt aus Community-Beiträgen ein.
 
-Die Hardware-Integration profitiert von direkten Hardware-Zugriffen ohne zusätzliche Abstraktionsschichten. Flugsimulator-spezifische Peripherie wird optimal unterstützt, und Multi-Monitor-Setups können flexibel konfiguriert werden. Die Nutzung von VR-Hardware ist besonders effizient.
+Diese Transparenz hat konkrete Auswirkungen auf die Flugsimulation:
 
-Für Entwicklung und Anpassung stehen umfangreiche Entwicklungswerkzeuge für X-Plane-Plugins zur Verfügung. Die direkte Integration von Entwicklungs- und Debugging-Tools ermöglicht eine einfache Automatisierung von X-Plane-Prozessen und flexible Skripting-Möglichkeiten für komplexe Workflows.
+- **Kernel-Tuning:** Präzise Kontrolle über CPU-Governor, Interrupt-Affinität und Scheduling — behandelt in [System-Tuning](systemtuning.md) und [Liquorix-Kernel](liquorix.md)
+- **Keine Hintergrund-Störungen:** Keine automatischen Updates oder Telemetrie, die während des Fluges um CPU-Zyklen konkurrieren. Die Systemleistung ist vorhersagbar.
+- **Display-Server-Wahl:** [Wayland oder X11](displayserver.md) lassen sich je nach GPU und Compositor-Verhalten auswählen
+- **Treiber-Kontrolle:** GPU-Treiberversion, Persistence Mode und Energieverwaltung sind frei konfigurierbar — siehe [Nvidia-Treiber](nvidia.md)
+- **Dateisystem-Optimierung:** Mount-Optionen, I/O-Scheduler und TRIM lassen sich für schnelles Szenerie-Laden anpassen — siehe [Dateisystem](filesystem.md)
+- **Nachvollziehbarkeit:** Wenn Mikroruckler auftreten, lässt sich die Ursache bis auf Kernel-Ebene zurückverfolgen — Scheduler-Entscheidungen, Interrupt-Timing, Treiber-Verhalten. Nichts ist eine Black Box.
+- **Stabilität:** Debian Stable bietet eine vorhersagbare Basis ohne überraschende OS-Upgrades, erzwungene Neustarts oder Breaking Changes während einer Session.
 
-Während X-Plane auch unter Windows läuft, ermöglicht Linux eine präzisere Kontrolle über Systemressourcen und eine stabilere Laufzeitumgebung. Der höhere initiale Aufwand wird durch bessere Performance und Zuverlässigkeit ausgeglichen.
+Der Kompromiss: Einrichtung und Tuning erfordern mehr Aufwand als unter Windows. Aber dies ist keine Plattform, auf der eine Checkliste reicht — derselbe Kernel-Parameter kann die Performance verbessern oder verschlechtern, je nachdem welcher Kernel läuft. Diese Dokumentation liefert das Hintergrundwissen für fundierte Entscheidungen: wie Scheduling und Latenz funktionieren, warum zwei Kernel gegensätzliche Tuning-Strategien brauchen, und wo jede Optimierung einen messbaren Unterschied macht. [Erste Schritte](begin.md) behandelt Systemvoraussetzungen und Installation.
 
+Quellen:
+
+- [Offizielle X-Plane-Website](https://www.x-plane.com/)

@@ -1,10 +1,14 @@
 # **XoL**: Running **X**-Plane **o**n **L**inux
 
-This documentation is aimed at experienced Linux users who want to run X-Plane on Linux. A working Linux installation is assumed.
+This documentation covers setup and optimization of X-Plane 12 (Laminar Research) under Linux. It is aimed at experienced Linux users — a working installation is assumed. The examples are based on Debian but transfer to other distributions with minor adjustments.
 
-The examples shown here are based on Debian Linux but can be easily adapted to other distributions. The basic concepts and approaches remain the same - only the specific package manager commands or repository configurations need to be adjusted accordingly.
+## Where to Start
 
-## Featured Video
+- **Why Linux?** [Introduction](intro.md) explains what makes X-Plane on Linux different.
+- **New to X-Plane on Linux?** [Getting Started](begin.md) covers system requirements, installation, and first launch.
+- **X-Plane already running?** [Performance Fundamentals](performance_overview.md) explains the three load dimensions (CPU, I/O, network) before diving into [System Tuning](systemtuning.md).
+
+## Featured Video: Beyond the Default Cockpit
 
 <div class="video-container" markdown>
 <video controls width="100%" preload="metadata" poster="../assets/video/en/toliss_flow_with_plugins/Beyond_the_Default_Cockpit.jpg">
@@ -14,13 +18,9 @@ The examples shown here are based on Debian Linux but can be easily adapted to o
 
 [All Videos →](videos.md)
 
-## Documentation Content
+## About This Documentation
 
-The documentation covers X-Plane configuration and optimization under Linux. The core focus is on system tuning — kernel parameters, CPU governor, GPU drivers, display server selection, and filesystem optimization — complemented by performance analysis using both X-Plane's built-in tools and Linux monitoring utilities. Additional sections cover scenery management with orthophoto streaming, flight operations including ATC procedures across all flight phases, and a reference catalog of Linux-compatible addons and plugins.
-
-## Guide Structure
-
-The guides are modular — individual topics can be implemented independently or combined as needed. Each guide explains the goal, shows the necessary steps, and provides troubleshooting tips. The content is organized into sections covering Linux system optimization, X-Plane configuration and performance, scenery management, addons and plugins, and flight operations.
+The core focus is on Linux system tuning — kernel parameters, CPU governor, GPU drivers, display server selection, and filesystem optimization — complemented by performance analysis using both X-Plane's built-in tools and Linux monitoring utilities. Additional sections cover scenery management with orthophoto streaming, flight operations including ATC procedures, and a reference catalog of Linux-compatible addons and plugins. The guides are modular — individual topics can be implemented independently or combined as needed.
 
 ## Contributing
 

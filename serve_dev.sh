@@ -29,6 +29,6 @@ if [[ "$(uname)" == "Linux" ]]; then
     mkdocs serve --livereload
 else
     # --livereload: workaround for Click 8.x + Python 3.14 bug (flag_value default ignored)
-    echo "Starting MkDocs development server (macOS, dirty mode)..."
-    mkdocs serve --livereload --dirty
+    echo "Starting MkDocs development server (macOS)..."
+    mkdocs serve --livereload
 fi

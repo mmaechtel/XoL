@@ -230,3 +230,21 @@ DATEIEN GEAENDERT:
 - **Keine Links in Ueberschriften:** Glossar-Links gehoeren in den Fliesstext, nicht in H2/H3/H4
 - **Markdown-Check:** Gemaess `SKILL_RULES.md` → automatisch, ohne Rueckfrage
 - **Pfadtiefe beachten:** Glossar-Links muessen die Verzeichnistiefe der Seite beruecksichtigen (siehe Phase 6.2)
+
+### Link-Prioritaet: Glossar vs. Seiten-Link vs. externer Link
+
+Wenn ein Begriff sowohl einen Glossar-Eintrag als auch einen Seiten- oder externen Link haben koennte, gelten folgende Regeln:
+
+1. **Bestehende Links nie ersetzen.** Seiten-Links (`[System Tuning](systemtuning.md)`) und externe Links (`[Debian](https://debian.org)`) werden nicht durch Glossar-Links ersetzt. Sie dienen der Navigation bzw. als Quellenreferenz.
+
+2. **Erste Erwaehnung → Glossar-Link.** Wenn ein Begriff zum ersten Mal auftaucht und noch keinen Link hat → Glossar-Link setzen. Der Glossar-Link erklaert den Begriff (Definition).
+
+3. **Spaetere Erwaehnung → Seiten-Link.** Wenn derselbe Begriff spaeter im Kontext einer Vertiefung erwaehnt wird → Seiten-Link setzen (Navigation zur ausfuehrlichen Erklaerung).
+
+4. **Erste Erwaehnung ist bereits Seiten-Link:** Wenn die erste Erwaehnung eines Begriffs als Seiten-Link formatiert ist (z.B. in einem Bullet "behandelt in [Liquorix Kernel](liquorix.md)"), dann:
+   - Gibt es eine FRUEHERE, unverlinkte Erwaehnung desselben Begriffs auf der Seite? → Diese fruehere Stelle bekommt den Glossar-Link
+   - Gibt es keine fruehere Erwaehnung? → Seiten-Link behalten (Seite > Glossar, wenn die Seite das Thema ausfuehrlich behandelt)
+
+5. **Nie doppelt verlinken.** Ein Wort traegt maximal einen Link. Keine Konstrukte wie `[Mesa](glossary.md#mesa)([Details](mesa.md))`.
+
+6. **Ueber-Verlinkung vermeiden.** Nicht jeden bekannten Begriff zwanghaft verlinken. Begriffe die im Kontext klar verstaendlich sind (z.B. "Vulkan" im Satz "OpenGL-zu-Vulkan-Uebersetzung" wo Zink bereits verlinkt ist) muessen nicht zusaetzlich verlinkt werden.

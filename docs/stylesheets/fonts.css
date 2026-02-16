@@ -51,23 +51,78 @@
     --md-default-bg-color--light: #1e293b;
 }
 
-/* ── Typography ── */
+/* ── Typography: compact ── */
 
 .md-typeset {
-    font-size: 0.82rem;
-    line-height: 1.7;
+    font-size: 0.78rem;
+    line-height: 1.55;
 }
 
 .md-typeset h1 {
     font-weight: 700;
     letter-spacing: -0.02em;
+    margin-top: 0;
+    margin-bottom: 0.4em;
 }
 
 .md-typeset h2 {
     font-weight: 700;
     letter-spacing: -0.01em;
     border-bottom: 2px solid var(--md-accent-fg-color);
-    padding-bottom: 0.3em;
+    padding-bottom: 0.2em;
+    margin-top: 1.2em;
+    margin-bottom: 0.4em;
+}
+
+.md-typeset h3 {
+    margin-top: 1em;
+    margin-bottom: 0.3em;
+}
+
+.md-typeset p {
+    margin-top: 0.4em;
+    margin-bottom: 0.4em;
+}
+
+.md-typeset ul, .md-typeset ol {
+    margin-top: 0.3em;
+    margin-bottom: 0.3em;
+}
+
+.md-typeset li {
+    margin-bottom: 0.15em;
+}
+
+/* ── Compact content area ── */
+
+.md-content__inner {
+    padding-top: 0.4rem;
+}
+
+/* ── Compact header + tabs ── */
+
+.md-header {
+    height: 2.4rem;
+}
+
+.md-tabs {
+    font-size: 0.72rem;
+}
+
+/* ── Compact sidebar ── */
+
+.md-nav__link {
+    font-size: 0.72rem;
+    padding: 0.3em 0.6em;
+}
+
+/* ── Compact admonitions ── */
+
+.md-typeset .admonition,
+.md-typeset details {
+    margin-top: 0.6em;
+    margin-bottom: 0.6em;
+    font-size: 0.76rem;
 }
 
 /* ── Links: smooth hover transitions ── */

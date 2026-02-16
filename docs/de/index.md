@@ -1,10 +1,14 @@
 # **XoL**: Running **X**-Plane **o**n **L**inux
 
-Diese Dokumentation richtet sich an Linux-erfahrene Benutzer, die X-Plane unter Linux betreiben möchten. Eine funktionierende Linux-Installation wird vorausgesetzt.
+Diese Dokumentation behandelt Einrichtung und Optimierung von X-Plane 12 (Laminar Research) unter Linux. Sie richtet sich an erfahrene Linux-Nutzer — eine funktionierende Installation wird vorausgesetzt. Die Beispiele basieren auf Debian, lassen sich aber mit geringen Anpassungen auf andere Distributionen übertragen.
 
-Die hier gezeigten Beispiele basieren auf Debian Linux, lassen sich aber leicht auf andere Distributionen übertragen. Die grundlegenden Konzepte und Vorgehensweisen bleiben dabei gleich - lediglich die spezifischen Paketmanager-Befehle oder Repository-Konfigurationen müssen entsprechend angepasst werden.
+## Einstieg
 
-## Featured Video
+- **Warum Linux?** [Einführung](intro.md) erklärt, was X-Plane unter Linux besonders macht.
+- **Neu mit X-Plane unter Linux?** [Erste Schritte](begin.md) behandelt Systemvoraussetzungen, Installation und ersten Start.
+- **X-Plane läuft bereits?** [Performance-Grundlagen](performance_overview.md) erklärt die drei Lastdimensionen (CPU, I/O, Netzwerk) als Basis für das [System-Tuning](systemtuning.md).
+
+## Featured Video: Vom Briefing zum Gate
 
 <div class="video-container" markdown>
 <video controls width="100%" preload="metadata" poster="../assets/video/de/Toliss_Plugin_Flow/Vom_Briefing_zum_Gate.jpg">
@@ -14,13 +18,9 @@ Die hier gezeigten Beispiele basieren auf Debian Linux, lassen sich aber leicht 
 
 [Alle Videos →](videos.md)
 
-## Inhalt der Dokumentation
+## Über diese Dokumentation
 
-Die Dokumentation behandelt die Konfiguration und Optimierung von X-Plane unter Linux. Im Kern geht es um Systemtuning — Kernel-Parameter, CPU-Governor, GPU-Treiber, Display-Server-Wahl und Dateisystem-Optimierung — ergänzt durch Performance-Analyse mit den integrierten Tools von X-Plane und Linux-Monitoring-Werkzeugen. Weitere Abschnitte behandeln Szenerie-Verwaltung mit Orthofoto-Streaming, Flugbetrieb einschließlich ATC-Verfahren über alle Flugphasen sowie ein Nachschlagewerk Linux-kompatibler Addons und Plugins.
-
-## Struktur der Anleitungen
-
-Die Anleitungen sind modular aufgebaut — einzelne Themen lassen sich unabhängig umsetzen oder nach Bedarf kombinieren. Jede Anleitung beschreibt das Ziel, zeigt die notwendigen Schritte und bietet Tipps zur Fehlerbehebung. Die Inhalte gliedern sich in Bereiche zu Linux-Systemoptimierung, X-Plane-Konfiguration und Performance, Szenerie-Verwaltung, Addons und Plugins sowie Flugbetrieb.
+Im Kern geht es um Linux-Systemtuning — Kernel-Parameter, CPU-Governor, GPU-Treiber, Display-Server-Wahl und Dateisystem-Optimierung — ergänzt durch Performance-Analyse mit den integrierten Tools von X-Plane und Linux-Monitoring-Werkzeugen. Weitere Abschnitte behandeln Szenerie-Verwaltung mit Orthofoto-Streaming, Flugbetrieb einschließlich ATC-Verfahren sowie ein Nachschlagewerk Linux-kompatibler Addons und Plugins. Die Anleitungen sind modular aufgebaut — einzelne Themen lassen sich unabhängig umsetzen oder nach Bedarf kombinieren.
 
 ## Beitragen
 
