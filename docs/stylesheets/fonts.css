@@ -31,13 +31,13 @@
 
 /* ── Custom Color Overrides ── */
 
-/* Light mode: deep navy header, warm amber accents */
+/* Light mode: clean blue header, warm amber accents */
 [data-md-color-scheme="default"] {
-    --md-primary-fg-color: #1a237e;
-    --md-primary-fg-color--light: #3949ab;
-    --md-primary-fg-color--dark: #0d1252;
+    --md-primary-fg-color: #0d47a1;
+    --md-primary-fg-color--light: #1565c0;
+    --md-primary-fg-color--dark: #0a3470;
     --md-accent-fg-color: #f59e0b;
-    --md-typeset-a-color: #2962ff;
+    --md-typeset-a-color: #1565c0;
 }
 
 /* Dark mode: rich dark with amber accents */

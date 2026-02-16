@@ -39,7 +39,7 @@ theme:
   palette:
     # Palette toggle for automatic mode
     - media: "(prefers-color-scheme)"
-      primary: indigo
+      primary: blue
       accent: amber
       toggle:
         icon: material/brightness-auto
@@ -48,7 +48,7 @@ theme:
     # Palette toggle for light mode
     - media: "(prefers-color-scheme: light)"
       scheme: default
-      primary: indigo
+      primary: blue
       accent: amber
       toggle:
         icon: material/brightness-7
@@ -57,7 +57,7 @@ theme:
     # Palette toggle for dark mode
     - media: "(prefers-color-scheme: dark)"
       scheme: slate
-      primary: indigo
+      primary: blue
       accent: amber
       toggle:
         icon: material/brightness-4
