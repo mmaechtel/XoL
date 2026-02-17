@@ -101,7 +101,7 @@ plugins:
                 - de/fundamentals/index.md
                 - Performance:
                     - de/fundamentals/performance/index.md
-                    - Übersicht: de/fundamentals/performance/performance_overview.md
+                    - Lastdimensionen: de/fundamentals/performance/performance_overview.md
                     - CPU & RAM: de/fundamentals/performance/cpu_ram.md
                     - GPU & VRAM: de/fundamentals/performance/gpu_vram.md
             - Linux:
@@ -240,7 +240,7 @@ plugins:
                 - en/fundamentals/index.md
                 - Performance:
                     - en/fundamentals/performance/index.md
-                    - Overview: en/fundamentals/performance/performance_overview.md
+                    - Load Dimensions: en/fundamentals/performance/performance_overview.md
                     - CPU & RAM: en/fundamentals/performance/cpu_ram.md
                     - GPU & VRAM: en/fundamentals/performance/gpu_vram.md
             - Linux:
