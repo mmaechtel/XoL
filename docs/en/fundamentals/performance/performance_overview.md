@@ -158,7 +158,7 @@ The following strategies address the described load dimensions. Each is covered 
 
 | Topic | Page | Focus |
 |---|---|---|
-| System Tuning | [Introduction](../../linux/system/index.md) | Overview and video |
+| System Tuning | [Why Latency Matters](../../linux/system/overview.md) | Introduction and video |
 | CPU & Interrupts | [Tuning](../../linux/system/systemtuning.md) | [CPU governor](../../glossary.md#cpu-governor), IRQ pinning, [kernel parameters](../../glossary.md#kernel-parameter) |
 | Storage & Filesystem | [Filesystem](../../linux/optimizations/filesystem.md) | I/O scheduler, mount options, TRIM |
 | Monitoring | [System Monitoring](../../linux/system/systemtools.md) | CPU, I/O, and network analysis |

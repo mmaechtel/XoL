@@ -108,6 +108,7 @@ plugins:
                 - de/linux/index.md
                 - System:
                     - de/linux/system/index.md
+                    - Warum Latenz zählt: de/linux/system/overview.md
                     - Tuning: de/linux/system/systemtuning.md
                     - Monitoring: de/linux/system/systemtools.md
                 - Optimierungen:
@@ -251,6 +252,7 @@ plugins:
                 - en/linux/index.md
                 - System:
                     - en/linux/system/index.md
+                    - Why Latency Matters: en/linux/system/overview.md
                     - Tuning: en/linux/system/systemtuning.md
                     - Monitoring: en/linux/system/systemtools.md
                 - Optimizations:
