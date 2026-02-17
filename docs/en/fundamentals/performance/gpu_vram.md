@@ -9,13 +9,13 @@ The chapter [CPU & RAM](cpu_ram.md) describes how X-Plane uses its cores and how
 All common ortho streaming solutions — [AutoOrtho](../../glossary.md#autoortho), XPME, XEarthLayer — follow the same architectural principle:
 
 ```
-Streaming Tool                      X-Plane
-┌─────────────────────┐            ┌──────────────────────┐
-│ Tile download        │            │                      │
-│ Tile decoding        │  FUSE     │ Texture Pager         │
+Streaming Tool                     X-Plane
+┌──────────────────────┐           ┌──────────────────────┐
+│ Tile download        │           │                      │
+│ Tile decoding        │  FUSE     │ Texture Pager        │
 │ Cache management     │ ───────►  │ (Disk → RAM → VRAM)  │
 │ FUSE filesystem      │  Files    │                      │
-└─────────────────────┘            └──────────────────────┘
+└──────────────────────┘           └──────────────────────┘
 ```
 
 **No streaming tool accesses VRAM directly.** The tools merely provide image files through a [FUSE](../../glossary.md#fuse-filesystem-in-userspace) filesystem — from X-Plane's perspective, these are ordinary [custom scenery](../../glossary.md#custom-scenery) textures. X-Plane reads them through its own texture pager and loads them into its VRAM pool. The VRAM impact is therefore identical across all ortho solutions — X-Plane processes the textures in exactly the same way.
