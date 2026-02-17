@@ -1,0 +1,40 @@
+name: Topic Request
+description: Suggest a new topic or page for the documentation
+title: "[Topic] "
+labels: ["enhancement"]
+body:
+  - type: input
+    id: topic
+    attributes:
+      label: Topic
+      description: What should the new page or section be about?
+      placeholder: "e.g. PipeWire audio setup for X-Plane"
+    validations:
+      required: true
+
+  - type: textarea
+    id: description
+    attributes:
+      label: Description
+      description: What should be covered? What questions should the page answer?
+      placeholder: "Describe the scope..."
+    validations:
+      required: true
+
+  - type: textarea
+    id: context
+    attributes:
+      label: Why is this useful?
+      description: "Optional: Who benefits from this and in what situation?"
+      placeholder: "e.g. Many Linux users struggle with audio routing when using VATSIM..."
+    validations:
+      required: false
+
+  - type: input
+    id: references
+    attributes:
+      label: References
+      description: "Optional: Links to relevant docs, forum posts, or projects."
+      placeholder: "e.g. https://pipewire.org/..."
+    validations:
+      required: false
