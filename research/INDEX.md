@@ -63,7 +63,7 @@ Docs: `docs/en/audio.md` (geplant)
 
 ## szenerie
 
-Docs: `docs/en/scenery.md`, `docs/en/scenery_components.md`
+Docs: `docs/en/scenery/scenery.md`, `docs/en/scenery/scenery_components.md`
 
 ### HOCH
 - szenerie/Cache-Verhalten_Orthoszenerie_XPlane.md -> scenery.md, scenery_components.md

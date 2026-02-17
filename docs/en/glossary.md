@@ -151,7 +151,7 @@ An interface that allows implementing filesystems in user space rather than in t
 
 ### Global Airports
 
-The entry `*GLOBAL_AIRPORTS*` in X-Plane's scenery_packs.ini that contains the default airports, many of which are community-contributed via the X-Plane Gateway. In the load order, Global Airports should sit below custom airport sceneries but above autogen, orthophotos, and mesh layers. An incorrect position can cause floating airports or covered taxiways. See [Scenery Components](../scenery_components.md).
+The entry `*GLOBAL_AIRPORTS*` in X-Plane's scenery_packs.ini that contains the default airports, many of which are community-contributed via the X-Plane Gateway. In the load order, Global Airports should sit below custom airport sceneries but above autogen, orthophotos, and mesh layers. An incorrect position can cause floating airports or covered taxiways. See [Scenery Components](../scenery/scenery_components.md).
 
 ### Ground Markings
 
@@ -261,7 +261,7 @@ Orthophotos (or orthoimages) are geometrically corrected aerial photographs of t
 
 ### Overlay (Scenery)
 
-A scenery layer in X-Plane that sits above a base scenery and supplements or replaces it. Overlays typically contain airports, buildings, or roads, while the base layer provides terrain mesh and orthophotos. The order in scenery_packs.ini determines which overlays take precedence. See [Scenery Components](../scenery_components.md).
+A scenery layer in X-Plane that sits above a base scenery and supplements or replaces it. Overlays typically contain airports, buildings, or roads, while the base layer provides terrain mesh and orthophotos. The order in scenery_packs.ini determines which overlays take precedence. See [Scenery Components](../scenery/scenery_components.md).
 
 ## P
 

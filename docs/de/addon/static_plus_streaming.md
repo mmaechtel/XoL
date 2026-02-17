@@ -17,7 +17,7 @@ Die Vorteile dieser Kombination:
 Für die bevorzugten Fluggebiete werden zunächst Ortho4XP-Kacheln generiert. Empfohlene Einstellungen:
 
 - **Zoom-Level 17–19** für maximale Qualität
-- **Overlays aktivieren**, sofern nicht [SimHeaven](../scenery.md) verwendet wird
+- **Overlays aktivieren**, sofern nicht [SimHeaven](../scenery/scenery.md) verwendet wird
 - Als Bildquelle stehen u. a. **Bing** und **Google** zur Verfügung
 
 ### 2. scenery_packs.ini konfigurieren

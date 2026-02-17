@@ -99,6 +99,11 @@ docs/{lang}/
 │       ├── geraeteverluste.md
 │       └── diagnose.md
 │
+├── scenery/                  # Section: Szenerien
+│   ├── index.md              #   Section Index
+│   ├── scenery.md
+│   └── scenery_components.md
+│
 ├── addon/                    # Section: Addons
 │   ├── autoortho.md
 │   ├── xearthlayer.md
@@ -109,11 +114,6 @@ docs/{lang}/
     ├── weather.md
     └── ...                   #   (ATC-Seiten)
 ```
-
-### Noch im Root — ausstehende Verschiebungen
-
-- `scenery.md`, `scenery_components.md`
-  → Gehören zur Nav-Section "Szenerien", brauchen ein eigenes Verzeichnis
 
 ### Root-Level: Was dort bleibt
 

@@ -107,7 +107,6 @@ Workflow und Phasen-Beschreibung: siehe `CLAUDE.md` → Dokumentations-Workflow.
 ## Strukturbereinigung: Dateien in Unterverzeichnisse verschieben
 
 Konvention: Jede Nav-Section hat ein eigenes Unterverzeichnis mit `index.md`.
-Folgende Dateien liegen noch im Root und müssen verschoben werden:
 
 ### "Übersicht"-Section — bleibt im Root
 
@@ -115,19 +114,10 @@ Folgende Dateien liegen noch im Root und müssen verschoben werden:
 - Der Section Index der "Übersicht" ist die Homepage (`index.md`)
 - Ein eigenes Verzeichnis würde zwei Tiefen innerhalb einer Section erzeugen
 
-### "Szenerien"-Section → neues Verzeichnis (z.B. `scenery/`)
+### "Szenerien"-Section — erledigt
 
-- `scenery.md`, `scenery_components.md`
-- `addon/xorganizer.md` bleibt in `addon/` (nur in der Nav unter Szenerien eingehängt)
-
-### Ablauf (analog zur system/optimizations/extensions-Migration)
-
-1. `git mv` der Dateien (DE + EN)
-2. `mkdocs.yml` Nav-Pfade anpassen
-3. Neue `index.md` Section-Index-Seiten erstellen
-4. Links in verschobenen Dateien anpassen
-5. Externe Verweise auf verschobene Dateien anpassen (glossary, andere Seiten)
-6. `mkdocs build --strict` Verifikation
+- ✅ `scenery.md`, `scenery_components.md` → `scenery/` verschoben
+- `addon/xorganizer.md` bleibt in `addon/` (im Scenery-Index verlinkt)
 
 ---
 

@@ -166,7 +166,7 @@ Zuordnung von Docs-Seiten zu `research/<kategorie>/`:
 | `proton/` | `extensions/wine.md` |
 | `systemtools/` | `system/systemtools.md` |
 | `systemtuning/` | `system/systemtuning.md`, `system/index.md`, `optimizations/filesystem.md`, `optimizations/liquorix.md` |
-| `szenerie/` | `scenery.md`, `scenery_components.md` |
+| `szenerie/` | `scenery/scenery.md`, `scenery/scenery_components.md` |
 | `xplane-config/` | `xplane/*.md` |
 | `analyses/` | Querschnitts-Analysen (kein festes Docs-Mapping) |
 | `notebooklm/` | NotebookLM-Skripte (Output von `/generate-notebooklm`) |

@@ -128,9 +128,9 @@ plugins:
                     - Diagnose: de/xplane/systemfehler/diagnose.md
                     - Geräteverluste: de/xplane/systemfehler/geraeteverluste.md
             - Szenerien:
-                - Komponenten: de/scenery_components.md
-                - Szenerien: de/scenery.md
-                - XOrganizer: de/addon/xorganizer.md
+                - de/scenery/index.md
+                - Komponenten: de/scenery/scenery_components.md
+                - Szenerien: de/scenery/scenery.md
             - Addons:
                 - Orthofotographie:
                     - Einführung: de/addon/orthophotography_intro.md
@@ -241,10 +241,10 @@ plugins:
                     - en/xplane/systemfehler/index.md
                     - Diagnostics: en/xplane/systemfehler/diagnose.md
                     - Device Losses: en/xplane/systemfehler/geraeteverluste.md
-            - Scenerien:
-                - Komponenten: en/scenery_components.md
-                - Scenerien: en/scenery.md
-                - XOrganizer: en/addon/xorganizer.md
+            - Scenery:
+                - en/scenery/index.md
+                - Components: en/scenery/scenery_components.md
+                - Scenery: en/scenery/scenery.md
             - Addons:
                 - Orthophotography:
                     - Introduction: en/addon/orthophotography_intro.md
