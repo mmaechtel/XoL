@@ -11,7 +11,7 @@ tags:
 
 ### Airport Enhancement Package (AEP)
 
-Ein Szenerie-Addon von X-Codr Designs für X-Plane, das Standard-Flughäfen durch detailliertere Modelle, höher aufgelöste Texturen und neue Technologien verbessert. Es ersetzt Flughafengebäude, Fassaden, Bodenobjekte, statische Fahrzeuge sowie Landebahnlichter, Baken und Navigationshilfen durch modernere Versionen. [Mehr Details](../addon/aep.md)
+Ein Szenerie-Addon von X-Codr Designs für X-Plane, das Standard-Flughäfen durch detailliertere Modelle, höher aufgelöste Texturen und neue Technologien verbessert. Es ersetzt Flughafengebäude, Fassaden, Bodenobjekte, statische Fahrzeuge sowie Landebahnlichter, Baken und Navigationshilfen durch modernere Versionen. [Mehr Details](../addon/scenery_addons/aep.md)
 
 ### ALSA (Advanced Linux Sound Architecture)
 
@@ -45,7 +45,7 @@ Eine Berechnungsmethode in der Aerodynamik, bei der ein Flugzeug in viele kleine
 
 ### Bodenmarkierungen
 
-Die Markierungen und Beläge auf Flughäfen in X-Plane. Im [Airport Enhancement Package (AEP)](../addon/aep.md) werden diese durch neue, hochauflösende Texturen ersetzt, die X-Plane 12's Wettereffekte unterstützen und realistische Muster ohne Wiederholungen erzeugen.
+Die Markierungen und Beläge auf Flughäfen in X-Plane. Im [Airport Enhancement Package (AEP)](../addon/scenery_addons/aep.md) werden diese durch neue, hochauflösende Texturen ersetzt, die X-Plane 12's Wettereffekte unterstützen und realistische Muster ohne Wiederholungen erzeugen.
 
 ### BORE (Burst-Oriented Response Enhancer)
 
@@ -129,11 +129,11 @@ Federal Aviation Administration - die US-amerikanische Luftfahrtbehörde, die St
 
 ### Flughafenelemente
 
-Die verschiedenen Komponenten eines Flughafens in X-Plane, wie Gebäude, Fassaden, Bodenobjekte, statische Fahrzeuge, Landebahnlichter, Baken und Navigationshilfen. Das [Airport Enhancement Package (AEP)](../addon/aep.md) verbessert diese Elemente durch detailliertere Modelle und höher aufgelöste Texturen.
+Die verschiedenen Komponenten eines Flughafens in X-Plane, wie Gebäude, Fassaden, Bodenobjekte, statische Fahrzeuge, Landebahnlichter, Baken und Navigationshilfen. Das [Airport Enhancement Package (AEP)](../addon/scenery_addons/aep.md) verbessert diese Elemente durch detailliertere Modelle und höher aufgelöste Texturen.
 
 ### Flughafenvegetation
 
-Die 3D-Vegetationselemente auf Flughäfen in X-Plane. Im [Airport Enhancement Package (AEP)](../addon/aep.md) wird die Standard-Flughafenvegetation durch neue, detailliertere 3D-Modelle ersetzt, die für eine realistischere Darstellung sorgen.
+Die 3D-Vegetationselemente auf Flughäfen in X-Plane. Im [Airport Enhancement Package (AEP)](../addon/scenery_addons/aep.md) wird die Standard-Flughafenvegetation durch neue, detailliertere 3D-Modelle ersetzt, die für eine realistischere Darstellung sorgen.
 
 ### FMOD
 

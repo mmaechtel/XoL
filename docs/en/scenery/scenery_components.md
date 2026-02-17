@@ -117,7 +117,7 @@ SCENERY_PACK Custom Scenery/SFD_EDDM_Munich_2_Mesh/
 ```
 
 !!! tip "Maintaining scenery_packs.ini"
-    - **Use tools** — programs like **[XOrganizer](../addon/xorganizer.md)** can automatically optimize the order and detect conflicts.
+    - **Use tools** — programs like **[XOrganizer](../addon/tools/xorganizer.md)** can automatically optimize the order and detect conflicts.
     - **Create a backup** before editing `scenery_packs.ini` to be able to undo mistakes.
     - **Test after changes** — load a scenery in X-Plane and check airports, orthos, and autogen. Pay special attention to "floating" objects or missing details.
     - **Watch for updates** — new sceneries or add-ons can disrupt the order. Check the file regularly, especially after installations.

@@ -35,14 +35,14 @@ This documentation is an open project. Improvements or additions can be contribu
 ### 2026-02-16
 - New video: [Display Server](optimizations/displayserver.md) — X11 vs Wayland decision guide
 - New videos: [Introduction](intro.md) — guided tour through XoL (DE + EN)
-- [ToLiss Ecosystem](addon/toliss_ecosystem.md): simbrief_hub section added, new page [ToLiss Mods](addon/toliss_mods.md)
+- [ToLiss Ecosystem](addon/toliss/toliss_ecosystem.md): simbrief_hub section added, new page [ToLiss Mods](addon/toliss/toliss_mods.md)
 
 ### 2026-02-15
-- New addon pages: [SGES](addon/sges.md), [KabinXP](addon/kabinxp.md), [LST](addon/lst.md), [LinuxTrack](addon/linuxtrack.md), [XLinSpeak](addon/xlinspeak.md), [WINCTRL](addon/winctrl.md), [TerrainRadar](addon/terrainradar.md), [NOAA Weather](addon/noaa_weather.md), [MobiFlight](addon/mobiflight.md), [SayIntentions.AI](addon/sayintentions.md)
-- New Sounds category: [KOSP Project](addon/kosp_project.md), [Mango Studios](addon/mango_studios.md)
+- New addon pages: [SGES](addon/flylua_scripts/sges.md), [KabinXP](addon/cockpit/kabinxp.md), [LST](addon/scenery_addons/lst.md), [LinuxTrack](addon/cockpit/linuxtrack.md), [XLinSpeak](addon/tools/xlinspeak.md), [WINCTRL](addon/tools/winctrl.md), [TerrainRadar](addon/cockpit/terrainradar.md), [NOAA Weather](addon/scenery_addons/noaa_weather.md), [MobiFlight](addon/kvm/mobiflight.md), [SayIntentions.AI](addon/kvm/sayintentions.md)
+- New Sounds category: [KOSP Project](addon/sounds/kosp_project.md), [Mango Studios](addon/sounds/mango_studios.md)
 - New page [Performance Fundamentals](performance_overview.md)
 - ATC section: 6 flight phase pages ([Pushback & Taxi](flight_operations/pushback_taxi.md), [Takeoff](flight_operations/takeoff.md), [Departure & Climb](flight_operations/departure.md), [En Route](flight_operations/enroute.md), [Approach](flight_operations/approach.md), [Landing & Taxi In](flight_operations/landing.md))
-- [FlyWithLua](addon/flywithlua.md): general script installation guide added
+- [FlyWithLua](addon/scripting/flywithlua.md): general script installation guide added
 
 ### 2026-02-14
 - New page [System Tuning Introduction](system/index.md), videos embedded (DE + EN)

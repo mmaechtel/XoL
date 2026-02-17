@@ -11,15 +11,15 @@ tags:
 
 ### Airport Enhancement Package (AEP)
 
-A scenery addon by X-Codr Designs for X-Plane that enhances default airports with more detailed models, higher resolution textures, and new technologies. It replaces airport buildings, facades, ground objects, static vehicles, as well as runway lights, beacons, and navigation aids with modern versions. [More details](../addon/aep.md)
+A scenery addon by X-Codr Designs for X-Plane that enhances default airports with more detailed models, higher resolution textures, and new technologies. It replaces airport buildings, facades, ground objects, static vehicles, as well as runway lights, beacons, and navigation aids with modern versions. [More details](../addon/scenery_addons/aep.md)
 
 ### Airport Elements
 
-The various components of an airport in X-Plane, such as buildings, facades, ground objects, static vehicles, runway lights, beacons, and navigation aids. The [Airport Enhancement Package (AEP)](../addon/aep.md) enhances these elements with more detailed models and higher resolution textures.
+The various components of an airport in X-Plane, such as buildings, facades, ground objects, static vehicles, runway lights, beacons, and navigation aids. The [Airport Enhancement Package (AEP)](../addon/scenery_addons/aep.md) enhances these elements with more detailed models and higher resolution textures.
 
 ### Airport Vegetation
 
-The 3D vegetation elements on airports in X-Plane. In the [Airport Enhancement Package (AEP)](../addon/aep.md), the default airport vegetation is replaced with new, more detailed 3D models for a more realistic representation.
+The 3D vegetation elements on airports in X-Plane. In the [Airport Enhancement Package (AEP)](../addon/scenery_addons/aep.md), the default airport vegetation is replaced with new, more detailed 3D models for a more realistic representation.
 
 ### ALSA (Advanced Linux Sound Architecture)
 
@@ -155,7 +155,7 @@ The entry `*GLOBAL_AIRPORTS*` in X-Plane's scenery_packs.ini that contains the d
 
 ### Ground Markings
 
-The markings and pavements on airports in X-Plane. In the [Airport Enhancement Package (AEP)](../addon/aep.md), these are replaced with new, high-resolution textures that support X-Plane 12's weather effects and create realistic patterns without repetition.
+The markings and pavements on airports in X-Plane. In the [Airport Enhancement Package (AEP)](../addon/scenery_addons/aep.md), these are replaced with new, high-resolution textures that support X-Plane 12's weather effects and create realistic patterns without repetition.
 
 ### GRUB (Grand Unified Bootloader)
 

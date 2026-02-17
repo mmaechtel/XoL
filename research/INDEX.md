@@ -70,24 +70,24 @@ Docs: `docs/en/scenery/scenery.md`, `docs/en/scenery/scenery_components.md`
 
 ## addons
 
-Docs: `docs/en/addon/xorganizer.md`, `docs/en/addon/xearthlayer.md`
+Docs: `docs/en/addon/tools/xorganizer.md`, `docs/en/addon/cockpit/avitab.md`, etc.
 
 ### HOCH
-- addons/XOrganizer_Wine_Linux.md -> addon/xorganizer.md
-- addons/xearthlayer-cpu-settings.md -> addon/xearthlayer.md
-- addons/autoortho4xplane_fork.md -> addon/autoortho.md
-- addons/xearthlayer_current_state.md -> addon/xearthlayer.md
-- addons/XPME_research.md -> addon/orthophotography_intro.md
+- addons/XOrganizer_Wine_Linux.md -> addon/tools/xorganizer.md
+- addons/xearthlayer-cpu-settings.md -> scenery/ortho_streaming/xearthlayer.md
+- addons/autoortho4xplane_fork.md -> scenery/ortho_streaming/autoortho.md
+- addons/xearthlayer_current_state.md -> scenery/ortho_streaming/xearthlayer.md
+- addons/XPME_research.md -> scenery/orthophotography/orthophotography_intro.md
 
 ### MITTEL
-- addons/LEKTORAT_ortho_streaming.md -> addon/autoortho.md, addon/xearthlayer.md, addon/orthophotography_intro.md
-- addons/avitab_research.md -> addon/avitab.md
-- addons/BetterPushback_Linux.md -> addon/betterpushback.md
-- addons/xcamera_research.md -> addon/xcamera.md
-- addons/skunkcrafts_updater.md -> addon/skunkcrafts_updater.md
-- addons/toliss_flywithlua_scripts.md -> addon/toliss_ecosystem.md
-- addons/mobiflight.md -> addon/mobiflight.md
-- addons/sayintentions.md -> addon/sayintentions.md
+- addons/LEKTORAT_ortho_streaming.md -> scenery/ortho_streaming/autoortho.md, scenery/ortho_streaming/xearthlayer.md, scenery/orthophotography/orthophotography_intro.md
+- addons/avitab_research.md -> addon/cockpit/avitab.md
+- addons/BetterPushback_Linux.md -> addon/traffic/betterpushback.md
+- addons/xcamera_research.md -> addon/cockpit/xcamera.md
+- addons/skunkcrafts_updater.md -> addon/tools/skunkcrafts_updater.md
+- addons/toliss_flywithlua_scripts.md -> addon/toliss/toliss_ecosystem.md
+- addons/mobiflight.md -> addon/kvm/mobiflight.md
+- addons/sayintentions.md -> addon/kvm/sayintentions.md
 
 ## notebooklm
 

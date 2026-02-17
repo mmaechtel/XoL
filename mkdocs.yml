@@ -141,54 +141,67 @@ plugins:
                     - XEarthLayer: de/scenery/ortho_streaming/xearthlayer.md
                     - Statisch + Streaming: de/scenery/ortho_streaming/static_plus_streaming.md
             - Addons:
+                - de/addon/index.md
                 - Scripting:
-                    - FlyWithLua: de/addon/flywithlua.md
-                    - XPPython3: de/addon/xppython3.md
+                    - de/addon/scripting/index.md
+                    - FlyWithLua: de/addon/scripting/flywithlua.md
+                    - XPPython3: de/addon/scripting/xppython3.md
                 - FlyWithLua-Skripte:
-                    - 3D Rain Stop: de/addon/3drainspeedstop.md
-                    - Dynamic Rain Rate: de/addon/rain_rate.md
-                    - SimBrief Simple OFP: de/addon/simbrief_simple_ofp.md
-                    - SimLoad Manager: de/addon/simloadmanager.md
-                    - SimReaperXP: de/addon/simreaperxp.md
-                    - SimScreen Overlay: de/addon/simscreenoverlay.md
-                    - SGES: de/addon/sges.md
+                    - de/addon/flylua_scripts/index.md
+                    - 3D Rain Stop: de/addon/flylua_scripts/3drainspeedstop.md
+                    - Dynamic Rain Rate: de/addon/flylua_scripts/rain_rate.md
+                    - SimBrief Simple OFP: de/addon/flylua_scripts/simbrief_simple_ofp.md
+                    - SimLoad Manager: de/addon/flylua_scripts/simloadmanager.md
+                    - SimReaperXP: de/addon/flylua_scripts/simreaperxp.md
+                    - SimScreen Overlay: de/addon/flylua_scripts/simscreenoverlay.md
+                    - SGES: de/addon/flylua_scripts/sges.md
                 - ToLiss-Ökosystem:
-                    - Skripte & Plugins: de/addon/toliss_ecosystem.md
-                    - Mods: de/addon/toliss_mods.md
+                    - de/addon/toliss/index.md
+                    - Skripte & Plugins: de/addon/toliss/toliss_ecosystem.md
+                    - Mods: de/addon/toliss/toliss_mods.md
+                    - DK Toliss Callout: de/addon/toliss/dk_toliss_callout.md
+                    - TOI Cabin Ready: de/addon/toliss/toicabrdy.md
                 - Sounds:
-                    - KOSP Project: de/addon/kosp_project.md
-                    - Mango Studios: de/addon/mango_studios.md
+                    - de/addon/sounds/index.md
+                    - KOSP Project: de/addon/sounds/kosp_project.md
+                    - Mango Studios: de/addon/sounds/mango_studios.md
                 - Cockpit & Kamera:
-                    - AviTab: de/addon/avitab.md
-                    - XCamera: de/addon/xcamera.md
-                    - XTextureExtractor: de/addon/xtextureextractor.md
-                    - LinuxTrack: de/addon/linuxtrack.md
-                    - TerrainRadar: de/addon/terrainradar.md
-                    - KabinXP: de/addon/kabinxp.md
+                    - de/addon/cockpit/index.md
+                    - AviTab: de/addon/cockpit/avitab.md
+                    - XCamera: de/addon/cockpit/xcamera.md
+                    - XTextureExtractor: de/addon/cockpit/xtextureextractor.md
+                    - LinuxTrack: de/addon/cockpit/linuxtrack.md
+                    - TerrainRadar: de/addon/cockpit/terrainradar.md
+                    - KabinXP: de/addon/cockpit/kabinxp.md
                 - Verkehr & Bodenbetrieb:
-                    - LiveTraffic: de/addon/livetraffic.md
-                    - Better Pushback: de/addon/betterpushback.md
-                    - AutoDGS: de/addon/autodgs.md
-                    - openSAM: de/addon/opensam.md
-                    - AutoGate: de/addon/autogate.md
-                    - Follow the Greens: de/addon/followthegreens.md
+                    - de/addon/traffic/index.md
+                    - LiveTraffic: de/addon/traffic/livetraffic.md
+                    - Better Pushback: de/addon/traffic/betterpushback.md
+                    - AutoDGS: de/addon/traffic/autodgs.md
+                    - openSAM: de/addon/traffic/opensam.md
+                    - AutoGate: de/addon/traffic/autogate.md
+                    - Follow the Greens: de/addon/traffic/followthegreens.md
                 - Werkzeuge:
-                    - DataRefTool: de/addon/datareftool.md
-                    - Little XpConnect: de/addon/littlexpconnect.md
-                    - SkunkCrafts Updater: de/addon/skunkcrafts_updater.md
-                    - XGS: de/addon/xgs.md
-                    - XLinSpeak: de/addon/xlinspeak.md
-                    - WINCTRL: de/addon/winctrl.md
-                - Szenerie:
-                    - XRoad: de/addon/xroad.md
-                    - AEP: de/addon/aep.md
-                    - xa-snow: de/addon/xa-snow.md
-                    - NOAA Weather: de/addon/noaa_weather.md
-                    - LST: de/addon/lst.md
+                    - de/addon/tools/index.md
+                    - DataRefTool: de/addon/tools/datareftool.md
+                    - Little XpConnect: de/addon/tools/littlexpconnect.md
+                    - SkunkCrafts Updater: de/addon/tools/skunkcrafts_updater.md
+                    - XGS: de/addon/tools/xgs.md
+                    - XLinSpeak: de/addon/tools/xlinspeak.md
+                    - WINCTRL: de/addon/tools/winctrl.md
+                    - XOrganizer: de/addon/tools/xorganizer.md
+                - Szenerie-Plugins:
+                    - de/addon/scenery_addons/index.md
+                    - XRoad: de/addon/scenery_addons/xroad.md
+                    - AEP: de/addon/scenery_addons/aep.md
+                    - xa-snow: de/addon/scenery_addons/xa-snow.md
+                    - NOAA Weather: de/addon/scenery_addons/noaa_weather.md
+                    - LST: de/addon/scenery_addons/lst.md
                 - Via KVM:
-                    - My FS Flights: de/addon/myfs_flights.md
-                    - MobiFlight: de/addon/mobiflight.md
-                    - SayIntentions.AI: de/addon/sayintentions.md
+                    - de/addon/kvm/index.md
+                    - My FS Flights: de/addon/kvm/myfs_flights.md
+                    - MobiFlight: de/addon/kvm/mobiflight.md
+                    - SayIntentions.AI: de/addon/kvm/sayintentions.md
             - Flugbetrieb:
                 - Übersicht: de/flight_operations/overview.md
                 - Wetter: de/flight_operations/weather.md
@@ -257,54 +270,67 @@ plugins:
                     - XEarthLayer: en/scenery/ortho_streaming/xearthlayer.md
                     - Static + Streaming: en/scenery/ortho_streaming/static_plus_streaming.md
             - Addons:
+                - en/addon/index.md
                 - Scripting:
-                    - FlyWithLua: en/addon/flywithlua.md
-                    - XPPython3: en/addon/xppython3.md
+                    - en/addon/scripting/index.md
+                    - FlyWithLua: en/addon/scripting/flywithlua.md
+                    - XPPython3: en/addon/scripting/xppython3.md
                 - FlyWithLua Scripts:
-                    - 3D Rain Stop: en/addon/3drainspeedstop.md
-                    - Dynamic Rain Rate: en/addon/rain_rate.md
-                    - SimBrief Simple OFP: en/addon/simbrief_simple_ofp.md
-                    - SimLoad Manager: en/addon/simloadmanager.md
-                    - SimReaperXP: en/addon/simreaperxp.md
-                    - SimScreen Overlay: en/addon/simscreenoverlay.md
-                    - SGES: en/addon/sges.md
+                    - en/addon/flylua_scripts/index.md
+                    - 3D Rain Stop: en/addon/flylua_scripts/3drainspeedstop.md
+                    - Dynamic Rain Rate: en/addon/flylua_scripts/rain_rate.md
+                    - SimBrief Simple OFP: en/addon/flylua_scripts/simbrief_simple_ofp.md
+                    - SimLoad Manager: en/addon/flylua_scripts/simloadmanager.md
+                    - SimReaperXP: en/addon/flylua_scripts/simreaperxp.md
+                    - SimScreen Overlay: en/addon/flylua_scripts/simscreenoverlay.md
+                    - SGES: en/addon/flylua_scripts/sges.md
                 - ToLiss Ecosystem:
-                    - Scripts & Plugins: en/addon/toliss_ecosystem.md
-                    - Mods: en/addon/toliss_mods.md
+                    - en/addon/toliss/index.md
+                    - Scripts & Plugins: en/addon/toliss/toliss_ecosystem.md
+                    - Mods: en/addon/toliss/toliss_mods.md
+                    - DK Toliss Callout: en/addon/toliss/dk_toliss_callout.md
+                    - TOI Cabin Ready: en/addon/toliss/toicabrdy.md
                 - Sounds:
-                    - KOSP Project: en/addon/kosp_project.md
-                    - Mango Studios: en/addon/mango_studios.md
+                    - en/addon/sounds/index.md
+                    - KOSP Project: en/addon/sounds/kosp_project.md
+                    - Mango Studios: en/addon/sounds/mango_studios.md
                 - Cockpit & Camera:
-                    - AviTab: en/addon/avitab.md
-                    - XCamera: en/addon/xcamera.md
-                    - XTextureExtractor: en/addon/xtextureextractor.md
-                    - LinuxTrack: en/addon/linuxtrack.md
-                    - TerrainRadar: en/addon/terrainradar.md
-                    - KabinXP: en/addon/kabinxp.md
+                    - en/addon/cockpit/index.md
+                    - AviTab: en/addon/cockpit/avitab.md
+                    - XCamera: en/addon/cockpit/xcamera.md
+                    - XTextureExtractor: en/addon/cockpit/xtextureextractor.md
+                    - LinuxTrack: en/addon/cockpit/linuxtrack.md
+                    - TerrainRadar: en/addon/cockpit/terrainradar.md
+                    - KabinXP: en/addon/cockpit/kabinxp.md
                 - Traffic & Ground Ops:
-                    - LiveTraffic: en/addon/livetraffic.md
-                    - Better Pushback: en/addon/betterpushback.md
-                    - AutoDGS: en/addon/autodgs.md
-                    - openSAM: en/addon/opensam.md
-                    - AutoGate: en/addon/autogate.md
-                    - Follow the Greens: en/addon/followthegreens.md
+                    - en/addon/traffic/index.md
+                    - LiveTraffic: en/addon/traffic/livetraffic.md
+                    - Better Pushback: en/addon/traffic/betterpushback.md
+                    - AutoDGS: en/addon/traffic/autodgs.md
+                    - openSAM: en/addon/traffic/opensam.md
+                    - AutoGate: en/addon/traffic/autogate.md
+                    - Follow the Greens: en/addon/traffic/followthegreens.md
                 - Tools:
-                    - DataRefTool: en/addon/datareftool.md
-                    - Little XpConnect: en/addon/littlexpconnect.md
-                    - SkunkCrafts Updater: en/addon/skunkcrafts_updater.md
-                    - XGS: en/addon/xgs.md
-                    - XLinSpeak: en/addon/xlinspeak.md
-                    - WINCTRL: en/addon/winctrl.md
-                - Scenery:
-                    - XRoad: en/addon/xroad.md
-                    - AEP: en/addon/aep.md
-                    - xa-snow: en/addon/xa-snow.md
-                    - NOAA Weather: en/addon/noaa_weather.md
-                    - LST: en/addon/lst.md
+                    - en/addon/tools/index.md
+                    - DataRefTool: en/addon/tools/datareftool.md
+                    - Little XpConnect: en/addon/tools/littlexpconnect.md
+                    - SkunkCrafts Updater: en/addon/tools/skunkcrafts_updater.md
+                    - XGS: en/addon/tools/xgs.md
+                    - XLinSpeak: en/addon/tools/xlinspeak.md
+                    - WINCTRL: en/addon/tools/winctrl.md
+                    - XOrganizer: en/addon/tools/xorganizer.md
+                - Scenery Plugins:
+                    - en/addon/scenery_addons/index.md
+                    - XRoad: en/addon/scenery_addons/xroad.md
+                    - AEP: en/addon/scenery_addons/aep.md
+                    - xa-snow: en/addon/scenery_addons/xa-snow.md
+                    - NOAA Weather: en/addon/scenery_addons/noaa_weather.md
+                    - LST: en/addon/scenery_addons/lst.md
                 - Via KVM:
-                    - My FS Flights: en/addon/myfs_flights.md
-                    - MobiFlight: en/addon/mobiflight.md
-                    - SayIntentions.AI: en/addon/sayintentions.md
+                    - en/addon/kvm/index.md
+                    - My FS Flights: en/addon/kvm/myfs_flights.md
+                    - MobiFlight: en/addon/kvm/mobiflight.md
+                    - SayIntentions.AI: en/addon/kvm/sayintentions.md
             - Flight Operations:
                 - Overview: en/flight_operations/overview.md
                 - Weather: en/flight_operations/weather.md
