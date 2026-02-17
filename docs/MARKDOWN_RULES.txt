@@ -64,6 +64,13 @@ docs/{lang}/
 ├── glossary.md               # Glossar (standalone, keiner Section zugeordnet)
 ├── about.md                  # Über das Projekt (standalone)
 ├── Maps.md                   # Kartenlinks (standalone)
+├── intro.md                  # Einführung (Übersicht-Section)
+├── begin.md                  # Erste Schritte (Übersicht-Section)
+├── videos.md                 # Videos (Übersicht-Section)
+│
+├── fundamentals/             # Section: Grundlagen
+│   ├── index.md              #   Section Index
+│   └── performance_overview.md
 │
 ├── linux/                    # Section: Linux (Tab)
 │   └── index.md              #   Section Index
@@ -102,17 +109,46 @@ docs/{lang}/
 ├── scenery/                  # Section: Szenerien
 │   ├── index.md              #   Section Index
 │   ├── scenery.md
-│   └── scenery_components.md
+│   ├── scenery_components.md
+│   ├── orthophotography/     # Subsection: Orthofotografie
+│   │   ├── index.md          #   Section Index
+│   │   ├── orthophotography_intro.md
+│   │   └── ortho4xp.md
+│   └── ortho_streaming/      # Subsection: Ortho Streaming
+│       ├── index.md          #   Section Index
+│       ├── autoortho.md
+│       ├── xearthlayer.md
+│       └── static_plus_streaming.md
 │
 ├── addon/                    # Section: Addons
-│   ├── autoortho.md
-│   ├── xearthlayer.md
-│   └── ...                   #   (viele Addon-Seiten)
+│   ├── index.md              #   Section Index
+│   ├── scripting/            #   Subsection mit index.md
+│   ├── flylua_scripts/       #   Subsection mit index.md
+│   ├── toliss/               #   Subsection mit index.md
+│   ├── sounds/               #   Subsection mit index.md
+│   ├── cockpit/              #   Subsection mit index.md
+│   ├── traffic/              #   Subsection mit index.md
+│   ├── tools/                #   Subsection mit index.md
+│   ├── scenery_addons/       #   Subsection mit index.md
+│   └── kvm/                  #   Subsection mit index.md
 │
 └── flight_operations/        # Section: Flugbetrieb
-    ├── overview.md
-    ├── weather.md
-    └── ...                   #   (ATC-Seiten)
+    ├── index.md              #   Section Index
+    ├── weather/              # Subsection: Wetter
+    │   ├── index.md          #   Section Index
+    │   └── weather.md
+    ├── atc/                  # Subsection: ATC
+    │   ├── index.md          #   Section Index
+    │   ├── clearance.md
+    │   ├── pushback_taxi.md
+    │   ├── takeoff.md
+    │   ├── departure.md
+    │   ├── enroute.md
+    │   ├── approach.md
+    │   └── landing.md
+    └── vatsim/               # Subsection: VATSim
+        ├── index.md          #   Section Index
+        └── vatsim.md
 ```
 
 ### Root-Level: Was dort bleibt
@@ -120,9 +156,9 @@ docs/{lang}/
 Folgende Dateien bleiben dauerhaft im Root:
 
 - `index.md` — Site-Homepage und Changelog (gleichzeitig Section Index für "Übersicht")
-- `intro.md`, `begin.md`, `performance_overview.md`, `videos.md` — Gehören zur
-  Nav-Section "Übersicht", deren Section Index die Homepage ist. Ein eigenes Verzeichnis
-  würde zwei Tiefen innerhalb einer Section erzeugen, da die Homepage im Root bleiben muss.
+- `intro.md`, `begin.md`, `videos.md` — Gehören zur Nav-Section "Übersicht",
+  deren Section Index die Homepage ist. Ein eigenes Verzeichnis würde zwei Tiefen
+  innerhalb einer Section erzeugen, da die Homepage im Root bleiben muss.
 - `glossary.md` — Querverweisziel aus allen Sections, keiner Section zugeordnet
 - `about.md` — Standalone
 - `Maps.md` — Standalone (Links zu externen HTML-Dateien auf dem Server)

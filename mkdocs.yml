@@ -96,8 +96,10 @@ plugins:
                 - de/index.md
                 - Einführung: de/intro.md
                 - Erste Schritte: de/begin.md
-                - Performance-Grundlagen: de/performance_overview.md
                 - Videos: de/videos.md
+            - Grundlagen:
+                - de/fundamentals/index.md
+                - Performance: de/fundamentals/performance_overview.md
             - Linux:
                 - de/linux/index.md
                 - System:
@@ -229,8 +231,10 @@ plugins:
                 - en/index.md
                 - Introduction: en/intro.md
                 - Getting Started: en/begin.md
-                - Performance Fundamentals: en/performance_overview.md
                 - Videos: en/videos.md
+            - Fundamentals:
+                - en/fundamentals/index.md
+                - Performance: en/fundamentals/performance_overview.md
             - Linux:
                 - en/linux/index.md
                 - System:

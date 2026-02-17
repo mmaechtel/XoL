@@ -6,7 +6,7 @@ Diese Dokumentation behandelt Einrichtung und Optimierung von X-Plane 12 (Lamina
 
 - **Warum Linux?** [Einführung](intro.md) erklärt, was X-Plane unter Linux besonders macht.
 - **Neu mit X-Plane unter Linux?** [Erste Schritte](begin.md) behandelt Systemvoraussetzungen, Installation und ersten Start.
-- **X-Plane läuft bereits?** [Performance-Grundlagen](performance_overview.md) erklärt die drei Lastdimensionen (CPU, I/O, Netzwerk) als Basis für das [System-Tuning](system/systemtuning.md).
+- **X-Plane läuft bereits?** [Performance](fundamentals/performance_overview.md) erklärt die drei Lastdimensionen (CPU, I/O, Netzwerk) als Basis für das [System-Tuning](system/systemtuning.md).
 
 ## Über diese Dokumentation
 
@@ -40,7 +40,7 @@ Diese Dokumentation ist ein offenes Projekt. Verbesserungen oder Ergänzungen k�
 ### 2026-02-15
 - Neue Addon-Seiten: [SGES](addon/flylua_scripts/sges.md), [KabinXP](addon/cockpit/kabinxp.md), [LST](addon/scenery_addons/lst.md), [LinuxTrack](addon/cockpit/linuxtrack.md), [XLinSpeak](addon/tools/xlinspeak.md), [WINCTRL](addon/tools/winctrl.md), [TerrainRadar](addon/cockpit/terrainradar.md), [NOAA Weather](addon/scenery_addons/noaa_weather.md), [MobiFlight](addon/kvm/mobiflight.md), [SayIntentions.AI](addon/kvm/sayintentions.md)
 - Neue Sounds-Kategorie: [KOSP Project](addon/sounds/kosp_project.md), [Mango Studios](addon/sounds/mango_studios.md)
-- Neue Seite [Performance-Grundlagen](performance_overview.md)
+- Neue Seite [Performance](fundamentals/performance_overview.md)
 - ATC-Sektion: 6 Flugphasen-Seiten ([Pushback & Taxi](flight_operations/atc/pushback_taxi.md), [Start](flight_operations/atc/takeoff.md), [Abflug & Steigflug](flight_operations/atc/departure.md), [Streckenflug](flight_operations/atc/enroute.md), [Anflug](flight_operations/atc/approach.md), [Landung & Abstellen](flight_operations/atc/landing.md))
 - [FlyWithLua](addon/scripting/flywithlua.md): Allgemeine Skript-Installationsanleitung ergänzt
 

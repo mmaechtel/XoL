@@ -110,7 +110,7 @@ Konvention: Jede Nav-Section hat ein eigenes Unterverzeichnis mit `index.md`.
 
 ### "Übersicht"-Section — bleibt im Root
 
-- `intro.md`, `begin.md`, `performance_overview.md`, `videos.md` bleiben im Root
+- `intro.md`, `begin.md`, `videos.md` bleiben im Root
 - Der Section Index der "Übersicht" ist die Homepage (`index.md`)
 - Ein eigenes Verzeichnis würde zwei Tiefen innerhalb einer Section erzeugen
 

@@ -118,7 +118,7 @@ Prozess-Dateien für Content Audit. Kein direktes Docs-Mapping.
 
 ## performance_overview
 
-Docs: `docs/en/performance_overview.md`
+Docs: `docs/en/fundamentals/performance_overview.md`
 
 ### HOCH
 - performance_overview/performance-analyse-simulationssoftware.md -> performance_overview.md

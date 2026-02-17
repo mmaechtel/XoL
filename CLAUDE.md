@@ -162,7 +162,7 @@ Zuordnung von Docs-Seiten zu `research/<kategorie>/`:
 | `addons/` | `addon/*.md` |
 | `audio/` | (Audio/PipeWire-Themen) |
 | `display-server/` | `optimizations/displayserver.md`, `optimizations/displayserver_wayland.md`, `optimizations/displayserver_x11.md` |
-| `performance_overview/` | `performance_overview.md` |
+| `performance_overview/` | `fundamentals/performance_overview.md` |
 | `proton/` | `extensions/wine.md` |
 | `systemtools/` | `system/systemtools.md` |
 | `systemtuning/` | `system/systemtuning.md`, `system/index.md`, `optimizations/filesystem.md`, `optimizations/liquorix.md` |
