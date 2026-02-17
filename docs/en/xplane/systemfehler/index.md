@@ -1,6 +1,6 @@
 # System Errors in X-Plane on Linux
 
-When X-Plane on Linux doesn't work as expected, systematic diagnosis helps. This page points to the relevant sections of the documentation.
+When X-Plane on Linux doesn't work as expected, systematic isolation helps. Device losses — GPU crashes signaled by the Vulkan error code `VK_ERROR_DEVICE_LOST` — are particularly difficult to analyze because CPU and GPU work asynchronously and the crash is detected with delay. The Aftermath tool injects checkpoints into the GPU command stream and reconstructs the state at the time of the error. CLI parameters like safe mode and subsystem isolation narrow down the cause systematically.
 
 ## Performance Issues
 

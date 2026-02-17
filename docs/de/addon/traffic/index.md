@@ -1,6 +1,6 @@
 # Verkehr & Bodenbetrieb
 
-Flugverkehr, Pushback und Docking-Systeme für X-Plane.
+Sechs Plugins für Flugverkehr und Bodenoperationen: LiveTraffic zeigt Echtzeit-Flugverkehr, Better Pushback ermöglicht realistisches Zurückschieben, AutoDGS und openSAM steuern Fluggastbrücken und Docking, und Follow the Greens bietet Rollführung am Boden.
 
 - **[LiveTraffic](livetraffic.md)** — Echtzeit-Flugverkehr im Simulator
 - **[Better Pushback](betterpushback.md)** — Realistisches Pushback

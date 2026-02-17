@@ -1,6 +1,6 @@
 # Scenery
 
-Scenery options, load order, and components for X-Plane on Linux.
+X-Plane's scenery builds on three layers — mesh, orthophotos, and autogen — whose interaction and load order in the `scenery_packs.ini` determines visual quality. For photorealistic ground textures, static generation with Ortho4XP and real-time streaming with AutoOrtho or XEarthLayer are available — both approaches can be combined. This section explains the scenery system's structure, the available sources, and the tools for both local and streamed orthophotography.
 
 - **[Structure & Sources](aufbau_quellen/index.md)** — Components, load order, and scenery options
 - **[Orthophotography](orthophotography/index.md)** — Static ortho tiles with Ortho4XP

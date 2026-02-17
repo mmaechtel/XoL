@@ -33,6 +33,7 @@ This documentation is an open project. Improvements or additions can be contribu
 ## Recent Changes
 
 ### 2026-02-17
+- All section index pages enhanced with content summaries — cascading from deepest level upward
 - New pages: [CPU & RAM](fundamentals/performance/cpu_ram.md) — Threading model and system memory, [GPU & VRAM](fundamentals/performance/gpu_vram.md) — Texture paging, driver differences and frame time analysis
 - [Performance](fundamentals/performance/index.md) restructured as sub-section with three chapters
 

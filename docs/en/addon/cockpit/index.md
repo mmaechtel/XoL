@@ -1,6 +1,6 @@
 # Cockpit & Camera
 
-EFB, camera control and head tracking for X-Plane.
+Six plugins for cockpit functionality: AviTab as electronic flight bag, XCamera for extended camera control, XTextureExtractor for cockpit instruments on external displays, LinuxTrack for head tracking on Linux, TerrainRadar for terrain display, and KabinXP for the passenger cabin.
 
 - **[AviTab](avitab.md)** — Electronic flight bag in the cockpit
 - **[XCamera](xcamera.md)** — Extended camera control

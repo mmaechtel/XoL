@@ -1,6 +1,6 @@
 # Addons
 
-Plugins und Erweiterungen für X-Plane unter Linux.
+Die Addon-Sektion dokumentiert über 40 Plugins und Erweiterungen, die unter Linux mit X-Plane zusammenarbeiten — von Scripting-Frameworks (FlyWithLua, XPPython3) über Cockpit-Tools, Verkehrs-Plugins und Sound-Packs bis zu Szenerie-Erweiterungen. Jedes Addon wird mit Installation, Konfiguration und Linux-spezifischen Besonderheiten beschrieben. Für Windows-only Tools wie MobiFlight oder SayIntentions.AI zeigt die KVM-Sektion, wie sie über Virtualisierung trotzdem genutzt werden können.
 
 - **[Scripting](scripting/index.md)** — Frameworks für Skripte und Plugins
 - **[FlyWithLua-Skripte](flylua_scripts/index.md)** — Einzelne FlyWithLua-Skripte

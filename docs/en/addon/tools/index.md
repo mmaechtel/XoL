@@ -1,6 +1,6 @@
 # Tools
 
-DataRef inspection, update management and scenery tools for X-Plane.
+Seven utilities for plugin development and operations: DataRefTool inspects X-Plane's internal variables, Little XpConnect bridges to Little Navmap, SkunkCrafts Updater keeps addons current, XLinSpeak provides speech output on Linux, and XOrganizer manages the scenery_packs.ini.
 
 - **[DataRefTool](datareftool.md)** — DataRef browser and search
 - **[Little XpConnect](littlexpconnect.md)** — Connection to Little Navmap

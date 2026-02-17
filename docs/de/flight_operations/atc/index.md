@@ -1,6 +1,6 @@
 # ATC
 
-Kommunikation mit der Flugsicherung in allen Flugphasen — von der Freigabe bis zur Landung.
+Sieben Kapitel führen durch die ATC-Kommunikation einer vollständigen IFR-Flugphase: von der Flugfreigabe (Clearance) über Pushback, Start, Abflug und Streckenflug bis zu Anflug und Landung. Jedes Kapitel enthält die Standard-Phraseologie, die relevanten Frequenzen und die Informationsquellen aus Charts und FMGS.
 
 - **[Clearance](clearance.md)** — Flugfreigabe und IFR-Clearance
 - **[Pushback & Taxi](pushback_taxi.md)** — Pushback und Rollen zur Startbahn

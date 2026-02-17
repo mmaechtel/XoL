@@ -1,6 +1,6 @@
 # Traffic & Ground Ops
 
-Air traffic, pushback and docking systems for X-Plane.
+Six plugins for air traffic and ground operations: LiveTraffic displays real-time air traffic, Better Pushback enables realistic pushback, AutoDGS and openSAM control jetways and docking, and Follow the Greens provides taxi guidance on the ground.
 
 - **[LiveTraffic](livetraffic.md)** — Real-time air traffic in the simulator
 - **[Better Pushback](betterpushback.md)** — Realistic pushback

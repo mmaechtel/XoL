@@ -1,6 +1,6 @@
 # FlyWithLua Scripts
 
-Individual scripts for the [FlyWithLua](../scripting/flywithlua.md) framework.
+Seven FlyWithLua scripts for daily use: from 3D Rain Stop and Dynamic Rain Rate for realistic weather effects, through SimBrief integration and SimLoad Manager for scenery management, to SimReaperXP for memory cleanup and SGES for ground effect simulation.
 
 - **[3D Rain Stop](3drainspeedstop.md)** — Stop rain in cockpit with closed windows
 - **[Dynamic Rain Rate](rain_rate.md)** — Dynamic rain intensity

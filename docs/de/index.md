@@ -33,6 +33,7 @@ Diese Dokumentation ist ein offenes Projekt. Verbesserungen oder Ergänzungen k�
 ## Letzte Änderungen
 
 ### 2026-02-17
+- Alle Sektions-Übersichtsseiten mit inhaltlichen Zusammenfassungen ergänzt — von der tiefsten Ebene aufwärts
 - Neue Seiten: [CPU & RAM](fundamentals/performance/cpu_ram.md) — Threading-Modell und Arbeitsspeicher, [GPU & VRAM](fundamentals/performance/gpu_vram.md) — Texture Paging, Treiber-Unterschiede und Frame-Time-Analyse
 - [Performance](fundamentals/performance/index.md) als eigene Untersektion mit drei Kapiteln
 

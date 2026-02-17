@@ -1,6 +1,6 @@
 # Erweiterungen
 
-Zusätzliche Software und Umgebungen für erweiterte Funktionalität unter Linux.
+Nicht jedes X-Plane-Tool läuft nativ unter Linux. KVM stellt eine vollständige Windows-VM bereit — für Addons wie StreamDeck oder MobiFlight. Wine reicht für einfachere Windows-Installer und Werkzeuge. Docker isoliert Entwicklungsumgebungen, pyenv verwaltet Python-Versionen für Plugins wie XPPython3, und zsh bietet eine komfortablere Shell für die tägliche Arbeit am System.
 
 - **[KVM](kvm.md)** — Windows-Virtualisierung für Add-ons ohne native Linux-Unterstützung
 - **[Docker](docker.md)** — Isolierte Entwicklungs- und Test-Umgebungen

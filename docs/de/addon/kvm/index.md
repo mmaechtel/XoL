@@ -1,6 +1,6 @@
 # Via KVM
 
-Windows-only Addons, die über [KVM-Virtualisierung](../../linux/extensions/kvm.md) genutzt werden.
+Drei Windows-only Addons, die über [KVM-Virtualisierung](../../linux/extensions/kvm.md) unter Linux nutzbar werden: My FS Flights für Flugbuch und Statistiken, MobiFlight für Hardware-Cockpit-Anbindung und SayIntentions.AI für KI-gestützte ATC-Kommunikation.
 
 - **[My FS Flights](myfs_flights.md)** — Flugbuch und Statistiken
 - **[MobiFlight](mobiflight.md)** — Hardware-Cockpit-Anbindung

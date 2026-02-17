@@ -1,6 +1,6 @@
 # Sounds
 
-Sound-Packs und Audio-Erweiterungen für X-Plane.
+Sound-Packs erweitern X-Planes Standard-Audiolandschaft. KOSP Project liefert ein vollständiges Soundscape, Mango Studios bietet flugzeugspezifische Sound-Packs.
 
 - **[KOSP Project](kosp_project.md)** — Full Soundscape für X-Plane
 - **[Mango Studios](mango_studios.md)** — Sound-Packs für verschiedene Flugzeuge

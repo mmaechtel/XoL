@@ -1,13 +1,6 @@
 # X-Plane unter Linux
 
-Dieser Abschnitt behandelt die X-Plane-spezifische Konfiguration und Performance-Optimierung unter Linux.
+X-Plane 12 nutzt Vulkan als einzige Rendering-API — die meisten Grafikeinstellungen sind plattformübergreifend identisch, aber unter Linux kommen Besonderheiten hinzu: Zink als OpenGL-Brücke für Plugins, Mesa-Shader-Caches, PipeWire-Audio und Controller-Erkennung über evdev. Setup & Diagnose deckt die Konfiguration und Performance-Analyse ab — vom Microprofiler über MangoHUD bis zu reproduzierbaren Benchmarks per CLI. Die Fehlerdiagnose behandelt GPU Device Losses, Safe-Mode-Optionen und Subsystem-Isolierung für systematisches Troubleshooting.
 
-## Setup & Diagnose
-
-- **[Konfiguration](setup_diagnose/config.md)** — Grafikeinstellungen, Rendering-Optionen und Linux-spezifische Anpassungen
-- **[Performance](setup_diagnose/performance.md)** — FPS-Analyse, Engpass-Diagnose und Optimierungsstrategien
-
-## Fehlerdiagnose
-
-- **[Systemfehler](systemfehler/index.md)** — Häufige Probleme und deren Behebung
-- **[Geräteverluste](systemfehler/geraeteverluste.md)** — GPU Device Lost und Vulkan-Fehler diagnostizieren
+- **[Setup & Diagnose](setup_diagnose/index.md)** — Konfiguration, Performance-Analyse und CLI-Diagnose
+- **[Systemfehler](systemfehler/index.md)** — GPU-Crashes, Device Losses und systematische Fehlersuche

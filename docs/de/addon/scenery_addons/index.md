@@ -1,6 +1,6 @@
 # Szenerie-Plugins
 
-Straßen, Flughafenumgebung, Wetter und Schnee für X-Plane.
+Fünf Plugins, die X-Planes Standardwelt visuell erweitern: XRoads ergänzt Straßen- und Schienenverkehr, AEP wertet Flughafenumgebungen auf, xa-snow verbessert die Schneedarstellung, NOAA Weather integriert Echtzeit-Wetterdaten, und LST belebt Szenerien mit dynamischen Elementen.
 
 - **[XRoads](xroad.md)** — Straßenverkehr und Eisenbahnen
 - **[Airport Enhancement Package](aep.md)** — Flughafenumgebung aufwerten
