@@ -1,6 +1,6 @@
 # Statische Orthofotos + Streaming kombinieren
 
-Diese Kombination ist besonders für **hybride Spieler** geeignet — Nutzer, die ihre Stammflughäfen in höchster Qualität genießen möchten, aber auch gelegentlich neue Regionen erkunden. Einen Überblick über die verschiedenen Spielerprofile bietet die [Einführung in die Orthofotographie](orthophotography_intro.md#welches-system-passt-zu-welchem-spielerprofil).
+Diese Kombination ist besonders für **hybride Spieler** geeignet — Nutzer, die ihre Stammflughäfen in höchster Qualität genießen möchten, aber auch gelegentlich neue Regionen erkunden. Einen Überblick über die verschiedenen Spielerprofile bietet die [Einführung in die Orthofotographie](../orthophotography/orthophotography_intro.md#welches-system-passt-zu-welchem-spielerprofil).
 
 Das Prinzip ist einfach: **Ortho4XP** generiert hochauflösende, lokale Kacheln (bis ZL19) für die bevorzugten Fluggebiete, während eine **Streaming-Lösung** (z. B. AutoOrtho) die globale Abdeckung für alle übrigen Regionen übernimmt. X-Planes Szenerie-Priorisierung sorgt dafür, dass die lokalen Ortho4XP-Kacheln automatisch Vorrang vor den gestreamten Texturen erhalten.
 
@@ -17,7 +17,7 @@ Die Vorteile dieser Kombination:
 Für die bevorzugten Fluggebiete werden zunächst Ortho4XP-Kacheln generiert. Empfohlene Einstellungen:
 
 - **Zoom-Level 17–19** für maximale Qualität
-- **Overlays aktivieren**, sofern nicht [SimHeaven](scenery.md) verwendet wird
+- **Overlays aktivieren**, sofern nicht [SimHeaven](../scenery.md) verwendet wird
 - Als Bildquelle stehen u. a. **Bing** und **Google** zur Verfügung
 
 ### 2. scenery_packs.ini konfigurieren
@@ -72,7 +72,7 @@ Um nur Meshes ohne Texturen zu erzeugen, werden in Ortho4XP folgende Parameter g
 | Build Imagery | Deaktiviert | Keine Texturen nötig |
 | Mesh-Level | 1–2 | Höherer Wert = detaillierteres Gelände |
 
-Die übrigen Parameter werden im [Ortho4XP-Kapitel](ortho4xp.md) erläutert.
+Die übrigen Parameter werden im [Ortho4XP-Kapitel](../orthophotography/ortho4xp.md) erläutert.
 
 ### Verzeichnisstruktur
 
@@ -100,9 +100,9 @@ Das `aa_`-Verzeichnis muss **vor** den `ao_`-Verzeichnissen stehen, damit die Or
 
 ## Mesh-Auflösung mit LiDAR-Daten erhöhen
 
-Wie im [Ortho4XP-Kapitel](ortho4xp.md) beschrieben, können LiDAR-Daten die Auflösung und Genauigkeit der Geländedarstellung weiter verbessern. Die LiDAR-Daten von [sonny.4lima.de](https://sonny.4lima.de) bieten eine hohe Auflösung für verschiedene Regionen.
+Wie im [Ortho4XP-Kapitel](../orthophotography/ortho4xp.md) beschrieben, können LiDAR-Daten die Auflösung und Genauigkeit der Geländedarstellung weiter verbessern. Die LiDAR-Daten von [sonny.4lima.de](https://sonny.4lima.de) bieten eine hohe Auflösung für verschiedene Regionen.
 
-Siehe [LiDAR-Daten Integration](ortho4xp.md#integration-von-lidar-daten) im Ortho4XP-Kapitel.
+Siehe [LiDAR-Daten Integration](../orthophotography/ortho4xp.md#integration-von-lidar-daten) im Ortho4XP-Kapitel.
 
 ## Fazit
 

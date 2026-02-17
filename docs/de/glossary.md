@@ -389,7 +389,7 @@ Eine OpenGL-Übersetzungsschicht innerhalb von Mesa, die OpenGL-Befehle in Vulka
 
 ### ZL (Zoom Level)
 
-Die Zoomstufe von Orthofotos, die deren Auflösung bestimmt. Höhere ZL-Werte bedeuten detailliertere Bilder: ZL16 entspricht etwa vier Metern pro Pixel, ZL17 zwei Metern, ZL18 einem Meter. Höhere Zoomstufen benötigen deutlich mehr Speicherplatz und Bandbreite. Siehe [Einführung Orthofotografie](../scenery/orthophotography_intro.md).
+Die Zoomstufe von Orthofotos, die deren Auflösung bestimmt. Höhere ZL-Werte bedeuten detailliertere Bilder: ZL16 entspricht etwa vier Metern pro Pixel, ZL17 zwei Metern, ZL18 einem Meter. Höhere Zoomstufen benötigen deutlich mehr Speicherplatz und Bandbreite. Siehe [Einführung Orthofotografie](../scenery/orthophotography/orthophotography_intro.md).
 
 ## 3
 

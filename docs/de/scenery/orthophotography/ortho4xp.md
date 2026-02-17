@@ -33,8 +33,8 @@ Ortho4XP ist in zwei Hauptversionen verfügbar:
         ```
 
 3. **Alternative Installation für Linux**:
-    - Installation mit Docker (siehe [Docker Dokumentation](../extensions/docker.md))
-    - Installation mit pyenv (siehe [pyenv Dokumentation](../extensions/pyenv.md))
+    - Installation mit Docker (siehe [Docker Dokumentation](../../extensions/docker.md))
+    - Installation mit pyenv (siehe [pyenv Dokumentation](../../extensions/pyenv.md))
 
 ## Verwendung und Konfiguration
 

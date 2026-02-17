@@ -131,13 +131,15 @@ plugins:
                 - de/scenery/index.md
                 - Komponenten: de/scenery/scenery_components.md
                 - Szenerien: de/scenery/scenery.md
-                - Orthofotographie:
-                    - Einführung: de/scenery/orthophotography_intro.md
-                    - Ortho4XP: de/scenery/ortho4xp.md
+                - Orthofotografie:
+                    - de/scenery/orthophotography/index.md
+                    - Einführung: de/scenery/orthophotography/orthophotography_intro.md
+                    - Ortho4XP: de/scenery/orthophotography/ortho4xp.md
                 - Ortho Streaming:
-                    - AutoOrtho: de/scenery/autoortho.md
-                    - XEarthLayer: de/scenery/xearthlayer.md
-                    - Statisch + Streaming: de/scenery/static_plus_streaming.md
+                    - de/scenery/ortho_streaming/index.md
+                    - AutoOrtho: de/scenery/ortho_streaming/autoortho.md
+                    - XEarthLayer: de/scenery/ortho_streaming/xearthlayer.md
+                    - Statisch + Streaming: de/scenery/ortho_streaming/static_plus_streaming.md
             - Addons:
                 - Scripting:
                     - FlyWithLua: de/addon/flywithlua.md
@@ -246,12 +248,14 @@ plugins:
                 - Components: en/scenery/scenery_components.md
                 - Scenery: en/scenery/scenery.md
                 - Orthophotography:
-                    - Introduction: en/scenery/orthophotography_intro.md
-                    - Ortho4XP: en/scenery/ortho4xp.md
+                    - en/scenery/orthophotography/index.md
+                    - Introduction: en/scenery/orthophotography/orthophotography_intro.md
+                    - Ortho4XP: en/scenery/orthophotography/ortho4xp.md
                 - Ortho Streaming:
-                    - AutoOrtho: en/scenery/autoortho.md
-                    - XEarthLayer: en/scenery/xearthlayer.md
-                    - Static + Streaming: en/scenery/static_plus_streaming.md
+                    - en/scenery/ortho_streaming/index.md
+                    - AutoOrtho: en/scenery/ortho_streaming/autoortho.md
+                    - XEarthLayer: en/scenery/ortho_streaming/xearthlayer.md
+                    - Static + Streaming: en/scenery/ortho_streaming/static_plus_streaming.md
             - Addons:
                 - Scripting:
                     - FlyWithLua: en/addon/flywithlua.md

@@ -33,7 +33,7 @@ Installation is done manually in the Custom Scenery directory. The extension is 
 
 [x-plane.org](https://forums.x-plane.org/) offers an extensive selection of free and affordable scenery. The community provides a variety of airports, including improved versions of standard airports and historical airports. In the area of landscapes, improved terrain data, more detailed vegetation, and special regions are available.
 
-Various tools are available for creating and managing scenery. [Ortho4XP](ortho4xp.md) enables the creation of custom orthophoto scenery, while [AutoOrtho](autoortho.md) provides automatic orthophoto scenery. [XRoad](../addon/xroad.md) offers improved road networks for a more realistic representation of infrastructure.
+Various tools are available for creating and managing scenery. [Ortho4XP](orthophotography/ortho4xp.md) enables the creation of custom orthophoto scenery, while [AutoOrtho](ortho_streaming/autoortho.md) provides automatic orthophoto scenery. [XRoad](../addon/xroad.md) offers improved road networks for a more realistic representation of infrastructure.
 
 ## Payware Scenery
 

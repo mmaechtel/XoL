@@ -26,9 +26,9 @@ Bei diesem Ansatz werden Orthofoto-Kacheln vor dem Flug vollständig heruntergel
 
 Bei diesem Ansatz werden Orthofoto-Texturen erst zur Laufzeit bei Bedarf von Kartenservern heruntergeladen und über ein virtuelles Dateisystem (FUSE) an X-Plane ausgeliefert. Einmal geladene Kacheln werden in einem lokalen Cache gespeichert; wird das konfigurierte Limit erreicht, werden ältere Kacheln automatisch entfernt. Dieser Ansatz erfordert eine stabile Internetverbindung, ermöglicht aber spontanes Fliegen ohne Vorabgenerierung.
 
-- **[AutoOrtho](autoortho.md)**: Die erste und am weitesten verbreitete Streaming-Lösung für X-Plane. Der aktive [ProgrammingDinosaur Fork](https://github.com/ProgrammingDinosaur/autoortho4xplane) (Version 2.0) bietet eine C-Pipeline für schnelleres Laden, eine moderne GUI und unterstützt Windows, Linux und macOS.
+- **[AutoOrtho](../ortho_streaming/autoortho.md)**: Die erste und am weitesten verbreitete Streaming-Lösung für X-Plane. Der aktive [ProgrammingDinosaur Fork](https://github.com/ProgrammingDinosaur/autoortho4xplane) (Version 2.0) bietet eine C-Pipeline für schnelleres Laden, eine moderne GUI und unterstützt Windows, Linux und macOS.
 
-- **[XEarthLayer](xearthlayer.md)**: Eine in Rust geschriebene Alternative mit adaptivem Prefetching, das zwischen bodennahem Ring-Prefetch und Reiseflug-Vorhersage umschaltet. Derzeit nur für Linux und X-Plane 12 verfügbar.
+- **[XEarthLayer](../ortho_streaming/xearthlayer.md)**: Eine in Rust geschriebene Alternative mit adaptivem Prefetching, das zwischen bodennahem Ring-Prefetch und Reiseflug-Vorhersage umschaltet. Derzeit nur für Linux und X-Plane 12 verfügbar.
 
 - **[X-Plane Map Enhancement](https://github.com/derekhe/xplane-map-enhancement-release)** (XPME): Eine Streaming-Lösung mit eigener Benutzeroberfläche, die Satellitenbilder direkt auf das Terrain projiziert. Verfügbar für Windows, macOS und Linux (.deb und AppImage).
 
@@ -78,7 +78,7 @@ SCENERY_PACK Custom Scenery/zzXEL_eu_ortho/
 
 ### Kombination
 
-Für ausgewählte Regionen können die hochauflösenden Ortho4XP-Kacheln mit der globalen Streaming-Abdeckung von AutoOrtho kombiniert werden. Dieses Verfahren wird im Kapitel [AutoOrtho + Ortho4XP](static_plus_streaming.md) detailliert beschrieben.
+Für ausgewählte Regionen können die hochauflösenden Ortho4XP-Kacheln mit der globalen Streaming-Abdeckung von AutoOrtho kombiniert werden. Dieses Verfahren wird im Kapitel [AutoOrtho + Ortho4XP](../ortho_streaming/static_plus_streaming.md) detailliert beschrieben.
 
 ## Welches System passt zu welchem Spielerprofil?
 
@@ -88,4 +88,4 @@ Die Wahl des geeigneten Systems hängt maßgeblich vom individuellen Flugverhalt
 
 - **Explorativer Spieler** (ständig wechselnde Destinationen): **Streaming-Lösungen** sind die bessere Wahl. Sie eliminieren die zeitintensive Vorab-Generierung und ermöglichen spontanes Anfliegen beliebiger Regionen weltweit. Der Speicherverbrauch bleibt durch automatische Cache-Bereinigung stabil.
 
-- **Hybrider Spieler** (Stammflughäfen + gelegentliche Exploration): Die **[Kombination aus statischer Generierung und Streaming](static_plus_streaming.md)** bietet das Beste aus beiden Welten. Lokale Kacheln für die Stammregionen in höchster Qualität, Streaming für die flexible globale Abdeckung.
+- **Hybrider Spieler** (Stammflughäfen + gelegentliche Exploration): Die **[Kombination aus statischer Generierung und Streaming](../ortho_streaming/static_plus_streaming.md)** bietet das Beste aus beiden Welten. Lokale Kacheln für die Stammregionen in höchster Qualität, Streaming für die flexible globale Abdeckung.

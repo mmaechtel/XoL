@@ -1,6 +1,6 @@
 # Combining Static Orthophotos with Streaming
 
-This combination is particularly suited for **hybrid players** — users who want to enjoy their home airports in highest quality while also occasionally exploring new regions. For an overview of the different player profiles, see the [Introduction to Orthophotography](orthophotography_intro.md#which-system-suits-which-player-profile).
+This combination is particularly suited for **hybrid players** — users who want to enjoy their home airports in highest quality while also occasionally exploring new regions. For an overview of the different player profiles, see the [Introduction to Orthophotography](../orthophotography/orthophotography_intro.md#which-system-suits-which-player-profile).
 
 The principle is simple: **Ortho4XP** generates high-resolution, local tiles (up to ZL19) for preferred flight areas, while a **streaming solution** (e.g., AutoOrtho) handles global coverage for all other regions. X-Plane's scenery prioritization ensures that local Ortho4XP tiles automatically take precedence over streamed textures.
 
@@ -17,7 +17,7 @@ The benefits of this combination:
 First, generate Ortho4XP tiles for your preferred flight areas. Recommended settings:
 
 - **Zoom level 17–19** for maximum quality
-- **Enable overlays** unless [SimHeaven](scenery.md) is used
+- **Enable overlays** unless [SimHeaven](../scenery.md) is used
 - Image sources include **Bing** and **Google**
 
 ### 2. Configure scenery_packs.ini
@@ -72,7 +72,7 @@ To generate meshes only without textures, set the following parameters in Ortho4
 | Build Imagery | Disabled | No textures needed |
 | Mesh level | 1–2 | Higher value = more detailed terrain |
 
-The remaining parameters are detailed in the [Ortho4XP chapter](ortho4xp.md).
+The remaining parameters are detailed in the [Ortho4XP chapter](../orthophotography/ortho4xp.md).
 
 ### Directory Structure
 
@@ -100,9 +100,9 @@ The `aa_` directory must be listed **before** the `ao_` directories so that Orth
 
 ## Increasing Mesh Resolution with LiDAR Data
 
-As described in the [Ortho4XP chapter](ortho4xp.md), LiDAR data can further improve the resolution and accuracy of terrain representation. The LiDAR data from [sonny.4lima.de](https://sonny.4lima.de) offers high resolution for various regions.
+As described in the [Ortho4XP chapter](../orthophotography/ortho4xp.md), LiDAR data can further improve the resolution and accuracy of terrain representation. The LiDAR data from [sonny.4lima.de](https://sonny.4lima.de) offers high resolution for various regions.
 
-See [LiDAR Data Integration](ortho4xp.md#lidar-data-integration) in the Ortho4XP chapter.
+See [LiDAR Data Integration](../orthophotography/ortho4xp.md#lidar-data-integration) in the Ortho4XP chapter.
 
 ## Conclusion
 

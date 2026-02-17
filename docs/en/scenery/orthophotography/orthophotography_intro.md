@@ -26,9 +26,9 @@ With this approach, orthophoto tiles are fully downloaded before the flight, con
 
 With this approach, orthophoto textures are downloaded on demand from map servers at runtime and delivered to X-Plane via a virtual file system (FUSE). Once loaded, tiles are stored in a local cache; when the configured limit is reached, older tiles are automatically removed. This approach requires a stable internet connection but enables spontaneous flying without pre-generation.
 
-- **[AutoOrtho](autoortho.md)**: The first and most widely used streaming solution for X-Plane. The active [ProgrammingDinosaur Fork](https://github.com/ProgrammingDinosaur/autoortho4xplane) (version 2.0) offers a C pipeline for faster loading, a modern GUI, and supports Windows, Linux, and macOS.
+- **[AutoOrtho](../ortho_streaming/autoortho.md)**: The first and most widely used streaming solution for X-Plane. The active [ProgrammingDinosaur Fork](https://github.com/ProgrammingDinosaur/autoortho4xplane) (version 2.0) offers a C pipeline for faster loading, a modern GUI, and supports Windows, Linux, and macOS.
 
-- **[XEarthLayer](xearthlayer.md)**: A Rust-based alternative with adaptive prefetching that switches between ground-level ring prefetch and cruise-mode track prediction. Currently only available for Linux and X-Plane 12.
+- **[XEarthLayer](../ortho_streaming/xearthlayer.md)**: A Rust-based alternative with adaptive prefetching that switches between ground-level ring prefetch and cruise-mode track prediction. Currently only available for Linux and X-Plane 12.
 
 - **[X-Plane Map Enhancement](https://github.com/derekhe/xplane-map-enhancement-release)** (XPME): A streaming solution with its own user interface that projects satellite imagery directly onto the terrain. Available for Windows, macOS, and Linux (.deb and AppImage).
 
@@ -78,7 +78,7 @@ SCENERY_PACK Custom Scenery/zzXEL_eu_ortho/
 
 ### Combination
 
-For selected regions, high-resolution Ortho4XP tiles can be combined with AutoOrtho's global streaming coverage. This procedure is described in detail in the [AutoOrtho + Ortho4XP](static_plus_streaming.md) chapter.
+For selected regions, high-resolution Ortho4XP tiles can be combined with AutoOrtho's global streaming coverage. This procedure is described in detail in the [AutoOrtho + Ortho4XP](../ortho_streaming/static_plus_streaming.md) chapter.
 
 ## Which System Suits Which Player Profile?
 
@@ -88,4 +88,4 @@ Choosing the right system largely depends on your individual flying behavior:
 
 - **Explorative player** (constantly changing destinations): **Streaming solutions** are the better choice. They eliminate time-consuming pre-generation and allow spontaneous flights to any region worldwide. Storage consumption remains stable through automatic cache eviction.
 
-- **Hybrid player** (home airports + occasional exploration): The **[combination of static generation and streaming](static_plus_streaming.md)** offers the best of both worlds. Local tiles for home regions in highest quality, streaming for flexible global coverage.
+- **Hybrid player** (home airports + occasional exploration): The **[combination of static generation and streaming](../ortho_streaming/static_plus_streaming.md)** offers the best of both worlds. Local tiles for home regions in highest quality, streaming for flexible global coverage.
