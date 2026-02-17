@@ -1,0 +1,66 @@
+# Social card layout for XoL (X-Plane on Linux)
+# Uses Sozial_Background.png with centered page title above the logo.
+
+# Definitions
+definitions:
+
+  # Page title
+  - &page_title >-
+    {%- if layout.title -%}
+      {{ layout.title }}
+    {%- else -%}
+      {{ page.meta.get("title", page.title) }}
+    {%- endif -%}
+
+  # Page title with site name (for meta tags)
+  - &page_title_with_site_name >-
+    {%- if not page.is_homepage -%}
+      {{ page.meta.get("title", page.title) }} - {{ config.site_name }}
+    {%- else -%}
+      {{ config.site_name }}
+    {%- endif -%}
+
+  # Page description (for meta tags)
+  - &page_description >-
+    {%- if layout.description -%}
+      {{ layout.description }}
+    {%- else -%}
+      {{ page.meta.get("description", config.site_description) | x }}
+    {%- endif -%}
+
+# Meta tags
+tags:
+  og:type: website
+  og:title: *page_title_with_site_name
+  og:description: *page_description
+  og:image: "{{ image.url }}"
+  og:image:type: "{{ image.type }}"
+  og:image:width: "{{ image.width }}"
+  og:image:height: "{{ image.height }}"
+  og:url: "{{ page.canonical_url }}"
+  twitter:card: summary_large_image
+  twitter:title: *page_title_with_site_name
+  twitter:description: *page_description
+  twitter:image: "{{ image.url }}"
+
+# Card size and layers
+size: { width: 1200, height: 630 }
+layers:
+
+  # Background image (full bleed)
+  - background:
+      image: docs/assets/images/Sozial_Background.png
+
+  # Page title — centered above the logo
+  - size: { width: 1080, height: 160 }
+    offset: { x: 60, y: 340 }
+    typography:
+      content: *page_title
+      align: center
+      color: "#ffffff"
+      line:
+        amount: 2
+        height: 1.25
+      font:
+        family: Roboto
+        style: Bold

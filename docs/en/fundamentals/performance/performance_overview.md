@@ -159,6 +159,7 @@ The following strategies address the described load dimensions. Each is covered 
 | Topic | Page | Focus |
 |---|---|---|
 | System Tuning | [Why Latency Matters](../../linux/system/latency.md) | Introduction and video |
+| Latency Theory | [Latency and Predictability](latency.md) | Throughput vs. latency, latency sources |
 | CPU & Interrupts | [Kernel Tuning](../../linux/system/systemtuning.md) | [CPU governor](../../glossary.md#cpu-governor), IRQ pinning, [kernel parameters](../../glossary.md#kernel-parameter) |
 | Storage & Filesystem | [Filesystem](../../linux/optimizations/filesystem.md) | I/O scheduler, mount options, TRIM |
 | Monitoring | [System Monitoring](../../linux/system/systemtools.md) | CPU, I/O, and network analysis |

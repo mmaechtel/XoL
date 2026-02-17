@@ -10,5 +10,7 @@ Für X-Plane zählt nicht maximaler Durchsatz, sondern zeitliche Vorhersagbarkei
 
 Die Monitoring-Seite liefert die Werkzeuge, um jede Tuning-Maßnahme zu verifizieren: Ist der Governor tatsächlich aktiv? Landen Interrupts auf den geschützten Kernen? Verursacht die NVMe Aufwach-Latenzen? Jedes Tool — von turbostat über mpstat bis ioping — ist einer konkreten Tuning-Einstellung zugeordnet.
 
+Die theoretischen Grundlagen — warum Latenz wichtiger ist als Durchsatz und welche Systemquellen Latenz erzeugen — beschreibt das Kapitel [Latenz und Vorhersagbarkeit](../../fundamentals/performance/latency.md).
+
 - **[Tuning](systemtuning.md)** — Kernel-Parameter, CPU-Governor, Interrupt-Affinität, NVMe-Tuning
 - **[Monitoring](systemtools.md)** — btop, turbostat, perf, mpstat und weitere Analyse-Tools

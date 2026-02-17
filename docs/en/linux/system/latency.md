@@ -10,5 +10,7 @@ For X-Plane, temporal predictability matters more than raw throughput — a stab
 
 The monitoring page provides the tools to verify every tuning measure: Is the governor actually active? Are interrupts landing on the protected cores? Is the NVMe causing wake-up latencies? Each tool — from turbostat to mpstat to ioping — maps to a specific tuning setting.
 
+The theoretical foundations — why latency matters more than throughput and which system sources generate latency — are covered in the [Latency and Predictability](../../fundamentals/performance/latency.md) chapter.
+
 - **[Tuning](systemtuning.md)** — Kernel parameters, CPU governor, interrupt affinity, NVMe tuning
 - **[Monitoring](systemtools.md)** — btop, turbostat, perf, mpstat and other analysis tools

@@ -11,8 +11,6 @@ exclude_docs: |
   MARKDOWN_RULES.txt
   CHANGELOG
 
-hooks:
-  - hooks/social_cards.py
 
 theme:
   name: material
@@ -74,7 +72,8 @@ extra_css:
   - stylesheets/nav.css
 
 plugins:
-  - social
+  - social:
+      cards_layout: xol
   - search:
       lang:
         - en
@@ -101,7 +100,8 @@ plugins:
                 - de/fundamentals/index.md
                 - Performance:
                     - de/fundamentals/performance/index.md
-                    - Zusammenspiel: de/fundamentals/performance/performance_overview.md
+                    - Lastdimensionen: de/fundamentals/performance/performance_overview.md
+                    - Latenz und Vorhersagbarkeit: de/fundamentals/performance/latency.md
                     - CPU & RAM: de/fundamentals/performance/cpu_ram.md
                     - GPU & VRAM: de/fundamentals/performance/gpu_vram.md
             - Linux:
@@ -244,7 +244,8 @@ plugins:
                 - en/fundamentals/index.md
                 - Performance:
                     - en/fundamentals/performance/index.md
-                    - Interactions: en/fundamentals/performance/performance_overview.md
+                    - Load Dimensions: en/fundamentals/performance/performance_overview.md
+                    - Latency and Predictability: en/fundamentals/performance/latency.md
                     - CPU & RAM: en/fundamentals/performance/cpu_ram.md
                     - GPU & VRAM: en/fundamentals/performance/gpu_vram.md
             - Linux:

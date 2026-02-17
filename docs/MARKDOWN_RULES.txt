@@ -73,6 +73,7 @@ docs/{lang}/
 │   └── performance/          #   Subsection: Performance
 │       ├── index.md          #     Section Index
 │       ├── performance_overview.md
+│       ├── latency.md
 │       ├── cpu_ram.md
 │       └── gpu_vram.md
 │

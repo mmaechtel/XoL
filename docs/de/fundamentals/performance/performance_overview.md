@@ -159,6 +159,7 @@ Die folgenden Strategien adressieren die beschriebenen Lastdimensionen. Jede wir
 | Thema | Seite | Schwerpunkt |
 |---|---|---|
 | System-Tuning | [Warum Latenz zählt](../../linux/system/latency.md) | Einführung und Video |
+| Latenz-Theorie | [Latenz und Vorhersagbarkeit](latency.md) | Durchsatz vs. Latenz, Latenzquellen |
 | CPU & Interrupts | [Kernel-Tuning](../../linux/system/systemtuning.md) | [CPU Governor](../../glossary.md#cpu-governor), IRQ-Pinning, [Kernel-Parameter](../../glossary.md#kernel-parameter) |
 | Storage & Dateisystem | [Dateisystem](../../linux/optimizations/filesystem.md) | I/O-Scheduler, Mount-Optionen, TRIM |
 | Monitoring | [System Monitoring](../../linux/system/systemtools.md) | CPU-, I/O- und Netzwerk-Analyse |
