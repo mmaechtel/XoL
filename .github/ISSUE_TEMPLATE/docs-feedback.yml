@@ -9,12 +9,9 @@ body:
       label: Type
       description: What kind of issue is this?
       options:
-        - Factual error
-        - Outdated information
-        - Missing content
-        - Unclear or confusing
+        - Correction (factual error, outdated info, typo)
+        - Improvement (unclear, incomplete, confusing)
         - Broken link
-        - Typo or grammar
         - Other
     validations:
       required: true
