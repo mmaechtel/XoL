@@ -148,7 +148,7 @@ Consider not just ortho textures but all VRAM consumers: aircraft, rendering buf
 | Topic | Page |
 |---|---|
 | Threading model and CPU budget | [CPU & RAM](cpu_ram.md) |
-| Load dimensions and interactions | [Performance Overview](performance_overview.md) |
+| Load dimension interactions | [Performance Overview](performance_overview.md) |
 | GPU driver optimization | [Nvidia](../../linux/optimizations/nvidia.md) |
 | Ortho streaming configuration | [AutoOrtho](../../scenery/ortho_streaming/autoortho.md) |
 | X-Plane Microprofiler | [X-Plane Performance](../../xplane/setup_diagnose/performance.md) |

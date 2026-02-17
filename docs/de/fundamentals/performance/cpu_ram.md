@@ -98,7 +98,7 @@ RAM selbst ist selten das primäre Bottleneck. Kritisch wird es in zwei Szenarie
 
 | Thema | Seite |
 |---|---|
-| Lastdimensionen und Wechselwirkungen | [Performance-Übersicht](performance_overview.md) |
+| Zusammenspiel der Lastdimensionen | [Performance-Übersicht](performance_overview.md) |
 | VRAM-Management und Frame-Time-Analyse | [GPU & VRAM](gpu_vram.md) |
 | IRQ-Pinning und CPU-Affinität | [Systemtuning](../../linux/system/systemtuning.md) |
 | I/O-Scheduler und Dateisystem | [Dateisystem](../../linux/optimizations/filesystem.md) |

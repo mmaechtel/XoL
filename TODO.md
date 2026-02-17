@@ -21,6 +21,7 @@ Workflow und Phasen-Beschreibung: siehe `CLAUDE.md` → Dokumentations-Workflow.
 | 8     | `kvm.md`            | offen       | WiP-Abschnitt ausbauen oder entfernen               |
 
 | 11 | `addon/xorganizer.md` | offen | Wine-Installation und Workflow-Hinweise |
+| 12 | Verzeichnisnamen | offen | DE-Verzeichnisnamen in EN-Pfaden (`systemfehler/`, `aufbau_quellen/`, `setup_diagnose/`) auf englische Namen migrieren |
 
 ---
 

@@ -2,6 +2,6 @@
 
 Latenz statt Durchsatz ist das Optimierungsziel für X-Plane unter Linux: ein stabiles Frametime-Budget zählt mehr als maximale Rechenleistung. Diese Sektion zeigt zwei Kernel-Profile — eines für den Standard-Kernel, eines für Liquorix — und die Monitoring-Werkzeuge, mit denen sich jede Tuning-Maßnahme verifizieren lässt.
 
-- **[Warum Latenz zählt](overview.md)** — Video-Einführung und Tuning-Philosophie
-- **[Tuning](systemtuning.md)** — Kernel-Parameter, CPU-Governor, Interrupt-Affinität, NVMe-Tuning
+- **[Warum Latenz zählt](latency.md)** — Video-Einführung und Tuning-Philosophie
+- **[Kernel-Tuning](systemtuning.md)** — Kernel-Parameter, CPU-Governor, Interrupt-Affinität, NVMe-Tuning
 - **[Monitoring](systemtools.md)** — btop, turbostat, perf, mpstat und weitere Analyse-Tools

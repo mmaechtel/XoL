@@ -23,7 +23,7 @@ A device loss is a GPU crash, signaled by `VK_ERROR_DEVICE_LOST`. Causes, debugg
 
 Log files, safe mode, targeted subsystem isolation, and reproducible benchmarks:
 
-**[Diagnostics and CLI Parameters](diagnose.md)**
+**[Diagnostics and CLI Parameters](../setup_diagnose/config.md#troubleshooting)**
 
 ## Support
 

@@ -148,7 +148,7 @@ Nicht nur die Ortho-Texturen, sondern alle VRAM-Verbraucher berücksichtigen: Fl
 | Thema | Seite |
 |---|---|
 | Threading-Modell und CPU-Budget | [CPU & RAM](cpu_ram.md) |
-| Lastdimensionen und Wechselwirkungen | [Performance-Übersicht](performance_overview.md) |
+| Zusammenspiel der Lastdimensionen | [Performance-Übersicht](performance_overview.md) |
 | GPU-Treiber-Optimierung | [Nvidia](../../linux/optimizations/nvidia.md) |
 | Ortho-Streaming-Konfiguration | [AutoOrtho](../../scenery/ortho_streaming/autoortho.md) |
 | X-Plane Microprofiler | [X-Plane Performance](../../xplane/setup_diagnose/performance.md) |

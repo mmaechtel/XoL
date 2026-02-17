@@ -80,6 +80,7 @@ docs/{lang}/
 │   ├── index.md              #   Section Index
 │   ├── system/               #   Subsection: System
 │   │   ├── index.md          #     Section Index
+│   │   ├── latency.md
 │   │   ├── systemtuning.md
 │   │   └── systemtools.md
 │   ├── optimizations/        #   Subsection: Optimierungen
@@ -90,7 +91,7 @@ docs/{lang}/
 │   │   ├── displayserver_x11.md
 │   │   ├── displayserver_wayland.md
 │   │   └── filesystem.md
-│   └── extensions/           #   Subsection: Erweiterungen
+│   └── extensions/           #   Subsection: Hilfsprogramme
 │       ├── index.md          #     Section Index
 │       ├── kvm.md
 │       ├── docker.md
@@ -106,8 +107,7 @@ docs/{lang}/
 │   │   └── performance.md
 │   └── systemfehler/         #   Subsection: Systemfehler
 │       ├── index.md          #     Section Index
-│       ├── geraeteverluste.md
-│       └── diagnose.md
+│       └── geraeteverluste.md
 │
 ├── scenery/                  # Section: Szenerien
 │   ├── index.md              #   Section Index
@@ -141,7 +141,7 @@ docs/{lang}/
     ├── index.md              #   Section Index
     ├── weather/              # Subsection: Wetter
     │   ├── index.md          #   Section Index
-    │   └── weather.md
+    │   └── briefing.md
     ├── atc/                  # Subsection: ATC
     │   ├── index.md          #   Section Index
     │   ├── clearance.md
@@ -151,7 +151,7 @@ docs/{lang}/
     │   ├── enroute.md
     │   ├── approach.md
     │   └── landing.md
-    └── vatsim/               # Subsection: VATSim
+    └── vatsim/               # Subsection: Online
         ├── index.md          #   Section Index
         └── vatsim.md
 ```

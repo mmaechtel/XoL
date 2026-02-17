@@ -158,8 +158,8 @@ Die folgenden Strategien adressieren die beschriebenen Lastdimensionen. Jede wir
 
 | Thema | Seite | Schwerpunkt |
 |---|---|---|
-| System-Tuning | [Warum Latenz zählt](../../linux/system/overview.md) | Einführung und Video |
-| CPU & Interrupts | [Tuning](../../linux/system/systemtuning.md) | [CPU Governor](../../glossary.md#cpu-governor), IRQ-Pinning, [Kernel-Parameter](../../glossary.md#kernel-parameter) |
+| System-Tuning | [Warum Latenz zählt](../../linux/system/latency.md) | Einführung und Video |
+| CPU & Interrupts | [Kernel-Tuning](../../linux/system/systemtuning.md) | [CPU Governor](../../glossary.md#cpu-governor), IRQ-Pinning, [Kernel-Parameter](../../glossary.md#kernel-parameter) |
 | Storage & Dateisystem | [Dateisystem](../../linux/optimizations/filesystem.md) | I/O-Scheduler, Mount-Optionen, TRIM |
 | Monitoring | [System Monitoring](../../linux/system/systemtools.md) | CPU-, I/O- und Netzwerk-Analyse |
 | X-Plane intern | [Performance](../../xplane/setup_diagnose/performance.md) | Microprofiler, FPS-Anzeige, Grafikeinstellungen |

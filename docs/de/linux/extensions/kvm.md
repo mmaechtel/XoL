@@ -89,3 +89,7 @@ Der einfachste Weg ist die Verwendung von `ssh-copy-id`:
   chmod 700 ~/.ssh
   chmod 600 ~/.ssh/authorized_keys
   ```
+
+## X-Plane Addons via KVM
+
+Mehrere Windows-only X-Plane-Addons lassen sich in einer KVM-VM betreiben. Einrichtungsanleitungen und Konfigurationsdetails für einzelne Addons sind unter **[Addons → Via KVM](../../addon/kvm/index.md)** dokumentiert.

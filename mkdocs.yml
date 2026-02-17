@@ -101,15 +101,15 @@ plugins:
                 - de/fundamentals/index.md
                 - Performance:
                     - de/fundamentals/performance/index.md
-                    - Lastdimensionen: de/fundamentals/performance/performance_overview.md
+                    - Zusammenspiel: de/fundamentals/performance/performance_overview.md
                     - CPU & RAM: de/fundamentals/performance/cpu_ram.md
                     - GPU & VRAM: de/fundamentals/performance/gpu_vram.md
             - Linux:
                 - de/linux/index.md
                 - System:
                     - de/linux/system/index.md
-                    - Warum Latenz zählt: de/linux/system/overview.md
-                    - Tuning: de/linux/system/systemtuning.md
+                    - Warum Latenz zählt: de/linux/system/latency.md
+                    - Kernel-Tuning: de/linux/system/systemtuning.md
                     - Monitoring: de/linux/system/systemtools.md
                 - Optimierungen:
                     - de/linux/optimizations/index.md
@@ -119,7 +119,7 @@ plugins:
                     - X11-Session: de/linux/optimizations/displayserver_x11.md
                     - Wayland-Session: de/linux/optimizations/displayserver_wayland.md
                     - Dateisystem: de/linux/optimizations/filesystem.md
-                - Erweiterungen:
+                - Hilfsprogramme:
                     - de/linux/extensions/index.md
                     - KVM: de/linux/extensions/kvm.md
                     - Docker: de/linux/extensions/docker.md
@@ -131,10 +131,9 @@ plugins:
                 - Setup & Diagnose:
                     - de/xplane/setup_diagnose/index.md
                     - Konfiguration: de/xplane/setup_diagnose/config.md
-                    - Performance: de/xplane/setup_diagnose/performance.md
+                    - Performance-Analyse: de/xplane/setup_diagnose/performance.md
                 - Systemfehler:
                     - de/xplane/systemfehler/index.md
-                    - Diagnose: de/xplane/systemfehler/diagnose.md
                     - Geräteverluste: de/xplane/systemfehler/geraeteverluste.md
             - Szenerien:
                 - de/scenery/index.md
@@ -217,7 +216,7 @@ plugins:
                 - de/flight_operations/index.md
                 - Wetter:
                     - de/flight_operations/weather/index.md
-                    - Wetter: de/flight_operations/weather/weather.md
+                    - Briefing: de/flight_operations/weather/briefing.md
                 - ATC:
                     - de/flight_operations/atc/index.md
                     - Clearance: de/flight_operations/atc/clearance.md
@@ -227,7 +226,7 @@ plugins:
                     - Streckenflug: de/flight_operations/atc/enroute.md
                     - Anflug: de/flight_operations/atc/approach.md
                     - Landung & Abstellen: de/flight_operations/atc/landing.md
-                - VATSim:
+                - Online:
                     - de/flight_operations/vatsim/index.md
                     - VATSim: de/flight_operations/vatsim/vatsim.md
             - Glossar: de/glossary.md
@@ -245,15 +244,15 @@ plugins:
                 - en/fundamentals/index.md
                 - Performance:
                     - en/fundamentals/performance/index.md
-                    - Load Dimensions: en/fundamentals/performance/performance_overview.md
+                    - Interactions: en/fundamentals/performance/performance_overview.md
                     - CPU & RAM: en/fundamentals/performance/cpu_ram.md
                     - GPU & VRAM: en/fundamentals/performance/gpu_vram.md
             - Linux:
                 - en/linux/index.md
                 - System:
                     - en/linux/system/index.md
-                    - Why Latency Matters: en/linux/system/overview.md
-                    - Tuning: en/linux/system/systemtuning.md
+                    - Why Latency Matters: en/linux/system/latency.md
+                    - Kernel Tuning: en/linux/system/systemtuning.md
                     - Monitoring: en/linux/system/systemtools.md
                 - Optimizations:
                     - en/linux/optimizations/index.md
@@ -263,7 +262,7 @@ plugins:
                     - X11 Session: en/linux/optimizations/displayserver_x11.md
                     - Wayland Session: en/linux/optimizations/displayserver_wayland.md
                     - Filesystem: en/linux/optimizations/filesystem.md
-                - Extensions:
+                - Utilities:
                     - en/linux/extensions/index.md
                     - KVM: en/linux/extensions/kvm.md
                     - Docker: en/linux/extensions/docker.md
@@ -275,10 +274,9 @@ plugins:
                 - Setup & Diagnostics:
                     - en/xplane/setup_diagnose/index.md
                     - Configuration: en/xplane/setup_diagnose/config.md
-                    - Performance: en/xplane/setup_diagnose/performance.md
+                    - Performance Analysis: en/xplane/setup_diagnose/performance.md
                 - System Errors:
                     - en/xplane/systemfehler/index.md
-                    - Diagnostics: en/xplane/systemfehler/diagnose.md
                     - Device Losses: en/xplane/systemfehler/geraeteverluste.md
             - Scenery:
                 - en/scenery/index.md
@@ -361,7 +359,7 @@ plugins:
                 - en/flight_operations/index.md
                 - Weather:
                     - en/flight_operations/weather/index.md
-                    - Weather: en/flight_operations/weather/weather.md
+                    - Briefing: en/flight_operations/weather/briefing.md
                 - ATC:
                     - en/flight_operations/atc/index.md
                     - Clearance: en/flight_operations/atc/clearance.md
@@ -371,7 +369,7 @@ plugins:
                     - En Route: en/flight_operations/atc/enroute.md
                     - Approach: en/flight_operations/atc/approach.md
                     - Landing & Taxi In: en/flight_operations/atc/landing.md
-                - VATSim:
+                - Online:
                     - en/flight_operations/vatsim/index.md
                     - VATSim: en/flight_operations/vatsim/vatsim.md
             - Glossary: en/glossary.md

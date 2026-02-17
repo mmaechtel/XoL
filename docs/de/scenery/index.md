@@ -5,4 +5,5 @@ X-Planes Szenerie baut auf drei Schichten — Mesh, Orthofotos und Autogen —, 
 - **[Aufbau & Quellen](aufbau_quellen/index.md)** — Komponenten, Ladereihenfolge und Szenerien-Optionen
 - **[Orthofotografie](orthophotography/index.md)** — Statische Ortho-Kacheln mit Ortho4XP
 - **[Ortho Streaming](ortho_streaming/index.md)** — AutoOrtho, XEarthLayer und Hybrid-Setups
+- **[Szenerie-Plugins](../addon/scenery_addons/index.md)** — XRoad, AEP, xa-snow, NOAA Weather, LST
 - **[XOrganizer](../addon/tools/xorganizer.md)** — Szenerie-Verwaltung und scenery_packs.ini-Editor

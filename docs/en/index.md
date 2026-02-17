@@ -35,7 +35,7 @@ This documentation is an open project. Improvements or additions can be contribu
 ### 2026-02-17
 - Complete restructure: All sections split into thematic subdirectories with section index pages — content summaries cascade from deepest level upward
 - New pages: [CPU & RAM](fundamentals/performance/cpu_ram.md) — Threading model and system memory, [GPU & VRAM](fundamentals/performance/gpu_vram.md) — Texture paging, driver differences and frame time analysis
-- New page: [Why Latency Matters](linux/system/overview.md) — Video introduction to the tuning philosophy
+- New page: [Why Latency Matters](linux/system/latency.md) — Video introduction to the tuning philosophy
 
 ### 2026-02-16
 - New video: [Display Server](linux/optimizations/displayserver.md) — X11 vs Wayland decision guide

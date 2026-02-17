@@ -98,7 +98,7 @@ RAM itself is rarely the primary bottleneck. It becomes critical in two scenario
 
 | Topic | Page |
 |---|---|
-| Load dimensions and interactions | [Performance Overview](performance_overview.md) |
+| Load dimension interactions | [Performance Overview](performance_overview.md) |
 | VRAM management and frame time analysis | [GPU & VRAM](gpu_vram.md) |
 | IRQ pinning and CPU affinity | [System Tuning](../../linux/system/systemtuning.md) |
 | I/O scheduler and filesystem | [Filesystem](../../linux/optimizations/filesystem.md) |
