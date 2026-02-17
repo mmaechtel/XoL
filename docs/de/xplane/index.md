@@ -2,10 +2,10 @@
 
 Dieser Abschnitt behandelt die X-Plane-spezifische Konfiguration und Performance-Optimierung unter Linux.
 
-## Konfiguration & Performance
+## Setup & Diagnose
 
-- **[Konfiguration](config.md)** — Grafikeinstellungen, Rendering-Optionen und Linux-spezifische Anpassungen
-- **[Performance](performance.md)** — FPS-Analyse, Engpass-Diagnose und Optimierungsstrategien
+- **[Konfiguration](setup_diagnose/config.md)** — Grafikeinstellungen, Rendering-Optionen und Linux-spezifische Anpassungen
+- **[Performance](setup_diagnose/performance.md)** — FPS-Analyse, Engpass-Diagnose und Optimierungsstrategien
 
 ## Fehlerdiagnose
 

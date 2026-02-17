@@ -141,11 +141,11 @@ Eine proprietäre Audio-Engine von Firelight Technologies. X-Plane 12 verwendet 
 
 ### FPS (Frames per Second)
 
-Die Anzahl der Bilder, die der Simulator pro Sekunde berechnet und darstellt. Höhere FPS bedeuten flüssigere Darstellung, wobei gleichmäßige Frame Times wichtiger sind als der reine FPS-Wert. X-Plane zeigt die aktuelle FPS über die integrierte Leistungsanzeige. Siehe [Performance](../xplane/performance.md).
+Die Anzahl der Bilder, die der Simulator pro Sekunde berechnet und darstellt. Höhere FPS bedeuten flüssigere Darstellung, wobei gleichmäßige Frame Times wichtiger sind als der reine FPS-Wert. X-Plane zeigt die aktuelle FPS über die integrierte Leistungsanzeige. Siehe [Performance](../xplane/setup_diagnose/performance.md).
 
 ### Frame Time
 
-Die Zeit in Millisekunden, die der Simulator für die Berechnung und Darstellung eines einzelnen Bildes benötigt. Gleichmäßige Frame Times sind für ein flüssiges Simulationserlebnis wichtiger als eine hohe Framerate. Schwankungen (Frame-Time-Spikes) äußern sich als Ruckler. Siehe [Performance](../xplane/performance.md).
+Die Zeit in Millisekunden, die der Simulator für die Berechnung und Darstellung eines einzelnen Bildes benötigt. Gleichmäßige Frame Times sind für ein flüssiges Simulationserlebnis wichtiger als eine hohe Framerate. Schwankungen (Frame-Time-Spikes) äußern sich als Ruckler. Siehe [Performance](../xplane/setup_diagnose/performance.md).
 
 ### FUSE (Filesystem in Userspace)
 
@@ -311,7 +311,7 @@ Eine plattformübergreifende Multimedia-Bibliothek, die X-Plane 12 unter Linux f
 
 ### Shader Cache
 
-Ein Zwischenspeicher für kompilierte GPU-Shader-Programme. X-Plane kompiliert Shader beim ersten Laden einer Szene, was zu Rucklern führen kann. Der Shader Cache speichert die kompilierten Ergebnisse, sodass nachfolgende Ladevorgänge schneller ablaufen. Unter Linux liegt der Cache in `~/.cache/`. Siehe [Konfiguration](../xplane/config.md).
+Ein Zwischenspeicher für kompilierte GPU-Shader-Programme. X-Plane kompiliert Shader beim ersten Laden einer Szene, was zu Rucklern führen kann. Der Shader Cache speichert die kompilierten Ergebnisse, sodass nachfolgende Ladevorgänge schneller ablaufen. Unter Linux liegt der Cache in `~/.cache/`. Siehe [Konfiguration](../xplane/setup_diagnose/config.md).
 
 ### Single-CPU
 

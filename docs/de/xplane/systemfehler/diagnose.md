@@ -2,7 +2,7 @@
 
 Die Kommandozeile ist unter Linux das mächtigste Werkzeug zur Fehlersuche. Log-Dateien, Safe Mode, gezielte Subsystem-Deaktivierung und reproduzierbare Benchmarks werden ausführlich behandelt in:
 
-**[Konfiguration → Fehlerbehebung](../config.md#fehlerbehebung)**
+**[Konfiguration → Fehlerbehebung](../setup_diagnose/config.md#fehlerbehebung)**
 
 - Log-Dateien lesen und interpretieren (`Log.txt`, Rotation, was suchen)
 - Safe Mode mit `--safe_mode=GFX`, `--safe_mode=PLG` etc.

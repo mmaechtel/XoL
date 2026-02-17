@@ -137,11 +137,11 @@ A proprietary audio engine by Firelight Technologies. X-Plane 12 uses FMOD Studi
 
 ### FPS (Frames per Second)
 
-The number of frames the simulator calculates and renders per second. Higher FPS means smoother display, though consistent frame times are more important than the raw FPS value. X-Plane shows current FPS through its built-in performance display. See [Performance](../xplane/performance.md).
+The number of frames the simulator calculates and renders per second. Higher FPS means smoother display, though consistent frame times are more important than the raw FPS value. X-Plane shows current FPS through its built-in performance display. See [Performance](../xplane/setup_diagnose/performance.md).
 
 ### Frame Time
 
-The time in milliseconds the simulator needs to calculate and render a single frame. Consistent frame times are more important for a smooth simulation experience than a high framerate. Fluctuations (frame time spikes) manifest as stutters. See [Performance](../xplane/performance.md).
+The time in milliseconds the simulator needs to calculate and render a single frame. Consistent frame times are more important for a smooth simulation experience than a high framerate. Fluctuations (frame time spikes) manifest as stutters. See [Performance](../xplane/setup_diagnose/performance.md).
 
 ### FUSE (Filesystem in Userspace)
 
@@ -311,7 +311,7 @@ A cross-platform multimedia library used by X-Plane 12 on Linux for window manag
 
 ### Shader Cache
 
-A cache for compiled GPU shader programs. X-Plane compiles shaders when first loading a scene, which can cause stutters. The shader cache stores compiled results so subsequent loads are faster. On Linux, the cache is located in `~/.cache/`. See [Configuration](../xplane/config.md).
+A cache for compiled GPU shader programs. X-Plane compiles shaders when first loading a scene, which can cause stutters. The shader cache stores compiled results so subsequent loads are faster. On Linux, the cache is located in `~/.cache/`. See [Configuration](../xplane/setup_diagnose/config.md).
 
 ### Single-CPU
 

@@ -151,5 +151,5 @@ Nicht nur die Ortho-Texturen, sondern alle VRAM-Verbraucher berücksichtigen: Fl
 | Lastdimensionen und Wechselwirkungen | [Performance-Übersicht](performance_overview.md) |
 | GPU-Treiber-Optimierung | [Nvidia](../../linux/optimizations/nvidia.md) |
 | Ortho-Streaming-Konfiguration | [AutoOrtho](../../scenery/ortho_streaming/autoortho.md) |
-| X-Plane Microprofiler | [X-Plane Performance](../../xplane/performance.md) |
+| X-Plane Microprofiler | [X-Plane Performance](../../xplane/setup_diagnose/performance.md) |
 | System Monitoring | [Monitoring](../../linux/system/systemtools.md) |

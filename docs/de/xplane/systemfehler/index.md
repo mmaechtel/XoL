@@ -6,7 +6,7 @@ Wenn X-Plane unter Linux nicht wie erwartet funktioniert, hilft eine systematisc
 
 FPS-Einbrüche, Stutter und Engpässe werden behandelt in:
 
-**[Performance](../performance.md)**
+**[Performance](../setup_diagnose/performance.md)**
 
 ## GPU-Crashes (Device Loss)
 

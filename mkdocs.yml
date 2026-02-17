@@ -127,8 +127,10 @@ plugins:
                     - zsh: de/linux/extensions/zsh.md
             - X-Plane:
                 - de/xplane/index.md
-                - Konfiguration: de/xplane/config.md
-                - Performance: de/xplane/performance.md
+                - Setup & Diagnose:
+                    - de/xplane/setup_diagnose/index.md
+                    - Konfiguration: de/xplane/setup_diagnose/config.md
+                    - Performance: de/xplane/setup_diagnose/performance.md
                 - Systemfehler:
                     - de/xplane/systemfehler/index.md
                     - Diagnose: de/xplane/systemfehler/diagnose.md
@@ -266,8 +268,10 @@ plugins:
                     - zsh: en/linux/extensions/zsh.md
             - X-Plane:
                 - en/xplane/index.md
-                - Configuration: en/xplane/config.md
-                - Performance: en/xplane/performance.md
+                - Setup & Diagnostics:
+                    - en/xplane/setup_diagnose/index.md
+                    - Configuration: en/xplane/setup_diagnose/config.md
+                    - Performance: en/xplane/setup_diagnose/performance.md
                 - System Errors:
                     - en/xplane/systemfehler/index.md
                     - Diagnostics: en/xplane/systemfehler/diagnose.md

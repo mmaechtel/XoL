@@ -100,10 +100,12 @@ docs/{lang}/
 │
 ├── xplane/                   # Section: X-Plane
 │   ├── index.md              #   Section Index
-│   ├── config.md
-│   ├── performance.md
-│   └── systemfehler/         # Subsection: Systemfehler
-│       ├── index.md          #   Section Index
+│   ├── setup_diagnose/       #   Subsection: Setup & Diagnose
+│   │   ├── index.md          #     Section Index
+│   │   ├── config.md
+│   │   └── performance.md
+│   └── systemfehler/         #   Subsection: Systemfehler
+│       ├── index.md          #     Section Index
 │       ├── geraeteverluste.md
 │       └── diagnose.md
 │

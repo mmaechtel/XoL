@@ -118,7 +118,7 @@ The standalone version provides:
 
 1. **First launch**: Start X-Plane once and close it again so that configuration files are created
 
-2. **Optimize performance settings**: Adjust graphics settings according to your hardware. See [X-Plane Configuration](xplane/config.md) for Linux-specific guidance.
+2. **Optimize performance settings**: Adjust graphics settings according to your hardware. See [X-Plane Configuration](xplane/setup_diagnose/config.md) for Linux-specific guidance.
 
 3. **Check the performance** with the built-in [FPS](glossary.md#fps-frames-per-second) display (activate with `Shift+Ctrl+F`)
 
@@ -181,4 +181,4 @@ After a successful installation, continue with:
 3. [Liquorix Kernel](linux/optimizations/liquorix.md) — Low-latency kernel optimized for desktop workloads
 4. [System Tuning](linux/system/systemtuning.md) — CPU governor, interrupt shielding, and kernel parameters
 5. [Display Server](linux/optimizations/displayserver.md) — Wayland vs. X11 for X-Plane
-6. [X-Plane Configuration](xplane/config.md) — Linux-specific graphics and performance settings
+6. [X-Plane Configuration](xplane/setup_diagnose/config.md) — Linux-specific graphics and performance settings

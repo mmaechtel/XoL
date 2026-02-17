@@ -6,7 +6,7 @@ When X-Plane on Linux doesn't work as expected, systematic diagnosis helps. This
 
 FPS drops, stutter, and bottlenecks are covered in:
 
-**[Performance](../performance.md)**
+**[Performance](../setup_diagnose/performance.md)**
 
 ## GPU Crashes (Device Loss)
 

@@ -2,10 +2,10 @@
 
 This section covers X-Plane-specific configuration and performance optimization on Linux.
 
-## Configuration & Performance
+## Setup & Diagnostics
 
-- **[Configuration](config.md)** — Graphics settings, rendering options, and Linux-specific adjustments
-- **[Performance](performance.md)** — FPS analysis, bottleneck diagnosis, and optimization strategies
+- **[Configuration](setup_diagnose/config.md)** — Graphics settings, rendering options, and Linux-specific adjustments
+- **[Performance](setup_diagnose/performance.md)** — FPS analysis, bottleneck diagnosis, and optimization strategies
 
 ## Troubleshooting
 

@@ -129,7 +129,7 @@ Dieses Muster kann das System kurzfristig überlasten und die nächsten Frames v
 
 Alle drei Lastdimensionen wirken sich auf dieselbe Messgröße aus: die [Frame Time](../../glossary.md#frame-time). Eine Frame Time von 33 ms entspricht ~30 [FPS](../../glossary.md#fps-frames-per-second), 16,6 ms entspricht ~60 FPS. Jeder Spike in einer der drei Dimensionen — ein Cache-Miss, ein I/O-Stall, ein Netzwerk-Aussetzer — schlägt direkt auf die Frame Time durch.
 
-Warum gleichmäßige Frame Times wichtiger sind als hohe FPS und wie sich Frame-Time-Probleme mit dem Microprofiler diagnostizieren lassen, beschreiben die Kapitel [Systemtuning](../../linux/system/systemtuning.md) und [X-Plane Performance](../../xplane/performance.md).
+Warum gleichmäßige Frame Times wichtiger sind als hohe FPS und wie sich Frame-Time-Probleme mit dem Microprofiler diagnostizieren lassen, beschreiben die Kapitel [Systemtuning](../../linux/system/systemtuning.md) und [X-Plane Performance](../../xplane/setup_diagnose/performance.md).
 
 ## Optimierungsansätze im Überblick
 
@@ -162,7 +162,7 @@ Die folgenden Strategien adressieren die beschriebenen Lastdimensionen. Jede wir
 | CPU & Interrupts | [Tuning](../../linux/system/systemtuning.md) | [CPU Governor](../../glossary.md#cpu-governor), IRQ-Pinning, [Kernel-Parameter](../../glossary.md#kernel-parameter) |
 | Storage & Dateisystem | [Dateisystem](../../linux/optimizations/filesystem.md) | I/O-Scheduler, Mount-Optionen, TRIM |
 | Monitoring | [System Monitoring](../../linux/system/systemtools.md) | CPU-, I/O- und Netzwerk-Analyse |
-| X-Plane intern | [Performance](../../xplane/performance.md) | Microprofiler, FPS-Anzeige, Grafikeinstellungen |
+| X-Plane intern | [Performance](../../xplane/setup_diagnose/performance.md) | Microprofiler, FPS-Anzeige, Grafikeinstellungen |
 | Ortho-Streaming | [AutoOrtho](../../scenery/ortho_streaming/autoortho.md) | Cache-Konfiguration, Prefetching |
 | GPU-Treiber | [Nvidia](../../linux/optimizations/nvidia.md) | Treiberoptimierung, Persistence Mode |
 | Kernel | [Liquorix](../../linux/optimizations/liquorix.md) | Low-Latency-Kernel, Scheduler |

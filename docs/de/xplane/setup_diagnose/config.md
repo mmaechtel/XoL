@@ -14,17 +14,17 @@ X-Plane 12 nutzt ausschließlich Vulkan als Rendering-API. Ein OpenGL-Fallback e
 | AMD | Mesa RADV | 22.0+ |
 | Intel Arc | Mesa ANV | In neueren Versionen unterstützt |
 
-Für NVIDIA-Treiber-Installation und -Optimierung siehe [Nvidia Treiber](../linux/optimizations/nvidia.md).
+Für NVIDIA-Treiber-Installation und -Optimierung siehe [Nvidia Treiber](../../linux/optimizations/nvidia.md).
 
 ### Zink — Plugin-Kompatibilität
 
-Viele X-Plane-Plugins nutzen OpenGL für ihre Darstellung (z.B. Cockpit-Displays, Overlays). Da X-Plane 12 aber ausschließlich Vulkan verwendet, muss das OpenGL-Rendering der Plugins übersetzt werden. X-Plane liefert dafür den [Zink](../glossary.md#zink)-Treiber mit — eine Übersetzungsschicht, die OpenGL-Befehle in Vulkan-Befehle umwandelt.
+Viele X-Plane-Plugins nutzen OpenGL für ihre Darstellung (z.B. Cockpit-Displays, Overlays). Da X-Plane 12 aber ausschließlich Vulkan verwendet, muss das OpenGL-Rendering der Plugins übersetzt werden. X-Plane liefert dafür den [Zink](../../glossary.md#zink)-Treiber mit — eine Übersetzungsschicht, die OpenGL-Befehle in Vulkan-Befehle umwandelt.
 
 **Warum das unter Linux besonders relevant ist**
 
 - Ohne Zink versucht der Treiber, OpenGL und Vulkan gleichzeitig zu koordinieren (Native Interop). Das kostete bis zu 10 ms pro Frame, in Extremfällen 30 ms
 - Mit Zink: messbar 50 FPS → 80 FPS in Tests von Laminar Research
-- AMD-GPUs ([RADV](../glossary.md#radv)) profitieren am stärksten — die native OpenGL/Vulkan-Interop war auf Mesa besonders problematisch
+- AMD-GPUs ([RADV](../../glossary.md#radv)) profitieren am stärksten — die native OpenGL/Vulkan-Interop war auf Mesa besonders problematisch
 - NVIDIA: Zink-Support hat eine wechselhafte Geschichte — der Status wechselt zwischen Releases und kann sich mit Updates ändern
 
 **Bekannte Einschränkung:** Shared OpenGL Contexts für Hintergrundverarbeitung in Plugins sind mit Zink nicht vollständig stabil. Für allgemeine OpenGL-Fehlerdiagnose bei Plugins kann `--debug_gl` nützlich sein.
@@ -93,16 +93,16 @@ MESA_VK_WSI_PRESENT_MODE=mailbox ./X-Plane-x86_64
 
 ## Display-Server
 
-X-Plane 12 hat keine native Wayland-Unterstützung. Details zur Session-Wahl, Latenzmessungen und GPU-spezifischen Empfehlungen: [Display-Server](../linux/optimizations/displayserver.md).
+X-Plane 12 hat keine native Wayland-Unterstützung. Details zur Session-Wahl, Latenzmessungen und GPU-spezifischen Empfehlungen: [Display-Server](../../linux/optimizations/displayserver.md).
 
 !!! tip "Empfehlung: X11-Session verwenden"
-    Unter X11 kommuniziert X-Plane direkt mit dem X-Server — keine Übersetzung, kein Overhead. Details: [X11-Session für X-Plane](../linux/optimizations/displayserver_x11.md)
+    Unter X11 kommuniziert X-Plane direkt mit dem X-Server — keine Übersetzung, kein Overhead. Details: [X11-Session für X-Plane](../../linux/optimizations/displayserver_x11.md)
 
 Bei Fullscreen-Problemen unter Wayland kann `--window=1920x1080` als Workaround dienen (siehe [Fehlerbehebung](#diagnose-start-mit-cli-parametern)).
 
 ## Audio
 
-X-Plane 12 nutzt [FMOD](../glossary.md#fmod) Studio 2.02 als Audio-Engine. Unter Debian 12 (PulseAudio) funktioniert Audio in der Regel ohne Konfiguration.
+X-Plane 12 nutzt [FMOD](../../glossary.md#fmod) Studio 2.02 als Audio-Engine. Unter Debian 12 (PulseAudio) funktioniert Audio in der Regel ohne Konfiguration.
 
 !!! tip "PipeWire: Kein Sound?"
     Unter PipeWire (Debian 13 Standard, in Debian 12 Standard für GNOME, optional für andere DEs) erkennt FMOD das Audiosystem manchmal nicht. FMOD prüft `/usr/bin/pulseaudio --check` — auf reinen PipeWire-Systemen existiert diese Binary nicht.
@@ -121,7 +121,7 @@ X-Plane 12 nutzt [FMOD](../glossary.md#fmod) Studio 2.02 als Audio-Engine. Unter
 
 ## Controller
 
-X-Plane erkennt Controller unter Linux über SDL2 mit [evdev](../glossary.md#evdev)-Backend (`/dev/input/event*`). Damit das funktioniert, braucht der Nutzer Leserechte auf die Input-Devices — **X-Plane darf niemals als root gestartet werden**.
+X-Plane erkennt Controller unter Linux über SDL2 mit [evdev](../../glossary.md#evdev)-Backend (`/dev/input/event*`). Damit das funktioniert, braucht der Nutzer Leserechte auf die Input-Devices — **X-Plane darf niemals als root gestartet werden**.
 
 ### udev-Regeln
 
@@ -211,7 +211,7 @@ Backup: Das gesamte `Output/preferences/`-Verzeichnis sichern. Reset: `X-Plane J
 ### Häufige Probleme
 
 - **Gerät nicht erkannt:** SDL2 nutzt `/dev/input/event*`, nicht `/dev/input/js*`. Wenn das Gerät in `jstest-gtk` funktioniert aber nicht in X-Plane → udev-Regeln für evdev-Nodes prüfen
-- **Gerät verschwindet nach Standby:** USB-Autosuspend deaktivieren — siehe [Systemtuning](../linux/system/systemtuning.md)
+- **Gerät verschwindet nach Standby:** USB-Autosuspend deaktivieren — siehe [Systemtuning](../../linux/system/systemtuning.md)
 - **Phantomachsen / Mehrfacherkennung:** Einige Geräte melden sich als mehrere Input-Devices. In der `.joy`-Datei können Phantom-Controls als "hidden" markiert werden
 - **Achsen invertiert:** "Reverse"-Checkbox in den X-Plane Achsen-Einstellungen
 
@@ -330,7 +330,7 @@ X-Plane kann bei GPU-Crashes (Device Loss) detaillierte Diagnosedaten sammeln �
 ./X-Plane-x86_64 --aftermath
 ```
 
-Aftermath injiziert Checkpoints in den GPU-Commandstream. Bei einem Device Loss helfen diese Markers, den GPU-Zustand zum Zeitpunkt des Fehlers zu rekonstruieren. Performance-Overhead vorhanden, aber die Diagnosedaten sind bei wiederkehrenden GPU-Crashes unverzichtbar. Für ein tieferes Verständnis von Device Losses und ihren Ursachen siehe [Geräteverluste](systemfehler/geraeteverluste.md).
+Aftermath injiziert Checkpoints in den GPU-Commandstream. Bei einem Device Loss helfen diese Markers, den GPU-Zustand zum Zeitpunkt des Fehlers zu rekonstruieren. Performance-Overhead vorhanden, aber die Diagnosedaten sind bei wiederkehrenden GPU-Crashes unverzichtbar. Für ein tieferes Verständnis von Device Losses und ihren Ursachen siehe [Geräteverluste](../systemfehler/geraeteverluste.md).
 
 **Vulkan Validation Layers**
 

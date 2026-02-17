@@ -129,7 +129,7 @@ This pattern can briefly overload the system and delay subsequent frames — a s
 
 All three load dimensions affect the same metric: [frame time](../../glossary.md#frame-time). A frame time of 33 ms corresponds to ~30 [FPS](../../glossary.md#fps-frames-per-second), 16.6 ms corresponds to ~60 FPS. Any spike in one of the three dimensions — a cache miss, an I/O stall, a network hiccup — directly impacts frame time.
 
-Why consistent frame times matter more than high FPS, and how to diagnose frame time issues with the Microprofiler, is covered in the [System Tuning](../../linux/system/systemtuning.md) and [X-Plane Performance](../../xplane/performance.md) chapters.
+Why consistent frame times matter more than high FPS, and how to diagnose frame time issues with the Microprofiler, is covered in the [System Tuning](../../linux/system/systemtuning.md) and [X-Plane Performance](../../xplane/setup_diagnose/performance.md) chapters.
 
 ## Optimization Approaches Overview
 
@@ -162,7 +162,7 @@ The following strategies address the described load dimensions. Each is covered 
 | CPU & Interrupts | [Tuning](../../linux/system/systemtuning.md) | [CPU governor](../../glossary.md#cpu-governor), IRQ pinning, [kernel parameters](../../glossary.md#kernel-parameter) |
 | Storage & Filesystem | [Filesystem](../../linux/optimizations/filesystem.md) | I/O scheduler, mount options, TRIM |
 | Monitoring | [System Monitoring](../../linux/system/systemtools.md) | CPU, I/O, and network analysis |
-| X-Plane Internals | [Performance](../../xplane/performance.md) | Microprofiler, FPS display, graphics settings |
+| X-Plane Internals | [Performance](../../xplane/setup_diagnose/performance.md) | Microprofiler, FPS display, graphics settings |
 | Ortho Streaming | [AutoOrtho](../../scenery/ortho_streaming/autoortho.md) | Cache configuration, prefetching |
 | GPU Driver | [Nvidia](../../linux/optimizations/nvidia.md) | Driver optimization, persistence mode |
 | Kernel | [Liquorix](../../linux/optimizations/liquorix.md) | Low-latency kernel, scheduler |
