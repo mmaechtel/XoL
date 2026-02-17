@@ -22,7 +22,7 @@ Orthos ([orthophotos](../glossary.md#orthophotos)) are aerial or satellite image
 
 X-Plane uses [DDS](../glossary.md#dds-directdraw-surface) (DirectDraw Surface) textures internally. Source images from map providers (JPEG, PNG) are converted to GPU-compressed DDS format (DXT1/BC1 or DXT5/BC3) before X-Plane can use them.
 
-Tools like **[Ortho4XP](../addon/ortho4xp.md)** generate these DDS tiles offline, while streaming solutions deliver them on demand (see below).
+Tools like **[Ortho4XP](ortho4xp.md)** generate these DDS tiles offline, while streaming solutions deliver them on demand (see below).
 
 ## Autogen
 
@@ -44,8 +44,8 @@ Each layer depends on the one below it. Orthos need the mesh to be projected cor
 
 Several add-ons extend the default scenery layers:
 
-- **[Ortho4XP](../addon/ortho4xp.md)** — generates high-resolution ortho tiles offline from satellite imagery
-- **[Ortho Streaming](../addon/orthophotography_intro.md#ortho-streaming)** — AutoOrtho, XEarthLayer, and XPME stream satellite imagery on demand, no pre-generation needed
+- **[Ortho4XP](ortho4xp.md)** — generates high-resolution ortho tiles offline from satellite imagery
+- **[Ortho Streaming](orthophotography_intro.md#ortho-streaming)** — AutoOrtho, XEarthLayer, and XPME stream satellite imagery on demand, no pre-generation needed
 - **[Custom Sceneries](../glossary.md#custom-scenery)** — higher-resolution meshes or regional autogen objects (e.g., SimHeaven X-World)
 - **Autogen Libraries** — additional object sets for more varied building and vegetation placement
 

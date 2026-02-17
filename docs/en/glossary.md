@@ -389,7 +389,7 @@ An OpenGL translation layer within Mesa that converts OpenGL commands into Vulka
 
 ### ZL (Zoom Level)
 
-The zoom level of orthophotos that determines their resolution. Higher ZL values mean more detailed images: ZL16 corresponds to roughly four meters per pixel, ZL17 two meters, ZL18 one meter. Higher zoom levels require significantly more storage space and bandwidth. See [Introduction to Orthophotography](../addon/orthophotography_intro.md).
+The zoom level of orthophotos that determines their resolution. Higher ZL values mean more detailed images: ZL16 corresponds to roughly four meters per pixel, ZL17 two meters, ZL18 one meter. Higher zoom levels require significantly more storage space and bandwidth. See [Introduction to Orthophotography](../scenery/orthophotography_intro.md).
 
 ## 3
 

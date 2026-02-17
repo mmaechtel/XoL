@@ -140,7 +140,7 @@ Die folgenden Strategien adressieren die beschriebenen Lastdimensionen. Jede wir
 - AutoOrtho puffert gestreamte Texturen lokal auf der [NVMe](glossary.md#nvme-non-volatile-memory-express)-SSD, bevor X-Plane sie anfordert — der wichtigste Schutz gegen Streaming-Aussetzer
 - Cache-Größe und Prefetch-Verhalten lassen sich in AutoOrtho konfigurieren
 - Dateisystem mit [noatime](glossary.md#noatime) und passendem [I/O-Scheduler](glossary.md#io-scheduler) entlasten den I/O-Pfad zusätzlich
-- Siehe [AutoOrtho](addon/autoortho.md) und [Dateisystem](optimizations/filesystem.md)
+- Siehe [AutoOrtho](scenery/autoortho.md) und [Dateisystem](optimizations/filesystem.md)
 
 **IRQ-Pinning und Thread-Affinität**
 
@@ -163,6 +163,6 @@ Die folgenden Strategien adressieren die beschriebenen Lastdimensionen. Jede wir
 | Storage & Dateisystem | [Dateisystem](optimizations/filesystem.md) | I/O-Scheduler, Mount-Optionen, TRIM |
 | Monitoring | [System Monitoring](system/systemtools.md) | CPU-, I/O- und Netzwerk-Analyse |
 | X-Plane intern | [Performance](xplane/performance.md) | Microprofiler, FPS-Anzeige, Grafikeinstellungen |
-| Ortho-Streaming | [AutoOrtho](addon/autoortho.md) | Cache-Konfiguration, Prefetching |
+| Ortho-Streaming | [AutoOrtho](scenery/autoortho.md) | Cache-Konfiguration, Prefetching |
 | GPU-Treiber | [Nvidia](optimizations/nvidia.md) | Treiberoptimierung, Persistence Mode |
 | Kernel | [Liquorix](optimizations/liquorix.md) | Low-Latency-Kernel, Scheduler |

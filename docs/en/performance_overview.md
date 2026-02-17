@@ -140,7 +140,7 @@ The following strategies address the described load dimensions. Each is covered 
 - AutoOrtho buffers streamed textures locally on the [NVMe](glossary.md#nvme-non-volatile-memory-express) SSD before X-Plane requests them — the most important protection against streaming interruptions
 - Cache size and prefetch behavior can be configured in AutoOrtho
 - A filesystem with [noatime](glossary.md#noatime) and an appropriate [I/O scheduler](glossary.md#io-scheduler) further reduces I/O path overhead
-- See [AutoOrtho](addon/autoortho.md) and [Filesystem](optimizations/filesystem.md)
+- See [AutoOrtho](scenery/autoortho.md) and [Filesystem](optimizations/filesystem.md)
 
 **IRQ Pinning and Thread Affinity**
 
@@ -163,6 +163,6 @@ The following strategies address the described load dimensions. Each is covered 
 | Storage & Filesystem | [Filesystem](optimizations/filesystem.md) | I/O scheduler, mount options, TRIM |
 | Monitoring | [System Monitoring](system/systemtools.md) | CPU, I/O, and network analysis |
 | X-Plane Internals | [Performance](xplane/performance.md) | Microprofiler, FPS display, graphics settings |
-| Ortho Streaming | [AutoOrtho](addon/autoortho.md) | Cache configuration, prefetching |
+| Ortho Streaming | [AutoOrtho](scenery/autoortho.md) | Cache configuration, prefetching |
 | GPU Driver | [Nvidia](optimizations/nvidia.md) | Driver optimization, persistence mode |
 | Kernel | [Liquorix](optimizations/liquorix.md) | Low-latency kernel, scheduler |

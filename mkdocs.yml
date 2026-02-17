@@ -131,14 +131,14 @@ plugins:
                 - de/scenery/index.md
                 - Komponenten: de/scenery/scenery_components.md
                 - Szenerien: de/scenery/scenery.md
-            - Addons:
                 - Orthofotographie:
-                    - Einführung: de/addon/orthophotography_intro.md
-                    - Ortho4XP: de/addon/ortho4xp.md
+                    - Einführung: de/scenery/orthophotography_intro.md
+                    - Ortho4XP: de/scenery/ortho4xp.md
                 - Ortho Streaming:
-                    - AutoOrtho: de/addon/autoortho.md
-                    - XEarthLayer: de/addon/xearthlayer.md
-                    - Statisch + Streaming: de/addon/static_plus_streaming.md
+                    - AutoOrtho: de/scenery/autoortho.md
+                    - XEarthLayer: de/scenery/xearthlayer.md
+                    - Statisch + Streaming: de/scenery/static_plus_streaming.md
+            - Addons:
                 - Scripting:
                     - FlyWithLua: de/addon/flywithlua.md
                     - XPPython3: de/addon/xppython3.md
@@ -245,14 +245,14 @@ plugins:
                 - en/scenery/index.md
                 - Components: en/scenery/scenery_components.md
                 - Scenery: en/scenery/scenery.md
-            - Addons:
                 - Orthophotography:
-                    - Introduction: en/addon/orthophotography_intro.md
-                    - Ortho4XP: en/addon/ortho4xp.md
+                    - Introduction: en/scenery/orthophotography_intro.md
+                    - Ortho4XP: en/scenery/ortho4xp.md
                 - Ortho Streaming:
-                    - AutoOrtho: en/addon/autoortho.md
-                    - XEarthLayer: en/addon/xearthlayer.md
-                    - Static + Streaming: en/addon/static_plus_streaming.md
+                    - AutoOrtho: en/scenery/autoortho.md
+                    - XEarthLayer: en/scenery/xearthlayer.md
+                    - Static + Streaming: en/scenery/static_plus_streaming.md
+            - Addons:
                 - Scripting:
                     - FlyWithLua: en/addon/flywithlua.md
                     - XPPython3: en/addon/xppython3.md

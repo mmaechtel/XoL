@@ -17,7 +17,7 @@ The benefits of this combination:
 First, generate Ortho4XP tiles for your preferred flight areas. Recommended settings:
 
 - **Zoom level 17–19** for maximum quality
-- **Enable overlays** unless [SimHeaven](../scenery/scenery.md) is used
+- **Enable overlays** unless [SimHeaven](scenery.md) is used
 - Image sources include **Bing** and **Google**
 
 ### 2. Configure scenery_packs.ini
