@@ -161,11 +161,11 @@ Zuordnung von Docs-Seiten zu `research/<kategorie>/`:
 |-----------|------------|
 | `addons/` | `addon/*.md` |
 | `audio/` | (Audio/PipeWire-Themen) |
-| `display-server/` | `optimizations/displayserver.md`, `optimizations/displayserver_wayland.md`, `optimizations/displayserver_x11.md` |
+| `display-server/` | `linux/optimizations/displayserver.md`, `linux/optimizations/displayserver_wayland.md`, `linux/optimizations/displayserver_x11.md` |
 | `performance_overview/` | `fundamentals/performance/performance_overview.md`, `fundamentals/performance/cpu_ram.md`, `fundamentals/performance/gpu_vram.md` |
-| `proton/` | `extensions/wine.md` |
-| `systemtools/` | `system/systemtools.md` |
-| `systemtuning/` | `system/systemtuning.md`, `system/index.md`, `optimizations/filesystem.md`, `optimizations/liquorix.md` |
+| `proton/` | `linux/extensions/wine.md` |
+| `systemtools/` | `linux/system/systemtools.md` |
+| `systemtuning/` | `linux/system/systemtuning.md`, `linux/system/index.md`, `linux/optimizations/filesystem.md`, `linux/optimizations/liquorix.md` |
 | `szenerie/` | `scenery/scenery.md`, `scenery/scenery_components.md` |
 | `xplane-config/` | `xplane/*.md` |
 | `analyses/` | Querschnitts-Analysen (kein festes Docs-Mapping) |

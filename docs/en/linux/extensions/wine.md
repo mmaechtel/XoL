@@ -1,6 +1,6 @@
 ## Installing Wine on Debian 12 - Two Ways
 
-[Wine](../glossary.md#wine-wine-is-not-an-emulator) allows running Windows programs on Linux. Here are two ways to install Wine on Debian 12.
+[Wine](../../glossary.md#wine-wine-is-not-an-emulator) allows running Windows programs on Linux. Here are two ways to install Wine on Debian 12.
 
 ### 1. Installation via Standard Debian Package Sources
 First update the system:

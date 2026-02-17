@@ -1,6 +1,6 @@
 # Liquorix Kernel unter Debian
 
-Der Standard-Debian-Kernel ist auf breite Kompatibilität und Server-Workloads ausgelegt. Der [Liquorix-Kernel](../glossary.md#liquorix-kernel) geht einen anderen Weg — er basiert auf dem Zen-Kernel-Patchset und ist gezielt auf Desktop-Reaktionsfähigkeit und latenzempfindliche Anwendungen wie Gaming und Flugsimulation optimiert. Er wird von Steven Barrett gepflegt und ist nicht Teil des offiziellen Debian-Archivs. Vor der Installation empfiehlt sich ein System-Backup.
+Der Standard-Debian-Kernel ist auf breite Kompatibilität und Server-Workloads ausgelegt. Der [Liquorix-Kernel](../../glossary.md#liquorix-kernel) geht einen anderen Weg — er basiert auf dem Zen-Kernel-Patchset und ist gezielt auf Desktop-Reaktionsfähigkeit und latenzempfindliche Anwendungen wie Gaming und Flugsimulation optimiert. Er wird von Steven Barrett gepflegt und ist nicht Teil des offiziellen Debian-Archivs. Vor der Installation empfiehlt sich ein System-Backup.
 
 ## Installation
 
@@ -142,7 +142,7 @@ Falls ein Wechsel zurück zum Standard-Kernel notwendig ist:
 ### Fehlerbehebung
 
 - **Bootprobleme**: Falls der neue Kernel nicht startet, kann im GRUB-Menü der Standard-Debian-Kernel ausgewählt werden
-- **DKMS-Module**: Für Treiber wie [Nvidia](nvidia.md) ist [DKMS](../glossary.md#dkms-dynamic-kernel-module-support) wichtig
+- **DKMS-Module**: Für Treiber wie [Nvidia](nvidia.md) ist [DKMS](../../glossary.md#dkms-dynamic-kernel-module-support) wichtig
 
     ```bash
     sudo apt install dkms

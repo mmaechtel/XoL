@@ -107,24 +107,24 @@ plugins:
             - Linux:
                 - de/linux/index.md
                 - System:
-                    - de/system/index.md
-                    - Tuning: de/system/systemtuning.md
-                    - Monitoring: de/system/systemtools.md
+                    - de/linux/system/index.md
+                    - Tuning: de/linux/system/systemtuning.md
+                    - Monitoring: de/linux/system/systemtools.md
                 - Optimierungen:
-                    - de/optimizations/index.md
-                    - Nvidia Treiber: de/optimizations/nvidia.md
-                    - Liquorix Kernel: de/optimizations/liquorix.md
-                    - Display-Server: de/optimizations/displayserver.md
-                    - X11-Session: de/optimizations/displayserver_x11.md
-                    - Wayland-Session: de/optimizations/displayserver_wayland.md
-                    - Dateisystem: de/optimizations/filesystem.md
+                    - de/linux/optimizations/index.md
+                    - Nvidia Treiber: de/linux/optimizations/nvidia.md
+                    - Liquorix Kernel: de/linux/optimizations/liquorix.md
+                    - Display-Server: de/linux/optimizations/displayserver.md
+                    - X11-Session: de/linux/optimizations/displayserver_x11.md
+                    - Wayland-Session: de/linux/optimizations/displayserver_wayland.md
+                    - Dateisystem: de/linux/optimizations/filesystem.md
                 - Erweiterungen:
-                    - de/extensions/index.md
-                    - KVM: de/extensions/kvm.md
-                    - Docker: de/extensions/docker.md
-                    - Wine: de/extensions/wine.md
-                    - pyenv: de/extensions/pyenv.md
-                    - zsh: de/extensions/zsh.md
+                    - de/linux/extensions/index.md
+                    - KVM: de/linux/extensions/kvm.md
+                    - Docker: de/linux/extensions/docker.md
+                    - Wine: de/linux/extensions/wine.md
+                    - pyenv: de/linux/extensions/pyenv.md
+                    - zsh: de/linux/extensions/zsh.md
             - X-Plane:
                 - de/xplane/index.md
                 - Konfiguration: de/xplane/config.md
@@ -246,24 +246,24 @@ plugins:
             - Linux:
                 - en/linux/index.md
                 - System:
-                    - en/system/index.md
-                    - Tuning: en/system/systemtuning.md
-                    - Monitoring: en/system/systemtools.md
+                    - en/linux/system/index.md
+                    - Tuning: en/linux/system/systemtuning.md
+                    - Monitoring: en/linux/system/systemtools.md
                 - Optimizations:
-                    - en/optimizations/index.md
-                    - Nvidia Drivers: en/optimizations/nvidia.md
-                    - Liquorix Kernel: en/optimizations/liquorix.md
-                    - Display Server: en/optimizations/displayserver.md
-                    - X11 Session: en/optimizations/displayserver_x11.md
-                    - Wayland Session: en/optimizations/displayserver_wayland.md
-                    - Filesystem: en/optimizations/filesystem.md
+                    - en/linux/optimizations/index.md
+                    - Nvidia Drivers: en/linux/optimizations/nvidia.md
+                    - Liquorix Kernel: en/linux/optimizations/liquorix.md
+                    - Display Server: en/linux/optimizations/displayserver.md
+                    - X11 Session: en/linux/optimizations/displayserver_x11.md
+                    - Wayland Session: en/linux/optimizations/displayserver_wayland.md
+                    - Filesystem: en/linux/optimizations/filesystem.md
                 - Extensions:
-                    - en/extensions/index.md
-                    - KVM: en/extensions/kvm.md
-                    - Docker: en/extensions/docker.md
-                    - Wine: en/extensions/wine.md
-                    - pyenv: en/extensions/pyenv.md
-                    - zsh: en/extensions/zsh.md
+                    - en/linux/extensions/index.md
+                    - KVM: en/linux/extensions/kvm.md
+                    - Docker: en/linux/extensions/docker.md
+                    - Wine: en/linux/extensions/wine.md
+                    - pyenv: en/linux/extensions/pyenv.md
+                    - zsh: en/linux/extensions/zsh.md
             - X-Plane:
                 - en/xplane/index.md
                 - Configuration: en/xplane/config.md

@@ -137,7 +137,7 @@ X-Plane's "Texture Quality" setting affects how much VRAM is reserved for non-or
 
 GPU monitoring tools show current VRAM utilization in real time. What matters is not the peak value but the behavior over time: does utilization rise continuously (possible leak), stabilize (stable operation), or regularly hit the limit (downscaling zone)?
 
-See [System Monitoring](../../system/systemtools.md) for GPU monitoring tools.
+See [System Monitoring](../../linux/system/systemtools.md) for GPU monitoring tools.
 
 **Calculate the total budget**
 
@@ -149,7 +149,7 @@ Consider not just ortho textures but all VRAM consumers: aircraft, rendering buf
 |---|---|
 | Threading model and CPU budget | [CPU & RAM](cpu_ram.md) |
 | Load dimensions and interactions | [Performance Overview](performance_overview.md) |
-| GPU driver optimization | [Nvidia](../../optimizations/nvidia.md) |
+| GPU driver optimization | [Nvidia](../../linux/optimizations/nvidia.md) |
 | Ortho streaming configuration | [AutoOrtho](../../scenery/ortho_streaming/autoortho.md) |
 | X-Plane Microprofiler | [X-Plane Performance](../../xplane/performance.md) |
-| System Monitoring | [Monitoring](../../system/systemtools.md) |
+| System Monitoring | [Monitoring](../../linux/system/systemtools.md) |

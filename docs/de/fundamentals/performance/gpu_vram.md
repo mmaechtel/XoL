@@ -137,7 +137,7 @@ Die X-Plane-Einstellung „Texture Quality" beeinflusst, wie viel VRAM für Nich
 
 GPU-Monitoring-Tools zeigen die aktuelle VRAM-Auslastung in Echtzeit. Entscheidend ist nicht der Spitzenwert, sondern das Verhalten über Zeit: Steigt die Auslastung kontinuierlich an (mögliches Leak), pendelt sie sich ein (stabiler Betrieb), oder schlägt sie regelmäßig an die Grenze (Downscaling-Zone)?
 
-Siehe [System Monitoring](../../system/systemtools.md) für GPU-Monitoring-Tools.
+Siehe [System Monitoring](../../linux/system/systemtools.md) für GPU-Monitoring-Tools.
 
 **Gesamtbudget kalkulieren**
 
@@ -149,7 +149,7 @@ Nicht nur die Ortho-Texturen, sondern alle VRAM-Verbraucher berücksichtigen: Fl
 |---|---|
 | Threading-Modell und CPU-Budget | [CPU & RAM](cpu_ram.md) |
 | Lastdimensionen und Wechselwirkungen | [Performance-Übersicht](performance_overview.md) |
-| GPU-Treiber-Optimierung | [Nvidia](../../optimizations/nvidia.md) |
+| GPU-Treiber-Optimierung | [Nvidia](../../linux/optimizations/nvidia.md) |
 | Ortho-Streaming-Konfiguration | [AutoOrtho](../../scenery/ortho_streaming/autoortho.md) |
 | X-Plane Microprofiler | [X-Plane Performance](../../xplane/performance.md) |
-| System Monitoring | [Monitoring](../../system/systemtools.md) |
+| System Monitoring | [Monitoring](../../linux/system/systemtools.md) |

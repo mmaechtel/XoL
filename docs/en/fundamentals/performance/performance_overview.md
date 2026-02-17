@@ -52,7 +52,7 @@ The symptom in X-Plane: FPS drops at densely built-up scenery or complex airport
 
 When the processor simultaneously handles [IRQ](../../glossary.md#irq-interrupt-request) requests from [NVMe](../../glossary.md#nvme-non-volatile-memory-express) SSDs and the network interface, compute cores get pulled out of their calculation loops. Each context switch costs not only CPU cycles but also invalidates cache lines and disrupts pipelining. Without dedicated IRQ pinning, this can lead to sporadic micro-stutters — brief [frame time](../../glossary.md#frame-time) spikes that are difficult to reproduce.
 
-See [System Tuning](../../system/systemtuning.md) for IRQ pinning and [CPU affinity](../../glossary.md#cpu-affinity)
+See [System Tuning](../../linux/system/systemtuning.md) for IRQ pinning and [CPU affinity](../../glossary.md#cpu-affinity)
 
 ## Local I/O Performance
 
@@ -73,7 +73,7 @@ For X-Plane, both sequential throughput (large texture files) and IOPS (many sma
 
 Even with fast hardware, the I/O stack can become a bottleneck. The [I/O scheduler](../../glossary.md#io-scheduler) affects latency during mixed read/write workloads, and the filesystem — [Ext4](../../glossary.md#ext4-fourth-extended-filesystem), [Btrfs](../../glossary.md#btrfs-b-tree-filesystem), or XFS — comes with different journaling strategies.
 
-See [Filesystem](../../optimizations/filesystem.md) for I/O scheduler, [noatime](../../glossary.md#noatime), and [TRIM](../../glossary.md#trim) configuration
+See [Filesystem](../../linux/optimizations/filesystem.md) for I/O scheduler, [noatime](../../glossary.md#noatime), and [TRIM](../../glossary.md#trim) configuration
 
 ### Page Cache Pressure
 
@@ -129,7 +129,7 @@ This pattern can briefly overload the system and delay subsequent frames — a s
 
 All three load dimensions affect the same metric: [frame time](../../glossary.md#frame-time). A frame time of 33 ms corresponds to ~30 [FPS](../../glossary.md#fps-frames-per-second), 16.6 ms corresponds to ~60 FPS. Any spike in one of the three dimensions — a cache miss, an I/O stall, a network hiccup — directly impacts frame time.
 
-Why consistent frame times matter more than high FPS, and how to diagnose frame time issues with the Microprofiler, is covered in the [System Tuning](../../system/systemtuning.md) and [X-Plane Performance](../../xplane/performance.md) chapters.
+Why consistent frame times matter more than high FPS, and how to diagnose frame time issues with the Microprofiler, is covered in the [System Tuning](../../linux/system/systemtuning.md) and [X-Plane Performance](../../xplane/performance.md) chapters.
 
 ## Optimization Approaches Overview
 
@@ -140,29 +140,29 @@ The following strategies address the described load dimensions. Each is covered 
 - AutoOrtho buffers streamed textures locally on the [NVMe](../../glossary.md#nvme-non-volatile-memory-express) SSD before X-Plane requests them — the most important protection against streaming interruptions
 - Cache size and prefetch behavior can be configured in AutoOrtho
 - A filesystem with [noatime](../../glossary.md#noatime) and an appropriate [I/O scheduler](../../glossary.md#io-scheduler) further reduces I/O path overhead
-- See [AutoOrtho](../../scenery/ortho_streaming/autoortho.md) and [Filesystem](../../optimizations/filesystem.md)
+- See [AutoOrtho](../../scenery/ortho_streaming/autoortho.md) and [Filesystem](../../linux/optimizations/filesystem.md)
 
 **IRQ Pinning and Thread Affinity**
 
 - Pin network [IRQs](../../glossary.md#irq-interrupt-request) and I/O threads to dedicated CPU cores so the X-Plane main thread can compute undisturbed
 - Configure [irqbalance](../../glossary.md#irqbalance) to keep specific cores free from interrupts
-- See [System Tuning](../../system/systemtuning.md)
+- See [System Tuning](../../linux/system/systemtuning.md)
 
 **Monitoring and Profiling**
 
 - Monitor CPU utilization per core — idle cores during simulation indicate I/O stalls
 - Measure I/O latency and network throughput in parallel to identify the active bottleneck dimension
-- See [System Monitoring](../../system/systemtools.md)
+- See [System Monitoring](../../linux/system/systemtools.md)
 
 ## Further Reading
 
 | Topic | Page | Focus |
 |---|---|---|
-| System Tuning | [Introduction](../../system/index.md) | Overview and video |
-| CPU & Interrupts | [Tuning](../../system/systemtuning.md) | [CPU governor](../../glossary.md#cpu-governor), IRQ pinning, [kernel parameters](../../glossary.md#kernel-parameter) |
-| Storage & Filesystem | [Filesystem](../../optimizations/filesystem.md) | I/O scheduler, mount options, TRIM |
-| Monitoring | [System Monitoring](../../system/systemtools.md) | CPU, I/O, and network analysis |
+| System Tuning | [Introduction](../../linux/system/index.md) | Overview and video |
+| CPU & Interrupts | [Tuning](../../linux/system/systemtuning.md) | [CPU governor](../../glossary.md#cpu-governor), IRQ pinning, [kernel parameters](../../glossary.md#kernel-parameter) |
+| Storage & Filesystem | [Filesystem](../../linux/optimizations/filesystem.md) | I/O scheduler, mount options, TRIM |
+| Monitoring | [System Monitoring](../../linux/system/systemtools.md) | CPU, I/O, and network analysis |
 | X-Plane Internals | [Performance](../../xplane/performance.md) | Microprofiler, FPS display, graphics settings |
 | Ortho Streaming | [AutoOrtho](../../scenery/ortho_streaming/autoortho.md) | Cache configuration, prefetching |
-| GPU Driver | [Nvidia](../../optimizations/nvidia.md) | Driver optimization, persistence mode |
-| Kernel | [Liquorix](../../optimizations/liquorix.md) | Low-latency kernel, scheduler |
+| GPU Driver | [Nvidia](../../linux/optimizations/nvidia.md) | Driver optimization, persistence mode |
+| Kernel | [Liquorix](../../linux/optimizations/liquorix.md) | Low-latency kernel, scheduler |

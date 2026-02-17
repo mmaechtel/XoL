@@ -177,8 +177,8 @@ Für technische Begriffe steht das [Glossar](glossary.md) zur Verfügung.
 Nach einer erfolgreichen Installation geht es weiter mit:
 
 1. [Performance](fundamentals/performance/performance_overview.md) — Die drei Lastdimensionen verstehen (CPU, I/O, Netzwerk)
-2. [NVIDIA-Treiber](optimizations/nvidia.md) — Proprietäre NVIDIA-Treiber installieren und konfigurieren
-3. [Liquorix-Kernel](optimizations/liquorix.md) — Low-Latency-Kernel optimiert für Desktop-Workloads
-4. [System-Tuning](system/systemtuning.md) — CPU-Governor, Interrupt-Shielding und Kernel-Parameter
-5. [Display-Server](optimizations/displayserver.md) — Wayland vs. X11 für X-Plane
+2. [NVIDIA-Treiber](linux/optimizations/nvidia.md) — Proprietäre NVIDIA-Treiber installieren und konfigurieren
+3. [Liquorix-Kernel](linux/optimizations/liquorix.md) — Low-Latency-Kernel optimiert für Desktop-Workloads
+4. [System-Tuning](linux/system/systemtuning.md) — CPU-Governor, Interrupt-Shielding und Kernel-Parameter
+5. [Display-Server](linux/optimizations/displayserver.md) — Wayland vs. X11 für X-Plane
 6. [X-Plane-Konfiguration](xplane/config.md) — Linux-spezifische Grafik- und Performance-Einstellungen

@@ -34,7 +34,7 @@ In MobiFlight die IP-Adresse des Linux-PCs eintragen (statt `127.0.0.1`). X-Plan
 
 ### Windows-VM mit USB-Passthrough
 
-Steht kein zweiter Rechner zur Verfügung, kann eine Windows-VM (KVM/QEMU) auf dem Linux-Host den Connector ausführen. Die Arduino-Hardware wird per USB-Passthrough an die VM durchgereicht (siehe [Docker & Virtualisierung](../../extensions/docker.md) für KVM-Grundlagen).
+Steht kein zweiter Rechner zur Verfügung, kann eine Windows-VM (KVM/QEMU) auf dem Linux-Host den Connector ausführen. Die Arduino-Hardware wird per USB-Passthrough an die VM durchgereicht (siehe [Docker & Virtualisierung](../../linux/extensions/docker.md) für KVM-Grundlagen).
 
 **Voraussetzungen**
 

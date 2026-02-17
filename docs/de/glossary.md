@@ -49,7 +49,7 @@ Die Markierungen und Beläge auf Flughäfen in X-Plane. Im [Airport Enhancement 
 
 ### BORE (Burst-Oriented Response Enhancer)
 
-Ein CPU-Scheduler, der im Liquorix-Kernel den Standard-Scheduler EEVDF ersetzt. BORE optimiert die Reaktionszeit für interaktive Anwendungen, indem er CPU-intensive Burst-Phasen bevorzugt behandelt. Relevant für X-Plane, da der Simulator in unregelmäßigen Bursts hohe CPU-Last erzeugt. Siehe [Liquorix](optimizations/liquorix.md).
+Ein CPU-Scheduler, der im Liquorix-Kernel den Standard-Scheduler EEVDF ersetzt. BORE optimiert die Reaktionszeit für interaktive Anwendungen, indem er CPU-intensive Burst-Phasen bevorzugt behandelt. Relevant für X-Plane, da der Simulator in unregelmäßigen Bursts hohe CPU-Last erzeugt. Siehe [Liquorix](linux/optimizations/liquorix.md).
 
 ### Btrfs (B-tree Filesystem)
 
@@ -63,15 +63,15 @@ Ein Programm, das die Inhalte mehrerer Fenster zum endgültigen Bildschirmbild z
 
 ### CPU-Affinität
 
-Die Zuordnung von Prozessen oder Threads zu bestimmten CPU-Kernen. Durch CPU-Affinität kann der X-Plane-Hauptthread auf einem dedizierten Kern laufen, während Hintergrundprozesse und Interrupts auf andere Kerne verlagert werden. Konfiguration über `taskset` oder den Kernel-Parameter `isolcpus`. Siehe [Systemtuning](system/systemtuning.md).
+Die Zuordnung von Prozessen oder Threads zu bestimmten CPU-Kernen. Durch CPU-Affinität kann der X-Plane-Hauptthread auf einem dedizierten Kern laufen, während Hintergrundprozesse und Interrupts auf andere Kerne verlagert werden. Konfiguration über `taskset` oder den Kernel-Parameter `isolcpus`. Siehe [Systemtuning](linux/system/systemtuning.md).
 
 ### CPU Governor
 
-Die Strategie des Kernels zur dynamischen Anpassung der CPU-Taktfrequenz. `performance` hält die maximale Frequenz dauerhaft, `ondemand` passt sie nach Bedarf an. Für X-Plane wird `performance` empfohlen, um Latenz durch Frequenzwechsel zu vermeiden. Siehe [Systemtuning](system/systemtuning.md).
+Die Strategie des Kernels zur dynamischen Anpassung der CPU-Taktfrequenz. `performance` hält die maximale Frequenz dauerhaft, `ondemand` passt sie nach Bedarf an. Für X-Plane wird `performance` empfohlen, um Latenz durch Frequenzwechsel zu vermeiden. Siehe [Systemtuning](linux/system/systemtuning.md).
 
 ### C-States (CPU Idle States)
 
-Energiesparzustände moderner CPUs. Höhere C-States (C3, C6) sparen mehr Strom, benötigen aber mehr Zeit zum Aufwachen. Für X-Plane können tiefe C-States zu Latenzspitzen führen. Einschränkung über den Kernel-Parameter `processor.max_cstate` oder BIOS-Einstellungen. Siehe [Systemtuning](system/systemtuning.md).
+Energiesparzustände moderner CPUs. Höhere C-States (C3, C6) sparen mehr Strom, benötigen aber mehr Zeit zum Aufwachen. Für X-Plane können tiefe C-States zu Latenzspitzen führen. Einschränkung über den Kernel-Parameter `processor.max_cstate` oder BIOS-Einstellungen. Siehe [Systemtuning](linux/system/systemtuning.md).
 
 ### Custom Scenery
 
@@ -85,7 +85,7 @@ Ein Texturformat von Microsoft, das in X-Plane für Szenerie- und Orthofoto-Text
 
 ### Display-Server
 
-Software, die Grafikausgabe und Eingabegeräte für Anwendungen verwaltet. X11 (Xorg) und Wayland sind die beiden Display-Server-Protokolle unter Linux. X-Plane 12 unterstützt nur X11. Siehe [Display-Server](optimizations/displayserver.md).
+Software, die Grafikausgabe und Eingabegeräte für Anwendungen verwaltet. X11 (Xorg) und Wayland sind die beiden Display-Server-Protokolle unter Linux. X-Plane 12 unterstützt nur X11. Siehe [Display-Server](linux/optimizations/displayserver.md).
 
 ### Docker
 
@@ -119,7 +119,7 @@ Event Device — die Linux-Eingabeschnittstelle im Kernel, die Eingabegeräte ü
 
 ### Ext4 (Fourth Extended Filesystem)
 
-Das Standard-Dateisystem der meisten Linux-Distributionen. Ext4 ist ausgereift, stabil und bietet gute Performance bei sequentiellen und zufälligen Zugriffen. Für X-Plane empfohlen, da die vorhersagbare I/O-Leistung beim Laden von Szenerien vorteilhaft ist. Siehe [Dateisystem](optimizations/filesystem.md).
+Das Standard-Dateisystem der meisten Linux-Distributionen. Ext4 ist ausgereift, stabil und bietet gute Performance bei sequentiellen und zufälligen Zugriffen. Für X-Plane empfohlen, da die vorhersagbare I/O-Leistung beim Laden von Szenerien vorteilhaft ist. Siehe [Dateisystem](linux/optimizations/filesystem.md).
 
 ## F
 
@@ -159,7 +159,7 @@ Der Eintrag `*GLOBAL_AIRPORTS*` in X-Planes scenery_packs.ini, der die Standard-
 
 ### GRUB (Grand Unified Bootloader)
 
-Der Standard-Bootloader der meisten Linux-Distributionen. Kernel-Parameter für Performance-Optimierungen (C-States, NVMe-Einstellungen, CPU-Isolation) werden in der GRUB-Konfiguration unter `/etc/default/grub` im Parameter `GRUB_CMDLINE_LINUX_DEFAULT` eingetragen. Siehe [Systemtuning](system/systemtuning.md).
+Der Standard-Bootloader der meisten Linux-Distributionen. Kernel-Parameter für Performance-Optimierungen (C-States, NVMe-Einstellungen, CPU-Isolation) werden in der GRUB-Konfiguration unter `/etc/default/grub` im Parameter `GRUB_CMDLINE_LINUX_DEFAULT` eingetragen. Siehe [Systemtuning](linux/system/systemtuning.md).
 
 ### GUI (Graphical User Interface)
 
@@ -175,15 +175,15 @@ High Dynamic Range - ein Grafikverfahren, das einen besonders großen Helligkeit
 
 ### I/O-Scheduler
 
-Der Algorithmus im Kernel, der die Reihenfolge von Lese- und Schreibzugriffen auf Datenträger optimiert. Für NVMe-SSDs wird `none` (No-Op) empfohlen, da die SSD-interne Verwaltung effizienter ist als eine Software-Umordnung. Für SATA-SSDs ist `mq-deadline` eine gute Wahl. Siehe [Dateisystem](optimizations/filesystem.md).
+Der Algorithmus im Kernel, der die Reihenfolge von Lese- und Schreibzugriffen auf Datenträger optimiert. Für NVMe-SSDs wird `none` (No-Op) empfohlen, da die SSD-interne Verwaltung effizienter ist als eine Software-Umordnung. Für SATA-SSDs ist `mq-deadline` eine gute Wahl. Siehe [Dateisystem](linux/optimizations/filesystem.md).
 
 ### IRQ (Interrupt Request)
 
-Ein Signal, mit dem Hardware-Geräte (GPU, NVMe-SSD, USB-Controller) den Prozessor auffordern, Daten zu verarbeiten. Durch gezieltes IRQ-Pinning können Interrupts auf bestimmte CPU-Kerne gelegt werden, um den X-Plane-Hauptthread nicht zu stören. Siehe [Systemtuning](system/systemtuning.md).
+Ein Signal, mit dem Hardware-Geräte (GPU, NVMe-SSD, USB-Controller) den Prozessor auffordern, Daten zu verarbeiten. Durch gezieltes IRQ-Pinning können Interrupts auf bestimmte CPU-Kerne gelegt werden, um den X-Plane-Hauptthread nicht zu stören. Siehe [Systemtuning](linux/system/systemtuning.md).
 
 ### irqbalance
 
-Ein Userspace-Daemon, der Hardware-Interrupts auf CPU-Kerne verteilt. irqbalance passt sich automatisch an neue Geräte an und berücksichtigt Kernel-Einschränkungen für verwaltete Interrupts (MSI-X). Über die Einstellung `IRQBALANCE_BANNED_CPULIST` in `/etc/default/irqbalance` lassen sich bestimmte Kerne von der Interrupt-Verteilung ausschließen, um sie für die Anwendung freizuhalten. Siehe [Systemtuning](system/systemtuning.md).
+Ein Userspace-Daemon, der Hardware-Interrupts auf CPU-Kerne verteilt. irqbalance passt sich automatisch an neue Geräte an und berücksichtigt Kernel-Einschränkungen für verwaltete Interrupts (MSI-X). Über die Einstellung `IRQBALANCE_BANNED_CPULIST` in `/etc/default/irqbalance` lassen sich bestimmte Kerne von der Interrupt-Verteilung ausschließen, um sie für die Anwendung freizuhalten. Siehe [Systemtuning](linux/system/systemtuning.md).
 
 ## K
 
@@ -193,7 +193,7 @@ Ein Stück Code, das zur Laufzeit in den Linux-Kernel geladen werden kann, ohne 
 
 ### Kernel-Parameter
 
-Konfigurationswerte, die beim Systemstart über den Bootloader (GRUB) an den Kernel übergeben werden. Für X-Plane relevante Parameter umfassen `processor.max_cstate` (C-States), `nvme_core.default_ps_max_latency_us` (NVMe-Energiesparen) und `isolcpus` (CPU-Isolation). Konfiguration in `/etc/default/grub`. Siehe [Systemtuning](system/systemtuning.md).
+Konfigurationswerte, die beim Systemstart über den Bootloader (GRUB) an den Kernel übergeben werden. Für X-Plane relevante Parameter umfassen `processor.max_cstate` (C-States), `nvme_core.default_ps_max_latency_us` (NVMe-Energiesparen) und `isolcpus` (CPU-Isolation). Konfiguration in `/etc/default/grub`. Siehe [Systemtuning](linux/system/systemtuning.md).
 
 ### KVM (Kernel-based Virtual Machine)
 
@@ -231,7 +231,7 @@ Das Höhenmodell (Terrain Mesh) in X-Plane, das die dreidimensionale Geländefor
 
 ### noatime
 
-Eine Mount-Option für Linux-Dateisysteme, die das Aktualisieren des Zugriffszeitstempels beim Lesen von Dateien unterdrückt. Reduziert unnötige Schreibzugriffe auf die SSD und verbessert die I/O-Performance, besonders beim Laden großer Szenerie-Verzeichnisse. Siehe [Dateisystem](optimizations/filesystem.md).
+Eine Mount-Option für Linux-Dateisysteme, die das Aktualisieren des Zugriffszeitstempels beim Lesen von Dateien unterdrückt. Reduziert unnötige Schreibzugriffe auf die SSD und verbessert die I/O-Performance, besonders beim Laden großer Szenerie-Verzeichnisse. Siehe [Dateisystem](linux/optimizations/filesystem.md).
 
 ### Nouveau
 
@@ -271,7 +271,7 @@ Physically Based Rendering - ein Grafikverfahren, das physikalische Eigenschafte
 
 ### PDS (Priority and Deadline based Skiplist)
 
-Der CPU-Scheduler des Liquorix-Kernels, der den Mainline-Scheduler EEVDF ersetzt. PDS nutzt eine Skiplist-Datenstruktur für effiziente Aufgabenauswahl und priorisiert nach Deadlines. In Kombination mit kürzeren Preemption-Fenstern und einer Timer-Frequenz von 1000 Hz bietet er niedrigere Latenz für interaktive Anwendungen. Anders als EEVDF liefert PDS nicht die Auslastungssignale, die der `schedutil`-Governor benötigt. Siehe [Systemtuning](system/systemtuning.md).
+Der CPU-Scheduler des Liquorix-Kernels, der den Mainline-Scheduler EEVDF ersetzt. PDS nutzt eine Skiplist-Datenstruktur für effiziente Aufgabenauswahl und priorisiert nach Deadlines. In Kombination mit kürzeren Preemption-Fenstern und einer Timer-Frequenz von 1000 Hz bietet er niedrigere Latenz für interaktive Anwendungen. Anders als EEVDF liefert PDS nicht die Auslastungssignale, die der `schedutil`-Governor benötigt. Siehe [Systemtuning](linux/system/systemtuning.md).
 
 ### PipeWire
 
@@ -283,7 +283,7 @@ Eine Softwareerweiterung, die zusätzliche Funktionen zu X-Plane hinzufügt. Plu
 
 ### Preemption
 
-Die Fähigkeit des Kernels, laufende Aufgaben zu unterbrechen, um höher priorisierten Aufgaben CPU-Zeit zu geben. Mehr Preemption bedeutet geringere Latenz, aber auch mehr Overhead. Der Liquorix-Kernel nutzt Full Preemption für minimale Reaktionszeiten. Siehe [Systemtuning](system/systemtuning.md).
+Die Fähigkeit des Kernels, laufende Aufgaben zu unterbrechen, um höher priorisierten Aufgaben CPU-Zeit zu geben. Mehr Preemption bedeutet geringere Latenz, aber auch mehr Overhead. Der Liquorix-Kernel nutzt Full Preemption für minimale Reaktionszeiten. Siehe [Systemtuning](linux/system/systemtuning.md).
 
 ### PulseAudio
 
@@ -319,7 +319,7 @@ Eine historische Bezeichnung für X-Planes Architektur. Single-Core-Performance 
 
 ### SoftIRQ (Software Interrupt)
 
-Ein verzögerter Interrupt-Verarbeitungsmechanismus im Linux-Kernel. Anders als Hardware-IRQs, die sofort behandelt werden, werden SoftIRQs nach Abschluss des Hardware-Interrupt-Handlers verarbeitet und übernehmen weniger zeitkritische Aufgaben wie Netzwerkpaket-Verarbeitung und Block-Device-Completion. Die Spalte `%soft` in `mpstat` zeigt die SoftIRQ-Zeit pro Kern — relevant für die Verifikation, dass Interrupt-Shielding sowohl Hardware-IRQs als auch SoftIRQs von den Applikations-Kernen fernhält. Siehe [Systemtools](system/systemtools.md).
+Ein verzögerter Interrupt-Verarbeitungsmechanismus im Linux-Kernel. Anders als Hardware-IRQs, die sofort behandelt werden, werden SoftIRQs nach Abschluss des Hardware-Interrupt-Handlers verarbeitet und übernehmen weniger zeitkritische Aufgaben wie Netzwerkpaket-Verarbeitung und Block-Device-Completion. Die Spalte `%soft` in `mpstat` zeigt die SoftIRQ-Zeit pro Kern — relevant für die Verifikation, dass Interrupt-Shielding sowohl Hardware-IRQs als auch SoftIRQs von den Applikations-Kernen fernhält. Siehe [Systemtools](linux/system/systemtools.md).
 
 ### sysctl
 
@@ -337,11 +337,11 @@ Ein sichtbares Bildartefakt, bei dem Teile zweier aufeinanderfolgender Frames gl
 
 ### Tick Rate (HZ)
 
-Die Frequenz, mit der der Linux-Kernel seine interne Timer-Unterbrechung auslöst. Ein höherer Tick (z.B. 1000 Hz beim Liquorix-Kernel) ermöglicht feinere Scheduling-Granularität und niedrigere Latenz, erzeugt aber mehr Overhead. Der Standard-Kernel nutzt typischerweise 250 Hz. Siehe [Liquorix](optimizations/liquorix.md).
+Die Frequenz, mit der der Linux-Kernel seine interne Timer-Unterbrechung auslöst. Ein höherer Tick (z.B. 1000 Hz beim Liquorix-Kernel) ermöglicht feinere Scheduling-Granularität und niedrigere Latenz, erzeugt aber mehr Overhead. Der Standard-Kernel nutzt typischerweise 250 Hz. Siehe [Liquorix](linux/optimizations/liquorix.md).
 
 ### TRIM
 
-Ein Befehl, der dem SSD-Controller mitteilt, welche Datenblöcke nicht mehr benötigt werden. Regelmäßiges TRIM (via `fstrim.timer` oder die Mount-Option `discard`) erhält die Schreibgeschwindigkeit der SSD und verhindert Leistungseinbrüche bei großen Szenerie-Installationen. Siehe [Dateisystem](optimizations/filesystem.md).
+Ein Befehl, der dem SSD-Controller mitteilt, welche Datenblöcke nicht mehr benötigt werden. Regelmäßiges TRIM (via `fstrim.timer` oder die Mount-Option `discard`) erhält die Schreibgeschwindigkeit der SSD und verhindert Leistungseinbrüche bei großen Szenerie-Installationen. Siehe [Dateisystem](linux/optimizations/filesystem.md).
 
 ## V
 
@@ -357,7 +357,7 @@ Eine moderne, plattformübergreifende Grafikschnittstelle mit geringem Overhead,
 
 ### Wayland
 
-Ein modernes Display-Server-Protokoll für Linux, Nachfolger von X11. Der Compositor übernimmt sowohl Display-Server- als auch Fenstermanager-Aufgaben. Wayland bietet bessere Sicherheit und unabhängige Monitor-Refresh-Rates, aber X-Plane 12 kann kein natives Wayland und nutzt stattdessen XWayland. Siehe [Display-Server](optimizations/displayserver.md).
+Ein modernes Display-Server-Protokoll für Linux, Nachfolger von X11. Der Compositor übernimmt sowohl Display-Server- als auch Fenstermanager-Aufgaben. Wayland bietet bessere Sicherheit und unabhängige Monitor-Refresh-Rates, aber X-Plane 12 kann kein natives Wayland und nutzt stattdessen XWayland. Siehe [Display-Server](linux/optimizations/displayserver.md).
 
 ### Wine (Wine Is Not an Emulator)
 
@@ -367,7 +367,7 @@ Ein Kompatibilitätslayer, der es ermöglicht, Windows-Programme unter Linux aus
 
 ### X11 (Xorg)
 
-Das klassische Display-Server-Protokoll für Linux, im Einsatz seit 1984. Ein zentraler X-Server verwaltet alle Grafik- und Eingabeoperationen. X-Plane spricht X11 nativ. Siehe [Display-Server](optimizations/displayserver.md).
+Das klassische Display-Server-Protokoll für Linux, im Einsatz seit 1984. Ein zentraler X-Server verwaltet alle Grafik- und Eingabeoperationen. X-Plane spricht X11 nativ. Siehe [Display-Server](linux/optimizations/displayserver.md).
 
 ### X-Plane
 
@@ -375,7 +375,7 @@ Ein hochrealistischer Flugsimulator, der für verschiedene Plattformen (Windows,
 
 ### XWayland
 
-Eine Kompatibilitätsschicht, die einen vollständigen X11-Server innerhalb einer Wayland-Session betreibt. Wenn eine X11-Anwendung (wie X-Plane) auf einem Wayland-Desktop startet, übernimmt XWayland automatisch die Übersetzung. Der zusätzliche Übersetzungsschritt kostet Latenz. Siehe [Wayland-Session](optimizations/displayserver_wayland.md).
+Eine Kompatibilitätsschicht, die einen vollständigen X11-Server innerhalb einer Wayland-Session betreibt. Wenn eine X11-Anwendung (wie X-Plane) auf einem Wayland-Desktop startet, übernimmt XWayland automatisch die Übersetzung. Der zusätzliche Übersetzungsschritt kostet Latenz. Siehe [Wayland-Session](linux/optimizations/displayserver_wayland.md).
 
 ### Xroads
 

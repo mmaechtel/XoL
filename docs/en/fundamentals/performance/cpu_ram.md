@@ -100,6 +100,6 @@ RAM itself is rarely the primary bottleneck. It becomes critical in two scenario
 |---|---|
 | Load dimensions and interactions | [Performance Overview](performance_overview.md) |
 | VRAM management and frame time analysis | [GPU & VRAM](gpu_vram.md) |
-| IRQ pinning and CPU affinity | [System Tuning](../../system/systemtuning.md) |
-| I/O scheduler and filesystem | [Filesystem](../../optimizations/filesystem.md) |
+| IRQ pinning and CPU affinity | [System Tuning](../../linux/system/systemtuning.md) |
+| I/O scheduler and filesystem | [Filesystem](../../linux/optimizations/filesystem.md) |
 | Ortho streaming configuration | [AutoOrtho](../../scenery/ortho_streaming/autoortho.md) |

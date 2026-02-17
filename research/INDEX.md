@@ -22,7 +22,7 @@ Docs: `docs/en/xplane/config.md`
 
 ## display-server
 
-Docs: `docs/en/optimizations/displayserver.md`, `docs/en/optimizations/displayserver_wayland.md`, `docs/en/optimizations/displayserver_x11.md`
+Docs: `docs/en/linux/optimizations/displayserver.md`, `docs/en/linux/optimizations/displayserver_wayland.md`, `docs/en/linux/optimizations/displayserver_x11.md`
 
 ### HOCH
 - display-server/wayland_display_server.md -> displayserver.md, displayserver_wayland.md
@@ -35,7 +35,7 @@ Docs: `docs/en/optimizations/displayserver.md`, `docs/en/optimizations/displayse
 
 ## systemtools
 
-Docs: `docs/en/system/systemtools.md`
+Docs: `docs/en/linux/system/systemtools.md`
 
 ### HOCH
 - systemtools/cpu_monitoring_tools.md -> systemtools.md
@@ -48,7 +48,7 @@ Docs: `docs/en/system/systemtools.md`
 
 ## systemtuning
 
-Docs: `docs/en/system/systemtuning.md`
+Docs: `docs/en/linux/system/systemtuning.md`
 
 ### HOCH
 - systemtuning/Empfohlene_Systemkonfigurationen_Latenzreduktion.md -> systemtuning.md

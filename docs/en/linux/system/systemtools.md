@@ -1,6 +1,6 @@
 # Linux System Tools
 
-The settings from [System Tuning](systemtuning.md) shouldn't be applied blindly — they need to be verified. Is the governor actually working? Are interrupts landing on the right cores? Is the [NVMe](../glossary.md#nvme-non-volatile-memory-express) waking from sleep mode?
+The settings from [System Tuning](systemtuning.md) shouldn't be applied blindly — they need to be verified. Is the governor actually working? Are interrupts landing on the right cores? Is the [NVMe](../../glossary.md#nvme-non-volatile-memory-express) waking from sleep mode?
 
 This page describes monitoring tools that check exactly that. Each tool is presented with its main purpose and key commands. Cross-references to System Tuning show which setting is verified by which tool.
 
@@ -37,7 +37,7 @@ htop
 
 The **PROCESSOR** column shows which CPU core a process last ran on — useful for checking whether the interrupt separation from [System Tuning](systemtuning.md#interrupt-shielding) is working.
 
-**Limitation:** Shows no CPU frequency, no [C-states](../glossary.md#c-states-cpu-idle-states), and no per-core interrupt breakdown.
+**Limitation:** Shows no CPU frequency, no [C-states](../../glossary.md#c-states-cpu-idle-states), and no per-core interrupt breakdown.
 
 ### btop — System Dashboard
 
@@ -49,11 +49,11 @@ btop
 
 Supports mouse interaction, process filtering (`f`), tree view (`e`), and layout presets (`p`).
 
-**Limitation:** CPU frequency only as an aggregate value, no per-core frequency. No [IRQ](../glossary.md#irq-interrupt-request) statistics.
+**Limitation:** CPU frequency only as an aggregate value, no per-core frequency. No [IRQ](../../glossary.md#irq-interrupt-request) statistics.
 
 ### cpupower — Check and Set Governor
 
-Shows the active [CPU frequency governor](../glossary.md#cpu-governor) and can change it. Essential for checking whether the governor configured in [System Tuning](systemtuning.md#cpu-clock-and-sleep-states) is actually active.
+Shows the active [CPU frequency governor](../../glossary.md#cpu-governor) and can change it. Essential for checking whether the governor configured in [System Tuning](systemtuning.md#cpu-clock-and-sleep-states) is actually active.
 
 ```bash
 # Show active policy (governor and frequency range) of all cores
@@ -114,7 +114,7 @@ Verifies: [C-States](systemtuning.md#cpu-clock-and-sleep-states) and governor ef
 
 ### mpstat — Per-Core Statistics and Interrupt Distribution
 
-Most precise per-core breakdown: shows user, system, I/O wait, **IRQ**, and **[SoftIRQ](../glossary.md#softirq-software-interrupt) percentage** per CPU core. Essential for verifying interrupt shielding.
+Most precise per-core breakdown: shows user, system, I/O wait, **IRQ**, and **[SoftIRQ](../../glossary.md#softirq-software-interrupt) percentage** per CPU core. Essential for verifying interrupt shielding.
 
 ```bash
 # All cores, 1-second interval
@@ -149,7 +149,7 @@ sudo iotop -oPa
 
 ### iostat — Device-Level Latency
 
-Shows throughput, IOPS, queue depth, and **average request [latency](../glossary.md#latency)** per device. The key value is `r_await` — the average read latency in milliseconds.
+Shows throughput, IOPS, queue depth, and **average request [latency](../../glossary.md#latency)** per device. The key value is `r_await` — the average read latency in milliseconds.
 
 ```bash
 # Extended stats for NVMe, 1-second interval
@@ -164,7 +164,7 @@ iostat -xdth -p nvme0n1 1
 | `%util` | Device utilization — at 100% the device is saturated |
 | `aqu-sz` | Queue length — high values mean requests are waiting |
 
-**NVMe [APST](../glossary.md#apst-autonomous-power-state-transitions) signature:** A sudden jump in `r_await` from <1 ms to 50–500 ms after an idle period indicates NVMe wake-up latency.
+**NVMe [APST](../../glossary.md#apst-autonomous-power-state-transitions) signature:** A sudden jump in `r_await` from <1 ms to 50–500 ms after an idle period indicates NVMe wake-up latency.
 
 ### ioping — Measure Disk Latency
 

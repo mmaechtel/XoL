@@ -22,11 +22,11 @@ Jede Optimierung, die diese Dokumentation beschreibt — vom CPU-Scheduling übe
 
 Diese Transparenz hat konkrete Auswirkungen auf die Flugsimulation:
 
-- **Kernel-Tuning:** Präzise Kontrolle über CPU-Governor, Interrupt-Affinität und Scheduling — behandelt in [System-Tuning](system/systemtuning.md) und [Liquorix-Kernel](optimizations/liquorix.md)
+- **Kernel-Tuning:** Präzise Kontrolle über CPU-Governor, Interrupt-Affinität und Scheduling — behandelt in [System-Tuning](linux/system/systemtuning.md) und [Liquorix-Kernel](linux/optimizations/liquorix.md)
 - **Keine Hintergrund-Störungen:** Keine automatischen Updates oder Telemetrie, die während des Fluges um CPU-Zyklen konkurrieren. Die Systemleistung ist vorhersagbar.
-- **Display-Server-Wahl:** [Wayland oder X11](optimizations/displayserver.md) lassen sich je nach GPU und Compositor-Verhalten auswählen
-- **Treiber-Kontrolle:** GPU-Treiberversion, Persistence Mode und Energieverwaltung sind frei konfigurierbar — siehe [Nvidia-Treiber](optimizations/nvidia.md)
-- **Dateisystem-Optimierung:** Mount-Optionen, I/O-Scheduler und TRIM lassen sich für schnelles Szenerie-Laden anpassen — siehe [Dateisystem](optimizations/filesystem.md)
+- **Display-Server-Wahl:** [Wayland oder X11](linux/optimizations/displayserver.md) lassen sich je nach GPU und Compositor-Verhalten auswählen
+- **Treiber-Kontrolle:** GPU-Treiberversion, Persistence Mode und Energieverwaltung sind frei konfigurierbar — siehe [Nvidia-Treiber](linux/optimizations/nvidia.md)
+- **Dateisystem-Optimierung:** Mount-Optionen, I/O-Scheduler und TRIM lassen sich für schnelles Szenerie-Laden anpassen — siehe [Dateisystem](linux/optimizations/filesystem.md)
 - **Nachvollziehbarkeit:** Wenn Mikroruckler auftreten, lässt sich die Ursache bis auf Kernel-Ebene zurückverfolgen — Scheduler-Entscheidungen, Interrupt-Timing, Treiber-Verhalten. Nichts ist eine Black Box.
 - **Stabilität:** Debian Stable bietet eine vorhersagbare Basis ohne überraschende OS-Upgrades, erzwungene Neustarts oder Breaking Changes während einer Session.
 

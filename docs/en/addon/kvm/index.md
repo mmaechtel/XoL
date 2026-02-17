@@ -1,6 +1,6 @@
 # Via KVM
 
-Windows-only addons used through [KVM virtualization](../../extensions/kvm.md).
+Windows-only addons used through [KVM virtualization](../../linux/extensions/kvm.md).
 
 - **[My FS Flights](myfs_flights.md)** — Logbook and statistics
 - **[MobiFlight](mobiflight.md)** — Hardware cockpit integration

@@ -23,9 +23,9 @@ Das Zusammenspiel aus Kernel-Version, Scheduler-Konfiguration, Energieverwaltung
 
 Wer von „Performance" spricht, meint oft hohe FPS. Das ist bei Shootern oder Rennspielen richtig — dort zählt Durchsatz: möglichst viele Bilder pro Sekunde. Bei einem Flugsimulator wie X-Plane liegt der Fall anders.
 
-X-Plane berechnet eine komplexe Welt mit Physik, Wetter, Szenerie und Eingabegeräten. Einzelne Frames sind aufwändig, und die Ziel-Framerate liegt typisch bei 25–35 [FPS](../glossary.md#fps-frames-per-second). Entscheidend ist nicht der Durchschnitt, sondern die **Gleichmäßigkeit** — also die [Frame-Time](../glossary.md#frame-time)-Konsistenz. Ein System, das stabil 35 FPS liefert, erzeugt flüssigere Bewegung als eines, das zwischen 25 und 50 schwankt.
+X-Plane berechnet eine komplexe Welt mit Physik, Wetter, Szenerie und Eingabegeräten. Einzelne Frames sind aufwändig, und die Ziel-Framerate liegt typisch bei 25–35 [FPS](../../glossary.md#fps-frames-per-second). Entscheidend ist nicht der Durchschnitt, sondern die **Gleichmäßigkeit** — also die [Frame-Time](../../glossary.md#frame-time)-Konsistenz. Ein System, das stabil 35 FPS liefert, erzeugt flüssigere Bewegung als eines, das zwischen 25 und 50 schwankt.
 
-Die Ursache für Ungleichmäßigkeit ist in den meisten Fällen nicht fehlende Rechenleistung, sondern **[Latenz](../glossary.md#latenz)** — kurze Verzögerungen durch Systemereignisse, die den Hauptthread unterbrechen.
+Die Ursache für Ungleichmäßigkeit ist in den meisten Fällen nicht fehlende Rechenleistung, sondern **[Latenz](../../glossary.md#latenz)** — kurze Verzögerungen durch Systemereignisse, die den Hauptthread unterbrechen.
 
 Typische Symptome schlechter Latenz:
 
@@ -48,11 +48,11 @@ Systemlatenz entsteht nicht an einer Stelle, sondern aus vier unabhängigen Kate
 
 **Scheduling**
 
-Der Linux-Scheduler entscheidet, wann ein Thread Rechenzeit bekommt. Ein konservativer Scheduler wartet länger, bevor er reagiert — das spart Energie, erhöht aber die Latenz. Moderne Scheduler nutzen Deadline-basierte Aufgabenauswahl und adaptive [Preemption](../glossary.md#preemption), sodass latenzsensitive Threads effizienter eingeplant werden.
+Der Linux-Scheduler entscheidet, wann ein Thread Rechenzeit bekommt. Ein konservativer Scheduler wartet länger, bevor er reagiert — das spart Energie, erhöht aber die Latenz. Moderne Scheduler nutzen Deadline-basierte Aufgabenauswahl und adaptive [Preemption](../../glossary.md#preemption), sodass latenzsensitive Threads effizienter eingeplant werden.
 
 **Energieverwaltung**
 
-Nicht die CPU-Last verursacht Ruckler, sondern Übergänge zwischen Energiestufen. Wenn ein Kern aus einem tiefen Schlafzustand aufwacht, entstehen Verzögerungen von bis zu mehreren hundert Mikrosekunden. Auch [NVMe](../glossary.md#nvme-non-volatile-memory-express)-SSDs im Energiesparmodus erzeugen spürbare Aufwachlatenzen (Details unter [NVMe Energiesparen deaktivieren](#nvme-energiesparen-deaktivieren)).
+Nicht die CPU-Last verursacht Ruckler, sondern Übergänge zwischen Energiestufen. Wenn ein Kern aus einem tiefen Schlafzustand aufwacht, entstehen Verzögerungen von bis zu mehreren hundert Mikrosekunden. Auch [NVMe](../../glossary.md#nvme-non-volatile-memory-express)-SSDs im Energiesparmodus erzeugen spürbare Aufwachlatenzen (Details unter [NVMe Energiesparen deaktivieren](#nvme-energiesparen-deaktivieren)).
 
 **Interrupts**
 
@@ -76,7 +76,7 @@ Der generische Debian-Kernel priorisiert Fairness und Durchsatz. Er reagiert kon
 
 **Liquorix** = geschlossener Regelkreis → Störungen müssen entfernt werden
 
-Liquorix nutzt den [PDS](../glossary.md#pds-priority-and-deadline-based-skiplist)-Scheduler (Priority and Deadline based Skiplist) mit kürzeren Preemption-Fenstern und einer Timer-Frequenz von 1000 Hz. Er reagiert selbstständig auf Laständerungen. Tuning bedeutet hier: externe Störquellen minimieren.
+Liquorix nutzt den [PDS](../../glossary.md#pds-priority-and-deadline-based-skiplist)-Scheduler (Priority and Deadline based Skiplist) mit kürzeren Preemption-Fenstern und einer Timer-Frequenz von 1000 Hz. Er reagiert selbstständig auf Laständerungen. Tuning bedeutet hier: externe Störquellen minimieren.
 
 !!! warning "Gleiche Einstellung, gegenteiliges Ergebnis"
     Identische Parameter können je nach Kernel gegensätzliche Effekte haben. Ein `performance`-Governor hilft beim Standardkernel, kann aber unter Liquorix kontraproduktiv sein (thermischer Spielraum geht verloren). CPU-Isolation hilft beim Standardkernel, verhindert aber unter Liquorix die adaptive Optimierung.
@@ -142,7 +142,7 @@ processor.max_cstate=2
 ```
 
 !!! note "AMD vs. Intel"
-    **AMD Zen:** Exportiert per ACPI nur C1 und C2 an das OS. Tiefere Hardware-[C-States](../glossary.md#c-states-cpu-idle-states) (C6) werden firmware-autonom verwaltet. Der Wert `2` stellt sicher, dass alle verfügbaren OS-sichtbaren C-States genutzt werden. Zusätzlich kann `amd_pstate=active` für moderne Zen-Prozessoren mit CPPC-Unterstützung gesetzt werden.
+    **AMD Zen:** Exportiert per ACPI nur C1 und C2 an das OS. Tiefere Hardware-[C-States](../../glossary.md#c-states-cpu-idle-states) (C6) werden firmware-autonom verwaltet. Der Wert `2` stellt sicher, dass alle verfügbaren OS-sichtbaren C-States genutzt werden. Zusätzlich kann `amd_pstate=active` für moderne Zen-Prozessoren mit CPPC-Unterstützung gesetzt werden.
 
     **Intel:** Tiefere ACPI-C-States (C3, C6, C8, C10) sind sichtbar und steuerbar. Hier kann `processor.max_cstate=3` sinnvoll sein, um tiefe Zustände zu begrenzen. Auf Systemen mit dem `intel_idle`-Treiber (Standard bei modernem Intel) wird ggf. zusätzlich `intel_idle.max_cstate` benötigt.
 
@@ -231,7 +231,7 @@ cat /sys/devices/system/cpu/cpu0/cpufreq/scaling_governor
 ```
 
 !!! note "Warum `ondemand` statt `schedutil`?"
-    `schedutil` bezieht Auslastungssignale direkt vom Mainline-CFS/[EEVDF](../glossary.md#eevdf-earliest-eligible-virtual-deadline-first)-Scheduler. Liquorix nutzt jedoch den alternativen PDS-Scheduler, der diese Signale nicht bereitstellt — `schedutil` wird daher gar nicht erst einkompiliert. `ondemand` passt den CPU-Takt ebenfalls lastabhängig an, arbeitet aber unabhängig vom Scheduler.
+    `schedutil` bezieht Auslastungssignale direkt vom Mainline-CFS/[EEVDF](../../glossary.md#eevdf-earliest-eligible-virtual-deadline-first)-Scheduler. Liquorix nutzt jedoch den alternativen PDS-Scheduler, der diese Signale nicht bereitstellt — `schedutil` wird daher gar nicht erst einkompiliert. `ondemand` passt den CPU-Takt ebenfalls lastabhängig an, arbeitet aber unabhängig vom Scheduler.
 
 Optional Energy Performance Preference setzen:
 
@@ -272,7 +272,7 @@ Die wichtigste Maßnahme unter Liquorix. Hardware-Interrupts auf die ersten Kern
 !!! warning "IRQ-Affinität auf modernen Kerneln"
     Moderne Kernel verwenden Managed Interrupts für MSI-X-Geräte (NVMe, GPU, etc.). Der Kernel steuert die Affinitätszuordnung dieser IRQs, und Schreibzugriffe auf `/proc/irq/*/smp_affinity` werden vom Kernel abgelehnt — unabhängig von der Kernel-Variante. Das ist kein Liquorix-Spezifikum, sondern ein allgemeiner Kernel-Mechanismus.
 
-    Der Userspace-Daemon [`irqbalance`](../glossary.md#irqbalance) übernimmt die Verteilung nicht verwalteter IRQs und berücksichtigt diese Kernel-Einschränkungen automatisch.
+    Der Userspace-Daemon [`irqbalance`](../../glossary.md#irqbalance) übernimmt die Verteilung nicht verwalteter IRQs und berücksichtigt diese Kernel-Einschränkungen automatisch.
 
 Für nicht verwaltete IRQs bietet `irqbalance` eine effektive CPU-Ausgrenzung. In `/etc/default/irqbalance` eintragen:
 

@@ -23,9 +23,9 @@ The combination of kernel version, scheduler configuration, power management, dr
 
 When people talk about "performance," they usually mean high FPS. That's correct for shooters or racing games — throughput matters there: as many frames per second as possible. A flight simulator like X-Plane is different.
 
-X-Plane calculates a complex world with physics, weather, scenery, and input devices. Individual frames are expensive, and the target framerate is typically 25–35 [FPS](../glossary.md#fps-frames-per-second). What matters is not the average, but **consistency** — [frame-time](../glossary.md#frame-time) regularity. A system delivering a stable 35 FPS produces smoother motion than one fluctuating between 25 and 50.
+X-Plane calculates a complex world with physics, weather, scenery, and input devices. Individual frames are expensive, and the target framerate is typically 25–35 [FPS](../../glossary.md#fps-frames-per-second). What matters is not the average, but **consistency** — [frame-time](../../glossary.md#frame-time) regularity. A system delivering a stable 35 FPS produces smoother motion than one fluctuating between 25 and 50.
 
-The cause of inconsistency is usually not insufficient computing power, but **[latency](../glossary.md#latency)** — short delays from system events that interrupt the main thread.
+The cause of inconsistency is usually not insufficient computing power, but **[latency](../../glossary.md#latency)** — short delays from system events that interrupt the main thread.
 
 Typical symptoms of poor latency:
 
@@ -48,11 +48,11 @@ System latency doesn't originate from a single source but from four independent 
 
 **Scheduling**
 
-The Linux scheduler decides when a thread gets CPU time. A conservative scheduler waits longer before reacting — this saves power but increases latency. Modern schedulers use deadline-based task selection and adaptive [preemption](../glossary.md#preemption), allowing latency-sensitive threads to be scheduled more efficiently.
+The Linux scheduler decides when a thread gets CPU time. A conservative scheduler waits longer before reacting — this saves power but increases latency. Modern schedulers use deadline-based task selection and adaptive [preemption](../../glossary.md#preemption), allowing latency-sensitive threads to be scheduled more efficiently.
 
 **Power Management**
 
-CPU load doesn't cause stutters — transitions between power states do. When a core wakes from a deep sleep state, delays of up to several hundred microseconds occur. [NVMe](../glossary.md#nvme-non-volatile-memory-express) SSDs in power-saving mode also produce noticeable wake-up latencies (details under [Disable NVMe Power Saving](#disable-nvme-power-saving)).
+CPU load doesn't cause stutters — transitions between power states do. When a core wakes from a deep sleep state, delays of up to several hundred microseconds occur. [NVMe](../../glossary.md#nvme-non-volatile-memory-express) SSDs in power-saving mode also produce noticeable wake-up latencies (details under [Disable NVMe Power Saving](#disable-nvme-power-saving)).
 
 **Interrupts**
 
@@ -76,7 +76,7 @@ The generic Debian kernel prioritizes fairness and throughput. It reacts conserv
 
 **Liquorix** = closed-loop control → disturbances must be removed
 
-Liquorix uses the [PDS](../glossary.md#pds-priority-and-deadline-based-skiplist) (Priority and Deadline based Skiplist) scheduler with shorter preemption windows and a 1000 Hz timer frequency. It responds autonomously to load changes. Tuning here means: minimizing external sources of interference.
+Liquorix uses the [PDS](../../glossary.md#pds-priority-and-deadline-based-skiplist) (Priority and Deadline based Skiplist) scheduler with shorter preemption windows and a 1000 Hz timer frequency. It responds autonomously to load changes. Tuning here means: minimizing external sources of interference.
 
 !!! warning "Same setting, opposite result"
     Identical parameters can have opposite effects depending on the kernel. A `performance` governor helps with the standard kernel but can be counterproductive under Liquorix (thermal headroom is lost). CPU isolation helps with the standard kernel but prevents Liquorix's adaptive optimization.
@@ -142,7 +142,7 @@ processor.max_cstate=2
 ```
 
 !!! note "AMD vs. Intel"
-    **AMD Zen:** Exports only C1 and C2 to the OS via ACPI. Deeper hardware [C-states](../glossary.md#c-states-cpu-idle-states) (C6) are managed autonomously by firmware. The value `2` ensures all available OS-visible C-states are used. Additionally, `amd_pstate=active` can be set for modern Zen processors with CPPC support.
+    **AMD Zen:** Exports only C1 and C2 to the OS via ACPI. Deeper hardware [C-states](../../glossary.md#c-states-cpu-idle-states) (C6) are managed autonomously by firmware. The value `2` ensures all available OS-visible C-states are used. Additionally, `amd_pstate=active` can be set for modern Zen processors with CPPC support.
 
     **Intel:** Deeper ACPI C-states (C3, C6, C8, C10) are visible and controllable. Here, `processor.max_cstate=3` can be useful to limit deep states. On systems using the `intel_idle` driver (default on modern Intel), `intel_idle.max_cstate` may also be needed.
 
@@ -231,7 +231,7 @@ cat /sys/devices/system/cpu/cpu0/cpufreq/scaling_governor
 ```
 
 !!! note "Why `ondemand` instead of `schedutil`?"
-    `schedutil` relies on utilization signals from the mainline CFS/[EEVDF](../glossary.md#eevdf-earliest-eligible-virtual-deadline-first) scheduler. However, Liquorix uses the PDS alternative scheduler, which does not provide these signals — `schedutil` is therefore not compiled in. `ondemand` also adjusts CPU frequency based on load but works independently of the scheduler.
+    `schedutil` relies on utilization signals from the mainline CFS/[EEVDF](../../glossary.md#eevdf-earliest-eligible-virtual-deadline-first) scheduler. However, Liquorix uses the PDS alternative scheduler, which does not provide these signals — `schedutil` is therefore not compiled in. `ondemand` also adjusts CPU frequency based on load but works independently of the scheduler.
 
 Optionally set Energy Performance Preference:
 
@@ -272,7 +272,7 @@ The most important measure under Liquorix. Concentrate hardware interrupts on th
 !!! warning "IRQ affinity on modern kernels"
     Modern kernels use managed interrupts for MSI-X devices (NVMe, GPU, etc.). The kernel controls affinity allocation for these IRQs, and writes to `/proc/irq/*/smp_affinity` are rejected by design — regardless of kernel variant. This is not Liquorix-specific but a general kernel mechanism.
 
-    The userspace daemon [`irqbalance`](../glossary.md#irqbalance) handles redistribution of non-managed IRQs and respects these kernel constraints automatically.
+    The userspace daemon [`irqbalance`](../../glossary.md#irqbalance) handles redistribution of non-managed IRQs and respects these kernel constraints automatically.
 
 For non-managed IRQs, `irqbalance` provides effective CPU exclusion. In `/etc/default/irqbalance`, add:
 

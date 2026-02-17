@@ -29,7 +29,7 @@ Since My FS Flights has no Linux build, it must run inside a Windows VM. The app
 
 **Requirements**
 
-- Windows 10+ guest in KVM/QEMU (see [Docker & Virtualization](../../extensions/docker.md) for KVM basics)
+- Windows 10+ guest in KVM/QEMU (see [Docker & Virtualization](../../linux/extensions/docker.md) for KVM basics)
 - Bridged or NAT networking with host access
 - X-Plane running on the Linux host
 

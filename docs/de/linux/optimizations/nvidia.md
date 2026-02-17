@@ -2,7 +2,7 @@
 
 Debian stellt NVIDIA-Treiber über den Paketmanager bereit — die empfohlene Methode für die meisten Anwender. Wer die allerneueste Treiberversion benötigt, kann alternativ den manuellen Installer (`.run`-Datei) von NVIDIA verwenden.
 
-Diese Seite behandelt beide Ansätze und enthält Hinweise für [Liquorix-Kernel](../glossary.md#liquorix-kernel)-Nutzer.
+Diese Seite behandelt beide Ansätze und enthält Hinweise für [Liquorix-Kernel](../../glossary.md#liquorix-kernel)-Nutzer.
 
 ## Voraussetzungen
 
@@ -47,7 +47,7 @@ Für den Standard-Debian-Kernel werden Kernel-Header und Build-Tools installiert
 sudo apt install linux-headers-$(uname -r) build-essential dkms
 ```
 
-**Hinweis zum [Liquorix-Kernel](../glossary.md#liquorix-kernel)**: Die Liquorix-Kernel-Header sind ein separates Paket und müssen explizit installiert werden. [DKMS](../glossary.md#dkms-dynamic-kernel-module-support) wird empfohlen, damit das NVIDIA-Modul bei Kernel-Updates automatisch neu kompiliert wird:
+**Hinweis zum [Liquorix-Kernel](../../glossary.md#liquorix-kernel)**: Die Liquorix-Kernel-Header sind ein separates Paket und müssen explizit installiert werden. [DKMS](../../glossary.md#dkms-dynamic-kernel-module-support) wird empfohlen, damit das NVIDIA-Modul bei Kernel-Updates automatisch neu kompiliert wird:
 
 ```bash
 sudo apt install linux-headers-liquorix-amd64 dkms
@@ -93,7 +93,7 @@ Dem Installationsassistenten folgen:
 
 - Lizenz akzeptieren
 - Bei Bedarf „Ja" für 32-Bit-Kompatibilitätsbibliotheken wählen
-- Deaktivierung des [Nouveau](../glossary.md#nouveau)-Treibers bestätigen
+- Deaktivierung des [Nouveau](../../glossary.md#nouveau)-Treibers bestätigen
 - Bei der DKMS-Registrierung den Standard („Yes") akzeptieren
 
 ### Installation prüfen
@@ -129,7 +129,7 @@ sudo reboot
 
 ### Treiber-Einstellungen (nur X11)
 
-Unter X11 bietet `nvidia-settings` Kompositions-Optionen zur Reduzierung von Screen [Tearing](../glossary.md#tearing). Diese Einstellungen sind **unter [Wayland](displayserver_wayland.md) nicht verfügbar und nicht nötig**, da der Compositor dies nativ handhabt.
+Unter X11 bietet `nvidia-settings` Kompositions-Optionen zur Reduzierung von Screen [Tearing](../../glossary.md#tearing). Diese Einstellungen sind **unter [Wayland](displayserver_wayland.md) nicht verfügbar und nicht nötig**, da der Compositor dies nativ handhabt.
 
 ```bash
 nvidia-settings
@@ -144,7 +144,7 @@ Diese Einstellungen sind optional. Nur aktivieren, wenn Tearing beim Spielen tat
 
 ### Kernel-Parameter
 
-Beim `.run`-Installer ist `nvidia-drm.modeset=1` **nicht** standardmäßig aktiviert und muss manuell gesetzt werden. Dieser Parameter aktiviert [Kernel Mode Setting (KMS)](../glossary.md#drmkms-direct-rendering-manager-kernel-mode-setting) für NVIDIA, was für Wayland erforderlich ist und die Display-Handhabung verbessert.
+Beim `.run`-Installer ist `nvidia-drm.modeset=1` **nicht** standardmäßig aktiviert und muss manuell gesetzt werden. Dieser Parameter aktiviert [Kernel Mode Setting (KMS)](../../glossary.md#drmkms-direct-rendering-manager-kernel-mode-setting) für NVIDIA, was für Wayland erforderlich ist und die Display-Handhabung verbessert.
 
 In `/etc/default/grub` unter `GRUB_CMDLINE_LINUX_DEFAULT` hinzufügen:
 
@@ -152,7 +152,7 @@ In `/etc/default/grub` unter `GRUB_CMDLINE_LINUX_DEFAULT` hinzufügen:
 nvidia-drm.modeset=1
 ```
 
-Danach [GRUB](../glossary.md#grub-grand-unified-bootloader) aktualisieren:
+Danach [GRUB](../../glossary.md#grub-grand-unified-bootloader) aktualisieren:
 
 ```bash
 sudo update-grub
@@ -171,13 +171,13 @@ Ein Wert von `Y` bestätigt, dass KMS aktiv ist.
 
 ### MangoHud (optional)
 
-Für erweitertes Performance-Monitoring über die eingebaute [FPS](../glossary.md#fps-frames-per-second)-Anzeige von X-Plane (Strg+Shift+F) hinaus:
+Für erweitertes Performance-Monitoring über die eingebaute [FPS](../../glossary.md#fps-frames-per-second)-Anzeige von X-Plane (Strg+Shift+F) hinaus:
 
 ```bash
 sudo apt install mangohud
 ```
 
-MangoHud liefert detaillierte GPU/CPU-Metriken, Frame-Time-Graphen und [VRAM](../glossary.md#vram-video-ram)-Auslastung als In-Game-Overlay. Weitere Informationen zur Performance-Analyse unter [Systemtuning](../system/systemtuning.md) und [System-Monitoring](../system/systemtools.md).
+MangoHud liefert detaillierte GPU/CPU-Metriken, Frame-Time-Graphen und [VRAM](../../glossary.md#vram-video-ram)-Auslastung als In-Game-Overlay. Weitere Informationen zur Performance-Analyse unter [Systemtuning](../system/systemtuning.md) und [System-Monitoring](../system/systemtools.md).
 
 ---
 

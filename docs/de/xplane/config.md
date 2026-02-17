@@ -14,7 +14,7 @@ X-Plane 12 nutzt ausschließlich Vulkan als Rendering-API. Ein OpenGL-Fallback e
 | AMD | Mesa RADV | 22.0+ |
 | Intel Arc | Mesa ANV | In neueren Versionen unterstützt |
 
-Für NVIDIA-Treiber-Installation und -Optimierung siehe [Nvidia Treiber](../optimizations/nvidia.md).
+Für NVIDIA-Treiber-Installation und -Optimierung siehe [Nvidia Treiber](../linux/optimizations/nvidia.md).
 
 ### Zink — Plugin-Kompatibilität
 
@@ -93,10 +93,10 @@ MESA_VK_WSI_PRESENT_MODE=mailbox ./X-Plane-x86_64
 
 ## Display-Server
 
-X-Plane 12 hat keine native Wayland-Unterstützung. Details zur Session-Wahl, Latenzmessungen und GPU-spezifischen Empfehlungen: [Display-Server](../optimizations/displayserver.md).
+X-Plane 12 hat keine native Wayland-Unterstützung. Details zur Session-Wahl, Latenzmessungen und GPU-spezifischen Empfehlungen: [Display-Server](../linux/optimizations/displayserver.md).
 
 !!! tip "Empfehlung: X11-Session verwenden"
-    Unter X11 kommuniziert X-Plane direkt mit dem X-Server — keine Übersetzung, kein Overhead. Details: [X11-Session für X-Plane](../optimizations/displayserver_x11.md)
+    Unter X11 kommuniziert X-Plane direkt mit dem X-Server — keine Übersetzung, kein Overhead. Details: [X11-Session für X-Plane](../linux/optimizations/displayserver_x11.md)
 
 Bei Fullscreen-Problemen unter Wayland kann `--window=1920x1080` als Workaround dienen (siehe [Fehlerbehebung](#diagnose-start-mit-cli-parametern)).
 
@@ -211,7 +211,7 @@ Backup: Das gesamte `Output/preferences/`-Verzeichnis sichern. Reset: `X-Plane J
 ### Häufige Probleme
 
 - **Gerät nicht erkannt:** SDL2 nutzt `/dev/input/event*`, nicht `/dev/input/js*`. Wenn das Gerät in `jstest-gtk` funktioniert aber nicht in X-Plane → udev-Regeln für evdev-Nodes prüfen
-- **Gerät verschwindet nach Standby:** USB-Autosuspend deaktivieren — siehe [Systemtuning](../system/systemtuning.md)
+- **Gerät verschwindet nach Standby:** USB-Autosuspend deaktivieren — siehe [Systemtuning](../linux/system/systemtuning.md)
 - **Phantomachsen / Mehrfacherkennung:** Einige Geräte melden sich als mehrere Input-Devices. In der `.joy`-Datei können Phantom-Controls als "hidden" markiert werden
 - **Achsen invertiert:** "Reverse"-Checkbox in den X-Plane Achsen-Einstellungen
 

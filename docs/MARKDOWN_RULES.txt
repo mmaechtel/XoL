@@ -77,29 +77,26 @@ docs/{lang}/
 │       └── gpu_vram.md
 │
 ├── linux/                    # Section: Linux (Tab)
-│   └── index.md              #   Section Index
-│
-├── system/                   # Subsection: System
 │   ├── index.md              #   Section Index
-│   ├── systemtuning.md
-│   └── systemtools.md
-│
-├── optimizations/            # Subsection: Optimierungen
-│   ├── index.md              #   Section Index
-│   ├── nvidia.md
-│   ├── liquorix.md
-│   ├── displayserver.md
-│   ├── displayserver_x11.md
-│   ├── displayserver_wayland.md
-│   └── filesystem.md
-│
-├── extensions/               # Subsection: Erweiterungen
-│   ├── index.md              #   Section Index
-│   ├── kvm.md
-│   ├── docker.md
-│   ├── wine.md
-│   ├── pyenv.md
-│   └── zsh.md
+│   ├── system/               #   Subsection: System
+│   │   ├── index.md          #     Section Index
+│   │   ├── systemtuning.md
+│   │   └── systemtools.md
+│   ├── optimizations/        #   Subsection: Optimierungen
+│   │   ├── index.md          #     Section Index
+│   │   ├── nvidia.md
+│   │   ├── liquorix.md
+│   │   ├── displayserver.md
+│   │   ├── displayserver_x11.md
+│   │   ├── displayserver_wayland.md
+│   │   └── filesystem.md
+│   └── extensions/           #   Subsection: Erweiterungen
+│       ├── index.md          #     Section Index
+│       ├── kvm.md
+│       ├── docker.md
+│       ├── wine.md
+│       ├── pyenv.md
+│       └── zsh.md
 │
 ├── xplane/                   # Section: X-Plane
 │   ├── index.md              #   Section Index
@@ -173,7 +170,8 @@ Folgende Dateien bleiben dauerhaft im Root:
 - Nachbar-Verzeichnis: `../zielverz/datei.md`
 - Eltern-Verzeichnis: `../datei.md`
 - Glossar vom Root: `glossary.md`
-- Glossar aus Unterverzeichnis: `../glossary.md`
+- Glossar aus Unterverzeichnis (1 Ebene): `../glossary.md`
+- Glossar aus Unter-Unterverzeichnis (2 Ebenen): `../../glossary.md`
 - Neue Seiten IMMER ins passende Unterverzeichnis legen, nicht ins Root
 
 ## Textfluss und Strukturelemente

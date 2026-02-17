@@ -6,7 +6,7 @@ This documentation covers setup and optimization of X-Plane 12 (Laminar Research
 
 - **Why Linux?** [Introduction](intro.md) explains what makes X-Plane on Linux different.
 - **New to X-Plane on Linux?** [Getting Started](begin.md) covers system requirements, installation, and first launch.
-- **X-Plane already running?** [Performance](fundamentals/performance/performance_overview.md) explains the three load dimensions (CPU, I/O, network) before diving into [System Tuning](system/systemtuning.md).
+- **X-Plane already running?** [Performance](fundamentals/performance/performance_overview.md) explains the three load dimensions (CPU, I/O, network) before diving into [System Tuning](linux/system/systemtuning.md).
 
 ## About This Documentation
 
@@ -37,7 +37,7 @@ This documentation is an open project. Improvements or additions can be contribu
 - [Performance](fundamentals/performance/index.md) restructured as sub-section with three chapters
 
 ### 2026-02-16
-- New video: [Display Server](optimizations/displayserver.md) — X11 vs Wayland decision guide
+- New video: [Display Server](linux/optimizations/displayserver.md) — X11 vs Wayland decision guide
 - New videos: [Introduction](intro.md) — guided tour through XoL (DE + EN)
 - [ToLiss Ecosystem](addon/toliss/toliss_ecosystem.md): simbrief_hub section added, new page [ToLiss Mods](addon/toliss/toliss_mods.md)
 
