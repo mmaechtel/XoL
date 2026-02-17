@@ -9,7 +9,7 @@ Prozess-Definition: siehe `AUDIT_FLOW.md`.
 
 **Gestartet:** 2026-02-12
 **Runde:** 1
-**Nächstes Kapitel:** #4 `systemtuning.md`
+**Nächstes Kapitel:** #4 `linux/system/systemtuning.md`
 
 ---
 
@@ -21,38 +21,38 @@ Nach jedem abgeschlossenen Schritt: Feld mit Datum füllen.
 |---|-------|--------|:---:|:---:|:---:|:---:|:---:|
 | | **Runde 1 — Kern-Dokumentation** | | | | | | |
 | 1 | `begin.md` | 228 | 2026-02-13 | 2026-02-13 | 2026-02-13 | 2026-02-13 | C |
-| 2 | `nvidia.md` | 164 | 2026-02-14 | 2026-02-14 | 2026-02-14 | 2026-02-14 | C |
-| 3 | `liquorix.md` | 139 | 2026-02-15 | 2026-02-15 | 2026-02-15 | 2026-02-15 | D |
-| 4 | `systemtuning.md` | 441 | | | | | |
-| 5 | `systemtools.md` | 421 | 2026-02-14 | 2026-02-14 | 2026-02-14 | 2026-02-14 | B |
-| 6 | `filesystem.md` | 160 | | | | | |
-| 7 | `xplane/performance.md` | 206 | | | | | |
+| 2 | `linux/optimizations/nvidia.md` | 164 | 2026-02-14 | 2026-02-14 | 2026-02-14 | 2026-02-14 | C |
+| 3 | `linux/optimizations/liquorix.md` | 139 | 2026-02-15 | 2026-02-15 | 2026-02-15 | 2026-02-15 | D |
+| 4 | `linux/system/systemtuning.md` | 441 | | | | | |
+| 5 | `linux/system/systemtools.md` | 421 | 2026-02-14 | 2026-02-14 | 2026-02-14 | 2026-02-14 | B |
+| 6 | `linux/optimizations/filesystem.md` | 160 | | | | | |
+| 7 | `xplane/setup_diagnose/performance.md` | 206 | | | | | |
 | — | **DE-Angleichung R1** | | | | | | |
 | | **Runde 2 — Kurzcheck** | | | | | | |
-| 8 | `xplane/config.md` | 335 | | | | | |
-| 9 | `displayserver.md` | 155 | | | | | |
-| 10 | `displayserver_x11.md` | 139 | | | | | |
-| 11 | `displayserver_wayland.md` | 141 | | | | | |
+| 8 | `xplane/setup_diagnose/config.md` | 335 | | | | | |
+| 9 | `linux/optimizations/displayserver.md` | 155 | | | | | |
+| 10 | `linux/optimizations/displayserver_x11.md` | 139 | | | | | |
+| 11 | `linux/optimizations/displayserver_wayland.md` | 141 | | | | | |
 | — | **DE-Angleichung R2** | | | | | | |
 | | **Runde 3 — Scenery & Addons** | | | | | | |
-| 12 | `scenery_components.md` | 163 | 2026-02-16 | 2026-02-16 | 2026-02-16 | 2026-02-16 | C |
-| 13 | `addon/ortho4xp.md` | 221 | | | | | |
-| 14 | `addon/autoortho.md` | 242 | | | | | |
-| 15 | `addon/xearthlayer.md` | 133 | | | | | |
-| 16 | `addon/static_plus_streaming.md` | 109 | | | | | |
+| 12 | `scenery/aufbau_quellen/scenery_components.md` | 163 | 2026-02-16 | 2026-02-16 | 2026-02-16 | 2026-02-16 | C |
+| 13 | `scenery/orthophotography/ortho4xp.md` | 221 | | | | | |
+| 14 | `scenery/ortho_streaming/autoortho.md` | 242 | | | | | |
+| 15 | `scenery/ortho_streaming/xearthlayer.md` | 133 | | | | | |
+| 16 | `scenery/ortho_streaming/static_plus_streaming.md` | 109 | | | | | |
 | — | **DE-Angleichung R3** | | | | | | |
 | | **Runde 4 — Peripherie** | | | | | | |
-| 17 | `kvm.md` | 90 | | | | | |
-| 18 | `docker.md` | 102 | | | | | |
-| 19 | `wine.md` | 95 | | | | | |
-| 20 | `addon/xorganizer.md` | 95 | | | | | |
-| 21 | `pyenv.md` | 161 | | | | | |
-| 22 | `zsh.md` | 82 | | | | | |
+| 17 | `linux/extensions/kvm.md` | 90 | | | | | |
+| 18 | `linux/extensions/docker.md` | 102 | | | | | |
+| 19 | `linux/extensions/wine.md` | 95 | | | | | |
+| 20 | `addon/tools/xorganizer.md` | 95 | | | | | |
+| 21 | `linux/extensions/pyenv.md` | 161 | | | | | |
+| 22 | `linux/extensions/zsh.md` | 82 | | | | | |
 | — | **DE-Angleichung R4** | | | | | | |
 | | **Runde 5 — Flight Ops & Referenz** | | | | | | |
-| 23 | `flight_operations/weather.md` | 120 | | | | | |
-| 24 | `flight_operations/clearance.md` | 62 | | | | | |
-| 25 | `flight_operations/vatsim.md` | 41 | | | | | |
+| 23 | `flight_operations/weather/briefing.md` | 120 | | | | | |
+| 24 | `flight_operations/atc/clearance.md` | 62 | | | | | |
+| 25 | `flight_operations/vatsim/vatsim.md` | 41 | | | | | |
 | 26 | `glossary.md` | 150 | | | | | |
 | 27 | `intro.md` | 76 | | | | | |
 | — | **DE-Angleichung R5** | | | | | | |
@@ -64,17 +64,35 @@ Nach jedem abgeschlossenen Schritt: Feld mit Datum füllen.
 | Datei | Grund |
 |-------|-------|
 | `index.md` | Changelog, kein Inhalt |
-| `linux.md` | Übersichtsseite (28 Zeilen) |
-| `xplane/systemfehler.md` | Stub (38 Zeilen) |
-| `xplane/geraeteverluste.md` | Stub (34 Zeilen) |
-| `scenery.md` | Stub (52 Zeilen, Links) |
-| `addon/orthophotography_intro.md` | Stub (41 Zeilen) |
-| `addon/xroad.md` | Stub (8 Zeilen) |
-| `addon/aep.md` | Stub (30 Zeilen) |
-| `flight_operations/overview.md` | Stub (8 Zeilen) |
-| `about.md` | Meta-Seite (23 Zeilen) |
-| `blog/*.md` | Erfahrungsberichte |
+| `linux/index.md` | Übersichtsseite |
+| `xplane/systemfehler/index.md` | Stub |
+| `xplane/systemfehler/geraeteverluste.md` | Stub |
+| `scenery/aufbau_quellen/scenery_sources.md` | Stub |
+| `scenery/orthophotography/orthophotography_intro.md` | Stub |
+| `addon/scenery_addons/xroad.md` | Stub |
+| `addon/scenery_addons/aep.md` | Stub |
+| `flight_operations/index.md` | Übersichtsseite |
+| `about.md` | Meta-Seite |
 | `Maps.md` | Karten-Embed |
+
+---
+
+## Ausstehende Aufnahme
+
+Seit Erstellung des Audit-Plans sind zahlreiche neue Seiten hinzugekommen, die noch nicht im Fortschritts-Tracker stehen. Einsortierung in passende Runden nach Abschluss von Runde 1.
+
+- `fundamentals/performance/` — performance_overview.md, latency.md, cpu_ram.md, gpu_vram.md
+- `linux/system/latency.md` — Video-Einstieg
+- `addon/toliss/` — toliss_ecosystem.md, toliss_mods.md
+- `addon/cockpit/` — kabinxp.md, linuxtrack.md, terrainradar.md
+- `addon/flylua_scripts/` — sges.md
+- `addon/scenery_addons/` — lst.md, noaa_weather.md
+- `addon/tools/` — xlinspeak.md, winctrl.md
+- `addon/kvm/` — mobiflight.md, sayintentions.md
+- `addon/sounds/` — kosp_project.md, mango_studios.md
+- `addon/scripting/` — flywithlua.md
+- `flight_operations/atc/` — pushback_taxi.md, takeoff.md, departure.md, enroute.md, approach.md, landing.md
+- `scenery/aufbau_quellen/scenery_sources.md`
 
 ---
 
