@@ -11,7 +11,7 @@ tags:
 
 ### Airport Enhancement Package (AEP)
 
-Ein Szenerie-Addon von X-Codr Designs für X-Plane, das Standard-Flughäfen durch detailliertere Modelle, höher aufgelöste Texturen und neue Technologien verbessert. Es ersetzt Flughafengebäude, Fassaden, Bodenobjekte, statische Fahrzeuge sowie Landebahnlichter, Baken und Navigationshilfen durch modernere Versionen. [Mehr Details](../addon/scenery_addons/aep.md)
+Ein Szenerie-Addon von X-Codr Designs für X-Plane, das Standard-Flughäfen durch detailliertere Modelle, höher aufgelöste Texturen und neue Technologien verbessert. Es ersetzt Flughafengebäude, Fassaden, Bodenobjekte, statische Fahrzeuge sowie Landebahnlichter, Baken und Navigationshilfen durch modernere Versionen. [Mehr Details](addon/scenery_addons/aep.md)
 
 ### ALSA (Advanced Linux Sound Architecture)
 
@@ -45,7 +45,7 @@ Eine Berechnungsmethode in der Aerodynamik, bei der ein Flugzeug in viele kleine
 
 ### Bodenmarkierungen
 
-Die Markierungen und Beläge auf Flughäfen in X-Plane. Im [Airport Enhancement Package (AEP)](../addon/scenery_addons/aep.md) werden diese durch neue, hochauflösende Texturen ersetzt, die X-Plane 12's Wettereffekte unterstützen und realistische Muster ohne Wiederholungen erzeugen.
+Die Markierungen und Beläge auf Flughäfen in X-Plane. Im [Airport Enhancement Package (AEP)](addon/scenery_addons/aep.md) werden diese durch neue, hochauflösende Texturen ersetzt, die X-Plane 12's Wettereffekte unterstützen und realistische Muster ohne Wiederholungen erzeugen.
 
 ### BORE (Burst-Oriented Response Enhancer)
 
@@ -129,11 +129,11 @@ Federal Aviation Administration - die US-amerikanische Luftfahrtbehörde, die St
 
 ### Flughafenelemente
 
-Die verschiedenen Komponenten eines Flughafens in X-Plane, wie Gebäude, Fassaden, Bodenobjekte, statische Fahrzeuge, Landebahnlichter, Baken und Navigationshilfen. Das [Airport Enhancement Package (AEP)](../addon/scenery_addons/aep.md) verbessert diese Elemente durch detailliertere Modelle und höher aufgelöste Texturen.
+Die verschiedenen Komponenten eines Flughafens in X-Plane, wie Gebäude, Fassaden, Bodenobjekte, statische Fahrzeuge, Landebahnlichter, Baken und Navigationshilfen. Das [Airport Enhancement Package (AEP)](addon/scenery_addons/aep.md) verbessert diese Elemente durch detailliertere Modelle und höher aufgelöste Texturen.
 
 ### Flughafenvegetation
 
-Die 3D-Vegetationselemente auf Flughäfen in X-Plane. Im [Airport Enhancement Package (AEP)](../addon/scenery_addons/aep.md) wird die Standard-Flughafenvegetation durch neue, detailliertere 3D-Modelle ersetzt, die für eine realistischere Darstellung sorgen.
+Die 3D-Vegetationselemente auf Flughäfen in X-Plane. Im [Airport Enhancement Package (AEP)](addon/scenery_addons/aep.md) wird die Standard-Flughafenvegetation durch neue, detailliertere 3D-Modelle ersetzt, die für eine realistischere Darstellung sorgen.
 
 ### FMOD
 
@@ -141,11 +141,11 @@ Eine proprietäre Audio-Engine von Firelight Technologies. X-Plane 12 verwendet 
 
 ### FPS (Frames per Second)
 
-Die Anzahl der Bilder, die der Simulator pro Sekunde berechnet und darstellt. Höhere FPS bedeuten flüssigere Darstellung, wobei gleichmäßige Frame Times wichtiger sind als der reine FPS-Wert. X-Plane zeigt die aktuelle FPS über die integrierte Leistungsanzeige. Siehe [Performance](../xplane/setup_diagnose/performance.md).
+Die Anzahl der Bilder, die der Simulator pro Sekunde berechnet und darstellt. Höhere FPS bedeuten flüssigere Darstellung, wobei gleichmäßige Frame Times wichtiger sind als der reine FPS-Wert. X-Plane zeigt die aktuelle FPS über die integrierte Leistungsanzeige. Siehe [Performance](xplane/setup_diagnose/performance.md).
 
 ### Frame Time
 
-Die Zeit in Millisekunden, die der Simulator für die Berechnung und Darstellung eines einzelnen Bildes benötigt. Gleichmäßige Frame Times sind für ein flüssiges Simulationserlebnis wichtiger als eine hohe Framerate. Schwankungen (Frame-Time-Spikes) äußern sich als Ruckler. Siehe [Performance](../xplane/setup_diagnose/performance.md).
+Die Zeit in Millisekunden, die der Simulator für die Berechnung und Darstellung eines einzelnen Bildes benötigt. Gleichmäßige Frame Times sind für ein flüssiges Simulationserlebnis wichtiger als eine hohe Framerate. Schwankungen (Frame-Time-Spikes) äußern sich als Ruckler. Siehe [Performance](xplane/setup_diagnose/performance.md).
 
 ### FUSE (Filesystem in Userspace)
 
@@ -155,7 +155,7 @@ Eine Schnittstelle, die es erlaubt, Dateisysteme im Benutzerraum statt im Kernel
 
 ### Global Airports
 
-Der Eintrag `*GLOBAL_AIRPORTS*` in X-Planes scenery_packs.ini, der die Standard-Flughäfen enthält — viele davon von der Community über das X-Plane Gateway beigesteuert. In der Ladereihenfolge sollte Global Airports unterhalb von Custom-Airport-Szenerien, aber über Autogen, Orthofotos und Mesh-Schichten stehen. Eine falsche Position kann zu schwebenden Flughäfen oder verdeckten Rollwegen führen. Siehe [Szenerien-Komponenten](../scenery/aufbau_quellen/scenery_components.md).
+Der Eintrag `*GLOBAL_AIRPORTS*` in X-Planes scenery_packs.ini, der die Standard-Flughäfen enthält — viele davon von der Community über das X-Plane Gateway beigesteuert. In der Ladereihenfolge sollte Global Airports unterhalb von Custom-Airport-Szenerien, aber über Autogen, Orthofotos und Mesh-Schichten stehen. Eine falsche Position kann zu schwebenden Flughäfen oder verdeckten Rollwegen führen. Siehe [Szenerien-Komponenten](scenery/aufbau_quellen/scenery_components.md).
 
 ### GRUB (Grand Unified Bootloader)
 
@@ -261,7 +261,7 @@ Orthofotos (oder Orthophotos) sind maßstabsgetreue, verzerrungsfreie Luftbilder
 
 ### Overlay (Szenerie)
 
-Eine Szenerie-Schicht in X-Plane, die über einer Basis-Szenerie liegt und diese ergänzt oder ersetzt. Overlays enthalten typischerweise Flughäfen, Gebäude oder Straßen, während die Basis-Schicht Geländemesh und Orthofotos bereitstellt. Die Reihenfolge in der scenery_packs.ini bestimmt, welche Overlays Vorrang haben. Siehe [Szenerien-Komponenten](../scenery/aufbau_quellen/scenery_components.md).
+Eine Szenerie-Schicht in X-Plane, die über einer Basis-Szenerie liegt und diese ergänzt oder ersetzt. Overlays enthalten typischerweise Flughäfen, Gebäude oder Straßen, während die Basis-Schicht Geländemesh und Orthofotos bereitstellt. Die Reihenfolge in der scenery_packs.ini bestimmt, welche Overlays Vorrang haben. Siehe [Szenerien-Komponenten](scenery/aufbau_quellen/scenery_components.md).
 
 ## P
 
@@ -311,7 +311,7 @@ Eine plattformübergreifende Multimedia-Bibliothek, die X-Plane 12 unter Linux f
 
 ### Shader Cache
 
-Ein Zwischenspeicher für kompilierte GPU-Shader-Programme. X-Plane kompiliert Shader beim ersten Laden einer Szene, was zu Rucklern führen kann. Der Shader Cache speichert die kompilierten Ergebnisse, sodass nachfolgende Ladevorgänge schneller ablaufen. Unter Linux liegt der Cache in `~/.cache/`. Siehe [Konfiguration](../xplane/setup_diagnose/config.md).
+Ein Zwischenspeicher für kompilierte GPU-Shader-Programme. X-Plane kompiliert Shader beim ersten Laden einer Szene, was zu Rucklern führen kann. Der Shader Cache speichert die kompilierten Ergebnisse, sodass nachfolgende Ladevorgänge schneller ablaufen. Unter Linux liegt der Cache in `~/.cache/`. Siehe [Konfiguration](xplane/setup_diagnose/config.md).
 
 ### Single-CPU
 
@@ -389,7 +389,7 @@ Eine OpenGL-Übersetzungsschicht innerhalb von Mesa, die OpenGL-Befehle in Vulka
 
 ### ZL (Zoom Level)
 
-Die Zoomstufe von Orthofotos, die deren Auflösung bestimmt. Höhere ZL-Werte bedeuten detailliertere Bilder: ZL16 entspricht etwa vier Metern pro Pixel, ZL17 zwei Metern, ZL18 einem Meter. Höhere Zoomstufen benötigen deutlich mehr Speicherplatz und Bandbreite. Siehe [Einführung Orthofotografie](../scenery/orthophotography/orthophotography_intro.md).
+Die Zoomstufe von Orthofotos, die deren Auflösung bestimmt. Höhere ZL-Werte bedeuten detailliertere Bilder: ZL16 entspricht etwa vier Metern pro Pixel, ZL17 zwei Metern, ZL18 einem Meter. Höhere Zoomstufen benötigen deutlich mehr Speicherplatz und Bandbreite. Siehe [Einführung Orthofotografie](scenery/orthophotography/orthophotography_intro.md).
 
 ## 3
 

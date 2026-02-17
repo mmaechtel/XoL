@@ -11,15 +11,15 @@ tags:
 
 ### Airport Enhancement Package (AEP)
 
-A scenery addon by X-Codr Designs for X-Plane that enhances default airports with more detailed models, higher resolution textures, and new technologies. It replaces airport buildings, facades, ground objects, static vehicles, as well as runway lights, beacons, and navigation aids with modern versions. [More details](../addon/scenery_addons/aep.md)
+A scenery addon by X-Codr Designs for X-Plane that enhances default airports with more detailed models, higher resolution textures, and new technologies. It replaces airport buildings, facades, ground objects, static vehicles, as well as runway lights, beacons, and navigation aids with modern versions. [More details](addon/scenery_addons/aep.md)
 
 ### Airport Elements
 
-The various components of an airport in X-Plane, such as buildings, facades, ground objects, static vehicles, runway lights, beacons, and navigation aids. The [Airport Enhancement Package (AEP)](../addon/scenery_addons/aep.md) enhances these elements with more detailed models and higher resolution textures.
+The various components of an airport in X-Plane, such as buildings, facades, ground objects, static vehicles, runway lights, beacons, and navigation aids. The [Airport Enhancement Package (AEP)](addon/scenery_addons/aep.md) enhances these elements with more detailed models and higher resolution textures.
 
 ### Airport Vegetation
 
-The 3D vegetation elements on airports in X-Plane. In the [Airport Enhancement Package (AEP)](../addon/scenery_addons/aep.md), the default airport vegetation is replaced with new, more detailed 3D models for a more realistic representation.
+The 3D vegetation elements on airports in X-Plane. In the [Airport Enhancement Package (AEP)](addon/scenery_addons/aep.md), the default airport vegetation is replaced with new, more detailed 3D models for a more realistic representation.
 
 ### ALSA (Advanced Linux Sound Architecture)
 
@@ -137,11 +137,11 @@ A proprietary audio engine by Firelight Technologies. X-Plane 12 uses FMOD Studi
 
 ### FPS (Frames per Second)
 
-The number of frames the simulator calculates and renders per second. Higher FPS means smoother display, though consistent frame times are more important than the raw FPS value. X-Plane shows current FPS through its built-in performance display. See [Performance](../xplane/setup_diagnose/performance.md).
+The number of frames the simulator calculates and renders per second. Higher FPS means smoother display, though consistent frame times are more important than the raw FPS value. X-Plane shows current FPS through its built-in performance display. See [Performance](xplane/setup_diagnose/performance.md).
 
 ### Frame Time
 
-The time in milliseconds the simulator needs to calculate and render a single frame. Consistent frame times are more important for a smooth simulation experience than a high framerate. Fluctuations (frame time spikes) manifest as stutters. See [Performance](../xplane/setup_diagnose/performance.md).
+The time in milliseconds the simulator needs to calculate and render a single frame. Consistent frame times are more important for a smooth simulation experience than a high framerate. Fluctuations (frame time spikes) manifest as stutters. See [Performance](xplane/setup_diagnose/performance.md).
 
 ### FUSE (Filesystem in Userspace)
 
@@ -151,11 +151,11 @@ An interface that allows implementing filesystems in user space rather than in t
 
 ### Global Airports
 
-The entry `*GLOBAL_AIRPORTS*` in X-Plane's scenery_packs.ini that contains the default airports, many of which are community-contributed via the X-Plane Gateway. In the load order, Global Airports should sit below custom airport sceneries but above autogen, orthophotos, and mesh layers. An incorrect position can cause floating airports or covered taxiways. See [Scenery Components](../scenery/aufbau_quellen/scenery_components.md).
+The entry `*GLOBAL_AIRPORTS*` in X-Plane's scenery_packs.ini that contains the default airports, many of which are community-contributed via the X-Plane Gateway. In the load order, Global Airports should sit below custom airport sceneries but above autogen, orthophotos, and mesh layers. An incorrect position can cause floating airports or covered taxiways. See [Scenery Components](scenery/aufbau_quellen/scenery_components.md).
 
 ### Ground Markings
 
-The markings and pavements on airports in X-Plane. In the [Airport Enhancement Package (AEP)](../addon/scenery_addons/aep.md), these are replaced with new, high-resolution textures that support X-Plane 12's weather effects and create realistic patterns without repetition.
+The markings and pavements on airports in X-Plane. In the [Airport Enhancement Package (AEP)](addon/scenery_addons/aep.md), these are replaced with new, high-resolution textures that support X-Plane 12's weather effects and create realistic patterns without repetition.
 
 ### GRUB (Grand Unified Bootloader)
 
@@ -261,7 +261,7 @@ Orthophotos (or orthoimages) are geometrically corrected aerial photographs of t
 
 ### Overlay (Scenery)
 
-A scenery layer in X-Plane that sits above a base scenery and supplements or replaces it. Overlays typically contain airports, buildings, or roads, while the base layer provides terrain mesh and orthophotos. The order in scenery_packs.ini determines which overlays take precedence. See [Scenery Components](../scenery/aufbau_quellen/scenery_components.md).
+A scenery layer in X-Plane that sits above a base scenery and supplements or replaces it. Overlays typically contain airports, buildings, or roads, while the base layer provides terrain mesh and orthophotos. The order in scenery_packs.ini determines which overlays take precedence. See [Scenery Components](scenery/aufbau_quellen/scenery_components.md).
 
 ## P
 
@@ -311,7 +311,7 @@ A cross-platform multimedia library used by X-Plane 12 on Linux for window manag
 
 ### Shader Cache
 
-A cache for compiled GPU shader programs. X-Plane compiles shaders when first loading a scene, which can cause stutters. The shader cache stores compiled results so subsequent loads are faster. On Linux, the cache is located in `~/.cache/`. See [Configuration](../xplane/setup_diagnose/config.md).
+A cache for compiled GPU shader programs. X-Plane compiles shaders when first loading a scene, which can cause stutters. The shader cache stores compiled results so subsequent loads are faster. On Linux, the cache is located in `~/.cache/`. See [Configuration](xplane/setup_diagnose/config.md).
 
 ### Single-CPU
 
@@ -389,7 +389,7 @@ An OpenGL translation layer within Mesa that converts OpenGL commands into Vulka
 
 ### ZL (Zoom Level)
 
-The zoom level of orthophotos that determines their resolution. Higher ZL values mean more detailed images: ZL16 corresponds to roughly four meters per pixel, ZL17 two meters, ZL18 one meter. Higher zoom levels require significantly more storage space and bandwidth. See [Introduction to Orthophotography](../scenery/orthophotography/orthophotography_intro.md).
+The zoom level of orthophotos that determines their resolution. Higher ZL values mean more detailed images: ZL16 corresponds to roughly four meters per pixel, ZL17 two meters, ZL18 one meter. Higher zoom levels require significantly more storage space and bandwidth. See [Introduction to Orthophotography](scenery/orthophotography/orthophotography_intro.md).
 
 ## 3
 
