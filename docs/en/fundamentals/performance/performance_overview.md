@@ -1,8 +1,8 @@
 # Performance
 
 <div class="video-container" markdown>
-<video controls width="100%" preload="metadata" aria-label="Video: The Performance Puzzle" poster="../../assets/video/en/The_Performance_Puzzle/The_Performance_Puzzle.jpg">
-  <source src="../../assets/video/en/The_Performance_Puzzle/The_Performance_Puzzle.mp4" type="video/mp4">
+<video controls width="100%" preload="metadata" aria-label="Video: The Performance Puzzle" poster="../../../assets/video/en/The_Performance_Puzzle/The_Performance_Puzzle.jpg">
+  <source src="../../../assets/video/en/The_Performance_Puzzle/The_Performance_Puzzle.mp4" type="video/mp4">
 </video>
 </div>
 

@@ -3,8 +3,8 @@
 Orthophotography represents a central component of modern flight simulation environments, as it enables high-resolution and realistic ground textures. This section explains the methodological approaches for integrating high-quality orthophotos into the X-Plane flight simulation software.
 
 <div class="video-container" markdown>
-<video controls width="100%" preload="metadata" aria-label="Video: Ortho-Streaming on Linux" poster="../../assets/video/en/Ortho-Streaming_on_Linux/Ortho-Streaming_on_Linux.jpg">
-  <source src="../../assets/video/en/Ortho-Streaming_on_Linux/Ortho-Streaming_on_Linux.mp4" type="video/mp4">
+<video controls width="100%" preload="metadata" aria-label="Video: Ortho-Streaming on Linux" poster="../../../assets/video/en/Ortho-Streaming_on_Linux/Ortho-Streaming_on_Linux.jpg">
+  <source src="../../../assets/video/en/Ortho-Streaming_on_Linux/Ortho-Streaming_on_Linux.mp4" type="video/mp4">
 </video>
 </div>
 

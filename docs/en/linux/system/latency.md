@@ -1,8 +1,8 @@
 # Why Latency Matters
 
 <div class="video-container" markdown>
-<video controls width="100%" preload="metadata" aria-label="Video: Two Paths to Smoother Flight" poster="../../assets/video/en/Two_Paths_to_Smoother_Flight/Two_Paths_to_Smoother_Flight.jpg">
-  <source src="../../assets/video/en/Two_Paths_to_Smoother_Flight/Two_Paths_to_Smoother_Flight.mp4" type="video/mp4">
+<video controls width="100%" preload="metadata" aria-label="Video: Two Paths to Smoother Flight" poster="../../../assets/video/en/Two_Paths_to_Smoother_Flight/Two_Paths_to_Smoother_Flight.jpg">
+  <source src="../../../assets/video/en/Two_Paths_to_Smoother_Flight/Two_Paths_to_Smoother_Flight.mp4" type="video/mp4">
 </video>
 </div>
 

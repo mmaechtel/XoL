@@ -3,8 +3,8 @@
 Die Orthofotographie stellt einen zentralen Bestandteil moderner Flugsimulationsumgebungen dar, da sie hochauflösende und realistische Bodentexturen ermöglicht. Dieser Abschnitt erläutert die methodischen Ansätze zur Integration qualitativ hochwertiger Orthofotos in die Flugsimulationssoftware X-Plane.
 
 <div class="video-container" markdown>
-<video controls width="100%" preload="metadata" aria-label="Video: Ortho-Streaming für X-Plane" poster="../../assets/video/de/Ortho-Streaming_für_X-Plane/Ortho-Streaming_für_X-Plane.jpg">
-  <source src="../../assets/video/de/Ortho-Streaming_für_X-Plane/Ortho-Streaming_für_X-Plane.mp4" type="video/mp4">
+<video controls width="100%" preload="metadata" aria-label="Video: Ortho-Streaming für X-Plane" poster="../../../assets/video/de/Ortho-Streaming_für_X-Plane/Ortho-Streaming_für_X-Plane.jpg">
+  <source src="../../../assets/video/de/Ortho-Streaming_für_X-Plane/Ortho-Streaming_für_X-Plane.mp4" type="video/mp4">
 </video>
 </div>
 

@@ -1,8 +1,8 @@
 # Warum Latenz zählt
 
 <div class="video-container" markdown>
-<video controls width="100%" preload="metadata" aria-label="Video: System-Tuning für X-Plane" poster="../../assets/video/de/System-Tuning_für_X-Plane/System-Tuning_für_X-Plane.jpg">
-  <source src="../../assets/video/de/System-Tuning_für_X-Plane/System-Tuning_für_X-Plane.mp4" type="video/mp4">
+<video controls width="100%" preload="metadata" aria-label="Video: System-Tuning für X-Plane" poster="../../../assets/video/de/System-Tuning_für_X-Plane/System-Tuning_für_X-Plane.jpg">
+  <source src="../../../assets/video/de/System-Tuning_für_X-Plane/System-Tuning_für_X-Plane.mp4" type="video/mp4">
 </video>
 </div>
 

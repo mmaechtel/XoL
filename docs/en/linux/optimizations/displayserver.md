@@ -3,8 +3,8 @@
 X-Plane 12 has no native Wayland support. How it connects to your screen depends on which display server session you choose at login. This page explains the three protocols involved and helps you decide which session to use.
 
 <div class="video-container" markdown>
-<video controls width="100%" preload="metadata" aria-label="Video: X-Plane — Display Server Choice" poster="../../assets/video/en/X-Plane__Display_Server_Choice/X-Plane__Display_Server_Choice.jpg">
-  <source src="../../assets/video/en/X-Plane__Display_Server_Choice/X-Plane__Display_Server_Choice.mp4" type="video/mp4">
+<video controls width="100%" preload="metadata" aria-label="Video: X-Plane — Display Server Choice" poster="../../../assets/video/en/X-Plane__Display_Server_Choice/X-Plane__Display_Server_Choice.jpg">
+  <source src="../../../assets/video/en/X-Plane__Display_Server_Choice/X-Plane__Display_Server_Choice.mp4" type="video/mp4">
 </video>
 </div>
 
