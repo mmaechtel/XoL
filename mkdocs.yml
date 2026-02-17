@@ -3,7 +3,7 @@ site_url: https://emvisio.com/
 site_description: X-Plane 12 on Linux — Tuning, Drivers, Scenery, and Tools
 repo_url: https://github.com/mmaechtel/XoL
 repo_name: XoL
-edit_uri: edit/main/docs/
+edit_uri: ""
 
 use_directory_urls: false
 
@@ -33,7 +33,7 @@ theme:
     - toc.follow
     - search.suggest
     - search.highlight
-    - content.action.edit
+    #- content.action.edit         # disabled — use GitHub Issues instead
     - toc.integrate
     - content.code.copy
     - content.tabs.link
