@@ -14,10 +14,6 @@ XoL (X-Plane on Linux) ist eine bilinguale (Deutsch/Englisch) Dokumentationsseit
 - **RSS generieren:** `python scripts/generate_rss.py`
 - **Python-Abhängigkeiten:** `pip install -r requirements.txt`
 
-### Pip-Abhängigkeiten
-
-Definiert in `requirements.txt`. Installation: `pip install -r requirements.txt`
-
 ## Architektur
 
 ### Inhaltsstruktur
@@ -166,8 +162,8 @@ Zuordnung von Docs-Seiten zu `research/<kategorie>/`:
 | `proton/` | `linux/extensions/wine.md` |
 | `systemtools/` | `linux/system/systemtools.md` |
 | `systemtuning/` | `linux/system/systemtuning.md`, `linux/system/index.md`, `linux/optimizations/filesystem.md`, `linux/optimizations/liquorix.md` |
-| `szenerie/` | `scenery/scenery.md`, `scenery/scenery_components.md` |
-| `xplane-config/` | `xplane/*.md` |
+| `szenerie/` | `scenery/aufbau_quellen/scenery_sources.md`, `scenery/aufbau_quellen/scenery_components.md` |
+| `xplane-config/` | `xplane/setup_diagnose/*.md` |
 | `analyses/` | Querschnitts-Analysen (kein festes Docs-Mapping) |
 | `notebooklm/` | NotebookLM-Skripte (Output von `/generate-notebooklm`) |
 
@@ -210,7 +206,7 @@ Bei neuen Themen: bestehende Kategorie verwenden oder neue anlegen. `research/IN
 
 ## Freigegebene Quellen
 
-Domains in `.claude/settings.local.json` — nutzbar ohne Rückfrage:
+Bevorzugte Quellen für Recherche und Faktencheck. WebFetch-Permissions für einzelne Domains in `.claude/settings.local.json`, WebSearch unbeschränkt.
 
 - **Referenz:** en.wikipedia.org, de.wikipedia.org
 - **Linux/Kernel:** docs.kernel.org, www.kernel.org, wiki.archlinux.org, lwn.net, man7.org, phoronix.com
