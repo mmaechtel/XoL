@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Check all relative markdown links in docs/ for broken targets."""
+"""Check all relative markdown links and HTML asset paths in docs/ for broken targets."""
 
 import re
 import sys
@@ -7,6 +7,7 @@ from pathlib import Path
 
 DOCS_DIR = Path(__file__).resolve().parent.parent / "docs"
 LINK_RE = re.compile(r'\]\(([^)]+)\)')
+ASSET_RE = re.compile(r'(?:src|poster)="([^"]+)"')
 
 
 def check_links():
@@ -14,6 +15,7 @@ def check_links():
 
     for md_file in sorted(DOCS_DIR.rglob("*.md")):
         for i, line in enumerate(md_file.read_text().splitlines(), 1):
+            # Markdown links: ](target)
             for match in LINK_RE.finditer(line):
                 target = match.group(1)
                 if target.startswith(("http", "#", "/", "mailto")):
@@ -25,6 +27,16 @@ def check_links():
                 if not resolved.exists():
                     rel_source = md_file.relative_to(DOCS_DIR)
                     broken.append(f"{rel_source}:{i} → {target}")
+
+            # HTML asset paths: src="..." and poster="..."
+            for match in ASSET_RE.finditer(line):
+                target = match.group(1)
+                if target.startswith(("http", "#", "/", "mailto", "data:")):
+                    continue
+                resolved = (md_file.parent / target).resolve()
+                if not resolved.exists():
+                    rel_source = md_file.relative_to(DOCS_DIR)
+                    broken.append(f"{rel_source}:{i} → {target} (HTML asset)")
 
     if broken:
         print(f"Found {len(broken)} broken link(s):\n")
