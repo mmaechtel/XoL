@@ -203,18 +203,22 @@ plugins:
                     - MobiFlight: de/addon/kvm/mobiflight.md
                     - SayIntentions.AI: de/addon/kvm/sayintentions.md
             - Flugbetrieb:
-                - Übersicht: de/flight_operations/overview.md
-                - Wetter: de/flight_operations/weather.md
+                - de/flight_operations/index.md
+                - Wetter:
+                    - de/flight_operations/weather/index.md
+                    - Wetter: de/flight_operations/weather/weather.md
                 - ATC:
-                    - Clearance: de/flight_operations/clearance.md
-                    - Pushback & Taxi: de/flight_operations/pushback_taxi.md
-                    - Start: de/flight_operations/takeoff.md
-                    - Abflug & Steigflug: de/flight_operations/departure.md
-                    - Streckenflug: de/flight_operations/enroute.md
-                    - Anflug: de/flight_operations/approach.md
-                    - Landung & Abstellen: de/flight_operations/landing.md
+                    - de/flight_operations/atc/index.md
+                    - Clearance: de/flight_operations/atc/clearance.md
+                    - Pushback & Taxi: de/flight_operations/atc/pushback_taxi.md
+                    - Start: de/flight_operations/atc/takeoff.md
+                    - Abflug & Steigflug: de/flight_operations/atc/departure.md
+                    - Streckenflug: de/flight_operations/atc/enroute.md
+                    - Anflug: de/flight_operations/atc/approach.md
+                    - Landung & Abstellen: de/flight_operations/atc/landing.md
                 - VATSim:
-                    - Übersicht: de/flight_operations/vatsim.md
+                    - de/flight_operations/vatsim/index.md
+                    - VATSim: de/flight_operations/vatsim/vatsim.md
             - Glossar: de/glossary.md
             - Über: de/about.md
         - locale: en
@@ -332,18 +336,22 @@ plugins:
                     - MobiFlight: en/addon/kvm/mobiflight.md
                     - SayIntentions.AI: en/addon/kvm/sayintentions.md
             - Flight Operations:
-                - Overview: en/flight_operations/overview.md
-                - Weather: en/flight_operations/weather.md
+                - en/flight_operations/index.md
+                - Weather:
+                    - en/flight_operations/weather/index.md
+                    - Weather: en/flight_operations/weather/weather.md
                 - ATC:
-                    - Clearance: en/flight_operations/clearance.md
-                    - Pushback & Taxi: en/flight_operations/pushback_taxi.md
-                    - Takeoff: en/flight_operations/takeoff.md
-                    - Departure & Climb: en/flight_operations/departure.md
-                    - En Route: en/flight_operations/enroute.md
-                    - Approach: en/flight_operations/approach.md
-                    - Landing & Taxi In: en/flight_operations/landing.md
+                    - en/flight_operations/atc/index.md
+                    - Clearance: en/flight_operations/atc/clearance.md
+                    - Pushback & Taxi: en/flight_operations/atc/pushback_taxi.md
+                    - Takeoff: en/flight_operations/atc/takeoff.md
+                    - Departure & Climb: en/flight_operations/atc/departure.md
+                    - En Route: en/flight_operations/atc/enroute.md
+                    - Approach: en/flight_operations/atc/approach.md
+                    - Landing & Taxi In: en/flight_operations/atc/landing.md
                 - VATSim:
-                    - Intro: en/flight_operations/vatsim.md
+                    - en/flight_operations/vatsim/index.md
+                    - VATSim: en/flight_operations/vatsim/vatsim.md
             - Glossary: en/glossary.md
             - About: en/about.md
   - git-revision-date-localized:

@@ -6,4 +6,8 @@ The different **flight phases** require varying levels of attention and skills. 
 
 **Aircraft operation** requires both **manual control** and safe handling of **automation** (autopilot). An important aspect is **systems management** and **fuel management** to ensure an efficient and safe flight.
 
-Special attention is required for **special procedures**. These include **Instrument Flight Rules** (IFR) and **Visual Flight Rules** (VFR), as well as **emergency landing procedures** and **airport operations**. Each of these procedures has its own challenges and requires specific knowledge and skills. 
+Special attention is required for **special procedures**. These include **Instrument Flight Rules** (IFR) and **Visual Flight Rules** (VFR), as well as **emergency landing procedures** and **airport operations**. Each of these procedures has its own challenges and requires specific knowledge and skills.
+
+- **[Weather](weather/index.md)** — Weather depiction and simulation in X-Plane
+- **[ATC](atc/index.md)** — Air traffic control communication across all flight phases
+- **[VATSim](vatsim/index.md)** — Online network for realistic air traffic control

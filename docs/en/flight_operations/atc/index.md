@@ -1,0 +1,11 @@
+# ATC
+
+Air traffic control communication across all flight phases — from clearance to landing.
+
+- **[Clearance](clearance.md)** — Flight clearance and IFR clearance
+- **[Pushback & Taxi](pushback_taxi.md)** — Pushback and taxi to runway
+- **[Takeoff](takeoff.md)** — Line up and departure
+- **[Departure & Climb](departure.md)** — Follow the SID and climb
+- **[En Route](enroute.md)** — Cruise flight and frequency changes
+- **[Approach](approach.md)** — Descent and positioning
+- **[Landing & Taxi In](landing.md)** — Landing clearance and taxi to gate
