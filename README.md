@@ -36,4 +36,4 @@ Every page exists in both languages with identical filenames. Navigation is defi
 
 ## License
 
-Content is provided as-is for the X-Plane on Linux community.
+Content is licensed under [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/). See [LICENSE](LICENSE) for the full text.
