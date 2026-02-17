@@ -51,10 +51,14 @@ Der Kernel optimiert Durchsatz durch gebündelte Hintergrundarbeit (Writeback, C
 
 ---
 
-## Weiterführend
+## Weiterführende Kapitel
 
 | Thema | Seite | Schwerpunkt |
 |---|---|---|
 | Kernel-Tuning | [Kernel-Tuning](../../linux/system/systemtuning.md) | Konkrete Parameter für beide Kernel-Profile |
 | Lastdimensionen | [Lastdimensionen](performance_overview.md) | CPU, I/O, Netzwerk — Engpässe erkennen |
+| CPU & RAM | [CPU & RAM](cpu_ram.md) | Threading-Modell, Hauptthread als Engpass |
+| GPU & VRAM | [GPU & VRAM](gpu_vram.md) | Frame-Time-Perzentile, VRAM-Druck |
+| Low-Latency-Kernel | [Liquorix](../../linux/optimizations/liquorix.md) | Scheduler, Preemption-Tuning |
+| Warum Latenz zählt | [Warum Latenz zählt](../../linux/system/latency.md) | Einführung und Video |
 | Monitoring | [System Monitoring](../../linux/system/systemtools.md) | Latenz messen und verifizieren |

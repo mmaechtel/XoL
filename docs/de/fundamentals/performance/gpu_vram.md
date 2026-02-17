@@ -143,13 +143,13 @@ Siehe [System Monitoring](../../linux/system/systemtools.md) für GPU-Monitoring
 
 Nicht nur die Ortho-Texturen, sondern alle VRAM-Verbraucher berücksichtigen: Flugzeug, Rendering-Puffer, Overlays. Ein hochdetailliertes Cockpit-Flugzeug bei ZL 18 kann selbst eine GPU mit großem VRAM-Budget an die Grenze bringen.
 
-## Weiterführend
+## Weiterführende Kapitel
 
-| Thema | Seite |
-|---|---|
-| Threading-Modell und CPU-Budget | [CPU & RAM](cpu_ram.md) |
-| Zusammenspiel der Lastdimensionen | [Performance-Übersicht](performance_overview.md) |
-| GPU-Treiber-Optimierung | [Nvidia](../../linux/optimizations/nvidia.md) |
-| Ortho-Streaming-Konfiguration | [AutoOrtho](../../scenery/ortho_streaming/autoortho.md) |
-| X-Plane Microprofiler | [X-Plane Performance](../../xplane/setup_diagnose/performance.md) |
-| System Monitoring | [Monitoring](../../linux/system/systemtools.md) |
+| Thema | Seite | Schwerpunkt |
+|---|---|---|
+| Threading-Modell und CPU-Budget | [CPU & RAM](cpu_ram.md) | Hauptthread, Multi-Threading, Ortho-CPU-Last |
+| Zusammenspiel der Lastdimensionen | [Performance-Übersicht](performance_overview.md) | CPU, I/O, Netzwerk-Engpässe |
+| GPU-Treiber-Optimierung | [Nvidia](../../linux/optimizations/nvidia.md) | Persistence Mode, Treibertuning |
+| Ortho-Streaming-Konfiguration | [AutoOrtho](../../scenery/ortho_streaming/autoortho.md) | Cache, Prefetching, Tile-Management |
+| X-Plane Microprofiler | [X-Plane Performance](../../xplane/setup_diagnose/performance.md) | Frame-Time-Analyse, Grafikeinstellungen |
+| System Monitoring | [Monitoring](../../linux/system/systemtools.md) | GPU-Monitoring, VRAM-Tracking |

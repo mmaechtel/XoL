@@ -66,10 +66,14 @@ Fuer thematische Gruppen von Behauptungen parallele Subagents starten (Task-Tool
 
 ## EN first — DE nachziehen
 
-1. Analyse und Korrekturen immer zuerst auf der EN-Seite durchfuehren (Quellen sind englisch)
-2. Anschliessend die DE-Seite an die korrigierte EN-Version angleichen
-3. Nicht 1:1 uebersetzen, sondern sinnerhaltend anpassen
+Universelles Arbeitsprinzip fuer alle Skills und manuelle Dokumentationsarbeit:
+
+1. **Lesen und Analysieren** immer mit der EN-Seite beginnen (Quellen, Fachbegriffe und Terminologie sind eindeutiger)
+2. **Aenderungen zuerst in EN** umsetzen (Korrekturen, neue Abschnitte, Umstrukturierungen)
+3. **DE anschliessend angleichen** — sinnerhaltend anpassen, nicht 1:1 uebersetzen
 4. Beide Seiten muessen inhaltlich identisch sein
+
+Dies gilt fuer: Recherche, Faktencheck, Audit, Glossar-Check, Weiterfuehrende-Kapitel-Check und jede andere Bearbeitung von Docs-Seiten.
 
 ---
 

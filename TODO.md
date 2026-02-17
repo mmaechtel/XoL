@@ -8,20 +8,15 @@ Workflow und Phasen-Beschreibung: siehe `CLAUDE.md` → Dokumentations-Workflow.
 
 | Prio  | Datei               | Status      | Thema                                               |
 | ----- | ------------------- | ----------- | --------------------------------------------------- |
-| 1     | `xplane/config.md`  | **geprüft** | X-Plane Konfiguration (Linux-Spezifika)             |
-| **!** | `systemtuning.md`   | **geprüft** | **Governor/Liquorix korrigiert + Erklärungen ergänzt** |
-| 1b    | `systemtuning.md`   | umgesetzt   | Kernel-Wechsel (Debian, Standard ↔ Liquorix)        |
-| 1c    | `systemtools.md`    | **umgesetzt** | Linux-Systemtools (htop, glances, iotop)            |
+| 1b    | `systemtuning.md`   | offen       | Kernel-Wechsel (Debian, Standard ↔ Liquorix)        |
 | 2     | `mesa.md`           | offen       | AMD/Intel GPU-Treiber (Mesa, RADV, Vulkan)          |
 | 3     | `input_devices.md`  | offen       | Joystick, Throttle, Ruderpedal unter Linux          |
-| 4     | `displayserver*.md` | **geprüft** | Display-Server-Wahl für X-Plane |
 | 5     | `audio.md`          | offen       | PipeWire/PulseAudio für X-Plane                     |
 | 6     | `multi_monitor.md`  | offen       | Multi-Monitor und Netzwerk-Rendering                |
 | 7     | `xplane/plugins.md` | offen       | Plugin-Verwaltung unter Linux                       |
 | 8     | `kvm.md`            | offen       | WiP-Abschnitt ausbauen oder entfernen               |
-
-| 11 | `addon/xorganizer.md` | offen | Wine-Installation und Workflow-Hinweise |
-| 12 | Verzeichnisnamen | offen | DE-Verzeichnisnamen in EN-Pfaden (`systemfehler/`, `aufbau_quellen/`, `setup_diagnose/`) auf englische Namen migrieren |
+| 11    | `addon/xorganizer.md` | offen     | Wine-Installation und Workflow-Hinweise             |
+| 12    | Verzeichnisnamen    | offen       | DE-Verzeichnisnamen in EN-Pfaden (`systemfehler/`, `aufbau_quellen/`, `setup_diagnose/`) auf englische Namen migrieren |
 
 ---
 
@@ -41,6 +36,24 @@ Workflow und Phasen-Beschreibung: siehe `CLAUDE.md` → Dokumentations-Workflow.
 
 ---
 
+### 1c. `systemtools.md` — Linux-Systemtools
+
+**Status:** geprüft (Audit abgeschlossen)
+**Nav-Position:** Linux > System > Monitoring
+
+**Ergebnis:** Companion-Seite zu systemtuning.md — Tools zur Verifikation der dort beschriebenen Einstellungen. CPU-Monitoring, IO-Monitoring, Interrupt-Analyse, System-Dashboards, Szenario-Tabelle.
+
+**Research-Papers:**
+
+- `research/systemtools/cpu_monitoring_tools.md`
+- `research/systemtools/io_monitoring_tools.md`
+- `research/systemtools/interrupt_monitoring_tools.md`
+- `research/systemtools/Linux_Monitoring_Tools_Combined.md`
+- `research/systemtools/LEKTORAT_systemtools.md`
+- `research/systemtools/AUDIT_systemtools.md`
+
+---
+
 ### 4. Display-Server (displayserver.md, displayserver_wayland.md, displayserver_x11.md)
 
 **Status:** geprüft
@@ -54,6 +67,19 @@ Workflow und Phasen-Beschreibung: siehe `CLAUDE.md` → Dokumentations-Workflow.
 - `research/display-server/wayland_vs_x11_gaming.md` (Rohdaten: Performance/Latenz)
 - `research/display-server/LEKTORAT_wayland.md`
 - `research/display-server/FAKTENCHECK_displayserver.md`
+
+---
+
+### systemtuning.md — Governor/Liquorix-Korrektur
+
+**Status:** erledigt (Commit e7a201a, 2026-02-14)
+
+- Profil B: `schedutil` → `ondemand` (Governor-Empfehlung + GRUB-Parameter)
+- Vergleichstabelle: `schedutil` → `ondemand`
+- Temporärer Terminal-Befehl zum Governor-Wechsel ergänzt
+- Erklärbox: Warum `ondemand` statt `schedutil` (PDS-Scheduler)
+- `IRQBALANCE_BANNED_CPULIST`: Pfad `/etc/default/irqbalance` dokumentiert
+- `nvme_core.default_ps_max_latency_us=0`: sysfs-Limitierung erklärt + PM-QOS-Workaround ergänzt
 
 ---
 
@@ -105,43 +131,6 @@ Workflow und Phasen-Beschreibung: siehe `CLAUDE.md` → Dokumentations-Workflow.
 
 ---
 
-## Strukturbereinigung: Dateien in Unterverzeichnisse verschieben
-
-Konvention: Jede Nav-Section hat ein eigenes Unterverzeichnis mit `index.md`.
-
-### "Übersicht"-Section — bleibt im Root
-
-- `intro.md`, `begin.md`, `videos.md` bleiben im Root
-- Der Section Index der "Übersicht" ist die Homepage (`index.md`)
-- Ein eigenes Verzeichnis würde zwei Tiefen innerhalb einer Section erzeugen
-
-### "Szenerien"-Section — erledigt
-
-- ✅ `scenery.md`, `scenery_components.md` → `scenery/` verschoben
-- `addon/xorganizer.md` bleibt in `addon/` (im Scenery-Index verlinkt)
-
----
-
-## Korrekturen: Bestehende Seiten
-
-### systemtuning.md — CPU-Governor / Liquorix ~~falsch~~ erledigt
-
-**Status:** erledigt (Commit e7a201a, 2026-02-14)
-
-- ✅ Profil B: `schedutil` → `ondemand` (Governor-Empfehlung + GRUB-Parameter)
-- ✅ Vergleichstabelle: `schedutil` → `ondemand`
-- ✅ Temporärer Terminal-Befehl zum Governor-Wechsel ergänzt
-- ✅ Erklärbox: Warum `ondemand` statt `schedutil` (PDS-Scheduler)
-
-### systemtuning.md — Fehlende Erklärungen — erledigt
-
-**Status:** erledigt (Commit e7a201a, 2026-02-14)
-
-- ✅ `IRQBALANCE_BANNED_CPULIST`: Pfad `/etc/default/irqbalance` dokumentiert
-- ✅ `nvme_core.default_ps_max_latency_us=0`: sysfs-Limitierung erklärt + PM-QOS-Workaround ergänzt
-
----
-
 ## Neue Kapitel
 
 ### systemtuning.md — Kernel-Wechsel (Debian)
@@ -150,34 +139,6 @@ Konvention: Jede Nav-Section hat ein eigenes Unterverzeichnis mit `index.md`.
 **Nav-Position:** Hinter die beiden Kernel-Optimierungs-Profile
 
 Anleitung: Wie man unter Debian zwischen zwei installierten Kerneln (Standard + Liquorix) on-the-fly wechselt. Ergänzendes Kapitel zu den bestehenden Profilen.
-
-### systemtools.md — Linux-Systemtools
-
-**Status:** umgesetzt
-**Nav-Position:** Linux > Optimierungen (nach Systemtuning, vor Dateisystem)
-
-**Research-Papers:**
-
-- `research/systemtools/cpu_monitoring_tools.md`
-- `research/systemtools/io_monitoring_tools.md`
-- `research/systemtools/interrupt_monitoring_tools.md`
-- `research/systemtools/Linux_Monitoring_Tools_Combined.md`
-- `research/systemtools/LEKTORAT_systemtools.md`
-
-**Plan:** Companion-Seite zu systemtuning.md — Tools zur Verifikation der dort beschriebenen Einstellungen.
-
-**Gliederung:**
-
-1. Einleitung + Installation (alle Pakete)
-2. CPU-Monitoring: htop, btop, cpupower, s-tui, turbostat, mpstat
-3. IO-Monitoring: iotop, iostat, ioping, nvme-cli
-4. Interrupt-Analyse: /proc/interrupts, irqtop/lsirq, mpstat -I, Shielding-Verifikation
-5. System-Dashboards: glances (Web-UI), powertop (C-States)
-6. Szenario-Tabelle: Frage → Tool → Befehl
-7. Klappbare Blöcke: nmon, fatrace, perf/ftrace (Fortgeschrittene)
-8. Quellenabschnitt
-
-**Querverweise:** Jedes Tool-Kapitel verweist auf den relevanten systemtuning.md-Abschnitt.
 
 ### addon/xorganizer.md — Wine-Installation und Workflow
 
@@ -206,15 +167,15 @@ Anleitung: Wie man unter Debian zwischen zwei installierten Kerneln (Standard + 
 | ------------------ | ----------------------------------------- | -------------------------------- |
 | `config.md`        | `audio.md`, `input_devices.md`, `mesa.md` | Themen-Vertiefung                |
 | `input_devices.md` | `systemtuning.md`                         | USB-Energiemanagement            |
-| `audio.md`         | `flight_operations/vatsim.md`             | VATSIM-Funk                      |
+| `audio.md`         | `flight_operations/vatsim/vatsim.md`      | VATSIM-Funk                      |
 | `displayserver.md` | `multi_monitor.md`                        | Display-Server bei Multi-Monitor |
 | `mesa.md`          | `systemtuning.md`                         | GPU Power Profile + Governor     |
 | `plugins.md`       | `addon/xorganizer.md`                     | Profil-basierte Verwaltung       |
-| `linux.md`         | Alle neuen Seiten                         | Übersichtsseite erweitern        |
+| `linux/index.md`   | Alle neuen Seiten                         | Übersichtsseite erweitern        |
 
 ## Nach Abschluss aller Seiten
 
-- `linux.md` (DE + EN) — Übersichtsseite erweitern
+- `linux/index.md` (DE + EN) — Übersichtsseite erweitern
 - `glossary.md` (DE + EN) — Neue Einträge: Mesa, RADV, Wayland, PipeWire
 - `mkdocs.yml` — Nav-Einträge in beiden Sprachbäumen
 - `index.md` (DE + EN) — Changelog

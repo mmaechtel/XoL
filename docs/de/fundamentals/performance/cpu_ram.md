@@ -94,12 +94,14 @@ RAM selbst ist selten das primäre Bottleneck. Kritisch wird es in zwei Szenarie
 
 **Empfehlung:** 32 GB RAM bieten ausreichend Spielraum für X-Plane mit Ortho-Streaming. 16 GB funktionieren, lassen aber wenig Reserven für den Page Cache und paralleles Streaming.
 
-## Weiterführend
+## Weiterführende Kapitel
 
-| Thema | Seite |
-|---|---|
-| Zusammenspiel der Lastdimensionen | [Performance-Übersicht](performance_overview.md) |
-| VRAM-Management und Frame-Time-Analyse | [GPU & VRAM](gpu_vram.md) |
-| IRQ-Pinning und CPU-Affinität | [Systemtuning](../../linux/system/systemtuning.md) |
-| I/O-Scheduler und Dateisystem | [Dateisystem](../../linux/optimizations/filesystem.md) |
-| Ortho-Streaming-Konfiguration | [AutoOrtho](../../scenery/ortho_streaming/autoortho.md) |
+| Thema | Seite | Schwerpunkt |
+|---|---|---|
+| Zusammenspiel der Lastdimensionen | [Performance-Übersicht](performance_overview.md) | CPU, I/O, Netzwerk-Engpässe |
+| VRAM-Management | [GPU & VRAM](gpu_vram.md) | Texture Paging, Frame-Time-Perzentile |
+| Latenzquellen | [Latenz und Vorhersagbarkeit](latency.md) | Scheduling, Interrupts, Power States |
+| IRQ-Pinning und CPU-Affinität | [Systemtuning](../../linux/system/systemtuning.md) | CPU Governor, Kernel-Parameter |
+| I/O-Scheduler und Dateisystem | [Dateisystem](../../linux/optimizations/filesystem.md) | Mount-Optionen, TRIM |
+| Ortho-Streaming-Konfiguration | [AutoOrtho](../../scenery/ortho_streaming/autoortho.md) | Cache, Prefetching |
+| Low-Latency-Kernel | [Liquorix](../../linux/optimizations/liquorix.md) | Scheduler, Preemption |

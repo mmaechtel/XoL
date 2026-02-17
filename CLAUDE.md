@@ -89,7 +89,7 @@ Gleicher Skill-Durchlauf, direkt nach der Recherche.
 
 Wird vom User explizit gestartet, nicht durch einen Skill.
 
-- DE- und EN-Seiten schreiben (parallel, gleiche Struktur)
+- EN-Seite zuerst schreiben, dann DE angleichen (gleiche Struktur)
 - Bestehende Seiten anpassen (Querverweise, Glossar)
 - `mkdocs.yml` Navigation aktualisieren (beide Sprachbäume)
 - `docs/{lang}/index.md` Changelog ergänzen
@@ -181,6 +181,7 @@ Bei neuen Themen: bestehende Kategorie verwenden oder neue anlegen. `research/IN
 | `/faktencheck` | 4 | Faktenprüfung gegen Primärquellen, Korrekturen, Quellenabschnitt. |
 | `/audit` | 5 | Content Audit einer EN-Seite gemäß `research/AUDIT_FLOW.md`. |
 | `/check-glossar` | nach Umsetzung | Glossar-Abdeckung prüfen, fehlende Verlinkungen ergänzen, Markdown-Check |
+| `/check-weiterfuehrend` | nach Umsetzung | „Weiterführende Kapitel"-Abschnitt prüfen/ergänzen (Verzeichnis als Parameter) |
 | `/embed-videos` | Umsetzung | MP4-Videos einbetten (Video-Seite + thematische Seiten), Poster generieren |
 | `/generate-notebooklm` | nach Umsetzung | TTS-optimiertes Skript für Google NotebookLM Audio Overview erstellen |
 | `/verify-commands` | nach Umsetzung | Dokumentierte Shell-Befehle interaktiv auf dem Debian-System testen |
@@ -190,6 +191,7 @@ Bei neuen Themen: bestehende Kategorie verwenden oder neue anlegen. `research/IN
 
 ## Inhaltliche Regeln
 
+- **EN first:** Alle Analyse, Recherche und Bearbeitung beginnt mit der EN-Version. DE wird anschließend angeglichen. Details in `SKILL_RULES.md`.
 - **Quellenaktualität:** Nur Quellen ab 2024 aufwärts verwenden. Ältere Quellen nur, wenn keine aktuellere Alternative existiert und die Information nachweislich stabil ist (z.B. Kernel-Docs, POSIX-Standards).
 - **Nur Linux-Spezifika:** Plattformunabhängige X-Plane-Einstellungen nicht dokumentieren
 - **Versionsnummern minimieren:** Entscheidungsbaum in `research/AUDIT_FLOW.md` → Abschnitt "Versionsnummern". Kurzregel: Harte Mindestanforderungen und Verhaltens-Grenzen behalten, illustrative Versionen entfernen, Tabellen sind OK. Im Zweifel: Meta-Formulierung + Verifikationsbefehl.

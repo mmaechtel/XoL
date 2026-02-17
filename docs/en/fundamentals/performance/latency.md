@@ -57,4 +57,8 @@ The kernel optimizes throughput through batched background work (writeback, cach
 |---|---|---|
 | Kernel Tuning | [Kernel Tuning](../../linux/system/systemtuning.md) | Concrete parameters for both kernel profiles |
 | Load Dimensions | [Load Dimensions](performance_overview.md) | CPU, I/O, network — identifying bottlenecks |
+| CPU & RAM | [CPU & RAM](cpu_ram.md) | Threading model, main thread as bottleneck |
+| GPU & VRAM | [GPU & VRAM](gpu_vram.md) | Frame time percentiles, VRAM pressure |
+| Low-Latency Kernel | [Liquorix](../../linux/optimizations/liquorix.md) | Scheduler, preemption tuning |
+| Why Latency Matters | [Why Latency Matters](../../linux/system/latency.md) | Introduction and video |
 | Monitoring | [System Monitoring](../../linux/system/systemtools.md) | Measuring and verifying latency |

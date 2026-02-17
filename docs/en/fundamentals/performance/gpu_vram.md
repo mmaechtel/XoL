@@ -145,11 +145,11 @@ Consider not just ortho textures but all VRAM consumers: aircraft, rendering buf
 
 ## Further Reading
 
-| Topic | Page |
-|---|---|
-| Threading model and CPU budget | [CPU & RAM](cpu_ram.md) |
-| Load dimension interactions | [Performance Overview](performance_overview.md) |
-| GPU driver optimization | [Nvidia](../../linux/optimizations/nvidia.md) |
-| Ortho streaming configuration | [AutoOrtho](../../scenery/ortho_streaming/autoortho.md) |
-| X-Plane Microprofiler | [X-Plane Performance](../../xplane/setup_diagnose/performance.md) |
-| System Monitoring | [Monitoring](../../linux/system/systemtools.md) |
+| Topic | Page | Focus |
+|---|---|---|
+| Threading model and CPU budget | [CPU & RAM](cpu_ram.md) | Main thread, multi-threading, ortho CPU load |
+| Load dimension interactions | [Performance Overview](performance_overview.md) | CPU, I/O, network bottlenecks |
+| GPU driver optimization | [Nvidia](../../linux/optimizations/nvidia.md) | Persistence mode, driver tuning |
+| Ortho streaming configuration | [AutoOrtho](../../scenery/ortho_streaming/autoortho.md) | Cache, prefetching, tile management |
+| X-Plane Microprofiler | [X-Plane Performance](../../xplane/setup_diagnose/performance.md) | Frame time analysis, graphics settings |
+| System Monitoring | [Monitoring](../../linux/system/systemtools.md) | GPU monitoring, VRAM tracking |

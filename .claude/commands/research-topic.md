@@ -223,7 +223,7 @@ PLAN:
 ## Hinweise
 
 - **Keine Umsetzung:** Dieser Skill schreibt keine Dokumentationsseiten. Er liefert nur die Grundlage.
-- **EN first:** Research-Paper in Deutsch, aber EN-Quellen bevorzugen
+- **EN first:** Bestehende Docs-Seiten immer in der EN-Version analysieren (gemaess `SKILL_RULES.md`). Research-Papers werden in Deutsch geschrieben (internes Arbeitsdokument), aber EN-Quellen bevorzugen
 - **Quellen:** Gemaess `SKILL_RULES.md` → **Quellenstrategie**
 - **Versionsnummern:** Entscheidungsbaum in `research/AUDIT_FLOW.md` beachten
 - **INDEX.md pflegen:** Jedes neue Paper muss im Index eingetragen werden

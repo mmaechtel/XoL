@@ -96,10 +96,12 @@ RAM itself is rarely the primary bottleneck. It becomes critical in two scenario
 
 ## Further Reading
 
-| Topic | Page |
-|---|---|
-| Load dimension interactions | [Performance Overview](performance_overview.md) |
-| VRAM management and frame time analysis | [GPU & VRAM](gpu_vram.md) |
-| IRQ pinning and CPU affinity | [System Tuning](../../linux/system/systemtuning.md) |
-| I/O scheduler and filesystem | [Filesystem](../../linux/optimizations/filesystem.md) |
-| Ortho streaming configuration | [AutoOrtho](../../scenery/ortho_streaming/autoortho.md) |
+| Topic | Page | Focus |
+|---|---|---|
+| Load dimension interactions | [Performance Overview](performance_overview.md) | CPU, I/O, network bottlenecks |
+| VRAM management | [GPU & VRAM](gpu_vram.md) | Texture paging, frame time percentiles |
+| Latency sources | [Latency and Predictability](latency.md) | Scheduling, interrupts, power states |
+| IRQ pinning and CPU affinity | [System Tuning](../../linux/system/systemtuning.md) | CPU governor, kernel parameters |
+| I/O scheduler and filesystem | [Filesystem](../../linux/optimizations/filesystem.md) | Mount options, TRIM |
+| Ortho streaming configuration | [AutoOrtho](../../scenery/ortho_streaming/autoortho.md) | Cache, prefetching |
+| Low-latency kernel | [Liquorix](../../linux/optimizations/liquorix.md) | Scheduler, preemption |
