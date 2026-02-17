@@ -118,10 +118,11 @@ Prozess-Dateien für Content Audit. Kein direktes Docs-Mapping.
 
 ## performance_overview
 
-Docs: `docs/en/fundamentals/performance_overview.md`
+Docs: `docs/en/fundamentals/performance/performance_overview.md`, `cpu_ram.md`, `gpu_vram.md`
 
 ### HOCH
 - performance_overview/performance-analyse-simulationssoftware.md -> performance_overview.md
+- performance_overview/vram_cpu_ortho_streaming.md -> cpu_ram.md, gpu_vram.md
 
 ## sonstige
 

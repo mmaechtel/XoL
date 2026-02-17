@@ -176,7 +176,7 @@ Für technische Begriffe steht das [Glossar](glossary.md) zur Verfügung.
 
 Nach einer erfolgreichen Installation geht es weiter mit:
 
-1. [Performance](fundamentals/performance_overview.md) — Die drei Lastdimensionen verstehen (CPU, I/O, Netzwerk)
+1. [Performance](fundamentals/performance/performance_overview.md) — Die drei Lastdimensionen verstehen (CPU, I/O, Netzwerk)
 2. [NVIDIA-Treiber](optimizations/nvidia.md) — Proprietäre NVIDIA-Treiber installieren und konfigurieren
 3. [Liquorix-Kernel](optimizations/liquorix.md) — Low-Latency-Kernel optimiert für Desktop-Workloads
 4. [System-Tuning](system/systemtuning.md) — CPU-Governor, Interrupt-Shielding und Kernel-Parameter

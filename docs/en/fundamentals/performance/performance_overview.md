@@ -1,8 +1,8 @@
 # Performance
 
 <div class="video-container" markdown>
-<video controls width="100%" preload="metadata" aria-label="Video: The Performance Puzzle" poster="../assets/video/en/The_Performance_Puzzle/The_Performance_Puzzle.jpg">
-  <source src="../assets/video/en/The_Performance_Puzzle/The_Performance_Puzzle.mp4" type="video/mp4">
+<video controls width="100%" preload="metadata" aria-label="Video: The Performance Puzzle" poster="../../assets/video/en/The_Performance_Puzzle/The_Performance_Puzzle.jpg">
+  <source src="../../assets/video/en/The_Performance_Puzzle/The_Performance_Puzzle.mp4" type="video/mp4">
 </video>
 </div>
 
@@ -19,14 +19,14 @@ X-Plane stresses three hardware subsystems simultaneously, each with its own bot
 | Load Dimension | Primary Resource | Typical Bottleneck |
 |---|---|---|
 | CPU Compute | Processor cores, cache, RAM | Clock speed, IPC, cache misses |
-| Local I/O | Storage subsystem (SSD/[NVMe](../glossary.md#nvme-non-volatile-memory-express)) | IOPS, throughput, [latency](../glossary.md#latency) |
+| Local I/O | Storage subsystem (SSD/[NVMe](../../glossary.md#nvme-non-volatile-memory-express)) | IOPS, throughput, [latency](../../glossary.md#latency) |
 | Network Streaming | Network interface, WAN connection | Bandwidth, jitter, packet loss |
 
 **The weakest link determines overall performance — and that weakest link shifts dynamically.** During scenery loading, local I/O dominates (textures loading); in flight, the CPU takes over (physics and rendering); with ortho streaming, the network becomes critical. None of these dimensions can be considered in isolation.
 
 ## CPU-Bound Performance
 
-X-Plane's physics model is based on [Blade Element Theory](../glossary.md#blade-element-theory): the aircraft is divided into numerous segments, with airflow and forces calculated in real-time for each one. This computation runs on the main thread, making it heavily dependent on single-core performance.
+X-Plane's physics model is based on [Blade Element Theory](../../glossary.md#blade-element-theory): the aircraft is divided into numerous segments, with airflow and forces calculated in real-time for each one. This computation runs on the main thread, making it heavily dependent on single-core performance.
 
 ### IPC and Microarchitecture
 
@@ -50,9 +50,9 @@ The symptom in X-Plane: FPS drops at densely built-up scenery or complex airport
 
 ### Interrupt Load and Context Switches
 
-When the processor simultaneously handles [IRQ](../glossary.md#irq-interrupt-request) requests from [NVMe](../glossary.md#nvme-non-volatile-memory-express) SSDs and the network interface, compute cores get pulled out of their calculation loops. Each context switch costs not only CPU cycles but also invalidates cache lines and disrupts pipelining. Without dedicated IRQ pinning, this can lead to sporadic micro-stutters — brief [frame time](../glossary.md#frame-time) spikes that are difficult to reproduce.
+When the processor simultaneously handles [IRQ](../../glossary.md#irq-interrupt-request) requests from [NVMe](../../glossary.md#nvme-non-volatile-memory-express) SSDs and the network interface, compute cores get pulled out of their calculation loops. Each context switch costs not only CPU cycles but also invalidates cache lines and disrupts pipelining. Without dedicated IRQ pinning, this can lead to sporadic micro-stutters — brief [frame time](../../glossary.md#frame-time) spikes that are difficult to reproduce.
 
-See [System Tuning](../system/systemtuning.md) for IRQ pinning and [CPU affinity](../glossary.md#cpu-affinity)
+See [System Tuning](../../system/systemtuning.md) for IRQ pinning and [CPU affinity](../../glossary.md#cpu-affinity)
 
 ## Local I/O Performance
 
@@ -67,13 +67,13 @@ Local I/O load comes from loading scenery data, textures, meshes, and autogen ob
 | NVMe SSD (PCIe 4.0) | ~7,000 MB/s | ~800,000–1,000,000 | 20–50 µs |
 | NVMe SSD (PCIe 5.0) | ~12,000 MB/s | ~1,500,000+ | 15–40 µs |
 
-For X-Plane, both sequential throughput (large texture files) and IOPS (many small scenery files) matter. [NVMe](../glossary.md#nvme-non-volatile-memory-express) SSDs offer a 10x+ advantage over SATA SSDs in sequential throughput; the gap in IOPS is similarly large.
+For X-Plane, both sequential throughput (large texture files) and IOPS (many small scenery files) matter. [NVMe](../../glossary.md#nvme-non-volatile-memory-express) SSDs offer a 10x+ advantage over SATA SSDs in sequential throughput; the gap in IOPS is similarly large.
 
 ### Filesystem and I/O Scheduler
 
-Even with fast hardware, the I/O stack can become a bottleneck. The [I/O scheduler](../glossary.md#io-scheduler) affects latency during mixed read/write workloads, and the filesystem — [Ext4](../glossary.md#ext4-fourth-extended-filesystem), [Btrfs](../glossary.md#btrfs-b-tree-filesystem), or XFS — comes with different journaling strategies.
+Even with fast hardware, the I/O stack can become a bottleneck. The [I/O scheduler](../../glossary.md#io-scheduler) affects latency during mixed read/write workloads, and the filesystem — [Ext4](../../glossary.md#ext4-fourth-extended-filesystem), [Btrfs](../../glossary.md#btrfs-b-tree-filesystem), or XFS — comes with different journaling strategies.
 
-See [Filesystem](../optimizations/filesystem.md) for I/O scheduler, [noatime](../glossary.md#noatime), and [TRIM](../glossary.md#trim) configuration
+See [Filesystem](../../optimizations/filesystem.md) for I/O scheduler, [noatime](../../glossary.md#noatime), and [TRIM](../../glossary.md#trim) configuration
 
 ### Page Cache Pressure
 
@@ -83,7 +83,7 @@ A practical problem with large scenery installations: when X-Plane reads data he
 
 Network I/O plays a growing role in X-Plane. Three typical scenarios generate continuous data traffic:
 
-- **Ortho Streaming:** [AutoOrtho](../glossary.md#autoortho) streams [orthophotos](../glossary.md#orthophotos) in real-time from the server instead of storing them locally. The data stream must flow fast enough for textures to load before you fly over them.
+- **Ortho Streaming:** [AutoOrtho](../../glossary.md#autoortho) streams [orthophotos](../../glossary.md#orthophotos) in real-time from the server instead of storing them locally. The data stream must flow fast enough for textures to load before you fly over them.
 - **Weather Data:** Real-time weather services deliver wind fields, cloud layers, and precipitation data over the network.
 - **VATSIM/Online ATC:** Multiplayer networks generate bidirectional data traffic for position reports and voice communication.
 
@@ -97,7 +97,7 @@ Streaming software assumes that data flows at a steady rate. In practice, that's
 
 ### Impact on the Simulation
 
-When the network stream stalls, X-Plane lacks the texture data for the current viewing area. The result: blurry or missing ground textures, loading stutters, and [frame time](../glossary.md#frame-time) spikes. With ortho streaming in particular, every interruption is immediately visible because [AutoOrtho](../glossary.md#autoortho) provides textures through a [FUSE](../glossary.md#fuse-filesystem-in-userspace) filesystem — X-Plane sees an I/O request that's waiting on network data.
+When the network stream stalls, X-Plane lacks the texture data for the current viewing area. The result: blurry or missing ground textures, loading stutters, and [frame time](../../glossary.md#frame-time) spikes. With ortho streaming in particular, every interruption is immediately visible because [AutoOrtho](../../glossary.md#autoortho) provides textures through a [FUSE](../../glossary.md#fuse-filesystem-in-userspace) filesystem — X-Plane sees an I/O request that's waiting on network data.
 
 ## Interactions Between Dimensions
 
@@ -107,7 +107,7 @@ The three load dimensions share CPU cycles and memory bandwidth. An example: X-P
 
 ### PCIe Bandwidth Distribution
 
-The GPU, [NVMe](../glossary.md#nvme-non-volatile-memory-express) SSD, and network interface share the available PCIe lanes from the CPU. On a typical desktop processor, simultaneous use of a GPU (16 lanes), an NVMe SSD (4 lanes), and a network interface can exhaust the available PCIe capacity.
+The GPU, [NVMe](../../glossary.md#nvme-non-volatile-memory-express) SSD, and network interface share the available PCIe lanes from the CPU. On a typical desktop processor, simultaneous use of a GPU (16 lanes), an NVMe SSD (4 lanes), and a network interface can exhaust the available PCIe capacity.
 
 ??? abstract "Background: PCIe Bandwidth"
 
@@ -127,9 +127,9 @@ This pattern can briefly overload the system and delay subsequent frames — a s
 
 ## The Frame as a Unit of Measurement
 
-All three load dimensions affect the same metric: [frame time](../glossary.md#frame-time). A frame time of 33 ms corresponds to ~30 [FPS](../glossary.md#fps-frames-per-second), 16.6 ms corresponds to ~60 FPS. Any spike in one of the three dimensions — a cache miss, an I/O stall, a network hiccup — directly impacts frame time.
+All three load dimensions affect the same metric: [frame time](../../glossary.md#frame-time). A frame time of 33 ms corresponds to ~30 [FPS](../../glossary.md#fps-frames-per-second), 16.6 ms corresponds to ~60 FPS. Any spike in one of the three dimensions — a cache miss, an I/O stall, a network hiccup — directly impacts frame time.
 
-Why consistent frame times matter more than high FPS, and how to diagnose frame time issues with the Microprofiler, is covered in the [System Tuning](../system/systemtuning.md) and [X-Plane Performance](../xplane/performance.md) chapters.
+Why consistent frame times matter more than high FPS, and how to diagnose frame time issues with the Microprofiler, is covered in the [System Tuning](../../system/systemtuning.md) and [X-Plane Performance](../../xplane/performance.md) chapters.
 
 ## Optimization Approaches Overview
 
@@ -137,32 +137,32 @@ The following strategies address the described load dimensions. Each is covered 
 
 **Caching and Prefetching**
 
-- AutoOrtho buffers streamed textures locally on the [NVMe](../glossary.md#nvme-non-volatile-memory-express) SSD before X-Plane requests them — the most important protection against streaming interruptions
+- AutoOrtho buffers streamed textures locally on the [NVMe](../../glossary.md#nvme-non-volatile-memory-express) SSD before X-Plane requests them — the most important protection against streaming interruptions
 - Cache size and prefetch behavior can be configured in AutoOrtho
-- A filesystem with [noatime](../glossary.md#noatime) and an appropriate [I/O scheduler](../glossary.md#io-scheduler) further reduces I/O path overhead
-- See [AutoOrtho](../scenery/ortho_streaming/autoortho.md) and [Filesystem](../optimizations/filesystem.md)
+- A filesystem with [noatime](../../glossary.md#noatime) and an appropriate [I/O scheduler](../../glossary.md#io-scheduler) further reduces I/O path overhead
+- See [AutoOrtho](../../scenery/ortho_streaming/autoortho.md) and [Filesystem](../../optimizations/filesystem.md)
 
 **IRQ Pinning and Thread Affinity**
 
-- Pin network [IRQs](../glossary.md#irq-interrupt-request) and I/O threads to dedicated CPU cores so the X-Plane main thread can compute undisturbed
-- Configure [irqbalance](../glossary.md#irqbalance) to keep specific cores free from interrupts
-- See [System Tuning](../system/systemtuning.md)
+- Pin network [IRQs](../../glossary.md#irq-interrupt-request) and I/O threads to dedicated CPU cores so the X-Plane main thread can compute undisturbed
+- Configure [irqbalance](../../glossary.md#irqbalance) to keep specific cores free from interrupts
+- See [System Tuning](../../system/systemtuning.md)
 
 **Monitoring and Profiling**
 
 - Monitor CPU utilization per core — idle cores during simulation indicate I/O stalls
 - Measure I/O latency and network throughput in parallel to identify the active bottleneck dimension
-- See [System Monitoring](../system/systemtools.md)
+- See [System Monitoring](../../system/systemtools.md)
 
 ## Further Reading
 
 | Topic | Page | Focus |
 |---|---|---|
-| System Tuning | [Introduction](../system/index.md) | Overview and video |
-| CPU & Interrupts | [Tuning](../system/systemtuning.md) | [CPU governor](../glossary.md#cpu-governor), IRQ pinning, [kernel parameters](../glossary.md#kernel-parameter) |
-| Storage & Filesystem | [Filesystem](../optimizations/filesystem.md) | I/O scheduler, mount options, TRIM |
-| Monitoring | [System Monitoring](../system/systemtools.md) | CPU, I/O, and network analysis |
-| X-Plane Internals | [Performance](../xplane/performance.md) | Microprofiler, FPS display, graphics settings |
-| Ortho Streaming | [AutoOrtho](../scenery/ortho_streaming/autoortho.md) | Cache configuration, prefetching |
-| GPU Driver | [Nvidia](../optimizations/nvidia.md) | Driver optimization, persistence mode |
-| Kernel | [Liquorix](../optimizations/liquorix.md) | Low-latency kernel, scheduler |
+| System Tuning | [Introduction](../../system/index.md) | Overview and video |
+| CPU & Interrupts | [Tuning](../../system/systemtuning.md) | [CPU governor](../../glossary.md#cpu-governor), IRQ pinning, [kernel parameters](../../glossary.md#kernel-parameter) |
+| Storage & Filesystem | [Filesystem](../../optimizations/filesystem.md) | I/O scheduler, mount options, TRIM |
+| Monitoring | [System Monitoring](../../system/systemtools.md) | CPU, I/O, and network analysis |
+| X-Plane Internals | [Performance](../../xplane/performance.md) | Microprofiler, FPS display, graphics settings |
+| Ortho Streaming | [AutoOrtho](../../scenery/ortho_streaming/autoortho.md) | Cache configuration, prefetching |
+| GPU Driver | [Nvidia](../../optimizations/nvidia.md) | Driver optimization, persistence mode |
+| Kernel | [Liquorix](../../optimizations/liquorix.md) | Low-latency kernel, scheduler |

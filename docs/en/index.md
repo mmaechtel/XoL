@@ -6,7 +6,7 @@ This documentation covers setup and optimization of X-Plane 12 (Laminar Research
 
 - **Why Linux?** [Introduction](intro.md) explains what makes X-Plane on Linux different.
 - **New to X-Plane on Linux?** [Getting Started](begin.md) covers system requirements, installation, and first launch.
-- **X-Plane already running?** [Performance](fundamentals/performance_overview.md) explains the three load dimensions (CPU, I/O, network) before diving into [System Tuning](system/systemtuning.md).
+- **X-Plane already running?** [Performance](fundamentals/performance/performance_overview.md) explains the three load dimensions (CPU, I/O, network) before diving into [System Tuning](system/systemtuning.md).
 
 ## About This Documentation
 
@@ -32,6 +32,10 @@ This documentation is an open project. Improvements or additions can be contribu
 
 ## Recent Changes
 
+### 2026-02-17
+- New pages: [CPU & RAM](fundamentals/performance/cpu_ram.md) — Threading model and system memory, [GPU & VRAM](fundamentals/performance/gpu_vram.md) — Texture paging, driver differences and frame time analysis
+- [Performance](fundamentals/performance/index.md) restructured as sub-section with three chapters
+
 ### 2026-02-16
 - New video: [Display Server](optimizations/displayserver.md) — X11 vs Wayland decision guide
 - New videos: [Introduction](intro.md) — guided tour through XoL (DE + EN)
@@ -40,12 +44,8 @@ This documentation is an open project. Improvements or additions can be contribu
 ### 2026-02-15
 - New addon pages: [SGES](addon/flylua_scripts/sges.md), [KabinXP](addon/cockpit/kabinxp.md), [LST](addon/scenery_addons/lst.md), [LinuxTrack](addon/cockpit/linuxtrack.md), [XLinSpeak](addon/tools/xlinspeak.md), [WINCTRL](addon/tools/winctrl.md), [TerrainRadar](addon/cockpit/terrainradar.md), [NOAA Weather](addon/scenery_addons/noaa_weather.md), [MobiFlight](addon/kvm/mobiflight.md), [SayIntentions.AI](addon/kvm/sayintentions.md)
 - New Sounds category: [KOSP Project](addon/sounds/kosp_project.md), [Mango Studios](addon/sounds/mango_studios.md)
-- New page [Performance](fundamentals/performance_overview.md)
+- New page [Performance](fundamentals/performance/performance_overview.md)
 - ATC section: 6 flight phase pages ([Pushback & Taxi](flight_operations/atc/pushback_taxi.md), [Takeoff](flight_operations/atc/takeoff.md), [Departure & Climb](flight_operations/atc/departure.md), [En Route](flight_operations/atc/enroute.md), [Approach](flight_operations/atc/approach.md), [Landing & Taxi In](flight_operations/atc/landing.md))
 - [FlyWithLua](addon/scripting/flywithlua.md): general script installation guide added
-
-### 2026-02-14
-- New page [System Tuning Introduction](system/index.md), videos embedded (DE + EN)
-- [Glossary](glossary.md) expanded
 
 

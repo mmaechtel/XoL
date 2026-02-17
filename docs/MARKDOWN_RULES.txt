@@ -70,7 +70,11 @@ docs/{lang}/
 │
 ├── fundamentals/             # Section: Grundlagen
 │   ├── index.md              #   Section Index
-│   └── performance_overview.md
+│   └── performance/          #   Subsection: Performance
+│       ├── index.md          #     Section Index
+│       ├── performance_overview.md
+│       ├── cpu_ram.md
+│       └── gpu_vram.md
 │
 ├── linux/                    # Section: Linux (Tab)
 │   └── index.md              #   Section Index

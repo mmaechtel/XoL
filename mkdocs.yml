@@ -99,7 +99,11 @@ plugins:
                 - Videos: de/videos.md
             - Grundlagen:
                 - de/fundamentals/index.md
-                - Performance: de/fundamentals/performance_overview.md
+                - Performance:
+                    - de/fundamentals/performance/index.md
+                    - Übersicht: de/fundamentals/performance/performance_overview.md
+                    - CPU & RAM: de/fundamentals/performance/cpu_ram.md
+                    - GPU & VRAM: de/fundamentals/performance/gpu_vram.md
             - Linux:
                 - de/linux/index.md
                 - System:
@@ -234,7 +238,11 @@ plugins:
                 - Videos: en/videos.md
             - Fundamentals:
                 - en/fundamentals/index.md
-                - Performance: en/fundamentals/performance_overview.md
+                - Performance:
+                    - en/fundamentals/performance/index.md
+                    - Overview: en/fundamentals/performance/performance_overview.md
+                    - CPU & RAM: en/fundamentals/performance/cpu_ram.md
+                    - GPU & VRAM: en/fundamentals/performance/gpu_vram.md
             - Linux:
                 - en/linux/index.md
                 - System:
