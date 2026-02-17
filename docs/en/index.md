@@ -33,6 +33,7 @@ This documentation is an open project. Improvements or additions can be contribu
 ## Recent Changes
 
 ### 2026-02-17
+- New page [Latency and Predictability](fundamentals/performance/latency.md) — Why latency matters more than throughput, four latency sources
 - Complete restructure: All sections split into thematic subdirectories with section index pages — content summaries cascade from deepest level upward
 - New pages: [CPU & RAM](fundamentals/performance/cpu_ram.md) — Threading model and system memory, [GPU & VRAM](fundamentals/performance/gpu_vram.md) — Texture paging, driver differences and frame time analysis
 - New page: [Why Latency Matters](linux/system/latency.md) — Video introduction to the tuning philosophy
