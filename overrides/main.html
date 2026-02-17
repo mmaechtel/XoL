@@ -8,3 +8,23 @@
 <a class="skip-link" href="#__content">Skip to content</a>
 {{ super() }}
 {% endblock %}
+
+{% block scripts %}
+{{ super() }}
+{% if page and page.file %}
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+  var link = document.querySelector('.md-social__link[href*="issues"]');
+  if (!link) return;
+
+  var h1 = document.querySelector('article h1');
+  var title = h1 ? h1.textContent.replace(/¶$/, '').trim() : '';
+
+  link.href = 'https://github.com/mmaechtel/XoL/issues/new'
+    + '?template=docs-feedback.yml'
+    + '&title=' + encodeURIComponent('[' + title + '] ')
+    + '&page=' + encodeURIComponent(location.href);
+});
+</script>
+{% endif %}
+{% endblock %}

@@ -1,0 +1,56 @@
+name: Documentation Feedback
+description: Report an error, suggest an improvement, or request new content
+title: "[Docs] "
+labels: ["documentation"]
+body:
+  - type: dropdown
+    id: type
+    attributes:
+      label: Type
+      description: What kind of issue is this?
+      options:
+        - Factual error
+        - Outdated information
+        - Missing content
+        - Unclear or confusing
+        - Broken link
+        - Typo or grammar
+        - Other
+    validations:
+      required: true
+
+  - type: input
+    id: page
+    attributes:
+      label: Page
+      description: Which page is affected? Paste the URL or page title.
+      placeholder: "e.g. https://emvisio.com/en/linux/system/systemtuning.html"
+    validations:
+      required: true
+
+  - type: textarea
+    id: description
+    attributes:
+      label: Description
+      description: What needs to change and why?
+      placeholder: "Describe the issue..."
+    validations:
+      required: true
+
+  - type: textarea
+    id: suggestion
+    attributes:
+      label: Suggested Fix
+      description: "Optional: How should it read instead?"
+      placeholder: "Your suggestion..."
+    validations:
+      required: false
+
+  - type: input
+    id: source
+    attributes:
+      label: Source
+      description: "Where does your information come from? Link to docs, wiki, commit, etc."
+      placeholder: "e.g. https://docs.kernel.org/... or 'tested on Debian 12.8'"
+    validations:
+      required: false
