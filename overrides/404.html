@@ -1,0 +1,40 @@
+{% extends "main.html" %}
+
+{% block content %}
+<div style="text-align: center; padding: 3rem 1rem;">
+
+  <h1><span style="display:inline-block; transform:rotate(130deg); font-size:3rem;">✈</span> 404</h1>
+
+  <div id="msg-de" style="display:none;">
+    <h2>Diese Seite wurde nicht gefunden</h2>
+    <p>Die Dokumentation wurde kürzlich umstrukturiert — die gesuchte Seite ist vermutlich unter einer neuen Adresse erreichbar.</p>
+    <p>
+      <a href="#__search" class="md-button md-button--primary" onclick="openSearch()">🔍 Suche öffnen</a>
+      <a href="/" class="md-button">Startseite</a>
+    </p>
+  </div>
+
+  <div id="msg-en" style="display:none;">
+    <h2>Page not found</h2>
+    <p>This documentation was recently restructured — the page you are looking for has likely moved to a new location.</p>
+    <p>
+      <a href="#__search" class="md-button md-button--primary" onclick="openSearch()">🔍 Open search</a>
+      <a href="/en/" class="md-button">Home page</a>
+    </p>
+  </div>
+
+</div>
+
+<script>
+  document.getElementById(
+    location.pathname.startsWith("/en/") ? "msg-en" : "msg-de"
+  ).style.display = "block";
+
+  function openSearch() {
+    var toggle = document.querySelector("[data-md-toggle=search]");
+    if (toggle) { toggle.checked = true; }
+    var input = document.querySelector(".md-search__input");
+    if (input) { input.focus(); }
+  }
+</script>
+{% endblock %}
