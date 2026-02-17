@@ -9,6 +9,27 @@
 {{ super() }}
 {% endblock %}
 
+{% block extrahead %}
+{{ super() }}
+{% if page and page.file %}
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebPage",
+  "name": "{{ page.title | e }}",
+  "description": "{{ page.meta.description | default(config.site_description) | e }}",
+  "url": "{{ page.canonical_url }}",
+  "inLanguage": "{{ config.theme.language | default('en') }}",
+  "isPartOf": {
+    "@type": "WebSite",
+    "name": "{{ config.site_name | e }}",
+    "url": "{{ config.site_url }}"
+  }
+}
+</script>
+{% endif %}
+{% endblock %}
+
 {% block scripts %}
 {{ super() }}
 {% if page and page.file %}

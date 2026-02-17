@@ -71,8 +71,8 @@ elif [ ! -d docs/assets/video/ ]; then
     echo "Recreated symlink: docs/assets/video -> $VIDEO_SRC"
 fi
 
-# Copy .htaccess to disable directory listing
-cp .htaccess site/
+# Copy root-level files to site/
+cp .htaccess robots.txt llms.txt site/
 
 # Rsync options:
 #   --delete          Remove files on server that are not in site/

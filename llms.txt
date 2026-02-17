@@ -1,0 +1,32 @@
+# XoL — X-Plane on Linux
+
+> Comprehensive documentation for running and optimizing X-Plane 12 on Linux. Covers system tuning, GPU drivers, display server selection, scenery management, ATC procedures, and a catalog of Linux-compatible addons and plugins.
+
+- Website: https://emvisio.com/
+- Languages: English, German
+- License: CC BY 4.0
+- Source: https://github.com/mmaechtel/XoL
+
+## Sections
+
+- [Performance Fundamentals](https://emvisio.com/en/fundamentals/performance/performance_overview.html): CPU, GPU, and I/O load dimensions in X-Plane
+- [Latency and Predictability](https://emvisio.com/en/fundamentals/performance/latency.html): Why latency matters more than throughput
+- [CPU & RAM](https://emvisio.com/en/fundamentals/performance/cpu_ram.html): Threading model and system memory
+- [GPU & VRAM](https://emvisio.com/en/fundamentals/performance/gpu_vram.html): Texture paging, driver differences, frame time analysis
+- [Kernel Tuning](https://emvisio.com/en/linux/system/systemtuning.html): CPU governor, IRQ affinity, kernel parameters for low latency
+- [Monitoring](https://emvisio.com/en/linux/system/systemtools.html): Linux tools for verifying tuning results
+- [Nvidia Drivers](https://emvisio.com/en/linux/optimizations/nvidia.html): Driver installation, Vulkan, MangoHud
+- [Liquorix Kernel](https://emvisio.com/en/linux/optimizations/liquorix.html): Low-latency kernel with PDS scheduler
+- [Display Server](https://emvisio.com/en/linux/optimizations/displayserver.html): X11 vs Wayland decision guide
+- [Filesystem](https://emvisio.com/en/linux/optimizations/filesystem.html): ext4 and Btrfs tuning for scenery I/O
+- [X-Plane Configuration](https://emvisio.com/en/xplane/setup_diagnose/config.html): Rendering settings and log.txt analysis
+- [Performance Analysis](https://emvisio.com/en/xplane/setup_diagnose/performance.html): Frame time analysis and bottleneck detection
+- [Scenery Components](https://emvisio.com/en/scenery/aufbau_quellen/scenery_components.html): How X-Plane scenery is structured
+- [Scenery Sources](https://emvisio.com/en/scenery/aufbau_quellen/scenery_sources.html): Where to find free and commercial scenery
+- [Orthophotography](https://emvisio.com/en/scenery/orthophotography/orthophotography_intro.html): Concepts and methods for photorealistic terrain
+- [AutoOrtho](https://emvisio.com/en/scenery/ortho_streaming/autoortho.html): On-demand orthophoto streaming
+- [XEarthLayer](https://emvisio.com/en/scenery/ortho_streaming/xearthlayer.html): Satellite imagery streaming plugin
+- [ATC Procedures](https://emvisio.com/en/flight_operations/atc/clearance.html): IFR clearance to landing — full gate-to-gate guide
+- [Weather](https://emvisio.com/en/flight_operations/weather/briefing.html): Weather tools, radar usage, and briefing
+- [VATSIM](https://emvisio.com/en/flight_operations/vatsim/vatsim.html): Online flying with live ATC
+- [Addons](https://emvisio.com/en/addon/index.html): 40+ Linux-compatible plugins, scripts, and tools
