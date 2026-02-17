@@ -39,4 +39,16 @@ Um mit VATSIM zu beginnen, benötigen Sie:
 - [VATSIM Website](https://vatsim.net)
 - [VATSIM Academy](https://academy.vatsim.net)
 - [VATSIM Rules](https://vatsim.net/docs/policy)
-- [Client Downloads](https://vatsim.net/community/pilots/software) 
+- [Client Downloads](https://vatsim.net/community/pilots/software)
+
+---
+
+## Weiterführende Kapitel
+
+| Thema | Seite | Schwerpunkt |
+|---|---|---|
+| Clearance | [Clearance](../atc/clearance.md) | IFR-Freigabeverfahren und CPDLC |
+| Pushback & Taxi | [Pushback & Taxi](../atc/pushback_taxi.md) | Rollverfahren am Boden |
+| Streckenflug | [Streckenflug](../atc/enroute.md) | Center-Lotse und Frequenzwechsel |
+| Anflug | [Anflug](../atc/approach.md) | Anflugverfahren und Radar Vectors |
+| Wetter-Briefing | [Wetter-Briefing](../weather/briefing.md) | Wettervorbereitung für Online-Flüge | 

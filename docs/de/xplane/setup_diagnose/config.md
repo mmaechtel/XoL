@@ -368,6 +368,21 @@ Core-Dump-Pfad prüfen: `cat /proc/sys/kernel/core_pattern`
 
 Unter systemd liegen Core Dumps in `/var/lib/systemd/coredump/` (komprimiert).
 
+---
+
+## Weiterführende Kapitel
+
+| Thema | Seite | Schwerpunkt |
+|---|---|---|
+| Performance-Analyse | [Performance-Analyse](performance.md) | MangoHUD, Microprofiler, Diagnose-Workflows |
+| Nvidia-Treiber | [Nvidia-Treiber](../../linux/optimizations/nvidia.md) | Treiberinstallation, Versionsverwaltung, Optimierung |
+| Kernel-Tuning | [Kernel-Tuning](../../linux/system/systemtuning.md) | CPU-Governor, USB-Autosuspend, Kernel-Parameter |
+| GPU & VRAM | [GPU & VRAM](../../fundamentals/performance/gpu_vram.md) | GPU-Pipeline, VRAM-Verwaltung, Texturkompression |
+| Geräteverluste | [Geräteverluste](../systemfehler/geraeteverluste.md) | GPU-Crash-Analyse und Aftermath-Diagnostik |
+| Wine | [Wine / Proton](../../linux/extensions/wine.md) | Windows-only X-Plane-Tools über Proton nutzen |
+
+---
+
 ## Quellen
 
 Die wichtigsten Quellen zu den auf dieser Seite behandelten Themen:

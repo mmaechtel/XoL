@@ -118,4 +118,16 @@ Analyzing the radar display requires special attention. Closely spaced color gra
 
 Weather radar is a powerful tool, but its success depends on active use by the flight crew. Technical understanding, meteorological knowledge, and continuous monitoring are the keys to avoiding dangerous weather conditions. Through strategic planning, early decisions, and the use of modern radar technologies, pilots can ensure that their flights are not only safe but also comfortable. In a world where weather remains unpredictable, weather radar is a reliable partner – provided it is used wisely.
 
-**Source**: Adapted from "A320 Pilot's Guide to Airborne Weather Radar" by aviation-safety.net 
+**Source**: Adapted from "A320 Pilot's Guide to Airborne Weather Radar" by aviation-safety.net
+
+---
+
+## Further Reading
+
+| Topic | Page | Focus |
+|---|---|---|
+| Clearance | [Clearance](../atc/clearance.md) | ATIS information needed for IFR clearance |
+| En Route | [En Route](../atc/enroute.md) | Weather deviations during cruise flight |
+| Approach | [Approach](../atc/approach.md) | Destination weather for approach planning |
+| Landing & Taxi In | [Landing & Taxi In](../atc/landing.md) | Wind conditions affecting landing |
+| VATSIM | [VATSIM](../vatsim/vatsim.md) | Weather services for VATSIM flights |

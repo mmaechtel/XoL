@@ -97,3 +97,14 @@ Die vollständige ATC-Kommunikationskette von Gate zu Gate:
 7. **Approach** — Sinkflug und Anflug
 8. **Tower** — Landung
 9. **Ground** — Taxi zum Stand
+
+---
+
+## Weiterführende Kapitel
+
+| Thema | Seite | Schwerpunkt |
+|---|---|---|
+| Wetter-Briefing | [Wetter-Briefing](../weather/briefing.md) | Wind und Sicht für Landeentscheidungen |
+| VATSIM | [VATSIM](../vatsim/vatsim.md) | Tower- und Ground-Verfahren im VATSIM-Netzwerk |
+| Clearance | [Clearance](clearance.md) | Ausgangspunkt der ATC-Kommunikationskette |
+| Pushback & Taxi | [Pushback & Taxi](pushback_taxi.md) | Rollverfahren als Gegenstück |

@@ -14,3 +14,15 @@ Die theoretischen Grundlagen — warum Latenz wichtiger ist als Durchsatz und we
 
 - **[Tuning](systemtuning.md)** — Kernel-Parameter, CPU-Governor, Interrupt-Affinität, NVMe-Tuning
 - **[Monitoring](systemtools.md)** — btop, turbostat, perf, mpstat und weitere Analyse-Tools
+
+---
+
+## Weiterführende Kapitel
+
+| Thema | Seite | Schwerpunkt |
+|---|---|---|
+| Kernel-Tuning | [Kernel-Tuning](systemtuning.md) | CPU-Governor, Interrupt-Affinität, NVMe-Tuning |
+| Monitoring | [Monitoring](systemtools.md) | Tuning verifizieren mit turbostat, mpstat, ioping |
+| Latenz und Vorhersagbarkeit | [Latenz und Vorhersagbarkeit](../../fundamentals/performance/latency.md) | Theoretische Grundlagen der Systemlatenz |
+| Liquorix Kernel | [Liquorix Kernel](../optimizations/liquorix.md) | Low-Latency-Kernel mit PDS-Scheduler |
+| Lastdimensionen | [Lastdimensionen](../../fundamentals/performance/performance_overview.md) | CPU, GPU, IO — wo Engpässe entstehen |

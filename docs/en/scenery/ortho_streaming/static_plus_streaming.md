@@ -107,3 +107,16 @@ See [LiDAR Data Integration](../orthophotography/ortho4xp.md#lidar-data-integrat
 ## Conclusion
 
 The combination of static generation and streaming provides a flexible solution for X-Plane users who want both highest quality in preferred regions and worldwide coverage. The key lies in the targeted selection of Ortho4XP regions and the correct prioritization in the `scenery_packs.ini`.
+
+---
+
+## Further Reading
+
+| Topic | Page | Focus |
+|---|---|---|
+| AutoOrtho | [AutoOrtho](autoortho.md) | Streaming configuration and cache management |
+| XEarthLayer | [XEarthLayer](xearthlayer.md) | Alternative streaming solution |
+| Ortho4XP | [Ortho4XP](../orthophotography/ortho4xp.md) | Tile generation settings and LiDAR integration |
+| Scenery Components | [How X-Plane Builds the World](../aufbau_quellen/scenery_components.md) | scenery_packs.ini load order and priority rules |
+| Filesystem | [Filesystem](../../linux/optimizations/filesystem.md) | Storage optimization for local tiles and cache |
+| GPU & VRAM | [GPU & VRAM](../../fundamentals/performance/gpu_vram.md) | VRAM impact of combined ortho sources |

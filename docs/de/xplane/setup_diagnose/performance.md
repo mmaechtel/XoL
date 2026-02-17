@@ -155,6 +155,21 @@ Der Microprofiler zeigt, wo die Frame-Zeit verloren geht. Die folgende Tabelle o
 
 Für Linux-spezifische Optimierungen (CPU-Governor, Interrupt-Routing, Speicherparameter) siehe [Systemtuning](../../linux/system/systemtuning.md). Benchmarking-Methoden und Rendering-Optionen sind unter [Konfiguration](config.md) dokumentiert.
 
+---
+
+## Weiterführende Kapitel
+
+| Thema | Seite | Schwerpunkt |
+|---|---|---|
+| Lastdimensionen | [Lastdimensionen](../../fundamentals/performance/performance_overview.md) | Konzeptioneller Rahmen: CPU-, GPU-, VRAM-, I/O-Engpässe |
+| Latenz und Vorhersagbarkeit | [Latenztheorie](../../fundamentals/performance/latency.md) | Frame-Time-Analyse, Jitter, Scheduling-Theorie |
+| CPU & RAM | [CPU & RAM](../../fundamentals/performance/cpu_ram.md) | CPU-Architektur, Thread-Scheduling, Speicherbandbreite |
+| GPU & VRAM | [GPU & VRAM](../../fundamentals/performance/gpu_vram.md) | GPU-Pipeline, VRAM-Budget, Texturkompression |
+| Nvidia-Treiber | [Nvidia-Treiber](../../linux/optimizations/nvidia.md) | Treiberinstallation, nvidia-smi, GPU-Konfiguration |
+| Geräteverluste | [Geräteverluste](../systemfehler/geraeteverluste.md) | GPU-Crashes: Ursachen, Aftermath-Debugging, Lösung |
+
+---
+
 ## Quellen
 
 - [MangoHUD — GitHub](https://github.com/flightlessmango/MangoHud)

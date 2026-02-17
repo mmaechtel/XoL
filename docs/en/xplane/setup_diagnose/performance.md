@@ -155,6 +155,21 @@ The Microprofiler shows where frame time is being lost. The following table maps
 
 For Linux-specific optimizations (CPU governor, interrupt routing, memory parameters) see [System Tuning](../../linux/system/systemtuning.md). Benchmarking methods and rendering options are documented under [Configuration](config.md).
 
+---
+
+## Further Reading
+
+| Topic | Page | Focus |
+|---|---|---|
+| Load Dimensions | [Load Dimensions](../../fundamentals/performance/performance_overview.md) | Conceptual framework: CPU, GPU, VRAM, I/O bottleneck categories |
+| Latency and Predictability | [Latency Theory](../../fundamentals/performance/latency.md) | Frame time analysis, jitter, scheduling theory |
+| CPU & RAM | [CPU & RAM](../../fundamentals/performance/cpu_ram.md) | CPU architecture, thread scheduling, memory bandwidth |
+| GPU & VRAM | [GPU & VRAM](../../fundamentals/performance/gpu_vram.md) | GPU pipeline, VRAM budget, texture compression |
+| Nvidia Drivers | [Nvidia Drivers](../../linux/optimizations/nvidia.md) | Driver installation, nvidia-smi, GPU configuration |
+| Device Losses | [Device Losses](../systemfehler/geraeteverluste.md) | GPU crashes: causes, Aftermath debugging, resolution |
+
+---
+
 ## Sources
 
 - [MangoHUD — GitHub](https://github.com/flightlessmango/MangoHud)

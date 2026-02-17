@@ -80,4 +80,15 @@ Bei Problemen wird wie folgt vorgegangen:
 1. Die `.zshrc`-Datei wird auf Syntaxfehler überprüft
 2. Die Konfiguration wird mit `zsh -x` getestet
 3. Die Berechtigungen der Konfigurationsdateien werden überprüft
-4. Die [zsh-Dokumentation](https://zsh.sourceforge.io/Doc/) wird für weitere Hilfe konsultiert 
+4. Die [zsh-Dokumentation](https://zsh.sourceforge.io/Doc/) wird für weitere Hilfe konsultiert
+
+---
+
+## Weiterführende Kapitel
+
+| Thema | Seite | Schwerpunkt |
+|---|---|---|
+| pyenv | [pyenv](pyenv.md) | Python-Versionsverwaltung mit Shell-Integration |
+| Monitoring | [Monitoring](../system/systemtools.md) | Terminal-basierte System-Monitoring-Tools |
+| Kernel-Tuning | [Kernel-Tuning](../system/systemtuning.md) | Shell-Befehle für Systemkonfiguration |
+| Docker | [Docker](docker.md) | Kommandozeilen-Container-Workflows |

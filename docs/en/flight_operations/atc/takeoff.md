@@ -67,3 +67,14 @@ A conditional clearance always names the traffic to wait for. Read back both the
 After takeoff, contact Departure for the climb phase:
 
 * [Departure & Climb](departure.md) – follow the SID and climb to cruise level
+
+---
+
+## Further Reading
+
+| Topic | Page | Focus |
+|---|---|---|
+| Weather Briefing | [Weather Briefing](../weather/briefing.md) | Wind conditions affecting takeoff decisions |
+| VATSIM | [VATSIM](../vatsim/vatsim.md) | Tower procedures on VATSIM |
+| Approach | [Approach](approach.md) | Approach clearance and radar vectors |
+| Landing & Taxi In | [Landing & Taxi In](landing.md) | Go-around and landing sequence |

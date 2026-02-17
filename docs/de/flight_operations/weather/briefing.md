@@ -120,3 +120,15 @@ Das Wetterradar ist ein mächtiges Werkzeug, aber sein Erfolg hängt von der akt
 
 **Quelle**: Adaptiert von "A320 Pilot's Guide to Airborne Weather Radar" von aviation-safety.net
 
+---
+
+## Weiterführende Kapitel
+
+| Thema | Seite | Schwerpunkt |
+|---|---|---|
+| Clearance | [Clearance](../atc/clearance.md) | ATIS-Informationen für die IFR-Freigabe |
+| Streckenflug | [Streckenflug](../atc/enroute.md) | Wetterausweichungen im Reiseflug |
+| Anflug | [Anflug](../atc/approach.md) | Zielflughafen-Wetter für die Anflugplanung |
+| Landung und Abstellen | [Landung und Abstellen](../atc/landing.md) | Windbedingungen bei der Landung |
+| VATSIM | [VATSIM](../vatsim/vatsim.md) | Wetterdienste für VATSIM-Flüge |
+

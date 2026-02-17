@@ -397,6 +397,19 @@ Not all settings require a reboot. The following table shows which parameters ca
 
 ---
 
+## Further Reading
+
+| Topic | Page | Focus |
+|---|---|---|
+| Monitoring | [Monitoring](systemtools.md) | Verify tuning measures with turbostat, mpstat, ioping |
+| Why Latency Matters | [Why Latency Matters](latency.md) | Motivation and context for kernel tuning |
+| Latency and Predictability | [Latency and Predictability](../../fundamentals/performance/latency.md) | Theoretical foundations — latency sources and measurement |
+| Liquorix Kernel | [Liquorix Kernel](../optimizations/liquorix.md) | Installation and features of the low-latency kernel |
+| Nvidia Drivers | [Nvidia Drivers](../optimizations/nvidia.md) | Driver installation, KMS, and kernel parameters |
+| Performance Analysis | [Performance Analysis](../../xplane/setup_diagnose/performance.md) | X-Plane-specific performance diagnostics |
+
+---
+
 ## Sources
 
 The most important sources for the topics covered on this page:

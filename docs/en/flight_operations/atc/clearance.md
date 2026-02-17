@@ -62,3 +62,14 @@ When obtaining an IFR clearance (Instrument Flight Rules), the pilot must prepar
 Once the clearance has been correctly read back, continue with:
 
 * [Pushback & Taxi](pushback_taxi.md) – request pushback and taxi to the runway
+
+---
+
+## Further Reading
+
+| Topic | Page | Focus |
+|---|---|---|
+| Weather Briefing | [Weather Briefing](../weather/briefing.md) | ATIS and weather preparation before requesting clearance |
+| VATSIM | [VATSIM](../vatsim/vatsim.md) | Online ATC clearance on the VATSIM network |
+| Approach | [Approach](approach.md) | Approach clearance and STAR procedures |
+| Landing & Taxi In | [Landing & Taxi In](landing.md) | Complete gate-to-gate ATC overview |

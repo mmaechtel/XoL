@@ -33,6 +33,7 @@ This documentation is an open project. Improvements or additions can be contribu
 ## Recent Changes
 
 ### 2026-02-17
+- Further Reading sections added across Linux, Flight Operations, Scenery, and X-Plane sections (33 pages)
 - [CPU & RAM](fundamentals/performance/cpu_ram.md), [GPU & VRAM](fundamentals/performance/gpu_vram.md), [Latency](fundamentals/performance/latency.md): Further Reading sections standardized with additional cross-references
 - New page [Latency and Predictability](fundamentals/performance/latency.md) — Why latency matters more than throughput, four latency sources
 - Complete restructure: All sections split into thematic subdirectories with section index pages — content summaries cascade from deepest level upward

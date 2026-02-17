@@ -181,6 +181,19 @@ MangoHud provides detailed GPU/CPU metrics, frame time graphs, and [VRAM](../../
 
 ---
 
+## Further Reading
+
+| Topic | Page | Focus |
+|---|---|---|
+| Display Server | [Display Server](displayserver.md) | X11 vs Wayland choice for X-Plane |
+| X11 Session | [X11 Session](displayserver_x11.md) | Recommended session with compositor bypass |
+| Wayland Session | [Wayland Session](displayserver_wayland.md) | Wayland requirements and XWayland |
+| Liquorix Kernel | [Liquorix Kernel](liquorix.md) | DKMS headers for kernel module building |
+| Kernel Tuning | [Kernel Tuning](../system/systemtuning.md) | GRUB parameters and system optimization |
+| GPU & VRAM | [GPU & VRAM](../../fundamentals/performance/gpu_vram.md) | GPU performance theory and VRAM management |
+
+---
+
 ## Sources
 
 - [Debian Wiki: NvidiaGraphicsDrivers](https://wiki.debian.org/NvidiaGraphicsDrivers/) — Official Debian NVIDIA installation guide

@@ -33,6 +33,7 @@ Diese Dokumentation ist ein offenes Projekt. Verbesserungen oder Ergänzungen k�
 ## Letzte Änderungen
 
 ### 2026-02-17
+- Weiterführende Kapitel in den Sektionen Linux, Flugbetrieb, Szenerie und X-Plane ergänzt (33 Seiten)
 - [CPU & RAM](fundamentals/performance/cpu_ram.md), [GPU & VRAM](fundamentals/performance/gpu_vram.md), [Latenz](fundamentals/performance/latency.md): Weiterführende Kapitel vereinheitlicht mit zusätzlichen Querverweisen
 - Neue Seite [Latenz und Vorhersagbarkeit](fundamentals/performance/latency.md) — Warum Latenz wichtiger ist als Durchsatz, vier Latenzquellen
 - Komplette Neustrukturierung: Alle Sektionen in thematische Unterverzeichnisse mit Übersichtsseiten aufgeteilt — inhaltliche Zusammenfassungen kaskadieren von der tiefsten Ebene aufwärts

@@ -149,4 +149,15 @@ Bei Problemen wird wie folgt vorgegangen:
 1. Die Shell-Konfiguration wird überprüft
 2. Es wird sichergestellt, dass alle Abhängigkeiten installiert sind
 3. Die Berechtigungen der pyenv-Verzeichnisse werden überprüft
-4. Die [offizielle pyenv-Dokumentation](https://github.com/pyenv/pyenv#readme) wird konsultiert 
+4. Die [offizielle pyenv-Dokumentation](https://github.com/pyenv/pyenv#readme) wird konsultiert
+
+---
+
+## Weiterführende Kapitel
+
+| Thema | Seite | Schwerpunkt |
+|---|---|---|
+| XPPython3 | [XPPython3](../../addon/scripting/xppython3.md) | Python-Plugin-Framework für X-Plane |
+| Ortho4XP | [Ortho4XP](../../scenery/orthophotography/ortho4xp.md) | Python-basiertes Szenerie-Generierungstool |
+| zsh | [zsh](zsh.md) | Shell-Anpassung mit pyenv-Integration |
+| Docker | [Docker](docker.md) | Containerisierte Entwicklungsumgebungen |

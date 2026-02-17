@@ -50,4 +50,17 @@ For better overview and planning of flight simulation, two self-created WorldMap
 
     There is a help link in the agenda that explains the popup entries.
 
-- **[WorldMap of Ortho Tiles](/Maps/scenerymap.html)** – An overview map of self-created and installed Ortho Tiles. The displayed Orthos were specifically created for addon scenery and provide high-resolution textures, often supplemented with Mesh Patches for additional details such as Runway Slopes. In addition to the self-created Orthos, official Ortho Patches from scenery manufacturers and community-created patches from the X-Plane.org forum are also used. 
+- **[WorldMap of Ortho Tiles](/Maps/scenerymap.html)** – An overview map of self-created and installed Ortho Tiles. The displayed Orthos were specifically created for addon scenery and provide high-resolution textures, often supplemented with Mesh Patches for additional details such as Runway Slopes. In addition to the self-created Orthos, official Ortho Patches from scenery manufacturers and community-created patches from the X-Plane.org forum are also used.
+
+---
+
+## Further Reading
+
+| Topic | Page | Focus |
+|---|---|---|
+| Scenery Components | [How X-Plane Builds the World](scenery_components.md) | Mesh, ortho, autogen layers and scenery_packs.ini load order |
+| Orthophotography | [Concepts & Methods](../orthophotography/orthophotography_intro.md) | Static vs. streaming approaches for ground textures |
+| AutoOrtho | [AutoOrtho](../ortho_streaming/autoortho.md) | Real-time ortho streaming with global coverage |
+| XEarthLayer | [XEarthLayer](../ortho_streaming/xearthlayer.md) | Rust-based streaming with adaptive prefetch |
+| XOrganizer | [XOrganizer](../../addon/tools/xorganizer.md) | Scenery management and scenery_packs.ini editor |
+| GPU & VRAM | [GPU & VRAM](../../fundamentals/performance/gpu_vram.md) | VRAM impact of scenery quality settings |

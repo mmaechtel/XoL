@@ -39,4 +39,16 @@ To begin with VATSIM, you need:
 - [VATSIM Website](https://vatsim.net)
 - [VATSIM Academy](https://academy.vatsim.net)
 - [VATSIM Rules](https://vatsim.net/docs/policy)
-- [Client Downloads](https://vatsim.net/community/pilots/software) 
+- [Client Downloads](https://vatsim.net/community/pilots/software)
+
+---
+
+## Further Reading
+
+| Topic | Page | Focus |
+|---|---|---|
+| Clearance | [Clearance](../atc/clearance.md) | IFR clearance procedures and CPDLC |
+| Pushback & Taxi | [Pushback & Taxi](../atc/pushback_taxi.md) | Ground movement procedures |
+| En Route | [En Route](../atc/enroute.md) | Center control and frequency changes |
+| Approach | [Approach](../atc/approach.md) | Approach and radar vectors |
+| Weather Briefing | [Weather Briefing](../weather/briefing.md) | Weather preparation for online flights | 

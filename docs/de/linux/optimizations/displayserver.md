@@ -151,6 +151,19 @@ Ausgabe: `x11` oder `wayland`
 
 ---
 
+## Weiterführende Kapitel
+
+| Thema | Seite | Schwerpunkt |
+|---|---|---|
+| X11-Session | [X11-Session](displayserver_x11.md) | Empfohlenes X-Plane-Setup — direkter X11-Pfad |
+| Wayland-Session | [Wayland-Session](displayserver_wayland.md) | X-Plane über XWayland — Einrichtung und Troubleshooting |
+| Nvidia-Treiber | [Nvidia-Treiber](nvidia.md) | GPU-Treiberanforderungen für X11 und Wayland |
+| Kernel-Tuning | [Kernel-Tuning](../system/systemtuning.md) | Latenzoptimierung auf Systemebene |
+| Latenz und Vorhersagbarkeit | [Latenz und Vorhersagbarkeit](../../fundamentals/performance/latency.md) | Eingabelatenz — Theorie und Messung |
+| Konfiguration | [Konfiguration](../../xplane/setup_diagnose/config.md) | X-Plane Display- und Rendering-Einstellungen |
+
+---
+
 ## Quellen
 
 - [Wayland Architecture](https://wayland.freedesktop.org/architecture.html) — Offizielles Wayland-Projekt

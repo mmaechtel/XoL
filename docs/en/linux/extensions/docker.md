@@ -100,4 +100,15 @@ Log out and back in (or restart the terminal) for the changes to take effect. Af
 
 ## Conclusion
 
-You have now successfully installed Docker on Debian. With this installation, you can create containers, manage images, and run applications in isolated environments. If you need further adjustments or specific configurations, the [official Docker documentation](https://docs.docker.com) provides detailed information. 
+You have now successfully installed Docker on Debian. With this installation, you can create containers, manage images, and run applications in isolated environments. If you need further adjustments or specific configurations, the [official Docker documentation](https://docs.docker.com) provides detailed information.
+
+---
+
+## Further Reading
+
+| Topic | Page | Focus |
+|---|---|---|
+| KVM | [KVM](kvm.md) | Full virtualization for Windows guest systems |
+| AutoOrtho | [AutoOrtho](../../scenery/ortho_streaming/autoortho.md) | Ortho streaming tool with Docker support |
+| pyenv | [pyenv](pyenv.md) | Python version management for development |
+| Wine | [Wine](wine.md) | Running Windows programs without full VM |

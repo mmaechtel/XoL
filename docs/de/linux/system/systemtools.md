@@ -409,6 +409,19 @@ Verifiziert: [C-States](systemtuning.md#cpu-takt-und-schlafzustände) und [C-Sta
 
 ---
 
+## Weiterführende Kapitel
+
+| Thema | Seite | Schwerpunkt |
+|---|---|---|
+| Kernel-Tuning | [Kernel-Tuning](systemtuning.md) | Die Einstellungen, die diese Tools verifizieren |
+| Warum Latenz zählt | [Warum Latenz zählt](latency.md) | Motivation für System-Latenz-Monitoring |
+| Latenz und Vorhersagbarkeit | [Latenz und Vorhersagbarkeit](../../fundamentals/performance/latency.md) | Theoretische Grundlagen der Systemlatenz |
+| Liquorix Kernel | [Liquorix Kernel](../optimizations/liquorix.md) | Low-Latency-Kernel mit anderem Monitoring-Ansatz |
+| Performance-Analyse | [Performance-Analyse](../../xplane/setup_diagnose/performance.md) | X-Plane-spezifische Performance-Tools |
+| Nvidia-Treiber | [Nvidia-Treiber](../optimizations/nvidia.md) | MangoHud und GPU-Monitoring |
+
+---
+
 ## Quellen
 
 - [htop-dev/htop](https://github.com/htop-dev/htop) — Interaktiver Prozess-Viewer

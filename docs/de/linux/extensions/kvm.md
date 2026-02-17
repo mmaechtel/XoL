@@ -93,3 +93,14 @@ Der einfachste Weg ist die Verwendung von `ssh-copy-id`:
 ## X-Plane Addons via KVM
 
 Mehrere Windows-only X-Plane-Addons lassen sich in einer KVM-VM betreiben. Einrichtungsanleitungen und Konfigurationsdetails für einzelne Addons sind unter **[Addons → Via KVM](../../addon/kvm/index.md)** dokumentiert.
+
+---
+
+## Weiterführende Kapitel
+
+| Thema | Seite | Schwerpunkt |
+|---|---|---|
+| Wine | [Wine](wine.md) | Leichtere Alternative für manche Windows-Programme |
+| Docker | [Docker](docker.md) | Container-basierte Anwendungsisolierung |
+| Nvidia-Treiber | [Nvidia-Treiber](../optimizations/nvidia.md) | GPU-Treiber und Passthrough-Relevanz |
+| Kernel-Tuning | [Kernel-Tuning](../system/systemtuning.md) | Systemoptimierung für virtuelle Maschinen |

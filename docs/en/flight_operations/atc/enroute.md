@@ -78,3 +78,14 @@ Before reaching the destination area, Center hands off to Approach:
 
 * [Approach](approach.md) – descent and positioning for landing
 * Obtain the **destination ATIS** before contacting Approach
+
+---
+
+## Further Reading
+
+| Topic | Page | Focus |
+|---|---|---|
+| Weather Briefing | [Weather Briefing](../weather/briefing.md) | Weather deviations and destination weather |
+| VATSIM | [VATSIM](../vatsim/vatsim.md) | Center control on VATSIM |
+| Clearance | [Clearance](clearance.md) | IFR clearance and flight plan routing |
+| Landing & Taxi In | [Landing & Taxi In](landing.md) | Complete gate-to-gate ATC overview |

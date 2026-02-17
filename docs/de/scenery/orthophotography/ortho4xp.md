@@ -219,4 +219,17 @@ Bei Problemen:
 1. Die Log-Dateien im Ortho4XP-Verzeichnis überprüfen
 2. Sicherstellen, dass alle Python-Abhängigkeiten installiert sind
 3. Die [Dokumentation des shred86 Forks](https://github.com/shred86/Ortho4XP/wiki) konsultieren
-4. Das [X-Plane Forum](https://forums.x-plane.org/index.php?/forums/forum/310-ortho4xp/) besuchen 
+4. Das [X-Plane Forum](https://forums.x-plane.org/index.php?/forums/forum/310-ortho4xp/) besuchen
+
+---
+
+## Weiterführende Kapitel
+
+| Thema | Seite | Schwerpunkt |
+|---|---|---|
+| AutoOrtho | [AutoOrtho](../ortho_streaming/autoortho.md) | Streaming-Alternative zur statischen Generierung |
+| XEarthLayer | [XEarthLayer](../ortho_streaming/xearthlayer.md) | Rust-basierte Streaming-Alternative |
+| Statisch + Streaming | [Statisch + Streaming](../ortho_streaming/static_plus_streaming.md) | Kombination von Ortho4XP mit Streaming-Lösungen |
+| Szenerie-Komponenten | [Wie X-Plane die Welt aufbaut](../aufbau_quellen/scenery_components.md) | scenery_packs.ini-Ladereihenfolge |
+| Orthofotografie | [Konzepte & Methoden](orthophotography_intro.md) | Überblick statische und Streaming-Ansätze |
+| Dateisystem | [Dateisystem](../../linux/optimizations/filesystem.md) | SSD-Performance für Kachel-Generierung und -Speicherung |

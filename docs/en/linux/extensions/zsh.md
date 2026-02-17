@@ -80,4 +80,15 @@ If issues are encountered, the following steps are taken:
 1. The `.zshrc` file is checked for syntax errors
 2. The configuration is tested with `zsh -x`
 3. Permissions of configuration files are verified
-4. The [zsh documentation](https://zsh.sourceforge.io/Doc/) is consulted for additional help 
+4. The [zsh documentation](https://zsh.sourceforge.io/Doc/) is consulted for additional help
+
+---
+
+## Further Reading
+
+| Topic | Page | Focus |
+|---|---|---|
+| pyenv | [pyenv](pyenv.md) | Python version management with shell integration |
+| Monitoring | [Monitoring](../system/systemtools.md) | Terminal-based system monitoring tools |
+| Kernel Tuning | [Kernel Tuning](../system/systemtuning.md) | Shell commands for system configuration |
+| Docker | [Docker](docker.md) | Command-line container workflows |

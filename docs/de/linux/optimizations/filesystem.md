@@ -159,3 +159,15 @@ Regelmäßige Wiederherstellungstests werden durchgeführt, um die Integrität d
 Die optimale Konfiguration für X-Plane unter Linux besteht aus einer einzelnen Partition auf einer schnellen **NVMe-SSD** mit dem **Ext4**-Dateisystem. Aktiviertes **TRIM** und optimierte **Mount-Optionen** sowie ausreichend freier Speicherplatz sind weitere wichtige Faktoren. Diese Konfiguration minimiert Ladezeiten und gewährleistet ein flüssiges Flugerlebnis in X-Plane.
 
 Für Nutzer, die maximale Performance anstreben, bietet ein **RAID-0** mit **Btrfs** auf drei SSDs eine leistungsstarke Alternative. Die Konfiguration minimiert Ladezeiten und optimiert das Streaming von Szenerien. Durch die Verwendung von **Btrfs** mit **TRIM**, noatime und autodefrag wird die SSD-Leistung langfristig erhalten. Eine sorgfältig geplante Backup-Strategie ist dabei unerlässlich, um Datenverluste zu vermeiden und die Kontinuität des Flugbetriebs zu gewährleisten.
+
+---
+
+## Weiterführende Kapitel
+
+| Thema | Seite | Schwerpunkt |
+|---|---|---|
+| Kernel-Tuning | [Kernel-Tuning](../system/systemtuning.md) | NVMe-Energiesparen, Writeback-Parameter |
+| Monitoring | [Monitoring](../system/systemtools.md) | iotop, iostat, ioping für Disk-Latenz-Analyse |
+| Lastdimensionen | [Lastdimensionen](../../fundamentals/performance/performance_overview.md) | IO als Performance-Dimension |
+| Konfiguration | [Konfiguration](../../xplane/setup_diagnose/config.md) | X-Plane-Dateipfade und Datenablage |
+| Szenerie-Komponenten | [Szenerie-Komponenten](../../scenery/aufbau_quellen/scenery_components.md) | Welche Dateien X-Plane von der Disk liest |

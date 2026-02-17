@@ -234,6 +234,21 @@ This installation example shows how to set up AutoOrtho in a Python environment 
 
 The combination of AutoOrtho with SimHeaven X-World creates a comprehensive scenery solution that provides both detailed orthophotos and precise 3D objects. While AutoOrtho handles ground textures, SimHeaven adds buildings, trees, and other 3D elements based on OpenStreetMap data.
 
+---
+
+## Further Reading
+
+| Topic | Page | Focus |
+|---|---|---|
+| XEarthLayer | [XEarthLayer](xearthlayer.md) | Rust-based streaming alternative with adaptive prefetch |
+| Ortho4XP | [Ortho4XP](../orthophotography/ortho4xp.md) | Static ortho tile generation for offline use |
+| Static + Streaming | [Static + Streaming](static_plus_streaming.md) | Combining local tiles with streaming |
+| Scenery Components | [How X-Plane Builds the World](../aufbau_quellen/scenery_components.md) | scenery_packs.ini load order and layer interaction |
+| Filesystem | [Filesystem](../../linux/optimizations/filesystem.md) | I/O optimization for cache and SSD performance |
+| XOrganizer | [XOrganizer](../../addon/tools/xorganizer.md) | Scenery management and scenery_packs.ini editor |
+
+---
+
 ## Sources
 
 - [GitHub Repository (Original)](https://github.com/kubilus1/autoortho)

@@ -74,3 +74,14 @@ If the route includes a hold short instruction:
 Once at the holding point of the assigned runway:
 
 * [Takeoff](takeoff.md) – line up and departure
+
+---
+
+## Further Reading
+
+| Topic | Page | Focus |
+|---|---|---|
+| Weather Briefing | [Weather Briefing](../weather/briefing.md) | QNH and wind conditions before taxi |
+| VATSIM | [VATSIM](../vatsim/vatsim.md) | Ground control procedures on VATSIM |
+| Departure & Climb | [Departure & Climb](departure.md) | SID compliance after takeoff |
+| Landing & Taxi In | [Landing & Taxi In](landing.md) | Taxi-in procedures after landing |

@@ -107,3 +107,16 @@ Siehe [LiDAR-Daten Integration](../orthophotography/ortho4xp.md#integration-von-
 ## Fazit
 
 Die Kombination aus statischer Generierung und Streaming bietet eine flexible Lösung für X-Plane-Nutzer, die sowohl höchste Qualität in bevorzugten Regionen als auch weltweite Abdeckung wünschen. Der Schlüssel liegt in der gezielten Auswahl der Ortho4XP-Regionen und der korrekten Priorisierung in der `scenery_packs.ini`.
+
+---
+
+## Weiterführende Kapitel
+
+| Thema | Seite | Schwerpunkt |
+|---|---|---|
+| AutoOrtho | [AutoOrtho](autoortho.md) | Streaming-Konfiguration und Cache-Verwaltung |
+| XEarthLayer | [XEarthLayer](xearthlayer.md) | Alternative Streaming-Lösung |
+| Ortho4XP | [Ortho4XP](../orthophotography/ortho4xp.md) | Kachel-Generierung und LiDAR-Integration |
+| Szenerie-Komponenten | [Wie X-Plane die Welt aufbaut](../aufbau_quellen/scenery_components.md) | scenery_packs.ini-Ladereihenfolge und Prioritätsregeln |
+| Dateisystem | [Dateisystem](../../linux/optimizations/filesystem.md) | Speicheroptimierung für lokale Kacheln und Cache |
+| GPU & VRAM | [GPU & VRAM](../../fundamentals/performance/gpu_vram.md) | VRAM-Auswirkungen kombinierter Ortho-Quellen |

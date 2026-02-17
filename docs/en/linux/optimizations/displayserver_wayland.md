@@ -124,4 +124,12 @@ For most users who already have a working Wayland desktop and no X-Plane issues,
 
 ---
 
-See [Display Server Overview](displayserver.md) for protocol comparison and latency measurements.
+## Further Reading
+
+| Topic | Page | Focus |
+|---|---|---|
+| Display Server Overview | [Display Server](displayserver.md) | Protocol comparison and latency measurements |
+| X11 Session | [X11 Session](displayserver_x11.md) | Alternative: direct X11 without XWayland overhead |
+| Nvidia Drivers | [Nvidia Drivers](nvidia.md) | Wayland driver requirements (Explicit Sync) |
+| Latency and Predictability | [Latency and Predictability](../../fundamentals/performance/latency.md) | Understanding XWayland latency overhead |
+| Configuration | [Configuration](../../xplane/setup_diagnose/config.md) | X-Plane display and rendering settings |

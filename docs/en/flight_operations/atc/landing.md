@@ -97,3 +97,14 @@ The full ATC communication sequence from gate to gate:
 7. **Approach** — Descent and approach
 8. **Tower** — Landing
 9. **Ground** — Taxi to stand
+
+---
+
+## Further Reading
+
+| Topic | Page | Focus |
+|---|---|---|
+| Weather Briefing | [Weather Briefing](../weather/briefing.md) | Wind and visibility for landing decisions |
+| VATSIM | [VATSIM](../vatsim/vatsim.md) | Tower and ground procedures on VATSIM |
+| Clearance | [Clearance](clearance.md) | Starting point of the ATC communication sequence |
+| Pushback & Taxi | [Pushback & Taxi](pushback_taxi.md) | Taxi-out procedures as counterpart |

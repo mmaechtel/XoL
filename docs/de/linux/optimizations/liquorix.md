@@ -162,6 +162,19 @@ Falls ein Wechsel zurück zum Standard-Kernel notwendig ist:
 
 ---
 
+## Weiterführende Kapitel
+
+| Thema | Seite | Schwerpunkt |
+|---|---|---|
+| Kernel-Tuning | [Kernel-Tuning](../system/systemtuning.md) | Profil B: Liquorix-spezifische Tuning-Parameter |
+| Monitoring | [Monitoring](../system/systemtools.md) | Scheduler-Verhalten und Kernel-Einstellungen verifizieren |
+| Warum Latenz zählt | [Warum Latenz zählt](../system/latency.md) | Motivation für einen Low-Latency-Kernel |
+| Nvidia-Treiber | [Nvidia-Treiber](nvidia.md) | DKMS-Modulbau mit Liquorix-Headern |
+| Latenz und Vorhersagbarkeit | [Latenz und Vorhersagbarkeit](../../fundamentals/performance/latency.md) | Theoretische Grundlagen der Scheduling-Latenz |
+| CPU & RAM | [CPU & RAM](../../fundamentals/performance/cpu_ram.md) | Scheduler-Einfluss auf CPU-Auslastung |
+
+---
+
 ## Quellen
 
 - [Liquorix Kernel](https://liquorix.net) — Offizielle Projektseite mit Feature-Liste und Installationsanleitung

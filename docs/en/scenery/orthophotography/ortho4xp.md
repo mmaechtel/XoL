@@ -219,4 +219,17 @@ In case of problems:
 1. Check the log files in the Ortho4XP directory
 2. Ensure all Python dependencies are installed
 3. Consult the [shred86 fork documentation](https://github.com/shred86/Ortho4XP/wiki)
-4. Visit the [X-Plane Forum](https://forums.x-plane.org/index.php?/forums/forum/310-ortho4xp/) 
+4. Visit the [X-Plane Forum](https://forums.x-plane.org/index.php?/forums/forum/310-ortho4xp/)
+
+---
+
+## Further Reading
+
+| Topic | Page | Focus |
+|---|---|---|
+| AutoOrtho | [AutoOrtho](../ortho_streaming/autoortho.md) | Streaming alternative to static generation |
+| XEarthLayer | [XEarthLayer](../ortho_streaming/xearthlayer.md) | Rust-based streaming alternative |
+| Static + Streaming | [Static + Streaming](../ortho_streaming/static_plus_streaming.md) | Combining Ortho4XP with streaming solutions |
+| Scenery Components | [How X-Plane Builds the World](../aufbau_quellen/scenery_components.md) | scenery_packs.ini load order |
+| Orthophotography | [Concepts & Methods](orthophotography_intro.md) | Overview of static and streaming approaches |
+| Filesystem | [Filesystem](../../linux/optimizations/filesystem.md) | SSD performance for tile generation and storage |

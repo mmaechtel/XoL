@@ -67,3 +67,14 @@ Eine Conditional Clearance nennt immer den Verkehr, auf den gewartet werden muss
 Nach dem Start Departure für die Steigflugphase kontaktieren:
 
 * [Abflug und Steigflug](departure.md) – SID folgen und auf Reiseflughöhe steigen
+
+---
+
+## Weiterführende Kapitel
+
+| Thema | Seite | Schwerpunkt |
+|---|---|---|
+| Wetter-Briefing | [Wetter-Briefing](../weather/briefing.md) | Windbedingungen für Startentscheidungen |
+| VATSIM | [VATSIM](../vatsim/vatsim.md) | Tower-Verfahren im VATSIM-Netzwerk |
+| Anflug | [Anflug](approach.md) | Anflugfreigabe und Radar Vectors |
+| Landung und Abstellen | [Landung und Abstellen](landing.md) | Durchstart- und Landesequenz |

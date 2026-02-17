@@ -93,3 +93,14 @@ The easiest way is to use `ssh-copy-id`:
 ## X-Plane Addons via KVM
 
 Several Windows-only X-Plane addons can be run in a KVM virtual machine. Setup guides and configuration details for specific addons are documented under **[Addons → Via KVM](../../addon/kvm/index.md)**.
+
+---
+
+## Further Reading
+
+| Topic | Page | Focus |
+|---|---|---|
+| Wine | [Wine](wine.md) | Lighter alternative for some Windows programs |
+| Docker | [Docker](docker.md) | Container-based application isolation |
+| Nvidia Drivers | [Nvidia Drivers](../optimizations/nvidia.md) | GPU drivers and passthrough relevance |
+| Kernel Tuning | [Kernel Tuning](../system/systemtuning.md) | System performance optimization for VMs |

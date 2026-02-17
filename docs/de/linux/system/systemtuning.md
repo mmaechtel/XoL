@@ -397,6 +397,19 @@ Nicht alle Einstellungen erfordern einen Neustart. Die folgende Tabelle zeigt, w
 
 ---
 
+## Weiterführende Kapitel
+
+| Thema | Seite | Schwerpunkt |
+|---|---|---|
+| Monitoring | [Monitoring](systemtools.md) | Tuning-Maßnahmen verifizieren mit turbostat, mpstat, ioping |
+| Warum Latenz zählt | [Warum Latenz zählt](latency.md) | Motivation und Kontext für Kernel-Tuning |
+| Latenz und Vorhersagbarkeit | [Latenz und Vorhersagbarkeit](../../fundamentals/performance/latency.md) | Theoretische Grundlagen — Latenzquellen und Messung |
+| Liquorix Kernel | [Liquorix Kernel](../optimizations/liquorix.md) | Installation und Features des Low-Latency-Kernels |
+| Nvidia-Treiber | [Nvidia-Treiber](../optimizations/nvidia.md) | Treiberinstallation, KMS und Kernel-Parameter |
+| Performance-Analyse | [Performance-Analyse](../../xplane/setup_diagnose/performance.md) | X-Plane-spezifische Performance-Diagnostik |
+
+---
+
 ## Quellen
 
 Die wichtigsten Quellen zu den auf dieser Seite behandelten Themen:

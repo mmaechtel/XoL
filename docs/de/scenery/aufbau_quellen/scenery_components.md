@@ -124,6 +124,19 @@ SCENERY_PACK Custom Scenery/SFD_EDDM_Munich_2_Mesh/
 
 ---
 
+## Weiterführende Kapitel
+
+| Thema | Seite | Schwerpunkt |
+|---|---|---|
+| Szenerie-Quellen | [Szenerien](scenery_sources.md) | Standard-Szenerien, SimHeaven, Freeware und Payware |
+| Orthofotografie | [Konzepte & Methoden](../orthophotography/orthophotography_intro.md) | Statische vs. Streaming-Ansätze für Ortho-Texturen |
+| AutoOrtho | [AutoOrtho](../ortho_streaming/autoortho.md) | Echtzeit-Ortho-Streaming über FUSE |
+| XOrganizer | [XOrganizer](../../addon/tools/xorganizer.md) | Szenerie-Verwaltung und Ladereihenfolge-Optimierung |
+| Dateisystem | [Dateisystem](../../linux/optimizations/filesystem.md) | I/O-Tuning für Szenerie-Ladeperformance |
+| GPU & VRAM | [GPU & VRAM](../../fundamentals/performance/gpu_vram.md) | VRAM-Aspekte der Szenerie-Schichten |
+
+---
+
 ## Quellen
 
 - [X-Plane Scenery Developer Documentation](https://developer.x-plane.com/article/dsf-usage-in-x-plane/) — DSF-Dateiformat und Szeneriestruktur

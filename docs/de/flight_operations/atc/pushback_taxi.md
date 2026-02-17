@@ -74,3 +74,14 @@ Bei einer Hold-Short-Anweisung in der Route:
 Am Holding Point der zugewiesenen Piste angekommen:
 
 * [Start](takeoff.md) – Line Up und Departure
+
+---
+
+## Weiterführende Kapitel
+
+| Thema | Seite | Schwerpunkt |
+|---|---|---|
+| Wetter-Briefing | [Wetter-Briefing](../weather/briefing.md) | QNH und Windbedingungen vor dem Rollen |
+| VATSIM | [VATSIM](../vatsim/vatsim.md) | Ground-Verfahren im VATSIM-Netzwerk |
+| Abflug und Steigflug | [Abflug und Steigflug](departure.md) | SID-Einhaltung nach dem Start |
+| Landung und Abstellen | [Landung und Abstellen](landing.md) | Rollverfahren nach der Landung |

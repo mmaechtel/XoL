@@ -89,3 +89,16 @@ Choosing the right system largely depends on your individual flying behavior:
 - **Explorative player** (constantly changing destinations): **Streaming solutions** are the better choice. They eliminate time-consuming pre-generation and allow spontaneous flights to any region worldwide. Storage consumption remains stable through automatic cache eviction.
 
 - **Hybrid player** (home airports + occasional exploration): The **[combination of static generation and streaming](../ortho_streaming/static_plus_streaming.md)** offers the best of both worlds. Local tiles for home regions in highest quality, streaming for flexible global coverage.
+
+---
+
+## Further Reading
+
+| Topic | Page | Focus |
+|---|---|---|
+| Scenery Components | [How X-Plane Builds the World](../aufbau_quellen/scenery_components.md) | Mesh, ortho, autogen layers and their interaction |
+| Scenery Sources | [Scenery](../aufbau_quellen/scenery_sources.md) | SimHeaven, freeware, and payware options |
+| GPU & VRAM | [GPU & VRAM](../../fundamentals/performance/gpu_vram.md) | VRAM impact of ortho textures |
+| Filesystem | [Filesystem](../../linux/optimizations/filesystem.md) | Storage and I/O for ortho data |
+| XOrganizer | [XOrganizer](../../addon/tools/xorganizer.md) | Scenery management and scenery_packs.ini editor |
+| XRoad | [XRoad](../../addon/scenery_addons/xroad.md) | Road network enhancement for scenery |

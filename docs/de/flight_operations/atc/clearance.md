@@ -63,3 +63,14 @@ Beim Einholen einer IFR-Clearance (Instrument Flight Rules) muss sich der Pilot 
 Wenn man die Clearance korrekt zurückgelesen hat, geht's weiter mit:
 
 * [Pushback & Taxi](pushback_taxi.md) – Pushback und Taxi zur Startbahn
+
+---
+
+## Weiterführende Kapitel
+
+| Thema | Seite | Schwerpunkt |
+|---|---|---|
+| Wetter-Briefing | [Wetter-Briefing](../weather/briefing.md) | ATIS- und Wettervorbereitung vor der Freigabe |
+| VATSIM | [VATSIM](../vatsim/vatsim.md) | IFR-Clearance im VATSIM-Netzwerk |
+| Anflug | [Anflug](approach.md) | Anflugfreigabe und STAR-Verfahren |
+| Landung und Abstellen | [Landung und Abstellen](landing.md) | Vollständige ATC-Kommunikationskette |

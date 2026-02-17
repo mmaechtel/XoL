@@ -89,3 +89,16 @@ Die Wahl des geeigneten Systems hängt maßgeblich vom individuellen Flugverhalt
 - **Explorativer Spieler** (ständig wechselnde Destinationen): **Streaming-Lösungen** sind die bessere Wahl. Sie eliminieren die zeitintensive Vorab-Generierung und ermöglichen spontanes Anfliegen beliebiger Regionen weltweit. Der Speicherverbrauch bleibt durch automatische Cache-Bereinigung stabil.
 
 - **Hybrider Spieler** (Stammflughäfen + gelegentliche Exploration): Die **[Kombination aus statischer Generierung und Streaming](../ortho_streaming/static_plus_streaming.md)** bietet das Beste aus beiden Welten. Lokale Kacheln für die Stammregionen in höchster Qualität, Streaming für die flexible globale Abdeckung.
+
+---
+
+## Weiterführende Kapitel
+
+| Thema | Seite | Schwerpunkt |
+|---|---|---|
+| Szenerie-Komponenten | [Wie X-Plane die Welt aufbaut](../aufbau_quellen/scenery_components.md) | Mesh, Ortho, Autogen und ihr Zusammenspiel |
+| Szenerie-Quellen | [Szenerien](../aufbau_quellen/scenery_sources.md) | SimHeaven, Freeware und Payware |
+| GPU & VRAM | [GPU & VRAM](../../fundamentals/performance/gpu_vram.md) | VRAM-Auswirkungen von Ortho-Texturen |
+| Dateisystem | [Dateisystem](../../linux/optimizations/filesystem.md) | Speicher und I/O für Ortho-Daten |
+| XOrganizer | [XOrganizer](../../addon/tools/xorganizer.md) | Szenerie-Verwaltung und scenery_packs.ini-Editor |
+| XRoad | [XRoad](../../addon/scenery_addons/xroad.md) | Straßennetz-Erweiterung für Szenerien |

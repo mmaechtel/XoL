@@ -101,3 +101,14 @@ Anschließend ab- und wieder anmelden (oder das Terminal neu starten), damit die
 ## Fazit
 
 Docker ist nun erfolgreich auf Debian installiert. Mit dieser Installation lassen sich Container erstellen, Images verwalten und Anwendungen in isolierten Umgebungen betreiben. Für weitere Anpassungen oder spezifische Konfigurationen bietet die [offizielle Docker-Dokumentation](https://docs.docker.com) detaillierte Informationen.
+
+---
+
+## Weiterführende Kapitel
+
+| Thema | Seite | Schwerpunkt |
+|---|---|---|
+| KVM | [KVM](kvm.md) | Vollständige Virtualisierung für Windows-Gastsysteme |
+| AutoOrtho | [AutoOrtho](../../scenery/ortho_streaming/autoortho.md) | Ortho-Streaming-Tool mit Docker-Unterstützung |
+| pyenv | [pyenv](pyenv.md) | Python-Versionsverwaltung für Entwicklung |
+| Wine | [Wine](wine.md) | Windows-Programme ohne vollständige VM |

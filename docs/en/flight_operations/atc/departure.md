@@ -78,3 +78,14 @@ On longer routes, Departure hands off to Center (also called Control or Radar). 
 After reaching cruise altitude, the en route phase begins:
 
 * [En Route](enroute.md) – cruise flight and frequency changes
+
+---
+
+## Further Reading
+
+| Topic | Page | Focus |
+|---|---|---|
+| Weather Briefing | [Weather Briefing](../weather/briefing.md) | Weather awareness during the climb phase |
+| VATSIM | [VATSIM](../vatsim/vatsim.md) | Departure control on VATSIM |
+| Clearance | [Clearance](clearance.md) | Initial IFR clearance with SID assignment |
+| Approach | [Approach](approach.md) | STAR and descent procedures at the destination |

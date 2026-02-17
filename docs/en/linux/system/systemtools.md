@@ -409,6 +409,19 @@ Verifies: [C-States](systemtuning.md#cpu-clock-and-sleep-states) and [C-States L
 
 ---
 
+## Further Reading
+
+| Topic | Page | Focus |
+|---|---|---|
+| Kernel Tuning | [Kernel Tuning](systemtuning.md) | The settings these tools verify |
+| Why Latency Matters | [Why Latency Matters](latency.md) | Motivation for monitoring system latency |
+| Latency and Predictability | [Latency and Predictability](../../fundamentals/performance/latency.md) | Theoretical foundations of system latency |
+| Liquorix Kernel | [Liquorix Kernel](../optimizations/liquorix.md) | Low-latency kernel requiring different monitoring approach |
+| Performance Analysis | [Performance Analysis](../../xplane/setup_diagnose/performance.md) | X-Plane-specific performance tools |
+| Nvidia Drivers | [Nvidia Drivers](../optimizations/nvidia.md) | MangoHud and GPU monitoring |
+
+---
+
 ## Sources
 
 - [htop-dev/htop](https://github.com/htop-dev/htop) — Interactive process viewer

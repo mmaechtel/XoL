@@ -124,4 +124,12 @@ Für Nutzer mit funktionierendem Wayland-Desktop ohne X-Plane-Probleme ist es in
 
 ---
 
-Siehe [Display-Server-Übersicht](displayserver.md) für Protokollvergleich und Latenzmessungen.
+## Weiterführende Kapitel
+
+| Thema | Seite | Schwerpunkt |
+|---|---|---|
+| Display-Server-Übersicht | [Display-Server](displayserver.md) | Protokollvergleich und Latenzmessungen |
+| X11-Session | [X11-Session](displayserver_x11.md) | Alternative: direktes X11 ohne XWayland-Overhead |
+| Nvidia-Treiber | [Nvidia-Treiber](nvidia.md) | Wayland-Treiberanforderungen (Explicit Sync) |
+| Latenz und Vorhersagbarkeit | [Latenz und Vorhersagbarkeit](../../fundamentals/performance/latency.md) | XWayland-Latenz-Overhead verstehen |
+| Konfiguration | [Konfiguration](../../xplane/setup_diagnose/config.md) | X-Plane Display- und Rendering-Einstellungen |

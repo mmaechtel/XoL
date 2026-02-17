@@ -30,6 +30,21 @@ A common misconception is that device losses are caused by insufficient video me
 
 Device losses in X-Plane are GPU crashes that are difficult to debug due to the complexity of shaders and asynchronous CPU-GPU interaction. Tools like Aftermath and improved implementations in X-Plane 12.2 facilitate diagnosis. Users can contribute to problem resolution by submitting crash reports with Aftermath enabled. Future developments may further reduce the frequency of such errors.
 
-## References
+---
 
-- "What's up with device losses in X-Plane anyways?". Available at: <https://developer.x-plane.com>. Accessed: 2024-05-09. 
+## Further Reading
+
+| Topic | Page | Focus |
+|---|---|---|
+| Configuration | [Configuration](../setup_diagnose/config.md) | Vulkan settings, shader cache, CLI parameters |
+| Performance Analysis | [Performance Analysis](../setup_diagnose/performance.md) | MangoHUD and GPU monitoring for crash detection |
+| GPU & VRAM | [GPU & VRAM](../../fundamentals/performance/gpu_vram.md) | GPU architecture, VRAM management concepts |
+| Nvidia Drivers | [Nvidia Drivers](../../linux/optimizations/nvidia.md) | Driver versions affecting device loss frequency |
+| Display Server | [Display Server](../../linux/optimizations/displayserver.md) | Compositor and GPU interaction |
+| System Monitoring | [Monitoring](../../linux/system/systemtools.md) | dmesg, journalctl for GPU error analysis |
+
+---
+
+## Sources
+
+- "What's up with device losses in X-Plane anyways?". Available at: <https://developer.x-plane.com>. Accessed: 2024-05-09.

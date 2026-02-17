@@ -78,3 +78,14 @@ Once cleared for the approach, intercept the localizer and follow the glideslope
 Approach hands off to Tower for landing:
 
 * [Landing & Taxi In](landing.md) – landing clearance, vacating, taxi to gate
+
+---
+
+## Further Reading
+
+| Topic | Page | Focus |
+|---|---|---|
+| Weather Briefing | [Weather Briefing](../weather/briefing.md) | Destination ATIS and weather for approach planning |
+| VATSIM | [VATSIM](../vatsim/vatsim.md) | Approach control on VATSIM |
+| Clearance | [Clearance](clearance.md) | IFR clearance with expected approach type |
+| Departure & Climb | [Departure & Climb](departure.md) | Departure procedures as counterpart to approach |

@@ -30,6 +30,21 @@ Ein häufiges Missverständnis ist, dass Geräteverluste durch unzureichenden Vi
 
 Geräteverluste in X-Plane sind GPU-Abstürze, die durch die Komplexität von Shadern und die asynchrone CPU-GPU-Interaktion schwer zu debuggen sind. Werkzeuge wie Aftermath und verbesserte Implementierungen in X-Plane 12.2 erleichtern die Diagnose. Nutzer können durch das Einreichen von Absturzberichten mit aktiviertem Aftermath zur Problemlösung beitragen. Zukünftige Entwicklungen könnten die Häufigkeit solcher Fehler weiter reduzieren.
 
-## Literatur
+---
 
-- "What's up with device losses in X-Plane anyways?". Verfügbar unter: <https://developer.x-plane.com>. Zugriff: 2024-05-09. 
+## Weiterführende Kapitel
+
+| Thema | Seite | Schwerpunkt |
+|---|---|---|
+| Konfiguration | [Konfiguration](../setup_diagnose/config.md) | Vulkan-Einstellungen, Shader-Cache, CLI-Parameter |
+| Performance-Analyse | [Performance-Analyse](../setup_diagnose/performance.md) | MangoHUD und GPU-Monitoring zur Crash-Erkennung |
+| GPU & VRAM | [GPU & VRAM](../../fundamentals/performance/gpu_vram.md) | GPU-Architektur, VRAM-Verwaltung |
+| Nvidia-Treiber | [Nvidia-Treiber](../../linux/optimizations/nvidia.md) | Treiberversionen und Einfluss auf Geräteverluste |
+| Display-Server | [Display-Server](../../linux/optimizations/displayserver.md) | Compositor und GPU-Interaktion |
+| System-Monitoring | [Monitoring](../../linux/system/systemtools.md) | dmesg, journalctl für GPU-Fehleranalyse |
+
+---
+
+## Quellen
+
+- "What's up with device losses in X-Plane anyways?". Verfügbar unter: <https://developer.x-plane.com>. Zugriff: 2024-05-09.

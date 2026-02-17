@@ -151,6 +151,19 @@ Output: `x11` or `wayland`
 
 ---
 
+## Further Reading
+
+| Topic | Page | Focus |
+|---|---|---|
+| X11 Session | [X11 Session](displayserver_x11.md) | Recommended X-Plane setup — direct X11 path |
+| Wayland Session | [Wayland Session](displayserver_wayland.md) | X-Plane via XWayland — setup and troubleshooting |
+| Nvidia Drivers | [Nvidia Drivers](nvidia.md) | GPU driver requirements for X11 and Wayland |
+| Kernel Tuning | [Kernel Tuning](../system/systemtuning.md) | System-level latency optimization |
+| Latency and Predictability | [Latency and Predictability](../../fundamentals/performance/latency.md) | Input latency theory and measurement |
+| Configuration | [Configuration](../../xplane/setup_diagnose/config.md) | X-Plane display and rendering settings |
+
+---
+
 ## Sources
 
 - [Wayland Architecture](https://wayland.freedesktop.org/architecture.html) — Official Wayland project

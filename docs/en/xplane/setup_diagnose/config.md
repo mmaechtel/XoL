@@ -368,6 +368,21 @@ Check core dump path: `cat /proc/sys/kernel/core_pattern`
 
 Under systemd, core dumps are stored in `/var/lib/systemd/coredump/` (compressed).
 
+---
+
+## Further Reading
+
+| Topic | Page | Focus |
+|---|---|---|
+| Performance Analysis | [Performance Analysis](performance.md) | MangoHUD, Microprofiler, diagnostic workflows |
+| Nvidia Drivers | [Nvidia Drivers](../../linux/optimizations/nvidia.md) | Driver installation, version management, optimization |
+| System Tuning | [Kernel Tuning](../../linux/system/systemtuning.md) | CPU governor, USB autosuspend, kernel parameters |
+| GPU & VRAM | [GPU & VRAM](../../fundamentals/performance/gpu_vram.md) | GPU pipeline, VRAM management, texture compression |
+| Device Losses | [Device Losses](../systemfehler/geraeteverluste.md) | GPU crash analysis and Aftermath diagnostics |
+| Wine | [Wine / Proton](../../linux/extensions/wine.md) | Running Windows-only X-Plane tools via Proton |
+
+---
+
 ## Sources
 
 The most important sources on the topics covered on this page:

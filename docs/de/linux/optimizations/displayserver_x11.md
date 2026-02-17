@@ -136,4 +136,12 @@ WaylandEnable=true
 
 ---
 
-Siehe [Display-Server-Übersicht](displayserver.md) für Latenzmessungen und GPU-Empfehlungen.
+## Weiterführende Kapitel
+
+| Thema | Seite | Schwerpunkt |
+|---|---|---|
+| Display-Server-Übersicht | [Display-Server](displayserver.md) | Protokollvergleich und Latenzmessungen |
+| Wayland-Session | [Wayland-Session](displayserver_wayland.md) | Alternative: Wayland-Desktop mit XWayland |
+| Nvidia-Treiber | [Nvidia-Treiber](nvidia.md) | Composition Pipeline und X11-spezifische Einstellungen |
+| Kernel-Tuning | [Kernel-Tuning](../system/systemtuning.md) | Latenzoptimierung auf Systemebene |
+| Konfiguration | [Konfiguration](../../xplane/setup_diagnose/config.md) | X-Plane Display- und Rendering-Einstellungen |

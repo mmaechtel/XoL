@@ -78,3 +78,14 @@ Nach der Anflugfreigabe den Localizer auffangen und dem Gleitweg folgen. Die App
 Approach übergibt an Tower für die Landung:
 
 * [Landung und Abstellen](landing.md) – Landefreigabe, Räumen der Piste, Taxi zum Gate
+
+---
+
+## Weiterführende Kapitel
+
+| Thema | Seite | Schwerpunkt |
+|---|---|---|
+| Wetter-Briefing | [Wetter-Briefing](../weather/briefing.md) | ATIS und Wetterlage für die Anflugplanung |
+| VATSIM | [VATSIM](../vatsim/vatsim.md) | Approach-Lotse im VATSIM-Netzwerk |
+| Clearance | [Clearance](clearance.md) | IFR-Freigabe mit erwartetem Anflugverfahren |
+| Abflug und Steigflug | [Abflug und Steigflug](departure.md) | Abflugverfahren als Gegenstück zum Anflug |

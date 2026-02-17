@@ -78,3 +78,14 @@ Vor dem Erreichen des Zielgebiets übergibt Center an Approach:
 
 * [Anflug](approach.md) – Sinkflug und Positionierung für die Landung
 * Die **ATIS des Zielflughafens** vor dem Kontakt mit Approach einholen
+
+---
+
+## Weiterführende Kapitel
+
+| Thema | Seite | Schwerpunkt |
+|---|---|---|
+| Wetter-Briefing | [Wetter-Briefing](../weather/briefing.md) | Wetterausweichungen und Zielflughafen-Wetter |
+| VATSIM | [VATSIM](../vatsim/vatsim.md) | Center-Lotse im VATSIM-Netzwerk |
+| Clearance | [Clearance](clearance.md) | IFR-Freigabe und Flugroutenplanung |
+| Landung und Abstellen | [Landung und Abstellen](landing.md) | Vollständige ATC-Kommunikationskette |

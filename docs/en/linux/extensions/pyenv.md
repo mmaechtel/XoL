@@ -149,4 +149,15 @@ If you encounter issues, proceed as follows:
 1. Check your shell configuration
 2. Ensure all dependencies are installed
 3. Verify the permissions of pyenv directories
-4. Consult the [official pyenv documentation](https://github.com/pyenv/pyenv#readme) 
+4. Consult the [official pyenv documentation](https://github.com/pyenv/pyenv#readme)
+
+---
+
+## Further Reading
+
+| Topic | Page | Focus |
+|---|---|---|
+| XPPython3 | [XPPython3](../../addon/scripting/xppython3.md) | Python plugin framework for X-Plane |
+| Ortho4XP | [Ortho4XP](../../scenery/orthophotography/ortho4xp.md) | Python-based scenery generation tool |
+| zsh | [zsh](zsh.md) | Shell customization with pyenv integration |
+| Docker | [Docker](docker.md) | Containerized development environments |

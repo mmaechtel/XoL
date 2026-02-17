@@ -14,3 +14,15 @@ The theoretical foundations — why latency matters more than throughput and whi
 
 - **[Tuning](systemtuning.md)** — Kernel parameters, CPU governor, interrupt affinity, NVMe tuning
 - **[Monitoring](systemtools.md)** — btop, turbostat, perf, mpstat and other analysis tools
+
+---
+
+## Further Reading
+
+| Topic | Page | Focus |
+|---|---|---|
+| Kernel Tuning | [Kernel Tuning](systemtuning.md) | CPU governor, interrupt affinity, NVMe tuning |
+| Monitoring | [Monitoring](systemtools.md) | Verify tuning with turbostat, mpstat, ioping |
+| Latency and Predictability | [Latency and Predictability](../../fundamentals/performance/latency.md) | Theoretical foundations of system latency |
+| Liquorix Kernel | [Liquorix Kernel](../optimizations/liquorix.md) | Low-latency kernel with PDS scheduler |
+| Load Dimensions | [Load Dimensions](../../fundamentals/performance/performance_overview.md) | CPU, GPU, IO — where bottlenecks form |

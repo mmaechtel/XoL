@@ -186,6 +186,21 @@ Zusätzlich beeinflusst das Disk-I/O-Profil die CPU-Last indirekt:
 
 XEarthLayer richtet sich an Linux-Nutzer, die maximale Streaming-Performance suchen und bereit sind, eine Rust-Build-Umgebung einzurichten. AutoOrtho bietet die breitere Plattformunterstützung und einfachere Einrichtung.
 
+---
+
+## Weiterführende Kapitel
+
+| Thema | Seite | Schwerpunkt |
+|---|---|---|
+| AutoOrtho | [AutoOrtho](autoortho.md) | Alternative Streaming-Lösung mit breiterer Plattformunterstützung |
+| Ortho4XP | [Ortho4XP](../orthophotography/ortho4xp.md) | Statische Ortho-Kachel-Generierung für Offline-Nutzung |
+| Statisch + Streaming | [Statisch + Streaming](static_plus_streaming.md) | Kombination lokaler Kacheln mit Streaming |
+| Szenerie-Komponenten | [Wie X-Plane die Welt aufbaut](../aufbau_quellen/scenery_components.md) | scenery_packs.ini-Ladereihenfolge |
+| Kernel-Tuning | [Kernel-Tuning](../../linux/system/systemtuning.md) | CPU-Governor, IRQ-Pinning, Scheduler-Tuning |
+| Dateisystem | [Dateisystem](../../linux/optimizations/filesystem.md) | NVMe/SSD-Optimierung für Cache-Performance |
+
+---
+
 ## Quellen
 
 - [GitHub Repository](https://github.com/samsoir/xearthlayer)

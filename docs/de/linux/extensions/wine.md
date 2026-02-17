@@ -93,5 +93,15 @@ sudo apt-get update
 sudo apt-get install wine32:i386
 ```
 
-Nach der Installation können Sie auch 32-Bit Windows-Programme ausführen. Dies ist besonders nützlich für ältere Software oder Programme, die keine 64-Bit Version haben.
+Nach der Installation lassen sich auch 32-Bit-Windows-Programme ausführen. Das ist besonders nützlich für ältere Software oder Programme ohne 64-Bit-Version.
+
+---
+
+## Weiterführende Kapitel
+
+| Thema | Seite | Schwerpunkt |
+|---|---|---|
+| KVM | [KVM](kvm.md) | Vollständige Windows-Virtualisierung als Alternative |
+| Docker | [Docker](docker.md) | Container-basierte Anwendungsisolierung |
+| Nvidia-Treiber | [Nvidia-Treiber](../optimizations/nvidia.md) | GPU-Treiber für Vulkan/DirectX-Übersetzung |
 

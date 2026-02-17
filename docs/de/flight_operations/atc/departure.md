@@ -78,3 +78,14 @@ Auf längeren Strecken übergibt Departure an Center (auch Control oder Radar ge
 Nach Erreichen der Reiseflughöhe beginnt der Streckenflug:
 
 * [Streckenflug](enroute.md) – Cruise und Frequenzwechsel
+
+---
+
+## Weiterführende Kapitel
+
+| Thema | Seite | Schwerpunkt |
+|---|---|---|
+| Wetter-Briefing | [Wetter-Briefing](../weather/briefing.md) | Wetterlage im Steigflug |
+| VATSIM | [VATSIM](../vatsim/vatsim.md) | Departure-Lotse im VATSIM-Netzwerk |
+| Clearance | [Clearance](clearance.md) | IFR-Freigabe mit SID-Zuweisung |
+| Anflug | [Anflug](approach.md) | STAR und Sinkflugverfahren am Ziel |
