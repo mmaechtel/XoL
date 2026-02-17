@@ -1,3 +1,6 @@
+---
+description: "XOrganizer manages X-Plane scenery, plugins, and profiles — with conflict analysis, drag-and-drop ordering, and flight-plan-based profile creation."
+---
 # XOrganizer
 
 XOrganizer is a powerful tool for managing and organizing X-Plane addons. It supports the management of sceneries, plugins, and other addons to avoid conflicts and optimize performance.

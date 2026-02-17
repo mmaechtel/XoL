@@ -1,3 +1,6 @@
+---
+description: "SimBrief Simple OFP for X-Plane — FlyWithLua script that downloads and displays your SimBrief flight plan as an in-simulator overlay."
+---
 # SimBrief Simple OFP
 
 SimBrief Simple OFP is a [FlyWithLua](../scripting/flywithlua.md) script that downloads the latest flight plan from SimBrief and displays it as a readable Operational Flight Plan (OFP) directly inside X-Plane.

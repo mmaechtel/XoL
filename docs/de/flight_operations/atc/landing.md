@@ -1,3 +1,6 @@
+---
+description: "ATC-Verfahren für Landung und Einrollen — Landefreigabe, Durchstart-Phraseologie, Pistenräumung und Rollen zum Gate mit Funkbeispielen."
+---
 # Landung und Abstellen
 
 Der Tower-Lotse erteilt die Landefreigabe und verwaltet die Piste. Nach dem Aufsetzen leitet Ground das Flugzeug zur Parkposition.

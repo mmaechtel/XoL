@@ -1,3 +1,6 @@
+---
+description: "Linux-Monitoring-Tools für X-Plane: htop, btop, turbostat, mpstat, ioping u.a. — CPU-Governor, Interrupt-Shielding und NVMe-Latenz verifizieren."
+---
 # Linux-Systemtools
 
 Die Einstellungen aus dem [Systemtuning](systemtuning.md) lassen sich nicht blind anwenden — sie müssen verifiziert werden. Wirkt der Governor tatsächlich? Landen Interrupts auf den richtigen Kernen? Wacht die [NVMe](../../glossary.md#nvme-non-volatile-memory-express) aus dem Schlafmodus auf?

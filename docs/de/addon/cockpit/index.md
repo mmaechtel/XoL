@@ -1,3 +1,6 @@
+---
+description: "Sechs Cockpit- und Kamera-Plugins für X-Plane unter Linux — AviTab, XCamera, XTextureExtractor, LinuxTrack, TerrainRadar und KabinXP."
+---
 # Cockpit & Kamera
 
 Sechs Plugins für Cockpit-Funktionalität: AviTab als Electronic Flight Bag, XCamera für erweiterte Kamerasteuerung, XTextureExtractor für Cockpit-Instrumente auf externen Displays, LinuxTrack für Head-Tracking unter Linux, TerrainRadar für Geländedarstellung und KabinXP für die Passagierkabine.

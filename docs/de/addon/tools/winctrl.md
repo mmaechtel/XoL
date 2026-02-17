@@ -1,3 +1,6 @@
+---
+description: "WINCTRL verbindet Winwing-Cockpitpanels unter Linux und macOS per USB HID mit X-Plane — vollwertige LCD-, LED- und Tastensteuerung ohne SimAppPro."
+---
 # WINCTRL
 
 WINCTRL ist ein natives [Plugin](../../glossary.md#plugin), das Winwing-Cockpitpanels (MCDU, FCU, EFIS, Pedale) direkt per USB-HID mit X-Plane verbindet — ohne die Windows-only Software SimAppPro. Für Linux- und macOS-Nutzer ist es die einzige Möglichkeit, Winwing-Hardware vollständig zu nutzen.

@@ -1,3 +1,6 @@
+---
+description: "X-Plane 12 performance analysis on Linux: Microprofiler for CPU/GPU bottlenecks, MangoHUD frame time overlay, GPU monitoring, and optimization tips."
+---
 # X-Plane Performance on Linux
 
 X-Plane 12 is a cross-platform application — the general graphics settings (textures, shadows, clouds, anti-aliasing) work the same on all operating systems and are documented in the [official documentation](https://www.x-plane.com/kb/configuring-the-rendering-options/). This page covers performance **analysis** on Linux: internal diagnostic tools, Linux-specific monitoring utilities, and targeted optimization recommendations. The Linux-specific graphics settings are documented under [Configuration](config.md), system tuning under [System Tuning](../../linux/system/systemtuning.md).

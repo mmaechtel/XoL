@@ -1,3 +1,6 @@
+---
+description: "Six X-Plane plugins for air traffic and ground operations — LiveTraffic, Better Pushback, AutoDGS, openSAM, AutoGate, and Follow the Greens."
+---
 # Traffic & Ground Ops
 
 Six plugins for air traffic and ground operations: LiveTraffic displays real-time air traffic, Better Pushback enables realistic pushback, AutoDGS and openSAM control jetways and docking, and Follow the Greens provides taxi guidance on the ground.

@@ -1,3 +1,6 @@
+---
+description: "Pushback and taxi ATC procedures — apron communication, pushback clearance, taxi routing with hold-short instructions, and standard phraseology."
+---
 # Pushback & Taxi
 
 After receiving and reading back the IFR clearance, the next step is pushback from the gate and taxi to the departure runway. At larger airports like Frankfurt, Apron handles pushback while Ground handles taxi. At smaller airports, Ground covers both.

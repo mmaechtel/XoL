@@ -1,7 +1,7 @@
 ---
 title: Videos
+description: "Video-Sammlung zu X-Plane unter Linux — Performance-Tuning, Szenerie-Verwaltung, Display-Server-Wahl, Cockpit-Addons und Ortho-Streaming."
 ---
-
 # Videos
 
 Videosammlung rund um X-Plane auf Linux.

@@ -1,3 +1,6 @@
+---
+description: "En route ATC communication during cruise flight — frequency changes between sectors, step climbs, weather deviations, and standard phraseology."
+---
 # En Route
 
 The en route phase covers cruise flight between the departure and destination areas. The responsible controller is Center (also called Control or Radar in German airspace). On short routes like Frankfurt–Munich, this phase may be brief with only one or two frequency changes.

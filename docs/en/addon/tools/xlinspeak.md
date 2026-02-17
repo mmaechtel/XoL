@@ -1,3 +1,6 @@
+---
+description: "XLinSpeak adds text-to-speech for X-Plane plugins on Linux via speech-dispatcher, restoring audio parity with Windows and macOS for checklist callouts."
+---
 # XLinSpeak
 
 XLinSpeak is a Linux-only [plugin](../../glossary.md#plugin) that adds text-to-speech (TTS) support for X-Plane plugins. On Windows and macOS, X-Plane uses the platform's native speech engines — on Linux, this integration is missing. XLinSpeak fills this gap via speech-dispatcher.

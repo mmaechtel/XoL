@@ -1,3 +1,6 @@
+---
+description: "VRAM-Verwaltung in X-Plane unter Linux: Textur-Paging, Zoom-Level-Einfluss, GPU-Treiberunterschiede und Frame-Time-Perzentilanalyse."
+---
 # GPU & VRAM
 
 <div class="video-container" markdown>

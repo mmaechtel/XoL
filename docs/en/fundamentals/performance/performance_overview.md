@@ -1,3 +1,6 @@
+---
+description: "Three load dimensions competing in X-Plane: CPU compute, local I/O, and network streaming — identifying bottlenecks and their interactions."
+---
 # Performance
 
 <div class="video-container" markdown>

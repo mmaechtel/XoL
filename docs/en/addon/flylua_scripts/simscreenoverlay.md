@@ -1,3 +1,6 @@
+---
+description: "SimScreen Overlay for X-Plane 12 — FlyWithLua script that stamps flight data onto screenshots with optional SimBrief integration."
+---
 # SimScreen Overlay
 
 SimScreen Overlay is a [FlyWithLua](../scripting/flywithlua.md) script that adds a clean flight information overlay to X-Plane 12 screenshots. The overlay appears only during the screenshot capture — no visual clutter while flying.

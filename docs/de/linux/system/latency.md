@@ -1,3 +1,6 @@
+---
+description: "Warum Latenz für X-Plane unter Linux entscheidend ist: Stabile Frame-Times statt hoher FPS, zwei Kernel-Tuning-Profile und Monitoring zur Verifikation."
+---
 # Warum Latenz zählt
 
 <div class="video-container" markdown>

@@ -1,3 +1,6 @@
+---
+description: "Wine installation on Debian: two methods (standard packages and WineHQ), Winetricks setup, and 32-bit support for Windows X-Plane tools."
+---
 ## Installing Wine on Debian 12 - Two Ways
 
 [Wine](../../glossary.md#wine-wine-is-not-an-emulator) allows running Windows programs on Linux. Here are two ways to install Wine on Debian 12.

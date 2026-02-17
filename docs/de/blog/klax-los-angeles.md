@@ -7,8 +7,8 @@ tags:
   - Flughafen
   - USA
   - X-Plane
+description: "Los Angeles International Airport (KLAX) HD-Szenerie für X-Plane 12 — vollständig modellierte Terminals, dynamische Beleuchtung und Markierungen."
 ---
-
 # Los Angeles International Airport (KLAX) - X-Plane.org
 
 Der Los Angeles International Airport (KLAX) ist einer der größten und verkehrsreichsten Flughäfen der Welt, der von X-Plane.org in HD-Version für X-Plane 12 entwickelt wurde. Diese Szenerie bietet eine detaillierte Darstellung des Flughafens und seiner Umgebung.

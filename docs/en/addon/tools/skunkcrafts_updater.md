@@ -1,3 +1,6 @@
+---
+description: "SkunkCrafts Updater keeps X-Plane addons current on Linux: automatic discovery, differential downloads, and glibc compatibility notes for Debian."
+---
 # SkunkCrafts Updater
 
 The SkunkCrafts Updater is the de facto standard update tool for [X-Plane](../../glossary.md#x-plane) addons. It scans an X-Plane installation for addons that ship with SkunkCrafts configuration files, compares versions against remote repositories, and downloads updates automatically.

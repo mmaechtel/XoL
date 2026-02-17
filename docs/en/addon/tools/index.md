@@ -1,3 +1,6 @@
+---
+description: "Seven X-Plane utilities for Linux: DataRefTool, Little XpConnect, SkunkCrafts Updater, XGS landing rate, XLinSpeak TTS, WINCTRL, and XOrganizer."
+---
 # Tools
 
 Seven utilities for plugin development and operations: DataRefTool inspects X-Plane's internal variables, Little XpConnect bridges to Little Navmap, SkunkCrafts Updater keeps addons current, XLinSpeak provides speech output on Linux, and XOrganizer manages the scenery_packs.ini.

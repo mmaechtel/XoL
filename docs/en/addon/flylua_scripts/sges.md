@@ -1,3 +1,6 @@
+---
+description: "SGES ground equipment for X-Plane 12 — FlyWithLua script adding GPU, fuel trucks, animated passengers, chocks, pushback, and deicing to the ramp."
+---
 # SGES — Simple Ground Equipment & Services
 
 SGES is a [FlyWithLua](../scripting/flywithlua.md) script that adds comprehensive ground handling equipment to [X-Plane](../../glossary.md#x-plane) 12. It places and animates static and moving objects around the aircraft on the apron — from GPU and fuel truck to animated passengers and a simplified marshaller.

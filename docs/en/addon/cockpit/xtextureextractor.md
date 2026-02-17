@@ -1,3 +1,6 @@
+---
+description: "XTextureExtractor for X-Plane on Linux — stream live cockpit instruments to tablets, external monitors, or Raspberry Pi over the network."
+---
 # XTextureExtractor
 
 XTextureExtractor turns tablets, monitors, or Raspberry Pis into live cockpit instrument displays for [X-Plane](../../glossary.md#x-plane). The [plugin](../../glossary.md#plugin) extracts instrument textures in real time and streams them over the network to connected devices.

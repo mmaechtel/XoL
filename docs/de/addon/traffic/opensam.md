@@ -1,3 +1,6 @@
+---
+description: "openSAM ist ein freier Open-Source-Ersatz für das SAM-Plugin — steuert animierte Fluggastbrücken, VDGS und Marshaller in X-Plane-Szenerien."
+---
 # openSAM
 
 openSAM ist ein Open-Source-Ersatz für das kommerzielle SAM-[Plugin](../../glossary.md#plugin) (Scenery Animation Manager) von Stairport. Es steuert animierte Jetways, VDGS, Marshallers und Custom-Animationen in SAM-fähigen Custom-Szenerien.

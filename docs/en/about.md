@@ -1,3 +1,6 @@
+---
+description: "About XoL documentation — target audience, contact, Creative Commons license, privacy policy, and legal notice for X-Plane on Linux."
+---
 ## About the Documentation
 
 The author of this documentation has spent a long time researching and experimenting in various forums and other sources until his own simulation system was available in its current full expansion stage. The switch to the Linux operating system has more than paid off in terms of performance and stability. These experiences motivated him to compile the most important techniques and tools to provide others with a professional introduction to working with the simulator.

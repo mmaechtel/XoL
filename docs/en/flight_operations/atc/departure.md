@@ -1,3 +1,6 @@
+---
+description: "Departure and climb ATC communication — SID compliance, altitude changes, radar vectors, and handoff to Center with standard phraseology examples."
+---
 # Departure & Climb
 
 After takeoff, contact the Departure controller (also called Radar). Departure manages the climb phase and ensures separation from other traffic along the SID and in the climb corridor.

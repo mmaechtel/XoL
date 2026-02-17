@@ -1,3 +1,6 @@
+---
+description: "XGS displays landing quality data in X-Plane — sink rate, G-forces, centerline deviation, and touchdown distance with configurable rating scales."
+---
 # XGS
 
 XGS (Landing Speed Plugin Reloaded) is a standalone [plugin](../../glossary.md#plugin) by hotbso that displays detailed landing quality data — from sink rate and G-forces to touchdown distance and centerline deviation.

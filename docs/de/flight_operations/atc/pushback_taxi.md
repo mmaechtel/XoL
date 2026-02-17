@@ -1,3 +1,6 @@
+---
+description: "ATC-Verfahren für Pushback und Rollen — Vorfeldkommunikation, Pushback-Freigabe, Rollwege mit Hold-Short-Anweisungen und Standardphraseologie."
+---
 # Pushback & Taxi
 
 Nach dem Erhalt und Zurücklesen der IFR-Clearance folgt der Pushback vom Gate und das Taxi zur Startbahn. An größeren Flughäfen wie Frankfurt ist Apron für den Pushback zuständig, während Ground das Rollen übernimmt. An kleineren Flughäfen deckt Ground beides ab.

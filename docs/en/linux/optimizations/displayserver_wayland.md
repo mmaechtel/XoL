@@ -1,3 +1,6 @@
+---
+description: "Running X-Plane in a Wayland session via XWayland: latency overhead, known issues, environment variables, and GPU-specific troubleshooting."
+---
 # Wayland Session with X-Plane
 
 If you use a Wayland session for your desktop, X-Plane will still work — via the XWayland compatibility layer. This page explains what happens, what to expect, and how to troubleshoot.

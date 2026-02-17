@@ -7,8 +7,8 @@ tags:
   - Airport
   - USA
   - X-Plane
+description: "Los Angeles International Airport (KLAX) HD scenery for X-Plane 12 — fully modeled terminals, dynamic lighting, and detailed runway markings."
 ---
-
 # Los Angeles International Airport (KLAX) - X-Plane.org
 
 Los Angeles International Airport (KLAX) is one of the largest and busiest airports in the world, developed by X-Plane.org in HD version for X-Plane 12. This scenery provides a detailed representation of the airport and its surroundings.

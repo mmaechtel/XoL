@@ -1,3 +1,6 @@
+---
+description: "Sieben X-Plane-Werkzeuge für Linux: DataRefTool, Little XpConnect, SkunkCrafts Updater, XGS-Landerate, XLinSpeak-TTS, WINCTRL und XOrganizer."
+---
 # Werkzeuge
 
 Sieben Werkzeuge für Plugin-Entwicklung und Betrieb: DataRefTool inspiziert X-Planes interne Variablen, Little XpConnect verbindet mit Little Navmap, SkunkCrafts Updater hält Addons aktuell, XLinSpeak liefert Sprachausgabe unter Linux, und XOrganizer verwaltet die scenery_packs.ini.

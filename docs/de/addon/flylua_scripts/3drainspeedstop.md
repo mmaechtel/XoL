@@ -1,3 +1,6 @@
+---
+description: "3D Rain Stop für X-Plane 12 — FlyWithLua-Skript zum Abschalten störender 3D-Regenpartikel bei hoher Geschwindigkeit oder Flughöhe."
+---
 # 3D Rain Stop
 
 3D Rain Stop ist ein [FlyWithLua](../scripting/flywithlua.md)-Skriptpaket, das den 3D-Regenpartikeleffekt bei höheren Geschwindigkeiten oder Flughöhen automatisch deaktiviert. Die fallenden Regenpartikel von X-Plane 12 erzeugen bei hoher Geschwindigkeit einen störenden „Star-Wars-Warp-Speed"-Effekt — die Skripte entfernen diesen, während der Regeneffekt auf der Windschutzscheibe erhalten bleibt.

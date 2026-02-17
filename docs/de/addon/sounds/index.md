@@ -1,3 +1,6 @@
+---
+description: "Sound-Packs für X-Plane 12: KOSP Project liefert ein komplettes ToLiss-Airbus-Soundscape, Mango Studios bietet flugzeugspezifische FMOD-Ersatzpakete."
+---
 # Sounds
 
 Sound-Packs erweitern X-Planes Standard-Audiolandschaft. KOSP Project liefert ein vollständiges Soundscape, Mango Studios bietet flugzeugspezifische Sound-Packs.

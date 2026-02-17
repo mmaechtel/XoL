@@ -1,3 +1,6 @@
+---
+description: "Better Pushback replaces X-Plane's default pushback with a route planner, 3D tug vehicle, manual mode, and multilingual ground crew voice output."
+---
 # Better Pushback
 
 Better Pushback is a [plugin](../../glossary.md#plugin) for [X-Plane](../../glossary.md#x-plane) 11/12 that simulates realistic pushback operations with a route planner, 3D tug vehicle, and multilingual voice output.

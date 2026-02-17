@@ -1,3 +1,6 @@
+---
+description: "3D Rain Stop for X-Plane 12 — FlyWithLua script that disables distracting 3D rain particles at high speed or altitude while keeping windshield rain."
+---
 # 3D Rain Stop
 
 3D Rain Stop is a [FlyWithLua](../scripting/flywithlua.md) script package that automatically disables the 3D rain particle effect at higher speeds or altitudes. X-Plane 12's falling rain particles create a distracting "Star Wars warp speed" visual at high speeds — the scripts remove this effect while preserving the windshield rain rendering.

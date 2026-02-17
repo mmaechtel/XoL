@@ -1,3 +1,6 @@
+---
+description: "Latency vs. throughput in X-Plane: why temporal predictability beats raw FPS, and four system sources that cause frame time spikes."
+---
 # Latency and Predictability
 
 X-Plane calculates a complex world with physics, weather, scenery, and input devices. What determines result quality is not maximum computing power but temporal predictability — how consistently each individual frame is computed. This chapter explains why latency is the real problem and which system sources cause it. The three load dimensions (CPU, I/O, network) and their interactions are covered in the [Load Dimensions](performance_overview.md) chapter.

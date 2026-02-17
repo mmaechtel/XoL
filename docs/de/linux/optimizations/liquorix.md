@@ -1,3 +1,6 @@
+---
+description: "Liquorix-Kernel auf Debian für X-Plane: Installation, PDS-Scheduler, 1000-Hz-Timer, volle Preemption und Vergleich mit dem Standard-Kernel."
+---
 # Liquorix Kernel unter Debian
 
 Der Standard-Debian-Kernel ist auf breite Kompatibilität und Server-Workloads ausgelegt. Der [Liquorix-Kernel](../../glossary.md#liquorix-kernel) geht einen anderen Weg — er basiert auf dem Zen-Kernel-Patchset und ist gezielt auf Desktop-Reaktionsfähigkeit und latenzempfindliche Anwendungen wie Gaming und Flugsimulation optimiert. Er wird von Steven Barrett gepflegt und ist nicht Teil des offiziellen Debian-Archivs. Vor der Installation empfiehlt sich ein System-Backup.

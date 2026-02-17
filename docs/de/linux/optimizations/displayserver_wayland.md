@@ -1,3 +1,6 @@
+---
+description: "X-Plane in einer Wayland-Session via XWayland betreiben: Latenz-Overhead, bekannte Probleme, Umgebungsvariablen und GPU-spezifische Fehlersuche."
+---
 # Wayland-Session mit X-Plane
 
 Wer eine Wayland-Session für den Desktop nutzt, kann X-Plane trotzdem verwenden — über die XWayland-Kompatibilitätsschicht. Diese Seite erklärt was passiert, was zu erwarten ist und wie Probleme gelöst werden.

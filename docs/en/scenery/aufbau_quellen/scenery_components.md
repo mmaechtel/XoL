@@ -1,3 +1,6 @@
+---
+description: "How X-Plane builds its world from mesh, ortho, and autogen layers. Includes scenery_packs.ini load order rules and a working example."
+---
 # How X-Plane Builds the World
 
 <div class="video-container" markdown>

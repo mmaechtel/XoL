@@ -1,3 +1,6 @@
+---
+description: "Dynamic Rain Rate für X-Plane 12 — FlyWithLua-Skript zur geschwindigkeitsabhängigen Anpassung der Regenintensität für realistischere Effekte."
+---
 # Dynamic Rain Rate
 
 Dynamic Rain Rate ist ein [FlyWithLua](../scripting/flywithlua.md)-Skript, das die Regenintensität in X-Plane 12 dynamisch an die wahre Fluggeschwindigkeit (TAS) des Flugzeugs anpasst. Anstelle einer statischen Regenrate skaliert das Skript den Effekt kontinuierlich, um bei verschiedenen Fluggeschwindigkeiten realistischeren Niederschlag zu erzeugen.

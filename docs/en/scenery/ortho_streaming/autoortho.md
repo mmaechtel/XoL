@@ -1,3 +1,6 @@
+---
+description: "AutoOrtho streams satellite imagery into X-Plane in real time via FUSE. Setup guide for Linux with configuration, troubleshooting, and Ortho4XP comparison."
+---
 # AutoOrtho
 
 Visual quality of landscapes is crucial for **Visual Flight Rules (VFR)** flights in flight simulators. While X-Plane provides standard textures, these are often perceived as outdated. **AutoOrtho** addresses this limitation through **real-time integration** of satellite imagery, enabling precise representation of infrastructure, vegetation, and other terrain features. The last version released by kubilus1, version 0.7.2 (January 21, 2024), optimized integration with X-Plane and minimized typical problems such as **scenery conflicts** or **performance issues**.

@@ -1,3 +1,6 @@
+---
+description: "X-Plane performance fundamentals: CPU, I/O, and network load dimensions, VRAM management, frame time analysis, and latency sources."
+---
 # Performance
 
 X-Plane is a hybrid of real-time physics simulation, massive data I/O, and — with ortho streaming — continuous network traffic. These three load dimensions compete for shared resources: CPU cycles, cache, memory bandwidth, and PCIe lanes. The bottleneck shifts dynamically — during scene loading storage dominates, in flight the CPU, during streaming the network. The chapters in this section explain where bottlenecks arise and how they amplify each other.

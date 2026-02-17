@@ -1,3 +1,6 @@
+---
+description: "XRoads hides X-Plane road polygons in Ortho4XP orthophotos, revealing satellite imagery roads. Includes Linux compilation instructions."
+---
 # XRoads
 
 [XRoads](../../glossary.md#xroads) is a scenery library for [X-Plane](../../glossary.md#x-plane) 11 & 12 that hides standard road polygons in [Ortho4XP](../../glossary.md#ortho4xp) orthophotos, making the actual roads from satellite images visible.

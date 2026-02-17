@@ -1,10 +1,9 @@
 ---
 title: Glossary
-description: Term explanations around X-Plane and Linux
+description: "Glossary of X-Plane and Linux terms — CPU governor, Vulkan, VRAM, Wayland, Mesa, kernel parameters, scenery formats, and more explained."
 tags:
   - reference
 ---
-
 # Glossary
 
 ## A

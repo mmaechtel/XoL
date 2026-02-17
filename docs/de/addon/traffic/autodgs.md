@@ -1,3 +1,6 @@
+---
+description: "AutoDGS bietet automatische Andockführung per VDGS oder Marshaller an über 5.000 X-Plane-Gateway-Flughäfen — ohne Szenerie-Anpassungen."
+---
 # AutoDGS
 
 AutoDGS stellt an über 5.000 Gateway-Flughäfen automatisch ein Docking Guidance System (VDGS oder Marshaller) bereit — ohne dass die Szenerie dafür angepasst sein muss.

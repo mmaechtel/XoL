@@ -1,3 +1,6 @@
+---
+description: "LinuxTrack head tracking for X-Plane on Linux — 6DOF tracking with TrackIR, webcam, or Wiimote. Installation and X-IR fork guide."
+---
 # LinuxTrack
 
 LinuxTrack is a head-tracking software suite for Linux and macOS that translates head movements into X-Plane camera movements via the xlinuxtrack [plugin](../../glossary.md#plugin). It supports TrackIR, webcams, and Wiimotes as input devices and provides 6DOF tracking (6 degrees of freedom).

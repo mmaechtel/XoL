@@ -1,3 +1,6 @@
+---
+description: "SayIntentions.AI sprachgesteuerte Flugsicherung für X-Plane unter Linux via KVM/QEMU-Windows-VM mit UDP-Portweiterleitung und Mikrofon."
+---
 # SayIntentions.AI
 
 SayIntentions.AI ist ein KI-basiertes Air Traffic Control (ATC) System für Flugsimulatoren. Der Pilot kommuniziert per Mikrofon mit der KI-gesteuerten Flugsicherung — das System nutzt Spracherkennung und große Sprachmodelle (LLM) für natürliche, dynamische Antworten. Der SayIntentions Client ist **ausschließlich für Windows** verfügbar — unter Linux ist eine Windows-VM (KVM/QEMU) mit UDP-Port-Forwarding erforderlich, um den Client parallel zu [X-Plane](../../glossary.md#x-plane) auf dem Host zu betreiben.

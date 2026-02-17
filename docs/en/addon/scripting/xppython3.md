@@ -1,3 +1,6 @@
+---
+description: "XPPython3 Python 3 plugin framework for X-Plane 12 on Linux: full SDK access, built-in pip, Dear ImGui UI, and Debian dependency setup."
+---
 # XPPython3
 
 XPPython3 is a Python 3 scripting engine for [X-Plane](../../glossary.md#x-plane) 12 that wraps the complete X-Plane SDK into Python, enabling plugins written in Python to run alongside native C/C++ plugins.

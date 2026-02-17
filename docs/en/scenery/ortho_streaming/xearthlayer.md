@@ -1,3 +1,6 @@
+---
+description: "XEarthLayer is a Rust-based ortho streaming tool for X-Plane 12 on Linux with adaptive prefetch, two-tier cache, and CPU tuning options."
+---
 # XEarthLayer
 
 **XEarthLayer** is a Rust-based alternative to AutoOrtho for streaming orthophoto textures in X-Plane 12. The project is inspired by AutoOrtho but relies on a high-performance Rust implementation with adaptive prefetching and a two-tier cache system.

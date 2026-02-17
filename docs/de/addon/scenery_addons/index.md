@@ -1,3 +1,6 @@
+---
+description: "Fünf Scenery-Plugins für X-Plane: XRoads-Straßenverkehr, AEP-Flughafenverbesserungen, xa-snow-Schnee, NOAA-Wetterdaten und LST-Bodenanimationen."
+---
 # Szenerie-Plugins
 
 Fünf Plugins, die X-Planes Standardwelt visuell erweitern: XRoads ergänzt Straßen- und Schienenverkehr, AEP wertet Flughafenumgebungen auf, xa-snow verbessert die Schneedarstellung, NOAA Weather integriert Echtzeit-Wetterdaten, und LST belebt Szenerien mit dynamischen Elementen.

@@ -1,3 +1,6 @@
+---
+description: "NOAA-Weather-Plugin ergänzt reale Schneeabdeckung und METAR-Vergleich in X-Plane 12 unter Linux. Setzt XPPython3 voraus, inkl. wgrib2-Binary."
+---
 # NOAA Weather
 
 NOAA Weather ist ein Python-basiertes [Plugin](../../glossary.md#plugin), das X-Plane 12 um reale Schneebedeckung und METAR-Monitoring ergänzt. Es lädt Wetterdaten von NOAA (National Oceanic and Atmospheric Administration) herunter und gleicht sie mit X-Planes eingebautem Real Weather ab.

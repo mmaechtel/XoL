@@ -1,3 +1,6 @@
+---
+description: "Better Pushback ersetzt den X-Plane-Standard-Pushback durch Routenplaner, 3D-Schlepper, manuellen Modus und mehrsprachige Bodencrew-Sprachausgabe."
+---
 # Better Pushback
 
 Better Pushback ist ein [Plugin](../../glossary.md#plugin) für [X-Plane](../../glossary.md#x-plane) 11/12, das realistische Pushback-Operationen mit Route-Planer, 3D-Schleppfahrzeug und mehrsprachiger Sprachausgabe simuliert.

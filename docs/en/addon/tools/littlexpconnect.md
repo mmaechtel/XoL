@@ -1,3 +1,6 @@
+---
+description: "Little XpConnect bridges X-Plane to Little Navmap on Linux: real-time position, weather, and AI traffic data via shared memory or network forwarding."
+---
 # Little XpConnect
 
 Little XpConnect is a [plugin](../../glossary.md#plugin) for [X-Plane](../../glossary.md#x-plane) 11/12 that serves as a bridge between X-Plane and the flight planning and navigation tool [Little Navmap](https://github.com/albar965/littlenavmap).

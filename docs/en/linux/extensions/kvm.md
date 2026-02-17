@@ -1,12 +1,11 @@
 ---
 title: KVM
-description: KVM for X-Plane on Linux
+description: "KVM virtualization on Debian for X-Plane: installation, Windows VM setup, USB passthrough for StreamDeck, and SSH key management."
 tags:
   - virtualization
   - kvm
   - qemu
 ---
-
 ## KVM
 
 [KVM](../../glossary.md#kvm-kernel-based-virtual-machine) is an open-source virtualization technology integrated into the Linux kernel that enables running virtual machines on a physical computer. It uses hardware virtualization (like Intel VT or AMD-V) to efficiently run guest systems like Linux or Windows.

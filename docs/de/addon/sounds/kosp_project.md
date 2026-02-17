@@ -1,3 +1,6 @@
+---
+description: "KOSP Project: umfassender FMOD-Soundersatz für ToLiss A319, A320 und A321 in X-Plane 12 mit vier Triebwerksvarianten und Cockpit-Aufnahmen."
+---
 # KOSP Project — Full Soundscape
 
 KOSP Project ist ein umfassendes FMOD-Sound-Replacement für die ToLiss A319, A320 und A321 in [X-Plane](../../glossary.md#x-plane) 12. Es ersetzt die Standard-Soundbanks durch über 900 Audiodateien für Triebwerke, Cockpit-Interaktionen, Systemgeräusche und Umgebungsaudio.

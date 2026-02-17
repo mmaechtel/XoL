@@ -1,3 +1,6 @@
+---
+description: "NVIDIA-Treiberinstallation auf Debian für X-Plane: Paketverwaltung und manuelle Methode, Liquorix-Header, Kernel-Mode-Setting und Performance-Tuning."
+---
 # Offizieller Nvidia-Treiber
 
 Debian stellt NVIDIA-Treiber über den Paketmanager bereit — die empfohlene Methode für die meisten Anwender. Wer die allerneueste Treiberversion benötigt, kann alternativ den manuellen Installer (`.run`-Datei) von NVIDIA verwenden.

@@ -1,3 +1,6 @@
+---
+description: "Einstieg in X-Plane 12 unter Linux — Systemanforderungen, Standalone- und Steam-Installation, Bibliotheksabhängigkeiten und erster Start."
+---
 # Erste Schritte mit X-Plane unter Linux
 
 Diese Anleitung behandelt Systemvoraussetzungen, X-Plane-Installation und Ersteinrichtung. Hintergründe zu den Vorteilen von Linux für X-Plane finden sich in der [Einführung](intro.md).

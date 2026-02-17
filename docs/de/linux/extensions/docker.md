@@ -1,3 +1,6 @@
+---
+description: "Docker-Installation auf Debian Schritt für Schritt: Repository-Einrichtung, Paketinstallation, Dienst-Konfiguration und rootless-Nutzung."
+---
 ### [Docker](../../glossary.md#docker) unter Debian installieren: Eine Schritt-für-Schritt-Anleitung
 
 [Docker](../../glossary.md#docker) ist eine weit verbreitete Plattform zur Containerisierung von Anwendungen, die Entwicklern und Administratoren hilft, Anwendungen effizient zu erstellen, bereitzustellen und zu verwalten. Dieses Kapitel erklärt, wie man Docker auf einem Debian-System installiert. Die Anleitung ist sachlich und praxisorientiert, sodass auch Einsteiger problemlos folgen können.

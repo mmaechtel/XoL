@@ -1,3 +1,6 @@
+---
+description: "X-Plane Performance-Grundlagen: CPU-, I/O- und Netzwerk-Lastdimensionen, VRAM-Verwaltung, Frame-Time-Analyse und Latenzquellen."
+---
 # Performance
 
 X-Plane ist ein Hybrid aus Echtzeit-Physiksimulation, massivem Daten-I/O und — bei Ortho-Streaming — kontinuierlichem Netzwerkverkehr. Diese drei Lastdimensionen konkurrieren um gemeinsame Ressourcen: CPU-Zyklen, Cache, Memory-Bandbreite und PCIe-Lanes. Der Engpass wechselt dynamisch — beim Laden dominiert die SSD, im Flug die CPU, beim Streaming das Netzwerk. Die Kapitel in dieser Sektion erklären, wo die Engpässe entstehen und wie sie sich gegenseitig verstärken.

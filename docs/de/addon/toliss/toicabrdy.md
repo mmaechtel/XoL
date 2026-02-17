@@ -1,3 +1,6 @@
+---
+description: "TOI Cabin Ready: FlyWithLua-Skript zur Automatisierung des Cabin-Ready-ECAM-Aufrufs für ToLiss-Airbus-Flugzeuge in X-Plane 12 bei Abflug und Anflug."
+---
 # TOI Cabin Ready
 
 TOI Cabin Ready ist ein [FlyWithLua](../scripting/flywithlua.md)-Skript, das automatisch die „Cabin Ready"-ECAM-Meldung für ToLiss-Airbus-Flugzeuge auslöst und das manuelle Drücken der FWD-CALL-Taste überflüssig macht.

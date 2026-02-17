@@ -1,3 +1,6 @@
+---
+description: "xa-snow overlays real-world NOAA snow depth data on X-Plane 12 scenery, replacing uniform regional snow with location-specific coverage on Linux."
+---
 # xa-snow
 
 xa-snow is a standalone [plugin](../../glossary.md#plugin) by hotbso that overlays real-world snow coverage on X-Plane 12 scenery. It downloads accumulated snow depth data from NOAA and applies it to the simulation in real time.

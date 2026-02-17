@@ -1,3 +1,6 @@
+---
+description: "Follow the Greens bringt reale A-SMGCS-Rollwegführung in X-Plane — grüne Mittellinienlichter, rote Stoppbalken und 4D-Geschwindigkeitssteuerung."
+---
 # Follow the Greens
 
 Follow the Greens (FtG) ist ein Taxiway-Leitsystem nach realem Vorbild (A-SMGCS — Advanced Surface Movement Guidance and Control System). Das [Plugin](../../glossary.md#plugin) aktiviert grüne Rollbahnlichter vor dem Flugzeug und signalisiert Haltepositionen mit roten Lichtern — wie es an Flughäfen wie London Heathrow, Dubai, München und Seoul bereits im Einsatz ist.

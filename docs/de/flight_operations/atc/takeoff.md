@@ -1,3 +1,6 @@
+---
+description: "ATC-Verfahren beim Start — Tower-Kommunikation, Aufrollfreigabe, bedingte Freigaben und Abflug-Übergabe mit Phraseologie-Beispielen."
+---
 # Start
 
 Am Holding Point den Tower für die Departure kontaktieren. Der Tower-Lotse verwaltet die Piste und reiht den abfliegenden Verkehr mit dem ankommenden ein.

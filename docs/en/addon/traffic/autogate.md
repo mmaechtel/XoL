@@ -1,3 +1,6 @@
+---
+description: "AutoGate provides animated jetways and docking guidance for older X-Plane sceneries built with the AutoGate toolkit. Legacy plugin, maintained for XP12."
+---
 # AutoGate
 
 AutoGate is a [plugin](../../glossary.md#plugin) for [X-Plane](../../glossary.md#x-plane) that provides animated jetways and docking guidance systems for sceneries built with the AutoGate toolkit.

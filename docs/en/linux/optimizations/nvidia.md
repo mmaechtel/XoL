@@ -1,3 +1,6 @@
+---
+description: "NVIDIA driver installation on Debian for X-Plane: package manager and manual methods, Liquorix headers, kernel mode setting, and performance tuning."
+---
 # Official Nvidia Driver
 
 Debian provides NVIDIA drivers through its package manager — the recommended method for most users. For those who need the very latest driver version, NVIDIA also offers a manual installer (`.run` file) as an alternative.

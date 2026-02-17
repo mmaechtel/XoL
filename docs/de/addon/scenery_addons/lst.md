@@ -1,3 +1,6 @@
+---
+description: "LST (Living Scenery Technology) bringt animierten Bodenverkehr an X-Plane-12-Flughäfen: Fahrzeuge, Fußgänger und Bodengeräte auf definierten Routen."
+---
 # LST (Living Scenery Technology)
 
 LST ist ein natives [Plugin](../../glossary.md#plugin), das Flughafenszenerie durch animierten Bodenverkehr zum Leben erweckt. Fahrzeuge, Fußgänger, Bodendienstfahrzeuge und Züge bewegen sich entlang definierter Routen — inklusive realistischer Staus, Beschleunigung und Abbremsung.

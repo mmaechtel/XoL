@@ -1,3 +1,6 @@
+---
+description: "ToLiss-Ökosystem für X-Plane 12: FlyWithLua-Skripte, Callouts, Cabin-Ready-Automatisierung, Mods und Plugin-Integrationen für die Airbus-Flotte."
+---
 # ToLiss-Ökosystem
 
 Das ToLiss-Ökosystem umfasst FlyWithLua-Skripte und Plugins, die speziell für den ToLiss A3xx entwickelt wurden — von erweiterten Callouts und Cabin-Ready-Automatisierung bis zu Livery-Mods und Systemanpassungen.

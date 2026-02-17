@@ -1,3 +1,6 @@
+---
+description: "XGS zeigt Landequalitätsdaten in X-Plane — Sinkrate, G-Kräfte, Mittellinienabweichung und Aufsetzentfernung mit konfigurierbaren Bewertungsskalen."
+---
 # XGS
 
 XGS (Landing Speed Plugin Reloaded) ist ein eigenständiges [Plugin](../../glossary.md#plugin) von hotbso, das detaillierte Daten zur Landequalität anzeigt — von Sinkrate und G-Kräften über Touchdown-Distanz bis hin zur Centerline-Abweichung.

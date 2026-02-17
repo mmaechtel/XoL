@@ -1,3 +1,6 @@
+---
+description: "xa-snow überlagert reale NOAA-Schneetiefen-Daten auf X-Plane-12-Szenerie und ersetzt einheitlichen Regionalschnee durch standortgenaue Abdeckung."
+---
 # xa-snow
 
 xa-snow ist ein eigenständiges [Plugin](../../glossary.md#plugin) von hotbso, das reale Schneebedeckung auf die X-Plane-12-Szenerie legt. Es lädt akkumulierte Schneehöhendaten von NOAA herunter und wendet sie in Echtzeit auf die Simulation an.

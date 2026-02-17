@@ -1,3 +1,6 @@
+---
+description: "Interaktive Weltkarten zur X-Plane 12 Szenerie-Planung — über 1400 Flughäfen und installierte Ortho-Kacheln auf einer Live-Karte."
+---
 # Maps
 
 Zur besseren Übersicht und Planung der Flugsimulation stehen zwei selbst erstellte WorldMaps zur Verfügung:

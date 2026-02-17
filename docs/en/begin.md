@@ -1,3 +1,6 @@
+---
+description: "Getting started with X-Plane 12 on Linux — system requirements, standalone and Steam installation, library dependencies, and first launch."
+---
 # Getting Started with X-Plane on Linux
 
 This guide covers system requirements, X-Plane installation, and initial setup. For background on why Linux is a strong platform for X-Plane, see [Introduction](intro.md).

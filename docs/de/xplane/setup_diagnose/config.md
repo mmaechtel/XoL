@@ -1,3 +1,6 @@
+---
+description: "Linux-spezifische X-Plane-12-Konfiguration: Vulkan, Zink, Shader-Caches, Mesa- und NVIDIA-Variablen, PipeWire-Audio, Controller und CLI-Diagnose."
+---
 # X-Plane Konfiguration unter Linux
 
 X-Plane 12 ist eine Cross-Plattform-Anwendung — die allgemeinen Grafikeinstellungen (Texturen, Schatten, Wolken, Antialiasing) funktionieren auf allen Betriebssystemen gleich und sind in der [offiziellen Dokumentation](https://www.x-plane.com/kb/configuring-the-rendering-options/) beschrieben. Diese Seite behandelt ausschließlich, was unter Linux **anders** ist.

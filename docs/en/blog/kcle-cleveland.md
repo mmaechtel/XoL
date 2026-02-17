@@ -7,8 +7,8 @@ tags:
   - Airport
   - USA
   - X-Plane
+description: "Cleveland Hopkins International Airport (KCLE) by JSD Scenery for X-Plane 12 — freeware with detailed buildings, HD textures, and dynamic lighting."
 ---
-
 # Cleveland Hopkins International Airport (KCLE) - JSD Scenery
 
 Cleveland Hopkins International Airport (KCLE) is a significant commercial airport in the northeastern United States, developed by JSD Scenery in Version 2.0 for X-Plane 12. This scenery provides a detailed representation of the airport and its surroundings.

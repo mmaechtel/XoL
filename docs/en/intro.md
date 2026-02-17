@@ -1,3 +1,6 @@
+---
+description: "Why run X-Plane on Linux — open-source kernel tuning, GPU driver control, filesystem optimization, and predictable system performance."
+---
 # Introduction
 
 <div class="video-container" markdown>

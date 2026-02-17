@@ -1,3 +1,6 @@
+---
+description: "SimScreen Overlay für X-Plane 12 — FlyWithLua-Skript zum Einblenden von Flugdaten auf Screenshots mit optionaler SimBrief-Anbindung."
+---
 # SimScreen Overlay
 
 SimScreen Overlay ist ein [FlyWithLua](../scripting/flywithlua.md)-Skript, das X-Plane-12-Screenshots mit einem sauberen Fluginformations-Overlay versieht. Das Overlay erscheint nur während der Screenshot-Aufnahme — keine visuelle Störung beim Fliegen.

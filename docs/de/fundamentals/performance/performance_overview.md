@@ -1,3 +1,6 @@
+---
+description: "Drei konkurrierende Lastdimensionen in X-Plane: CPU-Compute, lokales I/O und Netzwerk-Streaming — Engpässe und ihre Wechselwirkungen erkennen."
+---
 # Performance
 
 <div class="video-container" markdown>

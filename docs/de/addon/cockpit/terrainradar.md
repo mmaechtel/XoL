@@ -1,3 +1,6 @@
+---
+description: "TerrainRadar-Plugin für X-Plane 12 — EGPWS-Geländeanzeige mit farbcodierten Höhenwarnungen, VSD-Profil und universellem Overlay-Modus."
+---
 # TerrainRadar
 
 TerrainRadar ist ein natives [Plugin](../../glossary.md#plugin), das ein EGPWS-Terrain-Display (Enhanced Ground Proximity Warning System) und ein vertikales Situationsdisplay (VSD) in X-Plane darstellt. Die Geländedarstellung ist farbcodiert relativ zur aktuellen Flughöhe: Schwarz (>1.000 ft darunter), Gelb (<1.000 ft), Rot (<100 ft — Kollisionsgefahr).

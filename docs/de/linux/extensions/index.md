@@ -1,3 +1,6 @@
+---
+description: "Linux-Hilfsprogramme für X-Plane: KVM für Windows-VMs, Wine für Installer, Docker-Container, pyenv für Python-Plugins und zsh-Shell-Setup."
+---
 # Hilfsprogramme
 
 Nicht jedes X-Plane-Tool läuft nativ unter Linux. KVM stellt eine vollständige Windows-VM bereit — für Addons wie StreamDeck oder MobiFlight. Wine reicht für einfachere Windows-Installer und Werkzeuge. Docker isoliert Entwicklungsumgebungen, pyenv verwaltet Python-Versionen für Plugins wie XPPython3, und zsh bietet eine komfortablere Shell für die tägliche Arbeit am System.

@@ -1,3 +1,6 @@
+---
+description: "IFR-Freigabeverfahren für X-Plane-Piloten — Standardphraseologie, benötigte Informationsquellen und digitale Freigabe per CPDLC und Hoppie."
+---
 # Clearance
 
 Beim Einholen einer IFR-Clearance (Instrument Flight Rules) muss sich der Pilot auf mehrere wichtige Informationen vorbereiten. Hier ist eine Minimal-Zusammenfassung:

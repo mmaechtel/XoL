@@ -1,3 +1,6 @@
+---
+description: "Airport Enhancement Package (AEP) for X-Plane 12: upgraded airport buildings, ground markings, vegetation, and PBR textures for default airports."
+---
 # Airport Enhancement Package (AEP)
 
 The [Airport Enhancement Package (AEP)](../../glossary.md#airport-enhancement-package-aep) by X-Codr Designs is a scenery addon for [X-Plane](../../glossary.md#x-plane) that enhances default airports with more detailed models and high-resolution textures.

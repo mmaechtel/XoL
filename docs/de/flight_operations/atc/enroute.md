@@ -1,3 +1,6 @@
+---
+description: "ATC-Kommunikation im Reiseflug — Frequenzwechsel zwischen Sektoren, Stufensteigflüge, Wetterausweichmanöver und Standardphraseologie."
+---
 # Streckenflug
 
 Der Streckenflug umfasst den Reiseflug zwischen Abflug- und Zielgebiet. Der zuständige Lotse ist Center (in Deutschland auch Control oder Radar genannt). Auf kurzen Strecken wie Frankfurt–München kann diese Phase kurz sein — mit nur ein bis zwei Frequenzwechseln.

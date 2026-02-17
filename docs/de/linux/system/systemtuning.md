@@ -1,3 +1,6 @@
+---
+description: "Kernel-Tuning für X-Plane unter Linux: Zwei Profile für Standard- und Liquorix-Kernel — CPU-Governor, C-States, Interrupt-Shielding und NVMe-Powermanagement."
+---
 # Systemtuning für X-Plane
 
 !!! warning "Work in Progress"

@@ -1,3 +1,6 @@
+---
+description: "ATC-Kommunikation beim Abflug und Steigflug — SID-Befolgung, Höhenfreigaben, Radarführung und Übergabe an Center mit Phraseologie-Beispielen."
+---
 # Abflug und Steigflug
 
 Nach dem Start den Departure-Lotsen kontaktieren (auch Radar genannt). Departure steuert die Steigflugphase und stellt die Staffelung zu anderem Verkehr auf der SID und im Steigflugkorridor sicher.

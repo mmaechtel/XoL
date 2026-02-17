@@ -1,3 +1,6 @@
+---
+description: "Mango Studios FMOD-Sound-Packs für die komplette ToLiss-Flotte in X-Plane 12: reale Triebwerksaufnahmen, Cockpit-Sounds und Kabinenansagen."
+---
 # Mango Studios Sound Packs
 
 Mango Studios produziert FMOD-basierte Sound-Replacements für die gesamte ToLiss-Flotte in [X-Plane](../../glossary.md#x-plane) 12. Jedes Paket ersetzt die Standard-Soundbanks durch Aufnahmen realer Flugzeuge — Triebwerke, Cockpit-Schalter, Warnsysteme, Umgebungseffekte und Kabinengeräusche. Ein mitgeliefertes Plugin ergänzt Passagierreaktionen und Kabinendurchsagen.

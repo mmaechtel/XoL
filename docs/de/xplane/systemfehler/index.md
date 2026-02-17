@@ -1,3 +1,6 @@
+---
+description: "Fehlerbehebung für X-Plane 12 unter Linux: GPU-Geräteverluste, Vulkan-Fehlerdiagnose mit Aftermath, Safe Mode und Subsystem-Isolation per CLI."
+---
 # Systemfehler in X-Plane unter Linux
 
 Wenn X-Plane unter Linux nicht wie erwartet funktioniert, hilft systematisches Eingrenzen. Device Losses — GPU-Crashes mit dem Vulkan-Fehlercode `VK_ERROR_DEVICE_LOST` — sind besonders schwer zu analysieren, weil CPU und GPU asynchron arbeiten und der Crash erst mit Verzögerung erkannt wird. Das Aftermath-Tool injiziert Checkpoints in den GPU-Befehlsstrom und rekonstruiert den Zustand zum Zeitpunkt des Fehlers. CLI-Parameter wie Safe Mode und Subsystem-Isolierung grenzen die Ursache systematisch ein.

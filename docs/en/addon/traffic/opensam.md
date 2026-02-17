@@ -1,3 +1,6 @@
+---
+description: "openSAM is a free open-source replacement for the SAM plugin — controlling animated jetways, VDGS, and marshallers in X-Plane custom sceneries."
+---
 # openSAM
 
 openSAM is an open-source replacement for the commercial SAM [plugin](../../glossary.md#plugin) (Scenery Animation Manager) by Stairport. It controls animated jetways, VDGS, marshallers, and custom animations in SAM-enabled custom sceneries.

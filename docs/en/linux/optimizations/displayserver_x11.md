@@ -1,3 +1,6 @@
+---
+description: "Setting up an X11 session for X-Plane on Linux: session switching, compositor bypass, desktop entry configuration, and advantages over Wayland."
+---
 # X11 Session for X-Plane
 
 The recommended setup for X-Plane on Linux. In an X11 session, X-Plane communicates directly with the X server — no translation layer, no overhead.

@@ -1,3 +1,6 @@
+---
+description: "IFR clearance procedures for X-Plane pilots — standard phraseology, required information sources, and digital clearance retrieval via CPDLC and Hoppie."
+---
 # Clearance
 
 When obtaining an IFR clearance (Instrument Flight Rules), the pilot must prepare for several important pieces of information. Here is a minimal summary:

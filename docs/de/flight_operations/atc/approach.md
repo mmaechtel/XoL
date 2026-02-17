@@ -1,3 +1,6 @@
+---
+description: "ATC-Kommunikation in der Anflugphase in X-Plane — STAR-Verfahren, Radarführung, Sinkfluganweisungen und ILS-Anflugfreigabe mit Standardphraseologie."
+---
 # Anflug
 
 Der Approach-Lotse führt den Verkehr aus der Streckenflugstruktur in den Endanflug. Diese Phase umfasst das Fliegen der STAR (Standard Terminal Arrival Route), den Sinkflug auf Anflughöhe und die Positionierung für den Endanflug durch Radar Vectors.

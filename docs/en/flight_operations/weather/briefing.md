@@ -1,3 +1,6 @@
+---
+description: "Weather systems in X-Plane explained: METAR, TAF, weather radar, turbulence avoidance strategies, and external tools for flight planning."
+---
 # Weather in X-Plane
 
 Weather is a crucial factor in flight operations in X-Plane. Here you'll find important information about weather representation and simulation.

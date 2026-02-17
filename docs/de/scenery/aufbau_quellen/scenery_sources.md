@@ -1,3 +1,6 @@
+---
+description: "Verfügbare X-Plane-Szenerie: Standard-Szenerie mit Gateway-Airports, SimHeaven X-World Autogen, Freeware, Payware und interaktive WorldMaps."
+---
 # Szenerien
 
 Hier finden sich Informationen zu verschiedenen Szenerieoptionen für X-Plane.

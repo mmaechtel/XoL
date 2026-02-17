@@ -1,3 +1,6 @@
+---
+description: "Seven FlyWithLua scripts for X-Plane 12 — weather effects, SimBrief integration, scenery loading, memory cleanup, and ground effect simulation."
+---
 # FlyWithLua Scripts
 
 Seven FlyWithLua scripts for daily use: from 3D Rain Stop and Dynamic Rain Rate for realistic weather effects, through SimBrief integration and SimLoad Manager for scenery management, to SimReaperXP for memory cleanup and SGES for ground effect simulation.

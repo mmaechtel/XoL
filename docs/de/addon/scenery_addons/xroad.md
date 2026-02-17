@@ -1,3 +1,6 @@
+---
+description: "XRoads blendet X-Plane-Straßenpolygone in Ortho4XP-Orthophotos aus und macht Satellitenstraßen sichtbar. Mit Linux-Kompilierungsanleitung."
+---
 # XRoads
 
 [XRoads](../../glossary.md#xroads) ist eine Szenerie-Bibliothek für [X-Plane](../../glossary.md#x-plane) 11 & 12, die standardmäßig angezeigte Straßenpolygone bei [Ortho4XP](../../glossary.md#ortho4xp)-Orthobildern ausblendet, sodass die tatsächlichen Straßen aus den Satellitenbildern sichtbar werden.

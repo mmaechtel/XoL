@@ -1,3 +1,6 @@
+---
+description: "Over 40 X-Plane 12 addons verified on Linux — scripting frameworks, cockpit tools, traffic plugins, sound packs, and scenery enhancements."
+---
 # Addons
 
 The addon section documents over 40 plugins and extensions that work with X-Plane on Linux — from scripting frameworks (FlyWithLua, XPPython3) through cockpit tools, traffic plugins, and sound packs to scenery enhancements. Each addon is covered with installation, configuration, and Linux-specific details. For Windows-only tools like MobiFlight or SayIntentions.AI, the KVM section shows how they can still be used via virtualization.

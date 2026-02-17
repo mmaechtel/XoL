@@ -1,3 +1,6 @@
+---
+description: "XCamera für X-Plane unter Linux — flugzeugspezifisches Kamerasystem mit Bezier-Übergängen, Walk-Modus, Flughafenkameras und OpenTrack-Tracking."
+---
 # XCamera
 
 XCamera ist ein Kamerasystem für [X-Plane](../../glossary.md#x-plane) 11/12, das das Standard-View-System durch ein vollständig konfigurierbares, flugzeugspezifisches Kamera-Framework ersetzt.

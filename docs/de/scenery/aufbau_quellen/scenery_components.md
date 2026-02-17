@@ -1,3 +1,6 @@
+---
+description: "Wie X-Plane seine Welt aus Mesh, Ortho und Autogen aufbaut. Mit Ladereihenfolge der scenery_packs.ini und praxistauglichem Beispiel."
+---
 # Wie X-Plane die Welt aufbaut
 
 <div class="video-container" markdown>

@@ -1,3 +1,6 @@
+---
+description: "XOrganizer verwaltet X-Plane-Szenerien, Plugins und Profile — mit Konfliktanalyse, Drag-and-Drop-Sortierung und flugplanbasierter Profilerstellung."
+---
 # XOrganizer
 
 XOrganizer ist ein leistungsstarkes Tool zur Verwaltung und Organisation von X-Plane Addons. Es unterstützt die Verwaltung von Szenerien, Plugins und anderen Addons, um Konflikte zu vermeiden und die Leistung zu optimieren.

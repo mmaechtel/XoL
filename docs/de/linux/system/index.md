@@ -1,3 +1,6 @@
+---
+description: "Linux-System-Tuning für X-Plane: Zwei Kernel-Profile mit Fokus auf Latenz statt Durchsatz, plus Monitoring-Tools zur Verifikation jeder Einstellung."
+---
 # System
 
 Latenz statt Durchsatz ist das Optimierungsziel für X-Plane unter Linux: ein stabiles Frametime-Budget zählt mehr als maximale Rechenleistung. Diese Sektion zeigt zwei Kernel-Profile — eines für den Standard-Kernel, eines für Liquorix — und die Monitoring-Werkzeuge, mit denen sich jede Tuning-Maßnahme verifizieren lässt.

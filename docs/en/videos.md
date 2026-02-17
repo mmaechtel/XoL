@@ -1,7 +1,7 @@
 ---
 title: Videos
+description: "Video collection for X-Plane on Linux — performance tuning, scenery management, display server choice, cockpit addons, and ortho streaming."
 ---
-
 # Videos
 
 Video collection for X-Plane on Linux.

@@ -1,3 +1,6 @@
+---
+description: "Ortho4XP-Tiles mit AutoOrtho-Streaming in X-Plane kombinieren. Anleitung für scenery_packs.ini-Priorität, Mesh-Generierung und LiDAR-Daten."
+---
 # Statische Orthofotos + Streaming kombinieren
 
 Diese Kombination ist besonders für **hybride Spieler** geeignet — Nutzer, die ihre Stammflughäfen in höchster Qualität genießen möchten, aber auch gelegentlich neue Regionen erkunden. Einen Überblick über die verschiedenen Spielerprofile bietet die [Einführung in die Orthofotographie](../orthophotography/orthophotography_intro.md#welches-system-passt-zu-welchem-spielerprofil).

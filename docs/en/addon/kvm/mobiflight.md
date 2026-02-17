@@ -1,3 +1,6 @@
+---
+description: "MobiFlight home cockpit middleware for X-Plane on Linux: network split setup or KVM/QEMU VM with USB passthrough for Arduino hardware."
+---
 # MobiFlight
 
 MobiFlight is an open-source middleware for building home cockpits. The software connects microcontrollers (Arduino, Raspberry Pi Pico) to [X-Plane](../../glossary.md#x-plane) and translates simulator variables into physical outputs (LEDs, 7-segment displays, stepper motors) and vice versa, converting physical inputs (switches, encoders, potentiometers) into simulator commands. The MobiFlight Connector is **Windows-only** — Linux users need a network split (Connector on a Windows machine or KVM/QEMU VM) to use it alongside X-Plane on the host.

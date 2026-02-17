@@ -1,3 +1,6 @@
+---
+description: "Follow the Greens adds real-world A-SMGCS taxiway guidance to X-Plane — green centerline lights, red stop bars, and 4D speed management at airports."
+---
 # Follow the Greens
 
 Follow the Greens (FtG) is a taxiway guidance system based on the real-world A-SMGCS (Advanced Surface Movement Guidance and Control System). The [plugin](../../glossary.md#plugin) activates green taxiway centerline lights ahead of the aircraft and signals hold positions with red lights — just like the system already in use at airports such as London Heathrow, Dubai, Munich, and Seoul.

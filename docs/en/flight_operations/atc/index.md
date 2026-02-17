@@ -1,3 +1,6 @@
+---
+description: "Complete IFR ATC communication guide for X-Plane — seven chapters from clearance through takeoff, en route, approach, to landing with phraseology."
+---
 # ATC
 
 Seven chapters walk through ATC communication for a complete IFR flight: from clearance through pushback, takeoff, departure, and en route to approach and landing. Each chapter covers standard phraseology, relevant frequencies, and the information sources from charts and FMGS.

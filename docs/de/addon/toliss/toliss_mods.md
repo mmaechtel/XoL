@@ -1,3 +1,6 @@
+---
+description: "ToLiss-Flugzeug-Mods für X-Plane 12: Easy Freighter A321 P2F Frachttür-Umbau und Carda-3D-Triebwerksersatz mit 4K-Texturen in hohem Detailgrad."
+---
 # ToLiss Mods
 
 Flugzeug-Modifikationen für die ToLiss-Flotte (A319, A320 CEO/NEO, A321 CEO/NEO) — 3D-Modell-Ersetzungen und Umbauten, die über Scripting hinausgehen.

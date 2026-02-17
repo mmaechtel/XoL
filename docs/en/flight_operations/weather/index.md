@@ -1,3 +1,6 @@
+---
+description: "Overview of weather simulation in X-Plane: real-time NOAA data, manual configuration, METAR/TAF basics, and external weather tools."
+---
 # Weather
 
 X-Plane simulates weather from turbulence through visibility to precipitation — either from real-time data (NOAA) or manually configured. METAR and TAF provide the foundation for flight planning; external tools like Navigraph Charts and Little Navmap complement the built-in weather display.

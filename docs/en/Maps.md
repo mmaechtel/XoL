@@ -1,3 +1,6 @@
+---
+description: "Interactive world maps for X-Plane 12 scenery planning — browse over 1400 airports and installed ortho tiles on a live map."
+---
 # Maps
 
 For better overview and planning of flight simulation, two self-created WorldMaps are available:

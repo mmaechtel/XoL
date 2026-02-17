@@ -1,3 +1,6 @@
+---
+description: "Warum X-Plane unter Linux — Open-Source-Kernel-Tuning, GPU-Treiberkontrolle, Dateisystem-Optimierung und vorhersagbare Systemleistung."
+---
 # Einführung
 
 <div class="video-container" markdown>

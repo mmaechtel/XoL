@@ -1,3 +1,6 @@
+---
+description: "GPU device losses in X-Plane explained: causes of VK_ERROR_DEVICE_LOST, async debugging challenges, and Aftermath crash analysis on Linux."
+---
 # Device Losses in X-Plane
 
 ## Introduction

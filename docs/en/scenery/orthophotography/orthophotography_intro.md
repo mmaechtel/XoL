@@ -1,3 +1,6 @@
+---
+description: "Static generation vs. ortho streaming for X-Plane ground textures. Ortho4XP, AutoOrtho, XEarthLayer, scenery_packs.ini setup, and player profiles."
+---
 # Introduction to Orthophotography in Flight Simulation
 
 Orthophotography represents a central component of modern flight simulation environments, as it enables high-resolution and realistic ground textures. This section explains the methodological approaches for integrating high-quality orthophotos into the X-Plane flight simulation software.

@@ -1,3 +1,6 @@
+---
+description: "LST (Living Scenery Technology) brings animated ground traffic to X-Plane 12 airports: vehicles, pedestrians, and ground equipment on defined routes."
+---
 # LST (Living Scenery Technology)
 
 LST is a native [plugin](../../glossary.md#plugin) that brings airport scenery to life with animated ground traffic. Vehicles, pedestrians, ground service equipment, and trains move along defined routes — with realistic traffic jams, acceleration, and deceleration.

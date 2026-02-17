@@ -1,3 +1,6 @@
+---
+description: "KabinXP for X-Plane 12 — cabin announcement plugin with per-livery sound packs, 3D spatial audio, and drag-and-arrange button layouts."
+---
 # KabinXP
 
 KabinXP is a lightweight cabin announcement plugin for [X-Plane](../../glossary.md#x-plane) 12. It plays custom audio files (captain announcements, safety briefings, boarding sounds) with a single click during flight. The plugin ships with an empty sound library — users supply their own audio files and organize them per airline or livery.

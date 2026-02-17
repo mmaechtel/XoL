@@ -1,3 +1,6 @@
+---
+description: "DataRefTool (DRT) für X-Plane 12: DataRefs in Echtzeit durchsuchen, beobachten und bearbeiten. Unverzichtbar für Plugin-Entwicklung unter Linux."
+---
 # DataRefTool
 
 DataRefTool (DRT) ist ein Entwicklungs- und Debugging-Werkzeug für [X-Plane](../../glossary.md#x-plane) 12, mit dem Datarefs durchsucht, beobachtet und bearbeitet sowie Commands ausgelöst werden können.

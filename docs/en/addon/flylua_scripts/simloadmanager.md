@@ -1,3 +1,6 @@
+---
+description: "SimLoad Manager for X-Plane 12 — FlyWithLua script simulating realistic passenger boarding, cargo loading, and fuel operations via SimBrief."
+---
 # SimLoad Manager
 
 SimLoad Manager is a [FlyWithLua](../scripting/flywithlua.md) script that simulates realistic passenger boarding, cargo loading, and fuel loading for X-Plane 12. It integrates with SimBrief to import flight plan data (passenger count, cargo weight, fuel amounts) and provides real-time progress bars with dynamic time estimates.

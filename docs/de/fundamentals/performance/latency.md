@@ -1,3 +1,6 @@
+---
+description: "Latenz vs. Durchsatz in X-Plane: Warum zeitliche Vorhersagbarkeit wichtiger ist als reine FPS und vier Systemquellen für Frame-Time-Spitzen."
+---
 # Latenz und Vorhersagbarkeit
 
 X-Plane berechnet eine komplexe Welt mit Physik, Wetter, Szenerie und Eingabegeräten. Dabei entscheidet nicht die maximale Rechenleistung über die Ergebnisqualität, sondern die zeitliche Vorhersagbarkeit — wie gleichmäßig jeder einzelne Frame berechnet wird. Dieses Kapitel erklärt, warum Latenz das eigentliche Problem ist und welche Systemquellen sie verursachen. Die drei Lastdimensionen (CPU, I/O, Netzwerk) und ihre Wechselwirkungen beschreibt das Kapitel [Lastdimensionen](performance_overview.md).

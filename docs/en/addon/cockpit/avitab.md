@@ -1,3 +1,6 @@
+---
+description: "AviTab for X-Plane on Linux — open-source cockpit tablet with PDF viewer, moving map, Navigraph charts, and custom tile server support."
+---
 # AviTab
 
 AviTab is an open-source [plugin](../../glossary.md#plugin) for [X-Plane](../../glossary.md#x-plane) 12 that displays a tablet in the cockpit — featuring a PDF viewer, moving map, and chart integration. It was primarily designed for VR but works equally well in 2D mode.

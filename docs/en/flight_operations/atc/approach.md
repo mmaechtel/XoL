@@ -1,3 +1,6 @@
+---
+description: "Approach phase ATC communication in X-Plane — STAR procedures, radar vectors, descent instructions, and ILS approach clearance with standard phraseology."
+---
 # Approach
 
 The Approach controller guides traffic from the en route structure into the final approach. This phase includes following the STAR (Standard Terminal Arrival Route), descending to approach altitude, and being vectored onto final.

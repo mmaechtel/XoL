@@ -1,3 +1,6 @@
+---
+description: "Statische Generierung vs. Ortho-Streaming für X-Plane-Bodentexturen. Ortho4XP, AutoOrtho, XEarthLayer, scenery_packs.ini und Spielerprofile."
+---
 # Einführung in die Orthofotographie in der Flugsimulation
 
 Die Orthofotographie stellt einen zentralen Bestandteil moderner Flugsimulationsumgebungen dar, da sie hochauflösende und realistische Bodentexturen ermöglicht. Dieser Abschnitt erläutert die methodischen Ansätze zur Integration qualitativ hochwertiger Orthofotos in die Flugsimulationssoftware X-Plane.

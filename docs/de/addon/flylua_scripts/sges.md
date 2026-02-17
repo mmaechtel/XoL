@@ -1,3 +1,6 @@
+---
+description: "SGES-Bodengeräte für X-Plane 12 — FlyWithLua-Skript mit GPU, Tankwagen, animierten Passagieren, Bremsklötzen, Pushback und Enteisung am Vorfeld."
+---
 # SGES — Simple Ground Equipment & Services
 
 SGES ist ein [FlyWithLua](../scripting/flywithlua.md)-Skript, das umfangreiche Bodenabfertigungs-Ausrüstung zu [X-Plane](../../glossary.md#x-plane) 12 hinzufügt. Es platziert und animiert statische und bewegte Objekte rund um das Flugzeug auf dem Vorfeld — von GPU und Tankwagen bis hin zu animierten Passagieren und einem vereinfachten Marshaller.

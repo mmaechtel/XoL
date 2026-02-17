@@ -1,3 +1,6 @@
+---
+description: "AutoDGS provides automatic docking guidance with VDGS or marshaller at over 5,000 X-Plane gateway airports — no scenery modifications required."
+---
 # AutoDGS
 
 AutoDGS automatically provides a Docking Guidance System (VDGS or marshaller) at over 5,000 gateway airports — without requiring any scenery modifications.

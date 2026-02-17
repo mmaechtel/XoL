@@ -1,10 +1,9 @@
 ---
 title: Glossar
-description: Begriffserklärungen rund um X-Plane und Linux
+description: "Glossar zu X-Plane- und Linux-Begriffen — CPU-Governor, Vulkan, VRAM, Wayland, Mesa, Kernel-Parameter, Szenerie-Formate und mehr erklärt."
 tags:
   - reference
 ---
-
 # Glossar
 
 ## A

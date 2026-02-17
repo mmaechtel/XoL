@@ -1,3 +1,6 @@
+---
+description: "Combine Ortho4XP static tiles with AutoOrtho streaming in X-Plane. Setup guide for scenery_packs.ini priority, mesh-only generation, and LiDAR data."
+---
 # Combining Static Orthophotos with Streaming
 
 This combination is particularly suited for **hybrid players** — users who want to enjoy their home airports in highest quality while also occasionally exploring new regions. For an overview of the different player profiles, see the [Introduction to Orthophotography](../orthophotography/orthophotography_intro.md#which-system-suits-which-player-profile).

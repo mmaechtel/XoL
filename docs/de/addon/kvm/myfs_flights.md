@@ -1,3 +1,6 @@
+---
+description: "My FS Flights: Cloud-basiertes Flug-Tracking und KI-Landeanalyse für X-Plane unter Linux, betrieben in einer Windows-KVM/QEMU-VM."
+---
 # My FS Flights
 
 My FS Flights ist eine cloudbasierte Plattform für Flight Tracking und Fluganalyse, die Flüge automatisch aufzeichnet, detaillierte Reports erstellt und KI-gestütztes Feedback zur Landung liefert. Die Companion App ist **ausschließlich für Windows** verfügbar — unter Linux ist eine Windows-VM (KVM/QEMU) erforderlich, um sie parallel zu [X-Plane](../../glossary.md#x-plane) auf dem Host zu betreiben.

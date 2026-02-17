@@ -1,3 +1,6 @@
+---
+description: "X11 vs. Wayland für X-Plane unter Linux: Protokollvergleich, Latenzmessungen, XWayland-Overhead und GPU-spezifische Session-Empfehlungen."
+---
 # Display-Server
 
 X-Plane 12 hat keine native Wayland-Unterstützung. Wie es sich mit dem Bildschirm verbindet, hängt davon ab, welche Display-Server-Session am Login-Screen gewählt wird. Diese Seite erklärt die drei beteiligten Protokolle und hilft bei der Entscheidung.

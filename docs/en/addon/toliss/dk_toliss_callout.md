@@ -1,3 +1,6 @@
+---
+description: "DK Toliss Callout: FlyWithLua script for automated FMA voice callouts on ToLiss Airbus aircraft in X-Plane 12. Linux TTS via XLinSpeak."
+---
 # DK Toliss Callout
 
 DK Toliss Callout is a [FlyWithLua](../scripting/flywithlua.md) script that provides automated voice callouts of the Flight Mode Annunciator (FMA) for ToLiss Airbus aircraft. When autopilot modes change (CLB, OP CLB, SPEED, NAV, G/S), the script announces the new mode via text-to-speech.

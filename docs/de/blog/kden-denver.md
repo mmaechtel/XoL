@@ -7,8 +7,8 @@ tags:
   - Flughafen
   - USA
   - X-Plane
+description: "Denver International Airport (KDEN) von X-Codr Designs für X-Plane 12 — detaillierte Szenerie mit HD-Texturen, Beleuchtung und modellierten Gebäuden."
 ---
-
 # Denver International Airport (KDEN) - X-Codr Designs
 
 Der Denver International Airport (KDEN) ist einer der größten und modernsten Flughäfen der USA, der von X-Codr Designs in Version 2.2 für X-Plane 12 entwickelt wurde. Diese Szenerie bietet eine detaillierte Darstellung des Flughafens und seiner Umgebung.

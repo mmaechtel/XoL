@@ -1,3 +1,6 @@
+---
+description: "Community FlyWithLua scripts and plugins for the ToLiss Airbus fleet in X-Plane 12: callouts, cockpit automation, boarding simulation, and ground services."
+---
 # ToLiss FlyWithLua Ecosystem
 
 <div class="video-container" markdown>

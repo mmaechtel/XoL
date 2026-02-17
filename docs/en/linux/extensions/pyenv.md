@@ -1,3 +1,6 @@
+---
+description: "pyenv setup on Debian: install and manage multiple Python versions, virtual environments, and shell integration for X-Plane plugin development."
+---
 # pyenv
 
 pyenv is a Python version management tool that allows you to install and manage multiple Python versions in parallel. It is particularly useful for developers who need to work with different Python versions.

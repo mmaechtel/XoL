@@ -1,3 +1,6 @@
+---
+description: "Takeoff ATC procedures — Tower communication, line-up clearance, conditional clearances, and departure handoff with standard phraseology examples."
+---
 # Takeoff
 
 At the holding point, contact Tower for departure. The Tower controller manages the runway and sequences departing traffic with arrivals.

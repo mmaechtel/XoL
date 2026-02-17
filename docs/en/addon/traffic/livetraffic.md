@@ -1,3 +1,6 @@
+---
+description: "LiveTraffic renders real-world ADS-B air traffic in X-Plane with TCAS integration, 3D sound, and multiple free and paid data sources."
+---
 # LiveTraffic
 
 LiveTraffic displays real-world air traffic in [X-Plane](../../glossary.md#x-plane) 11 and 12 by rendering ADS-B data from public and commercial sources in real time.

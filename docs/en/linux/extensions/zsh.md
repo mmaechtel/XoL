@@ -1,3 +1,6 @@
+---
+description: "Z Shell setup on Linux: installation, Oh My Zsh, autocompletion, syntax highlighting, and useful plugins for daily system administration."
+---
 # Z Shell (zsh)
 
 The Z Shell (zsh) is a powerful and extensible shell for Unix systems. It offers numerous improvements over the standard Bash shell, including better autocompletion, advanced globbing features, and a flexible plugin system.

@@ -1,3 +1,6 @@
+---
+description: "X-Planes Threading-Modell erklärt: Main-Thread-Engpass, Szenerie-Multi-Threading, Ortho-Streaming-CPU-Budget und RAM als Zwischenspeicher."
+---
 # CPU & RAM
 
 ## Einleitung

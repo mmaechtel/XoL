@@ -1,3 +1,6 @@
+---
+description: "Einstieg in VATSIM für X-Plane — Kontoerstellung, Client-Installation und automatisch generierte Flugrouten mit optimaler ATC-Abdeckung."
+---
 # VATSim
 
 VATSIM (Virtual Air Traffic Simulation Network) ist das weltweit größte Netzwerk für virtuelle Flugsimulation mit realistischem Flugverkehr und Flugsicherung.

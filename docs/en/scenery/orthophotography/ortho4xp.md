@@ -1,3 +1,6 @@
+---
+description: "Ortho4XP generates high-resolution satellite ground textures for X-Plane. Installation, configuration, LiDAR integration, and Ortho Patches on Linux."
+---
 # Ortho4XP
 
 Ortho4XP is a powerful tool for creating orthophotos for X-Plane. It enables the generation of high-resolution ground textures from satellite imagery and elevation data.

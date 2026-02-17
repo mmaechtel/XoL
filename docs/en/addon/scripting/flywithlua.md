@@ -1,3 +1,6 @@
+---
+description: "FlyWithLua NG+ Lua scripting engine for X-Plane 12 on Linux: installation, libglut symlink fix on Debian, FMOD error workaround, and script setup."
+---
 # FlyWithLua
 
 FlyWithLua NG+ is a Lua scripting engine for [X-Plane](../../glossary.md#x-plane) 12 that serves as the foundation for numerous community plugins and custom automations.
