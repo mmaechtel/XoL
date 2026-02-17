@@ -1,8 +1,8 @@
 # How X-Plane Builds the World
 
 <div class="video-container" markdown>
-<video controls width="100%" preload="metadata" aria-label="Video: Mastering Scenery Packs" poster="../assets/video/en/Mastering_scenery_packs/Mastering_scenery_packs.jpg">
-  <source src="../assets/video/en/Mastering_scenery_packs/Mastering_scenery_packs.mp4" type="video/mp4">
+<video controls width="100%" preload="metadata" aria-label="Video: Mastering Scenery Packs" poster="../../assets/video/en/Mastering_scenery_packs/Mastering_scenery_packs.jpg">
+  <source src="../../assets/video/en/Mastering_scenery_packs/Mastering_scenery_packs.mp4" type="video/mp4">
 </video>
 </div>
 
@@ -10,23 +10,23 @@ X-Plane ships with a scenery that looks plausible from altitude, but it is far f
 
 ## Meshes
 
-The [mesh](../glossary.md#mesh) is the terrain's elevation model — a network of triangles (a Triangulated Irregular Network, or TIN) that defines heights and slopes. Each triangle vertex carries a coordinate with longitude, latitude, and elevation. Together, these triangles shape mountains, valleys, and plains.
+The [mesh](../../glossary.md#mesh) is the terrain's elevation model — a network of triangles (a Triangulated Irregular Network, or TIN) that defines heights and slopes. Each triangle vertex carries a coordinate with longitude, latitude, and elevation. Together, these triangles shape mountains, valleys, and plains.
 
-Mesh data is stored in X-Plane's [DSF](../glossary.md#dsf-distribution-scenery-format) (Distribution Scenery Format) files. The default mesh ships with the simulator; higher-resolution alternatives (e.g., HD Mesh Scenery) can be installed as scenery packs.
+Mesh data is stored in X-Plane's [DSF](../../glossary.md#dsf-distribution-scenery-format) (Distribution Scenery Format) files. The default mesh ships with the simulator; higher-resolution alternatives (e.g., HD Mesh Scenery) can be installed as scenery packs.
 
 The mesh provides structure only — no textures or objects.
 
 ## Orthos
 
-Orthos ([orthophotos](../glossary.md#orthophotos)) are aerial or satellite images projected onto the mesh as ground textures. They replace X-Plane's procedural land classes with photorealistic imagery — roads, fields, forests, and buildings become visible from altitude.
+Orthos ([orthophotos](../../glossary.md#orthophotos)) are aerial or satellite images projected onto the mesh as ground textures. They replace X-Plane's procedural land classes with photorealistic imagery — roads, fields, forests, and buildings become visible from altitude.
 
-X-Plane uses [DDS](../glossary.md#dds-directdraw-surface) (DirectDraw Surface) textures internally. Source images from map providers (JPEG, PNG) are converted to GPU-compressed DDS format (DXT1/BC1 or DXT5/BC3) before X-Plane can use them.
+X-Plane uses [DDS](../../glossary.md#dds-directdraw-surface) (DirectDraw Surface) textures internally. Source images from map providers (JPEG, PNG) are converted to GPU-compressed DDS format (DXT1/BC1 or DXT5/BC3) before X-Plane can use them.
 
-Tools like **[Ortho4XP](orthophotography/ortho4xp.md)** generate these DDS tiles offline, while streaming solutions deliver them on demand (see below).
+Tools like **[Ortho4XP](../orthophotography/ortho4xp.md)** generate these DDS tiles offline, while streaming solutions deliver them on demand (see below).
 
 ## Autogen
 
-[Autogen](../glossary.md#autogen) (automatically generated scenery) adds 3D objects — buildings, trees, vehicles, power lines — to the landscape. X-Plane reads placement information from its DSF scenery files and distributes objects accordingly: trees in forest areas, buildings in residential zones, factories in industrial areas.
+[Autogen](../../glossary.md#autogen) (automatically generated scenery) adds 3D objects — buildings, trees, vehicles, power lines — to the landscape. X-Plane reads placement information from its DSF scenery files and distributes objects accordingly: trees in forest areas, buildings in residential zones, factories in industrial areas.
 
 The placement data in X-Plane's default scenery is derived from OpenStreetMap and other geographic datasets during Laminar Research's scenery build pipeline. This data is baked into the DSF files — X-Plane does not query OSM at runtime. Third-party add-ons like SimHeaven X-World use OSM data separately to generate more detailed autogen coverage.
 
@@ -44,9 +44,9 @@ Each layer depends on the one below it. Orthos need the mesh to be projected cor
 
 Several add-ons extend the default scenery layers:
 
-- **[Ortho4XP](orthophotography/ortho4xp.md)** — generates high-resolution ortho tiles offline from satellite imagery
-- **[Ortho Streaming](orthophotography/orthophotography_intro.md#ortho-streaming)** — AutoOrtho, XEarthLayer, and XPME stream satellite imagery on demand, no pre-generation needed
-- **[Custom Sceneries](../glossary.md#custom-scenery)** — higher-resolution meshes or regional autogen objects (e.g., SimHeaven X-World)
+- **[Ortho4XP](../orthophotography/ortho4xp.md)** — generates high-resolution ortho tiles offline from satellite imagery
+- **[Ortho Streaming](../orthophotography/orthophotography_intro.md#ortho-streaming)** — AutoOrtho, XEarthLayer, and XPME stream satellite imagery on demand, no pre-generation needed
+- **[Custom Sceneries](../../glossary.md#custom-scenery)** — higher-resolution meshes or regional autogen objects (e.g., SimHeaven X-World)
 - **Autogen Libraries** — additional object sets for more varied building and vegetation placement
 
 ---
@@ -60,7 +60,7 @@ The landscapes in X-Plane are created through the interaction of various compone
 | Priority | Layer | Function | Example |
 |----------|-------|----------|---------|
 | 6 (top) | Custom Sceneries & Landmarks | Detailed airports, landmarks | `Aerosoft_EDDF_Frankfurt_3_Scenery` |
-| 5 | [Global Airports](../glossary.md#global-airports) | Default airports (X-Plane Gateway) | `*GLOBAL_AIRPORTS*` |
+| 5 | [Global Airports](../../glossary.md#global-airports) | Default airports (X-Plane Gateway) | `*GLOBAL_AIRPORTS*` |
 | 4 | Special Objects | Radio masts, wind turbines | `world_wind_turbines` |
 | 3 | Autogen & Libraries | 3D objects (buildings, trees, vehicles) | `simHeaven_X-World_Europe-6-scenery` |
 | 2 | Ortho Sceneries | Satellite imagery on the mesh | `z_ortho_California` |
@@ -117,7 +117,7 @@ SCENERY_PACK Custom Scenery/SFD_EDDM_Munich_2_Mesh/
 ```
 
 !!! tip "Maintaining scenery_packs.ini"
-    - **Use tools** — programs like **[XOrganizer](../addon/tools/xorganizer.md)** can automatically optimize the order and detect conflicts.
+    - **Use tools** — programs like **[XOrganizer](../../addon/tools/xorganizer.md)** can automatically optimize the order and detect conflicts.
     - **Create a backup** before editing `scenery_packs.ini` to be able to undo mistakes.
     - **Test after changes** — load a scenery in X-Plane and check airports, orthos, and autogen. Pay special attention to "floating" objects or missing details.
     - **Watch for updates** — new sceneries or add-ons can disrupt the order. Check the file regularly, especially after installations.

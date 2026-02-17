@@ -155,7 +155,7 @@ Eine Schnittstelle, die es erlaubt, Dateisysteme im Benutzerraum statt im Kernel
 
 ### Global Airports
 
-Der Eintrag `*GLOBAL_AIRPORTS*` in X-Planes scenery_packs.ini, der die Standard-Flughäfen enthält — viele davon von der Community über das X-Plane Gateway beigesteuert. In der Ladereihenfolge sollte Global Airports unterhalb von Custom-Airport-Szenerien, aber über Autogen, Orthofotos und Mesh-Schichten stehen. Eine falsche Position kann zu schwebenden Flughäfen oder verdeckten Rollwegen führen. Siehe [Szenerien-Komponenten](../scenery/scenery_components.md).
+Der Eintrag `*GLOBAL_AIRPORTS*` in X-Planes scenery_packs.ini, der die Standard-Flughäfen enthält — viele davon von der Community über das X-Plane Gateway beigesteuert. In der Ladereihenfolge sollte Global Airports unterhalb von Custom-Airport-Szenerien, aber über Autogen, Orthofotos und Mesh-Schichten stehen. Eine falsche Position kann zu schwebenden Flughäfen oder verdeckten Rollwegen führen. Siehe [Szenerien-Komponenten](../scenery/aufbau_quellen/scenery_components.md).
 
 ### GRUB (Grand Unified Bootloader)
 
@@ -261,7 +261,7 @@ Orthofotos (oder Orthophotos) sind maßstabsgetreue, verzerrungsfreie Luftbilder
 
 ### Overlay (Szenerie)
 
-Eine Szenerie-Schicht in X-Plane, die über einer Basis-Szenerie liegt und diese ergänzt oder ersetzt. Overlays enthalten typischerweise Flughäfen, Gebäude oder Straßen, während die Basis-Schicht Geländemesh und Orthofotos bereitstellt. Die Reihenfolge in der scenery_packs.ini bestimmt, welche Overlays Vorrang haben. Siehe [Szenerien-Komponenten](../scenery/scenery_components.md).
+Eine Szenerie-Schicht in X-Plane, die über einer Basis-Szenerie liegt und diese ergänzt oder ersetzt. Overlays enthalten typischerweise Flughäfen, Gebäude oder Straßen, während die Basis-Schicht Geländemesh und Orthofotos bereitstellt. Die Reihenfolge in der scenery_packs.ini bestimmt, welche Overlays Vorrang haben. Siehe [Szenerien-Komponenten](../scenery/aufbau_quellen/scenery_components.md).
 
 ## P
 

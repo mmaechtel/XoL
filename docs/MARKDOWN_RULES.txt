@@ -111,8 +111,10 @@ docs/{lang}/
 │
 ├── scenery/                  # Section: Szenerien
 │   ├── index.md              #   Section Index
-│   ├── scenery.md
-│   ├── scenery_components.md
+│   ├── aufbau_quellen/       #   Subsection: Aufbau & Quellen
+│   │   ├── index.md          #     Section Index
+│   │   ├── scenery_components.md
+│   │   └── scenery_sources.md
 │   ├── orthophotography/     # Subsection: Orthofotografie
 │   │   ├── index.md          #   Section Index
 │   │   ├── orthophotography_intro.md

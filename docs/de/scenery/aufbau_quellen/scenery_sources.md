@@ -33,7 +33,7 @@ Die Installation erfolgt manuell im Custom Scenery Verzeichnis. Die Erweiterung 
 
 Auf [x-plane.org](https://forums.x-plane.org/) findet sich eine umfangreiche Auswahl an kostenlosen und günstigen Szenerien. Die Community bietet eine Vielzahl von Flughäfen an, darunter verbesserte Versionen von Standard-Flughäfen und historische Flughäfen. Im Bereich der Landschaften stehen verbesserte Geländedaten, detailliertere Vegetation und spezielle Regionen zur Verfügung.
 
-Für die Erstellung und Verwaltung von Szenerien stehen verschiedene Tools zur Verfügung. [Ortho4XP](orthophotography/ortho4xp.md) ermöglicht die Erstellung eigener Orthofoto-Szenerien, während [AutoOrtho](ortho_streaming/autoortho.md) automatische Orthofoto-Szenerien bereitstellt. [XRoad](../addon/scenery_addons/xroad.md) bietet verbesserte Straßennetze für eine realistischere Darstellung der Infrastruktur.
+Für die Erstellung und Verwaltung von Szenerien stehen verschiedene Tools zur Verfügung. [Ortho4XP](../orthophotography/ortho4xp.md) ermöglicht die Erstellung eigener Orthofoto-Szenerien, während [AutoOrtho](../ortho_streaming/autoortho.md) automatische Orthofoto-Szenerien bereitstellt. [XRoad](../../addon/scenery_addons/xroad.md) bietet verbesserte Straßennetze für eine realistischere Darstellung der Infrastruktur.
 
 ## Payware-Szenerien
 
