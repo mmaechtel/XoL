@@ -94,7 +94,7 @@ plugins:
           nav:
             - Übersicht:
                 - de/index.md
-                - Einführung: de/intro.md
+                - Warum Linux: de/intro.md
                 - Erste Schritte: de/begin.md
                 - Videos: de/videos.md
             - Grundlagen:
@@ -143,7 +143,7 @@ plugins:
                     - Quellen: de/scenery/aufbau_quellen/scenery_sources.md
                 - Orthofotografie:
                     - de/scenery/orthophotography/index.md
-                    - Einführung: de/scenery/orthophotography/orthophotography_intro.md
+                    - Konzepte & Methoden: de/scenery/orthophotography/orthophotography_intro.md
                     - Ortho4XP: de/scenery/orthophotography/ortho4xp.md
                 - Ortho Streaming:
                     - de/scenery/ortho_streaming/index.md
@@ -237,7 +237,7 @@ plugins:
           nav:
             - Overview:
                 - en/index.md
-                - Introduction: en/intro.md
+                - Why Linux: en/intro.md
                 - Getting Started: en/begin.md
                 - Videos: en/videos.md
             - Fundamentals:
@@ -286,7 +286,7 @@ plugins:
                     - Sources: en/scenery/aufbau_quellen/scenery_sources.md
                 - Orthophotography:
                     - en/scenery/orthophotography/index.md
-                    - Introduction: en/scenery/orthophotography/orthophotography_intro.md
+                    - Concepts & Methods: en/scenery/orthophotography/orthophotography_intro.md
                     - Ortho4XP: en/scenery/orthophotography/ortho4xp.md
                 - Ortho Streaming:
                     - en/scenery/ortho_streaming/index.md
