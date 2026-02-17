@@ -78,4 +78,14 @@ Video collection for X-Plane on Linux.
 
 </div>
 
+<div class="video-card" markdown>
+
+### X-Plane 12 Performance
+
+<video controls width="100%" preload="metadata" aria-label="Video: X-Plane 12 Performance" poster="../assets/video/en/X-Plane_12_Performance/X-Plane_12_Performance.jpg">
+  <source src="../assets/video/en/X-Plane_12_Performance/X-Plane_12_Performance.mp4" type="video/mp4">
+</video>
+
+</div>
+
 </div>

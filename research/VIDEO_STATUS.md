@@ -16,3 +16,5 @@
 | X-Plane_unter_Linux__Doku-Tour.mp4 | de/X-Plane_unter_Linux__Doku-Tour | videos.md (DE), intro.md (DE) | eingebettet | 2026-02-16 |
 | X-Plane_on_Linux.mp4 | en/X-Plane_on_Linux | videos.md (EN), intro.md (EN) | eingebettet | 2026-02-16 |
 | X-Plane__Display_Server_Choice.mp4 | en/X-Plane__Display_Server_Choice | videos.md (EN), linux/optimizations/displayserver.md (EN) | eingebettet | 2026-02-16 |
+| X-Plane_12__Jagd_nach_FPS.mp4 | de/X-Plane_12__Jagd_nach_FPS | videos.md (DE), index.md (DE, featured), fundamentals/performance/gpu_vram.md (DE) | eingebettet | 2026-02-17 |
+| X-Plane_12_Performance.mp4 | en/X-Plane_12_Performance | videos.md (EN), index.md (EN, featured), fundamentals/performance/gpu_vram.md (EN) | eingebettet | 2026-02-17 |

@@ -78,4 +78,14 @@ Videosammlung rund um X-Plane auf Linux.
 
 </div>
 
+<div class="video-card" markdown>
+
+### X-Plane 12: Jagd nach FPS
+
+<video controls width="100%" preload="metadata" aria-label="Video: X-Plane 12 — Jagd nach FPS" poster="../assets/video/de/X-Plane_12__Jagd_nach_FPS/X-Plane_12__Jagd_nach_FPS.jpg">
+  <source src="../assets/video/de/X-Plane_12__Jagd_nach_FPS/X-Plane_12__Jagd_nach_FPS.mp4" type="video/mp4">
+</video>
+
+</div>
+
 </div>

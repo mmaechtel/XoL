@@ -20,11 +20,11 @@ Diese Dokumentation ist ein offenes Projekt. Verbesserungen oder Ergänzungen k�
 - Pull Requests für Änderungen einreichen
 - Erfahrungen in den Diskussionen im Footer dieser Webseite (z.B. über den Discord-Link) teilen
 
-## Featured Video: Vom Briefing zum Gate
+## Featured Video: X-Plane 12: Jagd nach FPS
 
 <div class="video-container" style="max-width: 640px;" markdown>
-<video controls width="100%" preload="metadata" aria-label="Video: Vom Briefing zum Gate" poster="../assets/video/de/Vom_Briefing_zum_Gate/Vom_Briefing_zum_Gate.jpg">
-  <source src="../assets/video/de/Vom_Briefing_zum_Gate/Vom_Briefing_zum_Gate.mp4" type="video/mp4">
+<video controls width="100%" preload="metadata" aria-label="Video: X-Plane 12 — Jagd nach FPS" poster="../assets/video/de/X-Plane_12__Jagd_nach_FPS/X-Plane_12__Jagd_nach_FPS.jpg">
+  <source src="../assets/video/de/X-Plane_12__Jagd_nach_FPS/X-Plane_12__Jagd_nach_FPS.mp4" type="video/mp4">
 </video>
 </div>
 
@@ -33,6 +33,7 @@ Diese Dokumentation ist ein offenes Projekt. Verbesserungen oder Ergänzungen k�
 ## Letzte Änderungen
 
 ### 2026-02-17
+- Neue Videos: [GPU & VRAM](fundamentals/performance/gpu_vram.md) — GPU-Performance und VRAM-Management (DE + EN)
 - Weiterführende Kapitel in den Sektionen Linux, Flugbetrieb, Szenerie und X-Plane ergänzt (33 Seiten)
 - [CPU & RAM](fundamentals/performance/cpu_ram.md), [GPU & VRAM](fundamentals/performance/gpu_vram.md), [Latenz](fundamentals/performance/latency.md): Weiterführende Kapitel vereinheitlicht mit zusätzlichen Querverweisen
 - Neue Seite [Latenz und Vorhersagbarkeit](fundamentals/performance/latency.md) — Warum Latenz wichtiger ist als Durchsatz, vier Latenzquellen

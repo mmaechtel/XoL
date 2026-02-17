@@ -1,5 +1,11 @@
 # GPU & VRAM
 
+<div class="video-container" markdown>
+<video controls width="100%" preload="metadata" poster="../../../assets/video/de/X-Plane_12__Jagd_nach_FPS/X-Plane_12__Jagd_nach_FPS.jpg">
+  <source src="../../../assets/video/de/X-Plane_12__Jagd_nach_FPS/X-Plane_12__Jagd_nach_FPS.mp4" type="video/mp4">
+</video>
+</div>
+
 ## Einleitung
 
 Das Kapitel [CPU & RAM](cpu_ram.md) beschreibt, wie X-Plane seine Kerne nutzt und wie Ortho-Streaming-Tools als eigenständige Prozesse daneben laufen. Dieses Kapitel folgt den Daten auf ihrem Weg in den Grafikspeicher: Wie X-Plane [VRAM](../../glossary.md#vram-video-ram) verwaltet, warum sich GPU-Treiber unter Linux fundamental unterscheiden und wie sich die Auswirkungen auf die Frame Time messen lassen.

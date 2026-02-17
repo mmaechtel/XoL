@@ -44,7 +44,24 @@ Fuer jede gefundene MP4-Datei:
 2. Datei verschieben: `mv INBOX/{datei}.mp4 {basisname}/{datei}.mp4`
 3. Meldung ausgeben
 
-Falls INBOX leer: Ueberspringen.
+Falls INBOX leer: **Fallback auf Downloads-Verzeichnis**.
+
+**Fallback: Downloads-Verzeichnis**
+
+```
+Glob: ~/Downloads/*.mp4
+```
+
+Falls MP4-Dateien in `~/Downloads/` vorhanden:
+
+1. Liste der gefundenen MP4-Dateien anzeigen
+2. Per AskUserQuestion fragen: Welche Videos sollen uebernommen werden? (multiSelect)
+3. Fuer jedes ausgewaehlte Video per AskUserQuestion die Sprache abfragen: DE oder EN?
+4. Dateien in die passende INBOX verschieben: `mv ~/Downloads/{datei}.mp4 docs/assets/video/{lang}/INBOX/`
+5. INBOX-Verzeichnis bei Bedarf anlegen: `mkdir -p docs/assets/video/{lang}/INBOX/`
+6. Danach zurueck zum INBOX-Verarbeitungsschritt (Zielverzeichnis erstellen, verschieben)
+
+Falls auch Downloads leer: Ueberspringen.
 
 ### 1.3 Scan + Namenskonvention
 

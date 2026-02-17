@@ -1,5 +1,11 @@
 # GPU & VRAM
 
+<div class="video-container" markdown>
+<video controls width="100%" preload="metadata" poster="../../../assets/video/en/X-Plane_12_Performance/X-Plane_12_Performance.jpg">
+  <source src="../../../assets/video/en/X-Plane_12_Performance/X-Plane_12_Performance.mp4" type="video/mp4">
+</video>
+</div>
+
 ## Introduction
 
 The chapter [CPU & RAM](cpu_ram.md) describes how X-Plane uses its cores and how ortho streaming tools run as separate processes alongside the simulator. This chapter follows the data on its path into graphics memory: how X-Plane manages [VRAM](../../glossary.md#vram-video-ram), why GPU drivers on Linux differ fundamentally, and how the impact on frame time can be measured.

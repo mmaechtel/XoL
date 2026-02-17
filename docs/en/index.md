@@ -20,11 +20,11 @@ This documentation is an open project. Improvements or additions can be contribu
 - Submit pull requests for changes
 - Share experiences in the discussions in the footer of this website (e.g., via the Discord link)
 
-## Featured Video: X-Plane: Display Server Choice
+## Featured Video: X-Plane 12 Performance
 
 <div class="video-container" style="max-width: 640px;" markdown>
-<video controls width="100%" preload="metadata" aria-label="Video: X-Plane — Display Server Choice" poster="../assets/video/en/X-Plane__Display_Server_Choice/X-Plane__Display_Server_Choice.jpg">
-  <source src="../assets/video/en/X-Plane__Display_Server_Choice/X-Plane__Display_Server_Choice.mp4" type="video/mp4">
+<video controls width="100%" preload="metadata" aria-label="Video: X-Plane 12 Performance" poster="../assets/video/en/X-Plane_12_Performance/X-Plane_12_Performance.jpg">
+  <source src="../assets/video/en/X-Plane_12_Performance/X-Plane_12_Performance.mp4" type="video/mp4">
 </video>
 </div>
 
@@ -33,6 +33,7 @@ This documentation is an open project. Improvements or additions can be contribu
 ## Recent Changes
 
 ### 2026-02-17
+- New videos: [GPU & VRAM](fundamentals/performance/gpu_vram.md) — GPU performance and VRAM management (DE + EN)
 - Further Reading sections added across Linux, Flight Operations, Scenery, and X-Plane sections (33 pages)
 - [CPU & RAM](fundamentals/performance/cpu_ram.md), [GPU & VRAM](fundamentals/performance/gpu_vram.md), [Latency](fundamentals/performance/latency.md): Further Reading sections standardized with additional cross-references
 - New page [Latency and Predictability](fundamentals/performance/latency.md) — Why latency matters more than throughput, four latency sources
