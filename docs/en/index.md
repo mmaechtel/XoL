@@ -35,6 +35,10 @@ This documentation is an open project. Improvements or additions can be contribu
 
 ## Recent Changes
 
+### 2026-02-18
+- [AutoOrtho](scenery/ortho_streaming/autoortho.md) corrected: Fixed wrong USGS provider reference, removed unverified RAM and bandwidth figures
+- [XEarthLayer](scenery/ortho_streaming/xearthlayer.md) corrected: Updated internet recommendation from 800 to 500 Mbps, removed version-specific install command, added sources
+
 ### 2026-02-17
 - New videos: [GPU & VRAM](fundamentals/performance/gpu_vram.md) — GPU performance and VRAM management (DE + EN)
 - Further Reading sections added across Linux, Flight Operations, Scenery, and X-Plane sections (33 pages)
@@ -49,11 +53,5 @@ This documentation is an open project. Improvements or additions can be contribu
 - New videos: [Introduction](intro.md) — guided tour through XoL (DE + EN)
 - [ToLiss Ecosystem](addon/toliss/toliss_ecosystem.md): simbrief_hub section added, new page [ToLiss Mods](addon/toliss/toliss_mods.md)
 
-### 2026-02-15
-- New addon pages: [SGES](addon/flylua_scripts/sges.md), [KabinXP](addon/cockpit/kabinxp.md), [LST](addon/scenery_addons/lst.md), [LinuxTrack](addon/cockpit/linuxtrack.md), [XLinSpeak](addon/tools/xlinspeak.md), [WINCTRL](addon/tools/winctrl.md), [TerrainRadar](addon/cockpit/terrainradar.md), [NOAA Weather](addon/scenery_addons/noaa_weather.md), [MobiFlight](addon/kvm/mobiflight.md), [SayIntentions.AI](addon/kvm/sayintentions.md)
-- New Sounds category: [KOSP Project](addon/sounds/kosp_project.md), [Mango Studios](addon/sounds/mango_studios.md)
-- New page [Performance](fundamentals/performance/performance_overview.md)
-- ATC section: 6 flight phase pages ([Pushback & Taxi](flight_operations/atc/pushback_taxi.md), [Takeoff](flight_operations/atc/takeoff.md), [Departure & Climb](flight_operations/atc/departure.md), [En Route](flight_operations/atc/enroute.md), [Approach](flight_operations/atc/approach.md), [Landing & Taxi In](flight_operations/atc/landing.md))
-- [FlyWithLua](addon/scripting/flywithlua.md): general script installation guide added
 
 

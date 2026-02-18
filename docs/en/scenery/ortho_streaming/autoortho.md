@@ -11,13 +11,13 @@ There is now an active fork at [https://github.com/ProgrammingDinosaur/autoortho
 
 AutoOrtho implements a streaming system for orthophotos based on the aircraft's position and renders them as textures in X-Plane. The system operates through several key mechanisms:
 
-- The real-time streaming system loads satellite images in tiles from providers like Bing, using a zoom level of up to 18 (ZL18) to balance detail and loading time. Tiles for current and adjacent areas are preloaded to ensure seamless transitions, requiring a stable internet connection of at least 100 Mbps.
+- The real-time streaming system loads satellite images in tiles from providers like Bing, using a zoom level of up to 18 (ZL18) to balance detail and loading time. Tiles for current and adjacent areas are preloaded to ensure seamless transitions, requiring a fast, stable internet connection.
 
 - A virtual file system (WinFSP/Dokan on Windows, FUSE on Linux) manages the tiles in a local cache on SSD and represents them as scenery files in the z_autoortho folder of the Custom Scenery directory.
 
 AutoOrtho delivers 2D orthophotos without 3D objects. For buildings and vegetation, SimHeaven (X-World) is recommended, utilizing OpenStreetMap data. Overlays adapt the images to the X-Plane terrain mesh and contain essential information such as airport flattening, traffic infrastructure, and railway lines. When using SimHeaven X-World, the yOrtho overlays are redundant.
 
-The streaming process impacts CPU, RAM (up to 64 GB), and disk performance. While SSDs minimize bottlenecks, frame drops can occur with slow connections or underpowered hardware.
+The streaming process impacts CPU, RAM, and disk performance. RAM usage depends on configuration (zoom level, buffer pool, pre-fetch settings). While SSDs minimize bottlenecks, frame drops can occur with slow connections or underpowered hardware.
 
 ### Enhanced Features of the Fork (Version 2.0)
 
@@ -37,7 +37,7 @@ The [ProgrammingDinosaur Fork](https://github.com/ProgrammingDinosaur/autoortho4
 
 ### System Requirements
 
-The system requires X-Plane 11.50+ or X-Plane 12, running on Windows, Linux (with FUSE), or macOS (Apple Silicon). Dependencies include WinFSP/Dokan (Windows), FUSE (Linux), and optionally Python 3.x for source code. Hardware requirements include 16 GB RAM, SSD storage, and a fast internet connection (≥100 Mbps).
+The system requires X-Plane 11.50+ or X-Plane 12, running on Windows, Linux (with FUSE), or macOS (Apple Silicon). Dependencies include WinFSP/Dokan (Windows), FUSE (Linux), and optionally Python 3.x for source code. Hardware requirements include 16 GB RAM, SSD storage, and a fast, stable internet connection.
 
 **Note**: The [ProgrammingDinosaur Fork](https://github.com/ProgrammingDinosaur/autoortho4xplane) provides full macOS compatibility for Apple Silicon processors and enhanced features for X-Plane 12.
 
@@ -112,7 +112,7 @@ Additional specific issues when using AutoOrtho:
 2. **Network Issues**:
     - Log entry: `HTTP 429: Too Many Requests`
     - Cause: Bing blacklisting
-    - Solution: Use VPN or switch to USGS sources
+    - Solution: Use VPN or switch to another map provider (e.g., Google or Here)
 
 3. **Scenery Conflicts**:
     - Log entry: `Warning: z_autoortho not found in scenery_packs.ini`
@@ -168,7 +168,7 @@ The example system runs Debian 12 (Bookworm) with X-Plane 12, featuring an SSD, 
 
 - fuse3 for the virtual filesystem
 - git, build-essential, libssl-dev, zlib1g-dev for pyenv and Python
-- Python 3.12+ (managed via pyenv) - recommended for ProgrammingDinosaur Fork
+- Python 3.x (managed via pyenv) — the binary installation is recommended and does not require a separate Python installation
 - A few GB of SSD storage for overlays and cache
 
 ### Step-by-Step Installation

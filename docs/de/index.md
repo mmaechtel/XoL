@@ -35,6 +35,10 @@ Diese Dokumentation ist ein offenes Projekt. Verbesserungen oder Ergänzungen k�
 
 ## Letzte Änderungen
 
+### 2026-02-18
+- [AutoOrtho](scenery/ortho_streaming/autoortho.md) korrigiert: Falschen USGS-Provider-Verweis behoben, unbelegte RAM- und Bandbreitenangaben entfernt
+- [XEarthLayer](scenery/ortho_streaming/xearthlayer.md) korrigiert: Internet-Empfehlung von 800 auf 500 Mbps aktualisiert, versionsspezifischen Installationsbefehl entfernt, Quellen ergänzt
+
 ### 2026-02-17
 - Neue Videos: [GPU & VRAM](fundamentals/performance/gpu_vram.md) — GPU-Performance und VRAM-Management (DE + EN)
 - Weiterführende Kapitel in den Sektionen Linux, Flugbetrieb, Szenerie und X-Plane ergänzt (33 Seiten)
@@ -49,11 +53,5 @@ Diese Dokumentation ist ein offenes Projekt. Verbesserungen oder Ergänzungen k�
 - Neue Videos: [Einführung](intro.md) — Doku-Tour durch XoL (DE + EN)
 - [ToLiss-Ökosystem](addon/toliss/toliss_ecosystem.md): simbrief_hub-Abschnitt ergänzt, neue Seite [ToLiss Mods](addon/toliss/toliss_mods.md)
 
-### 2026-02-15
-- Neue Addon-Seiten: [SGES](addon/flylua_scripts/sges.md), [KabinXP](addon/cockpit/kabinxp.md), [LST](addon/scenery_addons/lst.md), [LinuxTrack](addon/cockpit/linuxtrack.md), [XLinSpeak](addon/tools/xlinspeak.md), [WINCTRL](addon/tools/winctrl.md), [TerrainRadar](addon/cockpit/terrainradar.md), [NOAA Weather](addon/scenery_addons/noaa_weather.md), [MobiFlight](addon/kvm/mobiflight.md), [SayIntentions.AI](addon/kvm/sayintentions.md)
-- Neue Sounds-Kategorie: [KOSP Project](addon/sounds/kosp_project.md), [Mango Studios](addon/sounds/mango_studios.md)
-- Neue Seite [Performance](fundamentals/performance/performance_overview.md)
-- ATC-Sektion: 6 Flugphasen-Seiten ([Pushback & Taxi](flight_operations/atc/pushback_taxi.md), [Start](flight_operations/atc/takeoff.md), [Abflug & Steigflug](flight_operations/atc/departure.md), [Streckenflug](flight_operations/atc/enroute.md), [Anflug](flight_operations/atc/approach.md), [Landung & Abstellen](flight_operations/atc/landing.md))
-- [FlyWithLua](addon/scripting/flywithlua.md): Allgemeine Skript-Installationsanleitung ergänzt
 
 

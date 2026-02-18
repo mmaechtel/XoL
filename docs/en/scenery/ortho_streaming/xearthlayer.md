@@ -47,7 +47,7 @@ XEarthLayer supports the following map providers:
 |---|---|
 | Operating system | Linux (FUSE required) |
 | Simulator | X-Plane 12 |
-| Internet connection | ≥ 800 Mbps recommended |
+| Internet connection | ≥ 500 Mbps recommended |
 | Storage | SSD for disk cache |
 | Build environment | Rust toolchain (only when building from source) |
 
@@ -61,8 +61,8 @@ Pre-built packages are available on the [GitHub Releases page](https://github.co
 Installation on Debian:
 
 ```bash
-# Download and install the .deb package
-sudo dpkg -i xearthlayer_0.3.0-1_amd64.deb
+# Download the latest .deb package from the releases page and install
+sudo dpkg -i xearthlayer_<version>_amd64.deb
 
 # Setup
 xearthlayer setup
@@ -130,7 +130,7 @@ Three settings in `~/.xearthlayer/config.ini` form a hierarchy:
 | Setting | Section | Default | Function |
 |---|---|---|---|
 | `threads` | `[generation]` | Number of CPUs | Worker threads for tile generation |
-| `cpu_concurrent` | `[executor]` | CPUs × 1.25 | Concurrent CPU-intensive operations (DDS encoding) |
+| `cpu_concurrent` | `[executor]` | ~CPUs × 1.25 | Concurrent CPU-intensive operations (DDS encoding) |
 | `max_concurrent_jobs` | `[control_plane]` | CPUs × 2 | Maximum concurrent tile jobs overall |
 
 The most effective lever is `cpu_concurrent` — it limits DDS encoding operations (BC1/BC3 compression), which account for the largest CPU share.
@@ -207,3 +207,5 @@ XEarthLayer is aimed at Linux users seeking maximum streaming performance who ar
 ## Sources
 
 - [GitHub Repository](https://github.com/samsoir/xearthlayer)
+- [XEarthLayer Website](https://xearthlayer.app/)
+- [Regional Scenery Packages](https://github.com/samsoir/xearthlayer-regional-scenery)

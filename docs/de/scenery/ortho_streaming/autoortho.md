@@ -11,13 +11,13 @@ Inzwischen existiert ein aktiver Fork unter [https://github.com/ProgrammingDinos
 
 **AutoOrtho** implementiert ein **Streaming-System** für Orthophotos basierend auf der Flugzeugposition und rendert diese als Texturen in X-Plane. Das System operiert über mehrere Schlüsselmechanismen:
 
-- Das **Echtzeit-Streaming-System** lädt Satellitenbilder in Kacheln von Anbietern wie Bing, wobei eine **Zoomstufe** von bis zu 18 (ZL18) implementiert wird, um Detailgenauigkeit und Ladezeit zu optimieren. Kacheln für aktuelle und angrenzende Bereiche werden präventiv geladen, um nahtlose Übergänge zu gewährleisten, was eine stabile Internetverbindung von mindestens 100 Mbps erfordert.
+- Das **Echtzeit-Streaming-System** lädt Satellitenbilder in Kacheln von Anbietern wie Bing, wobei eine **Zoomstufe** von bis zu 18 (ZL18) implementiert wird, um Detailgenauigkeit und Ladezeit zu optimieren. Kacheln für aktuelle und angrenzende Bereiche werden präventiv geladen, um nahtlose Übergänge zu gewährleisten, was eine schnelle, stabile Internetverbindung erfordert.
 
 - Ein **virtuelles Dateisystem** (`WinFSP`/`Dokan` unter Windows, `FUSE` unter Linux) verwaltet die Kacheln in einem lokalen Cache auf SSD und stellt sie als Szenerie-Dateien im `z_autoortho`-Ordner des `Custom Scenery`-Verzeichnisses dar.
 
 **AutoOrtho** liefert **2D-Orthophotos** ohne 3D-Objekte. Für die Darstellung von Gebäuden und Vegetation wird **SimHeaven (X-World)** empfohlen, das OpenStreetMap-Daten implementiert. Overlays adaptieren die Bilder an das **X-Plane-Terrain-Mesh** und enthalten essentielle Informationen wie Flughafen-Glättungen, Verkehrsinfrastruktur und Eisenbahnlinien. Bei Verwendung von **SimHeaven X-World** sind die `yOrtho-Overlays` redundant.
 
-Der **Streaming-Prozess** beeinflusst CPU-Auslastung, RAM-Verbrauch (bis zu 64 GB) und Festplattenleistung. Während SSDs Engpässe minimieren, können bei suboptimalen Verbindungen oder unzureichender Hardware **Frame-Drops** auftreten.
+Der **Streaming-Prozess** beeinflusst CPU-Auslastung, RAM-Verbrauch und Festplattenleistung. Der RAM-Bedarf hängt von der Konfiguration ab (Zoomstufe, Buffer-Pool, Pre-Fetch-Einstellungen). Während SSDs Engpässe minimieren, können bei suboptimalen Verbindungen oder unzureichender Hardware **Frame-Drops** auftreten.
 
 ### Erweiterte Funktionen des Forks (Version 2.0)
 
@@ -37,7 +37,7 @@ Der [ProgrammingDinosaur Fork](https://github.com/ProgrammingDinosaur/autoortho4
 
 ### Systemanforderungen
 
-Das System erfordert X-Plane 11.50+ oder X-Plane 12, läuft unter Windows, Linux (mit `FUSE`) oder macOS (Apple Silicon). **Abhängigkeiten** umfassen `WinFSP`/`Dokan` (Windows), `FUSE` (Linux) und optional **Python** 3.x für Quellcode. **Hardwareanforderungen** umfassen 16 GB **RAM**, **SSD**-Speicher und eine schnelle **Internetverbindung** (≥100 Mbps).
+Das System erfordert X-Plane 11.50+ oder X-Plane 12, läuft unter Windows, Linux (mit `FUSE`) oder macOS (Apple Silicon). **Abhängigkeiten** umfassen `WinFSP`/`Dokan` (Windows), `FUSE` (Linux) und optional **Python** 3.x für Quellcode. **Hardwareanforderungen** umfassen 16 GB **RAM**, **SSD**-Speicher und eine schnelle, stabile **Internetverbindung**.
 
 **Hinweis**: Der [ProgrammingDinosaur Fork](https://github.com/ProgrammingDinosaur/autoortho4xplane) bietet vollständige macOS-Kompatibilität für Apple Silicon-Prozessoren und erweiterte Funktionen für X-Plane 12.
 
@@ -112,7 +112,7 @@ Weitere spezifische Probleme bei der Verwendung von AutoOrtho:
 2. **Netzwerkprobleme**:
     - Log-Eintrag: `HTTP 429: Too Many Requests`
     - Ursache: Bing-Blacklisting
-    - Lösung: VPN verwenden oder zu USGS-Quellen wechseln
+    - Lösung: VPN verwenden oder zu einem anderen Kartenanbieter wechseln (z. B. Google oder Here)
 
 3. **Szenerie-Konflikte**:
     - Log-Eintrag: `Warning: z_autoortho not found in scenery_packs.ini`
@@ -168,7 +168,7 @@ Das Beispielsystem läuft mit Debian 12 (Bookworm) und X-Plane 12, verfügt übe
 
 - fuse3 für das virtuelle Dateisystem
 - git, build-essential, libssl-dev, zlib1g-dev für pyenv und Python
-- Python 3.12+ (verwaltet über pyenv) - empfohlen für den ProgrammingDinosaur Fork
+- Python 3.x (verwaltet über pyenv) — die Binary-Installation wird empfohlen und erfordert keine separate Python-Installation
 - Einige GB SSD-Speicher für Overlays und Cache
 
 ### Schritt-für-Schritt Installation
