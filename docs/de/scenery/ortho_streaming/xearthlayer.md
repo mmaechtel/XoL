@@ -5,8 +5,8 @@ description: "XEarthLayer ist ein Rust-basiertes Ortho-Streaming-Tool für X-Pla
 
 **XEarthLayer** ist eine in Rust geschriebene Alternative zu AutoOrtho für das Streaming von Orthofoto-Texturen in X-Plane 12. Das Projekt ist inspiriert von AutoOrtho, setzt jedoch auf eine performante Rust-Implementierung mit adaptivem Prefetching und einem Zwei-Tier-Cache-System.
 
-!!! warning "Frühe Entwicklungsphase"
-    XEarthLayer befindet sich in aktiver Entwicklung. Funktionsumfang und Stabilität können sich zwischen Versionen erheblich ändern.
+!!! note "Aktive Entwicklung"
+    XEarthLayer ist ein junges Projekt in aktiver Entwicklung. Aktuelle Versionen laufen stabil, der Funktionsumfang kann sich zwischen Releases aber noch ändern.
 
 ## Funktionsweise
 
@@ -185,7 +185,7 @@ Zusätzlich beeinflusst das Disk-I/O-Profil die CPU-Last indirekt:
 | Simulator | Nur X-Plane 12 | X-Plane 11.50+ und 12 |
 | Installation | Binary-Pakete oder aus Quellcode | Binary oder Python |
 | Regionale Pakete | Separate DSF/TER-Pakete nötig | Integrierte Overlay-Downloads |
-| GUI | Keine | Moderne GUI verfügbar |
+| GUI | CLI mit Live-Statusanzeige | Moderne GUI verfügbar |
 
 XEarthLayer richtet sich an Linux-Nutzer, die maximale Streaming-Performance suchen. Vorkompilierte Pakete machen die Installation unkompliziert. AutoOrtho bietet die breitere Plattformunterstützung und einfachere Einrichtung.
 
