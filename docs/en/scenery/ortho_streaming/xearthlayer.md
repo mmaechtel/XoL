@@ -185,7 +185,7 @@ Additionally, the disk I/O profile indirectly affects CPU load:
 | Simulator | X-Plane 12 only | X-Plane 11.50+ and 12 |
 | Installation | Binary packages or from source | Binary or Python |
 | Regional packages | Separate DSF/TER packages needed | Integrated overlay downloads |
-| GUI | CLI with live status output | Modern GUI available |
+| GUI | CLI with live status output | GUI (Python-based) |
 
 XEarthLayer is aimed at Linux users seeking maximum streaming performance. Pre-built packages make installation straightforward. AutoOrtho offers broader platform support and easier setup.
 
