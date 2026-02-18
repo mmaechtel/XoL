@@ -24,3 +24,5 @@ server/
 .DS_Store
 .cache/
 __pycache__/
+monitoring/*
+!monitoring/sysmon.py
