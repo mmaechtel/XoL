@@ -33,6 +33,8 @@ The [ProgrammingDinosaur Fork](https://github.com/ProgrammingDinosaur/autoortho4
 - **Extended map providers**: Bing, Google, Here, Yandex, and Apple Maps
 - **Automatic scenery_packs.ini configuration** for use with SimHeaven
 
+---
+
 ## Installation and Configuration
 
 ### System Requirements
@@ -43,7 +45,7 @@ The system requires X-Plane 11.50+ or X-Plane 12, running on Windows, Linux (wit
 
 ### Installation Process
 
-AutoOrtho is downloaded from GitHub (kubilus1/autoortho), either as a binary or installer. For the latest features and improvements, the [ProgrammingDinosaur Fork](https://github.com/ProgrammingDinosaur/autoortho4xplane) is recommended, which provides a revised installer with safety checks. Windows users install WinFSP/Dokan and launch autoortho_win.exe, while Linux users require FUSE, and macOS users (Apple Silicon) should follow the appropriate instructions.
+AutoOrtho is downloaded from GitHub (kubilus1/autoortho), either as a binary or installer. The [ProgrammingDinosaur Fork](https://github.com/ProgrammingDinosaur/autoortho4xplane) provides a revised installer with safety checks. Windows users install WinFSP/Dokan and launch autoortho_win.exe, while Linux users require FUSE, and macOS users (Apple Silicon) should follow the appropriate instructions.
 
 The GUI requires the X-Plane main directory and Custom Scenery directory. Regional overlays (few GB) are installed via the "Scenery" tab. The [ProgrammingDinosaur Fork](https://github.com/ProgrammingDinosaur/autoortho4xplane) provides automatic scenery_packs.ini configuration for use with SimHeaven. Manual configuration follows this structure:
 
@@ -72,7 +74,9 @@ The [ProgrammingDinosaur Fork](https://github.com/ProgrammingDinosaur/autoortho4
 
 For advanced configurations, the `.autoortho` configuration file can still be manually edited if desired.
 
-For optimal experience, SimHeaven X-World adds 3D objects and autogen, while xOrganizer/xToolbox simplifies scenery management. vStates offers an alternative for pre-made orthophotos.
+For optimal experience, SimHeaven X-World adds 3D objects and autogen, while xOrganizer/xToolbox simplifies scenery management.
+
+---
 
 ## Comparison with Ortho4XP
 
@@ -154,15 +158,17 @@ For more detailed log information, the debug mode can be enabled in settings or 
 debug = true
 ```
 
+---
+
 ## Linux-specific Installation
 
 ### Installation Example: AutoOrtho on Debian 12 with pyenv
 
 This section provides a detailed walkthrough of installing AutoOrtho using the Python version on a Debian 12 system. The example demonstrates how to set up an isolated Python environment with pyenv and includes comprehensive troubleshooting using the autoortho.log file.
 
-**Note**: For the latest features, the [ProgrammingDinosaur Fork](https://github.com/ProgrammingDinosaur/autoortho4xplane) is recommended, which provides an improved GUI and enhanced compatibility.
+**Note**: The [ProgrammingDinosaur Fork](https://github.com/ProgrammingDinosaur/autoortho4xplane) provides an improved installer and enhanced compatibility — the binary installation is recommended over the Python setup shown below.
 
-### System Requirements
+### Example Environment
 
 The example system runs Debian 12 (Bookworm) with X-Plane 12, featuring an SSD, 32 GB RAM, and a stable 200 Mbps internet connection. Required dependencies include:
 
@@ -197,7 +203,7 @@ The example system runs Debian 12 (Bookworm) with X-Plane 12, featuring an SSD, 
     eval "$(pyenv init -)"
     ```
 
-    Install Python 3.12.0:
+    Install a compatible Python version:
     ```bash
     pyenv install 3.12.0
     pyenv global 3.12.0
@@ -230,12 +236,6 @@ The example system runs Debian 12 (Bookworm) with X-Plane 12, featuring an SSD, 
     ```bash
     chmod 444 ~/X-Plane-12/Custom\ Scenery/scenery_packs.ini
     ```
-
-## Conclusion
-
-This installation example shows how to set up AutoOrtho in a Python environment on Debian 12. The Python version offers flexibility through source code access, while the autoortho.log file provides detailed insights into system operation. With proper configuration and optimization, users can enjoy high-quality orthophotos in X-Plane 12, enhanced by 3D objects from SimHeaven.
-
-The combination of AutoOrtho with SimHeaven X-World creates a comprehensive scenery solution that provides both detailed orthophotos and precise 3D objects. While AutoOrtho handles ground textures, SimHeaven adds buildings, trees, and other 3D elements based on OpenStreetMap data.
 
 ---
 

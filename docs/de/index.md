@@ -38,6 +38,8 @@ Diese Dokumentation ist ein offenes Projekt. Verbesserungen oder Ergänzungen k�
 ### 2026-02-18
 - [AutoOrtho](scenery/ortho_streaming/autoortho.md) korrigiert: Falschen USGS-Provider-Verweis behoben, unbelegte RAM- und Bandbreitenangaben entfernt
 - [XEarthLayer](scenery/ortho_streaming/xearthlayer.md) korrigiert: Internet-Empfehlung von 800 auf 500 Mbps aktualisiert, versionsspezifischen Installationsbefehl entfernt, Quellen ergänzt
+- [AutoOrtho](scenery/ortho_streaming/autoortho.md) überarbeitet: Seitenstruktur mit Thementrennern verbessert, redundanten Fazit-Abschnitt entfernt, Fett-Formatierung vereinheitlicht
+- [XEarthLayer](scenery/ortho_streaming/xearthlayer.md) korrigiert: Irreführende Rust-Build-Voraussetzung im Vergleichsabschnitt behoben
 
 ### 2026-02-17
 - Neue Videos: [GPU & VRAM](fundamentals/performance/gpu_vram.md) — GPU-Performance und VRAM-Management (DE + EN)

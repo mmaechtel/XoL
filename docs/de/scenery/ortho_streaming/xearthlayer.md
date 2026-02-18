@@ -187,7 +187,7 @@ Zusätzlich beeinflusst das Disk-I/O-Profil die CPU-Last indirekt:
 | Regionale Pakete | Separate DSF/TER-Pakete nötig | Integrierte Overlay-Downloads |
 | GUI | Keine | Moderne GUI verfügbar |
 
-XEarthLayer richtet sich an Linux-Nutzer, die maximale Streaming-Performance suchen und bereit sind, eine Rust-Build-Umgebung einzurichten. AutoOrtho bietet die breitere Plattformunterstützung und einfachere Einrichtung.
+XEarthLayer richtet sich an Linux-Nutzer, die maximale Streaming-Performance suchen. Vorkompilierte Pakete machen die Installation unkompliziert. AutoOrtho bietet die breitere Plattformunterstützung und einfachere Einrichtung.
 
 ---
 

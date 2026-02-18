@@ -9,15 +9,15 @@ Inzwischen existiert ein aktiver Fork unter [https://github.com/ProgrammingDinos
 
 ## Funktionsweise
 
-**AutoOrtho** implementiert ein **Streaming-System** für Orthophotos basierend auf der Flugzeugposition und rendert diese als Texturen in X-Plane. Das System operiert über mehrere Schlüsselmechanismen:
+AutoOrtho implementiert ein Streaming-System für Orthophotos basierend auf der Flugzeugposition und rendert diese als Texturen in X-Plane. Das System operiert über mehrere Schlüsselmechanismen:
 
-- Das **Echtzeit-Streaming-System** lädt Satellitenbilder in Kacheln von Anbietern wie Bing, wobei eine **Zoomstufe** von bis zu 18 (ZL18) implementiert wird, um Detailgenauigkeit und Ladezeit zu optimieren. Kacheln für aktuelle und angrenzende Bereiche werden präventiv geladen, um nahtlose Übergänge zu gewährleisten, was eine schnelle, stabile Internetverbindung erfordert.
+- Das Echtzeit-Streaming-System lädt Satellitenbilder in Kacheln von Anbietern wie Bing, wobei eine Zoomstufe von bis zu 18 (ZL18) implementiert wird, um Detailgenauigkeit und Ladezeit zu optimieren. Kacheln für aktuelle und angrenzende Bereiche werden präventiv geladen, um nahtlose Übergänge zu gewährleisten, was eine schnelle, stabile Internetverbindung erfordert.
 
-- Ein **virtuelles Dateisystem** (`WinFSP`/`Dokan` unter Windows, `FUSE` unter Linux) verwaltet die Kacheln in einem lokalen Cache auf SSD und stellt sie als Szenerie-Dateien im `z_autoortho`-Ordner des `Custom Scenery`-Verzeichnisses dar.
+- Ein virtuelles Dateisystem (WinFSP/Dokan unter Windows, FUSE unter Linux) verwaltet die Kacheln in einem lokalen Cache auf SSD und stellt sie als Szenerie-Dateien im `z_autoortho`-Ordner des `Custom Scenery`-Verzeichnisses dar.
 
-**AutoOrtho** liefert **2D-Orthophotos** ohne 3D-Objekte. Für die Darstellung von Gebäuden und Vegetation wird **SimHeaven (X-World)** empfohlen, das OpenStreetMap-Daten implementiert. Overlays adaptieren die Bilder an das **X-Plane-Terrain-Mesh** und enthalten essentielle Informationen wie Flughafen-Glättungen, Verkehrsinfrastruktur und Eisenbahnlinien. Bei Verwendung von **SimHeaven X-World** sind die `yOrtho-Overlays` redundant.
+AutoOrtho liefert 2D-Orthophotos ohne 3D-Objekte. Für die Darstellung von Gebäuden und Vegetation wird SimHeaven (X-World) empfohlen, das OpenStreetMap-Daten implementiert. Overlays adaptieren die Bilder an das X-Plane-Terrain-Mesh und enthalten essentielle Informationen wie Flughafen-Glättungen, Verkehrsinfrastruktur und Eisenbahnlinien. Bei Verwendung von SimHeaven X-World sind die yOrtho-Overlays redundant.
 
-Der **Streaming-Prozess** beeinflusst CPU-Auslastung, RAM-Verbrauch und Festplattenleistung. Der RAM-Bedarf hängt von der Konfiguration ab (Zoomstufe, Buffer-Pool, Pre-Fetch-Einstellungen). Während SSDs Engpässe minimieren, können bei suboptimalen Verbindungen oder unzureichender Hardware **Frame-Drops** auftreten.
+Der Streaming-Prozess beeinflusst CPU-Auslastung, RAM-Verbrauch und Festplattenleistung. Der RAM-Bedarf hängt von der Konfiguration ab (Zoomstufe, Buffer-Pool, Pre-Fetch-Einstellungen). Während SSDs Engpässe minimieren, können bei suboptimalen Verbindungen oder unzureichender Hardware Frame-Drops auftreten.
 
 ### Erweiterte Funktionen des Forks (Version 2.0)
 
@@ -33,17 +33,19 @@ Der [ProgrammingDinosaur Fork](https://github.com/ProgrammingDinosaur/autoortho4
 - **Erweiterte Kartenanbieter**: Bing, Google, Here, Yandex und Apple Maps
 - **Automatische scenery_packs.ini-Konfiguration** für die Verwendung mit SimHeaven
 
+---
+
 ## Installation und Konfiguration
 
 ### Systemanforderungen
 
-Das System erfordert X-Plane 11.50+ oder X-Plane 12, läuft unter Windows, Linux (mit `FUSE`) oder macOS (Apple Silicon). **Abhängigkeiten** umfassen `WinFSP`/`Dokan` (Windows), `FUSE` (Linux) und optional **Python** 3.x für Quellcode. **Hardwareanforderungen** umfassen 16 GB **RAM**, **SSD**-Speicher und eine schnelle, stabile **Internetverbindung**.
+Das System erfordert X-Plane 11.50+ oder X-Plane 12, läuft unter Windows, Linux (mit FUSE) oder macOS (Apple Silicon). Abhängigkeiten umfassen WinFSP/Dokan (Windows), FUSE (Linux) und optional Python 3.x für Quellcode. Hardwareanforderungen umfassen 16 GB RAM, SSD-Speicher und eine schnelle, stabile Internetverbindung.
 
 **Hinweis**: Der [ProgrammingDinosaur Fork](https://github.com/ProgrammingDinosaur/autoortho4xplane) bietet vollständige macOS-Kompatibilität für Apple Silicon-Prozessoren und erweiterte Funktionen für X-Plane 12.
 
 ### Installationsprozess
 
-**AutoOrtho** wird von GitHub (`kubilus1/autoortho`) heruntergeladen, entweder als Binary oder Installer. Für die neuesten Funktionen und Verbesserungen wird der [ProgrammingDinosaur Fork](https://github.com/ProgrammingDinosaur/autoortho4xplane) empfohlen, der einen überarbeiteten Installer mit Sicherheitsprüfungen bietet. Windows-Benutzer installieren `WinFSP`/`Dokan` und starten `autoortho_win.exe`, während Linux-Benutzer `FUSE` benötigen und macOS-Benutzer (Apple Silicon) den entsprechenden Anweisungen folgen sollten.
+AutoOrtho wird von GitHub (kubilus1/autoortho) heruntergeladen, entweder als Binary oder Installer. Der [ProgrammingDinosaur Fork](https://github.com/ProgrammingDinosaur/autoortho4xplane) bietet einen überarbeiteten Installer mit Sicherheitsprüfungen. Windows-Benutzer installieren `WinFSP`/`Dokan` und starten `autoortho_win.exe`, während Linux-Benutzer `FUSE` benötigen und macOS-Benutzer (Apple Silicon) den entsprechenden Anweisungen folgen sollten.
 
 Die Benutzeroberfläche erfordert die Angabe des X-Plane-Hauptverzeichnisses und des `Custom Scenery`-Verzeichnisses. Regionale Overlays (wenige GB) werden über den "Scenery"-Tab installiert. Der [ProgrammingDinosaur Fork](https://github.com/ProgrammingDinosaur/autoortho4xplane) bietet eine automatische `scenery_packs.ini`-Konfiguration für die Verwendung mit SimHeaven. Die manuelle Konfiguration erfolgt mit folgender Struktur:
 
@@ -53,9 +55,9 @@ SCENERY_PACK Custom Scenery/z_ao_eur/
 SCENERY_PACK Custom Scenery/z_autoortho/
 ```
 
-Der `z_autoortho`-Eintrag wird am Ende platziert, um anderen Szenerien Priorität zu geben. Die aktuelle Version stellt Platzhalterverzeichnisse wieder her, um eine stabile Reihenfolge zu gewährleisten. **AutoOrtho** muss vor X-Plane gestartet werden, um das **virtuelle Dateisystem** zu mounten, und die `scenery_packs.ini` sollte schreibgeschützt sein bzw. von einem Tool wie xOrganizer verwaltet werden.
+Der `z_autoortho`-Eintrag wird am Ende platziert, um anderen Szenerien Priorität zu geben. Die aktuelle Version stellt Platzhalterverzeichnisse wieder her, um eine stabile Reihenfolge zu gewährleisten. AutoOrtho muss vor X-Plane gestartet werden, um das virtuelle Dateisystem zu mounten, und die `scenery_packs.ini` sollte schreibgeschützt sein bzw. von einem Tool wie xOrganizer verwaltet werden.
 
-Das Verzeichnis `yAutoOrtho_Overlays` wird nur benötigt, sofern nicht **SimHeaven** benutzt wird.
+Das Verzeichnis `yAutoOrtho_Overlays` wird nur benötigt, sofern nicht SimHeaven benutzt wird.
 
 ### Konfiguration
 
@@ -72,7 +74,9 @@ Der [ProgrammingDinosaur Fork](https://github.com/ProgrammingDinosaur/autoortho4
 
 Für erweiterte Konfigurationen kann weiterhin die `.autoortho`-Konfigurationsdatei manuell bearbeitet werden, wenn gewünscht.
 
-Für optimale Erfahrung fügt SimHeaven X-World 3D-Objekte und Autogen hinzu, während xOrganizer/xToolbox die Szenerie-Verwaltung vereinfacht. vStates bietet eine Alternative für vorgefertigte Orthophotos.
+Für optimale Erfahrung fügt SimHeaven X-World 3D-Objekte und Autogen hinzu, während xOrganizer/xToolbox die Szenerie-Verwaltung vereinfacht.
+
+---
 
 ## Vergleich mit Ortho4XP
 
@@ -106,8 +110,8 @@ Für grundlegende Installations- und Konfigurationsprobleme (Initialisierungsfeh
 Weitere spezifische Probleme bei der Verwendung von AutoOrtho:
 
 1. **Flughafen-Topographie-Probleme**:
-    - Ursache: Fehlende automatische **Flughafen-Glättung** bzw. fehlende **Ortho Patches** für die **Flughafen-Szenerie**
-    - Lösung: Implementierung von **Ortho Patches** oder dem `flatten 1` Parameter in der `apt.dat` und Überprüfung der **Priorisierung** von **Flughafen-Szenerien**
+    - Ursache: Fehlende automatische Flughafen-Glättung bzw. fehlende Ortho Patches für die Flughafen-Szenerie
+    - Lösung: Implementierung von Ortho Patches oder dem `flatten 1` Parameter in der `apt.dat` und Überprüfung der Priorisierung von Flughafen-Szenerien
 
 2. **Netzwerkprobleme**:
     - Log-Eintrag: `HTTP 429: Too Many Requests`
@@ -122,8 +126,8 @@ Weitere spezifische Probleme bei der Verwendung von AutoOrtho:
 4. **Speicherprobleme**:
     - Log-Eintrag: `MemoryError: Out of memory`
     - Ursache: Hohe RAM-Auslastung
-    - Lösung: Cache-Größe reduzieren, X-Plane-Grafikeinstellungen senken. 
-    
+    - Lösung: Cache-Größe reduzieren, X-Plane-Grafikeinstellungen senken
+
 5. **Abstürze**:
     - Ursache: RAM-Überlastung oder Add-on-Konflikte
     - Lösung: Deaktivieren von Add-ons, Erhöhen des RAMs oder Reduzieren der Cache-Größe
@@ -154,15 +158,17 @@ Für detailliertere Log-Informationen kann in den Settings oder der `.autoortho`
 debug = true
 ```
 
+---
+
 ## Linux-spezifische Installation
 
 ### Installationsbeispiel: AutoOrtho auf Debian 12 mit pyenv
 
 Dieser Abschnitt bietet eine detaillierte Anleitung zur Installation von AutoOrtho mit der Python-Version auf einem Debian 12-System. Das Beispiel zeigt, wie eine isolierte Python-Umgebung mit pyenv eingerichtet wird und enthält umfassende Fehlerbehebung mit der autoortho.log-Datei.
 
-**Hinweis**: Für die neuesten Funktionen wird der [ProgrammingDinosaur Fork](https://github.com/ProgrammingDinosaur/autoortho4xplane) empfohlen, der eine verbesserte GUI und erweiterte Kompatibilität bietet.
+**Hinweis**: Der [ProgrammingDinosaur Fork](https://github.com/ProgrammingDinosaur/autoortho4xplane) bietet einen verbesserten Installer und erweiterte Kompatibilität — die Binary-Installation wird gegenüber dem hier gezeigten Python-Setup empfohlen.
 
-### Systemanforderungen
+### Beispielumgebung
 
 Das Beispielsystem läuft mit Debian 12 (Bookworm) und X-Plane 12, verfügt über eine SSD, 32 GB RAM und eine stabile Internetverbindung mit 200 Mbps. Erforderliche Abhängigkeiten umfassen:
 
@@ -197,7 +203,7 @@ Das Beispielsystem läuft mit Debian 12 (Bookworm) und X-Plane 12, verfügt übe
     eval "$(pyenv init -)"
     ```
 
-    Python 3.12.0 installieren:
+    Eine kompatible Python-Version installieren:
     ```bash
     pyenv install 3.12.0
     pyenv global 3.12.0
@@ -230,12 +236,6 @@ Das Beispielsystem läuft mit Debian 12 (Bookworm) und X-Plane 12, verfügt übe
     ```bash
     chmod 444 ~/X-Plane-12/Custom\ Scenery/scenery_packs.ini
     ```
-
-## Fazit
-
-Dieses Installationsbeispiel zeigt, wie AutoOrtho in einer Python-Umgebung auf Debian 12 eingerichtet wird. Die Python-Version bietet Flexibilität durch Quellcode-Zugriff, während die autoortho.log-Datei detaillierte Einblicke in den Systembetrieb liefert. Mit korrekter Konfiguration und Optimierung können Benutzer hochwertige Orthophotos in X-Plane 12 genießen, verbessert durch 3D-Objekte von SimHeaven.
-
-Die Kombination von AutoOrtho mit SimHeaven X-World schafft eine umfassende Szenerie-Lösung, die sowohl detaillierte Orthophotos als auch präzise 3D-Objekte bietet. Während AutoOrtho die Bodentexturen handhabt, fügt SimHeaven Gebäude, Bäume und andere 3D-Elemente basierend auf OpenStreetMap-Daten hinzu.
 
 ---
 
