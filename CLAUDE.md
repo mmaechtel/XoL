@@ -45,6 +45,7 @@ Definiert in `mkdocs.yml` unter `plugins > i18n > languages > nav`. Separate Nav
 - **Maximal 3 Datumsblöcke** behalten (die neuesten). Ältere Datumsblöcke komplett entfernen
 - DE und EN müssen inhaltlich identisch (übersetzt) sein
 - **Nur leser-relevante Content-Änderungen** — keine internen Repo-/Research-/Skill-/Config-Änderungen
+- **Auf das Wesentliche komprimieren:** Pro Datumsblock nur das Neue hervorheben (neue Seiten, neue Abschnitte, größere Erweiterungen). Kleine Änderungen wie Link-Korrekturen, Faktencheck-Anpassungen, Formatierung oder inhaltliche Feinarbeit nicht einzeln aufführen — sie sind Teil der Hauptänderung
 - `index.md` wird immer zuletzt geändert (nach allen anderen Dateien)
 
 ### Video-Struktur
