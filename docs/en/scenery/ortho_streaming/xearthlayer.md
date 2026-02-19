@@ -3,14 +3,14 @@ description: "XEarthLayer is a Rust-based ortho streaming tool for X-Plane 12 on
 ---
 # XEarthLayer
 
-**XEarthLayer** is a Rust-based alternative to AutoOrtho for streaming orthophoto textures in X-Plane 12. The project is inspired by AutoOrtho but relies on a high-performance Rust implementation with adaptive prefetching and a two-tier cache system.
+**XEarthLayer** is a Rust-based alternative to [AutoOrtho](../../glossary.md#autoortho) for streaming [orthophoto](../../glossary.md#orthophotos) textures in X-Plane 12. The project is inspired by AutoOrtho but relies on a high-performance Rust implementation with adaptive prefetching and a two-tier cache system.
 
 !!! note "Active Development"
     XEarthLayer is a young project under active development. Current versions run stably, but feature scope may change between releases.
 
 ## How It Works
 
-XEarthLayer uses a **FUSE-based virtual file system** to provide orthophoto textures on demand. When X-Plane accesses a tile, the satellite image is downloaded from the configured map provider, converted to DDS format (BC1/BC3 compression), and delivered to the simulator via the VFS.
+XEarthLayer uses a **[FUSE](../../glossary.md#fuse-filesystem-in-userspace)-based virtual file system** to provide orthophoto textures on demand. When X-Plane accesses a tile, the satellite image is downloaded from the configured map provider, converted to [DDS](../../glossary.md#dds-directdraw-surface) format (BC1/BC3 compression), and delivered to the simulator via the VFS.
 
 ### Two-Tier Cache
 
@@ -78,7 +78,7 @@ make install    # Installs to ~/.local/bin
 xearthlayer setup
 ```
 
-The setup process configures the cache directory and the link to the X-Plane Custom Scenery folder.
+The setup process configures the cache directory and the link to the X-Plane [Custom Scenery](../../glossary.md#custom-scenery) folder.
 
 ## Usage
 
@@ -96,7 +96,7 @@ For adaptive prefetching to work, **ForeFlight telemetry** must be enabled in X-
 
 ## Regional Packages
 
-XEarthLayer requires separate **DSF/TER packages** (Digital Surface Format / Terrain) that contain the mesh data and terrain definitions for the respective regions. Pre-built packages can be installed directly via the CLI:
+XEarthLayer requires separate **[DSF](../../glossary.md#dsf-distribution-scenery-format)/TER packages** (Digital Surface Format / Terrain) that contain the [mesh](../../glossary.md#mesh) data and terrain definitions for the respective regions. Pre-built packages can be installed directly via the CLI:
 
 ```bash
 # List available packages

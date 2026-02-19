@@ -9,13 +9,13 @@ Inzwischen existiert ein aktiver Fork unter [https://github.com/ProgrammingDinos
 
 ## Funktionsweise
 
-AutoOrtho implementiert ein Streaming-System für Orthophotos basierend auf der Flugzeugposition und rendert diese als Texturen in X-Plane. Das System operiert über mehrere Schlüsselmechanismen:
+AutoOrtho implementiert ein Streaming-System für [Orthophotos](../../glossary.md#orthofotos) basierend auf der Flugzeugposition und rendert diese als Texturen in X-Plane. Das System operiert über mehrere Schlüsselmechanismen:
 
-- Das Echtzeit-Streaming-System lädt Satellitenbilder in Kacheln von Anbietern wie Bing, wobei eine Zoomstufe von bis zu 18 (ZL18) implementiert wird, um Detailgenauigkeit und Ladezeit zu optimieren. Kacheln für aktuelle und angrenzende Bereiche werden präventiv geladen, um nahtlose Übergänge zu gewährleisten, was eine schnelle, stabile Internetverbindung erfordert.
+- Das Echtzeit-Streaming-System lädt Satellitenbilder in Kacheln von Anbietern wie Bing, wobei eine Zoomstufe von bis zu 18 ([ZL18](../../glossary.md#zl-zoom-level)) implementiert wird, um Detailgenauigkeit und Ladezeit zu optimieren. Kacheln für aktuelle und angrenzende Bereiche werden präventiv geladen, um nahtlose Übergänge zu gewährleisten, was eine schnelle, stabile Internetverbindung erfordert.
 
-- Ein virtuelles Dateisystem (WinFSP/Dokan unter Windows, FUSE unter Linux) verwaltet die Kacheln in einem lokalen Cache auf SSD und stellt sie als Szenerie-Dateien im `z_autoortho`-Ordner des `Custom Scenery`-Verzeichnisses dar.
+- Ein virtuelles Dateisystem (WinFSP/Dokan unter Windows, [FUSE](../../glossary.md#fuse-filesystem-in-userspace) unter Linux) verwaltet die Kacheln in einem lokalen Cache auf SSD und stellt sie als Szenerie-Dateien im `z_autoortho`-Ordner des [Custom Scenery](../../glossary.md#custom-scenery)-Verzeichnisses dar.
 
-AutoOrtho liefert 2D-Orthophotos ohne 3D-Objekte. Für die Darstellung von Gebäuden und Vegetation wird SimHeaven (X-World) empfohlen, das OpenStreetMap-Daten implementiert. Overlays adaptieren die Bilder an das X-Plane-Terrain-Mesh und enthalten essentielle Informationen wie Flughafen-Glättungen, Verkehrsinfrastruktur und Eisenbahnlinien. Bei Verwendung von SimHeaven X-World sind die yOrtho-Overlays redundant.
+AutoOrtho liefert 2D-Orthophotos ohne 3D-Objekte. Für die Darstellung von Gebäuden und Vegetation wird [SimHeaven (X-World)](../../glossary.md#simheaven-x-world) empfohlen, das OpenStreetMap-Daten implementiert. [Overlays](../../glossary.md#overlay-szenerie) adaptieren die Bilder an das X-Plane-Terrain-[Mesh](../../glossary.md#mesh) und enthalten essentielle Informationen wie Flughafen-Glättungen, Verkehrsinfrastruktur und Eisenbahnlinien. Bei Verwendung von SimHeaven X-World sind die yOrtho-Overlays redundant.
 
 Der Streaming-Prozess beeinflusst CPU-Auslastung, RAM-Verbrauch und Festplattenleistung. Der RAM-Bedarf hängt von der Konfiguration ab (Zoomstufe, Buffer-Pool, Pre-Fetch-Einstellungen). Während SSDs Engpässe minimieren, können bei suboptimalen Verbindungen oder unzureichender Hardware Frame-Drops auftreten.
 
@@ -31,7 +31,7 @@ Der [ProgrammingDinosaur Fork](https://github.com/ProgrammingDinosaur/autoortho4
 - **Verbesserte Szenerie-Download-Erfahrung** (schneller und benutzerfreundlicher)
 - **macOS-Kompatibilität** (nur Apple Silicon)
 - **Erweiterte Kartenanbieter**: Bing, Google, Here, Yandex und Apple Maps
-- **Automatische scenery_packs.ini-Konfiguration** für die Verwendung mit SimHeaven
+- **Automatische [scenery_packs.ini](../../glossary.md#scenery_packsini)-Konfiguration** für die Verwendung mit SimHeaven
 
 ---
 
@@ -45,7 +45,7 @@ Das System erfordert X-Plane 11.50+ oder X-Plane 12, läuft unter Windows, Linux
 
 ### Installationsprozess
 
-AutoOrtho wird von GitHub (kubilus1/autoortho) heruntergeladen, entweder als Binary oder Installer. Der [ProgrammingDinosaur Fork](https://github.com/ProgrammingDinosaur/autoortho4xplane) bietet einen überarbeiteten Installer mit Sicherheitsprüfungen. Windows-Benutzer installieren `WinFSP`/`Dokan` und starten `autoortho_win.exe`, während Linux-Benutzer `FUSE` benötigen und macOS-Benutzer (Apple Silicon) den entsprechenden Anweisungen folgen sollten.
+AutoOrtho wird von GitHub (kubilus1/autoortho) heruntergeladen, entweder als [Binary](../../glossary.md#binary) oder Installer. Der [ProgrammingDinosaur Fork](https://github.com/ProgrammingDinosaur/autoortho4xplane) bietet einen überarbeiteten Installer mit Sicherheitsprüfungen. Windows-Benutzer installieren `WinFSP`/`Dokan` und starten `autoortho_win.exe`, während Linux-Benutzer `FUSE` benötigen und macOS-Benutzer (Apple Silicon) den entsprechenden Anweisungen folgen sollten.
 
 Die Benutzeroberfläche erfordert die Angabe des X-Plane-Hauptverzeichnisses und des `Custom Scenery`-Verzeichnisses. Regionale Overlays (wenige GB) werden über den "Scenery"-Tab installiert. Der [ProgrammingDinosaur Fork](https://github.com/ProgrammingDinosaur/autoortho4xplane) bietet eine automatische `scenery_packs.ini`-Konfiguration für die Verwendung mit SimHeaven. Die manuelle Konfiguration erfolgt mit folgender Struktur:
 
@@ -61,7 +61,7 @@ Das Verzeichnis `yAutoOrtho_Overlays` wird nur benötigt, sofern nicht SimHeaven
 
 ### Konfiguration
 
-Der [ProgrammingDinosaur Fork](https://github.com/ProgrammingDinosaur/autoortho4xplane) bietet eine moderne GUI für alle Konfigurationseinstellungen, die eine einfache Einrichtung ohne manuelle Dateibearbeitung ermöglicht. Die wichtigsten Einstellungen umfassen:
+Der [ProgrammingDinosaur Fork](https://github.com/ProgrammingDinosaur/autoortho4xplane) bietet eine moderne [GUI](../../glossary.md#gui-graphical-user-interface) für alle Konfigurationseinstellungen, die eine einfache Einrichtung ohne manuelle Dateibearbeitung ermöglicht. Die wichtigsten Einstellungen umfassen:
 
 - **X-Plane-Pfad**: Verzeichnis des X-Plane-Installationsordners
 - **Cache-Verzeichnis**: Speicherort für Orthofoto-Cache (empfohlen: schnelle SSD)
@@ -74,13 +74,13 @@ Der [ProgrammingDinosaur Fork](https://github.com/ProgrammingDinosaur/autoortho4
 
 Für erweiterte Konfigurationen kann weiterhin die `.autoortho`-Konfigurationsdatei manuell bearbeitet werden, wenn gewünscht.
 
-Für optimale Erfahrung fügt SimHeaven X-World 3D-Objekte und Autogen hinzu, während xOrganizer/xToolbox die Szenerie-Verwaltung vereinfacht.
+Für optimale Erfahrung fügt SimHeaven X-World 3D-Objekte und [Autogen](../../glossary.md#autogen) hinzu, während xOrganizer/xToolbox die Szenerie-Verwaltung vereinfacht.
 
 ---
 
 ## Vergleich mit Ortho4XP
 
-AutoOrtho und Ortho4XP verfolgen architektonisch unterschiedliche Ansätze, die jeweils für verschiedene Spielerprofile optimiert sind.
+AutoOrtho und [Ortho4XP](../../glossary.md#ortho4xp) verfolgen architektonisch unterschiedliche Ansätze, die jeweils für verschiedene Spielerprofile optimiert sind.
 
 | Dimension | AutoOrtho | Ortho4XP |
 |---|---|---|
@@ -164,7 +164,7 @@ debug = true
 
 ### Installationsbeispiel: AutoOrtho auf Debian 12 mit pyenv
 
-Dieser Abschnitt bietet eine detaillierte Anleitung zur Installation von AutoOrtho mit der Python-Version auf einem Debian 12-System. Das Beispiel zeigt, wie eine isolierte Python-Umgebung mit pyenv eingerichtet wird und enthält umfassende Fehlerbehebung mit der autoortho.log-Datei.
+Dieser Abschnitt bietet eine detaillierte Anleitung zur Installation von AutoOrtho mit der Python-Version auf einem Debian 12-System. Das Beispiel zeigt, wie eine isolierte Python-Umgebung mit [pyenv](../../glossary.md#pyenv) eingerichtet wird und enthält umfassende Fehlerbehebung mit der autoortho.log-Datei.
 
 **Hinweis**: Der [ProgrammingDinosaur Fork](https://github.com/ProgrammingDinosaur/autoortho4xplane) bietet einen verbesserten Installer und erweiterte Kompatibilität — die Binary-Installation wird gegenüber dem hier gezeigten Python-Setup empfohlen.
 

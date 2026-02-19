@@ -316,6 +316,10 @@ A cache for compiled GPU shader programs. X-Plane compiles shaders when first lo
 
 A historical characterization of X-Plane's architecture. While single-core performance remains important, X-Plane 12 distributes substantial per-frame work across multiple cores since version 12.4.
 
+### SimHeaven (X-World)
+
+A scenery framework for X-Plane that generates 3D buildings, vegetation, and other autogen objects based on OpenStreetMap data. SimHeaven X-World complements orthophoto tools like AutoOrtho by adding the 3D layer that orthophotos alone cannot provide. When using SimHeaven, the yOrtho overlays included with AutoOrtho are not needed.
+
 ### SoftIRQ (Software Interrupt)
 
 A deferred interrupt processing mechanism in the Linux kernel. Unlike hardware IRQs that are handled immediately, SoftIRQs are processed after the hardware interrupt handler returns, handling less time-critical work like network packet processing and block device completion. The `%soft` column in `mpstat` shows SoftIRQ time per core — relevant for verifying that interrupt shielding keeps both hardware IRQs and SoftIRQs off application cores. See [System Tools](linux/system/systemtools.md).

@@ -316,6 +316,10 @@ Ein Zwischenspeicher für kompilierte GPU-Shader-Programme. X-Plane kompiliert S
 
 Eine historische Bezeichnung für X-Planes Architektur. Single-Core-Performance bleibt zwar wichtig, aber X-Plane 12 verteilt seit Version 12.4 einen erheblichen Teil der Frame-Arbeit auf mehrere Kerne.
 
+### SimHeaven (X-World)
+
+Ein Szenerie-Framework für X-Plane, das 3D-Gebäude, Vegetation und andere Autogen-Objekte auf Basis von OpenStreetMap-Daten generiert. SimHeaven X-World ergänzt Orthofoto-Tools wie AutoOrtho um die 3D-Schicht, die Orthofotos allein nicht bieten können. Bei Verwendung von SimHeaven sind die in AutoOrtho enthaltenen yOrtho-Overlays nicht erforderlich.
+
 ### SoftIRQ (Software Interrupt)
 
 Ein verzögerter Interrupt-Verarbeitungsmechanismus im Linux-Kernel. Anders als Hardware-IRQs, die sofort behandelt werden, werden SoftIRQs nach Abschluss des Hardware-Interrupt-Handlers verarbeitet und übernehmen weniger zeitkritische Aufgaben wie Netzwerkpaket-Verarbeitung und Block-Device-Completion. Die Spalte `%soft` in `mpstat` zeigt die SoftIRQ-Zeit pro Kern — relevant für die Verifikation, dass Interrupt-Shielding sowohl Hardware-IRQs als auch SoftIRQs von den Applikations-Kernen fernhält. Siehe [Systemtools](linux/system/systemtools.md).

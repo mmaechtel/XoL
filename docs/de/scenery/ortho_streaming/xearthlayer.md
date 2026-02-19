@@ -3,14 +3,14 @@ description: "XEarthLayer ist ein Rust-basiertes Ortho-Streaming-Tool für X-Pla
 ---
 # XEarthLayer
 
-**XEarthLayer** ist eine in Rust geschriebene Alternative zu AutoOrtho für das Streaming von Orthofoto-Texturen in X-Plane 12. Das Projekt ist inspiriert von AutoOrtho, setzt jedoch auf eine performante Rust-Implementierung mit adaptivem Prefetching und einem Zwei-Tier-Cache-System.
+**XEarthLayer** ist eine in Rust geschriebene Alternative zu [AutoOrtho](../../glossary.md#autoortho) für das Streaming von [Orthofoto](../../glossary.md#orthofotos)-Texturen in X-Plane 12. Das Projekt ist inspiriert von AutoOrtho, setzt jedoch auf eine performante Rust-Implementierung mit adaptivem Prefetching und einem Zwei-Tier-Cache-System.
 
 !!! note "Aktive Entwicklung"
     XEarthLayer ist ein junges Projekt in aktiver Entwicklung. Aktuelle Versionen laufen stabil, der Funktionsumfang kann sich zwischen Releases aber noch ändern.
 
 ## Funktionsweise
 
-XEarthLayer nutzt ein **FUSE-basiertes virtuelles Dateisystem**, um Orthofoto-Texturen on demand bereitzustellen. Beim Zugriff auf eine Kachel durch X-Plane wird das Satellitenbild vom konfigurierten Kartenanbieter heruntergeladen, in das DDS-Format (BC1/BC3-Kompression) konvertiert und über das VFS an den Simulator ausgeliefert.
+XEarthLayer nutzt ein **[FUSE](../../glossary.md#fuse-filesystem-in-userspace)-basiertes virtuelles Dateisystem**, um Orthofoto-Texturen on demand bereitzustellen. Beim Zugriff auf eine Kachel durch X-Plane wird das Satellitenbild vom konfigurierten Kartenanbieter heruntergeladen, in das [DDS](../../glossary.md#dds-directdraw-surface)-Format (BC1/BC3-Kompression) konvertiert und über das VFS an den Simulator ausgeliefert.
 
 ### Zwei-Tier-Cache
 
@@ -78,7 +78,7 @@ make install    # Installiert nach ~/.local/bin
 xearthlayer setup
 ```
 
-Die Einrichtung konfiguriert das Cache-Verzeichnis und die Verknüpfung mit dem Custom-Scenery-Ordner von X-Plane.
+Die Einrichtung konfiguriert das Cache-Verzeichnis und die Verknüpfung mit dem [Custom Scenery](../../glossary.md#custom-scenery)-Ordner von X-Plane.
 
 ## Verwendung
 
@@ -96,7 +96,7 @@ Für das adaptive Prefetching muss in X-Plane die **ForeFlight-Telemetrie** akti
 
 ## Regionale Pakete
 
-XEarthLayer benötigt separate **DSF/TER-Pakete** (Digital Surface Format / Terrain), die die Mesh-Daten und Terrain-Definitionen für die jeweiligen Regionen enthalten. Fertige Pakete können direkt über die CLI installiert werden:
+XEarthLayer benötigt separate **[DSF](../../glossary.md#dsf-distribution-scenery-format)/TER-Pakete** (Digital Surface Format / Terrain), die die [Mesh](../../glossary.md#mesh)-Daten und Terrain-Definitionen für die jeweiligen Regionen enthalten. Fertige Pakete können direkt über die CLI installiert werden:
 
 ```bash
 # Verfügbare Pakete anzeigen
