@@ -56,7 +56,7 @@ XEarthLayer unterstützt folgende Kartenanbieter:
 
 ## Installation
 
-Auf der [GitHub Releases-Seite](https://github.com/samsoir/xearthlayer/releases) stehen vorkompilierte Pakete bereit (`.deb`, `.rpm`, `.tar.gz`, AUR).
+Auf der [GitHub Releases-Seite](https://github.com/samsoir/xearthlayer/releases) stehen vorkompilierte Pakete bereit (`.deb`, `.rpm`, `.tar.gz`).
 
 Installation auf Debian:
 

@@ -36,6 +36,10 @@ This documentation is an open project. Improvements or additions can be contribu
 ## Recent Changes
 
 ### 2026-02-19
+- New page [Xchecklist](addon/cockpit/xchecklist.md) — Interactive checklists with Linux TTS via speech-dispatcher
+- New page [OpenTrack](addon/cockpit/opentrack.md) — Head tracking with NeuralNet webcam tracker and HeadTrack plugin setup
+- [XLinSpeak](addon/tools/xlinspeak.md) extended: Piper TTS Manager section with neural voice synthesis and TTS comparison table
+- Arch Linux references removed from all plugin pages — documentation now focuses exclusively on Debian-based distributions
 - [My FS Flights](addon/kvm/myfs_flights.md) revised: Documented IP configuration in plugin settings, confirmed KVM-to-Linux connection as tested
 
 ### 2026-02-18

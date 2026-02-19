@@ -46,25 +46,9 @@ Es werden keine zusätzlichen Systempakete benötigt. Es sind keine Linux-spezif
 
 ### Head Tracking auf Linux
 
-Für Head Tracking auf Linux wird **OpenTrack** empfohlen. LinuxTrack wird nicht mehr aktiv gepflegt.
+Für Head Tracking auf Linux wird **[OpenTrack](opentrack.md)** mit dem HeadTrack-Plugin empfohlen. Installation und Konfiguration sind auf der [OpenTrack-Seite](opentrack.md) beschrieben.
 
-**OpenTrack-Einrichtung**
-
-1. OpenTrack installieren und konfigurieren (Eingabe: Webcam mit NeuralNet-Tracker, IR-Clip o.ä.)
-2. In OpenTrack: Output auf "UDP over network" setzen
-3. Das OpenTrack-eigene X-Plane-Plugin (im OpenTrack-Build enthalten) in `Resources/plugins/` ablegen und in X-Plane "Track Head Motion" aktivieren
-4. In XCamera: Die "TrackIR"-Checkbox bei den gewünschten Views aktivieren — XCamera behandelt OpenTrack-Daten wie TrackIR-Daten
-
-**OpenTrack auf Debian/Ubuntu installieren**
-
-```bash
-sudo apt install cmake qtbase5-dev libopencv-dev libprocps-dev
-git clone https://github.com/opentrack/opentrack.git
-cd opentrack && mkdir build && cd build
-cmake .. && make -j$(nproc)
-```
-
-Alternativ stehen in einigen Distributionen fertige Pakete zur Verfügung.
+In XCamera: Die „TrackIR"-Checkbox bei den gewünschten Views aktivieren — XCamera behandelt OpenTrack-Daten wie TrackIR-Daten.
 
 ## Quellen
 

@@ -81,7 +81,6 @@ Custom map sources are defined in the `online-maps/mapconfig.json` file in the p
 
     **Affected distributions (confirmed):**
 
-    - Arch Linux / EndeavourOS
     - Ubuntu 24.04 / Kubuntu 24.10
 
     **Debian Bookworm** (lcms2 2.14) is not affected. Distributions with lcms2 ≥ 2.16 may also be affected.

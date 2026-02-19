@@ -179,8 +179,10 @@ plugins:
                     - de/addon/cockpit/index.md
                     - AviTab: de/addon/cockpit/avitab.md
                     - XCamera: de/addon/cockpit/xcamera.md
+                    - Xchecklist: de/addon/cockpit/xchecklist.md
                     - XTextureExtractor: de/addon/cockpit/xtextureextractor.md
                     - LinuxTrack: de/addon/cockpit/linuxtrack.md
+                    - OpenTrack: de/addon/cockpit/opentrack.md
                     - TerrainRadar: de/addon/cockpit/terrainradar.md
                     - KabinXP: de/addon/cockpit/kabinxp.md
                 - Verkehr & Bodenbetrieb:
@@ -323,8 +325,10 @@ plugins:
                     - en/addon/cockpit/index.md
                     - AviTab: en/addon/cockpit/avitab.md
                     - XCamera: en/addon/cockpit/xcamera.md
+                    - Xchecklist: en/addon/cockpit/xchecklist.md
                     - XTextureExtractor: en/addon/cockpit/xtextureextractor.md
                     - LinuxTrack: en/addon/cockpit/linuxtrack.md
+                    - OpenTrack: en/addon/cockpit/opentrack.md
                     - TerrainRadar: en/addon/cockpit/terrainradar.md
                     - KabinXP: en/addon/cockpit/kabinxp.md
                 - Traffic & Ground Ops:

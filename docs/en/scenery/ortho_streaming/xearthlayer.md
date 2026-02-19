@@ -56,7 +56,7 @@ XEarthLayer supports the following map providers:
 
 ## Installation
 
-Pre-built packages are available on the [GitHub Releases page](https://github.com/samsoir/xearthlayer/releases) (`.deb`, `.rpm`, `.tar.gz`, AUR).
+Pre-built packages are available on the [GitHub Releases page](https://github.com/samsoir/xearthlayer/releases) (`.deb`, `.rpm`, `.tar.gz`).
 
 Installation on Debian:
 

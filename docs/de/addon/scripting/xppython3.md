@@ -50,7 +50,7 @@ Beim ersten Start legt das [Plugin](../../glossary.md#plugin) automatisch `Resou
 sudo apt install libexpat1 libbsd0
 ```
 
-Die Pakete `zlib1g` und `libc6` gehören zur Standard-Installation. Unter Arch Linux muss `libbsd` separat installiert werden (`pacman -S libbsd`).
+Die Pakete `zlib1g` und `libc6` gehören zur Standard-Installation unter Debian/Ubuntu.
 
 ### Plugin lädt nicht
 

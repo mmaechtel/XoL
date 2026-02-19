@@ -50,7 +50,7 @@ On first launch, the [plugin](../../glossary.md#plugin) auto-creates `Resources/
 sudo apt install libexpat1 libbsd0
 ```
 
-The `zlib1g` and `libc6` packages are part of every standard installation. On Arch Linux, `libbsd` must be installed separately (`pacman -S libbsd`).
+The `zlib1g` and `libc6` packages are part of every standard Debian/Ubuntu installation.
 
 ### Plugin Not Loading
 

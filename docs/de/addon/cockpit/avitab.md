@@ -81,7 +81,6 @@ Eigene Kartenquellen werden über die Datei `online-maps/mapconfig.json` im Plug
 
     **Betroffene Distributionen (bestätigt):**
 
-    - Arch Linux / EndeavourOS
     - Ubuntu 24.04 / Kubuntu 24.10
 
     **Debian Bookworm** (lcms2 2.14) ist nicht betroffen. Distributionen mit lcms2 ≥ 2.16 könnten ebenfalls betroffen sein.
