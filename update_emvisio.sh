@@ -19,28 +19,32 @@ fi
 REMOTE_HOST=""
 DRY_RUN=false
 SKIP_HTML=false
+NO_VIDEOS=false
 
 show_help() {
-    echo "Usage: $0 [user@]<hostname> [--dry] [--skip-html]"
-    echo "  -h, --help   Show this help message"
-    echo "  --dry        Dry run (no files will be transferred)"
-    echo "  --skip-html  Skip copying extra HTML files (vatsim_routes to Maps/)"
+    echo "Usage: $0 [user@]<hostname> [--dry] [--skip-html] [--no-videos]"
+    echo "  -h, --help    Show this help message"
+    echo "  --dry         Dry run (no files will be transferred)"
+    echo "  --skip-html   Skip copying extra HTML files (vatsim_routes to Maps/)"
+    echo "  --no-videos   Skip video symlink check and exclude videos from sync"
     exit 0
 }
 
 for arg in "$@"; do
     case "$arg" in
         -h|--help)   show_help ;;
-        --dry)       DRY_RUN=true ;;
-        --skip-html) SKIP_HTML=true ;;
+        --dry)        DRY_RUN=true ;;
+        --skip-html)  SKIP_HTML=true ;;
+        --no-videos)  NO_VIDEOS=true ;;
         *)           REMOTE_HOST="$arg" ;;
     esac
 done
 
 if [ -z "$REMOTE_HOST" ]; then
-    echo "Usage: $0 [user@]<hostname> [--dry] [--skip-html]"
-    echo "  --dry        Dry run (no files will be transferred)"
-    echo "  --skip-html  Skip copying extra HTML files (vatsim_routes to Maps/)"
+    echo "Usage: $0 [user@]<hostname> [--dry] [--skip-html] [--no-videos]"
+    echo "  --dry         Dry run (no files will be transferred)"
+    echo "  --skip-html   Skip copying extra HTML files (vatsim_routes to Maps/)"
+    echo "  --no-videos   Skip video symlink check and exclude videos from sync"
     exit 1
 fi
 REMOTE_PATH="/var/www/html"
@@ -52,23 +56,27 @@ if [ ! -d "$LOCAL_PATH" ]; then
     exit 1
 fi
 
-# Video symlink setup (OS-dependent path)
-case "$(uname)" in
-    Linux)  VIDEO_SRC="/mnt/videos/XoL/video" ;;
-    Darwin) VIDEO_SRC="/Volumes/video/XoL/video" ;;
-esac
+# Video symlink setup (OS-dependent path) — skipped with --no-videos
+if [ "$NO_VIDEOS" = true ]; then
+    echo "Skipping video symlink check (--no-videos)"
+else
+    case "$(uname)" in
+        Linux)  VIDEO_SRC="/mnt/videos/XoL/video" ;;
+        Darwin) VIDEO_SRC="/Volumes/video/XoL/video" ;;
+    esac
 
-if [ ! -d "$VIDEO_SRC" ]; then
-    echo "Error: Video share not mounted at: $VIDEO_SRC"
-    echo "Mount the video share first, then re-run."
-    exit 1
-elif [ ! -L docs/assets/video ]; then
-    ln -s "$VIDEO_SRC" docs/assets/video
-    echo "Created symlink: docs/assets/video -> $VIDEO_SRC"
-elif [ ! -d docs/assets/video/ ]; then
-    rm docs/assets/video
-    ln -s "$VIDEO_SRC" docs/assets/video
-    echo "Recreated symlink: docs/assets/video -> $VIDEO_SRC"
+    if [ ! -d "$VIDEO_SRC" ]; then
+        echo "Error: Video share not mounted at: $VIDEO_SRC"
+        echo "Mount the video share first, then re-run."
+        exit 1
+    elif [ ! -L docs/assets/video ]; then
+        ln -s "$VIDEO_SRC" docs/assets/video
+        echo "Created symlink: docs/assets/video -> $VIDEO_SRC"
+    elif [ ! -d docs/assets/video/ ]; then
+        rm docs/assets/video
+        ln -s "$VIDEO_SRC" docs/assets/video
+        echo "Recreated symlink: docs/assets/video -> $VIDEO_SRC"
+    fi
 fi
 
 # Copy root-level files to site/
@@ -85,6 +93,11 @@ RSYNC_OPTS=(
     --exclude='stats/'
     --exclude='Maps/'
 )
+
+# Exclude video files from sync when --no-videos is set
+if [ "$NO_VIDEOS" = true ]; then
+    RSYNC_OPTS+=(--exclude='assets/video/')
+fi
 
 # macOS stores filenames in NFD (decomposed Unicode: u + combining ¨)
 # Linux expects NFC (composed: ü). Without conversion, filenames with
