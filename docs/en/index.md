@@ -35,6 +35,9 @@ This documentation is an open project. Improvements or additions can be contribu
 
 ## Recent Changes
 
+### 2026-02-19
+- [My FS Flights](addon/kvm/myfs_flights.md) revised: Documented IP configuration in plugin settings, confirmed KVM-to-Linux connection as tested
+
 ### 2026-02-18
 - [AutoOrtho](scenery/ortho_streaming/autoortho.md) corrected: Fixed wrong USGS provider reference, removed unverified RAM and bandwidth figures
 - [XEarthLayer](scenery/ortho_streaming/xearthlayer.md) corrected: Updated internet recommendation from 800 to 500 Mbps, removed version-specific install command, added sources
@@ -50,11 +53,6 @@ This documentation is an open project. Improvements or additions can be contribu
 - Complete restructure: All sections split into thematic subdirectories with section index pages — content summaries cascade from deepest level upward
 - New pages: [CPU & RAM](fundamentals/performance/cpu_ram.md) — Threading model and system memory, [GPU & VRAM](fundamentals/performance/gpu_vram.md) — Texture paging, driver differences and frame time analysis
 - New page: [Why Latency Matters](linux/system/latency.md) — Video introduction to the tuning philosophy
-
-### 2026-02-16
-- New video: [Display Server](linux/optimizations/displayserver.md) — X11 vs Wayland decision guide
-- New videos: [Introduction](intro.md) — guided tour through XoL (DE + EN)
-- [ToLiss Ecosystem](addon/toliss/toliss_ecosystem.md): simbrief_hub section added, new page [ToLiss Mods](addon/toliss/toliss_mods.md)
 
 
 

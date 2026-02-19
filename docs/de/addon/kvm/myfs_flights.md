@@ -38,11 +38,11 @@ Da My FS Flights keinen Linux-Build bietet, muss die App in einer Windows-VM lau
 
 **Verbindung**
 
-Der genaue Mechanismus, über den My FS Flights die Verbindung zu X-Plane herstellt, ist nicht öffentlich dokumentiert. X-Plane sendet seine Präsenz per UDP-Multicast (Beacon auf 239.255.1.1:49707). Bei Bridged Networking befindet sich die Windows-VM im selben Netzwerksegment wie der Host, was die Erkennung der X-Plane-Instanz ermöglicht.
+Im My FS Flights Plugin lässt sich die Ziel-IP-Adresse direkt in den Einstellungen konfigurieren. Damit kann eine Verbindung zu einer X-Plane-Instanz auf einem anderen Rechner hergestellt werden — oder vom KVM-Guest zu X-Plane auf dem Linux-Host.
 
-!!! warning "Unter Linux nicht getestet"
+!!! tip "Mit KVM und X-Plane unter Linux getestet"
 
-    Dieses KVM-Setup ist auf Basis der Tool-Architektur dokumentiert. Ob My FS Flights eine X-Plane-Instanz auf dem Linux-Host zuverlässig erkennt und verbindet, wurde nicht unabhängig verifiziert. Rückmeldungen sind willkommen.
+    Die Verbindung zwischen My FS Flights in einer KVM-Windows-VM und X-Plane auf dem Linux-Host ist getestet und funktioniert zuverlässig.
 
 ## Quellen
 
