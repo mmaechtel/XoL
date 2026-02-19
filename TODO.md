@@ -17,6 +17,9 @@ Workflow und Phasen-Beschreibung: siehe `CLAUDE.md` → Dokumentations-Workflow.
 | 8     | `kvm.md`            | offen       | WiP-Abschnitt ausbauen oder entfernen               |
 | 11    | `addon/xorganizer.md` | offen     | Wine-Installation und Workflow-Hinweise             |
 | 12    | Verzeichnisnamen    | offen       | DE-Verzeichnisnamen in EN-Pfaden (`systemfehler/`, `aufbau_quellen/`, `setup_diagnose/`) auf englische Namen migrieren |
+| 13    | `addon/cockpit/xchecklist.md` | geplant | Xchecklist: Interaktive Checklisten mit Linux-TTS |
+| 14    | `addon/cockpit/opentrack.md` | geplant | OpenTrack: Headtracking unter Linux |
+| 15    | `addon/tools/xlinspeak.md` | geplant | XLinSpeak ergänzen: Piper TTS Manager |
 
 ---
 
@@ -150,6 +153,51 @@ Anleitung: Wie man unter Debian zwischen zwei installierten Kerneln (Standard + 
 - **Wine-Installationsanleitung:** Binary in Wine-App-Ordner anlegen, `winetricks` für .NET, ggf. ältere + neuere .NET-Version übereinander installieren
 - **Font-Anpassungen** bei hoher Auflösung (HiDPI)
 - Querverweis auf Wine-Seite
+
+---
+
+### 13. `addon/cockpit/xchecklist.md` — Xchecklist
+
+**Status:** geplant
+**Nav-Position:** Addon > Cockpit
+
+Interaktive Checklisten mit TTS unter Linux. Nativ (lin.xpl), Open Source (MIT), v1.53. Linux-Spezifikum: TTS via libspeechd/speech-dispatcher. Querverweis auf XLinSpeak.
+
+**Gliederung:** Background, Features, Value, Installation, TTS on Linux, Sources
+
+**Research-Papers:**
+
+- `research/addons/xplane_addon_plugins_linux.md` (Abschnitt 1)
+- `research/addons/LEKTORAT_xplane_addon_plugins_linux.md`
+
+---
+
+### 14. `addon/cockpit/opentrack.md` — OpenTrack Headtracking
+
+**Status:** geplant
+**Nav-Position:** Addon > Cockpit
+
+OpenTrack als Hauptlösung für Headtracking unter Linux. NeuralNet Tracker (Webcam, kein Hardware nötig), HeadTrack-Plugin (amyinorbit) als empfohlene X-Plane-Bridge via UDP:4242. Build-Anleitung für Debian. Querverweis von linuxtrack.md.
+
+**Gliederung:** Background, Features, Value, Recommended Linux Setup, Installation, Configuration, NeuralNet Tracker, SmoothTrack, Sources
+
+**Research-Papers:**
+
+- `research/addons/xplane_addon_plugins_linux.md` (Abschnitt 5)
+- `research/addons/LEKTORAT_xplane_addon_plugins_linux.md`
+
+---
+
+### 15. XLinSpeak ergänzen — Piper TTS Manager
+
+**Status:** geplant
+
+Bestehende XLinSpeak-Seite um Abschnitt zu Piper TTS Manager (PTTSM) ergänzen. Hochwertige neuronale Sprachsynthese via FlyWithLua + Piper. Pre-Release, aber auf Linux bestätigt.
+
+**Research-Papers:**
+
+- `research/addons/xplane_addon_plugins_linux.md` (Abschnitt 6)
+- `research/addons/LEKTORAT_xplane_addon_plugins_linux.md`
 
 ---
 

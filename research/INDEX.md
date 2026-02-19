@@ -3,7 +3,7 @@
 Mapping: Research-Dateien -> Docs-Seiten.
 Wird von `/research` genutzt, um nur relevante Dateien zu lesen.
 
-**Letzte Aktualisierung:** 2026-02-16
+**Letzte Aktualisierung:** 2026-02-19
 
 ## xplane-config
 
@@ -80,6 +80,8 @@ Docs: `docs/en/addon/tools/xorganizer.md`, `docs/en/addon/cockpit/avitab.md`, et
 - addons/XPME_research.md -> scenery/orthophotography/orthophotography_intro.md
 
 ### MITTEL
+- addons/xplane_addon_plugins_linux.md -> addon/cockpit/xchecklist.md, addon/cockpit/opentrack.md, addon/tools/xlinspeak.md
+- addons/LEKTORAT_xplane_addon_plugins_linux.md -> addon/cockpit/xchecklist.md, addon/cockpit/opentrack.md, addon/tools/xlinspeak.md
 - addons/LEKTORAT_ortho_streaming.md -> scenery/ortho_streaming/autoortho.md, scenery/ortho_streaming/xearthlayer.md, scenery/orthophotography/orthophotography_intro.md
 - addons/avitab_research.md -> addon/cockpit/avitab.md
 - addons/BetterPushback_Linux.md -> addon/traffic/betterpushback.md
