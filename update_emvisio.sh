@@ -5,9 +5,12 @@ set -e
 
 # Require GNU rsync (macOS ships openrsync which lacks --delete/--filter support)
 if [ "$(uname)" = "Darwin" ]; then
-    RSYNC="/usr/local/bin/rsync"
-    if [ ! -x "$RSYNC" ]; then
-        echo "Error: GNU rsync not found at $RSYNC"
+    if [ -x "/opt/homebrew/bin/rsync" ]; then
+        RSYNC="/opt/homebrew/bin/rsync"        # ARM Mac (M1+)
+    elif [ -x "/usr/local/bin/rsync" ]; then
+        RSYNC="/usr/local/bin/rsync"            # Intel Mac
+    else
+        echo "Error: GNU rsync not found"
         echo "macOS openrsync lacks required features. Install with: brew install rsync"
         exit 1
     fi
