@@ -11,11 +11,11 @@ description: "Kernel tuning for X-Plane on Linux: two profiles for stock and Liq
 Linux distributions differ not just in package manager and desktop environment, but primarily in the **interplay between kernel and system software**. Each distribution makes configuration decisions for a specific use case:
 
 - **General-purpose distributions** (Debian, Ubuntu, Fedora) — optimize for stability and broad hardware compatibility. The kernel is conservatively configured, power saving has high priority.
-- **Gaming/multimedia distributions** (Nobara, Pop!_OS) — ship with pre-tuned kernel parameters, scheduler settings, and driver configurations for low latency.
+- **Gaming/multimedia distributions** (Nobara, Pop!_OS) — ship with pre-tuned [kernel parameters](../../glossary.md#kernel-parameter), scheduler settings, and driver configurations for low [latency](../../glossary.md#latency).
 - **Audio production** (Ubuntu Studio, AV Linux) — use realtime kernels and prioritize audio pipelines.
 - **Server distributions** (Debian Server, Rocky Linux) — maximize throughput and stability under sustained load.
 
-The combination of kernel version, scheduler configuration, power management, drivers, and sysctl parameters determines system behavior. Distributions that are already optimized for low latency or gaming include many of the settings described here out of the box.
+The combination of kernel version, scheduler configuration, power management, drivers, and [sysctl](../../glossary.md#sysctl) parameters determines system behavior. Distributions that are already optimized for low latency or gaming include many of the settings described here out of the box.
 
 !!! info "Debian as baseline"
     The following guides are based on **Debian** (Trixie/13) as the starting point — a general-purpose distribution that requires no adjustment for general use but can be specifically optimized for latency-sensitive applications like X-Plane. The standard kernel is replaced with the optimized [Liquorix Kernel](../optimizations/liquorix.md).
@@ -34,7 +34,7 @@ The generic Debian kernel prioritizes fairness and throughput. It reacts conserv
 
 **Liquorix** = closed-loop control → disturbances must be removed
 
-Liquorix uses the [PDS](../../glossary.md#pds-priority-and-deadline-based-skiplist) (Priority and Deadline based Skiplist) scheduler with shorter preemption windows and a 1000 Hz timer frequency. It responds autonomously to load changes. Tuning here means: minimizing external sources of interference.
+Liquorix uses the [PDS](../../glossary.md#pds-priority-and-deadline-based-skiplist) (Priority and Deadline based Skiplist) scheduler with shorter [preemption](../../glossary.md#preemption) windows and a 1000 Hz timer frequency. It responds autonomously to load changes. Tuning here means: minimizing external sources of interference.
 
 !!! warning "Same setting, opposite result"
     Identical parameters can have opposite effects depending on the kernel. A `performance` governor helps with the standard kernel but can be counterproductive under Liquorix (thermal headroom is lost). CPU isolation helps with the standard kernel but prevents Liquorix's adaptive optimization.
@@ -67,7 +67,7 @@ For installing Liquorix, see [Liquorix Kernel](../optimizations/liquorix.md).
 
 **Governor**
 
-Set the governor to a fixed high-performance clock to reduce reaction time and compensate for the lack of load prediction.
+Set the [governor](../../glossary.md#cpu-governor) to a fixed high-performance clock to reduce reaction time and compensate for the lack of load prediction.
 
 Switch immediately:
 
@@ -208,7 +208,7 @@ sudo update-grub
 ```
 
 !!! tip "Persistence"
-    The terminal commands apply until the next reboot. The GRUB method makes the setting permanent. For permanent EPP settings, create a systemd unit or udev rule.
+    The terminal commands apply until the next reboot. The GRUB method makes the setting permanent. For permanent EPP settings, create a [systemd](../../glossary.md#systemd) unit or udev rule.
 
 **C-States and Power Management**
 
@@ -228,7 +228,7 @@ processor.max_cstate=5
 The most important measure under Liquorix. Concentrate hardware interrupts on the first cores so the scheduler can use the remaining cores undisturbed for the application.
 
 !!! warning "IRQ affinity on modern kernels"
-    Modern kernels use managed interrupts for MSI-X devices (NVMe, GPU, etc.). The kernel controls affinity allocation for these IRQs, and writes to `/proc/irq/*/smp_affinity` are rejected by design — regardless of kernel variant. This is not Liquorix-specific but a general kernel mechanism.
+    Modern kernels use managed interrupts for MSI-X devices ([NVMe](../../glossary.md#nvme-non-volatile-memory-express), GPU, etc.). The kernel controls affinity allocation for these IRQs, and writes to `/proc/irq/*/smp_affinity` are rejected by design — regardless of kernel variant. This is not Liquorix-specific but a general kernel mechanism.
 
     The userspace daemon [`irqbalance`](../../glossary.md#irqbalance) handles redistribution of non-managed IRQs and respects these kernel constraints automatically.
 
@@ -312,7 +312,7 @@ dpkg --list | grep linux-image
 
 **Identify GRUB Menu Entries**
 
-GRUB numbers entries starting from 0. Kernels in the "Advanced options" submenu are addressed with `>`:
+[GRUB](../../glossary.md#grub-grand-unified-bootloader) numbers entries starting from 0. Kernels in the "Advanced options" submenu are addressed with `>`:
 
 ```bash
 grep -E "menuentry |submenu " /boot/grub/grub.cfg | head -20
@@ -368,7 +368,7 @@ Not all settings require a reboot. The following table shows which parameters ca
 | Parameter | Changeable at runtime? | Method |
 |---|---|---|
 | Governor | Yes | `echo ... \| sudo tee /sys/devices/system/cpu/cpu*/cpufreq/scaling_governor` |
-| NVMe APST | **No** | GRUB only — sysfs parameter only affects newly initialized devices |
+| NVMe [APST](../../glossary.md#apst-autonomous-power-state-transitions) | **No** | GRUB only — sysfs parameter only affects newly initialized devices |
 | sysctl (vm.*) | Yes | `sudo sysctl --system` |
 | irqbalance service | Yes | `sudo systemctl stop/start irqbalance` |
 | nice / chrt / taskset | Yes | Set when launching the application |

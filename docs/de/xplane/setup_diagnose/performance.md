@@ -9,7 +9,7 @@ X-Plane 12 ist eine Cross-Plattform-Anwendung — die allgemeinen Grafikeinstell
 
 ### FPS-Anzeige
 
-Die FPS-Anzeige (Frames per Second) ist das einfachste Werkzeug zur Performance-Einschätzung. Sie zeigt, wie viele Bilder pro Sekunde berechnet werden — doch der Durchschnittswert allein ist wenig aussagekräftig. Entscheidend ist die Frame Time: die Zeit in Millisekunden, die ein einzelnes Bild benötigt. Ein stabiler FPS-Wert von 30 (≈ 33 ms pro Frame) liefert ein flüssigeres Ergebnis als ein schwankender Durchschnitt von 40 FPS mit regelmäßigen Spikes auf 60 ms.
+Die [FPS](../../glossary.md#fps-frames-per-second)-Anzeige (Frames per Second) ist das einfachste Werkzeug zur Performance-Einschätzung. Sie zeigt, wie viele Bilder pro Sekunde berechnet werden — doch der Durchschnittswert allein ist wenig aussagekräftig. Entscheidend ist die [Frame Time](../../glossary.md#frame-time): die Zeit in Millisekunden, die ein einzelnes Bild benötigt. Ein stabiler FPS-Wert von 30 (≈ 33 ms pro Frame) liefert ein flüssigeres Ergebnis als ein schwankender Durchschnitt von 40 FPS mit regelmäßigen Spikes auf 60 ms.
 
 **Richtwerte**
 
@@ -24,7 +24,7 @@ Die FPS-Anzeige (Frames per Second) ist das einfachste Werkzeug zur Performance-
 
 ### Microprofiler
 
-Während die FPS-Anzeige nur das Gesamtergebnis zeigt, schlüsselt der Microprofiler die Frame-Generierung in einzelne Aufgaben auf. So lässt sich erkennen, ob Physikberechnungen, Szenerie-Rendering, Plugins oder die GPU den Engpass verursachen.
+Während die FPS-Anzeige nur das Gesamtergebnis zeigt, schlüsselt der Microprofiler die Frame-Generierung in einzelne Aufgaben auf. So lässt sich erkennen, ob Physikberechnungen, Szenerie-Rendering, [Plugins](../../glossary.md#plugin) oder die GPU den Engpass verursachen.
 
 **Aktivierung:** Im Menü *Developer → Toggle Microprofiler* wählen. Eine grafische Echtzeitanzeige erscheint, die die Zeitverteilung pro Frame darstellt.
 
@@ -63,7 +63,7 @@ X-Plane zeigt **was** langsam ist — Linux-Tools zeigen **warum**. Die internen
 
 ### MangoHUD — In-Game Performance Overlay
 
-MangoHUD ist ein Vulkan-Layer-Overlay, das Performance-Metriken direkt im Spiel einblendet.
+MangoHUD ist ein [Vulkan](../../glossary.md#vulkan-api)-Layer-Overlay, das Performance-Metriken direkt im Spiel einblendet.
 
 **Installation und Start**
 
@@ -137,11 +137,11 @@ Die folgende Tabelle verbindet typische Symptome mit der passenden Werkzeugkette
 
 | Symptom | Werkzeugkette | Was prüfen |
 |---------|--------------|------------|
-| Mikroruckler im Flug | MangoHUD Frame-Time + `iostat` | NVMe-Aufwachlatenz (APST) |
+| Mikroruckler im Flug | MangoHUD Frame-Time + `iostat` | [NVMe](../../glossary.md#nvme-non-volatile-memory-express)-Aufwachlatenz ([APST](../../glossary.md#apst-autonomous-power-state-transitions)) |
 | Niedrige FPS bei geringer GPU-Last | Microprofiler + `htop` | CPU-bound — welcher Thread blockiert? |
 | Stutter bei Szenerie-Wechsel | `iotop` + `fatrace` | Welche Dateien werden gelesen? |
-| FPS-Einbruch nach Treiber-Update | MangoHUD Vergleich vorher/nachher | Shader-Cache löschen, Treiber-Regression? |
-| Periodische Ruckler alle ~30 s | `mpstat -I CPU 1` | IRQ-Sturm auf Applikations-Kernen? |
+| FPS-Einbruch nach Treiber-Update | MangoHUD Vergleich vorher/nachher | [Shader-Cache](../../glossary.md#shader-cache) löschen, Treiber-Regression? |
+| Periodische Ruckler alle ~30 s | `mpstat -I CPU 1` | [IRQ](../../glossary.md#irq-interrupt-request)-Sturm auf Applikations-Kernen? |
 
 ## Optimierungstipps
 
@@ -157,7 +157,7 @@ Der Microprofiler zeigt, wo die Frame-Zeit verloren geht. Die folgende Tabelle o
 | GPU (Schatten) | Schatten und Antialiasing reduzieren | Shadow Quality und MSAA-Stufe senken |
 | GPU (Wolken) | Wolkenqualität anpassen | Cloud Quality senken |
 
-Für Linux-spezifische Optimierungen (CPU-Governor, Interrupt-Routing, Speicherparameter) siehe [Systemtuning](../../linux/system/systemtuning.md). Benchmarking-Methoden und Rendering-Optionen sind unter [Konfiguration](config.md) dokumentiert.
+Für Linux-spezifische Optimierungen ([CPU-Governor](../../glossary.md#cpu-governor), Interrupt-Routing, Speicherparameter) siehe [Systemtuning](../../linux/system/systemtuning.md). Benchmarking-Methoden und Rendering-Optionen sind unter [Konfiguration](config.md) dokumentiert.
 
 ---
 

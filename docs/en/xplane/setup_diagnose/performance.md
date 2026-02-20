@@ -9,7 +9,7 @@ X-Plane 12 is a cross-platform application — the general graphics settings (te
 
 ### FPS Display
 
-The FPS display (Frames per Second) is the simplest tool for assessing performance. It shows how many frames are calculated per second — but the average value alone reveals little. What matters is the frame time: the time in milliseconds that a single frame requires. A stable 30 FPS (≈ 33 ms per frame) delivers a smoother experience than a fluctuating average of 40 FPS with regular spikes to 60 ms.
+The [FPS](../../glossary.md#fps-frames-per-second) display (Frames per Second) is the simplest tool for assessing performance. It shows how many frames are calculated per second — but the average value alone reveals little. What matters is the [frame time](../../glossary.md#frame-time): the time in milliseconds that a single frame requires. A stable 30 FPS (≈ 33 ms per frame) delivers a smoother experience than a fluctuating average of 40 FPS with regular spikes to 60 ms.
 
 **Reference Values**
 
@@ -24,7 +24,7 @@ The FPS display (Frames per Second) is the simplest tool for assessing performan
 
 ### Microprofiler
 
-While the FPS display only shows the overall result, the Microprofiler breaks down frame generation into individual tasks. This reveals whether physics calculations, scenery rendering, plugins, or the GPU are causing the bottleneck.
+While the FPS display only shows the overall result, the Microprofiler breaks down frame generation into individual tasks. This reveals whether physics calculations, scenery rendering, [plugins](../../glossary.md#plugin), or the GPU are causing the bottleneck.
 
 **Activation:** In the menu, select *Developer → Toggle Microprofiler*. A real-time graphical display appears showing the time distribution per frame.
 
@@ -63,7 +63,7 @@ X-Plane shows **what** is slow — Linux tools show **why**. The internal diagno
 
 ### MangoHUD — In-Game Performance Overlay
 
-MangoHUD is a Vulkan layer overlay that displays performance metrics directly in-game.
+MangoHUD is a [Vulkan](../../glossary.md#vulkan-api) layer overlay that displays performance metrics directly in-game.
 
 **Installation and Launch**
 
@@ -137,11 +137,11 @@ The following table connects typical symptoms with the appropriate toolchain. De
 
 | Symptom | Toolchain | What to check |
 |---------|-----------|---------------|
-| Micro-stutters during flight | MangoHUD frame time + `iostat` | NVMe wake-up latency (APST) |
+| Micro-stutters during flight | MangoHUD frame time + `iostat` | [NVMe](../../glossary.md#nvme-non-volatile-memory-express) wake-up latency ([APST](../../glossary.md#apst-autonomous-power-state-transitions)) |
 | Low FPS with low GPU load | Microprofiler + `htop` | CPU-bound — which thread is blocking? |
 | Stutter during scenery transitions | `iotop` + `fatrace` | Which files are being read? |
-| FPS drop after driver update | MangoHUD comparison before/after | Clear shader cache, driver regression? |
-| Periodic stutters every ~30 s | `mpstat -I CPU 1` | IRQ storm on application cores? |
+| FPS drop after driver update | MangoHUD comparison before/after | Clear [shader cache](../../glossary.md#shader-cache), driver regression? |
+| Periodic stutters every ~30 s | `mpstat -I CPU 1` | [IRQ](../../glossary.md#irq-interrupt-request) storm on application cores? |
 
 ## Optimization Tips
 
@@ -157,7 +157,7 @@ The Microprofiler shows where frame time is being lost. The following table maps
 | GPU (Shadows) | Reduce shadows and anti-aliasing | Lower Shadow Quality and MSAA level |
 | GPU (Clouds) | Adjust cloud quality | Lower Cloud Quality |
 
-For Linux-specific optimizations (CPU governor, interrupt routing, memory parameters) see [System Tuning](../../linux/system/systemtuning.md). Benchmarking methods and rendering options are documented under [Configuration](config.md).
+For Linux-specific optimizations ([CPU governor](../../glossary.md#cpu-governor), interrupt routing, memory parameters) see [System Tuning](../../linux/system/systemtuning.md). Benchmarking methods and rendering options are documented under [Configuration](config.md).
 
 ---
 

@@ -3,13 +3,13 @@ description: "Dateisystem-Optimierung für X-Plane unter Linux: NVMe-SSD-Setup, 
 ---
 # Dateisystem
 
-X-Plane lädt während des Fluges tausende Texturdateien — Dateisystem-Wahl und SSD-Konfiguration wirken sich direkt auf Ladezeiten und Textur-Streaming aus. Diese Seite behandelt SSD-Hardware-Empfehlungen, Dateisystem-Vergleich (Ext4, Btrfs, XFS), Mount-Optionen, eine Schritt-für-Schritt RAID-0-Einrichtung und Backup-Strategien.
+X-Plane lädt während des Fluges tausende Texturdateien — Dateisystem-Wahl und SSD-Konfiguration wirken sich direkt auf Ladezeiten und Textur-Streaming aus. Diese Seite behandelt SSD-Hardware-Empfehlungen, Dateisystem-Vergleich ([Ext4](../../glossary.md#ext4-fourth-extended-filesystem), [Btrfs](../../glossary.md#btrfs-b-tree-filesystem), XFS), Mount-Optionen, eine Schritt-für-Schritt RAID-0-Einrichtung und Backup-Strategien.
 
 ## Hardware-Empfehlungen
 
 ### SSD-Typen und Größen
 
-Für optimale Performance wird eine NVMe-SSD (PCIe 3.0 oder besser 4.0) mit mindestens 1 TB Kapazität empfohlen. NVMe-SSDs bieten deutlich höhere Lese- und Schreibgeschwindigkeiten — bis zu ~3500 MB/s (PCIe 3.0) oder ~7000 MB/s (PCIe 4.0) — im Vergleich zu SATA-SSDs, die maximal 550 MB/s erreichen. Die höhere Geschwindigkeit wird durch eine direkte Verbindung zum PCIe-Bus erreicht, wodurch das langsamere SATA-Interface umgangen wird.
+Für optimale Performance wird eine [NVMe](../../glossary.md#nvme-non-volatile-memory-express)-SSD (PCIe 3.0 oder besser 4.0) mit mindestens 1 TB Kapazität empfohlen. NVMe-SSDs bieten deutlich höhere Lese- und Schreibgeschwindigkeiten — bis zu ~3500 MB/s (PCIe 3.0) oder ~7000 MB/s (PCIe 4.0) — im Vergleich zu SATA-SSDs, die maximal 550 MB/s erreichen. Die höhere Geschwindigkeit wird durch eine direkte Verbindung zum PCIe-Bus erreicht, wodurch das langsamere SATA-Interface umgangen wird.
 
 Die Mindestgröße von 1 TB ist empfehlenswert, da X-Plane 12 mit globaler Szenerie etwa 80–100 GB benötigt und Drittanbieter-Szenerien sowie Add-ons schnell mehrere hundert GB belegen können. Zusätzlich werden mindestens 10–15% freier Speicherplatz für optimale Performance empfohlen, da SSDs diesen Spielraum für Wear Leveling und Garbage Collection nutzen.
 
@@ -62,7 +62,7 @@ Die richtigen Mount-Optionen können unnötigen I/O-Overhead reduzieren:
 |--------|---------|---------------|
 | `noatime` | Überspringt Zugriffszeit-Updates bei Lesevorgängen | Alle Dateisysteme auf SSDs |
 | `discard=async` | Asynchrones TRIM (Btrfs-Standard seit Kernel 6.2) | Btrfs — meist nicht nötig in fstab |
-| `fstrim.timer` | Periodisches TRIM über systemd-Timer | Ext4, XFS — bevorzugt gegenüber `discard`-Mount-Option |
+| `fstrim.timer` | Periodisches TRIM über [systemd](../../glossary.md#systemd)-Timer | Ext4, XFS — bevorzugt gegenüber `discard`-Mount-Option |
 
 !!! tip "Schnellempfehlung"
     Für die meisten Nutzer: NVMe-SSD, Ext4 mit `noatime`, `fstrim.timer` aktivieren. Damit sind die wichtigsten Punkte abgedeckt.
@@ -73,7 +73,7 @@ Die richtigen Mount-Optionen können unnötigen I/O-Overhead reduzieren:
 UUID=<ext4-uuid> /mnt/xplane ext4 defaults,noatime 0 2
 ```
 
-Periodisches TRIM aktivieren:
+Periodisches [TRIM](../../glossary.md#trim) aktivieren:
 
 ```bash
 sudo systemctl enable --now fstrim.timer

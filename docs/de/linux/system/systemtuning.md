@@ -11,11 +11,11 @@ description: "Kernel-Tuning für X-Plane unter Linux: Zwei Profile für Standard
 Linux-Distributionen unterscheiden sich nicht nur in Paketmanager und Desktop-Umgebung, sondern vor allem in der **Abstimmung zwischen Kernel und Systemsoftware**. Jede Distribution trifft Konfigurationsentscheidungen für einen bestimmten Einsatzzweck:
 
 - **Allzweck-Distributionen** (Debian, Ubuntu, Fedora) — optimieren auf Stabilität und breite Hardwarekompatibilität. Der Kernel ist konservativ konfiguriert, Energiesparen hat hohe Priorität.
-- **Gaming-/Multimedia-Distributionen** (Nobara, Pop!_OS) — liefern bereits angepasste Kernel-Parameter, Scheduler-Einstellungen und Treiber-Konfigurationen für niedrige Latenz.
+- **Gaming-/Multimedia-Distributionen** (Nobara, Pop!_OS) — liefern bereits angepasste [Kernel-Parameter](../../glossary.md#kernel-parameter), Scheduler-Einstellungen und Treiber-Konfigurationen für niedrige [Latenz](../../glossary.md#latenz).
 - **Audioproduktion** (Ubuntu Studio, AV Linux) — setzen auf Realtime-Kernel und priorisieren Audio-Pipelines.
 - **Server-Distributionen** (Debian Server, Rocky Linux) — maximieren Durchsatz und Stabilität unter Dauerlast.
 
-Das Zusammenspiel aus Kernel-Version, Scheduler-Konfiguration, Energieverwaltung, Treibern und sysctl-Parametern ergibt das Systemverhalten. Distributionen, die bereits auf niedrige Latenz oder Gaming optimiert sind, bringen viele der hier beschriebenen Einstellungen bereits mit.
+Das Zusammenspiel aus Kernel-Version, Scheduler-Konfiguration, Energieverwaltung, Treibern und [sysctl](../../glossary.md#sysctl)-Parametern ergibt das Systemverhalten. Distributionen, die bereits auf niedrige Latenz oder Gaming optimiert sind, bringen viele der hier beschriebenen Einstellungen bereits mit.
 
 !!! info "Debian als Basis"
     Die folgenden Anleitungen beziehen sich auf **Debian** (Trixie/13) als Ausgangspunkt — eine Allzweck-Distribution, die für allgemeine Nutzung keine Anpassung erfordert, aber für latenzsensitive Anwendungen wie X-Plane gezielt optimiert werden kann. Der Standardkernel wird dabei durch den optimierten [Liquorix Kernel](../optimizations/liquorix.md) ersetzt.
@@ -34,7 +34,7 @@ Der generische Debian-Kernel priorisiert Fairness und Durchsatz. Er reagiert kon
 
 **Liquorix** = geschlossener Regelkreis → Störungen müssen entfernt werden
 
-Liquorix nutzt den [PDS](../../glossary.md#pds-priority-and-deadline-based-skiplist)-Scheduler (Priority and Deadline based Skiplist) mit kürzeren Preemption-Fenstern und einer Timer-Frequenz von 1000 Hz. Er reagiert selbstständig auf Laständerungen. Tuning bedeutet hier: externe Störquellen minimieren.
+Liquorix nutzt den [PDS](../../glossary.md#pds-priority-and-deadline-based-skiplist)-Scheduler (Priority and Deadline based Skiplist) mit kürzeren [Preemption](../../glossary.md#preemption)-Fenstern und einer Timer-Frequenz von 1000 Hz. Er reagiert selbstständig auf Laständerungen. Tuning bedeutet hier: externe Störquellen minimieren.
 
 !!! warning "Gleiche Einstellung, gegenteiliges Ergebnis"
     Identische Parameter können je nach Kernel gegensätzliche Effekte haben. Ein `performance`-Governor hilft beim Standardkernel, kann aber unter Liquorix kontraproduktiv sein (thermischer Spielraum geht verloren). CPU-Isolation hilft beim Standardkernel, verhindert aber unter Liquorix die adaptive Optimierung.
@@ -67,7 +67,7 @@ Für die Installation von Liquorix siehe [Liquorix Kernel](../optimizations/liqu
 
 **Governor**
 
-Den Governor auf festen Hochleistungstakt setzen, um Reaktionszeit zu verkürzen und fehlende Lastvorhersage zu kompensieren.
+Den [Governor](../../glossary.md#cpu-governor) auf festen Hochleistungstakt setzen, um Reaktionszeit zu verkürzen und fehlende Lastvorhersage zu kompensieren.
 
 Sofort umschalten:
 
@@ -208,7 +208,7 @@ sudo update-grub
 ```
 
 !!! tip "Persistenz"
-    Die Terminal-Befehle gelten bis zum nächsten Neustart. Die GRUB-Variante macht die Einstellung dauerhaft. Für permanente EPP-Einstellung eine systemd-Unit oder udev-Regel erstellen.
+    Die Terminal-Befehle gelten bis zum nächsten Neustart. Die GRUB-Variante macht die Einstellung dauerhaft. Für permanente EPP-Einstellung eine [systemd](../../glossary.md#systemd)-Unit oder udev-Regel erstellen.
 
 **C-States und Energiesteuerung**
 
@@ -228,7 +228,7 @@ processor.max_cstate=5
 Die wichtigste Maßnahme unter Liquorix. Hardware-Interrupts auf die ersten Kerne konzentrieren, damit der Scheduler die restlichen Kerne ungestört für die Anwendung nutzen kann.
 
 !!! warning "IRQ-Affinität auf modernen Kerneln"
-    Moderne Kernel verwenden Managed Interrupts für MSI-X-Geräte (NVMe, GPU, etc.). Der Kernel steuert die Affinitätszuordnung dieser IRQs, und Schreibzugriffe auf `/proc/irq/*/smp_affinity` werden vom Kernel abgelehnt — unabhängig von der Kernel-Variante. Das ist kein Liquorix-Spezifikum, sondern ein allgemeiner Kernel-Mechanismus.
+    Moderne Kernel verwenden Managed Interrupts für MSI-X-Geräte ([NVMe](../../glossary.md#nvme-non-volatile-memory-express), GPU, etc.). Der Kernel steuert die Affinitätszuordnung dieser IRQs, und Schreibzugriffe auf `/proc/irq/*/smp_affinity` werden vom Kernel abgelehnt — unabhängig von der Kernel-Variante. Das ist kein Liquorix-Spezifikum, sondern ein allgemeiner Kernel-Mechanismus.
 
     Der Userspace-Daemon [`irqbalance`](../../glossary.md#irqbalance) übernimmt die Verteilung nicht verwalteter IRQs und berücksichtigt diese Kernel-Einschränkungen automatisch.
 
@@ -312,7 +312,7 @@ dpkg --list | grep linux-image
 
 **GRUB-Menüeinträge ermitteln**
 
-GRUB nummeriert die Einträge ab 0. Kernel im Untermenü „Advanced options" werden mit `>` adressiert:
+[GRUB](../../glossary.md#grub-grand-unified-bootloader) nummeriert die Einträge ab 0. Kernel im Untermenü „Advanced options" werden mit `>` adressiert:
 
 ```bash
 grep -E "menuentry |submenu " /boot/grub/grub.cfg | head -20
@@ -368,7 +368,7 @@ Nicht alle Einstellungen erfordern einen Neustart. Die folgende Tabelle zeigt, w
 | Parameter | Zur Laufzeit änderbar? | Methode |
 |---|---|---|
 | Governor | Ja | `echo ... \| sudo tee /sys/devices/system/cpu/cpu*/cpufreq/scaling_governor` |
-| NVMe APST | **Nein** | Nur per GRUB — sysfs-Parameter wirkt nur auf neu initialisierte Geräte |
+| NVMe [APST](../../glossary.md#apst-autonomous-power-state-transitions) | **Nein** | Nur per GRUB — sysfs-Parameter wirkt nur auf neu initialisierte Geräte |
 | sysctl (vm.*) | Ja | `sudo sysctl --system` |
 | irqbalance-Dienst | Ja | `sudo systemctl stop/start irqbalance` |
 | nice / chrt / taskset | Ja | Wird beim Anwendungsstart gesetzt |

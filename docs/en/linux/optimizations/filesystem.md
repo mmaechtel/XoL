@@ -3,13 +3,13 @@ description: "Filesystem optimization for X-Plane on Linux: NVMe SSD setup, Ext4
 ---
 # Filesystem
 
-X-Plane loads thousands of texture files during flight — filesystem choice and SSD configuration directly affect loading times and in-flight texture streaming. This page covers SSD hardware recommendations, filesystem comparison (Ext4, Btrfs, XFS), mount options, a step-by-step RAID-0 setup, and backup strategies.
+X-Plane loads thousands of texture files during flight — filesystem choice and SSD configuration directly affect loading times and in-flight texture streaming. This page covers SSD hardware recommendations, filesystem comparison ([Ext4](../../glossary.md#ext4-fourth-extended-filesystem), [Btrfs](../../glossary.md#btrfs-b-tree-filesystem), XFS), mount options, a step-by-step RAID-0 setup, and backup strategies.
 
 ## Hardware Recommendations
 
 ### SSD Types and Sizes
 
-For optimal performance, an NVMe SSD (PCIe 3.0 or better 4.0) with at least 1 TB capacity is recommended. NVMe SSDs offer significantly higher read and write speeds — up to ~3500 MB/s (PCIe 3.0) or ~7000 MB/s (PCIe 4.0) — compared to SATA SSDs, which reach a maximum of 550 MB/s. The higher speed is achieved through a direct connection to the PCIe bus, bypassing the slower SATA interface.
+For optimal performance, an [NVMe](../../glossary.md#nvme-non-volatile-memory-express) SSD (PCIe 3.0 or better 4.0) with at least 1 TB capacity is recommended. NVMe SSDs offer significantly higher read and write speeds — up to ~3500 MB/s (PCIe 3.0) or ~7000 MB/s (PCIe 4.0) — compared to SATA SSDs, which reach a maximum of 550 MB/s. The higher speed is achieved through a direct connection to the PCIe bus, bypassing the slower SATA interface.
 
 The minimum size of 1 TB is recommended because X-Plane 12 with full global scenery requires approximately 80–100 GB, and third-party scenery and add-ons can quickly add several hundred GB more. Additionally, at least 10–15% free storage space is recommended for optimal performance, as SSDs use this headroom for wear leveling and garbage collection.
 
@@ -62,7 +62,7 @@ The right mount options can reduce unnecessary I/O overhead:
 |--------|--------|-----------------|
 | `noatime` | Skips access time updates on reads | All filesystems on SSDs |
 | `discard=async` | Asynchronous TRIM (Btrfs default since kernel 6.2) | Btrfs — usually not needed in fstab |
-| `fstrim.timer` | Periodic TRIM via systemd timer | Ext4, XFS — preferred over `discard` mount option |
+| `fstrim.timer` | Periodic TRIM via [systemd](../../glossary.md#systemd) timer | Ext4, XFS — preferred over `discard` mount option |
 
 !!! tip "Quick recommendation"
     For most users: NVMe SSD, Ext4 with `noatime`, enable `fstrim.timer`. That covers the essentials.
@@ -73,7 +73,7 @@ The right mount options can reduce unnecessary I/O overhead:
 UUID=<ext4-uuid> /mnt/xplane ext4 defaults,noatime 0 2
 ```
 
-Enable periodic TRIM:
+Enable periodic [TRIM](../../glossary.md#trim):
 
 ```bash
 sudo systemctl enable --now fstrim.timer
