@@ -21,7 +21,7 @@ XCamera wird aktiv gepflegt. Das [Plugin](../../glossary.md#plugin) ist ein eige
 - **Kamera-Übergänge:** Smooth- und Bezier-Curve-Transitionen zwischen Kameras, automatische Sequenzen
 - **Airport-Kameras:** Automatisch generierte Kameras an Gates, Schildern, Runways und Tower-Positionen
 - **Walk Mode / Free Camera:** Freie Bewegung per Tastatur im und um das Flugzeug
-- **G-Loaded Camera:** Ersetzt ab X-Plane 12.4.1 die frühere Cinema-Verite-Funktion
+- **G-Loaded Camera:** Simuliert Kopfbewegungen durch G-Kräfte bei Flugmanövern
 - **External Cameras:** Konfigurierbare Außenansichten mit Orbit und Fly-by
 - **AI Aircraft Views:** Blick aus der Perspektive von AI-Flugzeugen
 - **Mini Control Panel:** Farbkodiertes dynamisches Panel für schnelle Kameraauswahl

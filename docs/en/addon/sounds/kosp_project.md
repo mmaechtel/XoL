@@ -17,8 +17,8 @@ KOSP Project is a comprehensive FMOD sound replacement for the ToLiss A319, A320
 - **Cockpit sounds:** Switches, buttons, rotary knobs, doors — recorded on a real A320
 - **System sounds:** APU, PTU, hydraulics, landing gear, blower, cabin acoustics
 - **Environmental:** Environmental sounds, ambient noise, ground roll
-- **100% surround sound** since v1.2
-- **C plugin** (since v1.6) with in-sim menu for mixer, equalizer, speaker/headset configuration
+- **100% surround sound**
+- **C plugin** with in-sim menu for mixer, equalizer, speaker/headset configuration
 
 ## Supported Aircraft
 
