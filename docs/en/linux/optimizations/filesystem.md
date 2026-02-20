@@ -11,9 +11,9 @@ X-Plane, a data-intensive flight simulator, places high demands on storage bandw
 
 ### SSD Types and Sizes
 
-For optimal performance, an **NVMe SSD** (PCIe 3.0 or better 4.0) with at least 1 TB capacity is recommended. **NVMe SSDs** (Non-Volatile Memory Express) offer significantly higher read and write speeds of up to 7000 MB/s (PCIe 4.0) compared to **SATA SSDs**, which reach a maximum of 550 MB/s. The higher speed is achieved through a direct connection to the **PCIe bus**, bypassing the slower SATA interface.
+For optimal performance, an **NVMe SSD** (PCIe 3.0 or better 4.0) with at least 1 TB capacity is recommended. NVMe SSDs offer significantly higher read and write speeds — up to ~3500 MB/s (PCIe 3.0) or ~7000 MB/s (PCIe 4.0) — compared to SATA SSDs, which reach a maximum of 550 MB/s. The higher speed is achieved through a direct connection to the PCIe bus, bypassing the slower SATA interface.
 
-The minimum size of 1 TB is recommended because X-Plane itself requires about 100-150 GB, and scenery and add-ons can quickly occupy several hundred GB. Additionally, at least 20% free storage space is required for optimal performance, as SSDs need this overhead for **wear leveling** and **garbage collection**.
+The minimum size of 1 TB is recommended because X-Plane 12 with full global scenery requires approximately 80–100 GB, and third-party scenery and add-ons can quickly add several hundred GB more. Additionally, at least 10–15% free storage space is recommended for optimal performance, as SSDs use this headroom for wear leveling and garbage collection.
 
 ### Multi-Drive Configurations
 
@@ -23,19 +23,20 @@ A combination of **SSD** and **HDD** provides a practical solution for storing X
 
 For users seeking maximum performance, combining multiple SSDs in a **RAID** array (Redundant Array of Independent Disks) offers interesting possibilities. The most common configurations are **RAID-0** and **RAID-1**, each with its own advantages and disadvantages.
 
-**RAID-0** (Striping) distributes data across all SSDs and offers the highest performance, as read and write speeds scale almost linearly with the number of SSDs. With three SSDs, performance can be nearly tripled. However, **RAID-0** offers no redundancy – failure of one SSD leads to loss of all data. This configuration is particularly interesting for X-Plane, as the performance benefits are noticeable with large scenery and complex airports. The lack of redundancy, however, requires a careful backup strategy.
+**RAID-0** (Striping) distributes data across all SSDs and offers the highest throughput for sequential operations. With three SSDs, sequential read/write speeds can approach triple that of a single drive — random I/O improvements are smaller. However, RAID-0 offers no redundancy — failure of one SSD leads to loss of all data.
 
-**RAID-1** (Mirroring) stores data redundantly on all SSDs. Performance corresponds to that of a single SSD, but data is protected against failures. This configuration is particularly useful when data integrity is more important than maximum performance. However, the available capacity is divided by the number of SSDs – with three SSDs, only one-third of the total capacity is available.
+!!! warning "RAID-0: No redundancy"
+    Any single drive failure destroys all data in the array. A backup strategy is essential — see [Backup Strategies](#backup-strategies).
 
-An interesting alternative is the combination of **RAID-0** and **RAID-1** in a **RAID-10** setup. This requires at least four SSDs but offers both high performance and redundancy. Data is striped across two **RAID-0** arrays, which are then mirrored. Performance lies between that of a single **RAID-0** and **RAID-1**, while maintaining redundancy.
+**RAID-1** (Mirroring) stores data redundantly. In standard RAID-1, data is mirrored across two drives, providing 50% usable capacity. Btrfs RAID-1 stores two copies regardless of drive count, so with three SSDs, approximately half the total capacity is available. Read performance improves (reads can be distributed), but write speed corresponds to a single drive.
 
-When planning a **RAID** setup, the following aspects should be considered:
+When planning a RAID setup, the following aspects should be considered:
 
 - All SSDs should be identical (same capacity and speed)
 - Total capacity must be sufficient for X-Plane and all scenery
-- Choice of filesystem (**Btrfs**, **ZFS**) can affect **RAID** functionality
+- Choice of filesystem (Btrfs, ZFS) can affect RAID functionality
 
-A detailed guide for setting up a **RAID-0** configuration can be found in the section [Practical Example: RAID-0 with Three SSDs](#practical-example-raid-0-with-three-ssds).
+A detailed guide for setting up a RAID-0 configuration can be found in the section [Practical Example: RAID-0 with Three SSDs](#practical-example-raid-0-with-three-ssds).
 
 ## Filesystem Types
 
@@ -49,7 +50,28 @@ The standard filesystem **Ext4** for most Linux distributions offers a good bala
 
 Using a single **partition** on an SSD simplifies management and allows X-Plane quick access to all data. Modern SSDs, especially **NVMe** models, suffer no significant performance degradation from **fragmentation**. With multiple partitions on an SSD, there is minimal overhead from partition switching. This impact is usually negligible with high-performance SSDs. Nevertheless, it is recommended to store X-Plane and related data on a single partition.
 
-The right **mount options** can significantly improve performance. The `noatime` option reduces unnecessary write operations by not updating file access times, while `discard` enables **TRIM** (a command that helps SSDs manage free storage space) for SSDs, and `autodefrag` optimizes file arrangement for large files. These options can be configured in `/etc/fstab`. For optimal SSD performance, regular SSD health checks should be performed and current drivers and kernel updates should be used.
+The right mount options can reduce unnecessary I/O overhead:
+
+| Option | Effect | Recommended for |
+|--------|--------|-----------------|
+| `noatime` | Skips access time updates on reads | All filesystems on SSDs |
+| `discard=async` | Asynchronous TRIM (Btrfs default since kernel 6.2) | Btrfs — usually not needed in fstab |
+| `fstrim.timer` | Periodic TRIM via systemd timer | Ext4, XFS — preferred over `discard` mount option |
+
+!!! tip "Quick recommendation"
+    For most users: NVMe SSD, Ext4 with `noatime`, enable `fstrim.timer`. That covers the essentials.
+
+**Ext4 example** (`/etc/fstab`):
+
+```
+UUID=<ext4-uuid> /mnt/xplane ext4 defaults,noatime 0 2
+```
+
+Enable periodic TRIM:
+
+```bash
+sudo systemctl enable --now fstrim.timer
+```
 
 ## Practical Example: RAID-0 with Three SSDs
 
@@ -101,7 +123,7 @@ Setting up a **RAID-0** array requires three identical SSDs (same capacity and s
 6. **Enable TRIM**
    Add the following line to `/etc/fstab`:
    ```
-   UUID=<btrfs-uuid> /mnt/xplane btrfs defaults,discard 0 2
+   UUID=<btrfs-uuid> /mnt/xplane btrfs defaults,noatime 0 0
    ```
    The UUID is determined with:
    ```bash
@@ -118,10 +140,10 @@ Setting up a **RAID-0** array requires three identical SSDs (same capacity and s
    cp -r /path/to/xplane /mnt/xplane/
    ```
 
-9. **Optimize for X-Plane**
-   Extend mount options in `/etc/fstab`:
-   ```
-   UUID=<btrfs-uuid> /mnt/xplane btrfs defaults,discard,noatime,autodefrag 0 2
+9. **Verify TRIM**
+   Btrfs enables `discard=async` by default on SSDs since kernel 6.2. Verify:
+   ```bash
+   findmnt -o FSTYPE,OPTIONS /mnt/xplane | grep discard
    ```
 
 10. **Restart System and Test**
@@ -135,7 +157,7 @@ Setting up a **RAID-0** array requires three identical SSDs (same capacity and s
 
 ### Performance Benefits and Important Notes
 
-The **RAID-0** setup with three SSDs achieves nearly triple read and write speeds compared to a single SSD. This results in shorter loading times for scenery, faster texture streaming, and a smoother experience in complex environments.
+The RAID-0 setup with three SSDs can approach triple sequential throughput compared to a single SSD. For X-Plane's scenery loading (many small texture files), the improvement is smaller but still noticeable — shorter loading times and smoother texture streaming in complex environments.
 
 All three SSDs must be identical, both in capacity and speed. The condition of the SSDs should be regularly checked, for example with the command `sudo smartctl -a /dev/sda`.
 
@@ -151,8 +173,8 @@ Tools like `rsync` or `borg` are used for automated backups:
 # Example for daily backup with rsync
 rsync -av --delete /mnt/xplane/ /backup/xplane/daily/
 
-# Example for weekly backup with borg
-borg create /backup/xplane/weekly::$(date +%Y-%m-%d) /mnt/xplane/
+# Example for weekly backup with borg (Borg 2.x syntax)
+borg -r /backup/xplane/weekly create $(date +%Y-%m-%d) /mnt/xplane/
 ```
 
 Regular recovery tests are performed to verify backup integrity. The recovery process is documented and necessary tools are kept ready.
@@ -161,7 +183,17 @@ Regular recovery tests are performed to verify backup integrity. The recovery pr
 
 The optimal configuration for X-Plane under Linux consists of a single partition on a fast **NVMe SSD** with the **Ext4** filesystem. Enabled **TRIM** and optimized **mount options**, as well as sufficient free storage space, are additional important factors. This configuration minimizes loading times and ensures a smooth flight experience in X-Plane.
 
-For users seeking maximum performance, a **RAID-0** with **Btrfs** on three SSDs offers a powerful alternative. The configuration minimizes loading times and optimizes scenery streaming. Using **Btrfs** with **TRIM**, noatime, and autodefrag maintains SSD performance long-term. A carefully planned backup strategy is essential to prevent data loss and ensure flight operation continuity.
+For users seeking maximum performance, a **RAID-0** with **Btrfs** on three SSDs offers a powerful alternative. The configuration minimizes loading times and optimizes scenery streaming. Using **Btrfs** with **TRIM** and `noatime` maintains SSD performance long-term. A carefully planned backup strategy is essential to prevent data loss and ensure flight operation continuity.
+
+---
+
+## Sources
+
+- [Btrfs Wiki — Mount Options](https://btrfs.readthedocs.io/en/latest/Administration.html)
+- [Arch Wiki — Btrfs](https://wiki.archlinux.org/title/Btrfs)
+- [Arch Wiki — Solid state drive](https://wiki.archlinux.org/title/Solid_state_drive)
+- [Kernel Documentation — Ext4](https://docs.kernel.org/filesystems/ext4/index.html)
+- [BorgBackup Documentation](https://borgbackup.readthedocs.io/en/stable/)
 
 ---
 
