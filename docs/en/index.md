@@ -37,6 +37,7 @@ This documentation is an open project. Improvements or additions can be contribu
 
 ### 2026-02-20
 - New page [XP Walkaround](addon/cockpit/xpwalkaround.md) — Pre-flight aircraft inspection with interactive exterior elements and SimpleWalkaround as free alternative
+- [System Tuning](linux/system/systemtuning.md) and [Performance](xplane/setup_diagnose/performance.md) corrected: Fixed factual errors (schedutil/Liquorix, MangoHUD log path, outdated source URL, optimization table)
 
 ### 2026-02-19
 - New page [Xchecklist](addon/cockpit/xchecklist.md) — Interactive checklists with Linux TTS via speech-dispatcher

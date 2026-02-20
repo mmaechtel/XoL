@@ -132,7 +132,7 @@ Launch:
 ```
 
 !!! note "About the priority"
-    `SCHED_FIFO` priority 45 is below critical kernel threads such as IRQ handlers (priority 50) but well above normal processes. Values above 50 can preempt kernel housekeeping and cause instability.
+    `SCHED_FIFO` priority 45 is below the default priority of kernel threaded IRQ handlers (priority 50) but well above normal processes. Values above 50 risk preempting kernel housekeeping threads and can cause instability.
 
 **Optional: CPU Isolation**
 
@@ -189,7 +189,7 @@ cat /sys/devices/system/cpu/cpu0/cpufreq/scaling_governor
 ```
 
 !!! note "Why `ondemand` instead of `schedutil`?"
-    `schedutil` relies on utilization signals from the mainline CFS/[EEVDF](../../glossary.md#eevdf-earliest-eligible-virtual-deadline-first) scheduler. However, Liquorix uses the PDS alternative scheduler, which does not provide these signals — `schedutil` is therefore not compiled in. `ondemand` also adjusts CPU frequency based on load but works independently of the scheduler.
+    `schedutil` relies on utilization signals (PELT — Per-Entity Load Tracking) from the mainline CFS/[EEVDF](../../glossary.md#eevdf-earliest-eligible-virtual-deadline-first) scheduler. Liquorix uses the PDS alternative scheduler, which does not provide these signals correctly — `schedutil` locks the CPU at maximum frequency, offering no advantage over the `performance` governor. `ondemand` also adjusts CPU frequency based on load but works independently of the scheduler.
 
 Optionally set Energy Performance Preference:
 

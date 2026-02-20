@@ -3,7 +3,7 @@ description: "Performance-Analyse von X-Plane 12 unter Linux: Microprofiler für
 ---
 # X-Plane Performance unter Linux
 
-X-Plane 12 ist eine Cross-Plattform-Anwendung — die allgemeinen Grafikeinstellungen (Texturen, Schatten, Wolken, Antialiasing) funktionieren auf allen Betriebssystemen gleich und sind in der [offiziellen Dokumentation](https://www.x-plane.com/kb/configuring-the-rendering-options/) beschrieben. Diese Seite behandelt die Performance-**Analyse** unter Linux: interne Diagnose-Tools, Linux-spezifische Monitoring-Werkzeuge und gezielte Optimierungsempfehlungen. Die Linux-Grafikeinstellungen selbst sind unter [Konfiguration](config.md) dokumentiert, Systemtuning unter [Systemtuning](../../linux/system/systemtuning.md).
+X-Plane 12 ist eine Cross-Plattform-Anwendung — die allgemeinen Grafikeinstellungen (Texturen, Schatten, Wolken, Antialiasing) funktionieren auf allen Betriebssystemen gleich und sind im [X-Plane 12 Desktop Manual](https://www.x-plane.com/manuals/desktop/) beschrieben. Diese Seite behandelt die Performance-**Analyse** unter Linux: interne Diagnose-Tools, Linux-spezifische Monitoring-Werkzeuge und gezielte Optimierungsempfehlungen. Die Linux-Grafikeinstellungen selbst sind unter [Konfiguration](config.md) dokumentiert, Systemtuning unter [Systemtuning](../../linux/system/systemtuning.md).
 
 ## Interne Diagnose-Tools
 
@@ -110,7 +110,7 @@ font_size=20
 | `Shift_R+F12` | Overlay ein/aus |
 | `Shift_L+F2` | CSV-Logging starten/stoppen |
 
-CSV-Logging zeichnet die Messwerte auf und eignet sich für Post-Flug-Analyse — die Logdateien liegen unter `/tmp/MangoHud/`.
+CSV-Logging zeichnet die Messwerte auf und eignet sich für Post-Flug-Analyse. Das Log-Verzeichnis wird über `output_folder` in der MangoHUD-Konfiguration festgelegt — ohne diese Einstellung landen Logs im `$HOME`-Verzeichnis.
 
 ### GPU-Monitoring
 
@@ -151,7 +151,8 @@ Der Microprofiler zeigt, wo die Frame-Zeit verloren geht. Die folgende Tabelle o
 |---------|----------|-------------|
 | CPU (Physik) | Flight Models reduzieren | Flight Models per Frame: 2–4 |
 | CPU (Plugins) | Aufwändige Addons deaktivieren | — |
-| CPU (Szenerie) | Objekte und KI-Flugzeuge reduzieren | Object Density senken |
+| CPU (Szenerie) | Objektdichte reduzieren | Object Density senken |
+| CPU (Traffic) | KI-Flugzeuge reduzieren | Flight Configuration: weniger AI Aircraft |
 | GPU (Texturen) | Texturqualität senken | Texture Quality: Medium oder High |
 | GPU (Schatten) | Schatten und Antialiasing reduzieren | Shadow Quality und MSAA-Stufe senken |
 | GPU (Wolken) | Wolkenqualität anpassen | Cloud Quality senken |
@@ -176,5 +177,5 @@ Für Linux-spezifische Optimierungen (CPU-Governor, Interrupt-Routing, Speicherp
 ## Quellen
 
 - [MangoHUD — GitHub](https://github.com/flightlessmango/MangoHud)
-- [X-Plane 12 — Rendering Options](https://www.x-plane.com/kb/configuring-the-rendering-options/)
+- [X-Plane 12 — Desktop Manual](https://www.x-plane.com/manuals/desktop/)
 - [nvidia-smi Documentation](https://developer.nvidia.com/nvidia-system-management-interface)

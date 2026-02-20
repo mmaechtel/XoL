@@ -132,7 +132,7 @@ Starten:
 ```
 
 !!! note "Zur Priorität"
-    `SCHED_FIFO` Priorität 45 liegt unterhalb kritischer Kernel-Threads wie IRQ-Handler (Priorität 50), aber deutlich über normalen Prozessen. Werte über 50 können Kernel-Housekeeping preemptieren und zu Instabilität führen.
+    `SCHED_FIFO` Priorität 45 liegt unterhalb der Standardpriorität von Kernel-Threaded-IRQ-Handlern (Priorität 50), aber deutlich über normalen Prozessen. Werte über 50 können Kernel-Housekeeping-Threads preemptieren und zu Instabilität führen.
 
 **Optional: CPU-Isolation**
 
@@ -189,7 +189,7 @@ cat /sys/devices/system/cpu/cpu0/cpufreq/scaling_governor
 ```
 
 !!! note "Warum `ondemand` statt `schedutil`?"
-    `schedutil` bezieht Auslastungssignale direkt vom Mainline-CFS/[EEVDF](../../glossary.md#eevdf-earliest-eligible-virtual-deadline-first)-Scheduler. Liquorix nutzt jedoch den alternativen PDS-Scheduler, der diese Signale nicht bereitstellt — `schedutil` wird daher gar nicht erst einkompiliert. `ondemand` passt den CPU-Takt ebenfalls lastabhängig an, arbeitet aber unabhängig vom Scheduler.
+    `schedutil` bezieht Auslastungssignale (PELT — Per-Entity Load Tracking) vom Mainline-CFS/[EEVDF](../../glossary.md#eevdf-earliest-eligible-virtual-deadline-first)-Scheduler. Liquorix nutzt jedoch den alternativen PDS-Scheduler, der diese Signale nicht korrekt liefert — `schedutil` fixiert den CPU-Takt auf Maximalfrequenz und bietet damit keinen Vorteil gegenüber dem `performance`-Governor. `ondemand` passt den CPU-Takt ebenfalls lastabhängig an, arbeitet aber unabhängig vom Scheduler.
 
 Optional Energy Performance Preference setzen:
 
