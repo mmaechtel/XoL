@@ -17,9 +17,10 @@ Workflow und Phasen-Beschreibung: siehe `CLAUDE.md` → Dokumentations-Workflow.
 | 8     | `kvm.md`            | offen       | WiP-Abschnitt ausbauen oder entfernen               |
 | 11    | `addon/xorganizer.md` | offen     | Wine-Installation und Workflow-Hinweise             |
 | 12    | Verzeichnisnamen    | offen       | DE-Verzeichnisnamen in EN-Pfaden (`systemfehler/`, `aufbau_quellen/`, `setup_diagnose/`) auf englische Namen migrieren |
-| 13    | `addon/cockpit/xchecklist.md` | umgesetzt | Xchecklist: Interaktive Checklisten mit Linux-TTS |
-| 14    | `addon/cockpit/opentrack.md` | umgesetzt | OpenTrack: Headtracking unter Linux |
-| 15    | `addon/tools/xlinspeak.md` | umgesetzt | XLinSpeak ergänzen: Piper TTS Manager |
+| 13    | `addon/cockpit/xchecklist.md` | geprüft | Xchecklist: Interaktive Checklisten mit Linux-TTS |
+| 14    | `addon/cockpit/opentrack.md` | geprüft | OpenTrack: Headtracking unter Linux |
+| 15    | `addon/tools/xlinspeak.md` | geprüft | XLinSpeak ergänzen: Piper TTS Manager |
+| 16    | `addon/cockpit/xpwalkaround.md` | geprüft | XP Walkaround: First-Person-Walkaround |
 
 ---
 
@@ -158,7 +159,7 @@ Anleitung: Wie man unter Debian zwischen zwei installierten Kerneln (Standard + 
 
 ### 13. `addon/cockpit/xchecklist.md` — Xchecklist
 
-**Status:** geplant
+**Status:** geprüft
 **Nav-Position:** Addon > Cockpit
 
 Interaktive Checklisten mit TTS unter Linux. Nativ (lin.xpl), Open Source (MIT), v1.53. Linux-Spezifikum: TTS via libspeechd/speech-dispatcher. Querverweis auf XLinSpeak.
@@ -174,7 +175,7 @@ Interaktive Checklisten mit TTS unter Linux. Nativ (lin.xpl), Open Source (MIT),
 
 ### 14. `addon/cockpit/opentrack.md` — OpenTrack Headtracking
 
-**Status:** geplant
+**Status:** geprüft
 **Nav-Position:** Addon > Cockpit
 
 OpenTrack als Hauptlösung für Headtracking unter Linux. NeuralNet Tracker (Webcam, kein Hardware nötig), HeadTrack-Plugin (amyinorbit) als empfohlene X-Plane-Bridge via UDP:4242. Build-Anleitung für Debian. Querverweis von linuxtrack.md.
@@ -190,14 +191,26 @@ OpenTrack als Hauptlösung für Headtracking unter Linux. NeuralNet Tracker (Web
 
 ### 15. XLinSpeak ergänzen — Piper TTS Manager
 
-**Status:** geplant
+**Status:** geprüft
 
-Bestehende XLinSpeak-Seite um Abschnitt zu Piper TTS Manager (PTTSM) ergänzen. Hochwertige neuronale Sprachsynthese via FlyWithLua + Piper. Pre-Release, aber auf Linux bestätigt.
+Bestehende XLinSpeak-Seite um Abschnitt zu Piper TTS Manager (PTTSM) ergänzt. Hochwertige neuronale Sprachsynthese via FlyWithLua + Piper.
 
 **Research-Papers:**
 
 - `research/addons/xplane_addon_plugins_linux.md` (Abschnitt 6)
 - `research/addons/LEKTORAT_xplane_addon_plugins_linux.md`
+
+---
+
+### 16. `addon/cockpit/xpwalkaround.md` — XP Walkaround
+
+**Status:** geprüft
+
+**Ergebnis:** First-Person-Walkaround mit Flashlight, Campsite-System und Mouse Look. Faktencheck gegen Gumroad-Produktseite, 10 falsche Claims korrigiert (stammten von VFRScenery's WalkAround), Glossar-Check sauber.
+
+**Research-Papers:**
+
+- `research/addons/FAKTENCHECK_xpwalkaround.md`
 
 ---
 

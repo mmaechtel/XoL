@@ -3,7 +3,7 @@ description: "XLinSpeak adds text-to-speech for X-Plane plugins on Linux via spe
 ---
 # XLinSpeak
 
-XLinSpeak is a Linux-only [plugin](../../glossary.md#plugin) that adds text-to-speech (TTS) support for X-Plane plugins. On Windows and macOS, X-Plane uses the platform's native speech engines — on Linux, this integration is missing. XLinSpeak fills this gap via speech-dispatcher.
+XLinSpeak is a Linux-only [plugin](../../glossary.md#plugin) that adds text-to-speech (TTS) support for [X-Plane](../../glossary.md#x-plane) plugins. On Windows and macOS, X-Plane uses the platform's native speech engines — on Linux, this integration is missing. XLinSpeak fills this gap via speech-dispatcher.
 
 ## Background
 
@@ -13,7 +13,7 @@ XLinSpeak is a Linux-only [plugin](../../glossary.md#plugin) that adds text-to-s
 - **Platform:** Linux only
 - **Compatibility:** X-Plane 12 (sparker256 fork)
 
-X-Plane 12 uses pre-recorded audio files for its built-in ATC, which work on Linux without any TTS engine. XLinSpeak is primarily needed for **plugin-generated speech** — such as [Xchecklist](../cockpit/xchecklist.md) announcements, 124thATC, or other plugins calling `XPLMSpeakString()`.
+X-Plane 12 uses pre-generated audio files for its built-in ATC, which work on Linux without any TTS engine. XLinSpeak is primarily needed for **plugin-generated speech** — such as [Xchecklist](../cockpit/xchecklist.md) announcements, 124thATC, or other plugins calling `XPLMSpeakString()`.
 
 ## Features
 
@@ -55,7 +55,7 @@ Piper TTS Manager (PTTSM) is a FlyWithLua script that provides high-quality neur
 
 - **Developer:** JT8D-17 (BK)
 - **Repository:** [github.com/JT8D-17/Piper-TTS-Manager-for-X-Plane](https://github.com/JT8D-17/Piper-TTS-Manager-for-X-Plane) (EUPL-1.2)
-- **Status:** Active development (no versioned releases)
+- **Status:** No versioned releases
 - **Platform:** All (FlyWithLua-based)
 
 PTTSM monitors a text input file and generates WAV audio via Piper whenever new text appears. It was developed for X-ATC-Chatter's SimpleATC module and supports multiple voice models assigned to different actors.
@@ -66,7 +66,6 @@ PTTSM monitors a text input file and generates WAV audio via Piper whenever new 
 - Piper TTS binary — Linux build available from [OHF-Voice/piper1-gpl](https://github.com/OHF-Voice/piper1-gpl/releases) (successor to the archived rhasspy/piper)
 - Voice models (`.onnx` + `.onnx.json`) from [Hugging Face piper-voices](https://huggingface.co/rhasspy/piper-voices/tree/main)
 
-Confirmed working on Debian/Ubuntu 22.04 and Fedora 39.
 
 !!! note "XLinSpeak and PTTSM solve different problems"
 
@@ -78,7 +77,7 @@ Confirmed working on Debian/Ubuntu 22.04 and Fedora 39.
 |----------|-----------|---------|----------|
 | XLinSpeak + espeak-ng | Hooks `XPLMSpeakString()` → speech-dispatcher | Functional (robotic) | Plugin speech ([Xchecklist](../cockpit/xchecklist.md), 124thATC) |
 | Piper TTS Manager | FlyWithLua + Piper neural models | High (natural) | X-ATC-Chatter, custom TTS |
-| X-Plane 12 built-in ATC | Pre-recorded audio files | Good | Standard ATC (works on all platforms) |
+| X-Plane 12 built-in ATC | Pre-generated audio files | Good | Standard ATC (works on all platforms) |
 
 ## Sources
 
