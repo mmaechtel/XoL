@@ -39,6 +39,7 @@ This documentation is an open project. Improvements or additions can be contribu
 - New page [XP Walkaround](addon/cockpit/xpwalkaround.md) — Pre-flight aircraft inspection with interactive exterior elements and SimpleWalkaround as free alternative
 - [System Tuning](linux/system/systemtuning.md) and [Performance](xplane/setup_diagnose/performance.md) corrected: Fixed factual errors (schedutil/Liquorix, MangoHUD log path, outdated source URL, optimization table)
 - [Filesystem](linux/optimizations/filesystem.md) corrected: Fixed RAID-0/RAID-1 capacity claims, removed harmful autodefrag on SSDs, updated mount options and Borg 2.x syntax, added sources
+- [Filesystem](linux/optimizations/filesystem.md) revised: Filesystem comparison table, reduced bold formatting, removed redundant Conclusion, aligned section order with other pages
 
 ### 2026-02-19
 - New page [Xchecklist](addon/cockpit/xchecklist.md) — Interactive checklists with Linux TTS via speech-dispatcher

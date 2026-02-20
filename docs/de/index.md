@@ -39,6 +39,7 @@ Diese Dokumentation ist ein offenes Projekt. Verbesserungen oder Ergänzungen k�
 - Neue Seite [XP Walkaround](addon/cockpit/xpwalkaround.md) — Pre-Flight-Inspektion mit interaktiven Außenelementen und SimpleWalkaround als kostenlose Alternative
 - [Systemtuning](linux/system/systemtuning.md) und [Performance](xplane/setup_diagnose/performance.md) korrigiert: Sachfehler behoben (schedutil/Liquorix, MangoHUD-Log-Pfad, veraltete Quell-URL, Optimierungstabelle)
 - [Dateisystem](linux/optimizations/filesystem.md) korrigiert: RAID-0/RAID-1-Kapazitätsangaben berichtigt, schädliches autodefrag auf SSDs entfernt, Mount-Optionen und Borg-2.x-Syntax aktualisiert, Quellen ergänzt
+- [Dateisystem](linux/optimizations/filesystem.md) überarbeitet: Dateisystem-Vergleichstabelle, Fett-Formatierung reduziert, redundantes Fazit entfernt, Abschnittsreihenfolge an andere Seiten angeglichen
 
 ### 2026-02-19
 - Neue Seite [Xchecklist](addon/cockpit/xchecklist.md) — Interaktive Checklisten mit Linux-TTS über speech-dispatcher
