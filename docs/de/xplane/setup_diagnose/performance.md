@@ -72,6 +72,9 @@ sudo apt install mangohud
 mangohud ./X-Plane-x86_64
 ```
 
+!!! warning "Wayland + NVIDIA: Fehlende GPU-Metriken"
+    Das Debian-Paket wird ohne NVML-Unterstützung (NVIDIA Management Library) gebaut. Auf Wayland fehlen GPU-Metriken (Last, Temperatur, Takt, VRAM), da die X11-basierte XNVCtrl-Bibliothek dort nicht funktioniert. Abhilfe: MangoHUD aus dem Quellcode mit `-Dwith_nvml=enabled` bauen oder die Flatpak-Version nutzen. Unter X11 tritt diese Einschränkung nicht auf.
+
 **Angezeigte Metriken**
 
 - FPS und Frame-Time-Graph
