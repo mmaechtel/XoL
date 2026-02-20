@@ -1,44 +1,49 @@
 ---
-description: "XP Walkaround for X-Plane — pre-flight aircraft inspection with interactive exterior elements. Native Linux plugin with SimpleWalkaround as free alternative."
+description: "XP Walkaround for X-Plane 12 — first-person walkaround with flashlight, campsite system, and mouse look. Native Linux plugin with SimpleWalkaround as free alternative."
 ---
 # XP Walkaround
 
-XP Walkaround is a commercial [plugin](../../glossary.md#plugin) for [X-Plane](../../glossary.md#x-plane) that enables pre-flight aircraft inspections from the outside — walking around the aircraft, checking exterior elements, and interacting with chocks, doors, and remove-before-flight tags. The plugin runs natively on Linux.
+XP Walkaround is a commercial [plugin](../../glossary.md#plugin) for [X-Plane](../../glossary.md#x-plane) 12 that adds first-person movement outside the cockpit — walking around the aircraft, exploring the airport environment, and inspecting the ramp at night with a built-in flashlight. The plugin runs natively on Linux.
 
 ## Background
 
-- **Developer:** VFRScenery
-- **Store:** [X-Plane.org Store](https://store.x-plane.org/WalkAround-Plugin-for-X-Plane-12-and-11_p_1687.html) (commercial, $19.99)
+- **Developer:** clemacamelc
+- **Store:** [Gumroad](https://clemacamelc.gumroad.com/l/xpwalkaround) (commercial)
 - **Platforms:** Windows, macOS, Linux
-- **Compatibility:** X-Plane 11, 12
+- **Compatibility:** X-Plane 12
+
+The plugin ships native binaries for all three platforms — no additional system packages or dependencies required on Linux.
 
 ## Features
 
-- **Exterior walkaround:** Walk around the aircraft at two speeds before takeoff
-- **Interactive elements:** Chocks, remove-before-flight tags, and doors on compatible aircraft (depends on aircraft developer support)
-- **Movement controls:** E-key to stand up from any position, spacebar + click for exterior interaction
-- **Synchronized footsteps:** Audio feedback while walking
-- **Wide aircraft support:** Default aircraft, ToLiss, FlightFactor, IXEG, Rotate MD-11, Aerobask, CRJ, FlyJSim, Vskylabs
+- **Walk Mode:** Leave the cockpit and move freely around the aircraft and airport. Enter or exit via the plugin window, Plugins menu, or ESC key.
+- **First/third-person view:** Switch between first-person and third-person perspective
+- **Mouse Look:** Toggle with M key for natural look-around while walking. Optional inverted Y axis. When disabled, X-Plane's default right-click camera remains intact.
+- **Flashlight:** Toggle with F key for dark cockpits, cabins, and nighttime ramp inspections. Volume adjustable via plugin settings.
+- **Campsite System:** Spawn a campsite with campfire in front of the current view (requires X-Plane 12.04+). Build, cancel, or tear down from the UI. Designed for bush flying and remote operations.
+- **Movement controls:** WASD movement, Q/E lean, C crouch, Backspace jump, ESC exit Walk Mode
+- **Plugin window:** Floating, resizable ImGui window accessible via Plugins menu. Optional automatic display on startup.
+- **Persistent settings:** View height, sound volume, mouse invert, and window preferences saved between sessions
 
 ## Value in Flight Simulation
 
-XP Walkaround adds a pre-flight routine that mirrors real-world pilot procedures. Instead of jumping straight into the cockpit, pilots can inspect the aircraft exterior — checking control surfaces, engine intakes, and landing gear visually. This enhances immersion and encourages realistic departure procedures.
+Instead of being locked to the cockpit camera, pilots can step outside, walk around the aircraft, and explore the airport surroundings. The flashlight enables night inspections of cockpits and cargo areas. The campsite system adds atmosphere for bush flying at remote strips. Unlike many commercial X-Plane addons, the plugin includes a native Linux binary and works without compatibility layers or workarounds.
 
 ## Installation
 
-**Download:** [X-Plane.org Store](https://store.x-plane.org/WalkAround-Plugin-for-X-Plane-12-and-11_p_1687.html)
+**Download:** [Gumroad](https://clemacamelc.gumroad.com/l/xpwalkaround)
 
-Install as a standalone plugin into `Resources/plugins/`. No additional system packages or configuration required on Linux.
+Install as a standalone plugin into `Resources/plugins/`. Activate the Gumroad license key in the plugin window after first launch. No additional system packages or configuration required on Linux.
+
+!!! tip "Linux compatibility"
+
+    XP Walkaround works without restrictions on Linux. No additional configuration or workarounds required.
 
 ## Free Alternative: SimpleWalkaround
 
 [SimpleWalkaround](https://forums.x-plane.org/files/file/96508-simplewalkaround/) is a free plugin with similar walkaround functionality. It uses WASD movement controls, sprint (C), and crouch (X). The earlier SASL3 dependency has been removed.
 
-!!! note "SimpleWalkaround Linux support unconfirmed"
-
-    SimpleWalkaround has been tested on Windows. Linux compatibility is not explicitly confirmed by the developer — it may work but is not guaranteed.
-
 ## Sources
 
-- [XP Walkaround — X-Plane.org Store](https://store.x-plane.org/WalkAround-Plugin-for-X-Plane-12-and-11_p_1687.html)
+- [XP Walkaround — Gumroad](https://clemacamelc.gumroad.com/l/xpwalkaround)
 - [SimpleWalkaround — forums.x-plane.org](https://forums.x-plane.org/files/file/96508-simplewalkaround/)

@@ -36,8 +36,8 @@ Diese Dokumentation ist ein offenes Projekt. Verbesserungen oder Ergänzungen k�
 ## Letzte Änderungen
 
 ### 2026-02-20
-- Neue Seite [XP Walkaround](addon/cockpit/xpwalkaround.md) — Pre-Flight-Inspektion mit interaktiven Außenelementen und SimpleWalkaround als kostenlose Alternative
-- [Systemtuning](linux/system/systemtuning.md), [Performance](xplane/setup_diagnose/performance.md) und [Dateisystem](linux/optimizations/filesystem.md) korrigiert: Faktencheck gegen Primärquellen — RAID-Kapazitätsangaben, Mount-Optionen, schedutil/Liquorix-Interaktion und weitere Ungenauigkeiten behoben
+- Neue Seite [XP Walkaround](addon/cockpit/xpwalkaround.md) — First-Person-Walkaround mit Taschenlampe, Campsite-System und Mouse Look, SimpleWalkaround als kostenlose Alternative
+- [Systemtuning](linux/system/systemtuning.md), [Performance](xplane/setup_diagnose/performance.md) und [Dateisystem](linux/optimizations/filesystem.md) erweitert: Faktencheck gegen Primärquellen — RAID-Kapazitätsangaben, Mount-Optionen, schedutil/Liquorix-Interaktion und weitere Details präzisiert
 - [Performance](xplane/setup_diagnose/performance.md): MangoHUD-Warnung für Wayland + NVIDIA ergänzt (fehlende GPU-Metriken durch Debian-Paket ohne NVML)
 
 ### 2026-02-19
