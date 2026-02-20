@@ -186,6 +186,7 @@ Bei neuen Themen: bestehende Kategorie verwenden oder neue anlegen. `research/IN
 | `/embed-videos` | Umsetzung | MP4-Videos einbetten (Video-Seite + thematische Seiten), Poster generieren |
 | `/generate-notebooklm` | nach Umsetzung | TTS-optimiertes Skript für Google NotebookLM Audio Overview erstellen |
 | `/verify-commands` | nach Umsetzung | Dokumentierte Shell-Befehle interaktiv auf dem Debian-System testen |
+| `/review-cycle` | nach Umsetzung | Kompletter Prüfzyklus: Faktencheck (Fokus 2025+) + Lektorat + Bericht. Ändert keine Dateien. |
 | `/abschluss` | alle | Changelog in `index.md` (DE + EN) aktualisieren und Git-Commit erstellen |
 
 ---
