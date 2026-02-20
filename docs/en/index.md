@@ -36,6 +36,7 @@ This documentation is an open project. Improvements or additions can be contribu
 ## Recent Changes
 
 ### 2026-02-20
+- New section [Autogen](scenery/autogen/index.md) with [XPNetwork Europa](scenery/autogen/xpnetwork_europa.md) — OSM-based European road, rail, and maritime networks with localized traffic objects
 - New page [XP Walkaround](addon/cockpit/xpwalkaround.md) — First-person walkaround with flashlight, campsite system, and mouse look, SimpleWalkaround as free alternative
 - [System Tuning](linux/system/systemtuning.md), [Performance](xplane/setup_diagnose/performance.md), and [Filesystem](linux/optimizations/filesystem.md) extended: Fact-check against primary sources — refined RAID capacity details, mount options, schedutil/Liquorix interaction, and other specifics
 - [Performance](xplane/setup_diagnose/performance.md): Added MangoHUD warning for Wayland + NVIDIA (missing GPU metrics due to Debian package without NVML)

@@ -150,6 +150,9 @@ plugins:
                     - AutoOrtho: de/scenery/ortho_streaming/autoortho.md
                     - XEarthLayer: de/scenery/ortho_streaming/xearthlayer.md
                     - Statisch + Streaming: de/scenery/ortho_streaming/static_plus_streaming.md
+                - Autogen:
+                    - de/scenery/autogen/index.md
+                    - XPNetwork Europa: de/scenery/autogen/xpnetwork_europa.md
             - Addons:
                 - de/addon/index.md
                 - Scripting:
@@ -297,6 +300,9 @@ plugins:
                     - AutoOrtho: en/scenery/ortho_streaming/autoortho.md
                     - XEarthLayer: en/scenery/ortho_streaming/xearthlayer.md
                     - Static + Streaming: en/scenery/ortho_streaming/static_plus_streaming.md
+                - Autogen:
+                    - en/scenery/autogen/index.md
+                    - XPNetwork Europa: en/scenery/autogen/xpnetwork_europa.md
             - Addons:
                 - en/addon/index.md
                 - Scripting:
