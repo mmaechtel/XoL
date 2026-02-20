@@ -17,9 +17,9 @@ Workflow und Phasen-Beschreibung: siehe `CLAUDE.md` → Dokumentations-Workflow.
 | 8     | `kvm.md`            | offen       | WiP-Abschnitt ausbauen oder entfernen               |
 | 11    | `addon/xorganizer.md` | offen     | Wine-Installation und Workflow-Hinweise             |
 | 12    | Verzeichnisnamen    | offen       | DE-Verzeichnisnamen in EN-Pfaden (`systemfehler/`, `aufbau_quellen/`, `setup_diagnose/`) auf englische Namen migrieren |
-| 13    | `addon/cockpit/xchecklist.md` | geplant | Xchecklist: Interaktive Checklisten mit Linux-TTS |
-| 14    | `addon/cockpit/opentrack.md` | geplant | OpenTrack: Headtracking unter Linux |
-| 15    | `addon/tools/xlinspeak.md` | geplant | XLinSpeak ergänzen: Piper TTS Manager |
+| 13    | `addon/cockpit/xchecklist.md` | umgesetzt | Xchecklist: Interaktive Checklisten mit Linux-TTS |
+| 14    | `addon/cockpit/opentrack.md` | umgesetzt | OpenTrack: Headtracking unter Linux |
+| 15    | `addon/tools/xlinspeak.md` | umgesetzt | XLinSpeak ergänzen: Piper TTS Manager |
 
 ---
 

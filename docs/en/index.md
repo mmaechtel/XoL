@@ -35,6 +35,9 @@ This documentation is an open project. Improvements or additions can be contribu
 
 ## Recent Changes
 
+### 2026-02-20
+- New page [XP Walkaround](addon/cockpit/xpwalkaround.md) — Pre-flight aircraft inspection with interactive exterior elements and SimpleWalkaround as free alternative
+
 ### 2026-02-19
 - New page [Xchecklist](addon/cockpit/xchecklist.md) — Interactive checklists with Linux TTS via speech-dispatcher
 - New page [OpenTrack](addon/cockpit/opentrack.md) — Head tracking with NeuralNet webcam tracker and HeadTrack plugin setup
@@ -49,14 +52,6 @@ This documentation is an open project. Improvements or additions can be contribu
 - [XEarthLayer](scenery/ortho_streaming/xearthlayer.md) corrected: Fixed misleading Rust build environment requirement in comparison section
 - [XEarthLayer](scenery/ortho_streaming/xearthlayer.md) revised: Toned down stability warning to reflect current maturity, added CLI live status output to comparison table
 
-### 2026-02-17
-- New videos: [GPU & VRAM](fundamentals/performance/gpu_vram.md) — GPU performance and VRAM management (DE + EN)
-- Further Reading sections added across Linux, Flight Operations, Scenery, and X-Plane sections (33 pages)
-- [CPU & RAM](fundamentals/performance/cpu_ram.md), [GPU & VRAM](fundamentals/performance/gpu_vram.md), [Latency](fundamentals/performance/latency.md): Further Reading sections standardized with additional cross-references
-- New page [Latency and Predictability](fundamentals/performance/latency.md) — Why latency matters more than throughput, four latency sources
-- Complete restructure: All sections split into thematic subdirectories with section index pages — content summaries cascade from deepest level upward
-- New pages: [CPU & RAM](fundamentals/performance/cpu_ram.md) — Threading model and system memory, [GPU & VRAM](fundamentals/performance/gpu_vram.md) — Texture paging, driver differences and frame time analysis
-- New page: [Why Latency Matters](linux/system/latency.md) — Video introduction to the tuning philosophy
 
 
 

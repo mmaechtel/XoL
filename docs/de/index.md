@@ -35,6 +35,9 @@ Diese Dokumentation ist ein offenes Projekt. Verbesserungen oder Ergänzungen k�
 
 ## Letzte Änderungen
 
+### 2026-02-20
+- Neue Seite [XP Walkaround](addon/cockpit/xpwalkaround.md) — Pre-Flight-Inspektion mit interaktiven Außenelementen und SimpleWalkaround als kostenlose Alternative
+
 ### 2026-02-19
 - Neue Seite [Xchecklist](addon/cockpit/xchecklist.md) — Interaktive Checklisten mit Linux-TTS über speech-dispatcher
 - Neue Seite [OpenTrack](addon/cockpit/opentrack.md) — Head-Tracking mit NeuralNet-Webcam-Tracker und HeadTrack-Plugin-Einrichtung
@@ -49,14 +52,6 @@ Diese Dokumentation ist ein offenes Projekt. Verbesserungen oder Ergänzungen k�
 - [XEarthLayer](scenery/ortho_streaming/xearthlayer.md) korrigiert: Irreführende Rust-Build-Voraussetzung im Vergleichsabschnitt behoben
 - [XEarthLayer](scenery/ortho_streaming/xearthlayer.md) überarbeitet: Stabilitätswarnung an aktuelle Reife angepasst, CLI-Live-Statusanzeige in Vergleichstabelle ergänzt
 
-### 2026-02-17
-- Neue Videos: [GPU & VRAM](fundamentals/performance/gpu_vram.md) — GPU-Performance und VRAM-Management (DE + EN)
-- Weiterführende Kapitel in den Sektionen Linux, Flugbetrieb, Szenerie und X-Plane ergänzt (33 Seiten)
-- [CPU & RAM](fundamentals/performance/cpu_ram.md), [GPU & VRAM](fundamentals/performance/gpu_vram.md), [Latenz](fundamentals/performance/latency.md): Weiterführende Kapitel vereinheitlicht mit zusätzlichen Querverweisen
-- Neue Seite [Latenz und Vorhersagbarkeit](fundamentals/performance/latency.md) — Warum Latenz wichtiger ist als Durchsatz, vier Latenzquellen
-- Komplette Neustrukturierung: Alle Sektionen in thematische Unterverzeichnisse mit Übersichtsseiten aufgeteilt — inhaltliche Zusammenfassungen kaskadieren von der tiefsten Ebene aufwärts
-- Neue Seiten: [CPU & RAM](fundamentals/performance/cpu_ram.md) — Threading-Modell und Arbeitsspeicher, [GPU & VRAM](fundamentals/performance/gpu_vram.md) — Texture Paging, Treiber-Unterschiede und Frame-Time-Analyse
-- Neue Seite: [Warum Latenz zählt](linux/system/latency.md) — Video-Einführung in die Tuning-Philosophie
 
 
 

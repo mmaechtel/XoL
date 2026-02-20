@@ -185,6 +185,7 @@ plugins:
                     - OpenTrack: de/addon/cockpit/opentrack.md
                     - TerrainRadar: de/addon/cockpit/terrainradar.md
                     - KabinXP: de/addon/cockpit/kabinxp.md
+                    - XP Walkaround: de/addon/cockpit/xpwalkaround.md
                 - Verkehr & Bodenbetrieb:
                     - de/addon/traffic/index.md
                     - LiveTraffic: de/addon/traffic/livetraffic.md
@@ -331,6 +332,7 @@ plugins:
                     - OpenTrack: en/addon/cockpit/opentrack.md
                     - TerrainRadar: en/addon/cockpit/terrainradar.md
                     - KabinXP: en/addon/cockpit/kabinxp.md
+                    - XP Walkaround: en/addon/cockpit/xpwalkaround.md
                 - Traffic & Ground Ops:
                     - en/addon/traffic/index.md
                     - LiveTraffic: en/addon/traffic/livetraffic.md
