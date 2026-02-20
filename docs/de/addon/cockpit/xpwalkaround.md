@@ -41,8 +41,7 @@ Als Standalone-Plugin nach `Resources/plugins/` installieren. Nach dem ersten St
 
 ## Kostenlose Alternative: SimpleWalkaround
 
-[SimpleWalkaround](https://forums.x-plane.org/files/file/96508-simplewalkaround/) ist ein kostenloses Plugin mit ähnlicher Walkaround-Funktionalität. Es nutzt WASD-Bewegungssteuerung, Sprint (C) und Ducken (X). Die frühere SASL3-Abhängigkeit wurde inzwischen entfernt.
-
+[SimpleWalkaround](https://forums.x-plane.org/files/file/96508-simplewalkaround/) ist ein kostenloses Plugin für einfache Walkaround-Bewegung außerhalb des Cockpits. Es nutzt WASD-Bewegungssteuerung, Sprint (C) und Ducken (X), bietet aber nicht die erweiterten Funktionen von XP Walkaround wie Taschenlampe, Campsite-System, Mouse Look und persistente Einstellungen.
 ## Quellen
 
 - [XP Walkaround — Gumroad](https://clemacamelc.gumroad.com/l/xpwalkaround)

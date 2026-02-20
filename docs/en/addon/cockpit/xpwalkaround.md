@@ -41,8 +41,7 @@ Install as a standalone plugin into `Resources/plugins/`. Activate the Gumroad l
 
 ## Free Alternative: SimpleWalkaround
 
-[SimpleWalkaround](https://forums.x-plane.org/files/file/96508-simplewalkaround/) is a free plugin with similar walkaround functionality. It uses WASD movement controls, sprint (C), and crouch (X). The earlier SASL3 dependency has been removed.
-
+[SimpleWalkaround](https://forums.x-plane.org/files/file/96508-simplewalkaround/) is a free plugin that provides basic walkaround movement outside the cockpit. It uses WASD movement controls, sprint (C), and crouch (X) but lacks the extended features of XP Walkaround such as flashlight, campsite system, mouse look, and persistent settings.
 ## Sources
 
 - [XP Walkaround — Gumroad](https://clemacamelc.gumroad.com/l/xpwalkaround)
