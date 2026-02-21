@@ -15,11 +15,11 @@ description: "Why run X-Plane on Linux — open-source kernel tuning, GPU driver
 
     The rendering engine uses [PBR](glossary.md#pbr) for physically correct material representation, combined with dynamic lighting, atmospheric effects, real-time reflections, and [HDR](glossary.md#hdr) rendering. The focus is on realistic rather than artistic interpretation.
 
-    X-Plane's open [plugin](glossary.md#plugin) architecture allows deep customization — from custom aircraft models to FlyWithLua scripts and third-party tools. The simulation engine is actively developed, with X-Plane 12 distributing substantial rendering work across multiple CPU cores while the physics main thread remains single-core bound.
+    X-Plane's open [plugin](glossary.md#plugin) architecture allows deep customization. The simulator exposes its internal state through interfaces such as DataRefs — shared variables that plugins, scripts, and external tools use to read and control virtually every aspect of the simulation. This extensibility has produced a diverse ecosystem of add-ons, from custom aircraft and camera systems to head tracking and speech synthesis — covered in the [add-on section](addon/index.md) of this documentation. The simulation engine is actively developed, with X-Plane 12 distributing substantial rendering work across multiple CPU cores while the physics main thread remains single-core bound.
 
 ## Why X-Plane under Linux?
 
-The short answer: because the entire stack is open. The Linux kernel, the GPU drivers ([Mesa](glossary.md#mesa)/[RADV](glossary.md#radv) for AMD, [ANV](glossary.md#anv) for Intel), the display server, the filesystem — all open source. This is not an ideological point, it is a practical one: open source is the reason you can tune a Linux system for X-Plane in ways that are simply not possible on a closed platform.
+The short answer: because both X-Plane and Linux are architecturally open — and that openness compounds. X-Plane exposes its internal state through DataRefs, a documented plugin SDK, and open file formats. Linux exposes its kernel, GPU drivers ([Mesa](glossary.md#mesa)/[RADV](glossary.md#radv) for AMD, [ANV](glossary.md#anv) for Intel), display server, and filesystem. When the simulator's own interfaces reach their limit — no SDK hook for texture streaming, no control over which CPU core runs the physics thread — Linux's open OS layer picks up where X-Plane's SDK leaves off.
 
 Every optimization described in this documentation — from CPU scheduling to interrupt routing to shader cache configuration — exists because the source code is available, the interfaces are documented, and the community continuously improves the stack. [Zink](glossary.md#zink), the OpenGL-to-Vulkan translation layer that is critical for X-Plane plugin compatibility, is an open-source Mesa project. The Vulkan drivers that power X-Plane's rendering are developed in the open. Performance improvements flow directly from community contributions.
 
@@ -30,6 +30,7 @@ This transparency has concrete consequences for flight simulation:
 - **Display server choice:** [Wayland or X11](linux/optimizations/displayserver.md) can be selected based on GPU and compositor behavior
 - **Driver control:** GPU driver version, persistence mode, and power management are fully configurable — see [Nvidia Drivers](linux/optimizations/nvidia.md)
 - **Filesystem optimization:** Mount options, I/O scheduler, and TRIM can be tuned for fast scenery loading — see [Filesystem](linux/optimizations/filesystem.md)
+- **Scenery streaming:** Tools like [AutoOrtho](scenery/ortho_streaming/autoortho.md) and [XEarthLayer](scenery/ortho_streaming/xearthlayer.md) stream satellite imagery on demand through FUSE virtual filesystems — a Linux kernel feature that bridges the gap where X-Plane's SDK provides no texture loading hooks
 - **Debuggability:** When micro-stutters occur, the cause can be traced down to the kernel level — scheduler decisions, interrupt timing, driver behavior. Nothing is a black box.
 - **Stability:** Debian Stable provides a predictable base with no surprise OS upgrades, no forced reboots, no breaking changes mid-session.
 

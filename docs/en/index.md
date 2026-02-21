@@ -35,6 +35,9 @@ This documentation is an open project. Improvements or additions can be contribu
 
 ## Recent Changes
 
+### 2026-02-21
+- [Introduction](intro.md) expanded: X-Plane's open architecture (DataRefs, plugin SDK, open file formats) paired with Linux's open stack as complementary argument, scenery streaming via FUSE added as concrete Linux advantage
+
 ### 2026-02-20
 - New section [Autogen](scenery/autogen/index.md) with [XPNetwork Europa](scenery/autogen/xpnetwork_europa.md) — OSM-based European road, rail, and maritime networks with localized traffic objects
 - New page [XP Walkaround](addon/cockpit/xpwalkaround.md) — First-person walkaround with flashlight, campsite system, and mouse look, SimpleWalkaround as free alternative
@@ -47,13 +50,6 @@ This documentation is an open project. Improvements or additions can be contribu
 - [XLinSpeak](addon/tools/xlinspeak.md) extended: Piper TTS Manager section with neural voice synthesis and TTS comparison table
 - Arch Linux references removed from all plugin pages — documentation now focuses exclusively on Debian-based distributions
 - [My FS Flights](addon/kvm/myfs_flights.md) revised: Documented IP configuration in plugin settings, confirmed KVM-to-Linux connection as tested
-
-### 2026-02-18
-- [AutoOrtho](scenery/ortho_streaming/autoortho.md) corrected: Fixed wrong USGS provider reference, removed unverified RAM and bandwidth figures
-- [XEarthLayer](scenery/ortho_streaming/xearthlayer.md) corrected: Updated internet recommendation from 800 to 500 Mbps, removed version-specific install command, added sources
-- [AutoOrtho](scenery/ortho_streaming/autoortho.md) revised: Improved page structure with section separators, removed redundant Conclusion section, unified bold formatting
-- [XEarthLayer](scenery/ortho_streaming/xearthlayer.md) corrected: Fixed misleading Rust build environment requirement in comparison section
-- [XEarthLayer](scenery/ortho_streaming/xearthlayer.md) revised: Toned down stability warning to reflect current maturity, added CLI live status output to comparison table
 
 
 

@@ -35,6 +35,9 @@ Diese Dokumentation ist ein offenes Projekt. Verbesserungen oder Ergänzungen k�
 
 ## Letzte Änderungen
 
+### 2026-02-21
+- [Einführung](intro.md) erweitert: X-Planes offene Architektur (DataRefs, Plugin-SDK, offene Dateiformate) und Linux' offener Stack als sich ergänzendes Argument verknüpft, Szenerie-Streaming über FUSE als konkreter Linux-Vorteil ergänzt
+
 ### 2026-02-20
 - Neue Rubrik [Autogen](scenery/autogen/index.md) mit [XPNetwork Europa](scenery/autogen/xpnetwork_europa.md) — OSM-basierte europäische Straßen-, Schienen- und Schiffsnetzwerke mit lokalisierten Verkehrsobjekten
 - Neue Seite [XP Walkaround](addon/cockpit/xpwalkaround.md) — First-Person-Walkaround mit Taschenlampe, Campsite-System und Mouse Look, SimpleWalkaround als kostenlose Alternative
@@ -47,13 +50,6 @@ Diese Dokumentation ist ein offenes Projekt. Verbesserungen oder Ergänzungen k�
 - [XLinSpeak](addon/tools/xlinspeak.md) ergänzt: Piper TTS Manager mit neuronaler Sprachsynthese und TTS-Vergleichstabelle
 - Arch-Linux-Verweise aus allen Plugin-Seiten entfernt — Dokumentation fokussiert auf Debian-basierte Distributionen
 - [My FS Flights](addon/kvm/myfs_flights.md) überarbeitet: IP-Konfiguration im Plugin dokumentiert, KVM-zu-Linux-Verbindung als getestet bestätigt
-
-### 2026-02-18
-- [AutoOrtho](scenery/ortho_streaming/autoortho.md) korrigiert: Falschen USGS-Provider-Verweis behoben, unbelegte RAM- und Bandbreitenangaben entfernt
-- [XEarthLayer](scenery/ortho_streaming/xearthlayer.md) korrigiert: Internet-Empfehlung von 800 auf 500 Mbps aktualisiert, versionsspezifischen Installationsbefehl entfernt, Quellen ergänzt
-- [AutoOrtho](scenery/ortho_streaming/autoortho.md) überarbeitet: Seitenstruktur mit Thementrennern verbessert, redundanten Fazit-Abschnitt entfernt, Fett-Formatierung vereinheitlicht
-- [XEarthLayer](scenery/ortho_streaming/xearthlayer.md) korrigiert: Irreführende Rust-Build-Voraussetzung im Vergleichsabschnitt behoben
-- [XEarthLayer](scenery/ortho_streaming/xearthlayer.md) überarbeitet: Stabilitätswarnung an aktuelle Reife angepasst, CLI-Live-Statusanzeige in Vergleichstabelle ergänzt
 
 
 

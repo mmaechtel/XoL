@@ -126,6 +126,13 @@ Docs: `docs/en/fundamentals/performance/performance_overview.md`, `cpu_ram.md`, 
 - performance_overview/performance-analyse-simulationssoftware.md -> performance_overview.md
 - performance_overview/vram_cpu_ortho_streaming.md -> cpu_ram.md, gpu_vram.md
 
+## analyses
+
+Querschnitts-Analysen ohne festes Docs-Mapping.
+
+### HOCH
+- analyses/xplane12_interfaces_apis.md -> intro.md (Hintergrund: alle X-Plane 12 Schnittstellen & APIs)
+
 ## sonstige
 
 Tracker und Arbeitsdateien im Research-Root.
