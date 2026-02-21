@@ -153,6 +153,7 @@ plugins:
                 - Autogen:
                     - de/scenery/autogen/index.md
                     - XPNetwork Europa: de/scenery/autogen/xpnetwork_europa.md
+                    - Smoke & Steam: de/scenery/autogen/smoke_steam_simheaven.md
             - Addons:
                 - de/addon/index.md
                 - Scripting:
@@ -303,6 +304,7 @@ plugins:
                 - Autogen:
                     - en/scenery/autogen/index.md
                     - XPNetwork Europa: en/scenery/autogen/xpnetwork_europa.md
+                    - Smoke & Steam: en/scenery/autogen/smoke_steam_simheaven.md
             - Addons:
                 - en/addon/index.md
                 - Scripting:

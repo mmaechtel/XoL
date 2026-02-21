@@ -36,6 +36,7 @@ This documentation is an open project. Improvements or additions can be contribu
 ## Recent Changes
 
 ### 2026-02-21
+- New page [Smoke & Steam for SimHeaven](scenery/autogen/smoke_steam_simheaven.md) — Particle-based smoke and steam effects for X-World chimneys and cooling towers
 - [Introduction](intro.md) expanded: X-Plane's open architecture (DataRefs, plugin SDK, open file formats) paired with Linux's open stack as complementary argument, scenery streaming via FUSE added as concrete Linux advantage
 
 ### 2026-02-20

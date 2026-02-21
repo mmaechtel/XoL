@@ -36,6 +36,7 @@ Diese Dokumentation ist ein offenes Projekt. Verbesserungen oder Ergänzungen k�
 ## Letzte Änderungen
 
 ### 2026-02-21
+- Neue Seite [Smoke & Steam for SimHeaven](scenery/autogen/smoke_steam_simheaven.md) — Partikelbasierte Rauch- und Dampfeffekte für X-World-Schornsteine und Kühltürme
 - [Einführung](intro.md) erweitert: X-Planes offene Architektur (DataRefs, Plugin-SDK, offene Dateiformate) und Linux' offener Stack als sich ergänzendes Argument verknüpft, Szenerie-Streaming über FUSE als konkreter Linux-Vorteil ergänzt
 
 ### 2026-02-20
