@@ -102,7 +102,7 @@ processor.max_cstate=2
 !!! note "AMD vs. Intel"
     **AMD Zen:** Exports only C1 and C2 to the OS via ACPI. Deeper hardware [C-states](../../glossary.md#c-states-cpu-idle-states) (C6) are managed autonomously by firmware. The value `2` ensures all available OS-visible C-states are used. Additionally, `amd_pstate=active` can be set for modern Zen processors with CPPC support.
 
-    **Intel:** Deeper ACPI C-states (C3, C6, C8, C10) are visible and controllable. Here, `processor.max_cstate=3` can be useful to limit deep states. On systems using the `intel_idle` driver (default on modern Intel), `intel_idle.max_cstate` may also be needed.
+    **Intel:** Deeper ACPI C-states (C3, C6, C8, C10) are visible and can be limited via `max_cstate` parameters. Here, `processor.max_cstate=3` can be useful to prevent deep states. On systems using the `intel_idle` driver (default on modern Intel), `intel_idle.max_cstate` may also be needed.
 
 Apply:
 
@@ -151,7 +151,7 @@ isolcpus=4-11
 vm.swappiness=20
 vm.dirty_ratio=20
 vm.dirty_background_ratio=10
-vm.vfs_cache_pressure=100
+vm.vfs_cache_pressure=50
 ```
 
 Apply:
@@ -191,7 +191,7 @@ cat /sys/devices/system/cpu/cpu0/cpufreq/scaling_governor
 ```
 
 !!! note "Why `ondemand` instead of `schedutil`?"
-    `schedutil` relies on utilization signals (PELT — Per-Entity Load Tracking) from the mainline CFS/[EEVDF](../../glossary.md#eevdf-earliest-eligible-virtual-deadline-first) scheduler. Liquorix uses the PDS alternative scheduler, which does not provide these signals correctly — `schedutil` locks the CPU at maximum frequency, offering no advantage over the `performance` governor. `ondemand` also adjusts CPU frequency based on load but works independently of the scheduler.
+    `schedutil` relies on utilization signals (PELT — Per-Entity Load Tracking) from the mainline CFS/[EEVDF](../../glossary.md#eevdf-earliest-eligible-virtual-deadline-first) scheduler. Liquorix uses the PDS alternative scheduler, which does not provide these signals correctly. The Liquorix kernel has removed `schedutil` entirely — it is not available as a governor option. `ondemand` adjusts CPU frequency based on load and works independently of the scheduler.
 
 Optionally set Energy Performance Preference:
 
@@ -217,7 +217,7 @@ sudo update-grub
 !!! note "AMD vs. Intel"
     **AMD Zen:** Only C1/C2 are OS-visible — no C-state limitation needed. Deeper hardware C-states benefit the thermal budget.
 
-    **Intel:** `processor.max_cstate=5` allows moderate sleep states while avoiding the deepest states. On systems using `intel_idle` (default), also set `intel_idle.max_cstate=5`.
+    **Intel:** Deeper C-states (C3, C6, C8, C10) are visible and can be limited. `processor.max_cstate=5` allows moderate sleep states while avoiding the deepest states. On systems using `intel_idle` (default), also set `intel_idle.max_cstate=5`.
 
 In `/etc/default/grub` — for Intel:
 
@@ -278,7 +278,7 @@ Reboot required.
 vm.swappiness=10
 vm.dirty_background_ratio=3
 vm.dirty_ratio=10
-vm.vfs_cache_pressure=100
+vm.vfs_cache_pressure=50
 ```
 
 Apply:
@@ -372,7 +372,7 @@ Not all settings require a reboot. The following table shows which parameters ca
 | Parameter | Changeable at runtime? | Method |
 |---|---|---|
 | Governor | Yes | `echo ... \| sudo tee /sys/devices/system/cpu/cpu*/cpufreq/scaling_governor` |
-| NVMe [APST](../../glossary.md#apst-autonomous-power-state-transitions) | **No** | GRUB only — sysfs parameter only affects newly initialized devices |
+| NVMe [APST](../../glossary.md#apst-autonomous-power-state-transitions) | Partially | GRUB for global setting; per-device PM QOS for already-active devices (see above) |
 | sysctl (vm.*) | Yes | `sudo sysctl --system` |
 | irqbalance service | Yes | `sudo systemctl stop/start irqbalance` |
 | nice / chrt / taskset | Yes | Set when launching the application |

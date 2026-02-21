@@ -9,11 +9,7 @@ Inzwischen existiert ein aktiver Fork unter [https://github.com/ProgrammingDinos
 
 ## Funktionsweise
 
-AutoOrtho implementiert ein Streaming-System für [Orthophotos](../../glossary.md#orthofotos) basierend auf der Flugzeugposition und rendert diese als Texturen in X-Plane. Das System operiert über mehrere Schlüsselmechanismen:
-
-- Das Echtzeit-Streaming-System lädt Satellitenbilder in Kacheln von Anbietern wie Bing, wobei eine Zoomstufe von bis zu 18 ([ZL18](../../glossary.md#zl-zoom-level)) implementiert wird, um Detailgenauigkeit und Ladezeit zu optimieren. Kacheln für aktuelle und angrenzende Bereiche werden präventiv geladen, um nahtlose Übergänge zu gewährleisten, was eine schnelle, stabile Internetverbindung erfordert.
-
-- Ein virtuelles Dateisystem (WinFSP/Dokan unter Windows, [FUSE](../../glossary.md#fuse-filesystem-in-userspace) unter Linux) verwaltet die Kacheln in einem lokalen Cache auf SSD und stellt sie als Szenerie-Dateien im `z_autoortho`-Ordner des [Custom Scenery](../../glossary.md#custom-scenery)-Verzeichnisses dar.
+AutoOrtho implementiert ein [FUSE-basiertes Streaming-System](how_streaming_works.md) für [Orthophotos](../../glossary.md#orthofotos) basierend auf der Flugzeugposition. Kacheln für aktuelle und angrenzende Bereiche werden von Anbietern wie Bing mit Zoomstufen bis [ZL18](../../glossary.md#zl-zoom-level) vorgeladen. Die allgemeine Streaming-Architektur — X-Planes DSF → .ter → DDS-Texturkette, FUSE-Interception, Cache-System — beschreibt [Wie Ortho-Streaming funktioniert](how_streaming_works.md).
 
 AutoOrtho liefert 2D-Orthophotos ohne 3D-Objekte. Für die Darstellung von Gebäuden und Vegetation wird [SimHeaven (X-World)](../../glossary.md#simheaven-x-world) empfohlen, das OpenStreetMap-Daten implementiert. [Overlays](../../glossary.md#overlay-szenerie) adaptieren die Bilder an das X-Plane-Terrain-[Mesh](../../glossary.md#mesh) und enthalten essentielle Informationen wie Flughafen-Glättungen, Verkehrsinfrastruktur und Eisenbahnlinien. Bei Verwendung von SimHeaven X-World sind die yOrtho-Overlays redundant.
 

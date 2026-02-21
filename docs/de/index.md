@@ -36,6 +36,8 @@ Diese Dokumentation ist ein offenes Projekt. Verbesserungen oder Ergänzungen k�
 ## Letzte Änderungen
 
 ### 2026-02-21
+- Neue Seite [OSM Offshore Oil Rigs](scenery/autogen/osm_offshore_oil_rigs.md) — Weltweite Offshore-Ölplattformen als Heliports auf Basis von OpenStreetMap-Daten, mit Mission-X-Integration für Helikoptermissionen
+- Neue Seite [Funktionsweise Ortho-Streaming](scenery/ortho_streaming/how_streaming_works.md) — X-Planes Textur-Ladekette, FUSE-Dateisystem und die gemeinsame Streaming-Pipeline hinter AutoOrtho und XEarthLayer
 - Neue Seite [Swap & Speicherverwaltung](linux/system/swap.md) — Page-Reclaim-Mechanik, Swap-Konfiguration, zram-Kompression und Tuning-Empfehlungen für die Flugsimulation
 - Neue Seite [Smoke & Steam for SimHeaven](scenery/autogen/smoke_steam_simheaven.md) — Partikelbasierte Rauch- und Dampfeffekte für X-World-Schornsteine und Kühltürme
 - [Einführung](intro.md) erweitert: X-Planes offene Architektur (DataRefs, Plugin-SDK, offene Dateiformate) und Linux' offener Stack als sich ergänzendes Argument verknüpft, Szenerie-Streaming über FUSE als konkreter Linux-Vorteil ergänzt

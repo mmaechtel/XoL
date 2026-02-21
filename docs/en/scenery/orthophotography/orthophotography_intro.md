@@ -27,7 +27,7 @@ With this approach, orthophoto tiles are fully downloaded before the flight, con
 
 ### Ortho Streaming
 
-With this approach, orthophoto textures are downloaded on demand from map servers at runtime and delivered to X-Plane via a virtual file system (FUSE). Once loaded, tiles are stored in a local cache; when the configured limit is reached, older tiles are automatically removed. This approach requires a stable internet connection but enables spontaneous flying without pre-generation.
+With this approach, orthophoto textures are downloaded on demand from map servers at runtime and delivered to X-Plane via a virtual file system ([FUSE](../ortho_streaming/how_streaming_works.md)). Once loaded, tiles are stored in a local cache; when the configured limit is reached, older tiles are automatically removed. This approach requires a stable internet connection but enables spontaneous flying without pre-generation.
 
 - **[AutoOrtho](../ortho_streaming/autoortho.md)**: The first and most widely used streaming solution for X-Plane. The active [ProgrammingDinosaur Fork](https://github.com/ProgrammingDinosaur/autoortho4xplane) (version 2.0) offers a C pipeline for faster loading, a modern GUI, and supports Windows, Linux, and macOS.
 

@@ -27,7 +27,7 @@ Bei diesem Ansatz werden Orthofoto-Kacheln vor dem Flug vollständig heruntergel
 
 ### Ortho-Streaming
 
-Bei diesem Ansatz werden Orthofoto-Texturen erst zur Laufzeit bei Bedarf von Kartenservern heruntergeladen und über ein virtuelles Dateisystem (FUSE) an X-Plane ausgeliefert. Einmal geladene Kacheln werden in einem lokalen Cache gespeichert; wird das konfigurierte Limit erreicht, werden ältere Kacheln automatisch entfernt. Dieser Ansatz erfordert eine stabile Internetverbindung, ermöglicht aber spontanes Fliegen ohne Vorabgenerierung.
+Bei diesem Ansatz werden Orthofoto-Texturen erst zur Laufzeit bei Bedarf von Kartenservern heruntergeladen und über ein virtuelles Dateisystem ([FUSE](../ortho_streaming/how_streaming_works.md)) an X-Plane ausgeliefert. Einmal geladene Kacheln werden in einem lokalen Cache gespeichert; wird das konfigurierte Limit erreicht, werden ältere Kacheln automatisch entfernt. Dieser Ansatz erfordert eine stabile Internetverbindung, ermöglicht aber spontanes Fliegen ohne Vorabgenerierung.
 
 - **[AutoOrtho](../ortho_streaming/autoortho.md)**: Die erste und am weitesten verbreitete Streaming-Lösung für X-Plane. Der aktive [ProgrammingDinosaur Fork](https://github.com/ProgrammingDinosaur/autoortho4xplane) (Version 2.0) bietet eine C-Pipeline für schnelleres Laden, eine moderne GUI und unterstützt Windows, Linux und macOS.
 

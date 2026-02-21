@@ -7,3 +7,4 @@ X-Planes eingebautes [Autogen](../../glossary.md#autogen) platziert generische G
 
 - **[XPNetwork Europa](xpnetwork_europa.md)** — Europäische Straßen-, Schienen- und Schiffsnetzwerke auf OSM-Basis
 - **[Smoke & Steam for SimHeaven](smoke_steam_simheaven.md)** — Partikelbasierte Rauch- und Dampfeffekte für X-World-Schornsteine und Kühltürme
+- **[OSM Offshore Oil Rigs](osm_offshore_oil_rigs.md)** — Weltweite Offshore-Ölplattformen als Heliports auf Basis von OpenStreetMap-Daten

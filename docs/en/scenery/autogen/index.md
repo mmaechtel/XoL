@@ -7,3 +7,4 @@ X-Plane's built-in [autogen](../../glossary.md#autogen) places generic buildings
 
 - **[XPNetwork Europa](xpnetwork_europa.md)** — European road, rail, and maritime networks based on OSM
 - **[Smoke & Steam for SimHeaven](smoke_steam_simheaven.md)** — Particle-based smoke and steam effects for X-World chimneys and cooling towers
+- **[OSM Offshore Oil Rigs](osm_offshore_oil_rigs.md)** — Worldwide offshore oil platforms as heliports based on OpenStreetMap data

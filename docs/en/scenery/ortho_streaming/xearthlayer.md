@@ -10,7 +10,7 @@ description: "XEarthLayer is a Rust-based ortho streaming tool for X-Plane 12 on
 
 ## How It Works
 
-XEarthLayer uses a **[FUSE](../../glossary.md#fuse-filesystem-in-userspace)-based virtual file system** to provide orthophoto textures on demand. When X-Plane accesses a tile, the satellite image is downloaded from the configured map provider, converted to [DDS](../../glossary.md#dds-directdraw-surface) format (BC1/BC3 compression), and delivered to the simulator via the VFS.
+XEarthLayer uses a **[FUSE](../../glossary.md#fuse-filesystem-in-userspace)-based virtual file system** (see [How Ortho Streaming Works](how_streaming_works.md)) to provide orthophoto textures on demand. When X-Plane accesses a tile, the satellite image is downloaded from the configured map provider, converted to [DDS](../../glossary.md#dds-directdraw-surface) format (BC1/BC3 compression), and delivered to the simulator via the VFS.
 
 ### Two-Tier Cache
 
