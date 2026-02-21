@@ -160,6 +160,8 @@ Anwenden:
 sudo sysctl --system
 ```
 
+Hintergründe zur Funktionsweise von swappiness und zram als alternative Swap-Strategie finden sich unter [Swap & Speicherverwaltung](swap.md).
+
 ### Ergebnis Profil A
 
 Der Kernel reagiert schneller, da Rechenzeit für die Anwendung garantiert wird.
@@ -285,6 +287,8 @@ Anwenden:
 sudo sysctl --system
 ```
 
+Hintergründe zur Funktionsweise von swappiness und zram als alternative Swap-Strategie finden sich unter [Swap & Speicherverwaltung](swap.md).
+
 **Leichte Priorisierung**
 
 Unter Liquorix genügt eine moderate `nice`-Anpassung:
@@ -405,6 +409,7 @@ Nicht alle Einstellungen erfordern einen Neustart. Die folgende Tabelle zeigt, w
 | Thema | Seite | Schwerpunkt |
 |---|---|---|
 | Monitoring | [Monitoring](systemtools.md) | Tuning-Maßnahmen verifizieren mit turbostat, mpstat, ioping |
+| Swap & Speicherverwaltung | [Swap & Speicherverwaltung](swap.md) | Page Reclaim, zram-Kompression, Swap-Tuning für X-Plane |
 | Warum Latenz zählt | [Warum Latenz zählt](latency.md) | Motivation und Kontext für Kernel-Tuning |
 | Latenz und Vorhersagbarkeit | [Latenz und Vorhersagbarkeit](../../fundamentals/performance/latency.md) | Theoretische Grundlagen — Latenzquellen und Messung |
 | Liquorix Kernel | [Liquorix Kernel](../optimizations/liquorix.md) | Installation und Features des Low-Latency-Kernels |

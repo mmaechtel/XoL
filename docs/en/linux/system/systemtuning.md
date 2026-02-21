@@ -160,6 +160,8 @@ Apply:
 sudo sysctl --system
 ```
 
+For background on how swappiness works and zram as an alternative swap strategy, see [Swap & Memory Management](swap.md).
+
 ### Result Profile A
 
 The kernel reacts faster because CPU time is guaranteed for the application.
@@ -285,6 +287,8 @@ Apply:
 sudo sysctl --system
 ```
 
+For background on how swappiness works and zram as an alternative swap strategy, see [Swap & Memory Management](swap.md).
+
 **Light Prioritization**
 
 Under Liquorix, a moderate `nice` adjustment is sufficient:
@@ -405,6 +409,7 @@ Not all settings require a reboot. The following table shows which parameters ca
 | Topic | Page | Focus |
 |---|---|---|
 | Monitoring | [Monitoring](systemtools.md) | Verify tuning measures with turbostat, mpstat, ioping |
+| Swap & Memory | [Swap & Memory Management](swap.md) | Page reclaim, zram compression, swap tuning for X-Plane |
 | Why Latency Matters | [Why Latency Matters](latency.md) | Motivation and context for kernel tuning |
 | Latency and Predictability | [Latency and Predictability](../../fundamentals/performance/latency.md) | Theoretical foundations — latency sources and measurement |
 | Liquorix Kernel | [Liquorix Kernel](../optimizations/liquorix.md) | Installation and features of the low-latency kernel |

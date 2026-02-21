@@ -110,6 +110,7 @@ plugins:
                     - de/linux/system/index.md
                     - Warum Latenz zählt: de/linux/system/latency.md
                     - Kernel-Tuning: de/linux/system/systemtuning.md
+                    - Swap & Speicherverwaltung: de/linux/system/swap.md
                     - Monitoring: de/linux/system/systemtools.md
                 - Optimierungen:
                     - de/linux/optimizations/index.md
@@ -261,6 +262,7 @@ plugins:
                     - en/linux/system/index.md
                     - Why Latency Matters: en/linux/system/latency.md
                     - Kernel Tuning: en/linux/system/systemtuning.md
+                    - Swap & Memory: en/linux/system/swap.md
                     - Monitoring: en/linux/system/systemtools.md
                 - Optimizations:
                     - en/linux/optimizations/index.md
