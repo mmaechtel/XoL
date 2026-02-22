@@ -29,7 +29,7 @@ Environment variables:
   SYSMON_XPLANE_LOG   path to X-Plane Log.txt (auto-detected if not set)
 """
 
-import time, os, subprocess, statistics, sys, re, csv
+import time, os, subprocess, statistics, sys, re, csv, threading
 from collections import defaultdict
 from pathlib import Path
 from datetime import datetime
@@ -229,7 +229,8 @@ def get_vram():
     """Get NVIDIA GPU stats. Uses NVML direct bindings when available,
     falls back to nvidia-smi subprocess.
     Returns CSV string: mem_used,mem_total,mem_free,temp,gpu_util,
-                        mem_util,gpu_clock,mem_clock,power"""
+                        mem_util,gpu_clock,mem_clock,power,
+                        pcie_tx_kbs,pcie_rx_kbs,throttle_reasons,perf_state"""
     if _USE_NVML:
         try:
             mem = pynvml.nvmlDeviceGetMemoryInfo(_NVML_HANDLE)
@@ -241,10 +242,28 @@ def get_vram():
             clk_mem = pynvml.nvmlDeviceGetClockInfo(
                 _NVML_HANDLE, pynvml.NVML_CLOCK_MEM)
             power = pynvml.nvmlDeviceGetPowerUsage(_NVML_HANDLE)
+            # Extended GPU diagnostics
+            try:
+                pcie_tx = pynvml.nvmlDeviceGetPcieThroughput(
+                    _NVML_HANDLE, pynvml.NVML_PCIE_UTIL_TX_BYTES) // 1024
+                pcie_rx = pynvml.nvmlDeviceGetPcieThroughput(
+                    _NVML_HANDLE, pynvml.NVML_PCIE_UTIL_RX_BYTES) // 1024
+            except Exception:
+                pcie_tx = pcie_rx = 0
+            try:
+                throttle = pynvml.nvmlDeviceGetCurrentClocksThrottleReasons(
+                    _NVML_HANDLE)
+            except Exception:
+                throttle = 0
+            try:
+                pstate = pynvml.nvmlDeviceGetPerformanceState(_NVML_HANDLE)
+            except Exception:
+                pstate = 0
             return (f"{mem.used // 1048576}, {mem.total // 1048576}, "
                     f"{mem.free // 1048576}, {temp}, {util.gpu}, "
                     f"{util.memory}, {clk_gpu}, {clk_mem}, "
-                    f"{power / 1000:.2f}")
+                    f"{power / 1000:.2f}, "
+                    f"{pcie_tx}, {pcie_rx}, {throttle}, {pstate}")
         except Exception:
             return ""
     # Fallback: nvidia-smi subprocess
@@ -257,7 +276,7 @@ def get_vram():
              "--format=csv,noheader,nounits"],
             stderr=subprocess.DEVNULL, timeout=2
         ).decode().strip()
-        return out if out else ""
+        return (out + ", 0, 0, 0, 0") if out else ""
     except Exception:
         return ""
 
@@ -527,7 +546,7 @@ class CSVWriters:
         self.vram = self._open(outdir / "vram.csv",
             "timestamp,mem_used_mib,mem_total_mib,mem_free_mib,temp_c,"
             "gpu_util_pct,mem_util_pct,gpu_clock_mhz,mem_clock_mhz,"
-            "power_w")
+            "power_w,pcie_tx_kbs,pcie_rx_kbs,throttle_reasons,perf_state")
         self.irq = self._open(outdir / "irq.csv",
             "timestamp,irq,desc,total_rate,"
             + ",".join(f"cpu{i}" for i in range(NUM_CPUS)))
@@ -539,7 +558,9 @@ class CSVWriters:
             "pgscan_kswapd_s,pgscan_direct_s,"
             "pgsteal_kswapd_s,pgsteal_direct_s,"
             "allocstall_s,compact_stall_s,"
-            "tlb_shootdown_s,nr_dirty,nr_writeback")
+            "tlb_shootdown_s,nr_dirty,nr_writeback,"
+            "pswpin_s,pswpout_s,wset_refault_anon_s,"
+            "wset_refault_file_s,thp_fault_fallback_s")
         self.psi = self._open(outdir / "psi.csv",
             "timestamp,cpu_some10,cpu_some60,"
             "mem_some10,mem_some60,mem_full10,mem_full60,"
@@ -594,13 +615,16 @@ class CSVWriters:
 
     def write_vmstat(self, ts, ctxt, pgfault, pgmajfault, pgscan_k, pgscan_d,
                      pgsteal_k, pgsteal_d, alloc, compact, tlb,
-                     nr_dirty, nr_wb):
+                     nr_dirty, nr_wb,
+                     pswpin, pswpout, wset_anon, wset_file, thp_fallback):
         self.vmstat.write(
             f"{ts:.3f},{ctxt:.0f},{pgfault:.0f},"
             f"{pgmajfault:.0f},{pgscan_k:.0f},{pgscan_d:.0f},"
             f"{pgsteal_k:.0f},{pgsteal_d:.0f},"
             f"{alloc:.1f},{compact:.1f},{tlb:.0f},"
-            f"{nr_dirty},{nr_wb}\n")
+            f"{nr_dirty},{nr_wb},"
+            f"{pswpin:.0f},{pswpout:.0f},{wset_anon:.0f},"
+            f"{wset_file:.0f},{thp_fallback:.0f}\n")
 
     def write_psi(self, ts, psi):
         self.psi.write(
@@ -763,12 +787,28 @@ def collect(writers, stats):
                 v_tlb = (tlb_curr - tlb_prev) / slow_dt
                 nr_dirty = curr_vmstat.get("nr_dirty", 0)
                 nr_wb = curr_vmstat.get("nr_writeback", 0)
+                v_pswpin = (curr_vmstat.get("pswpin", 0)
+                            - prev_vmstat.get("pswpin", 0)) / slow_dt
+                v_pswpout = (curr_vmstat.get("pswpout", 0)
+                             - prev_vmstat.get("pswpout", 0)) / slow_dt
+                v_wset_anon = (curr_vmstat.get("workingset_refault_anon", 0)
+                               - prev_vmstat.get("workingset_refault_anon", 0)
+                               ) / slow_dt
+                v_wset_file = (curr_vmstat.get("workingset_refault_file", 0)
+                               - prev_vmstat.get("workingset_refault_file", 0)
+                               ) / slow_dt
+                v_thp_fallback = (curr_vmstat.get("thp_fault_fallback", 0)
+                                  - prev_vmstat.get("thp_fault_fallback", 0)
+                                  ) / slow_dt
 
                 writers.write_vmstat(ts, v_ctxt, v_pgfault, v_pgmajfault,
                                      v_pgscan_k, v_pgscan_d,
                                      v_pgsteal_k, v_pgsteal_d,
                                      v_alloc, v_compact, v_tlb,
-                                     nr_dirty, nr_wb)
+                                     nr_dirty, nr_wb,
+                                     v_pswpin, v_pswpout,
+                                     v_wset_anon, v_wset_file,
+                                     v_thp_fallback)
 
                 stats.vm["ctxt"].append(v_ctxt)
                 stats.vm["pgfault"].append(v_pgfault)
@@ -780,6 +820,11 @@ def collect(writers, stats):
                 stats.vm["allocstall"].append(v_alloc)
                 stats.vm["compact_stall"].append(v_compact)
                 stats.vm["tlb"].append(v_tlb)
+                stats.vm["pswpin"].append(v_pswpin)
+                stats.vm["pswpout"].append(v_pswpout)
+                stats.vm["wset_refault_anon"].append(v_wset_anon)
+                stats.vm["wset_refault_file"].append(v_wset_file)
+                stats.vm["thp_fault_fallback"].append(v_thp_fallback)
 
                 prev_vmstat = curr_vmstat
                 prev_ctxt = curr_ctxt
@@ -1005,6 +1050,11 @@ def _print_vmstat(stats, W):
         print(f"  Direct steal:      {fmt_vm(vm['pgsteal_direct'])}")
         print(f"  Alloc stalls:      {fmt_vm(vm['allocstall'])}")
         print(f"  Compact stalls:    {fmt_vm(vm['compact_stall'])}")
+        print(f"  Swap in:           {fmt_vm(vm['pswpin'])}")
+        print(f"  Swap out:          {fmt_vm(vm['pswpout'])}")
+        print(f"  WSet refault anon: {fmt_vm(vm['wset_refault_anon'])}")
+        print(f"  WSet refault file: {fmt_vm(vm['wset_refault_file'])}")
+        print(f"  THP fallback:      {fmt_vm(vm['thp_fault_fallback'])}")
 
 
 def _print_psi(stats, W):
@@ -1197,6 +1247,43 @@ def _print_correlation_hits(hits, ts_to_rel, val_fmt, max_hits):
 #  main — orchestration only
 # ═══════════════════════════════════════════════════════════════════════
 
+def _capture_dmesg(outdir, suffix):
+    """Capture dmesg -T to a log file."""
+    path = outdir / f"dmesg_{suffix}.log"
+    try:
+        result = subprocess.run(["dmesg", "-T"], capture_output=True,
+                                timeout=5)
+        path.write_bytes(result.stdout)
+        print(f"  dmesg_{suffix}.log: {len(result.stdout)} bytes")
+    except Exception as e:
+        print(f"  [WARN] dmesg capture failed: {e}")
+
+
+def _start_gpu_event_monitor(outdir):
+    """Start background journalctl watching for NVRM/Xid events.
+    Returns (thread, process) — process is killed on stop."""
+    log_path = outdir / "gpu_events.log"
+    proc = None
+
+    def _monitor():
+        nonlocal proc
+        try:
+            with open(log_path, "w") as f:
+                proc = subprocess.Popen(
+                    ["journalctl", "-k", "--grep=NVRM|Xid", "-f",
+                     "--no-pager", "-o", "short-precise"],
+                    stdout=f, stderr=subprocess.DEVNULL)
+                proc.wait()
+        except Exception:
+            pass
+
+    t = threading.Thread(target=_monitor, daemon=True)
+    t.start()
+    # Give journalctl a moment to start
+    time.sleep(0.3)
+    return t, proc
+
+
 def main():
     gpu_backend = "NVML direct" if _USE_NVML else "nvidia-smi subprocess"
     print(f"sysmon.py v2 — {DURATION}s at {INTERVAL}s intervals, {NUM_CPUS} CPUs")
@@ -1204,11 +1291,24 @@ def main():
     print(f"Tracking processes: {', '.join(PROC_PATTERNS)}")
     print()
 
+    # Crash diagnostics: dmesg snapshot + GPU event monitor
+    print("Crash diagnostics:")
+    _capture_dmesg(OUTDIR, "pre")
+    gpu_mon_thread, gpu_mon_proc = _start_gpu_event_monitor(OUTDIR)
+    print(f"  gpu_events.log: journalctl monitor started")
+    print()
+
     stats = Stats()
 
     with CSVWriters(OUTDIR) as writers:
         mon_start, elapsed, sample_count, irq_sample_count = \
             collect(writers, stats)
+
+    # Stop GPU event monitor and capture post-run dmesg
+    if gpu_mon_proc and gpu_mon_proc.poll() is None:
+        gpu_mon_proc.terminate()
+        gpu_mon_proc.wait(timeout=3)
+    _capture_dmesg(OUTDIR, "post")
 
     print(f"\nCollected {sample_count} samples in {elapsed:.1f}s")
     print(f"1s probes: {irq_sample_count}")
