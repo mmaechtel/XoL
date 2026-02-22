@@ -104,7 +104,7 @@ sudo sysctl --system
 
 For details on how [watermarks](swap.md#watermarks) and [kswapd](swap.md#page-reclaim) interact, see the Swap page.
 
-**Measured effect:** Direct Reclaim dropped from 75,000 pages/s to zero during normal flight. Dirty pages dropped from 502 MB average to 33 MB. The most impactful single change.
+**Measured effect:** Direct Reclaim dropped from 75,000 pages/s to zero during normal flight — the most impactful single change. Dirty pages dropped from 502 MB average to under 200 MB during active flight; the remaining accumulation was resolved by IO tuning in Step 2.
 
 ### Step 2: IO Latency — Remove Software Overhead on NVMe
 
@@ -129,7 +129,7 @@ ACTION=="add|change", KERNEL=="nvme[0-9]*n1", ATTR{queue/read_ahead_kb}="256"
 !!! note "Only for NVMe"
     Scheduler `none` is safe for [NVMe](../../glossary.md#nvme-non-volatile-memory-express) drives because they manage queuing in hardware. SATA SSDs and HDDs still benefit from a software scheduler (`mq-deadline` or `bfq`).
 
-**Measured effect:** Average write latency dropped from 36–47 ms to 1.8 ms. The p95 latency decreased from 260–312 ms to under 50 ms. TLB shootdowns (a side effect of excessive page remapping) dropped to zero in vmstat.
+**Measured effect:** Average write latency dropped from 36–47 ms to 1.8 ms. TLB shootdowns (a side effect of excessive page remapping) dropped to zero in vmstat.
 
 ### Step 3: Swap Destination — zram Instead of NVMe
 
@@ -144,6 +144,9 @@ ACTION=="add|change", KERNEL=="nvme[0-9]*n1", ATTR{queue/read_ahead_kb}="256"
 | **zram (lz4)** | **~1.7 µs** | **None — entirely in RAM** |
 
 For zram setup and the comparison with zswap, see [zram](swap.md#zram).
+
+!!! warning "zram requires sufficient total RAM"
+    zram compresses pages in RAM — the compressed data still occupies physical memory. On the test system, 17 GB of swapped-out pages consumed 14.6 GB of RAM after compression (ratio 1.17:1). The primary benefit is not saving RAM but **eliminating IO contention** on the NVMe. This approach only works when enough total RAM remains after the main applications are loaded. On a system where X-Plane, ortho streaming, and other processes already exhaust physical memory, zram cannot help — the compressed pages would further reduce the available RAM pool.
 
 **Measured effect:** NVMe swap was never touched — zram absorbed 100% of swap traffic. Write volume on the previously contended NVMe dropped by 86%. DSF worst-case load time improved from 63 seconds to 22 seconds.
 
@@ -180,7 +183,7 @@ sudo sysctl --system
 
 ## Results Summary
 
-The combined effect of all four steps, measured during a 90-minute flight session on the test system:
+The combined effect of all four steps, measured on the test system (steady-state values from a multi-hour session):
 
 | Metric | Baseline | After Tuning | Change |
 |---|---|---|---|
@@ -188,7 +191,7 @@ The combined effect of all four steps, measured during a 90-minute flight sessio
 | Alloc Stalls (max) | 1,000/s | 0/s (steady state) | Eliminated |
 | Dirty Pages (avg) | 502 MB | 2.4 MB | -99% |
 | NVMe Write Latency (avg) | 36 ms | 6 ms | -83% |
-| NVMe Write Latency (p95) | 260 ms | 44 ms | -83% |
+| NVMe Write Latency (max, steady state) | 260 ms | 44 ms | -83% |
 | Swap on NVMe | Active (1.1 GB churn/5 min) | Inactive (zram absorbs 100%) | Eliminated |
 | DSF Load Time (worst) | 63 s | 22 s | -65% |
 | NVMe Write Volume | 25 GB/session | 3.6 GB/session | -86% |
