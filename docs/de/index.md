@@ -35,6 +35,9 @@ Diese Dokumentation ist ein offenes Projekt. Verbesserungen oder Ergänzungen k�
 
 ## Letzte Änderungen
 
+### 2026-02-22
+- Neue Seite [Fallstudie Tuning](linux/system/tuning_casestudy.md) — Vier gemessene Tuning-Schritte von Mikrorucklern zu stabilen Framezeiten: Memory Pressure, IO-Latenz, zram-Swap und Watermark-Tuning
+
 ### 2026-02-21
 - Neue Seite [OSM Offshore Oil Rigs](scenery/autogen/osm_offshore_oil_rigs.md) — Weltweite Offshore-Ölplattformen als Heliports auf Basis von OpenStreetMap-Daten, mit Mission-X-Integration für Helikoptermissionen
 - Neue Seite [Funktionsweise Ortho-Streaming](scenery/ortho_streaming/how_streaming_works.md) — X-Planes Textur-Ladekette, FUSE-Dateisystem und die gemeinsame Streaming-Pipeline hinter AutoOrtho und XEarthLayer
@@ -48,12 +51,6 @@ Diese Dokumentation ist ein offenes Projekt. Verbesserungen oder Ergänzungen k�
 - [Systemtuning](linux/system/systemtuning.md), [Performance](xplane/setup_diagnose/performance.md) und [Dateisystem](linux/optimizations/filesystem.md) erweitert: Faktencheck gegen Primärquellen — RAID-Kapazitätsangaben, Mount-Optionen, schedutil/Liquorix-Interaktion und weitere Details präzisiert
 - [Performance](xplane/setup_diagnose/performance.md): MangoHUD-Warnung für Wayland + NVIDIA ergänzt (fehlende GPU-Metriken durch Debian-Paket ohne NVML)
 
-### 2026-02-19
-- Neue Seite [Xchecklist](addon/cockpit/xchecklist.md) — Interaktive Checklisten mit Linux-TTS über speech-dispatcher
-- Neue Seite [OpenTrack](addon/cockpit/opentrack.md) — Head-Tracking mit NeuralNet-Webcam-Tracker und HeadTrack-Plugin-Einrichtung
-- [XLinSpeak](addon/tools/xlinspeak.md) ergänzt: Piper TTS Manager mit neuronaler Sprachsynthese und TTS-Vergleichstabelle
-- Arch-Linux-Verweise aus allen Plugin-Seiten entfernt — Dokumentation fokussiert auf Debian-basierte Distributionen
-- [My FS Flights](addon/kvm/myfs_flights.md) überarbeitet: IP-Konfiguration im Plugin dokumentiert, KVM-zu-Linux-Verbindung als getestet bestätigt
 
 
 

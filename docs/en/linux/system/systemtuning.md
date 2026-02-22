@@ -415,6 +415,7 @@ Not all settings require a reboot. The following table shows which parameters ca
 | Liquorix Kernel | [Liquorix Kernel](../optimizations/liquorix.md) | Installation and features of the low-latency kernel |
 | Nvidia Drivers | [Nvidia Drivers](../optimizations/nvidia.md) | Driver installation, KMS, and kernel parameters |
 | Performance Analysis | [Performance Analysis](../../xplane/setup_diagnose/performance.md) | X-Plane-specific performance diagnostics |
+| Case Study | [Tuning Case Study](tuning_casestudy.md) | Measured tuning steps — from micro-stutters to stable frame times |
 
 ---
 

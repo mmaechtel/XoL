@@ -336,6 +336,7 @@ sudo sysctl --system
 | CPU & RAM | [CPU & RAM](../../fundamentals/performance/cpu_ram.md) | When RAM becomes the bottleneck |
 | Filesystem | [Filesystem](../optimizations/filesystem.md) | SSD optimization, I/O scheduler, mount options |
 | Latency | [Latency and Predictability](../../fundamentals/performance/latency.md) | Latency sources and measurement |
+| Case Study | [Tuning Case Study](tuning_casestudy.md) | Practical impact of swap and memory tuning with real measurements |
 
 ---
 

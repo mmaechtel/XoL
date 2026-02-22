@@ -112,6 +112,7 @@ plugins:
                     - Kernel-Tuning: de/linux/system/systemtuning.md
                     - Swap & Speicherverwaltung: de/linux/system/swap.md
                     - Monitoring: de/linux/system/systemtools.md
+                    - Fallstudie Tuning: de/linux/system/tuning_casestudy.md
                 - Optimierungen:
                     - de/linux/optimizations/index.md
                     - Nvidia Treiber: de/linux/optimizations/nvidia.md
@@ -266,6 +267,7 @@ plugins:
                     - Kernel Tuning: en/linux/system/systemtuning.md
                     - Swap & Memory: en/linux/system/swap.md
                     - Monitoring: en/linux/system/systemtools.md
+                    - Tuning Case Study: en/linux/system/tuning_casestudy.md
                 - Optimizations:
                     - en/linux/optimizations/index.md
                     - Nvidia Drivers: en/linux/optimizations/nvidia.md

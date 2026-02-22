@@ -35,6 +35,9 @@ This documentation is an open project. Improvements or additions can be contribu
 
 ## Recent Changes
 
+### 2026-02-22
+- New page [Tuning Case Study](linux/system/tuning_casestudy.md) — Four measured tuning steps from micro-stutters to stable frame times: memory pressure, IO latency, zram swap, and watermark tuning
+
 ### 2026-02-21
 - New page [OSM Offshore Oil Rigs](scenery/autogen/osm_offshore_oil_rigs.md) — Worldwide offshore oil platforms as heliports based on OpenStreetMap data, with Mission-X integration for helicopter missions
 - New page [How Ortho Streaming Works](scenery/ortho_streaming/how_streaming_works.md) — X-Plane's texture loading chain, FUSE virtual filesystem, and the common streaming pipeline behind AutoOrtho and XEarthLayer
@@ -48,12 +51,6 @@ This documentation is an open project. Improvements or additions can be contribu
 - [System Tuning](linux/system/systemtuning.md), [Performance](xplane/setup_diagnose/performance.md), and [Filesystem](linux/optimizations/filesystem.md) extended: Fact-check against primary sources — refined RAID capacity details, mount options, schedutil/Liquorix interaction, and other specifics
 - [Performance](xplane/setup_diagnose/performance.md): Added MangoHUD warning for Wayland + NVIDIA (missing GPU metrics due to Debian package without NVML)
 
-### 2026-02-19
-- New page [Xchecklist](addon/cockpit/xchecklist.md) — Interactive checklists with Linux TTS via speech-dispatcher
-- New page [OpenTrack](addon/cockpit/opentrack.md) — Head tracking with NeuralNet webcam tracker and HeadTrack plugin setup
-- [XLinSpeak](addon/tools/xlinspeak.md) extended: Piper TTS Manager section with neural voice synthesis and TTS comparison table
-- Arch Linux references removed from all plugin pages — documentation now focuses exclusively on Debian-based distributions
-- [My FS Flights](addon/kvm/myfs_flights.md) revised: Documented IP configuration in plugin settings, confirmed KVM-to-Linux connection as tested
 
 
 

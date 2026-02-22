@@ -336,6 +336,7 @@ sudo sysctl --system
 | CPU & RAM | [CPU & RAM](../../fundamentals/performance/cpu_ram.md) | Wenn RAM zum Engpass wird |
 | Dateisystem | [Dateisystem](../optimizations/filesystem.md) | SSD-Optimierung, I/O-Scheduler, Mount-Optionen |
 | Latenz | [Latenz und Vorhersagbarkeit](../../fundamentals/performance/latency.md) | Latenzquellen und Messung |
+| Fallstudie | [Fallstudie Tuning](tuning_casestudy.md) | Praktische Auswirkung von Swap- und Speicher-Tuning mit realen Messdaten |
 
 ---
 

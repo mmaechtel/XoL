@@ -415,6 +415,7 @@ Nicht alle Einstellungen erfordern einen Neustart. Die folgende Tabelle zeigt, w
 | Liquorix Kernel | [Liquorix Kernel](../optimizations/liquorix.md) | Installation und Features des Low-Latency-Kernels |
 | Nvidia-Treiber | [Nvidia-Treiber](../optimizations/nvidia.md) | Treiberinstallation, KMS und Kernel-Parameter |
 | Performance-Analyse | [Performance-Analyse](../../xplane/setup_diagnose/performance.md) | X-Plane-spezifische Performance-Diagnostik |
+| Fallstudie | [Fallstudie Tuning](tuning_casestudy.md) | Gemessene Tuning-Schritte — von Mikrorucklern zu stabilen Framezeiten |
 
 ---
 
