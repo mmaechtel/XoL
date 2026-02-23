@@ -1,0 +1,947 @@
+ANALYSIS RULES — AI-Guided Performance Analysis
+=================================================
+
+This document defines how to systematically analyze the monitoring data
+produced by sysmon.py, sysmon_trace.sh, and post_crash.sh.  The goal is
+to identify, correlate, and root-cause performance gaps during flight
+simulation sessions with X-Plane 12, ortho streaming software (XEarthLayer,
+AutoOrtho), and concurrent system workloads (QEMU/KVM, gamescope, etc.).
+
+The intended consumer is an AI (or human) that receives one or more run
+directories and produces a structured analysis report.
+
+========================================================================
+0. INPUT — WHAT YOU RECEIVE
+========================================================================
+
+A run directory (e.g. /tmp/sysmon_out or run_G_120min/) contains:
+
+Layer 1 — sysmon.py (always present, no root needed)
+  cpu.csv          Per-CPU usage at 200 ms resolution
+  mem.csv          RAM, swap, dirty pages at 200 ms
+  io.csv           Per-device disk throughput + latency at 200 ms
+  vram.csv         GPU memory, utilization, clocks, power, PCIe at 1 s
+  vmstat.csv       Kernel VM counters (reclaim, stalls, swap IO) at 1 s
+  psi.csv          Pressure Stall Information at 1 s
+  irq.csv          Per-CPU interrupt rates at 1 s
+  proc.csv         Per-process CPU%, RSS, IO, threads at 1 s
+  freq.csv         Per-CPU clock frequency at 1 s
+  xplane_events.csv  X-Plane Log.txt events mapped to monitoring timestamps
+
+Layer 2 — sysmon_trace.sh (optional, needs root)
+  trace_reclaim.log   Per-process Direct Reclaim latency + kswapd events
+  trace_io_slow.log   Block IO requests > 5 ms (NVMe power-state outliers)
+  trace_fence.log     DMA fence waits > 5 ms (CPU blocked on GPU)
+
+Layer 3 — post_crash.sh (only after crashes)
+  dmesg_crash_*.log         Kernel ring buffer
+  nvidia-crash-*.log.gz     NVIDIA bug report
+  journal_crash_*.log       GPU-related journal entries
+
+All CSV files use Unix timestamps (seconds since epoch, 3 decimal places)
+as the first column.  Trace logs use HH:MM:SS wall-clock time.
+
+Application Logs — external to run directory, parsed for correlation
+  ~/.xearthlayer/xearthlayer.log    XEarthLayer ortho streaming events
+  ~/X-Plane-12/Log.txt              X-Plane application events (also → xplane_events.csv)
+
+Both application logs use ISO 8601 timestamps (YYYY-MM-DD HH:MM:SSZ for XEL,
+custom format for X-Plane).  They must be aligned to the monitoring window
+using the session start/end timestamps.
+
+========================================================================
+1. ANALYSIS PHASES — EXECUTE IN ORDER
+========================================================================
+
+Phase 1:  Overview & Session Context
+Phase 2:  Per-Subsystem Deep Dive
+Phase 3:  Cross-Correlation (the key phase)
+Phase 4:  Temporal Pattern Analysis
+Phase 5:  Comparison (if prior runs exist)
+Phase 6:  Root Cause Summary & Recommendations
+
+------------------------------------------------------------------------
+PHASE 1 — OVERVIEW & SESSION CONTEXT
+------------------------------------------------------------------------
+
+Goal: Understand what was running, how long, and the basic health.
+
+1. Read proc.csv to identify all tracked processes, their peak RSS,
+   and thread counts.  This tells you the workload composition.
+
+2. Read mem.csv first and last rows to determine:
+   - Total RAM
+   - Session duration (last timestamp - first timestamp)
+   - Starting vs ending memory state
+
+3. Read vram.csv first row to determine GPU model (from total VRAM)
+   and whether GPU monitoring was active.
+
+4. Read xplane_events.csv to understand flight activity (DSF loads,
+   airport transitions, weather changes, errors).
+
+5. Determine the Three-Phase Pattern:
+   - Warm-up:     Memory filling, caches warming, no pressure
+   - Ramp-up:     Memory approaching limits, swap begins, stalls appear
+   - Steady state: Working set stabilizes, pressure subsides
+   Use mem.csv (swap_used_mb) and vmstat.csv (allocstall_s) to find
+   the transition points.  Report the minute boundaries.
+
+Output: Session summary table (duration, processes, RAM, VRAM, phases).
+
+------------------------------------------------------------------------
+PHASE 2 — PER-SUBSYSTEM DEEP DIVE
+------------------------------------------------------------------------
+
+Analyze each subsystem independently before correlating.
+
+--- 2a. Memory (mem.csv + vmstat.csv) ---
+
+Key metrics and thresholds:
+
+  available_mb
+    Healthy:  > 10% of total_mb
+    Warning:  < 5% of total_mb
+    Critical: < 2% of total_mb (imminent OOM or heavy reclaim)
+
+  swap_used_mb
+    Compute "swap swing" = max - min over session.
+    Healthy:  < 500 MB swing
+    Warning:  500 MB – 5 GB swing
+    Critical: > 5 GB swing (active thrashing)
+
+  dirty_mb
+    Healthy:  avg < 50 MB, max < 200 MB
+    Warning:  avg 50–200 MB (writeback backlog building)
+    Critical: avg > 200 MB or max > 1 GB (writeback stall risk)
+
+  vmstat: allocstall_s
+    Healthy:  always 0
+    Warning:  isolated events (< 10 total over session)
+    Critical: recurring bursts > 0 (threads blocked waiting for pages)
+    THIS IS THE SINGLE MOST IMPORTANT METRIC FOR STUTTER DETECTION.
+
+  vmstat: pgscan_direct_s
+    Healthy:  always 0
+    Warning:  occasional spikes
+    Critical: sustained > 0 (synchronous reclaim on requesting thread)
+
+  vmstat: pgscan_kswapd_s / pgsteal_kswapd_s
+    Compute efficiency = pgsteal / pgscan (ratio).
+    Healthy:  > 80% efficiency
+    Warning:  50–80% (scanning much, reclaiming little)
+    Critical: < 50% (kswapd thrashing)
+
+  vmstat: pswpin_s / pswpout_s
+    Report avg, max, and % of samples where > 0.
+    With zram, swap IO is cheap but CPU-intensive.
+    High pswpout bursts (> 100k pages/s) indicate panic-swapping.
+
+  vmstat: wset_refault_anon_s
+    Healthy:  < 10% of samples active
+    Warning:  10–50% (pages swapped out are being faulted back in)
+    Critical: > 50% (active working set doesn't fit; zram thrashing)
+
+  vmstat: wset_refault_file_s
+    Same thresholds.  Indicates page cache is too small for workload.
+
+  vmstat: thp_fault_fallback_s
+    Healthy:  0
+    Warning:  > 0 (Transparent Hugepage allocation failures, causes
+              fallback to 4K pages — higher TLB pressure)
+
+  vmstat: tlb_shootdown_s
+    Context: normal range is 5,000–20,000/s under load.
+    Warning:  > 30,000/s sustained (excessive cross-CPU invalidations)
+    This often correlates with heavy reclaim (pages being freed trigger
+    TLB invalidations on all CPUs that had them mapped).
+
+  vmstat: compact_stall_s
+    Healthy:  0
+    Warning:  > 0 (memory fragmentation stalls — rare but severe)
+
+Analysis steps:
+  - Plot swap_used_mb over time to identify ramp-up/steady transition
+  - Find all allocstall_s > 0 timestamps, cluster them (± 5s gaps)
+  - For each cluster: note the duration, peak rate, and what else
+    was happening (IO, swap-out, reclaim) at that timestamp
+  - Compare pgscan_kswapd vs pgscan_direct: healthy systems have
+    kswapd doing all the work; direct reclaim means kswapd fell behind
+
+--- 2b. CPU (cpu.csv + freq.csv + proc.csv) ---
+
+Key metrics:
+
+  Per-CPU iowait%
+    Healthy:  avg < 2%
+    Warning:  avg > 5% or max > 30% (CPU waiting for disk)
+    Correlate with io.csv to identify which device causes waits.
+
+  Per-CPU sys%
+    Healthy:  avg < 5%
+    Warning:  avg > 10% (excessive kernel time — reclaim? interrupts?)
+    Correlate with vmstat (reclaim activity) and irq.csv.
+
+  Per-CPU guest%
+    Shows KVM/QEMU activity.  Should be confined to specific CPUs.
+    If guest% appears on X-Plane cores → CPU isolation is broken.
+
+  Aggregate user%
+    Report avg and max.  For 8C/16T with X-Plane:
+    avg 25–35% total is normal.  > 70% avg = CPU-bound.
+
+  CPU frequency (freq.csv)
+    Expect bimodal: idle cores at base clock, loaded cores at boost.
+    Warning: if loaded cores (X-Plane) drop below boost for sustained
+    periods → check thermal throttling (correlate with GPU temp and
+    power draw).
+
+  Per-process CPU% (proc.csv)
+    X-Plane:      typically 300–600% (multi-threaded)
+    XEarthLayer:  typically 20–100% (burst during tile loads)
+    QEMU:         should be low and confined to designated cores
+    gamescope:    should be < 5% (compositor overhead)
+
+  Per-process RSS (proc.csv)
+    Track over time.  Look for:
+    - Monotonic growth without plateau → memory leak
+    - Sudden drops → process restart or OOM kill
+    - XEL pattern: peak during tile loading, then gradual decline
+
+Analysis steps:
+  - Group CPUs by role (X-Plane hot cores, SMT siblings, KVM cores)
+    based on user% distribution
+  - Verify core isolation: no guest% on X-Plane cores
+  - Check for sys% spikes that correlate with reclaim events
+  - Identify if any single CPU is saturated (user+sys > 95% sustained)
+
+--- 2c. GPU (vram.csv) ---
+
+Key metrics:
+
+  mem_used_mib / mem_total_mib → VRAM utilization%
+    Healthy:  < 85% peak
+    Warning:  85–95% peak (limited headroom)
+    Critical: > 95% peak (VRAM OOM risk → Vulkan device loss)
+
+  gpu_util_pct
+    Healthy:  40–80% avg (GPU has headroom)
+    Warning:  > 90% sustained (GPU-bound)
+    Look for sudden drops: GPU util drop + rising CPU sys% = CPU
+    starving the GPU (not feeding frames fast enough).
+
+  gpu_clock_mhz
+    Should be at or near max boost under load.
+    Sustained drops → check throttle_reasons.
+
+  throttle_reasons
+    0 = no throttling.
+    Non-zero = decode bitmask (thermal, power, API, etc.).
+    ANY non-zero value is a finding.
+
+  perf_state
+    P0 = max performance, P2 = normal 3D workload.
+    P3+ under 3D load = throttled.
+
+  power_w
+    Context-dependent (GPU-specific).  Report avg and max.
+    Sudden power drops correlate with GPU util drops.
+
+  pcie_tx_kbs / pcie_rx_kbs
+    Theoretical max: ~28 GB/s for PCIe 4.0 x16.
+    Healthy:  < 1% of theoretical max (GPU has local VRAM)
+    Warning:  sustained > 100 MB/s (unusual for discrete GPU)
+
+  temp_c
+    Healthy:  < 80°C
+    Warning:  > 80°C (thermal throttle threshold varies by GPU)
+    Critical: > 90°C
+
+Analysis steps:
+  - Check VRAM trajectory: does it plateau or keep climbing?
+  - Look for gpu_util drops that coincide with allocstall spikes
+    (GPU starved because CPU thread was in reclaim)
+  - Verify zero throttling throughout the session
+  - Report VRAM headroom at peak usage
+
+--- 2d. Disk IO (io.csv) ---
+
+Key metrics:
+
+  rMB_per_s / wMB_per_s per device
+    Report avg, max, p95.  Identify which device handles which role:
+    - Ortho scenery reads (high burst reads)
+    - Swap device (correlate write spikes with pswpout)
+    - System disk (low baseline)
+
+  avg_r_lat_ms / avg_w_lat_ms per device
+    NVMe healthy: < 1 ms avg
+    Warning:      p95 > 5 ms
+    Critical:     p95 > 10 ms (NVMe power-state transitions or
+                  contention)
+
+    Characteristic pattern: cluster at exactly 10–11 ms = NVMe
+    waking from PS3/PS4 power state.  This is the most common
+    IO latency problem in this workload.
+
+  io_util_pct per device
+    Healthy:  avg < 50%
+    Warning:  avg > 70% sustained
+    Critical: avg > 90% (device saturated)
+
+  IO spikes
+    Count samples where rMB_per_s > 100 per device.
+    In RAID0: all member devices should spike simultaneously.
+    Asymmetric spikes → one drive is slower or handling extra work.
+
+Analysis steps:
+  - Compare read distribution across RAID0 members (should be even)
+  - Identify the "latency outlier" device (highest p95)
+  - Correlate write spikes with swap activity (vmstat pswpout)
+  - Correlate read spikes with X-Plane events (DSF loads)
+  - Look for 10–11 ms latency clusters → NVMe power-state issue
+
+--- 2e. Interrupts (irq.csv) ---
+
+Key metrics:
+
+  Total interrupt rate per IRQ source
+    Look for the top 5–10 sources by total count.
+    Typical: NVMe MSI-X, GPU, network, timer.
+
+  Per-CPU distribution
+    NVMe and GPU interrupts should be distributed or pinned.
+    If one CPU handles disproportionate interrupt load and that CPU
+    is also an X-Plane core → interrupt affinity problem.
+
+  Interrupt storms
+    Sudden rate spikes (> 10x normal) correlating with IO storms.
+
+Analysis steps:
+  - Identify if interrupt handling is concentrated on X-Plane cores
+  - Check for NVMe interrupt imbalance across RAID0 members
+  - Correlate interrupt spikes with IO and reclaim events
+
+--- 2f. PSI (psi.csv) ---
+
+Key metrics:
+
+  mem_some10 / mem_full10
+    Healthy:  0.00%
+    Warning:  some > 1%
+    Critical: full > 0% (ALL tasks stalled on memory)
+
+  io_some10 / io_full10
+    Healthy:  0.00%
+    Warning:  some > 1%
+    Critical: full > 0%
+
+  cpu_some10
+    Healthy:  < 5%
+    Warning:  > 10% (CPU contention)
+
+Note: PSI measures cgroup-wide stalls.  Individual thread stalls
+(like Direct Reclaim on X-Plane main thread) may NOT show up in PSI
+if other threads in the system are running fine.  PSI = 0 does NOT
+mean no stalls occurred.  Always check vmstat allocstall_s as the
+primary stutter indicator.
+
+--- 2g. XEarthLayer Log (~/.xearthlayer/xearthlayer.log) ---
+
+XEarthLayer (XEL) is the ortho tile streaming engine.  It is the
+PRIMARY DRIVER of memory pressure, disk IO, and CPU load in ortho
+flight sessions.  Its log reveals the application-side "why" behind
+the system-level "what" seen in CSV data.
+
+Log format:  YYYY-MM-DD HH:MM:SSZ  LEVEL  Message key=value ...
+The log uses structured key=value pairs.  Parse by event type.
+
+Performance-relevant event types:
+
+  FLIGHT PHASE TRANSITIONS
+    Pattern: "Flight phase transition from=<phase> to=<phase>"
+    Phases: ground, cruise (possibly more in future versions)
+    Significance: ground→cruise marks takeoff, which triggers the
+    ramp-up of ortho tile loading.  cruise→ground marks landing.
+    Correlate: The ground→cruise transition approximately marks the
+    beginning of heavy memory pressure in the sysmon data.
+
+  TURN DETECTION
+    Pattern: "Turn detector: turn detected from=<hdg> to=<hdg> change=<deg>"
+    Pattern: "Turn detector: track stabilized after turn track=<hdg>"
+    Significance: Heading changes > 15° trigger prefetch recalculation,
+    which means a new set of tiles will be loaded.  Sharp turns
+    (change > 30°) cause the largest tile-loading bursts because the
+    prefetch buffer in the previous direction becomes useless.
+    Correlate with: io.csv read spikes 5–15s after the turn event,
+    mem.csv available_mb drops, proc.csv XEL RSS increase.
+
+  PREFETCH CYCLES
+    Pattern: "Prefetch plan calculated strategy=<strat> tiles=<N>
+             skipped_cached=<N> total_considered=<N> estimated_ms=<N>
+             dsf_tiles=<N> position=<lat,lon> track=<hdg>"
+    Occurs every ~2 seconds (cycle_interval_ms in config).
+    Key fields:
+      strategy:         "ground" or "adaptive" — loading strategy
+      tiles:            tiles requested this cycle (max_tiles_per_cycle)
+      skipped_cached:   tiles already in cache (higher = less IO needed)
+      total_considered: total tile count in current viewport
+      estimated_ms:     estimated generation time
+      dsf_tiles:        DSF-level tiles (low count = open water/sparse area)
+    Analysis:
+      - skipped_cached / total_considered = cache hit rate
+        > 90% = steady state, low IO expected
+        < 50% = entering new area, expect IO storm
+      - Burst of low cache-hit cycles = flight entering uncached region
+      - tiles - skipped_cached = tiles that need generation/download
+        This directly drives IO and CPU load.
+
+  PREFETCH BATCH SUBMISSIONS
+    Pattern: "Prefetch batch submitted tiles=<N> strategy=<strat>"
+    Significance: Actual tile load submitted to executor.
+    tiles=0 → nothing to do (cache warm)
+    tiles > 50 → heavy batch, expect IO and CPU burst.
+
+  CIRCUIT BREAKER EVENTS
+    Pattern: "Circuit breaker: high load detected, starting tracking
+             rate=<rate> threshold=<threshold>"
+    THIS IS THE KEY XEL PERFORMANCE EVENT.
+    Significance: XEL detected that the system is overloaded
+    (tile request rate exceeds threshold).  The circuit breaker
+    will reduce or pause tile loading to prevent further pressure.
+    Correlate with: vmstat allocstall_s, io.csv utilization spikes,
+    mem.csv available_mb drops.
+    Clusters of circuit breaker events = XEL is actively throttling
+    itself because the system can't keep up.  This is both a symptom
+    (system overloaded) and a mitigation (reducing load).
+    Config reference: circuit_breaker_threshold in config.ini.
+
+  DDS TILE GENERATION
+    Pattern: "Job submitted job_id=dds-<row>_<col>_ZL<zoom>"
+    Pattern: "DDS tile complete job_id=dds-... size_bytes=<N>"
+    Significance: CPU-intensive texture generation (DDS compression).
+    Large bursts (> 50 concurrent jobs) drive CPU user% up.
+    size_bytes is typically 11 MB per tile (BC1 compressed DDS).
+    Correlate with: cpu.csv user% on non-X-Plane cores,
+    proc.csv XEL CPU% spikes.
+
+  CHUNK DOWNLOADS (network)
+    Pattern: "Chunk download success provider=<name> ... bytes=<N> attempt=<N>"
+    Significance: Network downloads from tile provider (Bing Maps etc.).
+    attempt > 1 = retry (network issue or rate limiting).
+    Burst of downloads = tiles not in disk cache, being fetched live.
+    Correlate with: proc.csv XEL IO write (writing to disk cache),
+    io.csv write throughput on cache device.
+
+  PREWARM EVENTS (session start)
+    Pattern: "Starting prewarm in background icao=<ICAO> tiles=<N>"
+    Pattern: "Prewarm tile filtering complete total=<N> cache_hits=<N>
+             patch_skipped=<N> disk_hits=<N> to_generate=<N>"
+    Significance: Prewarm loads tiles around the departure airport
+    before the flight begins.  to_generate > 100 means significant
+    CPU work during the warm-up phase.
+    Correlate with: mem.csv initial memory fill, cpu.csv early load.
+
+  TELEMETRY EVENTS
+    Pattern: "Received first telemetry packet"
+    Pattern: "First complete aircraft state lat=... lon=... hdg=... gs=..."
+    Pattern: "Telemetry stale - X-Plane may have exited age_secs=<N>"
+    Significance: Marks X-Plane connection, position tracking start,
+    and X-Plane exit/crash.  "Telemetry stale" immediately followed
+    by no more log entries = X-Plane crashed or was closed.
+    Correlate with: crash logs (Layer 3), xplane_events.csv errors.
+
+  CACHE INITIALIZATION
+    Pattern: "Disk cache provider started ... files=<N> size_mb=<N>"
+    Pattern: "Memory cache service started max_bytes=<N>"
+    One-time at startup.  Records the cache sizes and disk cache
+    file count.  Useful for context: large disk cache (> 50 GB)
+    means most tiles should be served from cache, not downloaded.
+
+  GC (Garbage Collection)
+    Pattern: "GC scheduler daemon starting ... trigger_threshold=<ratio>"
+    Pattern: "GC" related events during session
+    Significance: Disk cache garbage collection.  If triggered during
+    a flight, it competes with scenery reads for IO bandwidth.
+
+  SHUTDOWN
+    Pattern: "Received Quit event" / "Shutting down" / "shutdown complete"
+    Marks clean XEL shutdown.  Absence of shutdown events after
+    "Telemetry stale" suggests XEL was killed or crashed.
+
+XEL Log Analysis Steps:
+
+  1. Extract the monitoring time window from sysmon data.
+     Filter XEL log to this window only.
+  2. Build a timeline of flight phases:
+     - Prewarm → Waiting for telemetry → Ground → Cruise → Ground → Exit
+  3. Count and cluster circuit breaker events by time.
+     Each cluster = an overload episode.
+  4. Compute cache hit rate over time from prefetch cycles:
+     skipped_cached / total_considered per cycle.
+     Declining hit rate = entering uncached territory.
+  5. Count DDS tile generation jobs per minute.
+     Spikes = CPU-intensive generation phases.
+  6. Identify turn events and check if IO spikes follow within 5–15s.
+  7. Check for download retries (attempt > 1) — network issues.
+
+--- 2h. X-Plane Log (xplane_events.csv) ---
+
+Already parsed by sysmon.py into xplane_events.csv.  Event categories:
+
+  DSF:      Scenery tile loads (DSF = Digital Surface Format)
+  AIRPORT:  Airport scenery loading
+  WEATHER:  Weather system changes
+  PRELOAD:  Scenery preloading events
+  ERROR:    Application errors (Vulkan, allocation failures, etc.)
+
+Analysis: see Phase 3 cross-correlation.  DSF loads and airport events
+are the primary X-Plane-side triggers for IO storms.
+
+------------------------------------------------------------------------
+PHASE 3 — CROSS-CORRELATION (THE KEY PHASE)
+------------------------------------------------------------------------
+
+This is where you find root causes.  For each performance event,
+trace the causal chain across subsystems.  Application logs (XEL,
+X-Plane) provide the "why" behind the system-level "what."
+
+--- 3a. The Stutter Chain ---
+
+The primary causal chain for micro-stutters:
+
+  1. Memory pressure rises (mem.csv: available_mb drops)
+  2. kswapd activates (vmstat: pgscan_kswapd_s > 0)
+  3. kswapd can't keep up → Direct Reclaim activates
+     (vmstat: pgscan_direct_s > 0)
+  4. Allocation stalls (vmstat: allocstall_s > 0)
+  5. If the stalled thread is X-Plane's render loop → frame drop
+  6. GPU util may drop (vram.csv: gpu_util_pct dip) because GPU
+     is waiting for the next frame from the stalled CPU thread
+
+Correlate timestamps:  For every allocstall_s > 0 event in vmstat.csv,
+check within ±3 seconds:
+  - mem.csv: what was available_mb?  Was swap growing?
+  - io.csv: IO storm on any device?  High write latency?
+  - proc.csv: which process had highest CPU%?
+  - vram.csv: did GPU util drop?
+  - xplane_events.csv: was X-Plane loading scenery?
+  - XEL log: circuit breaker event?  Turn?  Prefetch batch?
+    Low cache hit rate?  DDS generation burst?
+
+If trace_reclaim.log exists:
+  - Which process/thread was doing the reclaim?
+  - What was the reclaim duration?
+  - Events > 16 ms = definite frame drop at 60 FPS
+  - Events > 10 ms = likely visible stutter
+
+--- 3b. IO Latency Chain ---
+
+  1. NVMe in deep power state (PS3/PS4)
+  2. IO request arrives → device must wake up (10–11 ms)
+  3. If this IO is on the critical path (scenery read, swap-in)
+     → adds 10 ms to an already time-sensitive operation
+  4. If combined with reclaim latency → compound stutter
+
+Correlate: trace_io_slow.log events with io.csv latency spikes.
+Group by device.  10–11 ms clusters = power-state transitions.
+> 20 ms = likely queuing behind other IO (contention).
+
+--- 3c. Swap Storm Chain ---
+
+  1. Ortho streamer loads new tiles (proc.csv: XEL RSS spike)
+     → XEL log: low cache hit rate in prefetch cycles, DDS generation
+     burst, or flight entering uncached territory after turn
+  2. System memory fills (mem.csv: available drops)
+  3. Kernel evicts cold pages to zram (vmstat: pswpout spike)
+  4. Evicted pages are needed again soon
+     (vmstat: wset_refault_anon_s spike)
+  5. Pages must be decompressed from zram (vmstat: pswpin spike)
+  6. This zram compression/decompression is CPU work
+  7. If it happens on X-Plane cores → CPU steal from rendering
+  8. XEL circuit breaker may activate (XEL log: "high load detected")
+     → XEL throttles itself, reducing future pressure but also
+     delaying tile delivery (potential scenery pop-in)
+
+--- 3f. XEL Tile-Loading Storm ---
+
+  The XEL-specific causal chain for IO/memory storms:
+
+  1. Flight enters uncached region OR sharp turn (> 30°)
+     → XEL log: "Turn detector: turn detected" with large change
+     → XEL log: prefetch cycles with low skipped_cached ratio
+  2. XEL submits large prefetch batch (tiles > 50)
+     → XEL log: "Prefetch batch submitted tiles=N"
+  3. If tiles not in disk cache → Chunk downloads from provider
+     → XEL log: "Chunk download success" bursts
+     → io.csv: write throughput spike on cache device
+  4. DDS tile generation (CPU-intensive)
+     → XEL log: "Job submitted/completed" bursts
+     → cpu.csv: user% spike on non-X-Plane cores
+     → proc.csv: XEL CPU% spike
+  5. Generated tiles loaded into memory cache (8 GB)
+     → proc.csv: XEL RSS growth
+     → mem.csv: available_mb drop
+  6. If memory pressure exceeds threshold:
+     → XEL circuit breaker activates (XEL log: "high load detected")
+     → vmstat: allocstall_s may spike
+     → Cascade into Stutter Chain (3a) or Swap Storm Chain (3c)
+
+  Key correlation: The time delay between XEL log events and
+  system-level impact is typically 5–15 seconds.  XEL batches tiles,
+  generates DDS textures, then loads them into memory.  The system
+  pressure hits when the memory is actually consumed, not when the
+  prefetch is calculated.
+
+--- 3d. GPU Starvation Pattern ---
+
+  Signature: gpu_util_pct drops while cpu user% or sys% stays high.
+  Meaning: CPU can't feed frames to GPU fast enough.
+  Cause: usually reclaim or IO blocking the render thread.
+  Correlate with allocstall_s and pgscan_direct_s.
+
+  If trace_fence.log has events: CPU was explicitly waiting for GPU.
+  This is the opposite pattern (GPU too slow).  Rare with modern
+  NVIDIA drivers but can happen during VRAM pressure.
+
+--- 3e. Thermal Chain ---
+
+  1. GPU or CPU throttles (vram.csv: throttle_reasons, freq.csv drops)
+  2. Performance drops → frame times increase
+  3. Can look like a software problem but is hardware-limited.
+
+  Check: temp_c trajectory, power_w drops, clock drops, perf_state.
+
+------------------------------------------------------------------------
+PHASE 4 — TEMPORAL PATTERN ANALYSIS
+------------------------------------------------------------------------
+
+Goal: Identify when problems occur and whether they resolve.
+
+1. Divide the session into the three phases (from Phase 1).
+   Report per-phase statistics for key metrics:
+   - allocstall_s: count of non-zero samples per phase
+   - pgscan_direct_s: avg per phase
+   - swap_used_mb: start/end per phase
+   - gpu_util_pct: avg per phase
+
+2. Cluster alloc-stall events by time (merge events within 5 seconds):
+   Report each cluster with:
+   - Time window (start minute – end minute)
+   - Peak stall rate
+   - Probable trigger (scenery load, swap storm, etc.)
+
+3. Check steady-state quality:
+   - If the last 20% of the session shows zero allocstalls and
+     zero direct reclaim → system is tuned but ramp-up needs work
+   - If stalls persist into steady state → fundamental issue
+     (insufficient RAM, bad tuning, or workload too large)
+
+4. Look for periodic patterns:
+   - Regular IO spikes every N minutes → tile cycling
+   - Regular swap bursts → predictable pressure cycle
+   - Irregular spikes → event-driven (airport loading, weather)
+
+------------------------------------------------------------------------
+PHASE 5 — COMPARISON (IF PRIOR RUNS EXIST)
+------------------------------------------------------------------------
+
+When analyzing a run after tuning changes, compare against the baseline.
+
+Comparison table format:
+
+  | Metric              | Run N-1 (Steady) | Run N (Steady) | Change |
+  |---------------------|-------------------|----------------|--------|
+  | Alloc Stalls        | ...               | ...            | ...    |
+  | Direct Reclaim avg  | ...               | ...            | ...    |
+  | Swap Swing          | ...               | ...            | ...    |
+  | ...                 |                   |                |        |
+
+Compare both "overall" and "steady state only" numbers.  A run may
+look worse overall but have a better steady state — that means the
+ramp-up got harder but the end result is better.
+
+When tuning parameters changed between runs, list them and assess:
+  - Did the change have the intended effect?
+  - Were there unintended side effects?
+  - Is the delta statistically significant or within noise?
+
+------------------------------------------------------------------------
+PHASE 6 — ROOT CAUSE SUMMARY & RECOMMENDATIONS
+------------------------------------------------------------------------
+
+Structure your output as:
+
+### Findings (ordered by severity)
+
+  [CRITICAL] Metric: value.  Impact: what the user experiences.
+             Root cause: causal chain.  Evidence: timestamps/data.
+
+  [WARNING]  Same format.
+
+  [INFO]     Notable observations that are not problems.
+
+### Recommendations (ordered by expected impact)
+
+  1. Specific action.  Expected effect.  Risk/trade-off.
+  2. ...
+
+### Open Questions
+
+  Things that couldn't be determined from the available data.
+  Suggest what additional data or test would resolve them.
+
+========================================================================
+2. TRACE LOG PARSING (Layer 2)
+========================================================================
+
+If trace logs exist, parse them as follows:
+
+--- trace_reclaim.log ---
+
+Format:
+  HH:MM:SS pid=<pid> comm=<name> reclaim_us=<duration> nr_reclaimed=<pages>
+  HH:MM:SS KSWAPD_WAKE nid=<node> order=<order>
+  HH:MM:SS KSWAPD_SLEEP nid=<node>
+
+Analysis:
+  1. Count total reclaim events per process (comm field)
+  2. Compute reclaim duration statistics per process:
+     avg, p50, p95, p99, max (in microseconds)
+  3. Identify the top reclaim offender (usually X-Plane main thread)
+  4. Count events by duration bucket:
+     < 100 us    (trivial, no visible impact)
+     100–1000 us (minor, sub-frame)
+     1–5 ms      (moderate, may cause micro-stutter)
+     5–16 ms     (severe, likely frame drop at 60 FPS)
+     > 16 ms     (critical, guaranteed frame drop)
+  5. Count kswapd wake/sleep cycles — frequent short cycles mean
+     kswapd is barely keeping up
+
+--- trace_io_slow.log ---
+
+Format:
+  HH:MM:SS dev=<major:minor> sector=<sector> lat_ms=<latency> nr_sector=<size>
+
+Analysis:
+  1. Group by device (dev field, decode major:minor to device name)
+  2. Compute latency statistics per device
+  3. Identify latency clusters:
+     - 10–11 ms cluster = NVMe power-state exit (PS3/PS4 → PS0)
+     - 15–20 ms = queuing or deeper power state
+     - > 30 ms = contention or firmware issue
+  4. Check temporal distribution:
+     - Concentrated in first 20 min = startup/scenery-load related
+     - Evenly distributed = systemic power-management problem
+  5. Count events per device — one device dominating = that device
+     has more aggressive power management
+
+--- trace_fence.log ---
+
+Format:
+  HH:MM:SS pid=<pid> comm=<name> fence_wait_ms=<duration>
+
+Analysis:
+  If empty (0 events): GPU synchronization is clean.  Report as [INFO].
+  If non-empty: each event means a CPU thread was blocked waiting for
+  the GPU.  This is a GPU-side bottleneck.
+  - Correlate with vram.csv (was VRAM near capacity?)
+  - Correlate with gpu_util_pct (was GPU at 99%?)
+  - Check gpu_clock_mhz (was GPU throttled?)
+
+========================================================================
+3. CRASH LOG ANALYSIS (Layer 3)
+========================================================================
+
+Only applicable after GPU crashes (Vulkan device loss, Xid errors).
+
+--- dmesg_crash_*.log ---
+
+  Search for:
+  - "NVRM" messages → NVIDIA kernel driver errors
+  - "Xid" messages → GPU hardware/software errors (decode Xid number)
+  - "GPU has fallen off the bus" → PCIe link failure
+  - "page allocation failure" → kernel OOM in interrupt context
+  - "Out of memory" → OOM killer invoked (check which process)
+  - "BUG:" or "WARNING:" → kernel bugs
+
+--- nvidia-crash-*.log.gz ---
+
+  Compressed NVIDIA bug report.  Key sections:
+  - GPU error state and registers
+  - VRAM allocation summary at crash time
+  - PCIe link status (speed, width — degraded link = hardware issue)
+  - Recent Xid events with decoded meaning
+
+--- journal_crash_*.log ---
+
+  GPU-related kernel messages from last 30 minutes.
+  Look for pattern leading up to the crash:
+  - Were there Xid warnings before the fatal error?
+  - Was VRAM at 100% before the crash?
+  - Were there thermal warnings?
+
+========================================================================
+4. REPORT OUTPUT FORMAT
+========================================================================
+
+Structure the analysis report as follows:
+
+  # Run Analysis: <run_name>
+
+  ## Session Overview
+  (Phase 1 output: system, workload, duration, phases)
+
+  ## Key Findings
+  (Phase 6 findings, severity-ordered, at the top for quick reading)
+
+  ## Detailed Analysis
+  ### Memory & VM Pressure
+  ### CPU & Process Distribution
+  ### GPU & VRAM
+  ### Disk IO & Latency
+  ### XEarthLayer Streaming Activity
+  ### X-Plane Event Correlation
+  ### Kernel Traces (if available)
+
+  ## Temporal Profile
+  (Phase 4: three-phase breakdown, stall clusters, patterns)
+
+  ## Comparison with Previous Runs (if applicable)
+  (Phase 5 table)
+
+  ## Recommendations
+  (Phase 6 recommendations, ordered by impact)
+
+  ## Raw Statistics Reference
+  (Per-subsystem summary tables for archival)
+
+========================================================================
+5. SPECIAL PATTERNS — KNOWN SIGNATURES
+========================================================================
+
+These are patterns identified from previous analysis runs.  Check for
+them explicitly:
+
+Pattern: NVMe Power-State Latency
+  Signature: io.csv shows p95 read latency 10–11 ms on one device
+             while other devices show < 1 ms
+  Trace:     trace_io_slow.log shows 90%+ events from that device
+             clustered at 10–11 ms
+  Fix:       Set PM QOS latency tolerance to 0 for that device
+             (/sys/class/nvme/nvmeN/device/power/pm_qos_latency_tolerance_us)
+
+Pattern: Ramp-Up Stall Bursts
+  Signature: allocstall_s bursts in minutes 10–60, zero after
+  Cause:     Working set hasn't stabilized yet; kernel alternates
+             between caching and swapping
+  Fix:       Increase min_free_kbytes (more kswapd headroom),
+             adjust swappiness (allow gradual background swap),
+             reduce ortho tile loading rate
+
+Pattern: zram Thrashing
+  Signature: wset_refault_anon_s active in > 50% of samples,
+             pswpin_s and pswpout_s both high
+  Cause:     Pages swapped to zram are immediately needed again
+  Impact:    CPU overhead from zram compression/decompression
+  Fix:       More physical RAM, reduce working set, increase zram size
+
+Pattern: GPU Starvation
+  Signature: gpu_util_pct drops 20%+ while allocstall_s > 0
+  Cause:     X-Plane render thread blocked in reclaim
+  Impact:    Frame time spike (stutter)
+  Fix:       Eliminate allocstalls (see Memory recommendations)
+
+Pattern: Writeback Backlog
+  Signature: dirty_mb > 200 avg, write latency > 10 ms avg
+  Cause:     dirty_ratio too high, commit interval too long, or
+             IO scheduler throttling writes
+  Fix:       Lower dirty_ratio/dirty_background_ratio, reduce
+             Btrfs commit interval, check IO scheduler (none/mq-deadline
+             preferred for NVMe over kyber)
+
+Pattern: Interrupt Imbalance
+  Signature: One CPU has 5x+ the interrupt load of others,
+             and that CPU is also an X-Plane core
+  Cause:     Default IRQ affinity pinning to wrong cores
+  Fix:       Set IRQ affinity to non-critical cores, or use irqbalance
+             with X-Plane core isolation
+
+Pattern: Vulkan Device Loss
+  Signature: X-Plane crash, dmesg shows "Xid 31" or "device loss"
+  Cause:     Multiple possible — VRAM OOM, driver bug, power issue
+  Check:     VRAM utilization at crash time, thermal state, PCIe
+             link status, gamescope VK_KHR_present_wait (#1592)
+
+Pattern: XEL Circuit Breaker Cascade
+  Signature: XEL log shows clusters of "Circuit breaker: high load"
+             events coinciding with vmstat allocstall_s bursts
+  Cause:     XEL tile loading rate exceeds system capacity.  Memory
+             pressure from new tiles triggers both kernel reclaim and
+             XEL's internal circuit breaker simultaneously.
+  Impact:    Double stutter — reclaim stalls X-Plane while circuit
+             breaker delays tile delivery (visual pop-in)
+  Fix:       Reduce max_tiles_per_cycle, increase circuit_breaker_threshold,
+             or increase system RAM / min_free_kbytes
+
+Pattern: Uncached Region Entry
+  Signature: XEL log prefetch cycles suddenly show low skipped_cached
+             ratio (< 30%), followed by IO storm in io.csv and
+             memory pressure spike in mem.csv
+  Cause:     Flight entered an area without disk-cached tiles.
+             XEL must download and generate all tiles from scratch.
+  Correlate: Often preceded by a turn event or long straight flight
+             into new territory.  DDS tile generation bursts follow.
+  Fix:       Pre-cache routes before flight (prewarm), or accept
+             transient pressure during region transitions
+
+Pattern: XEL Telemetry Loss
+  Signature: XEL log shows "Telemetry stale" followed by silence
+             or "Received Quit event" much later
+  Cause:     X-Plane exited or crashed.  XEL continues running
+             but in idle state (prefetch stops).
+  Correlate: Check xplane_events.csv for ERROR entries,
+             crash logs (Layer 3) for Xid/dmesg errors,
+             vram.csv for VRAM peak before disconnect.
+
+========================================================================
+6. X-PLANE LOG ARCHIVE
+========================================================================
+
+X-Plane's Log.txt is overwritten on each launch.  If Log.txt is newer
+than the monitoring CSV files (different session), the log from the
+monitored session may be in the archive:
+
+  ~/X-Plane-12/Output/Log Archive/
+
+X-Plane automatically archives Log.txt after crashes.  Archive files
+are timestamped.  When correlating, match the archive file whose
+timestamp falls within the monitoring session window.
+
+sysmon.py auto-detects Log.txt at these paths:
+  ~/X-Plane-12/Log.txt
+  ~/X-Plane-12-Native/Log.txt
+  ~/.local/share/X-Plane-12/Log.txt
+
+If the live Log.txt belongs to a newer session, manually specify the
+archived log via --xplane-log or SYSMON_XPLANE_LOG environment variable.
+
+========================================================================
+7. QUALITY CHECKLIST
+========================================================================
+
+Before finalizing the report, verify:
+
+[ ] All 9 CSV files were read (or noted as missing/empty)
+[ ] Three-phase boundaries identified with minute numbers
+[ ] Every allocstall > 0 event is accounted for with a probable cause
+[ ] Cross-correlation performed (stalls ↔ IO ↔ swap ↔ GPU ↔ XEL)
+[ ] XEL log parsed and correlated (if available)
+[ ] Flight phases from XEL mapped to sysmon three-phase model
+[ ] Circuit breaker events cross-referenced with system pressure
+[ ] If trace logs exist, they were parsed and integrated
+[ ] Findings are ordered by severity
+[ ] Recommendations are specific and actionable (not generic advice)
+[ ] Comparison with prior run included (if prior data available)
+[ ] No speculative claims — every finding backed by data reference
+[ ] Report follows the output format from Section 4

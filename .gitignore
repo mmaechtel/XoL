@@ -26,3 +26,11 @@ server/
 __pycache__/
 monitoring/*
 !monitoring/sysmon.py
+!monitoring/sysmon_trace.sh
+!monitoring/post_crash.sh
+!monitoring/README.md
+!monitoring/FEATURES.md
+!monitoring/ANALYSIS_RULES.txt
+!monitoring/TUNING.md
+!monitoring/ANALYSE_HISTORY.md
+!monitoring/cgroups/

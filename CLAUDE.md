@@ -147,6 +147,10 @@ Jedes Thema in `TODO.md` hat einen Status:
 | `research/<kat>/AUDIT_<datei>.md` | Audit-Ergebnisse pro Kapitel |
 | `research/glossar_check.log` | Glossar-Check Protokoll (Seite, Datum, Anzahl Änderungen) |
 | `docs/MARKDOWN_RULES.txt` | Formatierungsregeln |
+| `monitoring/` | Performance-Monitoring-Suite (sysmon.py, Traces, Analysen) |
+| `monitoring/ANALYSIS_RULES.txt` | AI-Analyse-Regelwerk (Schwellwerte, Korrelationsketten) |
+| `monitoring/ANALYSE_HISTORY.md` | Tuning-Historie aller Runs |
+| `monitoring/ANALYSE_RUN_*.md` | Detaillierte Analyse pro Run |
 | `.claude/commands/` | Skill/Command-Definitionen (committed, von `.gitignore` ausgenommen) |
 | `.claude/settings.local.json` | Permissions: Tool-Freigaben + WebFetch-Domain-Allowlist |
 
@@ -187,6 +191,7 @@ Bei neuen Themen: bestehende Kategorie verwenden oder neue anlegen. `research/IN
 | `/generate-notebooklm` | nach Umsetzung | TTS-optimiertes Skript für Google NotebookLM Audio Overview erstellen |
 | `/verify-commands` | nach Umsetzung | Dokumentierte Shell-Befehle interaktiv auf dem Debian-System testen |
 | `/review-cycle` | nach Umsetzung | Kompletter Prüfzyklus: Faktencheck (Fokus 2025+) + Lektorat + Bericht. Ändert keine Dateien. |
+| `/monitoring` | — | Monitoring-Session starten, System+App-Logs aufzeichnen, Performance-Analyse erstellen |
 | `/abschluss` | alle | Changelog in `index.md` (DE + EN) aktualisieren und Git-Commit erstellen |
 
 ---

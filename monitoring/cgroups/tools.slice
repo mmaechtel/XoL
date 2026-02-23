@@ -1,0 +1,6 @@
+[Unit]
+Description=Tools workload (max 20% CPU)
+
+[Slice]
+CPUWeight=100
+CPUQuota=320%

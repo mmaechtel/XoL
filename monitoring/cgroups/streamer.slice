@@ -1,0 +1,6 @@
+[Unit]
+Description=Streamer workload (max 60% CPU)
+
+[Slice]
+CPUWeight=300
+CPUQuota=960%

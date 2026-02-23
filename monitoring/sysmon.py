@@ -1,52 +1,106 @@
 #!/usr/bin/env python3
 """
-System monitor for X-Plane + AutoOrtho + KVM workloads.
-200ms base resolution, 1s for heavier probes.
+sysmon — Flight session monitor for X-Plane on Linux.
 
-Collects:
-- Per-CPU usage (user, sys, iowait, irq, softirq, idle, steal, guest)
-- Per-CPU frequency
-- Per-process CPU, IO, RSS (configurable process patterns)
-- RAM, swap, dirty/writeback pages
-- Disk IO throughput + latency + utilization
-- VRAM, GPU util, clocks, power draw
-- Interrupts per CPU
-- vmstat counters (context switches, page faults, reclaim, TLB shootdowns)
-- PSI (Pressure Stall Information)
+Collects system-wide performance data at high resolution and correlates
+it with X-Plane application events.  Designed for diagnosing micro-stutters,
+memory pressure, IO contention, and GPU bottlenecks during flight sessions
+with ortho scenery streaming (XEarthLayer, AutoOrtho).
 
-CSV output: cpu.csv, mem.csv, io.csv, vram.csv, irq.csv,
-            proc.csv, vmstat.csv, psi.csv, freq.csv
+Sampling rates
+  200 ms   CPU usage, disk IO, memory (captures burst detail)
+  1 s      GPU, interrupts, vmstat, PSI, CPU frequency, per-process
 
-Post-run correlation: parses X-Plane Log.txt and matches extreme
-system values with X-Plane events (DSF loads, weather, airports).
+CSV output
+  cpu.csv      Per-CPU usage breakdown (user/sys/iowait/irq/idle)
+  mem.csv      RAM, swap, dirty pages, writeback
+  io.csv       Per-device throughput, latency, utilization
+  vram.csv     GPU memory, utilization, clocks, power, PCIe, throttling
+  irq.csv      Interrupt rates per CPU
+  proc.csv     Per-process CPU%, RSS, IO, threads
+  vmstat.csv   Page reclaim, allocation stalls, TLB shootdowns, swap IO
+  psi.csv      Pressure Stall Information (CPU, memory, IO)
+  freq.csv     Per-CPU clock frequency
 
-Environment variables:
-  SYSMON_DURATION     seconds to run (default 1200 = 20min)
-  SYSMON_INTERVAL     base sample interval in seconds (default 0.2)
-  SYSMON_OUTDIR       output directory (default /tmp/sysmon_out)
-  SYSMON_PROCS        comma-separated process name patterns
-                      (default X-Plane,autoortho,qemu-system,xearthlayer)
-  SYSMON_XPLANE_LOG   path to X-Plane Log.txt (auto-detected if not set)
+Post-run correlation
+  Matches IO spikes and allocation stalls against X-Plane Log.txt events
+  (DSF loads, airport loading, weather changes).  Output: xplane_events.csv
+
+Companion scripts (same directory)
+  sysmon_trace.sh   bpftrace sidecar — Direct Reclaim, slow IO, DMA fences
+  post_crash.sh     Post-crash GPU / kernel diagnostics
+  cgwatcher.py      Dynamic CPU priority for competing workloads
+
+Requirements
+  Python 3.9+, Linux kernel 4.20+ (PSI support)
+  Optional: nvidia-ml-py (pip install nvidia-ml-py) for direct NVML GPU access
 """
 
-import time, os, subprocess, statistics, sys, re, csv, threading
+__version__ = "3.0"
+
+import argparse
+import time, os, subprocess, statistics, sys, re, csv, threading, signal
 from collections import defaultdict
 from pathlib import Path
 from datetime import datetime
 
-# NVML direct bindings (nvidia-ml-py) — avoids nvidia-smi subprocess
-try:
-    import pynvml
-    pynvml.nvmlInit()
-    _NVML_HANDLE = pynvml.nvmlDeviceGetHandleByIndex(0)
-    _USE_NVML = True
-except Exception:
-    _USE_NVML = False
+# ─── GPU backend (deferred init — call init_gpu() from main) ─────────
+_USE_NVML = False
+_NVML_HANDLE = None
+_GPU_BACKEND = "none"  # "nvml", "nvidia-smi", "none"
 
+
+def init_gpu(disable=False):
+    """Initialize GPU monitoring.  Returns backend name string."""
+    global _USE_NVML, _NVML_HANDLE, _GPU_BACKEND
+
+    if disable:
+        _GPU_BACKEND = "disabled"
+        return _GPU_BACKEND
+
+    # Try NVML direct bindings first (fastest, no subprocess overhead)
+    try:
+        import pynvml
+        pynvml.nvmlInit()
+        _NVML_HANDLE = pynvml.nvmlDeviceGetHandleByIndex(0)
+        _USE_NVML = True
+        name = pynvml.nvmlDeviceGetName(_NVML_HANDLE)
+        if isinstance(name, bytes):
+            name = name.decode()
+        _GPU_BACKEND = f"NVML ({name})"
+        return _GPU_BACKEND
+    except Exception:
+        pass
+
+    # Fallback: nvidia-smi subprocess
+    try:
+        out = subprocess.check_output(
+            ["nvidia-smi", "--query-gpu=name", "--format=csv,noheader"],
+            stderr=subprocess.DEVNULL, timeout=3
+        ).decode().strip()
+        _GPU_BACKEND = f"nvidia-smi ({out})"
+        return _GPU_BACKEND
+    except Exception:
+        pass
+
+    # Detect AMD (informational — no GPU sampling yet)
+    try:
+        with open("/sys/class/drm/card0/device/vendor") as f:
+            vendor = f.read().strip()
+        if vendor == "0x1002":
+            _GPU_BACKEND = "AMD detected (GPU sampling not yet supported)"
+            return _GPU_BACKEND
+    except FileNotFoundError:
+        pass
+
+    _GPU_BACKEND = "none (no NVIDIA GPU found)"
+    return _GPU_BACKEND
+
+
+# ─── Configuration defaults (overridden by CLI args in main) ──────────
 DURATION = int(os.environ.get("SYSMON_DURATION", 1200))
 INTERVAL = float(os.environ.get("SYSMON_INTERVAL", 0.2))
 OUTDIR = Path(os.environ.get("SYSMON_OUTDIR", "/tmp/sysmon_out"))
-OUTDIR.mkdir(exist_ok=True)
 
 PROC_PATTERNS = [p.strip() for p in
                  os.environ.get("SYSMON_PROCS",
@@ -231,6 +285,8 @@ def get_vram():
     Returns CSV string: mem_used,mem_total,mem_free,temp,gpu_util,
                         mem_util,gpu_clock,mem_clock,power,
                         pcie_tx_kbs,pcie_rx_kbs,throttle_reasons,perf_state"""
+    if _GPU_BACKEND == "disabled":
+        return ""
     if _USE_NVML:
         try:
             mem = pynvml.nvmlDeviceGetMemoryInfo(_NVML_HANDLE)
@@ -321,7 +377,7 @@ def parse_psi():
 
 # ─── X-Plane Log.txt parsing ─────────────────────────────────────────
 
-XPLANE_LOG = os.environ.get("SYSMON_XPLANE_LOG", "")
+XPLANE_LOG = os.environ.get("SYSMON_XPLANE_LOG", "")  # overridden by --xplane-log
 
 # Auto-detect common X-Plane log locations
 XPLANE_LOG_PATHS = [
@@ -1284,19 +1340,105 @@ def _start_gpu_event_monitor(outdir):
     return t, proc
 
 
+def parse_args():
+    """Parse CLI arguments.  Env vars serve as fallback defaults."""
+    p = argparse.ArgumentParser(
+        prog="sysmon",
+        description=(
+            "Flight session monitor for X-Plane on Linux.  "
+            "Collects CPU, memory, disk IO, GPU, interrupts, vmstat, "
+            "and PSI data at high resolution, then correlates system "
+            "events with X-Plane Log.txt entries."
+        ),
+        epilog=(
+            "Environment variables (override defaults, overridden by CLI):\n"
+            "  SYSMON_DURATION, SYSMON_INTERVAL, SYSMON_OUTDIR,\n"
+            "  SYSMON_PROCS, SYSMON_XPLANE_LOG\n"
+            "\n"
+            "Companion scripts:\n"
+            "  sysmon_trace.sh   bpftrace sidecar (sudo required)\n"
+            "  post_crash.sh     post-crash GPU diagnostics\n"
+            "  cgwatcher.py      dynamic CPU priority management"
+        ),
+        formatter_class=argparse.RawDescriptionHelpFormatter,
+    )
+    p.add_argument("-V", "--version", action="version",
+                   version=f"sysmon {__version__}")
+    p.add_argument("-d", "--duration", type=int,
+                   default=int(os.environ.get("SYSMON_DURATION", 1200)),
+                   metavar="SEC",
+                   help="recording duration in seconds (default: 1200 = 20 min)")
+    p.add_argument("-i", "--interval", type=float,
+                   default=float(os.environ.get("SYSMON_INTERVAL", 0.2)),
+                   metavar="SEC",
+                   help="base sampling interval in seconds (default: 0.2)")
+    p.add_argument("-o", "--outdir", type=Path,
+                   default=Path(os.environ.get("SYSMON_OUTDIR", "/tmp/sysmon_out")),
+                   metavar="DIR",
+                   help="output directory for CSV files (default: /tmp/sysmon_out)")
+    p.add_argument("-p", "--procs", type=str,
+                   default=os.environ.get("SYSMON_PROCS",
+                                          "X-Plane,autoortho,qemu-system,xearthlayer"),
+                   metavar="PAT",
+                   help="comma-separated process name patterns to track")
+    p.add_argument("-l", "--xplane-log", type=Path, default=None,
+                   metavar="PATH",
+                   help="path to X-Plane Log.txt (auto-detected if omitted)")
+    p.add_argument("--no-gpu", action="store_true",
+                   help="disable GPU monitoring (useful on headless or AMD systems)")
+    p.add_argument("--no-dmesg", action="store_true",
+                   help="skip dmesg capture (useful without dmesg permissions)")
+    return p.parse_args()
+
+
 def main():
-    gpu_backend = "NVML direct" if _USE_NVML else "nvidia-smi subprocess"
-    print(f"sysmon.py v2 — {DURATION}s at {INTERVAL}s intervals, {NUM_CPUS} CPUs")
-    print(f"Output: {OUTDIR}  |  GPU: {gpu_backend}")
-    print(f"Tracking processes: {', '.join(PROC_PATTERNS)}")
+    global DURATION, INTERVAL, OUTDIR, PROC_PATTERNS, XPLANE_LOG
+
+    args = parse_args()
+
+    # Apply CLI args to module-level config (collect loop reads these)
+    DURATION = args.duration
+    INTERVAL = args.interval
+    OUTDIR = args.outdir
+    OUTDIR.mkdir(parents=True, exist_ok=True)
+    PROC_PATTERNS = [p.strip() for p in args.procs.split(",")]
+    if args.xplane_log:
+        XPLANE_LOG = str(args.xplane_log)
+
+    # Initialize GPU backend
+    gpu_backend = init_gpu(disable=args.no_gpu)
+
+    # Install signal handler for clean shutdown
+    def _shutdown(signum, frame):
+        print(f"\nReceived signal {signal.Signals(signum).name}, finishing...")
+        raise KeyboardInterrupt
+    signal.signal(signal.SIGTERM, _shutdown)
+
+    # ── Startup banner ──
+    print(f"sysmon {__version__} — {DURATION}s at {INTERVAL}s base interval, "
+          f"{NUM_CPUS} CPUs")
+    print(f"Output:   {OUTDIR}")
+    print(f"GPU:      {gpu_backend}")
+    print(f"Tracking: {', '.join(PROC_PATTERNS)}")
+
+    xp_log = find_xplane_log()
+    if xp_log:
+        print(f"X-Plane:  {xp_log}")
+    else:
+        print(f"X-Plane:  Log.txt not found (use -l to set path)")
+
+    psi_avail = Path("/proc/pressure/cpu").exists()
+    print(f"PSI:      {'available' if psi_avail else 'not available (kernel too old?)'}")
     print()
 
     # Crash diagnostics: dmesg snapshot + GPU event monitor
-    print("Crash diagnostics:")
-    _capture_dmesg(OUTDIR, "pre")
-    gpu_mon_thread, gpu_mon_proc = _start_gpu_event_monitor(OUTDIR)
-    print(f"  gpu_events.log: journalctl monitor started")
-    print()
+    gpu_mon_proc = None
+    if not args.no_dmesg:
+        print("Crash diagnostics:")
+        _capture_dmesg(OUTDIR, "pre")
+        gpu_mon_thread, gpu_mon_proc = _start_gpu_event_monitor(OUTDIR)
+        print(f"  gpu_events.log: journalctl monitor started")
+        print()
 
     stats = Stats()
 
@@ -1307,8 +1449,12 @@ def main():
     # Stop GPU event monitor and capture post-run dmesg
     if gpu_mon_proc and gpu_mon_proc.poll() is None:
         gpu_mon_proc.terminate()
-        gpu_mon_proc.wait(timeout=3)
-    _capture_dmesg(OUTDIR, "post")
+        try:
+            gpu_mon_proc.wait(timeout=3)
+        except subprocess.TimeoutExpired:
+            gpu_mon_proc.kill()
+    if not args.no_dmesg:
+        _capture_dmesg(OUTDIR, "post")
 
     print(f"\nCollected {sample_count} samples in {elapsed:.1f}s")
     print(f"1s probes: {irq_sample_count}")
@@ -1317,6 +1463,7 @@ def main():
     correlate_xplane(OUTDIR, stats, mon_start, elapsed)
 
     if _USE_NVML:
+        import pynvml
         pynvml.nvmlShutdown()
 
 if __name__ == "__main__":

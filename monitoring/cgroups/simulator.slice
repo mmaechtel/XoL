@@ -1,0 +1,5 @@
+[Unit]
+Description=Simulator workload (highest priority, no CPU limit)
+
+[Slice]
+CPUWeight=1000
