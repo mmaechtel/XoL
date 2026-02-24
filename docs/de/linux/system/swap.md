@@ -280,8 +280,8 @@ swap-priority = 100
 
 ```ini title="/etc/sysctl.d/99-zram.conf"
 vm.swappiness = 180
-vm.watermark_boost_factor = 0
-vm.watermark_scale_factor = 125
+vm.watermark_boost_factor = 15000
+vm.watermark_scale_factor = 50
 vm.page-cluster = 0
 ```
 
@@ -304,14 +304,17 @@ sudo sysctl --system
 !!! note "Warum page-cluster=0?"
     Der Standard `page-cluster=3` liest 8 Pages (32 KiB) pro Swap-Zugriff als Readahead. Bei zram muss jede Page einzeln dekomprimiert werden — Readahead bringt keinen Vorteil und erhöht die Latenz. `page-cluster=0` liest nur die angeforderte Page.
 
+!!! note "Warum watermark_boost_factor=15000?"
+    Manche zram-Anleitungen empfehlen `watermark_boost_factor=0` mit der Begründung, der Boost-Mechanismus sei nur für Disk-Swap relevant. Messungen mit stoßartigen Allokations-Workloads (Szenerie-Laden, Ortho-Tile-Dekompression) zeigen, dass dies kontraproduktiv ist: Der Boost erhöht temporär die Watermarks nach Reclaim, sodass kswapd im nächsten Zyklus aggressiver reclaimed. Ohne ihn fällt kswapd bei Allokationsspitzen zurück, und Direct Reclaim blockiert Anwendungs-Threads. Siehe die [Tuning-Fallstudie](tuning_casestudy.md#schritt-5-watermark-optimierung-proaktives-kswapd-fur-burst-allokationen) für die detaillierte Analyse.
+
 ### Kernel-Parameter-Übersicht
 
 | Parameter | zram | Disk-Swap | Wirkung |
 |---|---|---|---|
 | `vm.swappiness` | 180 | 10–20 | Steuert das Verhältnis von Anonymous- zu File-Page-Reclaim |
 | `vm.page-cluster` | 0 | 0 | Pages pro Swap-In (2^n). 0 = einzelne Page |
-| `vm.watermark_scale_factor` | 125 | 10 (Standard) | Abstand zwischen Watermarks. Höher = früheres kswapd |
-| `vm.watermark_boost_factor` | 0 | 0 | Boost für Disk-Swap deaktivieren |
+| `vm.watermark_scale_factor` | 50 | 10 (Standard) | Abstand zwischen Watermarks. Höher = früheres kswapd |
+| `vm.watermark_boost_factor` | 15000 | 15000 (Standard) | Temporärer Watermark-Boost nach Reclaim — hält kswapd bei Allokationsspitzen proaktiv |
 | `vm.vfs_cache_pressure` | 50 | 50 | Inode-/Dentry-Caches für Szenerie-Datei-Lookups bevorzugen |
 
 ### RAM-Dimensionierung

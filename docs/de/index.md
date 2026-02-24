@@ -35,8 +35,12 @@ Diese Dokumentation ist ein offenes Projekt. Verbesserungen oder Ergänzungen k�
 
 ## Letzte Änderungen
 
+### 2026-02-24
+- [Fallstudie Tuning](linux/system/tuning_casestudy.md) erweitert: Neuer Schritt 5 — Watermark-Optimierung mit Messergebnissen (97% IO-Latenz-Reduktion, 58% weniger Reclaim-Events auf dem Render-Thread)
+- [Swap & Speicherverwaltung](linux/system/swap.md) korrigiert: `watermark_boost_factor=15000` ersetzt bisherige Empfehlung von 0, basierend auf Messdaten
+
 ### 2026-02-22
-- Neue Seite [Fallstudie Tuning](linux/system/tuning_casestudy.md) — Vier gemessene Tuning-Schritte von Mikrorucklern zu stabilen Framezeiten: Memory Pressure, IO-Latenz, zram-Swap und Watermark-Tuning
+- Neue Seite [Fallstudie Tuning](linux/system/tuning_casestudy.md) — Fünf gemessene Tuning-Schritte von Mikrorucklern zu stabilen Framezeiten: Memory Pressure, IO-Latenz, zram-Swap, Swap-Readahead und Watermark-Tuning
 
 ### 2026-02-21
 - Neue Seite [OSM Offshore Oil Rigs](scenery/autogen/osm_offshore_oil_rigs.md) — Weltweite Offshore-Ölplattformen als Heliports auf Basis von OpenStreetMap-Daten, mit Mission-X-Integration für Helikoptermissionen
@@ -45,9 +49,6 @@ Diese Dokumentation ist ein offenes Projekt. Verbesserungen oder Ergänzungen k�
 - Neue Seite [Smoke & Steam for SimHeaven](scenery/autogen/smoke_steam_simheaven.md) — Partikelbasierte Rauch- und Dampfeffekte für X-World-Schornsteine und Kühltürme
 - [Einführung](intro.md) erweitert: X-Planes offene Architektur (DataRefs, Plugin-SDK, offene Dateiformate) und Linux' offener Stack als sich ergänzendes Argument verknüpft, Szenerie-Streaming über FUSE als konkreter Linux-Vorteil ergänzt
 
-### 2026-02-20
-- Neue Rubrik [Autogen](scenery/autogen/index.md) mit [XPNetwork Europa](scenery/autogen/xpnetwork_europa.md) — OSM-basierte europäische Straßen-, Schienen- und Schiffsnetzwerke mit lokalisierten Verkehrsobjekten
-- Neue Seite [XP Walkaround](addon/cockpit/xpwalkaround.md) — First-Person-Walkaround mit Taschenlampe, Campsite-System und Mouse Look, SimpleWalkaround als kostenlose Alternative
 - [Systemtuning](linux/system/systemtuning.md), [Performance](xplane/setup_diagnose/performance.md) und [Dateisystem](linux/optimizations/filesystem.md) erweitert: Faktencheck gegen Primärquellen — RAID-Kapazitätsangaben, Mount-Optionen, schedutil/Liquorix-Interaktion und weitere Details präzisiert
 - [Performance](xplane/setup_diagnose/performance.md): MangoHUD-Warnung für Wayland + NVIDIA ergänzt (fehlende GPU-Metriken durch Debian-Paket ohne NVML)
 

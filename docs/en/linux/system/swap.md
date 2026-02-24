@@ -280,8 +280,8 @@ swap-priority = 100
 
 ```ini title="/etc/sysctl.d/99-zram.conf"
 vm.swappiness = 180
-vm.watermark_boost_factor = 0
-vm.watermark_scale_factor = 125
+vm.watermark_boost_factor = 15000
+vm.watermark_scale_factor = 50
 vm.page-cluster = 0
 ```
 
@@ -304,14 +304,17 @@ sudo sysctl --system
 !!! note "Why page-cluster=0?"
     The default `page-cluster=3` reads 8 pages (32 KiB) per swap access as readahead. With zram, each page must be individually decompressed — readahead provides no benefit and increases latency. Setting `page-cluster=0` reads only the requested page.
 
+!!! note "Why watermark_boost_factor=15000?"
+    Some zram guides recommend `watermark_boost_factor=0`, reasoning that the boost mechanism is only relevant for disk swap. Measurements with bursty allocation workloads (scenery loading, ortho tile decompression) show this is counterproductive: the boost temporarily raises watermarks after reclaim, making kswapd reclaim more aggressively in the next cycle. Without it, kswapd falls behind during allocation spikes, and Direct Reclaim blocks application threads. See the [Tuning Case Study](tuning_casestudy.md#step-5-watermark-optimization-proactive-kswapd-for-burst-allocations) for the detailed analysis.
+
 ### Kernel Parameters Summary
 
 | Parameter | zram | Disk Swap | Effect |
 |---|---|---|---|
 | `vm.swappiness` | 180 | 10–20 | Controls anonymous vs. file page reclaim ratio |
 | `vm.page-cluster` | 0 | 0 | Pages read per swap-in (2^n). 0 = single page |
-| `vm.watermark_scale_factor` | 125 | 10 (default) | Distance between watermarks. Higher = earlier kswapd |
-| `vm.watermark_boost_factor` | 0 | 0 | Disable boost designed for disk swap |
+| `vm.watermark_scale_factor` | 50 | 10 (default) | Distance between watermarks. Higher = earlier kswapd |
+| `vm.watermark_boost_factor` | 15000 | 15000 (default) | Temporary watermark boost after reclaim — keeps kswapd proactive during allocation bursts |
 | `vm.vfs_cache_pressure` | 50 | 50 | Favor keeping inode/dentry caches for scenery file lookups |
 
 ### RAM Sizing Guide

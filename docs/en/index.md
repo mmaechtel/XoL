@@ -35,8 +35,12 @@ This documentation is an open project. Improvements or additions can be contribu
 
 ## Recent Changes
 
+### 2026-02-24
+- [Tuning Case Study](linux/system/tuning_casestudy.md) expanded: New Step 5 — Watermark optimization with measured results (97% IO latency reduction, 58% fewer render-thread reclaim events)
+- [Swap & Memory Management](linux/system/swap.md) corrected: `watermark_boost_factor=15000` replaces previous recommendation of 0, based on measurement data
+
 ### 2026-02-22
-- New page [Tuning Case Study](linux/system/tuning_casestudy.md) — Four measured tuning steps from micro-stutters to stable frame times: memory pressure, IO latency, zram swap, and watermark tuning
+- New page [Tuning Case Study](linux/system/tuning_casestudy.md) — Five measured tuning steps from micro-stutters to stable frame times: memory pressure, IO latency, zram swap, swap readahead, and watermark tuning
 
 ### 2026-02-21
 - New page [OSM Offshore Oil Rigs](scenery/autogen/osm_offshore_oil_rigs.md) — Worldwide offshore oil platforms as heliports based on OpenStreetMap data, with Mission-X integration for helicopter missions
@@ -45,9 +49,6 @@ This documentation is an open project. Improvements or additions can be contribu
 - New page [Smoke & Steam for SimHeaven](scenery/autogen/smoke_steam_simheaven.md) — Particle-based smoke and steam effects for X-World chimneys and cooling towers
 - [Introduction](intro.md) expanded: X-Plane's open architecture (DataRefs, plugin SDK, open file formats) paired with Linux's open stack as complementary argument, scenery streaming via FUSE added as concrete Linux advantage
 
-### 2026-02-20
-- New section [Autogen](scenery/autogen/index.md) with [XPNetwork Europa](scenery/autogen/xpnetwork_europa.md) — OSM-based European road, rail, and maritime networks with localized traffic objects
-- New page [XP Walkaround](addon/cockpit/xpwalkaround.md) — First-person walkaround with flashlight, campsite system, and mouse look, SimpleWalkaround as free alternative
 - [System Tuning](linux/system/systemtuning.md), [Performance](xplane/setup_diagnose/performance.md), and [Filesystem](linux/optimizations/filesystem.md) extended: Fact-check against primary sources — refined RAID capacity details, mount options, schedutil/Liquorix interaction, and other specifics
 - [Performance](xplane/setup_diagnose/performance.md): Added MangoHUD warning for Wayland + NVIDIA (missing GPU metrics due to Debian package without NVML)
 

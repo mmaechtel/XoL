@@ -33,4 +33,5 @@ monitoring/*
 !monitoring/ANALYSIS_RULES.txt
 !monitoring/TUNING.md
 !monitoring/ANALYSE_HISTORY.md
+!monitoring/ANALYSE_RUN_*.md
 !monitoring/cgroups/

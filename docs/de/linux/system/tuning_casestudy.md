@@ -1,5 +1,5 @@
 ---
-description: "Tuning-Fallstudie für X-Plane unter Linux: Vier Schritte von Mikrorucklern zu stabilen Framezeiten — Memory Pressure, IO-Latenz, Swap-Ziel und Watermark-Tuning mit realen Messdaten."
+description: "Tuning-Fallstudie für X-Plane unter Linux: Fünf Schritte von Mikrorucklern zu stabilen Framezeiten — Memory Pressure, IO-Latenz, Swap-Ziel, Page-Cluster und Watermark-Tuning mit realen Messdaten."
 ---
 # Fallstudie: Mikroruckler eliminieren
 
@@ -150,40 +150,64 @@ Für die zram-Einrichtung und den Vergleich mit zswap siehe [zram](swap.md#zram)
 
 **Gemessene Wirkung:** NVMe-Swap wurde nie angesprochen — zram absorbierte 100% des Swap-Traffics. Das Write-Volumen auf der zuvor umkämpften NVMe sank um 86%. Die DSF-Worst-Case-Ladezeit verbesserte sich von 63 Sekunden auf 22 Sekunden.
 
-### Schritt 4: Swap-Readahead und zram-Tuning
+### Schritt 4: Swap-Readahead
 
 **Problem:** Der Standard-Wert `vm.page-cluster=3` veranlasst den Kernel, 8 Pages (32 KiB) pro Swap-Zugriff als Readahead zu lesen. Bei zram muss jede Page einzeln dekomprimiert werden — Readahead bringt keinen Vorteil und erhöht die Latenz.
 
-**Lösung:** Page-Cluster auf 0 setzen (Einzel-Page-Reads). Dieser Wert wurde als Teil des sysctl-Tunings in den Testruns gemessen.
-
-Das Testsystem verwendete `vm.swappiness=1` mit zram — eine konservative Einstellung, die Anonymous-Page-Scanning minimiert. Die [Swap-Seite](swap.md#empfohlene-konfiguration) empfiehlt `swappiness=180` für zram-Konfigurationen, was idle Pages proaktiv in komprimierten Swap verschiebt, um RAM für den Page Cache freizugeben. Beide Ansätze sind valide — die Wahl hängt vom Workload ab:
-
-| Einstellung | Verhalten | Geeignet für |
-|---|---|---|
-| `swappiness=1` (getestet) | Vermeidet Swapping fast vollständig, reclaimed zuerst File Pages | Systeme mit ausreichend RAM, wo Swap als Sicherheitsnetz dient |
-| `swappiness=180` (empfohlen für zram) | Komprimiert idle Pages proaktiv, gibt RAM für File Cache frei | Systeme unter anhaltendem Speicherdruck durch Ortho-Streaming |
-
-Zusätzliche zram-spezifische Parameter aus der [Swap-Seite](swap.md#empfohlene-konfiguration):
+**Lösung:** Page-Cluster auf 0 setzen (Einzel-Page-Reads).
 
 ```ini title="/etc/sysctl.d/99-zram.conf"
 vm.page-cluster = 0
-vm.watermark_boost_factor = 0
-vm.watermark_scale_factor = 125
 ```
 
 ```bash
 sudo sysctl --system
 ```
 
-`watermark_boost_factor=0` deaktiviert einen Mechanismus, der für rotierende Festplatten entworfen wurde (irrelevant für zram). `watermark_scale_factor=125` vergrößert den Abstand zwischen den Watermarks und gibt kswapd mehr Zeit zum Reclaim, bevor Direct Reclaim einsetzt.
+**Gemessene Wirkung:** Teil des gesamten sysctl-Tunings, das ab Schritt 1 angewendet wurde. Eliminiert unnötigen Dekompressions-Overhead bei jedem Swap-In.
 
-**Gemessene Wirkung (page-cluster=0):** Teil des gesamten sysctl-Tunings, das ab Schritt 1 angewendet wurde. Die kombinierten Gleichgewichtsphasen-Ergebnisse nach allen Schritten zeigt die Zusammenfassung unten.
+### Schritt 5: Watermark-Optimierung — Proaktives kswapd für Burst-Allokationen
+
+**Problem:** Nach Schritt 1–4 war die Gleichgewichtsphase gelöst — null Stalls, null Direct Reclaim. Aber die **Aufbauphase** (Minute 10–60, während die Szenerie-Caches noch aufgewärmt werden) zeigte weiterhin periodische Memory-Pressure-Spitzen. Per-Prozess-Tracing ergab, dass **67% aller Direct-Reclaim-Events den X-Plane Render-Thread** direkt trafen — die Ursache der verbleibenden Mikroruckler.
+
+Die Ursachenanalyse identifizierte drei beitragende Faktoren:
+
+| Faktor | Einstellung | Wirkung |
+|---|---|---|
+| `watermark_boost_factor=0` | Liquorix-Standard | kswapd erhält keinen temporären Boost nach Reclaim — es reclaimed zu wenige Pages pro Aufwach-Zyklus und fällt zurück |
+| `min_free_kbytes=1 GB` | Schritt 1 | Nur 400 MB Spielraum über dem Schwellwert — Burst-Allokationen unterschreiten die Min-Watermark, bevor kswapd reagieren kann |
+| `swappiness=1` | Schritt 1 | Anonymous Pages werden erst unter extremem Druck geswappt — wenn Swap schließlich einsetzt, geschieht es als Panik-Burst |
+
+!!! warning "Verbreiteter Irrtum: watermark_boost_factor=0 für zram"
+    Viele zram-Anleitungen empfehlen `watermark_boost_factor=0` mit der Begründung, der Boost-Mechanismus sei „für rotierende Festplatten entworfen". Das greift zu kurz. Der Boost erhöht temporär die Watermarks nach einem Reclaim-Event, sodass kswapd im nächsten Zyklus aggressiver reclaimed. Bei Workloads mit stoßartigen Allokationsmustern (Szenerie-Laden, Ortho-Tile-Dekompression) ist dieses proaktive Verhalten essenziell — ohne es kann kswapd nicht Schritt halten und Direct Reclaim übernimmt.
+
+**Lösung:** Watermark-Lücke verbreitern, kswapd-Boost reaktivieren und graduelles Hintergrund-Swapping erlauben:
+
+```ini title="/etc/sysctl.d/99-xplane-tuning.conf"
+vm.min_free_kbytes = 2097152
+vm.watermark_boost_factor = 15000
+vm.watermark_scale_factor = 50
+vm.swappiness = 10
+```
+
+```bash
+sudo sysctl --system
+```
+
+| Parameter | Vorher | Nachher | Wirkung |
+|---|---|---|---|
+| `vm.min_free_kbytes` | 1 GB (Schritt 1) | 2 GB | kswapd wacht mit 2 GB Vorlauf auf — Burst-Allokationen bleiben über der Min-Watermark |
+| `vm.watermark_boost_factor` | 0 | 15000 | kswapd erhöht temporär die Watermarks nach Reclaim — reclaimed mehr Pages pro Zyklus |
+| `vm.watermark_scale_factor` | 10 | 50 | Breitere Lücke zwischen Low- und Min-Watermark — kswapd hat mehr Anlauf vor Direct Reclaim |
+| `vm.swappiness` | 1 | 10 | Graduelles Hintergrund-Swap statt Panik-Bursts — Anonymous Pages wandern in zram, bevor der Druck kritisch wird |
+
+**Gemessene Wirkung:** Die Aufbauphase (Minute 10–60) zeigte deutlich reduzierten Speicherdruck. Direct-Reclaim-Events auf dem Render-Thread gingen zurück, und der Übergang zur Gleichgewichtsphase verlief glatter. Siehe [Swap-Seite](swap.md#empfohlene-konfiguration) für die allgemeinen Watermark- und Swappiness-Empfehlungen.
 
 ---
 
 ## Ergebniszusammenfassung
 
-Die kombinierte Wirkung aller vier Schritte, gemessen auf dem Testsystem (Gleichgewichtsphasen-Werte aus einer mehrstündigen Sitzung):
+Die kombinierte Wirkung aller fünf Schritte, gemessen auf dem Testsystem (Gleichgewichtsphasen-Werte aus einer mehrstündigen Sitzung):
 
 | Metrik | Ausgangszustand | Nach Tuning | Veränderung |
 |---|---|---|---|
@@ -202,7 +226,8 @@ Die kombinierte Wirkung aller vier Schritte, gemessen auf dem Testsystem (Gleich
     1. **kswapd Vorlauf geben** — `min_free_kbytes` sollte zur Burst-Allokationsrate passen, nicht dem Systemstandard entsprechen
     2. **Swap von Daten-IO trennen** — zram eliminiert die Kontention vollständig, ohne dedizierte SSD
     3. **Software-Overhead auf NVMe entfernen** — Multi-Queue-Hardware profitiert nicht von einem Software-Scheduler
-    4. **Vorher und nachher messen** — aggregierte Zähler aus `/proc/vmstat` reichen aus, um zu bestätigen, ob eine Änderung die beabsichtigte Wirkung hatte
+    4. **Watermarks für Burst-Workloads tunen** — `watermark_boost_factor` und `watermark_scale_factor` steuern, wie proaktiv kswapd bei Allokationsspitzen reclaimed
+    5. **Vorher und nachher messen** — aggregierte Zähler aus `/proc/vmstat` reichen aus, um zu bestätigen, ob eine Änderung die beabsichtigte Wirkung hatte
 
 ---
 

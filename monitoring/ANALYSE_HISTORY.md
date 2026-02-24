@@ -193,7 +193,7 @@ free = 1.4 GB (knapp über min_free_kbytes = 1 GB)
 
 ---
 
-## Änderung 5 — Watermark + Swappiness + NVMe PM QOS (geplant für Run H)
+## Änderung 5 — Watermark + Swappiness + NVMe PM QOS
 
 ```
 vm.min_free_kbytes           1 GB → 2 GB        Mehr Puffer vor Direct Reclaim
@@ -204,22 +204,112 @@ NVMe pm_qos_latency_tolerance_us  100000 → 0     Power-State-Exit-Latenz elimi
 bpftrace BPFTRACE_MAP_KEYS_MAX    4096 → 65536   Map-Overflow vermeiden
 ```
 
-**Erwartung Run H:** Ramp-up-Phase deutlich ruhiger durch proaktiveres kswapd-Verhalten. Weniger/keine Direct-Reclaim-Events auf dem X-Plane Main Thread. Samsung 990 PRO ohne 10 ms Latenz-Spikes.
+---
+
+## Run H — Watermark-Optimierung (2026-02-24, 108 Min)
+
+Route: EDDH → ESSA (Hamburg → Stockholm), Geradeausflug über Ostsee.
+**Confounding Factor:** Skunkcrafts Updater Cronjob feuerte um 12:00 UTC (Min 77), 12-Sekunden-Burst.
+
+| Metrik | Run G (Gesamt) | Run H (Gesamt) | Run H (Steady, ab Min 85) |
+|--------|---------------|---------------|---------------------------|
+| Alloc Stalls | 42 Events, max 11.425/s | 117 Events, max 17.462/s | **0** |
+| Direct Reclaim (bpftrace) | 71.160 Events | 84.140 Events | — |
+| X-Plane Main Reclaim | 47.583 (67%) | **19.865 (24%)** | — |
+| SkunkcraftsUpda Reclaim | — (nicht aktiv) | **48.157 (57%)** | — |
+| Slow IO Events (>5ms) | 12.383 | **339 (-97%)** | — |
+| 10–11ms IO-Pattern | 90% der Events | **1,5% (5 Events)** | — |
+| Swap Peak | 18.156 MB | 12.045 MB | ~8.930 MB |
+| free avg | ~1.400 MB | **~4.880 MB** | ~3.300 MB |
+| kswapd Efficiency | 93,4% | **94,5%** | 94,4% |
+| GPU Throttle | 0 | — (kein NVML) | — |
+| DMA Fence Stalls | 0 | **0** | **0** |
+
+**Gesicherte Verbesserungen durch Tuning:**
+
+1. **NVMe PM QOS:** 97,3% Reduktion der Slow-IO-Events. 10–11ms Power-State-Pattern eliminiert.
+2. **kswapd-Headroom:** free avg 4,9 GB (vs. 1,4 GB). min_free_kbytes=2 GB + boost_factor=15000 wirken.
+3. **X-Plane Main Thread Reclaim: -58%** (19.865 vs. 47.583) trotz stärkerer Konkurrenz.
+4. **Swap gradueller:** pswpout nur 2,5% aktiv (vs. 5,1%), erst bei Min 54 erstes GB.
+5. **bpftrace-Datenqualität:** MAP_KEYS=65536 → keine Overflows, 45 KB statt 697 MB.
+
+**Neue Erkenntnisse:**
+
+- **Skunkcrafts Cronjob (12:00 UTC, 12s Burst) = #1 Reclaim-Verursacher (57,2%)** — überlagert Tuning-Effekte
+- Ramp-up verlängert auf 85 Min (vs. 60 Min), ~10 Min davon durch Cronjob-Burst
+- X-Plane Main Thread Worst Case: 50 ms (vs. 20,6 ms in Run G) — durch Skunkcrafts-Konkurrenz
+- EMFILE-Burst: 1.126 "Too many open files" bei XEL (fd-Limit)
+
+**Maßnahmen nach Run H:**
+
+- Skunkcrafts-Cronjob aus crontab entfernt (war `0 */4 * * *`)
+- Gesamte User-Crontab bereinigt (auch obsolete UnWetter-Archiv-Jobs entfernt)
+- Alle Tuning-Settings persistent gemacht (sysctl.conf + udev-Rule)
+- swappiness von 10 auf **5** reduziert (Kompromiss: weniger Ramp-up-Dauer vs. Panik-Bursts)
+- Duplikate in `/etc/sysctl.d/99-custom-tuning.conf` bereinigt
+
+---
+
+## Änderung 6 — Post-Run-H Bereinigung + XEL-Optimierung
+
+```
+Skunkcrafts Cronjob          aktiv → entfernt     Verursachte 57% aller Reclaim-Events
+UnWetter-Archiv Cronjobs     aktiv → entfernt     Nicht mehr benötigt
+vm.swappiness                10 → 5               Kompromiss: schnellerer Ramp-up, keine Panik-Bursts
+NVMe PM QOS udev-Rule        fehlte → angelegt    /etc/udev/rules.d/61-nvme-pmqos.rules
+sysctl.conf Duplikate         ja → bereinigt       watermark_boost_factor + scale_factor waren doppelt
+XEL prefetch mode            (default) → auto     Selbstkalibrierende Prefetch-Strategie
+XEL generation threads       16 → 12              Kompromiss: Prewarm-Power vs. Flug-Konkurrenz
+XEL network_concurrent       64 → 96              Mehr Prewarm-Durchsatz, Circuit Breaker drosselt im Flug
+XEL cpu_concurrent           8 → 12               Mehr parallele Assemble+Encode Ops
+XEL disk_io_concurrent       32 → 48              Mehr parallele Cache-Ops
+```
 
 ---
 
 ## Gesamtentwicklung — Schlüsselmetriken
 
-| Metrik | A (Baseline) | D (+IO) | E (90 Min) | F/2 (Steady) | G (Steady) |
-|--------|-------------|---------|------------|---------------|------------|
-| Direct Reclaim max/s | 75.183 | 0 | 2.122.555 | **0** | **0** |
-| Alloc Stalls max/s | 1.042 | 0 | 13.383 | **0** | **0** |
-| Write-Lat avg (ms) | 36–47 | 1,8 | 16,1 | — | — |
-| Write-Lat max (ms) | 260–312 | 283 | 699 | **44** | — |
-| Dirty Pages avg (MB) | 502 | 30 | 39 | **2,4** | ~2 |
-| Swap auf NVMe | ja | ja | 11,6 GB | **0** | **0** |
-| DSF-Load max (ms) | — | — | 63.385 | **22.116** | — |
-| PSI | 0 | 0 | 0 | — | **0** |
-| GPU Throttle | — | — | — | — | **0** |
+| Metrik | A (Baseline) | D (+IO) | E (90 Min) | F/2 (Steady) | G (Steady) | H (Steady) |
+|--------|-------------|---------|------------|---------------|------------|------------|
+| Direct Reclaim max/s | 75.183 | 0 | 2.122.555 | **0** | **0** | **0** |
+| Alloc Stalls max/s | 1.042 | 0 | 13.383 | **0** | **0** | **0** |
+| Write-Lat avg (ms) | 36–47 | 1,8 | 16,1 | — | — | 0,25 (read) |
+| Write-Lat max (ms) | 260–312 | 283 | 699 | **44** | — | 53,8 |
+| Dirty Pages avg (MB) | 502 | 30 | 39 | **2,4** | ~2 | ~16 |
+| Swap auf NVMe | ja | ja | 11,6 GB | **0** | **0** | **0** |
+| Slow IO (>5ms) | — | — | — | — | 12.383 | **339** |
+| PSI | 0 | 0 | 0 | — | **0** | — |
+| GPU Throttle | — | — | — | — | **0** | — |
 
-**Fazit:** Der Steady State ist gelöst — null Stalls, null Reclaim, null GPU-Throttling. Die Ramp-up-Phase (Szenerieladen) bleibt das letzte Problem. Die Run-G-Analyse hat die Ursache präzise identifiziert: deaktivierter kswapd-Boost + zu enge Watermarks + zu restriktive Swap-Policy. Die für Run H geplanten Änderungen adressieren genau diese Punkte.
+**Zeitraum:** 2026-02-17 bis 2026-02-24
+
+## Aktueller Tuning-Stack (persistent, Stand 2026-02-24)
+
+```
+# sysctl (/etc/sysctl.d/99-custom-tuning.conf)
+vm.swappiness = 5
+vm.min_free_kbytes = 2097152          (2 GB)
+vm.watermark_boost_factor = 15000
+vm.watermark_scale_factor = 50
+vm.page-cluster = 0
+vm.vfs_cache_pressure = 150
+vm.dirty_background_ratio = 1
+vm.dirty_ratio = 5
+vm.dirty_expire_centisecs = 1500
+vm.dirty_writeback_centisecs = 500
+
+# NVMe IO (/etc/udev/rules.d/60-nvme-tuning.rules)
+scheduler = none
+WBT = 0
+readahead = 256 KB
+pm_qos_latency_tolerance_us = 0       (/etc/udev/rules.d/61-nvme-pmqos.rules)
+
+# zram
+32 GB lz4, pri=100 (zram-swap.service)
+
+# Btrfs (fstab)
+xplane_data: commit=30s
+home: commit=60s
+```
+
+**Fazit:** Steady State bleibt stabil (null Stalls, null Reclaim seit Run F). Run H liefert zwei große Verbesserungen: NVMe-IO-Latenz um 97% reduziert und X-Plane Main Thread Reclaim um 58% gesenkt. Der Skunkcrafts-Cronjob wurde als Hauptstörfaktor identifiziert und entfernt. Alle Settings sind nun persistent. Nächster Schritt: **Run I** — sauberer Vergleich ohne Cronjob, mit swappiness=5, gleiche Route.
