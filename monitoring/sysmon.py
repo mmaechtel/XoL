@@ -357,7 +357,8 @@ def get_vram():
             return ""
         # nvidia-smi returns 10 fields, add pcie_tx, pcie_rx, throttle
         return out + ", 0, 0, 0"
-    except Exception:
+    except Exception as e:
+        print(f"  [ERROR] nvidia-smi failed: {e}", flush=True)
         return ""
 
 # ─── vmstat ───────────────────────────────────────────────────────────
@@ -505,8 +506,8 @@ def correlate_events(csv_path, events, ts_col=0, val_col=None,
                           if abs(e_ts - ts) <= window]
                 if nearby:
                     hits.append((ts, val, nearby))
-    except Exception:
-        pass
+    except Exception as e:
+        print(f"  [ERROR] correlate_events failed: {e}", flush=True)
     return hits
 
 # ─── per-process ──────────────────────────────────────────────────────
@@ -517,7 +518,8 @@ def find_tracked_procs(patterns):
     result = {}
     try:
         entries = os.listdir("/proc")
-    except OSError:
+    except OSError as e:
+        print(f"  [ERROR] Cannot list /proc: {e}", flush=True)
         return result
     for entry in entries:
         if not entry.isdigit():
@@ -552,7 +554,10 @@ def read_proc_stats(pid):
         utime = int(fields[11])
         stime = int(fields[12])
         num_threads = int(fields[17])
-    except Exception:
+    except (FileNotFoundError, PermissionError, ProcessLookupError):
+        return None
+    except Exception as e:
+        print(f"  [ERROR] read_proc_stats({pid}) stat failed: {e}", flush=True)
         return None
 
     read_bytes = write_bytes = 0
@@ -563,7 +568,7 @@ def read_proc_stats(pid):
             elif line.startswith("write_bytes:"):
                 write_bytes = int(line.split(":")[1])
     except (FileNotFoundError, PermissionError):
-        pass
+        pass  # OK: io not readable for some processes (permission)
 
     rss_kb = 0
     try:
@@ -572,7 +577,7 @@ def read_proc_stats(pid):
                 rss_kb = int(line.split()[1])
                 break
     except (FileNotFoundError, PermissionError):
-        pass
+        pass  # OK: process may have exited
 
     return {"utime": utime, "stime": stime, "num_threads": num_threads,
             "read_bytes": read_bytes, "write_bytes": write_bytes,
@@ -650,7 +655,7 @@ class CSVWriters:
             + ",".join(f"cpu{i}_mhz" for i in range(NUM_CPUS)))
 
     def _open(self, path, header):
-        f = open(path, "w")
+        f = open(path, "w", buffering=1)  # line-buffered: flush after every \n
         f.write(header + "\n")
         self._files.append(f)
         return f
@@ -762,203 +767,227 @@ def collect(writers, stats):
                 continue
 
             # CPU (every sample)
-            curr_cpu, curr_ctxt = parse_cpu_stat()
-            cd = cpu_delta(prev_cpu, curr_cpu)
-            for cpu_id, v in cd.items():
-                writers.write_cpu(ts, cpu_id, v)
-                stats.cpu[cpu_id]["user"].append(v["user"])
-                stats.cpu[cpu_id]["sys"].append(v["sys"])
-                stats.cpu[cpu_id]["iowait"].append(v["iowait"])
-                stats.cpu[cpu_id]["irq"].append(v["irq"] + v["softirq"])
-                stats.cpu[cpu_id]["guest"].append(v["guest"])
-                stats.cpu[cpu_id]["idle"].append(v["idle"])
-            prev_cpu = curr_cpu
+            try:
+                curr_cpu, curr_ctxt = parse_cpu_stat()
+                cd = cpu_delta(prev_cpu, curr_cpu)
+                for cpu_id, v in cd.items():
+                    writers.write_cpu(ts, cpu_id, v)
+                    stats.cpu[cpu_id]["user"].append(v["user"])
+                    stats.cpu[cpu_id]["sys"].append(v["sys"])
+                    stats.cpu[cpu_id]["iowait"].append(v["iowait"])
+                    stats.cpu[cpu_id]["irq"].append(v["irq"] + v["softirq"])
+                    stats.cpu[cpu_id]["guest"].append(v["guest"])
+                    stats.cpu[cpu_id]["idle"].append(v["idle"])
+                prev_cpu = curr_cpu
+            except Exception as e:
+                print(f"  [ERROR] CPU sample failed: {e}", flush=True)
 
             # Disk IO (every sample)
-            curr_disk = parse_diskstats()
-            dd = diskstat_delta(prev_disk, curr_disk, dt)
-            for dev, v in dd.items():
-                writers.write_io(ts, dev, v)
-                stats.io[dev]["rMB_per_s"].append(v["rMB_per_s"])
-                stats.io[dev]["wMB_per_s"].append(v["wMB_per_s"])
-                stats.io[dev]["r_lat"].append(v["avg_r_lat_ms"])
-                stats.io[dev]["w_lat"].append(v["avg_w_lat_ms"])
-                stats.io[dev]["util"].append(v["io_util_pct"])
-            prev_disk = curr_disk
+            try:
+                curr_disk = parse_diskstats()
+                dd = diskstat_delta(prev_disk, curr_disk, dt)
+                for dev, v in dd.items():
+                    writers.write_io(ts, dev, v)
+                    stats.io[dev]["rMB_per_s"].append(v["rMB_per_s"])
+                    stats.io[dev]["wMB_per_s"].append(v["wMB_per_s"])
+                    stats.io[dev]["r_lat"].append(v["avg_r_lat_ms"])
+                    stats.io[dev]["w_lat"].append(v["avg_w_lat_ms"])
+                    stats.io[dev]["util"].append(v["io_util_pct"])
+                prev_disk = curr_disk
+            except Exception as e:
+                print(f"  [ERROR] IO sample failed: {e}", flush=True)
 
             # Memory (every sample)
-            mi = parse_meminfo()
-            total = mi["MemTotal"] / 1024
-            free = mi["MemFree"] / 1024
-            avail = mi["MemAvailable"] / 1024
-            buffers = mi["Buffers"] / 1024
-            cached = mi["Cached"] / 1024
-            used = total - free - buffers - cached
-            swap_total = mi["SwapTotal"] / 1024
-            swap_free = mi["SwapFree"] / 1024
-            swap_used = swap_total - swap_free
-            dirty = mi.get("Dirty", 0) / 1024
-            writeback = mi.get("Writeback", 0) / 1024
-            writers.write_mem(ts, total, used, free, avail, buffers, cached,
-                              swap_used, swap_free, dirty, writeback)
-            stats.mem["used"].append(used)
-            stats.mem["avail"].append(avail)
-            stats.mem["swap_used"].append(swap_used)
-            stats.mem["dirty"].append(dirty)
-            stats.mem["writeback"].append(writeback)
+            try:
+                mi = parse_meminfo()
+                total = mi["MemTotal"] / 1024
+                free = mi["MemFree"] / 1024
+                avail = mi["MemAvailable"] / 1024
+                buffers = mi["Buffers"] / 1024
+                cached = mi["Cached"] / 1024
+                used = total - free - buffers - cached
+                swap_total = mi["SwapTotal"] / 1024
+                swap_free = mi["SwapFree"] / 1024
+                swap_used = swap_total - swap_free
+                dirty = mi.get("Dirty", 0) / 1024
+                writeback = mi.get("Writeback", 0) / 1024
+                writers.write_mem(ts, total, used, free, avail, buffers, cached,
+                                  swap_used, swap_free, dirty, writeback)
+                stats.mem["used"].append(used)
+                stats.mem["avail"].append(avail)
+                stats.mem["swap_used"].append(swap_used)
+                stats.mem["dirty"].append(dirty)
+                stats.mem["writeback"].append(writeback)
+            except Exception as e:
+                print(f"  [ERROR] Memory sample failed: {e}", flush=True)
 
             # ── 1-second probes ──
             slow_dt = now_mono - last_slow
             if slow_dt >= 1.0:
 
                 # Interrupts
-                curr_irq = parse_interrupts()
-                irq_d = interrupt_delta(prev_irq, curr_irq)
-                for irq, iv in irq_d.items():
-                    rate = [x / slow_dt for x in iv["delta"]]
-                    writers.write_irq(ts, irq, iv["desc"], rate)
-                    for i in range(NUM_CPUS):
-                        stats.irq_totals[irq][i] += iv["delta"][i]
-                    stats.irq_descs[irq] = iv["desc"]
-                prev_irq = curr_irq
-                irq_sample_count += 1
+                try:
+                    curr_irq = parse_interrupts()
+                    irq_d = interrupt_delta(prev_irq, curr_irq)
+                    for irq, iv in irq_d.items():
+                        rate = [x / slow_dt for x in iv["delta"]]
+                        writers.write_irq(ts, irq, iv["desc"], rate)
+                        for i in range(NUM_CPUS):
+                            stats.irq_totals[irq][i] += iv["delta"][i]
+                        stats.irq_descs[irq] = iv["desc"]
+                    prev_irq = curr_irq
+                    irq_sample_count += 1
+                except Exception as e:
+                    print(f"  [ERROR] IRQ sample failed: {e}", flush=True)
 
                 # VRAM / GPU
-                vram = get_vram()
-                if vram:
-                    writers.write_vram(ts, vram)
-                    try:
+                try:
+                    vram = get_vram()
+                    if vram:
+                        writers.write_vram(ts, vram)
                         parts = [p.strip() for p in vram.split(",")]
                         stats.gpu["used"].append(float(parts[0]))
                         stats.gpu["util"].append(float(parts[4]))
                         if len(parts) >= 9:
                             stats.gpu["clock"].append(float(parts[6]))
                             stats.gpu["power"].append(float(parts[8]))
-                    except Exception:
-                        pass
+                except Exception as e:
+                    print(f"  [ERROR] VRAM sample failed: {e}", flush=True)
 
                 # vmstat
-                curr_vmstat = parse_vmstat()
-                v_ctxt = (curr_ctxt - prev_ctxt) / slow_dt
-                v_pgfault = (curr_vmstat.get("pgfault", 0)
-                             - prev_vmstat.get("pgfault", 0)) / slow_dt
-                v_pgmajfault = (curr_vmstat.get("pgmajfault", 0)
-                                - prev_vmstat.get("pgmajfault", 0)) / slow_dt
-                v_pgscan_k = (sum_prefix(curr_vmstat, "pgscan_kswapd")
-                              - sum_prefix(prev_vmstat, "pgscan_kswapd")
-                              ) / slow_dt
-                v_pgscan_d = (sum_prefix(curr_vmstat, "pgscan_direct")
-                              - sum_prefix(prev_vmstat, "pgscan_direct")
-                              ) / slow_dt
-                v_pgsteal_k = (sum_prefix(curr_vmstat, "pgsteal_kswapd")
-                               - sum_prefix(prev_vmstat, "pgsteal_kswapd")
-                               ) / slow_dt
-                v_pgsteal_d = (sum_prefix(curr_vmstat, "pgsteal_direct")
-                               - sum_prefix(prev_vmstat, "pgsteal_direct")
-                               ) / slow_dt
-                v_alloc = (sum_prefix(curr_vmstat, "allocstall")
-                           - sum_prefix(prev_vmstat, "allocstall")) / slow_dt
-                v_compact = (curr_vmstat.get("compact_stall", 0)
-                             - prev_vmstat.get("compact_stall", 0)) / slow_dt
-                tlb_curr = (curr_vmstat.get("nr_tlb_remote_flush", 0)
-                            + curr_vmstat.get("nr_tlb_remote_flush_received", 0))
-                tlb_prev = (prev_vmstat.get("nr_tlb_remote_flush", 0)
-                            + prev_vmstat.get("nr_tlb_remote_flush_received", 0))
-                v_tlb = (tlb_curr - tlb_prev) / slow_dt
-                nr_dirty = curr_vmstat.get("nr_dirty", 0)
-                nr_wb = curr_vmstat.get("nr_writeback", 0)
-                v_pswpin = (curr_vmstat.get("pswpin", 0)
-                            - prev_vmstat.get("pswpin", 0)) / slow_dt
-                v_pswpout = (curr_vmstat.get("pswpout", 0)
-                             - prev_vmstat.get("pswpout", 0)) / slow_dt
-                v_wset_anon = (curr_vmstat.get("workingset_refault_anon", 0)
-                               - prev_vmstat.get("workingset_refault_anon", 0)
-                               ) / slow_dt
-                v_wset_file = (curr_vmstat.get("workingset_refault_file", 0)
-                               - prev_vmstat.get("workingset_refault_file", 0)
-                               ) / slow_dt
-                v_thp_fallback = (curr_vmstat.get("thp_fault_fallback", 0)
-                                  - prev_vmstat.get("thp_fault_fallback", 0)
+                try:
+                    curr_vmstat = parse_vmstat()
+                    v_ctxt = (curr_ctxt - prev_ctxt) / slow_dt
+                    v_pgfault = (curr_vmstat.get("pgfault", 0)
+                                 - prev_vmstat.get("pgfault", 0)) / slow_dt
+                    v_pgmajfault = (curr_vmstat.get("pgmajfault", 0)
+                                    - prev_vmstat.get("pgmajfault", 0)) / slow_dt
+                    v_pgscan_k = (sum_prefix(curr_vmstat, "pgscan_kswapd")
+                                  - sum_prefix(prev_vmstat, "pgscan_kswapd")
                                   ) / slow_dt
+                    v_pgscan_d = (sum_prefix(curr_vmstat, "pgscan_direct")
+                                  - sum_prefix(prev_vmstat, "pgscan_direct")
+                                  ) / slow_dt
+                    v_pgsteal_k = (sum_prefix(curr_vmstat, "pgsteal_kswapd")
+                                   - sum_prefix(prev_vmstat, "pgsteal_kswapd")
+                                   ) / slow_dt
+                    v_pgsteal_d = (sum_prefix(curr_vmstat, "pgsteal_direct")
+                                   - sum_prefix(prev_vmstat, "pgsteal_direct")
+                                   ) / slow_dt
+                    v_alloc = (sum_prefix(curr_vmstat, "allocstall")
+                               - sum_prefix(prev_vmstat, "allocstall")) / slow_dt
+                    v_compact = (curr_vmstat.get("compact_stall", 0)
+                                 - prev_vmstat.get("compact_stall", 0)) / slow_dt
+                    tlb_curr = (curr_vmstat.get("nr_tlb_remote_flush", 0)
+                                + curr_vmstat.get("nr_tlb_remote_flush_received", 0))
+                    tlb_prev = (prev_vmstat.get("nr_tlb_remote_flush", 0)
+                                + prev_vmstat.get("nr_tlb_remote_flush_received", 0))
+                    v_tlb = (tlb_curr - tlb_prev) / slow_dt
+                    nr_dirty = curr_vmstat.get("nr_dirty", 0)
+                    nr_wb = curr_vmstat.get("nr_writeback", 0)
+                    v_pswpin = (curr_vmstat.get("pswpin", 0)
+                                - prev_vmstat.get("pswpin", 0)) / slow_dt
+                    v_pswpout = (curr_vmstat.get("pswpout", 0)
+                                 - prev_vmstat.get("pswpout", 0)) / slow_dt
+                    v_wset_anon = (curr_vmstat.get("workingset_refault_anon", 0)
+                                   - prev_vmstat.get("workingset_refault_anon", 0)
+                                   ) / slow_dt
+                    v_wset_file = (curr_vmstat.get("workingset_refault_file", 0)
+                                   - prev_vmstat.get("workingset_refault_file", 0)
+                                   ) / slow_dt
+                    v_thp_fallback = (curr_vmstat.get("thp_fault_fallback", 0)
+                                      - prev_vmstat.get("thp_fault_fallback", 0)
+                                      ) / slow_dt
 
-                writers.write_vmstat(ts, v_ctxt, v_pgfault, v_pgmajfault,
-                                     v_pgscan_k, v_pgscan_d,
-                                     v_pgsteal_k, v_pgsteal_d,
-                                     v_alloc, v_compact, v_tlb,
-                                     nr_dirty, nr_wb,
-                                     v_pswpin, v_pswpout,
-                                     v_wset_anon, v_wset_file,
-                                     v_thp_fallback)
+                    writers.write_vmstat(ts, v_ctxt, v_pgfault, v_pgmajfault,
+                                         v_pgscan_k, v_pgscan_d,
+                                         v_pgsteal_k, v_pgsteal_d,
+                                         v_alloc, v_compact, v_tlb,
+                                         nr_dirty, nr_wb,
+                                         v_pswpin, v_pswpout,
+                                         v_wset_anon, v_wset_file,
+                                         v_thp_fallback)
 
-                stats.vm["ctxt"].append(v_ctxt)
-                stats.vm["pgfault"].append(v_pgfault)
-                stats.vm["pgmajfault"].append(v_pgmajfault)
-                stats.vm["pgscan_kswapd"].append(v_pgscan_k)
-                stats.vm["pgscan_direct"].append(v_pgscan_d)
-                stats.vm["pgsteal_kswapd"].append(v_pgsteal_k)
-                stats.vm["pgsteal_direct"].append(v_pgsteal_d)
-                stats.vm["allocstall"].append(v_alloc)
-                stats.vm["compact_stall"].append(v_compact)
-                stats.vm["tlb"].append(v_tlb)
-                stats.vm["pswpin"].append(v_pswpin)
-                stats.vm["pswpout"].append(v_pswpout)
-                stats.vm["wset_refault_anon"].append(v_wset_anon)
-                stats.vm["wset_refault_file"].append(v_wset_file)
-                stats.vm["thp_fault_fallback"].append(v_thp_fallback)
+                    stats.vm["ctxt"].append(v_ctxt)
+                    stats.vm["pgfault"].append(v_pgfault)
+                    stats.vm["pgmajfault"].append(v_pgmajfault)
+                    stats.vm["pgscan_kswapd"].append(v_pgscan_k)
+                    stats.vm["pgscan_direct"].append(v_pgscan_d)
+                    stats.vm["pgsteal_kswapd"].append(v_pgsteal_k)
+                    stats.vm["pgsteal_direct"].append(v_pgsteal_d)
+                    stats.vm["allocstall"].append(v_alloc)
+                    stats.vm["compact_stall"].append(v_compact)
+                    stats.vm["tlb"].append(v_tlb)
+                    stats.vm["pswpin"].append(v_pswpin)
+                    stats.vm["pswpout"].append(v_pswpout)
+                    stats.vm["wset_refault_anon"].append(v_wset_anon)
+                    stats.vm["wset_refault_file"].append(v_wset_file)
+                    stats.vm["thp_fault_fallback"].append(v_thp_fallback)
 
-                prev_vmstat = curr_vmstat
-                prev_ctxt = curr_ctxt
+                    prev_vmstat = curr_vmstat
+                    prev_ctxt = curr_ctxt
+                except Exception as e:
+                    print(f"  [ERROR] vmstat sample failed: {e}", flush=True)
 
                 # PSI
-                psi = parse_psi()
-                writers.write_psi(ts, psi)
-                stats.psi["cpu_some10"].append(psi["cpu"]["some_avg10"])
-                stats.psi["mem_some10"].append(psi["memory"]["some_avg10"])
-                stats.psi["mem_full10"].append(psi["memory"]["full_avg10"])
-                stats.psi["io_some10"].append(psi["io"]["some_avg10"])
-                stats.psi["io_full10"].append(psi["io"]["full_avg10"])
+                try:
+                    psi = parse_psi()
+                    writers.write_psi(ts, psi)
+                    stats.psi["cpu_some10"].append(psi["cpu"]["some_avg10"])
+                    stats.psi["mem_some10"].append(psi["memory"]["some_avg10"])
+                    stats.psi["mem_full10"].append(psi["memory"]["full_avg10"])
+                    stats.psi["io_some10"].append(psi["io"]["some_avg10"])
+                    stats.psi["io_full10"].append(psi["io"]["full_avg10"])
+                except Exception as e:
+                    print(f"  [ERROR] PSI sample failed: {e}", flush=True)
 
                 # CPU frequency
-                freqs = parse_cpu_freq()
-                writers.write_freq(ts, freqs)
-                for i, fq in enumerate(freqs):
-                    if fq > 0:
-                        stats.freq[i].append(fq)
+                try:
+                    freqs = parse_cpu_freq()
+                    writers.write_freq(ts, freqs)
+                    for i, fq in enumerate(freqs):
+                        if fq > 0:
+                            stats.freq[i].append(fq)
+                except Exception as e:
+                    print(f"  [ERROR] CPU freq sample failed: {e}", flush=True)
 
                 # Per-process tracking
-                if now_mono - last_proc_scan >= PROC_SCAN_INTERVAL:
-                    tracked_pids = find_tracked_procs(PROC_PATTERNS)
-                    last_proc_scan = now_mono
+                try:
+                    if now_mono - last_proc_scan >= PROC_SCAN_INTERVAL:
+                        tracked_pids = find_tracked_procs(PROC_PATTERNS)
+                        last_proc_scan = now_mono
 
-                for pid, name in list(tracked_pids.items()):
-                    pstats = read_proc_stats(pid)
-                    if pstats is None:
-                        tracked_pids.pop(pid, None)
-                        prev_proc.pop(pid, None)
-                        continue
+                    for pid, name in list(tracked_pids.items()):
+                        pstats = read_proc_stats(pid)
+                        if pstats is None:
+                            tracked_pids.pop(pid, None)
+                            prev_proc.pop(pid, None)
+                            continue
 
-                    rss_mb = pstats["rss_kb"] / 1024
+                        rss_mb = pstats["rss_kb"] / 1024
 
-                    if pid in prev_proc:
-                        pp = prev_proc[pid]
-                        d_u = pstats["utime"] - pp["utime"]
-                        d_s = pstats["stime"] - pp["stime"]
-                        cpu_pct = (d_u + d_s) / CLK_TCK / slow_dt * 100
-                        d_rb = pstats["read_bytes"] - pp["read_bytes"]
-                        d_wb = pstats["write_bytes"] - pp["write_bytes"]
-                        io_r = d_rb / 1024 / 1024 / slow_dt
-                        io_w = d_wb / 1024 / 1024 / slow_dt
+                        if pid in prev_proc:
+                            pp = prev_proc[pid]
+                            d_u = pstats["utime"] - pp["utime"]
+                            d_s = pstats["stime"] - pp["stime"]
+                            cpu_pct = (d_u + d_s) / CLK_TCK / slow_dt * 100
+                            d_rb = pstats["read_bytes"] - pp["read_bytes"]
+                            d_wb = pstats["write_bytes"] - pp["write_bytes"]
+                            io_r = d_rb / 1024 / 1024 / slow_dt
+                            io_w = d_wb / 1024 / 1024 / slow_dt
 
-                        writers.write_proc(ts, pid, name, cpu_pct, rss_mb,
-                                           io_r, io_w, pstats["num_threads"])
+                            writers.write_proc(ts, pid, name, cpu_pct, rss_mb,
+                                               io_r, io_w, pstats["num_threads"])
 
-                        stats.proc[name]["cpu"].append(cpu_pct)
-                        stats.proc[name]["rss"].append(rss_mb)
-                        stats.proc[name]["io_r"].append(io_r)
-                        stats.proc[name]["io_w"].append(io_w)
-                        stats.proc[name]["threads"].append(pstats["num_threads"])
+                            stats.proc[name]["cpu"].append(cpu_pct)
+                            stats.proc[name]["rss"].append(rss_mb)
+                            stats.proc[name]["io_r"].append(io_r)
+                            stats.proc[name]["io_w"].append(io_w)
+                            stats.proc[name]["threads"].append(pstats["num_threads"])
 
-                    prev_proc[pid] = pstats
+                        prev_proc[pid] = pstats
+                except Exception as e:
+                    print(f"  [ERROR] Process tracking failed: {e}", flush=True)
 
                 last_slow = now_mono
 
@@ -1354,8 +1383,8 @@ def _start_gpu_event_monitor(outdir):
                      "--no-pager", "-o", "short-precise"],
                     stdout=f, stderr=subprocess.DEVNULL)
                 proc.wait()
-        except Exception:
-            pass
+        except Exception as e:
+            print(f"  [ERROR] GPU event monitor failed: {e}", flush=True)
 
     t = threading.Thread(target=_monitor, daemon=True)
     t.start()

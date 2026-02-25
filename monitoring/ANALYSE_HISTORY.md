@@ -359,6 +359,49 @@ XEL prewarm grid_size             4 → 6                 36 DSF-Tiles, ±117nm 
 *Run J: Ortho4XP-Szenerie, XEL nur Gap-Filler, Freeze bei Min 39.
 **Run K Steady: Ab Min 88, schwerster Lastfall (Cold Start, 22k Tiles, 800 km neue Route).
 
+---
+
+## Änderung 12 — Circuit Breaker scharf stellen (2026-02-25)
+
+**Befund Run N:** `generation.threads=6` (Änd. 11) reicht nicht — Tokio-Runtime spawned weiterhin 315–547 Threads. Der Circuit Breaker war zahnlos: Bei `max_concurrent_tasks=128` waren die Pools so groß, dass der Breaker nie rechtzeitig triggerte.
+
+**Strategie:** Pool-Größen reduzieren, damit der CB früher auslöst. CPU-Limits nicht anfassen.
+
+```
+XEL max_concurrent_tasks         128 → 48             CB sieht Pool-Sättigung schneller
+XEL network_concurrent           128 → 48             Weniger parallele HTTP-Connections
+XEL max_tiles_per_cycle           200 → 80            Kleinere Prefetch-Batches
+```
+
+---
+
+## Run O — LEMD → EDDM mit Circuit-Breaker-Tuning (2026-02-25, 92 Min)
+
+Route: LEMD (Madrid) → EDDM (München), ~1.500 km, FL330, Pyrenäen/Alpen-Überflug.
+Änderung 12 aktiv. Mid-flight: generation.threads 6→4.
+
+| Metrik | Run N (80 Min) | **Run O (92 Min)** | Trend |
+|--------|----------------|---------------------|-------|
+| FPS < 25 | 6,4% | **2,5%** | **↓↓↓** |
+| Takeoff-Stutter | **57s** | **0s** | **ELIMINIERT** |
+| Approach-Stutter | **61s** | **6,2s** | **↓ 90%** |
+| Max Event-Dauer | 61s | **9,2s** (DSF, nicht XEL) | **↓ 85%** |
+| FPS Median | 29,9 | **29,7** | = |
+| allocstall max/s | 6.948 | 10.341 | ↑ (aber kurze Bursts) |
+| XEL Threads max | 547 | 547 | = (Pool limitiert Dauer, nicht Threads) |
+| XEL RSS Peak | 15,4 GB | **15,1 GB** | = |
+| VRAM Peak | 20,1 GB (82%) | **21,3 GB (87%)** | ~ |
+
+**Kernbefunde:**
+
+1. **Takeoff-Stutter eliminiert:** 57s → 0s. CB greift bei kleineren Pools rechtzeitig, Prefetch-Burst wird gedrosselt bevor Thread-Bomb eskaliert.
+2. **Approach -90%:** 61s → 6,2s. Dreifach-Problem (DSF + XEL + Memory) noch vorhanden, aber CB begrenzt Burst-Dauer.
+3. **Cruise-Dips kurz und harmlos:** Cluster E07–E12 (max 3,7s) statt durchgehende Minuten-Stutter. Allocstalls treten auf, aber System erholt sich dank CB-Pause.
+4. **DSF-Loading bleibt Flaschenhals:** E05 (9,2s Climb) = reines X-Plane DSF-Crossing, XEL idle (49% CPU, 203 Threads). Nicht tunable.
+5. **Pool-Verkleinerung = wirksamster einzelner Tuning-Schritt** gegen FPS-Stutter in der gesamten Historie.
+
+Detailanalyse: [ANALYSE_RUN_O_20260225.md](ANALYSE_RUN_O_20260225.md)
+
 **Zeitraum:** 2026-02-17 bis 2026-02-25
 
 ## Aktueller Tuning-Stack (persistent, Stand 2026-02-25)
@@ -389,11 +432,14 @@ pm_qos_latency_tolerance_us = 0       (/etc/udev/rules.d/61-nvme-pmqos.rules)
 xplane_data: commit=30s
 home: commit=60s
 
-# XEL (~/.xearthlayer/config.ini) — nach Änderung 10 (2026-02-25)
+# XEL (~/.xearthlayer/config.ini) — nach Änderung 12 (2026-02-25)
 # Nur Nicht-Default-Werte:
-generation threads = 12              (Default: 16, CPU shared mit X-Plane)
-cpu_concurrent = 8                   (Default: 10, gleicher Grund)
+generation threads = 6               (Default: 16, Thread-Pool-Limit für CPU-bound Work)
+cpu_concurrent = 8                   (Default: 10, CPU shared mit X-Plane)
 max_concurrent_jobs = 4              (Default: 16, allocstall-Elimination)
+max_concurrent_tasks = 48            (Default: 128, CB-Schärfung — Änderung 12)
+network_concurrent = 48              (Default: 128, CB-Schärfung — Änderung 12)
+max_tiles_per_cycle = 80             (Default: 200, kleinere Prefetch-Batches — Änderung 12)
 memory_size = 4 GB                   (Default: 8 GB, RSS-Reduktion)
 prewarm grid_size = 6                (Default: 4, Reserve für Grid-Ecken)
 # fd-Limit: ulimit -n = 1.048.576 (systemweit)
@@ -444,23 +490,92 @@ Detailanalyse: [ANALYSE_RUN_M_20260225.md](ANALYSE_RUN_M_20260225.md)
 
 ---
 
+## Änderung 11 — XEL Thread-Explosion begrenzen (2026-02-25)
+
+**Befund aus Run N (LZKZ Takeoff-Analyse, vor Änderung):**
+Beim Takeoff spawnt XEL in 35 Sekunden **512 neue Threads** (35 → 547), belegt **13 CPU-Kerne** (1315% Peak), System-CPU geht von 80% idle auf **0% idle**. X-Plane Main Thread wird verdrängt → GPU hungert (Util 75% → 27%, Power 250W → 125W) → FPS locked auf 19,9 für **57 Sekunden**. Kein allocstall, kein Reclaim, kein PSI-Druck — reines **CPU-Scheduling-Problem**.
+
+`max_concurrent_jobs=4` (Änderung 10) begrenzt nur Job-Ebene, nicht die Executor-Threads darunter. Der `generation.threads=12` Thread-Pool plus Tokio-Overhead = 13 Kerne belegt.
+
+```
+XEL generation threads               12 → 6           Direkte Begrenzung der CPU-bound Thread-Pool-Größe
+```
+
+**Ziel:** Bei 8 echten Kernen (16T) bleiben 2 Kerne für X-Plane Main Thread frei. Erwarteter XEL-Peak: ~6–7 Kerne statt 13. FPS-Dip beim Takeoff sollte von 20 auf 25–28 steigen.
+
+**Weitere Kandidaten (nicht geändert, beobachten):**
+- `executor.max_concurrent_tasks = 128` (→32 falls threads=6 nicht reicht)
+- `executor.network_concurrent = 128` (→48)
+- `prefetch.max_tiles_per_cycle = 200` (→50)
+
+Validierung: Run O (nächster Flug nach XEL-Neustart).
+
+---
+
+## Run N — LZKZ → EDDM mit Cross-Korrelation (2026-02-25, 80 Min)
+
+Route: LZKZ (Košice) → EDDM (München), ~540 km, FL250. Änderung 10 aktiv, threads=12 (vor Änderung 11).
+Erster Run mit VRAM-Daten (NVML-Fix). OBS Streaming parallel. Systematische Event-Analyse: X-Plane Timing → alle Logs korreliert.
+
+| Metrik | Run M (98 Min) | **Run N (80 Min)** | Trend |
+|--------|----------------|---------------------|-------|
+| FPS Median / Mean | — / 29,8 | **29,9 / 30,9** | ~ |
+| Airborne Stutter (FPS<25) | — | **4,6%** (117s) | Erstmals gemessen |
+| Alloc Stall Peak/s | 8.324 | **6.948** | ↓ |
+| Direct Reclaim Events (bpf) | 89.335 | **13.338** (nur Approach) | ↓↓ |
+| Main Thread Reclaim % | 69,2% | **34%** (Approach only) | ↓ |
+| XEL RSS Peak | 16,2 GB | **15,4 GB** | ~ |
+| Swap auf NVMe | 0 | **0** | = |
+| VRAM Peak | — | **20,1 GB / 24,6 GB (82%)** | Erstmals gemessen |
+| Slow IO (>5ms) | 1.806 | **44** (nur Approach) | ↓↓ |
+
+**Kernbefunde (Event-basierte Cross-Korrelation):**
+
+1. **Takeoff-Stutter (57s) = reines CPU-Problem:** XEL Phase-Transition `ground→cruise` bei gs=52 kts → 547 Threads, 1315% CPU. Null allocstalls, null Reclaim, null DSF-Loading. GPU hungert (27% Util). Änderung 11 (threads 12→6) adressiert dies direkt.
+
+2. **Approach-Stutter (61s) = Dreifach-Problem (NEU):**
+   - *Primär:* X-Plane DSF Loading — 3 DSFs parallel (7s + 13s + **14,4s synchron** auf Main Thread)
+   - *Sekundär:* XEL Thread-Explosion (547T, 1200% CPU) konkurriert um Kerne
+   - *Tertiär:* Memory Pressure nach 26s → 13k Reclaim-Events, **34% auf X-Plane Main Thread**, allocstalls 6.948/s
+   - Kein DSF-Boundary-Crossing — Approach bringt Tiles 47/9, 48/9, 49/9 in Sichtradius
+
+3. **AEP Overlays (Beta) stören:** Dutzende `E/SCN: Failed to find resource 'AEP/PrivateAssets/...'` pro DSF-Load. Overhead durch fehlgeschlagene Resource-Lookups. Update abwarten.
+
+4. **VRAM unkritisch:** 20,1 GB Peak bei 24,6 GB total (82%). X-Plane verwaltet VRAM-Eviction intern gut. Kein Handlungsbedarf.
+
+5. **Cruise-Stutter (3×0,8s) = DSF Lon-Boundary bei 10°E:** `+49+010.dsf` (5065ms) + `+48+010.dsf` (3887ms). XEL `skipped_cached=0` — alle Tiles frisch generiert. Bekanntes Boundary-Muster.
+
+**Fazit:** Takeoff und Approach haben **verschiedene Root Causes**. Änderung 11 sollte Takeoff deutlich verbessern, aber Approach nur teilweise — dort dominiert X-Plane's synchrones DSF-Loading (14s).
+
+Detailanalyse: [ANALYSE_RUN_N_20260225.md](ANALYSE_RUN_N_20260225.md)
+
+---
+
 ## Gesamtentwicklung — Schlüsselmetriken
 
-| Metrik | A (Baseline) | D (+IO) | E (90 Min) | F/2 (Steady) | G (Steady) | H (Steady) | I (Normalflug) | J (Gesamt)* | K (Steady)** | M (Gesamt)*** |
-|--------|-------------|---------|------------|---------------|------------|------------|-----------------|-------------|-------------|---------------|
-| Direct Reclaim max/s | 75.183 | 0 | 2.122.555 | **0** | **0** | **0** | **0** | 1.293.750 | **0** | 451.643 |
-| Alloc Stalls max/s | 1.042 | 0 | 13.383 | **0** | **0** | **0** | **0** | 8.833 | **0** | 8.324 |
-| Write-Lat avg (ms) | 36–47 | 1,8 | 16,1 | — | — | 0,25 | 0,21–0,24 | 0,37–0,50 | <0,5 | 0,03–0,09 |
-| Write-Lat max (ms) | 260–312 | 283 | 699 | **44** | — | 53,8 | 120,3 | **6,1** | <4 | 18,3 |
-| Dirty Pages avg (MB) | 502 | 30 | 39 | **2,4** | ~2 | ~16 | 45 | 1,7 | ~2 | ~5 |
-| Swap auf NVMe | ja | ja | 11,6 GB | **0** | **0** | **0** | **0** | **0** | **0** | **0** |
-| Slow IO (>5ms) | — | — | — | — | 12.383 | **339** | ~1.539 | **35** | **0** | 1.806 |
-| EMFILE | — | — | 3.474 | — | — | 1.126 | 16.079 | **0** | **0** | 0 |
-| FPS avg | — | — | — | — | — | — | — | — | — | **29,8** |
-| GPU Time max (ms) | — | — | — | — | — | — | — | — | — | **42,0** |
+| Metrik | A (Baseline) | D (+IO) | E (90 Min) | F/2 (Steady) | G (Steady) | H (Steady) | I (Normalflug) | J (Gesamt)* | K (Steady)** | M (Gesamt)*** | N (Gesamt)**** | O (Gesamt)† |
+|--------|-------------|---------|------------|---------------|------------|------------|-----------------|-------------|-------------|---------------|----------------|-------------|
+| Direct Reclaim max/s | 75.183 | 0 | 2.122.555 | **0** | **0** | **0** | **0** | 1.293.750 | **0** | 451.643 | 1.522.360 | — |
+| Alloc Stalls max/s | 1.042 | 0 | 13.383 | **0** | **0** | **0** | **0** | 8.833 | **0** | 8.324 | 6.948 | **10.341** |
+| Write-Lat avg (ms) | 36–47 | 1,8 | 16,1 | — | — | 0,25 | 0,21–0,24 | 0,37–0,50 | <0,5 | 0,03–0,09 | — | — |
+| Write-Lat max (ms) | 260–312 | 283 | 699 | **44** | — | 53,8 | 120,3 | **6,1** | <4 | 18,3 | — | — |
+| Dirty Pages avg (MB) | 502 | 30 | 39 | **2,4** | ~2 | ~16 | 45 | 1,7 | ~2 | ~5 | — | — |
+| Swap auf NVMe | ja | ja | 11,6 GB | **0** | **0** | **0** | **0** | **0** | **0** | **0** | **0** | **0** |
+| Slow IO (>5ms) | — | — | — | — | 12.383 | **339** | ~1.539 | **35** | **0** | 1.806 | 44 | **28.099** |
+| EMFILE | — | — | 3.474 | — | — | 1.126 | 16.079 | **0** | **0** | 0 | 0 | 0 |
+| FPS avg / median | — | — | — | — | — | — | — | — | — | 29,8 / — | 30,9 / 29,9 | **29,4 / 29,7** |
+| FPS < 25 | — | — | — | — | — | — | — | — | — | — | ~8%†† | **2,5%** |
+| Takeoff-Stutter | — | — | — | — | — | — | — | — | — | — | **57s** | **0s** |
+| Approach-Stutter | — | — | — | — | — | — | — | — | — | — | **61s** | **6,2s** |
+| GPU Time max (ms) | — | — | — | — | — | — | — | — | — | 42,0 | 1713‡ | **132** |
+| VRAM Peak (GB) | — | — | — | — | — | — | — | — | — | — | 20,1 (82%) | **21,3 (87%)** |
 
 *Run J: Ortho4XP-Szenerie, Freeze bei Min 39.
 **Run K Steady: Ab Min 88, Cold Start 22k Tiles.
 ***Run M: DSF-Burst-Phase, Stalls nur bei Boundary-Crossings.
+****Run N: Stalls nur beim Approach (61s Dreifach-Problem). Takeoff-Stutter rein CPU-bedingt.
+†Run O: Circuit-Breaker-Tuning (Pools 128→48). allocstalls höher in Summe, aber nur kurze Bursts statt Mega-Events.
+††Run N FPS<25 geschätzt aus Airborne-Stutter 4,6% + Gate-Loading.
+‡GPU Time 1713ms = Measurement-Artefakt (Airport Object Loading), kein Render-Stall.
 
 **Zeitraum:** 2026-02-17 bis 2026-02-25

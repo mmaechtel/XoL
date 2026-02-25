@@ -700,6 +700,163 @@ Structure your output as:
   Suggest what additional data or test would resolve them.
 
 ========================================================================
+1b. EVENT-BASED ANALYSIS — TELEMETRY-FIRST METHODOLOGY
+========================================================================
+
+When xplane_telemetry.csv is available (sysmon.py --xplane), use this
+methodology INSTEAD of the allocstall-first approach in Phase 3.
+It starts from user-visible symptoms (FPS drops) and works forward to
+root causes.
+
+--- Step 1: Identify Degradation Events from Telemetry ---
+
+X-Plane internal timing (frame_time_ms, cpu_time_ms, gpu_time_ms)
+is the ground truth for user-visible performance.
+
+  1. Compute baseline: P50 for frame_time, cpu_time, gpu_time.
+     Normal baseline: frame_time ~33ms (30 FPS), cpu_time ~15ms,
+     gpu_time ~18ms.
+
+  2. Find contiguous blocks where frame_time > 40ms (below 25 FPS)
+     lasting > 0.5 seconds.  These are "degradation events."
+
+  3. For each event compute:
+     - Duration, sample count
+     - avg/max frame_time, cpu_time, gpu_time
+     - Position (lat, lon, agl, gs) — for flight phase context
+     - Bottleneck classification:
+       CPU-dominant:  cpu_time_avg > gpu_time_avg * 1.3
+       GPU-dominant:  gpu_time_avg > cpu_time_avg * 1.3
+       Balanced:      neither dominates (compound problem)
+
+  4. Note: gamescope caps frame_time at ~50.25ms (= 19.9 FPS).
+     If P95 = P99 = Max = 50.25ms, ALL stutters hit the same floor.
+     This means the system degrades in a binary fashion: either
+     30 FPS (normal) or 20 FPS (degraded), nothing in between.
+
+  5. Note: gpu_time_per_frame_sec_approx can spike to 1000ms+ during
+     GPU pipeline stalls (shader compile, texture upload, airport object
+     loading).  These are measurement artifacts, not real render stalls.
+     If cpu_time = 0 and gpu_time > 100ms, it's an artifact.
+
+--- Step 2: Cross-Correlate Each Event with ALL Data Sources ---
+
+For EACH degradation event, search ALL logs within the event's
+timestamp range (± 10 seconds margin).  Convert timestamps properly:
+
+  TIMEZONE ALIGNMENT (CRITICAL):
+    CSV files (sysmon.py):      Unix timestamps (seconds since epoch)
+    xplane_telemetry.csv:       Unix timestamps
+    xplane_events.csv:          Unix timestamps
+    XEL log:                    UTC (YYYY-MM-DD HH:MM:SSZ)
+    trace_reclaim.log:          LOCAL TIME (HH:MM:SS) ← system timezone!
+    trace_io_slow.log:          LOCAL TIME (HH:MM:SS)
+    trace_fence.log:            LOCAL TIME (HH:MM:SS)
+
+  To align: Convert event Unix timestamp to both UTC (for XEL log)
+  and local time (for trace logs) before searching.
+
+Data sources to check for each event (in parallel):
+
+  a) xplane_events.csv:
+     - DSF loads (+NN+NNN.dsf with duration in ms)
+       → DSF loads > 5000ms = significant Main Thread blocking
+     - Airport loading events
+     - Error events (E/SCN, E/OBJ)
+     - Weather manifest fetches
+
+  b) XEL log (~/.xearthlayer/xearthlayer.log):
+     - Flight phase transitions (ground→cruise, cruise→ground)
+     - Prefetch cycle details (skipped_cached ratio = cache hit rate)
+     - Job submit/complete bursts (DDS tile generation)
+     - Circuit breaker events
+
+  c) proc.csv (per-process):
+     - XEL: CPU%, RSS, threads, IO_R — thread count jump is key signal
+     - X-Plane: CPU% — drop during XEL burst = CPU contention
+     - QEMU, OBS, gamescope: background load contribution
+
+  d) vmstat.csv:
+     - allocstall_s, pgscan_direct_s — Direct Reclaim stalls
+     - pgfault_s — page fault rate (>1M/s = heavy, >500k/s = moderate)
+     - pgsteal_kswapd_s — kswapd activity
+     - pswpout_s — swap-out rate (>100k/s = panic-swapping to zram)
+     - wset_refault_file_s — file cache thrashing
+
+  e) cpu.csv (aggregate):
+     - idle% — 0% = CPU saturated, all cores busy
+     - sys% — high sys% during events = kernel reclaim work
+     - iowait% — high iowait = IO bottleneck component
+
+  f) vram.csv:
+     - gpu_util_pct drop during event = GPU starvation
+     - VRAM growth during event = texture paging
+     - power_w drop correlates with util drop
+
+  g) trace_reclaim.log (REMEMBER: local time!):
+     - Count events per process (comm field)
+     - Main thread reclaim% = critical metric
+     - tokio-runtime-w = XEL workers
+     - cuda-EvtHandlr = NVIDIA driver overhead
+
+  h) trace_io_slow.log, trace_fence.log:
+     - Slow IO events during the event window
+     - DMA fence waits (rare but definitive GPU bottleneck)
+
+  i) psi.csv:
+     - Note: PSI often shows 0 even during real stalls (see note in 2f)
+     - Only useful as confirmation, not primary indicator
+
+--- Step 3: Classify Root Cause per Event ---
+
+Each event should be classified into one or more root cause categories:
+
+  A) XEL CPU Explosion (Thread-Bomb)
+     Signature: XEL threads jump from ~35 to 200-547 in seconds,
+                XEL CPU 500-1300%, system CPU idle → 0%,
+                allocstalls = 0, Direct Reclaim = 0, PSI = 0
+     Impact:    GPU util drops 30-50 percentage points (starvation)
+     Trigger:   Flight phase transition, uncached region entry
+     Tuning:    generation.threads, max_concurrent_tasks
+
+  B) X-Plane DSF Loading (Synchronous Main Thread Block)
+     Signature: xplane_events.csv shows DSF loads > 5000ms,
+                frame_time capped at 50.25ms for the DSF load duration,
+                NOT necessarily correlated with XEL or system pressure
+     Impact:    Main Thread blocked for 5-14+ seconds per DSF load
+     Trigger:   Approaching new DSF tiles (1° boundaries or new area)
+     Tuning:    NOT tunable — X-Plane architecture limitation
+
+  C) Memory Pressure Cascade
+     Signature: allocstall_s > 0, pgscan_direct > 0,
+                trace_reclaim shows Main Thread reclaim events
+     Impact:    Additional latency on top of other stalls
+     Trigger:   Usually follows 20-30s of Type A (pgfaults accumulate)
+     Tuning:    Reduce XEL thread count and concurrency
+
+  D) Compound (Dreifach-Problem)
+     Signature: Types A + B + C occurring simultaneously
+     Impact:    Longest and most severe stutters (60+ seconds)
+     Example:   Run N Event 39: DSF Loading (14s) + XEL CPU (1200%)
+                + Memory Pressure (13k reclaim events, 34% Main Thread)
+
+  E) GPU Pipeline Stall
+     Signature: gpu_time > 100ms with cpu_time ≈ 0, single frame
+     Impact:    Usually 1-2 frames, not sustained
+     Trigger:   Shader compilation, texture upload, object loading
+     Tuning:    Not typically actionable
+
+--- Step 4: Build Event Summary Table ---
+
+Present results as a structured table:
+
+  | Event | Time | Dur | Phase | Root Cause | X-Plane DSF | XEL State | Memory | GPU |
+  |-------|------|-----|-------|------------|-------------|-----------|--------|-----|
+
+Then write detailed per-event analysis for events > 3 seconds,
+with full evidence from all data sources.
+
+========================================================================
 2. TRACE LOG PARSING (Layer 2)
 ========================================================================
 

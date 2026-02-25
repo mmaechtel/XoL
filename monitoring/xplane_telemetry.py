@@ -60,34 +60,63 @@ class XPlaneUDP:
         self.sock.settimeout(3.0)
         self.values = {}       # index → float value
         self.idx_to_col = {}   # index → column name
+        self.connected = False
+        self._freq = 5         # stored for re-subscribe
 
         for idx, name, col in DATAREFS:
             self.idx_to_col[idx] = col
 
-    def subscribe_all(self, freq):
-        """Subscribe to all datarefs at given frequency (Hz)."""
-        print(f"Subscribing to {len(DATAREFS)} datarefs at {freq} Hz...")
+    def _send_subscriptions(self, freq):
+        """Send RREF subscribe packets for all datarefs."""
         for idx, name, col in DATAREFS:
-            msg = struct.pack("<4sxii400s", b"RREF", freq, idx, name.encode("utf-8"))
+            msg = struct.pack("<4sxii400s", b"RREF", freq, idx,
+                              name.encode("utf-8"))
             self.sock.sendto(msg, self.target)
             time.sleep(0.02)
-            print(f"  [{idx:2d}] {col:25s} = {name}")
-        print("Subscribed. Waiting for first packet...")
 
-        # Wait for first response to confirm connection
-        try:
-            self._recv_one()
-            print(f"Connected — receiving data from X-Plane")
-            return True
-        except socket.timeout:
-            print("ERROR: No response from X-Plane. Check:", file=sys.stderr)
-            print("  Settings > Network > Accept incoming connections", file=sys.stderr)
-            return False
+    def subscribe(self, freq, wait=True):
+        """Subscribe to all datarefs.  Retries until X-Plane responds.
+
+        With wait=True (default), blocks until connected.
+        With wait=False, tries once and returns immediately.
+        """
+        self._freq = freq
+        print(f"Subscribing to {len(DATAREFS)} datarefs at {freq} Hz...")
+        for idx, name, col in DATAREFS:
+            print(f"  [{idx:2d}] {col:25s} = {name}")
+
+        attempt = 0
+        while True:
+            attempt += 1
+            self._send_subscriptions(freq)
+
+            try:
+                self._recv_one()
+                self.connected = True
+                print(f"Connected — receiving data from X-Plane"
+                      + (f" (attempt {attempt})" if attempt > 1 else ""))
+                return True
+            except socket.timeout:
+                if not wait:
+                    return False
+                backoff = min(5, 1 + attempt * 0.5)
+                print(f"  No response (attempt {attempt}), "
+                      f"retrying in {backoff:.0f}s...",
+                      flush=True)
+                time.sleep(backoff)
+
+    def resubscribe(self):
+        """Re-subscribe after X-Plane restart or prolonged timeout."""
+        print("Re-subscribing (X-Plane may have restarted)...", flush=True)
+        self.values.clear()
+        self.connected = False
+        return self.subscribe(self._freq, wait=True)
 
     def unsubscribe_all(self):
         """Unsubscribe from all datarefs."""
         for idx, name, col in DATAREFS:
-            msg = struct.pack("<4sxii400s", b"RREF", 0, idx, name.encode("utf-8"))
+            msg = struct.pack("<4sxii400s", b"RREF", 0, idx,
+                              name.encode("utf-8"))
             self.sock.sendto(msg, self.target)
             time.sleep(0.01)
 
@@ -163,8 +192,8 @@ def main():
 
     xp = XPlaneUDP(args.host, args.port)
 
-    if not xp.subscribe_all(args.rate):
-        sys.exit(1)
+    # Block until X-Plane is reachable (retries with backoff)
+    xp.subscribe(args.rate, wait=True)
 
     # Graceful shutdown
     running = True
@@ -177,6 +206,8 @@ def main():
     start_time = time.time()
     samples = 0
     last_print = 0
+    consecutive_timeouts = 0
+    RESUBSCRIBE_AFTER = 3       # re-subscribe after N consecutive timeouts
 
     print(f"\nRecording at {args.rate} Hz to {outfile}")
     print(f"Max duration: {args.duration}s. Press Ctrl+C to stop.\n")
@@ -193,6 +224,7 @@ def main():
 
             try:
                 xp.recv_update()
+                consecutive_timeouts = 0
                 row = xp.sample()
                 now = time.time()
                 row["timestamp"] = f"{now:.3f}"
@@ -210,7 +242,13 @@ def main():
                           f"({samples} samples)")
 
             except socket.timeout:
-                print("Timeout — waiting for X-Plane...", file=sys.stderr)
+                consecutive_timeouts += 1
+                if consecutive_timeouts >= RESUBSCRIBE_AFTER:
+                    print(f"  {consecutive_timeouts} consecutive timeouts",
+                          flush=True)
+                    f.flush()
+                    xp.resubscribe()
+                    consecutive_timeouts = 0
                 continue
             except Exception as e:
                 print(f"Error: {e}", file=sys.stderr)
