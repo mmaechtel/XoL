@@ -25,6 +25,8 @@ events.
   Polls /proc and GPU every 200 ms (CPU, memory, disk IO)
   and every 1 s (GPU, interrupts, vmstat, per-process).
   Writes 9 CSV files + correlates with X-Plane Log.txt.
+  With --xplane: also records FPS, CPU/GPU frame time
+  via UDP RREF (xplane_telemetry.py, 5 Hz default).
 
   Layer 2: sysmon_trace.sh     Run when hunting a specific cause.  Needs sudo.
   ─────────────────────────────────────────────────────────
@@ -160,6 +162,7 @@ and pass it via `--xplane-log` or `SYSMON_XPLANE_LOG`.
 ```
 monitoring/
   sysmon.py              Layer 1 — system metrics collector
+  xplane_telemetry.py    X-Plane FPS/CPU/GPU recorder (UDP RREF, auto-started via --xplane)
   sysmon_trace.sh        Layer 2 — kernel tracepoint sidecar
   post_crash.sh          Layer 3 — post-crash diagnostics
   README.md              This file

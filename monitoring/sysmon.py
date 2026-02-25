@@ -22,14 +22,20 @@ CSV output
   psi.csv      Pressure Stall Information (CPU, memory, IO)
   freq.csv     Per-CPU clock frequency
 
+Optional: X-Plane in-sim telemetry (--xplane flag)
+  xplane_telemetry.csv  FPS, CPU/GPU frame time, position, speed (5 Hz default)
+  Spawns xplane_telemetry.py as subprocess (UDP RREF on port 49000).
+  Requires: X-Plane Settings > Network > Accept incoming connections.
+
 Post-run correlation
   Matches IO spikes and allocation stalls against X-Plane Log.txt events
   (DSF loads, airport loading, weather changes).  Output: xplane_events.csv
 
 Companion scripts (same directory)
-  sysmon_trace.sh   bpftrace sidecar — Direct Reclaim, slow IO, DMA fences
-  post_crash.sh     Post-crash GPU / kernel diagnostics
-  cgwatcher.py      Dynamic CPU priority for competing workloads
+  xplane_telemetry.py   X-Plane FPS/CPU/GPU telemetry via UDP RREF (auto-started with --xplane)
+  sysmon_trace.sh       bpftrace sidecar — Direct Reclaim, slow IO, DMA fences
+  post_crash.sh         Post-crash GPU / kernel diagnostics
+  cgwatcher.py          Dynamic CPU priority for competing workloads
 
 Requirements
   Python 3.9+, Linux kernel 4.20+ (PSI support)
@@ -47,12 +53,15 @@ from datetime import datetime
 # ─── GPU backend (deferred init — call init_gpu() from main) ─────────
 _USE_NVML = False
 _NVML_HANDLE = None
+_NVML_LIB = None  # pynvml module reference (local import, stored globally)
 _GPU_BACKEND = "none"  # "nvml", "nvidia-smi", "none"
+_NVML_FAIL_COUNT = 0
+_NVML_FAIL_MAX = 3  # Switch to nvidia-smi after this many consecutive failures
 
 
 def init_gpu(disable=False):
     """Initialize GPU monitoring.  Returns backend name string."""
-    global _USE_NVML, _NVML_HANDLE, _GPU_BACKEND
+    global _USE_NVML, _NVML_HANDLE, _NVML_LIB, _GPU_BACKEND
 
     if disable:
         _GPU_BACKEND = "disabled"
@@ -63,6 +72,7 @@ def init_gpu(disable=False):
         import pynvml
         pynvml.nvmlInit()
         _NVML_HANDLE = pynvml.nvmlDeviceGetHandleByIndex(0)
+        _NVML_LIB = pynvml
         _USE_NVML = True
         name = pynvml.nvmlDeviceGetName(_NVML_HANDLE)
         if isinstance(name, bytes):
@@ -285,54 +295,68 @@ def get_vram():
     Returns CSV string: mem_used,mem_total,mem_free,temp,gpu_util,
                         mem_util,gpu_clock,mem_clock,power,
                         pcie_tx_kbs,pcie_rx_kbs,throttle_reasons,perf_state"""
+    global _USE_NVML, _NVML_FAIL_COUNT, _GPU_BACKEND
     if _GPU_BACKEND == "disabled":
         return ""
     if _USE_NVML:
+        nv = _NVML_LIB
         try:
-            mem = pynvml.nvmlDeviceGetMemoryInfo(_NVML_HANDLE)
-            util = pynvml.nvmlDeviceGetUtilizationRates(_NVML_HANDLE)
-            temp = pynvml.nvmlDeviceGetTemperature(
-                _NVML_HANDLE, pynvml.NVML_TEMPERATURE_GPU)
-            clk_gpu = pynvml.nvmlDeviceGetClockInfo(
-                _NVML_HANDLE, pynvml.NVML_CLOCK_GRAPHICS)
-            clk_mem = pynvml.nvmlDeviceGetClockInfo(
-                _NVML_HANDLE, pynvml.NVML_CLOCK_MEM)
-            power = pynvml.nvmlDeviceGetPowerUsage(_NVML_HANDLE)
+            mem = nv.nvmlDeviceGetMemoryInfo(_NVML_HANDLE)
+            util = nv.nvmlDeviceGetUtilizationRates(_NVML_HANDLE)
+            temp = nv.nvmlDeviceGetTemperature(
+                _NVML_HANDLE, nv.NVML_TEMPERATURE_GPU)
+            clk_gpu = nv.nvmlDeviceGetClockInfo(
+                _NVML_HANDLE, nv.NVML_CLOCK_GRAPHICS)
+            clk_mem = nv.nvmlDeviceGetClockInfo(
+                _NVML_HANDLE, nv.NVML_CLOCK_MEM)
+            power = nv.nvmlDeviceGetPowerUsage(_NVML_HANDLE)
             # Extended GPU diagnostics
             try:
-                pcie_tx = pynvml.nvmlDeviceGetPcieThroughput(
-                    _NVML_HANDLE, pynvml.NVML_PCIE_UTIL_TX_BYTES) // 1024
-                pcie_rx = pynvml.nvmlDeviceGetPcieThroughput(
-                    _NVML_HANDLE, pynvml.NVML_PCIE_UTIL_RX_BYTES) // 1024
+                pcie_tx = nv.nvmlDeviceGetPcieThroughput(
+                    _NVML_HANDLE, nv.NVML_PCIE_UTIL_TX_BYTES) // 1024
+                pcie_rx = nv.nvmlDeviceGetPcieThroughput(
+                    _NVML_HANDLE, nv.NVML_PCIE_UTIL_RX_BYTES) // 1024
             except Exception:
                 pcie_tx = pcie_rx = 0
             try:
-                throttle = pynvml.nvmlDeviceGetCurrentClocksThrottleReasons(
+                throttle = nv.nvmlDeviceGetCurrentClocksThrottleReasons(
                     _NVML_HANDLE)
             except Exception:
                 throttle = 0
             try:
-                pstate = pynvml.nvmlDeviceGetPerformanceState(_NVML_HANDLE)
+                pstate = nv.nvmlDeviceGetPerformanceState(_NVML_HANDLE)
             except Exception:
                 pstate = 0
+            _NVML_FAIL_COUNT = 0  # Reset on success
             return (f"{mem.used // 1048576}, {mem.total // 1048576}, "
                     f"{mem.free // 1048576}, {temp}, {util.gpu}, "
                     f"{util.memory}, {clk_gpu}, {clk_mem}, "
                     f"{power / 1000:.2f}, "
                     f"{pcie_tx}, {pcie_rx}, {throttle}, {pstate}")
-        except Exception:
-            return ""
+        except Exception as e:
+            _NVML_FAIL_COUNT += 1
+            if _NVML_FAIL_COUNT == 1:
+                print(f"  NVML query failed: {e}")
+            if _NVML_FAIL_COUNT >= _NVML_FAIL_MAX:
+                print(f"  NVML failed {_NVML_FAIL_COUNT}x, switching to nvidia-smi")
+                _USE_NVML = False
+                _GPU_BACKEND = _GPU_BACKEND.replace("NVML", "nvidia-smi (NVML fallback)")
+            # Fall through to nvidia-smi on this call too
     # Fallback: nvidia-smi subprocess
     try:
         out = subprocess.check_output(
             ["nvidia-smi",
              "--query-gpu=memory.used,memory.total,memory.free,"
              "temperature.gpu,utilization.gpu,utilization.memory,"
-             "clocks.current.graphics,clocks.current.memory,power.draw",
+             "clocks.current.graphics,clocks.current.memory,power.draw,"
+             "pstate",
              "--format=csv,noheader,nounits"],
             stderr=subprocess.DEVNULL, timeout=2
         ).decode().strip()
-        return (out + ", 0, 0, 0, 0") if out else ""
+        if not out:
+            return ""
+        # nvidia-smi returns 10 fields, add pcie_tx, pcie_rx, throttle
+        return out + ", 0, 0, 0"
     except Exception:
         return ""
 
@@ -1388,6 +1412,10 @@ def parse_args():
                    help="disable GPU monitoring (useful on headless or AMD systems)")
     p.add_argument("--no-dmesg", action="store_true",
                    help="skip dmesg capture (useful without dmesg permissions)")
+    p.add_argument("--xplane", action="store_true",
+                   help="start X-Plane telemetry recorder (FPS, CPU/GPU time via UDP)")
+    p.add_argument("--xplane-rate", type=int, default=5, metavar="HZ",
+                   help="X-Plane telemetry poll rate in Hz (default: 5)")
     return p.parse_args()
 
 
@@ -1429,6 +1457,28 @@ def main():
 
     psi_avail = Path("/proc/pressure/cpu").exists()
     print(f"PSI:      {'available' if psi_avail else 'not available (kernel too old?)'}")
+
+    # X-Plane telemetry subprocess (--xplane flag)
+    xplane_telem_proc = None
+    if args.xplane:
+        telem_script = Path(__file__).parent / "xplane_telemetry.py"
+        if telem_script.exists():
+            telem_cmd = [
+                sys.executable, str(telem_script),
+                "-r", str(args.xplane_rate),
+                "-d", str(DURATION),
+                "-o", str(OUTDIR),
+            ]
+            telem_log = OUTDIR / "xplane_telemetry.log"
+            with open(telem_log, "w") as tlog:
+                xplane_telem_proc = subprocess.Popen(
+                    telem_cmd, stdout=tlog, stderr=subprocess.STDOUT
+                )
+            print(f"Telemetry: xplane_telemetry.py (PID {xplane_telem_proc.pid}, "
+                  f"{args.xplane_rate} Hz)")
+        else:
+            print(f"Telemetry: xplane_telemetry.py not found at {telem_script}",
+                  file=sys.stderr)
     print()
 
     # Crash diagnostics: dmesg snapshot + GPU event monitor
@@ -1446,6 +1496,19 @@ def main():
         mon_start, elapsed, sample_count, irq_sample_count = \
             collect(writers, stats)
 
+    # Stop X-Plane telemetry subprocess
+    if xplane_telem_proc and xplane_telem_proc.poll() is None:
+        print("Stopping X-Plane telemetry...")
+        xplane_telem_proc.terminate()
+        try:
+            xplane_telem_proc.wait(timeout=5)
+        except subprocess.TimeoutExpired:
+            xplane_telem_proc.kill()
+        telem_csv = OUTDIR / "xplane_telemetry.csv"
+        if telem_csv.exists():
+            lines = sum(1 for _ in open(telem_csv)) - 1
+            print(f"  {lines} telemetry samples recorded")
+
     # Stop GPU event monitor and capture post-run dmesg
     if gpu_mon_proc and gpu_mon_proc.poll() is None:
         gpu_mon_proc.terminate()
@@ -1462,9 +1525,8 @@ def main():
     print_summary(stats, elapsed, sample_count, irq_sample_count)
     correlate_xplane(OUTDIR, stats, mon_start, elapsed)
 
-    if _USE_NVML:
-        import pynvml
-        pynvml.nvmlShutdown()
+    if _NVML_LIB:
+        _NVML_LIB.nvmlShutdown()
 
 if __name__ == "__main__":
     main()

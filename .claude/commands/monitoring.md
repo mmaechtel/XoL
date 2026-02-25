@@ -60,14 +60,40 @@ RUN_DIR="/tmp/sysmon_run_$(date +%Y%m%d_%H%M)"
 
 ### 1.3 Monitoring starten
 
-sysmon.py im Hintergrund starten:
+sysmon.py im Hintergrund starten (IMMER mit `--xplane` fuer FPS/CPU/GPU-Telemetrie):
 
 ```bash
-python3 monitoring/sysmon.py -d <SEKUNDEN> -o "$RUN_DIR" &
+nohup python3 monitoring/sysmon.py -d <SEKUNDEN> --xplane -o "$RUN_DIR" > "$RUN_DIR/sysmon.log" 2>&1 &
 SYSMON_PID=$!
 ```
 
 Dem User die Ausgabe zeigen und bestaetigen dass sysmon.py laeuft.
+
+### 1.3b Verifikation (PFLICHT — 5-10 Sekunden nach Start)
+
+**Alle Datenquellen pruefen, BEVOR der Flug beginnt:**
+
+```bash
+# CSVs wachsen?
+wc -l "$RUN_DIR"/*.csv
+
+# X-Plane Telemetrie: FPS/Lat/Lon vorhanden (nicht 0.0)?
+tail -3 "$RUN_DIR/xplane_telemetry.csv"
+
+# Prozesse sichtbar?
+tail -3 "$RUN_DIR/proc.csv"
+
+# Telemetrie-Subprocess Fehler?
+cat "$RUN_DIR/xplane_telemetry.log"
+
+# bpftrace-Traces aktiv? (falls Sidecar gestartet)
+tail -5 "$RUN_DIR/trace_reclaim.log"
+```
+
+**Bei Problemen sofort melden!** Haeufige Fehler:
+- `xplane_telemetry.csv` leer/nur Header → X-Plane UDP-Port nicht offen (Settings > Network > Accept incoming connections)
+- `proc.csv` zeigt kein X-Plane → X-Plane noch nicht gestartet (OK, kommt spaeter)
+- `trace_reclaim.log` leer → User hat Sidecar noch nicht gestartet (Erinnerung ausgeben)
 
 ### 1.4 Sidecar-Befehl ausgeben (wenn gewaehlt)
 
@@ -79,6 +105,7 @@ MONITORING GESTARTET
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
   sysmon.py: PID <PID>, Dauer <N> Min, Output: <RUN_DIR>
+  Telemetrie: xplane_telemetry.py (FPS/CPU/GPU, 5 Hz via UDP)
 
   Bitte in einem separaten Terminal starten:
 
@@ -119,6 +146,7 @@ Glob: <RUN_DIR>/trace_*.log
 Pruefen welche Dateien vorhanden sind. Erwartete Dateien:
 
 - **Immer:** cpu.csv, mem.csv, io.csv, vram.csv, vmstat.csv, psi.csv, irq.csv, proc.csv, freq.csv
+- **Wenn --xplane:** xplane_telemetry.csv (FPS, CPU/GPU Time, Position, 5 Hz), xplane_telemetry.log
 - **Wenn X-Plane lief:** xplane_events.csv
 - **Wenn Sidecar lief:** trace_reclaim.log, trace_io_slow.log, trace_fence.log
 - **Crash-Diagnostik:** dmesg_pre.log, dmesg_post.log, gpu_events.log
@@ -172,8 +200,8 @@ Die CSV-Dateien sind potentiell gross (90-Min-Session = ~25.000 Zeilen in cpu.cs
 Gemaess ANALYSIS_RULES.txt Sections 1-5:
 
 1. **Overview & Session Context** — Workload, RAM, Phasen-Erkennung
-2. **Per-Subsystem Deep Dive** — Memory, CPU, GPU, Disk IO, XEL, X-Plane
-3. **Cross-Correlation** — Stutter Chain, IO Latency Chain, Swap Storm Chain, XEL Tile-Loading Storm
+2. **Per-Subsystem Deep Dive** — Memory, CPU, GPU, Disk IO, XEL, X-Plane, **In-Sim Telemetrie** (FPS-Drops, CPU/GPU-Bottleneck aus xplane_telemetry.csv)
+3. **Cross-Correlation** — Stutter Chain, IO Latency Chain, Swap Storm Chain, XEL Tile-Loading Storm, **FPS-Drop ↔ allocstall/Reclaim-Korrelation**
 4. **Temporal Pattern Analysis** — Drei-Phasen-Modell, Stall-Cluster
 5. **Comparison** — Falls fruehere Runs vorhanden (ANALYSE_HISTORY.md laden)
 
@@ -210,6 +238,7 @@ Task (subagent_type=general-purpose): "Parse XEL Log fuer Zeitfenster
 Gemaess ANALYSIS_RULES.txt Section 7 vor Abschluss pruefen:
 
 - [ ] Alle CSV-Dateien gelesen oder als fehlend notiert
+- [ ] xplane_telemetry.csv ausgewertet: FPS-Drops identifiziert, CPU/GPU-Bottleneck bestimmt
 - [ ] Drei-Phasen-Grenzen identifiziert mit Minutenangaben
 - [ ] Jeder allocstall > 0 Event hat eine wahrscheinliche Ursache
 - [ ] Cross-Korrelation durchgefuehrt (Stalls ↔ IO ↔ Swap ↔ GPU ↔ XEL)
@@ -263,20 +292,22 @@ Gemaess ANALYSIS_RULES.txt Section 4:
 ### 2.4 Direct Reclaim (falls Trace-Daten)
 ### 2.5 Alloc-Stall-Cluster
 
-## 3. GPU / VRAM
+## 3. In-Sim Telemetrie (FPS / CPU Time / GPU Time)
 
-## 4. Disk IO
+## 4. GPU / VRAM
 
-## 5. CPU & Frequenz
+## 5. Disk IO
 
-## 6. Per-Process
+## 6. CPU & Frequenz
 
-## 7. Vergleich Run <vorheriger> → Run <aktuell>
+## 7. Per-Process
 
-## 8. Handlungsempfehlungen
-### 8.1-N Konkrete, priorisierte Massnahmen
+## 8. Vergleich Run <vorheriger> → Run <aktuell>
 
-## 9. Zusammenfassung
+## 9. Handlungsempfehlungen
+### 9.1-N Konkrete, priorisierte Massnahmen
+
+## 10. Zusammenfassung
 ```
 
 ### 4.3 ANALYSE_HISTORY.md aktualisieren

@@ -26,6 +26,7 @@ server/
 __pycache__/
 monitoring/*
 !monitoring/sysmon.py
+!monitoring/xplane_telemetry.py
 !monitoring/sysmon_trace.sh
 !monitoring/post_crash.sh
 !monitoring/README.md
