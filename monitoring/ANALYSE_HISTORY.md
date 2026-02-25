@@ -389,14 +389,78 @@ pm_qos_latency_tolerance_us = 0       (/etc/udev/rules.d/61-nvme-pmqos.rules)
 xplane_data: commit=30s
 home: commit=60s
 
-# XEL (~/.xearthlayer/config.ini) — nach Änderung 9 (XEL-Update 2026-02-25)
-# Nur Nicht-Default-Werte (CPU-Bottleneck + Reserve):
+# XEL (~/.xearthlayer/config.ini) — nach Änderung 10 (2026-02-25)
+# Nur Nicht-Default-Werte:
 generation threads = 12              (Default: 16, CPU shared mit X-Plane)
 cpu_concurrent = 8                   (Default: 10, gleicher Grund)
-max_concurrent_jobs = 8              (Default: 16, gleicher Grund)
+max_concurrent_jobs = 4              (Default: 16, allocstall-Elimination)
+memory_size = 4 GB                   (Default: 8 GB, RSS-Reduktion)
 prewarm grid_size = 6                (Default: 4, Reserve für Grid-Ecken)
-# Alles andere: Default. CB-Workarounds entfernt (PR #61 + #57).
 # fd-Limit: ulimit -n = 1.048.576 (systemweit)
 ```
 
 **Fazit Run K:** Schwerster Lastfall (Cold Start, 800 km, 22k Tiles). Steady State ab Min 88 makellos. 47,7% CB-Blockade war ein **XEL-Bug** (Cache-Hits als Last gezählt). Behoben durch PR #61 (resource-pool CB) + PR #57 (Priority Inversion Fix). Änderung 9: Alle CB-Workarounds entfernt, nur CPU-Bottleneck-Werte + Prewarm 6×6 bleiben. Offene XEL-Issues: #58 (Band-Misalignment), #62 (Takeoff-Stutter).
+
+---
+
+## Änderung 10 — allocstall-Elimination + RSS-Reduktion (2026-02-25)
+
+```
+XEL max_concurrent_jobs          8 → 4                 allocstalls 1.862/s → 0 (Run L₁ vs. L₂)
+XEL memory_size                  8 → 4 GB              RSS-Reduktion (-37%), Swap -63%
+```
+
+Bestätigt durch Run L₁ (EDLW, jobs=8: 1.862/s allocstalls, 60k Reclaim) vs. Run L₂ (EDDH, jobs=4: **0 allocstalls, 0 Direct Reclaim**).
+
+---
+
+## Run M — ESGG→EDDS mit In-Sim-Telemetrie (2026-02-25, 98 Min)
+
+Route: ESGG (Göteborg) → EDDS (Stuttgart), ~950 km, FL350, 7 DSF-Boundary-Crossings.
+Erstmaliger Einsatz von xplane_telemetry.py (FPS/CPU/GPU Time via UDP RREF, 5 Hz).
+NVML-Bug in sysmon.py entdeckt und gefixt (pynvml Scope-Bug → vram.csv war in allen Runs leer).
+
+| Metrik | Run K (116 Min) | **Run M (98 Min)** | Trend |
+|--------|-----------------|---------------------|-------|
+| Alloc Stall Samples | 235 (3,4%) | **199 (3,4%)** | = |
+| Alloc Stall Peak/s | 13.831 | **8.324** | ↓ |
+| Direct Reclaim (bpf) | 171.744 | **89.335 (-48%)** | ↓ |
+| Main Thread Reclaim % | 73,1% | 69,2% | ~ |
+| Main Thread Worst | 68,6 ms | **189,0 ms** | ↑ |
+| XEL tokio Reclaim % | 5,2% | **20,6%** | ↑ (memory_size-Effekt) |
+| Swap Peak | 26,6 GB | **9,7 GB (-63%)** | ↓ |
+| XEL RSS Peak | 25,8 GB | **16,2 GB (-37%)** | ↓ |
+| FPS avg / P5 / min | — | **29,8 / 27,8 / 19,9** | Erstmals gemessen |
+| GPU Time avg / P95 / max | — | **18,0 / 23,8 / 42,0 ms** | Erstmals gemessen |
+
+**Kernbefunde:**
+
+1. **DSF-Boundary-Crossings = reproduzierbares Hauptproblem:** 7 von 8 Stutter-Events korrelieren mit 1°-Breitengrad-Übergängen. X-Plane-Architekturproblem (synchrones DSF-Loading auf Main Thread). Tuning mildert, eliminiert nicht.
+2. **Touchdown-Stutter ist GPU-getrieben (NEU):** Erstmals durch Telemetrie nachgewiesen — GPU Time springt auf 42ms, Reclaim liegt zu 97% auf XEL-Threads, 0% auf Main Thread. Neuer Stutter-Typ, möglicherweise verwandt mit XEL Issue #62.
+3. **Änderung 10 wirkt positiv:** memory_size 4 GB senkt XEL RSS -37%, Swap -63%, Gesamt-Reclaim -48%. Trade-off: XEL-Reclaim-Anteil ×4 (5→21%).
+4. **NVML war nie kaputt durch gamescope:** pynvml lokal importiert, global referenziert → NameError bei jedem Aufruf, still geschluckt. Fix: `_NVML_LIB` globale Referenz + Auto-Fallback. Ab nächstem Run: volle VRAM-Daten.
+
+Detailanalyse: [ANALYSE_RUN_M_20260225.md](ANALYSE_RUN_M_20260225.md)
+
+---
+
+## Gesamtentwicklung — Schlüsselmetriken
+
+| Metrik | A (Baseline) | D (+IO) | E (90 Min) | F/2 (Steady) | G (Steady) | H (Steady) | I (Normalflug) | J (Gesamt)* | K (Steady)** | M (Gesamt)*** |
+|--------|-------------|---------|------------|---------------|------------|------------|-----------------|-------------|-------------|---------------|
+| Direct Reclaim max/s | 75.183 | 0 | 2.122.555 | **0** | **0** | **0** | **0** | 1.293.750 | **0** | 451.643 |
+| Alloc Stalls max/s | 1.042 | 0 | 13.383 | **0** | **0** | **0** | **0** | 8.833 | **0** | 8.324 |
+| Write-Lat avg (ms) | 36–47 | 1,8 | 16,1 | — | — | 0,25 | 0,21–0,24 | 0,37–0,50 | <0,5 | 0,03–0,09 |
+| Write-Lat max (ms) | 260–312 | 283 | 699 | **44** | — | 53,8 | 120,3 | **6,1** | <4 | 18,3 |
+| Dirty Pages avg (MB) | 502 | 30 | 39 | **2,4** | ~2 | ~16 | 45 | 1,7 | ~2 | ~5 |
+| Swap auf NVMe | ja | ja | 11,6 GB | **0** | **0** | **0** | **0** | **0** | **0** | **0** |
+| Slow IO (>5ms) | — | — | — | — | 12.383 | **339** | ~1.539 | **35** | **0** | 1.806 |
+| EMFILE | — | — | 3.474 | — | — | 1.126 | 16.079 | **0** | **0** | 0 |
+| FPS avg | — | — | — | — | — | — | — | — | — | **29,8** |
+| GPU Time max (ms) | — | — | — | — | — | — | — | — | — | **42,0** |
+
+*Run J: Ortho4XP-Szenerie, Freeze bei Min 39.
+**Run K Steady: Ab Min 88, Cold Start 22k Tiles.
+***Run M: DSF-Burst-Phase, Stalls nur bei Boundary-Crossings.
+
+**Zeitraum:** 2026-02-17 bis 2026-02-25
