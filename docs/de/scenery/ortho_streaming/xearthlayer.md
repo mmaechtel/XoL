@@ -28,7 +28,7 @@ Ein Kernfeature von XEarthLayer ist das **adaptive Prefetching**, das zwischen z
 - **Ground-Mode (Ring-Prefetch)**: Bei niedriger Flughöhe und geringer Geschwindigkeit werden Kacheln in konzentrischen Ringen um die aktuelle Position vorgeladen — optimal für Anflugsituationen und bodennahes Fliegen
 - **Cruise-Mode (Track-Prediction)**: Bei höherer Geschwindigkeit und Flughöhe sagt das System die voraussichtliche Flugroute voraus und lädt Kacheln entlang des prognostizierten Flugpfads vor
 
-Das System kalibriert sich selbst und passt die Prefetch-Strategie an die verfügbare Bandbreite und die aktuelle Flugphase an. Ein **Circuit-Breaker-Mechanismus** sorgt dafür, dass Prefetch-Anfragen zurückgestellt werden, wenn die On-Demand-Anfragen von X-Plane Vorrang benötigen — so wird sichergestellt, dass die aktuell sichtbaren Kacheln immer zuerst geladen werden.
+Das System kalibriert sich selbst und passt die Prefetch-Strategie an die verfügbare Bandbreite und die aktuelle Flugphase an. On-Demand-Anfragen von X-Plane haben durch eine **Pipeline-Zugangssteuerung** immer Vorrang vor Prefetch. Ein **ressourcenbasierter Circuit Breaker** pausiert Prefetch zusätzlich, wenn die Gesamtauslastung der Ressourcenpools (CPU, Netzwerk, Disk-I/O) sichere Schwellwerte übersteigt — so wird sichergestellt, dass die aktuell sichtbaren Kacheln immer zuerst geladen werden.
 
 ## Kartenquellen
 
@@ -125,15 +125,13 @@ X-Plane ist stark Mainthread-gebunden. Wenn XEarthLayer alle Kerne sättigt, kom
 
 ### Relevante Einstellungen
 
-Drei Einstellungen in `~/.xearthlayer/config.ini` bilden eine Hierarchie:
+Drei Einstellungen in `~/.xearthlayer/config.ini` steuern die CPU-Nutzung:
 
 | Einstellung | Sektion | Standard | Funktion |
 |---|---|---|---|
 | `threads` | `[generation]` | Anzahl CPUs | Worker-Threads für Tile-Generierung |
-| `cpu_concurrent` | `[executor]` | ~CPUs × 1,25 | Gleichzeitige CPU-intensive Operationen (DDS-Encoding) |
+| `cpu_concurrent` | `[executor]` | ~CPUs × 1,25 | Gleichzeitige DDS-Encoding-Operationen (wirkungsvollster Hebel) |
 | `max_concurrent_jobs` | `[control_plane]` | CPUs × 2 | Maximale gleichzeitige Tile-Jobs insgesamt |
-
-Der wirkungsvollste Hebel ist `cpu_concurrent` — er begrenzt die DDS-Encoding-Operationen (BC1/BC3-Kompression), die den größten CPU-Anteil ausmachen.
 
 ### Empfohlene Werte
 
@@ -144,33 +142,8 @@ Der wirkungsvollste Hebel ist `cpu_concurrent` — er begrenzt die DDS-Encoding-
 | XEL allein (Default) | 16 | 20 | 32 |
 | XEL + X-Plane | 6–8 | 6–8 | 12–16 |
 | XEL + X-Plane + Streaming | 4 | 4 | 8 |
-| XEL im Hintergrund | 2 | 2 | 4 |
 
 *Beispielwerte für ein System mit 16 logischen CPUs (8 Kerne + Hyperthreading)*
-
-```ini
-# ~/.xearthlayer/config.ini — Beispiel für XEL + X-Plane
-[generation]
-threads = 6
-
-[executor]
-cpu_concurrent = 6
-
-[control_plane]
-max_concurrent_jobs = 12
-```
-
-!!! tip "Netzwerk ist oft der Flaschenhals"
-    Bei langsamer Internetverbindung bringt eine Reduktion der CPU-Threads kaum Performanceverlust, da die Threads ohnehin auf Downloads warten. Das Prefetch-System passt sich automatisch an den niedrigeren Durchsatz an.
-
-Zusätzlich beeinflusst das Disk-I/O-Profil die CPU-Last indirekt:
-
-| `disk_io_profile` | Gleichzeitige I/O-Ops | Empfohlen für |
-|---|---|---|
-| `hdd` | 1–4 | Klassische Festplatten |
-| `ssd` | 32–64 | SATA/AHCI SSDs |
-| `nvme` | 128–256 | NVMe-Laufwerke |
-| `auto` (Default) | Automatisch erkannt | Die meisten Systeme |
 
 ---
 

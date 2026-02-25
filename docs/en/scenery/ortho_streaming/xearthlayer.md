@@ -28,7 +28,7 @@ A core feature of XEarthLayer is its **adaptive prefetching**, which switches be
 - **Ground mode (ring prefetch)**: At low altitude and speed, tiles are preloaded in concentric rings around the current position — optimal for approach situations and low-level flying
 - **Cruise mode (track prediction)**: At higher speed and altitude, the system predicts the expected flight path and preloads tiles along the projected route
 
-The system self-calibrates and adapts its prefetch strategy to available bandwidth and the current flight phase. A **circuit breaker mechanism** ensures that prefetch requests are deprioritized when on-demand requests from X-Plane need priority — ensuring that currently visible tiles are always loaded first.
+The system self-calibrates and adapts its prefetch strategy to available bandwidth and the current flight phase. On-demand tile requests from X-Plane always take priority over prefetch through **pipeline admission control**. A **resource-aware circuit breaker** additionally pauses prefetch when overall resource pool utilization (CPU, network, disk I/O) exceeds safe thresholds — ensuring that currently visible tiles are always loaded first.
 
 ## Map Sources
 
@@ -125,15 +125,13 @@ X-Plane is heavily main-thread bound. When XEarthLayer saturates all cores, this
 
 ### Relevant Settings
 
-Three settings in `~/.xearthlayer/config.ini` form a hierarchy:
+Three settings in `~/.xearthlayer/config.ini` control CPU usage:
 
 | Setting | Section | Default | Function |
 |---|---|---|---|
 | `threads` | `[generation]` | Number of CPUs | Worker threads for tile generation |
-| `cpu_concurrent` | `[executor]` | ~CPUs × 1.25 | Concurrent CPU-intensive operations (DDS encoding) |
+| `cpu_concurrent` | `[executor]` | ~CPUs × 1.25 | Concurrent DDS encoding operations (most effective lever) |
 | `max_concurrent_jobs` | `[control_plane]` | CPUs × 2 | Maximum concurrent tile jobs overall |
-
-The most effective lever is `cpu_concurrent` — it limits DDS encoding operations (BC1/BC3 compression), which account for the largest CPU share.
 
 ### Recommended Values
 
@@ -144,33 +142,8 @@ The most effective lever is `cpu_concurrent` — it limits DDS encoding operatio
 | XEL alone (default) | 16 | 20 | 32 |
 | XEL + X-Plane | 6–8 | 6–8 | 12–16 |
 | XEL + X-Plane + streaming | 4 | 4 | 8 |
-| XEL in background | 2 | 2 | 4 |
 
 *Example values for a system with 16 logical CPUs (8 cores + hyperthreading)*
-
-```ini
-# ~/.xearthlayer/config.ini — example for XEL + X-Plane
-[generation]
-threads = 6
-
-[executor]
-cpu_concurrent = 6
-
-[control_plane]
-max_concurrent_jobs = 12
-```
-
-!!! tip "Network is often the bottleneck"
-    With a slow internet connection, reducing CPU threads barely affects performance since the threads are waiting for downloads anyway. The prefetch system automatically adapts to the lower throughput.
-
-Additionally, the disk I/O profile indirectly affects CPU load:
-
-| `disk_io_profile` | Concurrent I/O ops | Recommended for |
-|---|---|---|
-| `hdd` | 1–4 | Traditional hard drives |
-| `ssd` | 32–64 | SATA/AHCI SSDs |
-| `nvme` | 128–256 | NVMe drives |
-| `auto` (default) | Auto-detected | Most systems |
 
 ---
 

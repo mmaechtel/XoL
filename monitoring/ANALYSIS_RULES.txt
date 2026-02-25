@@ -402,19 +402,23 @@ Performance-relevant event types:
     tiles=0 → nothing to do (cache warm)
     tiles > 50 → heavy batch, expect IO and CPU burst.
 
-  CIRCUIT BREAKER EVENTS
-    Pattern: "Circuit breaker: high load detected, starting tracking
-             rate=<rate> threshold=<threshold>"
-    THIS IS THE KEY XEL PERFORMANCE EVENT.
-    Significance: XEL detected that the system is overloaded
-    (tile request rate exceeds threshold).  The circuit breaker
-    will reduce or pause tile loading to prevent further pressure.
+  CIRCUIT BREAKER EVENTS (resource-pool based, since PR #61)
+    Pattern: Circuit breaker log entries indicating resource saturation.
+    (Pre-#61 pattern "high load detected, rate=<rate> threshold=<threshold>"
+    is obsolete — that counted FUSE reads including cache hits, causing
+    false trips during normal cruise.)
+    Current behavior: CB monitors ResourcePools::max_utilization() across
+    network, CPU, and disk I/O pools.  Trips at ~90% sustained utilization
+    for circuit_breaker_open_ms (default 500ms).  Prefetch is capped at
+    75% of pool capacity, so only genuine combined on-demand + prefetch
+    load can reach 90%.
+    Significance: A CB trip now indicates real resource saturation, not
+    normal rendering activity.  Should be rare during cruise.
     Correlate with: vmstat allocstall_s, io.csv utilization spikes,
-    mem.csv available_mb drops.
-    Clusters of circuit breaker events = XEL is actively throttling
-    itself because the system can't keep up.  This is both a symptom
-    (system overloaded) and a mitigation (reducing load).
-    Config reference: circuit_breaker_threshold in config.ini.
+    proc.csv XEL CPU%/thread count.
+    Clusters of CB events in the new version = genuine system overload.
+    Note: On-demand requests always preempt prefetch via pipeline
+    admission control (PR #57), independent of the circuit breaker.
 
   DDS TILE GENERATION
     Pattern: "Job submitted job_id=dds-<row>_<col>_ZL<zoom>"
@@ -476,7 +480,9 @@ XEL Log Analysis Steps:
   2. Build a timeline of flight phases:
      - Prewarm → Waiting for telemetry → Ground → Cruise → Ground → Exit
   3. Count and cluster circuit breaker events by time.
-     Each cluster = an overload episode.
+     Each cluster = a genuine resource saturation episode (post-PR #61).
+     In older XEL versions, clusters often indicated false trips from
+     cache hits — verify XEL version before interpreting.
   4. Compute cache hit rate over time from prefetch cycles:
      skipped_cached / total_considered per cycle.
      Declining hit rate = entering uncached territory.
@@ -526,8 +532,8 @@ check within ±3 seconds:
   - proc.csv: which process had highest CPU%?
   - vram.csv: did GPU util drop?
   - xplane_events.csv: was X-Plane loading scenery?
-  - XEL log: circuit breaker event?  Turn?  Prefetch batch?
-    Low cache hit rate?  DDS generation burst?
+  - XEL log: circuit breaker event (resource saturation)?  Turn?
+    Prefetch batch?  Low cache hit rate?  DDS generation burst?
 
 If trace_reclaim.log exists:
   - Which process/thread was doing the reclaim?
@@ -559,7 +565,7 @@ Group by device.  10–11 ms clusters = power-state transitions.
   5. Pages must be decompressed from zram (vmstat: pswpin spike)
   6. This zram compression/decompression is CPU work
   7. If it happens on X-Plane cores → CPU steal from rendering
-  8. XEL circuit breaker may activate (XEL log: "high load detected")
+  8. XEL circuit breaker may activate (resource pool utilization > 90%)
      → XEL throttles itself, reducing future pressure but also
      delaying tile delivery (potential scenery pop-in)
 
@@ -583,9 +589,11 @@ Group by device.  10–11 ms clusters = power-state transitions.
      → proc.csv: XEL RSS growth
      → mem.csv: available_mb drop
   6. If memory pressure exceeds threshold:
-     → XEL circuit breaker activates (XEL log: "high load detected")
+     → XEL circuit breaker may activate (resource pool > 90%)
      → vmstat: allocstall_s may spike
      → Cascade into Stutter Chain (3a) or Swap Storm Chain (3c)
+     Note: Since PR #57, on-demand requests preempt prefetch via
+     pipeline admission control, reducing the severity of this chain.
 
   Key correlation: The time delay between XEL log events and
   system-level impact is typically 5–15 seconds.  XEL batches tiles,
@@ -873,16 +881,19 @@ Pattern: Vulkan Device Loss
   Check:     VRAM utilization at crash time, thermal state, PCIe
              link status, gamescope VK_KHR_present_wait (#1592)
 
-Pattern: XEL Circuit Breaker Cascade
-  Signature: XEL log shows clusters of "Circuit breaker: high load"
-             events coinciding with vmstat allocstall_s bursts
-  Cause:     XEL tile loading rate exceeds system capacity.  Memory
-             pressure from new tiles triggers both kernel reclaim and
-             XEL's internal circuit breaker simultaneously.
-  Impact:    Double stutter — reclaim stalls X-Plane while circuit
-             breaker delays tile delivery (visual pop-in)
-  Fix:       Reduce max_tiles_per_cycle, increase circuit_breaker_threshold,
-             or increase system RAM / min_free_kbytes
+Pattern: XEL Resource Saturation (CB, post-PR #61)
+  Signature: CB events with resource pool utilization > 90% and
+             vmstat allocstall_s bursts.  Rare during normal cruise.
+  Cause:     Genuine combined on-demand + prefetch load saturating
+             network, CPU, or disk I/O pools.  Typically at DSF
+             boundary crossings or entering large uncached regions.
+  Impact:    Prefetch pauses (correct), on-demand continues via
+             pipeline priority (PR #57).  Stutter only if memory
+             pressure triggers Direct Reclaim.
+  Fix:       Reduce max_concurrent_jobs or max_tiles_per_cycle.
+  Legacy:    Pre-PR #61, CB counted FUSE cache hits as load → false
+             trips during cruise.  If old-style "high load rate=N
+             threshold=N" events appear → update XEL.
 
 Pattern: Uncached Region Entry
   Signature: XEL log prefetch cycles suddenly show low skipped_cached

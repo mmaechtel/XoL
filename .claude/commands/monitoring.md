@@ -181,7 +181,7 @@ Gemaess ANALYSIS_RULES.txt Sections 1-5:
 
 Aus dem XEL-Log die performance-relevanten Events extrahieren und mit den System-Metriken korrelieren:
 
-- **Circuit Breaker Events** → vmstat allocstall_s Zeitfenster
+- **Circuit Breaker Events** (resource-pool-basiert seit PR #61) → vmstat allocstall_s Zeitfenster
 - **Turn Events** → io.csv Read-Spikes 5-15s spaeter
 - **Prefetch Cache Hit Rate** → mem.csv available_mb Verlauf
 - **Flight Phase Transitions** → Drei-Phasen-Grenzen
@@ -201,7 +201,7 @@ Task (subagent_type=general-purpose): "Analysiere io.csv:
   NVMe-Latenz-Cluster (10-11ms Pattern). Datei: <RUN_DIR>/io.csv"
 
 Task (subagent_type=general-purpose): "Parse XEL Log fuer Zeitfenster
-  <START> bis <END>: Circuit Breaker Events, Turn Events, Prefetch
+  <START> bis <END>: Circuit Breaker Events (resource-pool), Turn Events, Prefetch
   Cache Hit Rates, Flight Phases. Datei: ~/.xearthlayer/xearthlayer.log"
 ```
 
@@ -215,7 +215,7 @@ Gemaess ANALYSIS_RULES.txt Section 7 vor Abschluss pruefen:
 - [ ] Cross-Korrelation durchgefuehrt (Stalls ↔ IO ↔ Swap ↔ GPU ↔ XEL)
 - [ ] XEL-Log geparst und korreliert
 - [ ] Flight Phases aus XEL dem Drei-Phasen-Modell zugeordnet
-- [ ] Circuit Breaker Events mit System-Pressure abgeglichen
+- [ ] Circuit Breaker Events mit Resource-Pool-Auslastung abgeglichen (post-PR #61: sollte selten sein)
 - [ ] Trace-Logs geparst und integriert (falls vorhanden)
 - [ ] Findings nach Schweregrad sortiert
 - [ ] Empfehlungen spezifisch und umsetzbar

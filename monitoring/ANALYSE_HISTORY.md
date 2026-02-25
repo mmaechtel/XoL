@@ -2,90 +2,21 @@
 
 **System:** Ryzen 9 9800X3D 8C/16T, 96 GB RAM, RTX 4090 24 GB, 3x NVMe (2x SN850X 8TB + 990 PRO 4TB)
 **Kernel:** Liquorix 6.18 (PDS), Btrfs RAID0 (xplane_data) + RAID1 (home)
-**Zeitraum:** 2026-02-17 bis 2026-02-22
+**Zeitraum:** 2026-02-17 bis 2026-02-25
 
 ---
 
-## Run A — Baseline (2026-02-17, 5 Min)
+## Runs A–D — Baseline + sysctl + IO-Tuning (2026-02-17)
 
-Erste Messung, keine Tunings. Unveränderte Liquorix-Defaults.
+Kurzruns (5–15 Min) zum Identifizieren und Beheben der Grundprobleme.
 
-| Metrik | Wert | Bewertung |
-|--------|------|-----------|
-| Direct Reclaim | max 75.183 pages/s | Schlecht — synchrones Warten |
-| Alloc Stalls | max 1.042/s | Mikroruckler |
-| Major Faults | 724/s avg | Aktives Swap-In |
-| Swap Swing | 1.1 GB / 5 Min | Hohe Churn |
-| Dirty Pages | 502 MB avg, 1.3 GB max | Writeback staut |
-| Write-Latenz p95 | 260–312 ms (alle NVMe) | Kyber + WBT drosseln |
-| TLB Shootdowns | 16.000/s | Übermäßiges Reclaim |
+**Run A (Baseline):** Alle Metriken schlecht — Direct Reclaim 75k/s, Alloc Stalls 1k/s, Write-Latenz 260–312 ms, Dirty Pages 502 MB. Ursachen: min_free_kbytes zu klein, Kyber-Scheduler + WBT drosseln NVMe, Dirty-Limits zu hoch.
 
-**Identifizierte Probleme:** min_free_kbytes zu klein (512 MB), swappiness zu hoch (10), Kyber-Scheduler + WBT drosseln NVMe-Writes, Dirty-Limits zu hoch, Btrfs commit=120s staut Metadata.
+**Änderung 1 (sysctl):** min_free_kbytes 512M→1G, swappiness 10→1, page-cluster 3→0, vfs_cache_pressure 100→150, dirty_background_ratio 3→1, dirty_ratio 10→5, dirty_expire 30→15s, dirty_writeback 15→5s.
+→ **Run B/C:** Direct Reclaim + Stalls eliminiert. Write-Latenz bleibt — IO-Scheduler ist das Problem.
 
----
-
-## Änderung 1 — sysctl Tuning
-
-```
-vm.min_free_kbytes    512 MB → 1 GB       kswapd bekommt Vorlauf
-vm.swappiness         10 → 1              Kernel bevorzugt Page-Cache-Reclaim
-vm.page-cluster       3 → 0              Kein Swap-Readahead (Random-Zugriff)
-vm.vfs_cache_pressure 100 → 150          VFS-Cache schneller freigeben
-vm.dirty_background_ratio 3 → 1          Writeback ab ~940 MB
-vm.dirty_ratio        10 → 5             Hard-Limit 4,7 GB
-vm.dirty_expire_centisecs 3000 → 1500    Pages nach 15s flushen
-vm.dirty_writeback_centisecs 1500 → 500  Flush alle 5s
-```
-
----
-
-## Run B — +sysctl, idle (2026-02-17, 5 Min)
-
-| Metrik | Run A | Run B | Veränderung |
-|--------|-------|-------|-------------|
-| Direct Reclaim | 75.183/s | **0** | Eliminiert |
-| Alloc Stalls | 1.042/s | **0** | Eliminiert |
-| Major Faults | 724/s | 192/s | -73% |
-| Dirty Pages | 502 MB | 33 MB | -93% |
-| Write-Lat avg | 36–47 ms | 4–7 ms | -85% |
-
-## Run C — +sysctl, aktiver Flug (2026-02-17, 5 Min)
-
-| Metrik | Run A | Run C | Veränderung |
-|--------|-------|-------|-------------|
-| Direct Reclaim | 75.183/s | **0** | Eliminiert |
-| Alloc Stalls | 1.042/s | **0** | Eliminiert |
-| Major Faults | 724/s | 505/s | -30% |
-| Dirty Pages | 502 MB | 194 MB | -61% |
-| Write-Lat avg | 36–47 ms | 36–47 ms | Unverändert |
-
-**Erkenntnis:** sysctl löst Reclaim/Stalls, aber Write-Latenz bleibt — IO-Scheduler ist das Problem.
-
----
-
-## Änderung 2 — NVMe IO-Tuning + Btrfs
-
-```
-IO-Scheduler     kyber → none       NVMe Multi-Queue braucht keinen Software-Scheduler
-WBT              2000 µs → 0 (aus)  Keine Write-Drosselung auf NVMe
-Readahead        512/128/512 → 256  Einheitlich
-Btrfs commit     120s → 30s/60s     Kleinere, häufigere Metadata-Commits
-```
-
----
-
-## Run D — +IO-Tuning (2026-02-17, 15 Min)
-
-| Metrik | Run A | Run D | Veränderung |
-|--------|-------|-------|-------------|
-| Direct Reclaim | 75.183/s | **0** | Eliminiert |
-| Write-Lat avg | 36–47 ms | **1,8 ms** | **-95%** |
-| Write-Lat max | 260–312 ms | **283 ms** | Tail bleibt |
-| Dirty Pages | 502 MB | **30 MB** | -94% |
-| TLB Shootdowns (vmstat) | 16.000/s | **0/s** | Eliminiert |
-| Swap Swing | 1.1 GB/5 Min | 211 MB/15 Min | -95% |
-
-**Erkenntnis:** IO-Scheduler=none + WBT=0 löst Write-Latenz. Kurztest sieht perfekt aus.
+**Änderung 2 (NVMe IO + Btrfs):** IO-Scheduler kyber→none, WBT→0, Readahead 256 KB einheitlich, Btrfs commit 120→30/60s.
+→ **Run D:** Write-Latenz **-95%** (1,8 ms avg), Dirty Pages **-94%** (30 MB), TLB Shootdowns eliminiert.
 
 ---
 
@@ -351,70 +282,6 @@ XEL disk_io_concurrent           48 → 32              Zurück auf Run-H-Wert (
 
 ---
 
-## Gesamtentwicklung — Schlüsselmetriken
-
-| Metrik | A (Baseline) | D (+IO) | E (90 Min) | F/2 (Steady) | G (Steady) | H (Steady) | I (Normalflug) | J (Gesamt)* |
-|--------|-------------|---------|------------|---------------|------------|------------|-----------------|-------------|
-| Direct Reclaim max/s | 75.183 | 0 | 2.122.555 | **0** | **0** | **0** | **0** | 1.293.750 |
-| Alloc Stalls max/s | 1.042 | 0 | 13.383 | **0** | **0** | **0** | **0** | 8.833 |
-| Write-Lat avg (ms) | 36–47 | 1,8 | 16,1 | — | — | 0,25 (read) | 0,21–0,24 (read) | 0,37–0,50 |
-| Write-Lat max (ms) | 260–312 | 283 | 699 | **44** | — | 53,8 | 120,3 | **6,1** |
-| Dirty Pages avg (MB) | 502 | 30 | 39 | **2,4** | ~2 | ~16 | 45 | 1,7 |
-| Swap auf NVMe | ja | ja | 11,6 GB | **0** | **0** | **0** | **0** | **0** |
-| Slow IO (>5ms) | — | — | — | — | 12.383 | **339** | ~1.539 | **35** |
-| EMFILE | — | — | 3.474 | — | — | 1.126 | 16.079 | **0** |
-| PSI | 0 | 0 | 0 | — | **0** | — | n/a | 0 |
-| GPU Throttle | — | — | — | — | **0** | — | — | — |
-
-*Run J: Ortho4XP-Szenerie (lokal), XEL nur Gap-Filler, Freeze bei Min 39 durch XEL Thread-Bomb.
-
-**Zeitraum:** 2026-02-17 bis 2026-02-24
-
-## Aktueller Tuning-Stack (persistent, Stand 2026-02-24)
-
-```
-# sysctl (/etc/sysctl.d/99-custom-tuning.conf)
-vm.swappiness = 5
-vm.min_free_kbytes = 2097152          (2 GB)
-vm.watermark_boost_factor = 15000
-vm.watermark_scale_factor = 50
-vm.page-cluster = 0
-vm.vfs_cache_pressure = 150
-vm.dirty_background_ratio = 1
-vm.dirty_ratio = 5
-vm.dirty_expire_centisecs = 1500
-vm.dirty_writeback_centisecs = 500
-
-# NVMe IO (/etc/udev/rules.d/60-nvme-tuning.rules)
-scheduler = none
-WBT = 0
-readahead = 256 KB
-pm_qos_latency_tolerance_us = 0       (/etc/udev/rules.d/61-nvme-pmqos.rules)
-
-# zram
-32 GB lz4, pri=100 (zram-swap.service)
-
-# Btrfs (fstab)
-xplane_data: commit=30s
-home: commit=60s
-
-# XEL (~/.xearthlayer/config.ini) — nach Run J (Änderung 8)
-max_tiles_per_cycle = 200
-generation threads = 12
-prefetch mode = auto
-network_concurrent = 64              (zurück von 96)
-cpu_concurrent = 8                   (zurück von 12)
-disk_io_concurrent = 32              (zurück von 48)
-max_concurrent_jobs = 4              (von 8, Anti-Thread-Bomb)
-circuit_breaker_threshold = 30       (von 50, früher drosseln)
-circuit_breaker_open_ms = 200        (von 500, schneller auslösen)
-# OFFEN: fd-Limit auf 65536 erhöhen
-```
-
-**Fazit Run I+J:** Zwei verschiedene Lastprofile getestet. Run I (XEL-dominiert): Normalflug 62 Min stall-frei, EMFILE-Krise durch Concurrency-Erhöhung. Run J (Ortho4XP-dominiert): Periodische Stalls durch schwere DSF-Tiles, XEL Thread-Bomb verursacht Freeze.
-
----
-
 ## Run K — XEL Cold-Start Langflug (2026-02-24, 116 Min)
 
 Route: EDDB → SW über Deutschland/Alpen → LIMC (Mailand Malpensa), ~800 km. Cold Start (0 Cache-Hits).
@@ -448,12 +315,28 @@ Schwerster Lastfall bisher: 22.812 XEL-Tiles, 369 DSF-Loads, 237 GB DDS-Volumen.
 
 ---
 
-## Änderung 9 — Prefetch-Optimierung (vorbereitet, noch nicht getestet)
+## XEL-Update (2026-02-25) — PR #57 + PR #61
+
+XEarthLayer-Update mit zwei kritischen Fixes:
+
+- **PR #57 (Priority Inversion Fix):** On-Demand-Requests haben jetzt Pipeline-Priorität über Prefetch. Eliminiert die Thread-Bomb-Ursache aus Run J.
+- **PR #61 (CB Resource-Pool):** Circuit Breaker nutzt jetzt `ResourcePools::max_utilization()` (Trip bei ~90%) statt FUSE-Request-Rate. `circuit_breaker_threshold` deprecated und entfernt.
+
+**Erkenntnis:** Die 47,7% CB-Blockade in Run K war ein **Bug** — der CB zählte Cache-Hits (50-150 req/s beim normalen Rendern) als Last. Unser Tuning (50→30→50) hat gegen einen Softwarefehler gekämpft, nicht gegen ein Konfigurationsproblem.
+
+---
+
+## Änderung 9 — XEL-Update + Config-Anpassung (2026-02-25)
 
 ```
-XEL circuit_breaker_threshold    30 → 50             Prefetch nicht mehr bei Normalflug blockiert
-XEL max_concurrent_jobs           4 → 6              +50% Tile-Generation-Durchsatz
-XEL prewarm grid_size             4 → 6              36 statt 16 DSF-Tiles, ~7 Min Prewarm
+XEL circuit_breaker_threshold    ENTFERNT (deprecated) War Bug-Workaround, CB jetzt resource-pool-basiert
+XEL circuit_breaker_open_ms      200 → 500 (Default)   Aggressive Timing war Workaround, Default reicht
+XEL circuit_breaker_half_open_s  2 → 5 (Default)       Gleicher Grund
+XEL network_concurrent           64 → 128 (Default)    EMFILE-Workaround entfällt (Pipeline-Fix PR #57)
+XEL disk_io_concurrent           32 → 64 (Default)     Gleicher Grund
+XEL disk_io_profile              nvme → auto (Default)  Auto-Erkennung funktioniert
+XEL max_concurrent_jobs           4 → 8                 Priority Inversion Fix eliminiert Thread-Bomb-Risiko
+XEL prewarm grid_size             4 → 6                 36 DSF-Tiles, ±117nm E/W bei 50°N (Reserve für Grid-Ecken)
 ```
 
 ---
@@ -476,9 +359,9 @@ XEL prewarm grid_size             4 → 6              36 statt 16 DSF-Tiles, ~7
 *Run J: Ortho4XP-Szenerie, XEL nur Gap-Filler, Freeze bei Min 39.
 **Run K Steady: Ab Min 88, schwerster Lastfall (Cold Start, 22k Tiles, 800 km neue Route).
 
-**Zeitraum:** 2026-02-17 bis 2026-02-24
+**Zeitraum:** 2026-02-17 bis 2026-02-25
 
-## Aktueller Tuning-Stack (persistent, Stand 2026-02-24)
+## Aktueller Tuning-Stack (persistent, Stand 2026-02-25)
 
 ```
 # sysctl (/etc/sysctl.d/99-custom-tuning.conf)
@@ -506,18 +389,14 @@ pm_qos_latency_tolerance_us = 0       (/etc/udev/rules.d/61-nvme-pmqos.rules)
 xplane_data: commit=30s
 home: commit=60s
 
-# XEL (~/.xearthlayer/config.ini) — nach Run K (Änderung 9, vorbereitet)
-max_tiles_per_cycle = 200
-generation threads = 12
-prefetch mode = auto
-network_concurrent = 64
-cpu_concurrent = 8
-disk_io_concurrent = 32
-max_concurrent_jobs = 6              (von 4, +50% Durchsatz)
-circuit_breaker_threshold = 50       (von 30, Prefetch-Blockade lösen)
-circuit_breaker_open_ms = 200
-prewarm grid_size = 6                (von 4, 36 statt 16 DSF-Tiles)
+# XEL (~/.xearthlayer/config.ini) — nach Änderung 9 (XEL-Update 2026-02-25)
+# Nur Nicht-Default-Werte (CPU-Bottleneck + Reserve):
+generation threads = 12              (Default: 16, CPU shared mit X-Plane)
+cpu_concurrent = 8                   (Default: 10, gleicher Grund)
+max_concurrent_jobs = 8              (Default: 16, gleicher Grund)
+prewarm grid_size = 6                (Default: 4, Reserve für Grid-Ecken)
+# Alles andere: Default. CB-Workarounds entfernt (PR #61 + #57).
 # fd-Limit: ulimit -n = 1.048.576 (systemweit)
 ```
 
-**Fazit Run K:** Schwerster Lastfall aller Runs (Cold Start, 800 km, 22k Tiles). Steady State ab Min 88 makellos. Hauptproblem: Circuit Breaker blockiert Prefetch 47,7% der Flugzeit, DSF-Loading treibt 88 Min Ramp-up. Änderung 9 (CB 50, Jobs 6, Prewarm 6×6) vorbereitet — nächster Run wird zeigen ob die Ramp-up-Phase kürzer wird.
+**Fazit Run K:** Schwerster Lastfall (Cold Start, 800 km, 22k Tiles). Steady State ab Min 88 makellos. 47,7% CB-Blockade war ein **XEL-Bug** (Cache-Hits als Last gezählt). Behoben durch PR #61 (resource-pool CB) + PR #57 (Priority Inversion Fix). Änderung 9: Alle CB-Workarounds entfernt, nur CPU-Bottleneck-Werte + Prewarm 6×6 bleiben. Offene XEL-Issues: #58 (Band-Misalignment), #62 (Takeoff-Stutter).
