@@ -35,22 +35,15 @@ This documentation is an open project. Improvements or additions can be contribu
 
 ## Recent Changes
 
+### 2026-02-27
+- [Swap & Memory Management](linux/system/swap.md), [System Tuning](linux/system/systemtuning.md), and [Tuning Case Study](linux/system/tuning_casestudy.md) revised: Updated zram recommendations — `swappiness=180` + `watermark_scale_factor=125` instead of `watermark_boost_factor=15000`, based on 14 measurement runs. Separate configuration blocks for zram and disk swap, new field notes on dirty ratio tuning and vfs_cache_pressure
+
 ### 2026-02-24
 - [Tuning Case Study](linux/system/tuning_casestudy.md) expanded: New Step 5 — Watermark optimization with measured results (97% IO latency reduction, 58% fewer render-thread reclaim events)
 - [Swap & Memory Management](linux/system/swap.md) corrected: `watermark_boost_factor=15000` replaces previous recommendation of 0, based on measurement data
 
 ### 2026-02-22
 - New page [Tuning Case Study](linux/system/tuning_casestudy.md) — Five measured tuning steps from micro-stutters to stable frame times: memory pressure, IO latency, zram swap, swap readahead, and watermark tuning
-
-### 2026-02-21
-- New page [OSM Offshore Oil Rigs](scenery/autogen/osm_offshore_oil_rigs.md) — Worldwide offshore oil platforms as heliports based on OpenStreetMap data, with Mission-X integration for helicopter missions
-- New page [How Ortho Streaming Works](scenery/ortho_streaming/how_streaming_works.md) — X-Plane's texture loading chain, FUSE virtual filesystem, and the common streaming pipeline behind AutoOrtho and XEarthLayer
-- New page [Swap & Memory Management](linux/system/swap.md) — Page reclaim mechanics, swap configuration, zram compression, and tuning recommendations for flight simulation
-- New page [Smoke & Steam for SimHeaven](scenery/autogen/smoke_steam_simheaven.md) — Particle-based smoke and steam effects for X-World chimneys and cooling towers
-- [Introduction](intro.md) expanded: X-Plane's open architecture (DataRefs, plugin SDK, open file formats) paired with Linux's open stack as complementary argument, scenery streaming via FUSE added as concrete Linux advantage
-
-- [System Tuning](linux/system/systemtuning.md), [Performance](xplane/setup_diagnose/performance.md), and [Filesystem](linux/optimizations/filesystem.md) extended: Fact-check against primary sources — refined RAID capacity details, mount options, schedutil/Liquorix interaction, and other specifics
-- [Performance](xplane/setup_diagnose/performance.md): Added MangoHUD warning for Wayland + NVIDIA (missing GPU metrics due to Debian package without NVML)
 
 
 

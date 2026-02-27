@@ -280,9 +280,9 @@ swap-priority = 100
 
 ```ini title="/etc/sysctl.d/99-zram.conf"
 vm.swappiness = 180
-vm.watermark_boost_factor = 15000
-vm.watermark_scale_factor = 50
 vm.page-cluster = 0
+vm.watermark_boost_factor = 0
+vm.watermark_scale_factor = 125
 ```
 
 In `/etc/default/grub` eintragen (zswap deaktivieren):
@@ -304,17 +304,26 @@ sudo sysctl --system
 !!! note "Warum page-cluster=0?"
     Der Standard `page-cluster=3` liest 8 Pages (32 KiB) pro Swap-Zugriff als Readahead. Bei zram muss jede Page einzeln dekomprimiert werden — Readahead bringt keinen Vorteil und erhöht die Latenz. `page-cluster=0` liest nur die angeforderte Page.
 
-!!! note "Warum watermark_boost_factor=15000?"
-    Manche zram-Anleitungen empfehlen `watermark_boost_factor=0` mit der Begründung, der Boost-Mechanismus sei nur für Disk-Swap relevant. Messungen mit stoßartigen Allokations-Workloads (Szenerie-Laden, Ortho-Tile-Dekompression) zeigen, dass dies kontraproduktiv ist: Der Boost erhöht temporär die Watermarks nach Reclaim, sodass kswapd im nächsten Zyklus aggressiver reclaimed. Ohne ihn fällt kswapd bei Allokationsspitzen zurück, und Direct Reclaim blockiert Anwendungs-Threads. Siehe die [Tuning-Fallstudie](tuning_casestudy.md#schritt-5-watermark-optimierung-proaktives-kswapd-fur-burst-allokationen) für die detaillierte Analyse.
+!!! note "Warum watermark_boost_factor=0 mit zram?"
+    Der Liquorix-Kernel setzt `watermark_boost_factor=0` als Standard — temporäre Watermark-Boosts nach Reclaim-Events sind deaktiviert. Das ist eine bewusste Gaming-Optimierung: Der Boost kann unvorhersehbare kswapd-Schübe verursachen, die die Frame-Time-Varianz erhöhen.
+
+    Mit zram liefert die Kombination aus `swappiness=180` und `watermark_scale_factor=125` genügend proaktiven Reclaim-Druck: Hohe Swappiness sorgt dafür, dass kalte Anonymous Pages kontinuierlich in komprimierten Swap wandern, und die breite Watermark-Lücke (~1,2 GB auf einem 96-GB-System) gibt kswapd ausreichend Anlauf, bevor Direct Reclaim ausgelöst wird.
+
+    Für **Disk-Swap**-Konfigurationen (bei denen Swappiness bei 10–20 bleiben sollte) `watermark_boost_factor=15000` (den Upstream-Standard) beibehalten — kswapd benötigt den zusätzlichen Boost, weil Disk-I/O langsam ist und Reclaim aggressiver arbeiten muss, um mit Allokationsschüben Schritt zu halten.
+
+    Siehe die [Tuning-Fallstudie](tuning_casestudy.md#schritt-5-watermark-optimierung-proaktives-kswapd-fur-burst-allokationen) für die Messhistorie, die zu dieser Erkenntnis führte.
+
+!!! note "Warum watermark_scale_factor=125?"
+    Der Standard `watermark_scale_factor=10` erzeugt auf einem 96-GB-System nur ~96 MB Abstand zwischen den Watermarks. Bei 125 verbreitert sich diese Lücke auf ~1,2 GB — passend zu den Empfehlungen von Pop!_OS und dem Arch Wiki für zram-Setups. Die breitere Lücke bedeutet, dass kswapd deutlich früher aufwacht und die Wahrscheinlichkeit sinkt, dass Burst-Allokationen (Szenerie-Laden, Ortho-Tile-Dekompression) die Min-Watermark durchbrechen und Direct Reclaim auf Anwendungs-Threads auslösen.
 
 ### Kernel-Parameter-Übersicht
 
 | Parameter | zram | Disk-Swap | Wirkung |
 |---|---|---|---|
-| `vm.swappiness` | 180 | 10–20 | Steuert das Verhältnis von Anonymous- zu File-Page-Reclaim |
-| `vm.page-cluster` | 0 | 0 | Pages pro Swap-In (2^n). 0 = einzelne Page |
-| `vm.watermark_scale_factor` | 50 | 10 (Standard) | Abstand zwischen Watermarks. Höher = früheres kswapd |
-| `vm.watermark_boost_factor` | 15000 | 15000 (Standard) | Temporärer Watermark-Boost nach Reclaim — hält kswapd bei Allokationsspitzen proaktiv |
+| `vm.swappiness` | 180 | 10–20 | Kostenverhältnis: hoch = Swap ist günstig (zram ist RAM), niedrig = Swap ist teuer (Disk-I/O) |
+| `vm.page-cluster` | 0 | 0 | Pages pro Swap-In (2^n). 0 = kein Readahead (optimal für zram und NVMe) |
+| `vm.watermark_scale_factor` | 125 | 50 | Watermark-Lücke. Höher = früheres kswapd-Aufwachen. zram verträgt breitere Lücke |
+| `vm.watermark_boost_factor` | 0 | 15000 | Temporärer Boost nach Reclaim. Unnötig mit zram + hoher Swappiness; essenziell für langsamen Disk-Swap |
 | `vm.vfs_cache_pressure` | 50 | 50 | Inode-/Dentry-Caches für Szenerie-Datei-Lookups bevorzugen |
 
 ### RAM-Dimensionierung
@@ -327,6 +336,16 @@ sudo sysctl --system
 
 !!! tip "RAM ist die nachhaltige Lösung"
     Swap-Tuning — ob festplattenbasiert oder mit zram — ist Schadensbegrenzung. Der einzige Weg, Swap-bedingte Performance-Einbußen zuverlässig zu vermeiden, ist ausreichend physischer RAM. Für X-Plane mit Ortho-Streaming sind 32 GB die praktische Basis.
+
+### Praxisnotizen: Dirty-Ratio-Tuning
+
+Die Einstellungen `dirty_background_ratio` und `dirty_ratio` interagieren mit der Swap-Konfiguration auf nicht offensichtliche Weise. Während ausgedehnter Tests (14 Messläufe über 10 Tage mit Ortho-Streaming auf NVMe) ergaben sich folgende Beobachtungen:
+
+- **Zu aggressives Writeback schadet auf Systemen mit viel RAM.** Mit `dirty_background_ratio=1` auf einem 96-GB-System feuert der Writeback-Daemon bei ~960 MB Dirty — praktisch jeder Tile-Cache-Schreibvorgang löst einen Flush-Zyklus aus. Das verbraucht CPU-Zyklen und I/O-Bandbreite, die mit X-Planes Rendering konkurrieren. Anheben auf `dirty_background_ratio=3` (~2,9 GB Schwelle) ließ NVMe Schreibvorgänge effizient bündeln, ohne permanentes Flushing.
+- **Der dirty_ratio-Spielraum zählt mehr als der Absolutwert.** Bei `dirty_ratio=5` (~4,8 GB) war die Lücke zwischen Background- (960 MB) und synchronem (4,8 GB) Writeback zu schmal — parallele DDS-Tile-Generierung konnte sie bei Schreibschüben durchbrechen. Verbreiterung auf `dirty_ratio=10` (~9,6 GB) eliminierte Write-Stalls auf NVMe vollständig.
+- **Diese Werte sind nicht universell.** Sie wurden für ein System mit drei NVMe-SSDs im RAID0 optimiert, das >6 GB/s sequentielle Schreibrate sustaint. Systeme mit SATA-SSDs oder einzelner NVMe benötigen möglicherweise engere Limits, um I/O-Queue-Aufstau zu verhindern.
+
+Die empfohlenen Werte in [Profil B](systemtuning.md#profil-b-liquorix-kernel) (`dirty_background_ratio=3`, `dirty_ratio=10`) spiegeln diese Balance wider. Weitergehende Untersuchungen zu per-Device Dirty Limits (`/sys/class/bdi/`) könnten auf Systemen mit gemischtem Storage noch bessere Ergebnisse liefern.
 
 ---
 

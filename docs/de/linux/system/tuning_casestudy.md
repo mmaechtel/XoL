@@ -174,34 +174,50 @@ Die Ursachenanalyse identifizierte drei beitragende Faktoren:
 
 | Faktor | Einstellung | Wirkung |
 |---|---|---|
-| `watermark_boost_factor=0` | Liquorix-Standard | kswapd erhält keinen temporären Boost nach Reclaim — es reclaimed zu wenige Pages pro Aufwach-Zyklus und fällt zurück |
+| `swappiness=1` | Schritt 1 | **Hauptursache:** Anonymous Pages werden erst unter extremem Druck geswappt — kswapd hat nichts, was es proaktiv reclaimen kann, und wenn Swap schließlich einsetzt, geschieht es als Panik-Burst |
 | `min_free_kbytes=1 GB` | Schritt 1 | Nur 400 MB Spielraum über dem Schwellwert — Burst-Allokationen unterschreiten die Min-Watermark, bevor kswapd reagieren kann |
-| `swappiness=1` | Schritt 1 | Anonymous Pages werden erst unter extremem Druck geswappt — wenn Swap schließlich einsetzt, geschieht es als Panik-Burst |
+| `watermark_boost_factor=0` | Liquorix-Standard | kswapd erhält keinen temporären Boost nach Reclaim — ein beitragender Faktor, aber nicht die Hauptursache (siehe Hinweis unten) |
 
-!!! warning "Verbreiteter Irrtum: watermark_boost_factor=0 für zram"
-    Viele zram-Anleitungen empfehlen `watermark_boost_factor=0` mit der Begründung, der Boost-Mechanismus sei „für rotierende Festplatten entworfen". Das greift zu kurz. Der Boost erhöht temporär die Watermarks nach einem Reclaim-Event, sodass kswapd im nächsten Zyklus aggressiver reclaimed. Bei Workloads mit stoßartigen Allokationsmustern (Szenerie-Laden, Ortho-Tile-Dekompression) ist dieses proaktive Verhalten essenziell — ohne es kann kswapd nicht Schritt halten und Direct Reclaim übernimmt.
+!!! note "Revidierte Erkenntnis: watermark_boost_factor mit zram"
+    Die initiale Messung (Run G/H in der Testreihe) wendete `watermark_boost_factor=15000` zusammen mit `swappiness=10` an, und die Kombination verbesserte die Ergebnisse. Nachfolgende Tests über mehrere zusätzliche Runs ergaben jedoch, dass die **primäre Verbesserung aus der Erhöhung der Swappiness** stammte — von 1 auf 180. Mit `swappiness=180` und `watermark_scale_factor=125` erhält kswapd genügend reclaimbare Pages, um Allokationsschüben voraus zu bleiben, ohne den Boost-Mechanismus zu benötigen. Der Boost kompensierte unzureichende Swappiness, löste kein eigenständiges Problem.
 
-**Lösung:** Watermark-Lücke verbreitern, kswapd-Boost reaktivieren und graduelles Hintergrund-Swapping erlauben:
+    Der Liquorix-Kernel deaktiviert den Boost (`watermark_boost_factor=0`) als bewusste Gaming-Optimierung — er verhindert unvorhersehbare Reclaim-Spitzen, die die Frame-Time-Varianz erhöhen. Mit der korrekten Swappiness für zram funktioniert dieser Standard wie vorgesehen.
 
-```ini title="/etc/sysctl.d/99-xplane-tuning.conf"
-vm.min_free_kbytes = 2097152
-vm.watermark_boost_factor = 15000
-vm.watermark_scale_factor = 50
-vm.swappiness = 10
-```
+    Für **Disk-Swap**-Konfigurationen (bei denen Swappiness bei 10–20 bleiben sollte) bleibt `watermark_boost_factor=15000` die richtige Wahl — kswapd braucht jeden Vorteil, wenn Swap-I/O langsam ist. Siehe die [Swap-Seite](swap.md#kernel-parameter-ubersicht) für den vollständigen Parametervergleich.
+
+**Lösung:** Die korrekten Parameter hängen vom Swap-Typ ab:
+
+=== "zram (Empfohlen)"
+
+    ```ini title="/etc/sysctl.d/99-xplane-tuning.conf"
+    vm.swappiness = 180
+    vm.min_free_kbytes = 1048576
+    vm.watermark_boost_factor = 0
+    vm.watermark_scale_factor = 125
+    vm.page-cluster = 0
+    ```
+
+=== "Disk-Swap"
+
+    ```ini title="/etc/sysctl.d/99-xplane-tuning.conf"
+    vm.swappiness = 10
+    vm.min_free_kbytes = 2097152
+    vm.watermark_boost_factor = 15000
+    vm.watermark_scale_factor = 50
+    ```
 
 ```bash
 sudo sysctl --system
 ```
 
-| Parameter | Vorher | Nachher | Wirkung |
-|---|---|---|---|
-| `vm.min_free_kbytes` | 1 GB (Schritt 1) | 2 GB | kswapd wacht mit 2 GB Vorlauf auf — Burst-Allokationen bleiben über der Min-Watermark |
-| `vm.watermark_boost_factor` | 0 | 15000 | kswapd erhöht temporär die Watermarks nach Reclaim — reclaimed mehr Pages pro Zyklus |
-| `vm.watermark_scale_factor` | 10 | 50 | Breitere Lücke zwischen Low- und Min-Watermark — kswapd hat mehr Anlauf vor Direct Reclaim |
-| `vm.swappiness` | 1 | 10 | Graduelles Hintergrund-Swap statt Panik-Bursts — Anonymous Pages wandern in zram, bevor der Druck kritisch wird |
+| Parameter | Vorher | Nachher (zram) | Nachher (Disk-Swap) | Wirkung |
+|---|---|---|---|---|
+| `vm.swappiness` | 1 | **180** | 10 | zram: Swap ist günstig — proaktiv nutzen. Disk: Swap ist teuer — sparsam nutzen |
+| `vm.min_free_kbytes` | 1 GB | **1 GB** | 2 GB | zram: 1 GB reicht, weil Swap-In schnell ist (~1,7 µs). Disk: 2 GB nötig für langsamere Erholung |
+| `vm.watermark_boost_factor` | 0 | **0** | 15000 | zram: Liquorix-Standard, hohe Swappiness kompensiert. Disk: kswapd braucht den Boost |
+| `vm.watermark_scale_factor` | 10 | **125** | 50 | Breitere Lücke = früheres kswapd. zram verträgt breitere Lücke (~1,2 GB auf 96 GB) |
 
-**Gemessene Wirkung:** Die Aufbauphase (Minute 10–60) zeigte deutlich reduzierten Speicherdruck. Direct-Reclaim-Events auf dem Render-Thread gingen zurück, und der Übergang zur Gleichgewichtsphase verlief glatter. Siehe [Swap-Seite](swap.md#empfohlene-konfiguration) für die allgemeinen Watermark- und Swappiness-Empfehlungen.
+**Gemessene Wirkung:** Die Aufbauphase (Minute 10–60) zeigte deutlich reduzierten Speicherdruck. Direct-Reclaim-Events auf dem Render-Thread gingen zurück, und der Übergang zur Gleichgewichtsphase verlief glatter. Mit der zram-Konfiguration (swappiness=180, scale_factor=125) verkürzte sich die Aufbauphase, und das System erreichte den stall-freien Gleichgewichtszustand schneller als mit den ursprünglichen disk-swap-orientierten Parametern. Siehe [Swap-Seite](swap.md#empfohlene-konfiguration) für die allgemeinen Empfehlungen.
 
 ---
 
@@ -226,8 +242,18 @@ Die kombinierte Wirkung aller fünf Schritte, gemessen auf dem Testsystem (Gleic
     1. **kswapd Vorlauf geben** — `min_free_kbytes` sollte zur Burst-Allokationsrate passen, nicht dem Systemstandard entsprechen
     2. **Swap von Daten-IO trennen** — zram eliminiert die Kontention vollständig, ohne dedizierte SSD
     3. **Software-Overhead auf NVMe entfernen** — Multi-Queue-Hardware profitiert nicht von einem Software-Scheduler
-    4. **Watermarks für Burst-Workloads tunen** — `watermark_boost_factor` und `watermark_scale_factor` steuern, wie proaktiv kswapd bei Allokationsspitzen reclaimed
+    4. **Swappiness an das Swap-Medium anpassen** — mit zram (komprimiertes RAM) ist hohe Swappiness (180) korrekt; mit Disk-Swap vermeidet niedrige Swappiness (10–20) teure I/O
     5. **Vorher und nachher messen** — aggregierte Zähler aus `/proc/vmstat` reichen aus, um zu bestätigen, ob eine Änderung die beabsichtigte Wirkung hatte
+
+### Praxisnotizen: Lehren aus dem Tuning-Prozess
+
+Die fünf Schritte oben sind als saubere Progression dargestellt, aber der tatsächliche Tuning-Prozess umfasste 14 Messläufe, einige Sackgassen und revidierte Schlussfolgerungen. Einige Beobachtungen, die für weitere Untersuchungen nützlich sein könnten:
+
+- **Parameter interagieren nichtlinear.** Der watermark_boost_factor erschien essenziell, als Swappiness bei 1–10 lag — kswapd konnte genuinerweise nicht Schritt halten. Aber nachdem Swappiness auf 180 angehoben wurde, wurde der Boost unnötig und sogar kontraproduktiv (sporadische Reclaim-Spitzen). Eine Parameteränderung kann Schlussfolgerungen über andere Parameter invalidieren. Bei signifikanten Änderungen immer das Gesamtset neu evaluieren.
+- **Liquorix-Defaults haben Gründe.** Die erste Reaktion auf das Zurückfallen von kswapd war, Liquorix' `watermark_boost_factor=0` mit dem Upstream-Standard (15000) zu überschreiben. Das half — behandelte aber das Symptom. Die eigentliche Ursache (zu niedrige Swappiness für zram) wurde erst nach mehreren zusätzlichen Runs identifiziert. Bevor man die bewussten Defaults einer Distribution überschreibt, sicherstellen, dass der Parameter tatsächlich die Hauptursache ist und nicht eine Fehlkonfiguration an anderer Stelle kompensiert.
+- **FUSE-Workloads reagieren empfindlich auf vfs_cache_pressure.** Bei Ortho-Streaming via FUSE kann jeder Szenerie-Verzeichnis-Lookup zu einem Kernel-zu-Userspace-Roundtrip werden, wenn der Dentry-Cache evicted ist. Werte über 100 erhöhten den FUSE-Overhead bei Szenerieübergängen messbar. Die Interaktion zwischen `vfs_cache_pressure`, FUSE-Metadaten-Caching und Kernel-Page-Cache-Konkurrenz ist ein Bereich, in dem systematischere Messungen wertvoll wären.
+- **Das Drei-Phasen-Muster ist konsistent.** Jeder Run zeigte das gleiche Aufwärm- → Aufbau- → Gleichgewichtsmuster. Tuning beeinflusst primär die Dauer und Schwere der Aufbauphase. Wenn das System im Gleichgewicht stabil ist, aber in den ersten 30–60 Minuten stottert, auf Watermark- und Swappiness-Tuning fokussieren statt auf CPU- oder GPU-Optimierung.
+- **NVMe-Power-State-Latenz ist real und messbar.** Die Deaktivierung von APST (`pm_qos_latency_tolerance_us=0`) eliminierte 97% der langsamen I/O-Events (>5 ms). Das charakteristische 10–11-ms-Muster im Block-Tracing verschwand vollständig. Das ist eine Low-Effort-/High-Impact-Änderung für jede latenzsensitive NVMe-Workload — nicht nur für Flugsimulation.
 
 ---
 

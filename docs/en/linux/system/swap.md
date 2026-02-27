@@ -280,9 +280,9 @@ swap-priority = 100
 
 ```ini title="/etc/sysctl.d/99-zram.conf"
 vm.swappiness = 180
-vm.watermark_boost_factor = 15000
-vm.watermark_scale_factor = 50
 vm.page-cluster = 0
+vm.watermark_boost_factor = 0
+vm.watermark_scale_factor = 125
 ```
 
 Add to `/etc/default/grub` (disable zswap):
@@ -304,17 +304,26 @@ sudo sysctl --system
 !!! note "Why page-cluster=0?"
     The default `page-cluster=3` reads 8 pages (32 KiB) per swap access as readahead. With zram, each page must be individually decompressed — readahead provides no benefit and increases latency. Setting `page-cluster=0` reads only the requested page.
 
-!!! note "Why watermark_boost_factor=15000?"
-    Some zram guides recommend `watermark_boost_factor=0`, reasoning that the boost mechanism is only relevant for disk swap. Measurements with bursty allocation workloads (scenery loading, ortho tile decompression) show this is counterproductive: the boost temporarily raises watermarks after reclaim, making kswapd reclaim more aggressively in the next cycle. Without it, kswapd falls behind during allocation spikes, and Direct Reclaim blocks application threads. See the [Tuning Case Study](tuning_casestudy.md#step-5-watermark-optimization-proactive-kswapd-for-burst-allocations) for the detailed analysis.
+!!! note "Why watermark_boost_factor=0 with zram?"
+    The Liquorix kernel sets `watermark_boost_factor=0` by default — disabling temporary watermark boosts after reclaim events. This is a deliberate gaming optimization: the boost can cause unpredictable kswapd bursts that increase frame-time variance.
+
+    With zram, the combination of `swappiness=180` and `watermark_scale_factor=125` provides enough proactive reclaim pressure: high swappiness ensures cold anonymous pages move to compressed swap continuously, and the wide watermark gap (~1.2 GB on a 96 GB system) gives kswapd ample runway before Direct Reclaim is triggered.
+
+    For **disk swap** configurations (where swappiness should remain 10–20), keep `watermark_boost_factor=15000` (the upstream default) — kswapd needs the extra boost because disk I/O is slow and reclaim must be more aggressive to keep up with allocation bursts.
+
+    See the [Tuning Case Study](tuning_casestudy.md#step-5-watermark-optimization-proactive-kswapd-for-burst-allocations) for the measurement history that led to this conclusion.
+
+!!! note "Why watermark_scale_factor=125?"
+    The default `watermark_scale_factor=10` creates a gap of only ~96 MB between watermarks on a 96 GB system. At 125, this gap widens to ~1.2 GB — matching the recommendations from Pop!_OS and the Arch Wiki for zram setups. The wider gap means kswapd wakes up significantly earlier, reducing the chance that burst allocations (scenery loading, ortho tile decompression) breach the min watermark and trigger Direct Reclaim on application threads.
 
 ### Kernel Parameters Summary
 
 | Parameter | zram | Disk Swap | Effect |
 |---|---|---|---|
-| `vm.swappiness` | 180 | 10–20 | Controls anonymous vs. file page reclaim ratio |
-| `vm.page-cluster` | 0 | 0 | Pages read per swap-in (2^n). 0 = single page |
-| `vm.watermark_scale_factor` | 50 | 10 (default) | Distance between watermarks. Higher = earlier kswapd |
-| `vm.watermark_boost_factor` | 15000 | 15000 (default) | Temporary watermark boost after reclaim — keeps kswapd proactive during allocation bursts |
+| `vm.swappiness` | 180 | 10–20 | Cost ratio: high = swap is cheap (zram is RAM), low = swap is expensive (disk I/O) |
+| `vm.page-cluster` | 0 | 0 | Pages per swap-in (2^n). 0 = no readahead (optimal for zram and NVMe) |
+| `vm.watermark_scale_factor` | 125 | 50 | Watermark gap. Higher = earlier kswapd wakeup. zram tolerates a wider gap |
+| `vm.watermark_boost_factor` | 0 | 15000 | Temporary boost after reclaim. Unnecessary with zram + high swappiness; essential for slow disk swap |
 | `vm.vfs_cache_pressure` | 50 | 50 | Favor keeping inode/dentry caches for scenery file lookups |
 
 ### RAM Sizing Guide
@@ -327,6 +336,16 @@ sudo sysctl --system
 
 !!! tip "RAM is the sustainable solution"
     Swap tuning — whether disk-based or with zram — is damage mitigation. The only way to reliably avoid swap-related performance degradation is sufficient physical RAM. For X-Plane with ortho streaming, 32 GB is the practical baseline.
+
+### Field Notes: Dirty Ratio Tuning
+
+The `dirty_background_ratio` and `dirty_ratio` settings interact with the swap configuration in non-obvious ways. During extended testing (14 measurement runs over 10 days with ortho streaming on NVMe), the following observations emerged:
+
+- **Too aggressive writeback hurts on large-RAM systems.** With `dirty_background_ratio=1` on a 96 GB system, the writeback daemon fires at ~960 MB dirty — practically every tile cache write triggers a flush cycle. This burns CPU cycles and I/O bandwidth that compete with X-Plane's rendering. Raising to `dirty_background_ratio=3` (~2.9 GB threshold) let NVMe batch writes efficiently without constant flushing.
+- **dirty_ratio headroom matters more than the absolute value.** At `dirty_ratio=5` (~4.8 GB), the gap between background (960 MB) and synchronous (4.8 GB) writeback was too narrow — parallel DDS tile generation could breach it during burst writes. Widening to `dirty_ratio=10` (~9.6 GB) eliminated write stalls entirely on NVMe.
+- **These values are not universal.** They were tuned for a system with three NVMe SSDs in RAID0 that can sustain >6 GB/s sequential writes. Systems with SATA SSDs or single NVMe drives may need tighter limits to prevent I/O queue buildup.
+
+The recommended values in [Profile B](systemtuning.md#profile-b-liquorix-kernel) (`dirty_background_ratio=3`, `dirty_ratio=10`) reflect this balance. Further investigation into per-device dirty limits (`/sys/class/bdi/`) could yield even better results on mixed-storage systems.
 
 ---
 

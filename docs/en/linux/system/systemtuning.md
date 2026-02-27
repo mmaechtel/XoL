@@ -274,12 +274,26 @@ Reboot required.
 
 **Smooth Memory Writeback**
 
-```ini title="/etc/sysctl.d/99-lowlatency.conf"
-vm.swappiness=10
-vm.dirty_background_ratio=3
-vm.dirty_ratio=10
-vm.vfs_cache_pressure=50
-```
+The optimal memory parameters depend on your swap configuration. With disk swap, low swappiness avoids expensive disk I/O. With [zram](swap.md#zram), high swappiness is correct because "swap" is compressed RAM — the kernel should use it proactively.
+
+=== "Disk Swap"
+
+    ```ini title="/etc/sysctl.d/99-lowlatency.conf"
+    vm.swappiness = 10
+    vm.dirty_background_ratio = 3
+    vm.dirty_ratio = 10
+    vm.vfs_cache_pressure = 50
+    ```
+
+=== "zram (Recommended)"
+
+    ```ini title="/etc/sysctl.d/99-lowlatency.conf"
+    vm.swappiness = 180
+    vm.page-cluster = 0
+    vm.dirty_background_ratio = 3
+    vm.dirty_ratio = 10
+    vm.vfs_cache_pressure = 50
+    ```
 
 Apply:
 
@@ -287,7 +301,10 @@ Apply:
 sudo sysctl --system
 ```
 
-For background on how swappiness works and zram as an alternative swap strategy, see [Swap & Memory Management](swap.md).
+!!! tip "vfs_cache_pressure and FUSE filesystems"
+    The value 50 is chosen deliberately: FUSE-based ortho streaming (AutoOrtho, XEarthLayer) relies on the kernel's dentry/inode cache for metadata lookups. Higher values (100+) cause faster eviction of these caches, forcing more kernel-to-userspace round trips for repeated `lookup()` calls. On systems with 32+ GB RAM, keeping VFS caches longer has negligible memory cost but reduces FUSE overhead measurably. This is an area worth investigating further — the interaction between `vfs_cache_pressure` and FUSE metadata performance is not well documented.
+
+For background on why these values differ, how swappiness works as a cost ratio, and zram setup instructions, see [Swap & Memory Management](swap.md).
 
 **Light Prioritization**
 
