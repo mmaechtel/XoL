@@ -132,3 +132,12 @@ if [ "$SKIP_HTML" = false ]; then
 else
     echo "Skipping extra HTML files (--skip-html)"
 fi
+
+# Smoke test against both domains (skip on dry run)
+if [ "$DRY_RUN" = false ]; then
+    SCRIPT_DIR="$(cd "$(dirname "$0")" && pwd)"
+    if [ -x "$SCRIPT_DIR/smoke_test.sh" ]; then
+        echo ""
+        "$SCRIPT_DIR/smoke_test.sh" --pages 10
+    fi
+fi
