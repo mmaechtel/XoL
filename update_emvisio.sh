@@ -59,27 +59,16 @@ if [ ! -d "$LOCAL_PATH" ]; then
     exit 1
 fi
 
-# Video symlink setup (OS-dependent path) — skipped with --no-videos
-if [ "$NO_VIDEOS" = true ]; then
-    echo "Skipping video symlink check (--no-videos)"
-else
-    case "$(uname)" in
-        Linux)  VIDEO_SRC="/mnt/videos/XoL/video" ;;
-        Darwin) VIDEO_SRC="/Volumes/video/XoL/video" ;;
-    esac
+# Video source (OS-dependent share path)
+case "$(uname)" in
+    Linux)  VIDEO_SRC="/mnt/videos/XoL/video" ;;
+    Darwin) VIDEO_SRC="/Volumes/video/XoL/video" ;;
+esac
 
-    if [ ! -d "$VIDEO_SRC" ]; then
-        echo "Error: Video share not mounted at: $VIDEO_SRC"
-        echo "Mount the video share first, then re-run."
-        exit 1
-    elif [ ! -L docs/assets/video ]; then
-        ln -s "$VIDEO_SRC" docs/assets/video
-        echo "Created symlink: docs/assets/video -> $VIDEO_SRC"
-    elif [ ! -d docs/assets/video/ ]; then
-        rm docs/assets/video
-        ln -s "$VIDEO_SRC" docs/assets/video
-        echo "Recreated symlink: docs/assets/video -> $VIDEO_SRC"
-    fi
+if [ "$NO_VIDEOS" = false ] && [ ! -d "$VIDEO_SRC" ]; then
+    echo "Error: Video share not mounted at: $VIDEO_SRC"
+    echo "Mount the video share first, or use --no-videos to skip."
+    exit 1
 fi
 
 # Copy root-level files to site/
@@ -95,12 +84,8 @@ RSYNC_OPTS=(
     --delete
     --exclude='stats/'
     --exclude='Maps/'
+    --exclude='assets/video/'
 )
-
-# Exclude video files from sync when --no-videos is set
-if [ "$NO_VIDEOS" = true ]; then
-    RSYNC_OPTS+=(--exclude='assets/video/')
-fi
 
 # macOS stores filenames in NFD (decomposed Unicode: u + combining ¨)
 # Linux expects NFC (composed: ü). Without conversion, filenames with
@@ -109,14 +94,30 @@ if [ "$(uname)" = "Darwin" ]; then
     RSYNC_OPTS+=(--iconv=utf-8-mac,utf-8)
 fi
 
-# Sync to remote
+# Sync site to remote (without videos)
 if [ "$DRY_RUN" = true ]; then
     echo "Performing dry run (no files will be transferred):"
     $RSYNC "${RSYNC_OPTS[@]}" -n ./site/ ${REMOTE_HOST}:${REMOTE_PATH}/
 else
     echo "Syncing site to ${REMOTE_HOST}..."
     $RSYNC "${RSYNC_OPTS[@]}" ./site/ ${REMOTE_HOST}:${REMOTE_PATH}/
-    echo "Sync completed successfully!"
+    echo "Site sync completed."
+fi
+
+# Sync videos directly from share to remote (unless --no-videos)
+if [ "$NO_VIDEOS" = false ] && [ -d "$VIDEO_SRC" ]; then
+    VIDEO_RSYNC_OPTS=(-avz --delete)
+    if [ "$(uname)" = "Darwin" ]; then
+        VIDEO_RSYNC_OPTS+=(--iconv=utf-8-mac,utf-8)
+    fi
+    if [ "$DRY_RUN" = true ]; then
+        echo "Performing dry run for videos:"
+        $RSYNC "${VIDEO_RSYNC_OPTS[@]}" -n "$VIDEO_SRC/" ${REMOTE_HOST}:${REMOTE_PATH}/assets/video/
+    else
+        echo "Syncing videos from share to ${REMOTE_HOST}..."
+        $RSYNC "${VIDEO_RSYNC_OPTS[@]}" "$VIDEO_SRC/" ${REMOTE_HOST}:${REMOTE_PATH}/assets/video/
+        echo "Video sync completed."
+    fi
 fi
 
 # Copy extra HTML files to Maps/ on server (unless --skip-html)
