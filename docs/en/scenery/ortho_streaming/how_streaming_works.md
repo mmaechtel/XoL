@@ -75,6 +75,40 @@ Both tools require `user_allow_other` in `/etc/fuse.conf` to be enabled, so X-Pl
 
     **Context switch overhead:** A native filesystem operation requires 2 context switches; FUSE requires 4. For ortho streaming this overhead is irrelevant — the bottleneck is network latency (50–200 ms), not filesystem latency (microseconds).
 
+### FUSE Congestion Bottleneck
+
+The Linux FUSE driver limits concurrent asynchronous requests through two kernel-level parameters:
+
+| Parameter | Default | Effect |
+|-----------|---------|--------|
+| `max_background` | 12 | Maximum number of concurrent background (asynchronous) requests. New background requests block when this limit is reached. |
+| `congestion_threshold` | 9 (¾ of `max_background`) | Above this count, the kernel reduces readahead and skips opportunistic writeback — cutting speculative I/O before the hard limit hits. |
+
+X-Plane loads DSF tiles on background threads and can request many tiles in parallel at DSF tile boundaries. Since X-Plane 12.4 introduced multi-threaded scenery processing, the simulator processes more tiles concurrently — intensifying the pressure on FUSE at boundary crossings.
+
+The low FUSE defaults create a bottleneck: only 12 background requests can be in flight simultaneously. Once that ceiling is hit, additional background reads block until a slot frees up. Meanwhile, `congestion_threshold` (9) already reduces kernel readahead earlier — further limiting effective throughput even before the hard cap.
+
+!!! warning "Typical symptoms"
+    - Reproducible frame drops at DSF tile boundaries (every 1° latitude/longitude)
+    - GPU and CPU utilization remain low during the stall
+    - The streaming pipeline could process ~50 tiles/second but never reaches that throughput
+
+**Mitigation:**
+
+Raising `max_background` to 64–128 via a local crate patch eliminates the bottleneck without kernel modifications. The FUSE kernel module accepts values up to 65535 for `max_background` (unprivileged processes up to `max_user_bgreq`, default 256) — only the userspace library needs patching. A corresponding [patch is tracked in XEarthLayer Issue #67](https://github.com/samsoir/xearthlayer/issues/67).
+
+??? abstract "Technical Background: Why this happens"
+    The Rust `fuse3` crate used by XEarthLayer compiles these limits as constants:
+
+    ```rust
+    pub const DEFAULT_MAX_BACKGROUND: u16 = 12;
+    pub const DEFAULT_CONGESTION_THRESHOLD: u16 = DEFAULT_MAX_BACKGROUND * 3 / 4; // = 9
+    ```
+
+    These values match the Linux kernel defaults but are not adjustable at runtime through the crate's API — a local crate patch is required.
+
+    AutoOrtho v2.1.1 ([ProgrammingDinosaur fork](https://github.com/ProgrammingDinosaur/autoortho4xplane)) is subject to the same kernel defaults. It uses mfusepy, which supports both libfuse2 and libfuse3. Both libfuse versions allow setting `max_background` as a mount option (`-o max_background=N`) or programmatically in the `init()` callback — but AutoOrtho uses neither method and stays at the kernel default of 12.
+
 ---
 
 ## The Streaming Pipeline
@@ -152,6 +186,7 @@ Ortho streaming delivers satellite imagery in real time — but sometimes tiles 
 | High zoom level | Higher zoom means exponentially more tiles per area. ZL18 requires 4× more tiles than ZL17. | Reduce maximum zoom level if loading cannot keep up. |
 | CPU contention | DDS compression competes with X-Plane for CPU time, causing both to slow down. | Limit worker threads (XEarthLayer: `cpu_concurrent`, AutoOrtho: configuration). See [XEarthLayer CPU Tuning](xearthlayer.md#cpu-tuning). |
 | Fast low-level flight | Low altitude + high speed demands more tiles per second than cruise flight at high altitude. | Expected behavior — the cache fills as you fly. Prefetching helps (especially XEarthLayer's adaptive modes). |
+| FUSE congestion | The FUSE driver limits concurrent background requests to 12 by default. At DSF boundaries, parallel tile requests hit this ceiling — additional reads block. | Patch the FUSE userspace library to raise `max_background` — see [FUSE Congestion Bottleneck](#fuse-congestion-bottleneck). |
 
 !!! tip "Cache is your best friend"
     After the first visit to a region, subsequent flights load almost entirely from disk or memory cache. The initial "slow" experience is a one-time cost per region and zoom level.

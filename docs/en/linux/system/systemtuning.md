@@ -302,7 +302,7 @@ sudo sysctl --system
 ```
 
 !!! tip "vfs_cache_pressure and FUSE filesystems"
-    The value 50 is chosen deliberately: FUSE-based ortho streaming (AutoOrtho, XEarthLayer) relies on the kernel's dentry/inode cache for metadata lookups. Higher values (100+) cause faster eviction of these caches, forcing more kernel-to-userspace round trips for repeated `lookup()` calls. On systems with 32+ GB RAM, keeping VFS caches longer has negligible memory cost but reduces FUSE overhead measurably. This is an area worth investigating further — the interaction between `vfs_cache_pressure` and FUSE metadata performance is not well documented.
+    The value 50 is chosen deliberately: FUSE-based ortho streaming (AutoOrtho, XEarthLayer) relies on the kernel's dentry/inode cache for metadata lookups. Higher values (100+) cause faster eviction of these caches, forcing more kernel-to-userspace round trips for repeated `lookup()` calls. On systems with 32+ GB RAM, keeping VFS caches longer has negligible memory cost but reduces FUSE overhead measurably. This is an area worth investigating further — the interaction between `vfs_cache_pressure` and FUSE metadata performance is not well documented. For another FUSE-specific bottleneck (concurrent request limits), see [FUSE Congestion Bottleneck](../../scenery/ortho_streaming/how_streaming_works.md#fuse-congestion-bottleneck).
 
 For background on why these values differ, how swappiness works as a cost ratio, and zram setup instructions, see [Swap & Memory Management](swap.md).
 

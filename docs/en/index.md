@@ -35,15 +35,15 @@ This documentation is an open project. Improvements or additions can be contribu
 
 ## Recent Changes
 
+### 2026-03-06
+- [How Streaming Works](scenery/ortho_streaming/how_streaming_works.md) expanded: New section on FUSE congestion bottleneck — explains how low `max_background` defaults limit concurrent tile requests and cause frame drops at DSF boundaries
+
 ### 2026-02-27
 - [Swap & Memory Management](linux/system/swap.md), [System Tuning](linux/system/systemtuning.md), and [Tuning Case Study](linux/system/tuning_casestudy.md) revised: Updated zram recommendations — `swappiness=180` + `watermark_scale_factor=125` instead of `watermark_boost_factor=15000`, based on 14 measurement runs. Separate configuration blocks for zram and disk swap, new field notes on dirty ratio tuning and vfs_cache_pressure
 
 ### 2026-02-24
 - [Tuning Case Study](linux/system/tuning_casestudy.md) expanded: New Step 5 — Watermark optimization with measured results (97% IO latency reduction, 58% fewer render-thread reclaim events)
 - [Swap & Memory Management](linux/system/swap.md) corrected: `watermark_boost_factor=15000` replaces previous recommendation of 0, based on measurement data
-
-### 2026-02-22
-- New page [Tuning Case Study](linux/system/tuning_casestudy.md) — Five measured tuning steps from micro-stutters to stable frame times: memory pressure, IO latency, zram swap, swap readahead, and watermark tuning
 
 
 

@@ -302,7 +302,7 @@ sudo sysctl --system
 ```
 
 !!! tip "vfs_cache_pressure und FUSE-Dateisysteme"
-    Der Wert 50 ist bewusst gewählt: FUSE-basiertes Ortho-Streaming (AutoOrtho, XEarthLayer) ist auf den Dentry-/Inode-Cache des Kernels für Metadaten-Lookups angewiesen. Höhere Werte (100+) bewirken schnellere Eviction dieser Caches und erzwingen mehr Kernel-zu-Userspace-Roundtrips bei wiederholten `lookup()`-Aufrufen. Auf Systemen mit 32+ GB RAM hat das längere Halten der VFS-Caches vernachlässigbare Speicherkosten, reduziert aber den FUSE-Overhead messbar. Die Interaktion zwischen `vfs_cache_pressure` und FUSE-Metadaten-Performance ist ein Bereich, der weiterer Untersuchung bedarf — sie ist nicht gut dokumentiert.
+    Der Wert 50 ist bewusst gewählt: FUSE-basiertes Ortho-Streaming (AutoOrtho, XEarthLayer) ist auf den Dentry-/Inode-Cache des Kernels für Metadaten-Lookups angewiesen. Höhere Werte (100+) bewirken schnellere Eviction dieser Caches und erzwingen mehr Kernel-zu-Userspace-Roundtrips bei wiederholten `lookup()`-Aufrufen. Auf Systemen mit 32+ GB RAM hat das längere Halten der VFS-Caches vernachlässigbare Speicherkosten, reduziert aber den FUSE-Overhead messbar. Die Interaktion zwischen `vfs_cache_pressure` und FUSE-Metadaten-Performance ist ein Bereich, der weiterer Untersuchung bedarf — sie ist nicht gut dokumentiert. Zu einem weiteren FUSE-spezifischen Engpass (Limit gleichzeitiger Anfragen) siehe [FUSE-Congestion-Engpass](../../scenery/ortho_streaming/how_streaming_works.md#fuse-congestion-engpass).
 
 Hintergründe zu den unterschiedlichen Werten, wie Swappiness als Kostenverhältnis funktioniert und zur zram-Einrichtung unter [Swap & Speicherverwaltung](swap.md).
 

@@ -75,6 +75,40 @@ Beide Tools erfordern, dass `user_allow_other` in `/etc/fuse.conf` aktiviert ist
 
     **Context-Switch-Overhead:** Eine native Dateisystemoperation erfordert 2 Context-Switches; FUSE erfordert 4. Für Ortho-Streaming ist dieser Overhead irrelevant — der Engpass ist die Netzwerklatenz (50–200 ms), nicht die Dateisystemlatenz (Mikrosekunden).
 
+### FUSE-Congestion-Engpass
+
+Der Linux-FUSE-Treiber begrenzt gleichzeitige asynchrone Anfragen über zwei Kernel-Parameter:
+
+| Parameter | Standard | Wirkung |
+|-----------|----------|---------|
+| `max_background` | 12 | Maximale Anzahl gleichzeitiger Hintergrund-Anfragen (asynchron). Neue Hintergrund-Anfragen blockieren, wenn das Limit erreicht ist. |
+| `congestion_threshold` | 9 (¾ von `max_background`) | Oberhalb dieses Werts reduziert der Kernel Readahead und überspringt opportunistisches Writeback — spekulative I/O wird gedrosselt, bevor das harte Limit greift. |
+
+X-Plane lädt DSF-Kacheln auf Hintergrund-Threads und kann an DSF-Kachelgrenzen viele Tiles parallel anfordern. Seit X-Plane 12.4 mit Multi-Thread-Szenerieverarbeitung verarbeitet der Simulator mehr Tiles gleichzeitig — was den Druck auf FUSE an Kachelgrenzen deutlich erhöht.
+
+Die niedrigen FUSE-Standardwerte erzeugen einen Engpass: Nur 12 Hintergrund-Anfragen können gleichzeitig in Bearbeitung sein. Ist diese Obergrenze erreicht, blockieren weitere Hintergrund-Lesezugriffe, bis ein Slot frei wird. Gleichzeitig reduziert `congestion_threshold` (9) bereits vorher das Kernel-Readahead — der effektive Durchsatz sinkt also schon vor dem harten Limit.
+
+!!! warning "Typische Symptome"
+    - Reproduzierbare Frame-Einbrüche an DSF-Kachelgrenzen (alle 1° Breite/Länge)
+    - GPU- und CPU-Auslastung bleiben während des Rucklers niedrig
+    - Die Streaming-Pipeline könnte ~50 Tiles/Sekunde verarbeiten — erreicht diesen Durchsatz aber nie
+
+**Abhilfe:**
+
+`max_background` lässt sich über einen lokalen Crate-Patch auf 64–128 anheben — ohne Kernel-Modifikation. Das FUSE-Kernel-Modul akzeptiert Werte bis 65535 für `max_background` (unprivilegierte Prozesse bis `max_user_bgreq`, Standard 256); nur die Userspace-Bibliothek muss gepatcht werden. Ein entsprechender [Patch wird in XEarthLayer Issue #67](https://github.com/samsoir/xearthlayer/issues/67) verfolgt.
+
+??? abstract "Technischer Hintergrund: Warum das passiert"
+    Das Rust-Crate `fuse3`, das XEarthLayer verwendet, kompiliert diese Limits als Konstanten:
+
+    ```rust
+    pub const DEFAULT_MAX_BACKGROUND: u16 = 12;
+    pub const DEFAULT_CONGESTION_THRESHOLD: u16 = DEFAULT_MAX_BACKGROUND * 3 / 4; // = 9
+    ```
+
+    Diese Werte entsprechen den Linux-Kernel-Standardwerten, sind aber über die API des Crates nicht zur Laufzeit konfigurierbar — ein lokaler Crate-Patch ist erforderlich.
+
+    AutoOrtho v2.1.1 ([ProgrammingDinosaur-Fork](https://github.com/ProgrammingDinosaur/autoortho4xplane)) unterliegt denselben Kernel-Standardwerten. Es nutzt mfusepy, das sowohl libfuse2 als auch libfuse3 unterstützt. Beide libfuse-Versionen erlauben `max_background` als Mount-Option (`-o max_background=N`) oder programmatisch im `init()`-Callback — AutoOrtho nutzt jedoch keinen der beiden Wege und bleibt beim Kernel-Default von 12.
+
 ---
 
 ## Die Streaming-Pipeline
@@ -152,6 +186,7 @@ Ortho-Streaming liefert Satellitenbilder in Echtzeit — doch manchmal erscheine
 | Hoher Zoom-Level | Höherer Zoom bedeutet exponentiell mehr Tiles pro Fläche. ZL18 benötigt 4× mehr Tiles als ZL17. | Maximalen Zoom-Level reduzieren, wenn das Laden nicht mitkommt. |
 | CPU-Konkurrenz | DDS-Kompression konkurriert mit X-Plane um CPU-Zeit, was beides verlangsamt. | Worker-Threads begrenzen (XEarthLayer: `cpu_concurrent`, AutoOrtho: Konfiguration). Siehe [XEarthLayer CPU-Tuning](xearthlayer.md#cpu-tuning). |
 | Schneller Tiefflug | Niedrige Höhe + hohe Geschwindigkeit erfordern mehr Tiles pro Sekunde als Reiseflug in großer Höhe. | Erwartetes Verhalten — der Cache füllt sich im Flug. Prefetching hilft (besonders XEarthLayers adaptive Modi). |
+| FUSE-Congestion | Der FUSE-Treiber begrenzt gleichzeitige Hintergrund-Anfragen standardmäßig auf 12. An DSF-Grenzen erreichen parallele Kachelanfragen diese Obergrenze — weitere Lesezugriffe blockieren. | FUSE-Userspace-Bibliothek patchen, um `max_background` anzuheben — siehe [FUSE-Congestion-Engpass](#fuse-congestion-engpass). |
 
 !!! tip "Der Cache ist der beste Verbündete"
     Nach dem ersten Besuch einer Region laden nachfolgende Flüge nahezu vollständig aus dem Disk- oder Memory-Cache. Das anfängliche „langsame" Erlebnis ist ein einmaliger Aufwand pro Region und Zoom-Level.
