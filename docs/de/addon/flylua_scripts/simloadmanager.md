@@ -1,5 +1,5 @@
 ---
-description: "SimLoad Manager für X-Plane 12 — FlyWithLua-Skript zur realistischen Simulation von Boarding, Fracht- und Treibstoffbeladung via SimBrief."
+description: "SimLoad Manager für X-Plane 12 — FlyWithLua-Skript zur realistischen Simulation von Boarding, Fracht- und Treibstoffbeladung."
 ---
 # SimLoad Manager
 
@@ -11,21 +11,27 @@ SimLoad Manager ist ein [FlyWithLua](../scripting/flywithlua.md)-Skript, das rea
 - **Download:** [X-Plane.org](https://forums.x-plane.org/files/file/93858-simload-manager-realistic-pax-cargo-fuel-ground-operations/)
 - **Plattformen:** Windows, macOS, Linux (reines Lua)
 - **Kompatibilität:** X-Plane 12
-- **Abhängigkeiten:** [FlyWithLua NG+](../scripting/flywithlua.md), SimBrief-Konto (erforderlich), [SGES](https://forums.x-plane.org/files/file/62296-simple-ground-equipment-services-low-tech-services/) (optional, für visuelles Bodenequipment)
+- **Abhängigkeiten:** [FlyWithLua NG+](../scripting/flywithlua.md), [SGES](https://forums.x-plane.org/files/file/62296-simple-ground-equipment-services-low-tech-services/) (für Bodenequipment-Integration)
+- **Optional:** SimBrief-Konto (manuelle Eingabe und Flight Sim Deck ebenfalls als Datenquellen nutzbar)
 
-Das Skript wird aktiv gepflegt und häufig aktualisiert. Es funktioniert mit jedem Flugzeug — keine flugzeugspezifische Konfiguration nötig.
+Das Skript wird aktiv gepflegt und häufig aktualisiert. Unterstützt werden Laminar-Standardflugzeuge (B737-800, A330-300, MD-82), Zibo/Level Up B737-Varianten, ToLiss-Flugzeuge und X-Crafts E-Jets. Q4XP ist ausgenommen (nutzt eigenes Tablet-System).
 
 ## Funktionsumfang
 
-- **Realistische Beladungssimulation:** Passagiere steigen dynamisch basierend auf Cargo- und Treibstoff-Fortschritt ein
-- **SimBrief-Integration:** Importiert automatisch PAX-Anzahl, Frachtgewicht, Treibstoff und Zeiten aus dem aktuellen Flugplan
+- **Realistische Beladungssimulation:** Passagiere steigen dynamisch basierend auf Cargo- und Treibstoff-Fortschritt ein, mit automatischer Einheitenerkennung (kg/lbs)
+- **Mehrere Datenquellen:** SimBrief Auto-Import, manuelle Eingabe oder Flight Sim Deck-Integration
+- **Departure- und Arrival-Modi:** Zwei getrennte Workflows mit jeweils eigenen Schritten
+- **Turnaround und RON:** Automatische Flugplanerkennung beim Turnaround, Remain Over Night-Handling
+- **Ground-Handling-Phasen:** Crew Briefing, Catering & Cleaning in den Workflow integriert (Crew Briefing per Einstellung überspringbar)
 - **Mehrere Geschwindigkeitsmodi:** Realistisch, Schnell, Sehr schnell oder Benutzerdefiniert (frei editierbares Timing)
 - **Fortschrittsvisualisierung:** Echtzeit-Fortschrittsbalken mit dynamischen Zeitschätzungen für PAX, Cargo und Treibstoff
-- **Loadsheet-Generierung:** Automatisches realistisches Loadsheet (SLMLS-System)
-- **SGES-Integration:** Bei installiertem SGES begleitet visuelles Bodenequipment (Treppen, Gepäckbänder, Tankwagen, Pylonen, Passagierfluss) den Beladungsvorgang
+- **Loadsheet-Generierung:** Automatisches realistisches Loadsheet (SLMLS-System), passt sich der Datenquelle an
+- **SGES-Integration:** Löst automatisch Treppen, Gepäckbänder, Tankwagen, Pylonen und Passagierfluss je nach Standtyp aus
+- **Beacon-basierte Sicherheitsstopps:** Alle Operationen stoppen bei aktiviertem Beacon-Light
 - **Soundeffekte:** Umgebungsgeräusche und KI-generierte Sprachansagen während der Beladung
-- **AutoDGS-Kompatibilität:** Vermeidet Jetway-Konflikte bei erkanntem AutoDGS
-- **API für externe Tools:** Exponierte DataRefs und FlyWithLua-Befehle
+- **AutoDGS-Kompatibilität:** Jetway/Treppen-Steuerung mit Konfliktvermeidung
+- **SimChecklist.eu-Integration:** Anbindung an den Online-Checklisten-Dienst
+- **API für externe Tools:** Eigene X-Plane-Commands und exponierte DataRefs
 
 ## Mehrwert in der Flugsimulation
 
@@ -35,17 +41,16 @@ Sofortiges Laden bricht die Immersion — reale Turnarounds benötigen Zeit und 
 
 **Download:** [X-Plane.org](https://forums.x-plane.org/files/file/93858-simload-manager-realistic-pax-cargo-fuel-ground-operations/)
 
-Die Skript-Dateien in `Resources/plugins/FlyWithLua/Scripts/` ablegen:
+Folgendes in `Resources/plugins/FlyWithLua/Scripts/` ablegen:
 
 - `SimLoadManager.lua` — Hauptskript
-- `SimLoadManager_loadsheet.lua` — Loadsheet-Modul
-- `SimLoad-Manager-Sounds/` — Soundeffekte-Ordner
+- `SLM-Data/` — Datenordner (Sounds, Loadsheet-Modul, Einstellungen)
 
-Einstellungen werden in `FlyWithLua/Modules/simload_settings.txt` gespeichert (wird beim ersten Start automatisch erstellt).
+Den `SLM-Data/`-Ordner und dessen Inhalte nicht umbenennen.
 
-!!! warning "Update von Versionen vor v1.9.0"
+!!! warning "Update von früheren Versionen"
 
-    Vor dem Update `FlyWithLua/Modules/simload_settings.txt` löschen. Die Datei wird beim Start automatisch neu erstellt. Ohne Löschung können falsche Timings oder Interface-Fehler auftreten.
+    Vor der Installation von v3.x alle bisherigen SimLoad Manager-Dateien aus `FlyWithLua/Scripts/` löschen. Die Ordnerstruktur hat sich geändert — alte Dateien wie `SimLoadManager_loadsheet.lua` und `SimLoad-Manager-Sounds/` werden nicht mehr verwendet.
 
 ## Quellen
 

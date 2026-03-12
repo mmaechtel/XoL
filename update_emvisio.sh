@@ -81,6 +81,7 @@ cp .htaccess robots.txt llms.txt site/
 #   managed outside of MkDocs — protected from rsync --delete
 RSYNC_OPTS=(
     -avz
+    --checksum
     --delete
     --exclude='stats/'
     --exclude='Maps/'
@@ -106,7 +107,7 @@ fi
 
 # Sync videos directly from share to remote (unless --no-videos)
 if [ "$NO_VIDEOS" = false ] && [ -d "$VIDEO_SRC" ]; then
-    VIDEO_RSYNC_OPTS=(-avz --delete)
+    VIDEO_RSYNC_OPTS=(-avz --delete --chmod=Do+rX,Fo+r)
     if [ "$(uname)" = "Darwin" ]; then
         VIDEO_RSYNC_OPTS+=(--iconv=utf-8-mac,utf-8)
     fi
