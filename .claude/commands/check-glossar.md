@@ -222,7 +222,7 @@ DATEIEN GEAENDERT:
 
 ## Hinweise
 
-- **EN first:** Analyse und Ergaenzungen immer zuerst in EN, dann DE nachziehen
+- Gemaess `SKILL_RULES.md` → **EN first — DE nachziehen**
 - **Alphabetische Sortierung:** Glossar-Eintraege muessen alphabetisch sortiert bleiben
 - **Keine Allgemeinbegriffe:** Nur Linux-spezifische oder X-Plane-spezifische Begriffe aufnehmen
 - **Erste Nennung:** Nur die erste Verwendung eines Begriffs auf einer Seite verlinken
