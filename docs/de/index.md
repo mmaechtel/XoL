@@ -36,6 +36,7 @@ Diese Dokumentation ist ein offenes Projekt. Verbesserungen oder Ergänzungen k�
 ## Letzte Änderungen
 
 ### 2026-03-14
+- [VATSIM](flight_operations/vatsim/vatsim.md): Flugrouten-Empfehlungen jetzt als interaktive Web-App unter [atc.emvisio.de](https://atc.emvisio.de) verfügbar
 - [XEarthLayer](scenery/ortho_streaming/xearthlayer.md) aktualisiert auf v0.3.1: GPU-beschleunigte DDS-Komprimierung, ISPC-SIMD-Kompression als Standard, Boundary-Driven-Prefetch-System, Online-Netzwerk-Unterstützung (VATSIM/IVAO/PilotEdge)
 - [AutoOrtho](scenery/ortho_streaming/autoortho.md) aktualisiert auf v2.2.0: ~2x schnellere Ladezeiten, SimBrief-Integration mit routenbasiertem Prefetch, Seasons-Unterstützung
 

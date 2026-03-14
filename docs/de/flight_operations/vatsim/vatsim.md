@@ -9,15 +9,13 @@ VATSIM (Virtual Air Traffic Simulation Network) ist das weltweit größte Netzwe
 
 Basierend auf VATSIM Bookings und Events werden regelmäßig aktuelle Flugrouten berechnet und zur Verfügung gestellt:
 
-📄 **[Aktuelle VATSIM Flugrouten anzeigen](/Maps/vatsim_routes.html)**
+📄 **[Aktuelle VATSIM Flugrouten anzeigen](https://atc.emvisio.de)**
 
 ### Wie funktioniert das?
 
-Ein Script sucht online die VATSIM Bookings und Events und errechnet aufgrund der Controller-Abdeckungen und Events mögliche Flüge mit maximaler ATC-Abdeckung. In der HTML-Seite werden dann mögliche Flüge inklusive statistischer Infos angezeigt.
+Ein Script sucht regelmäßig VATSIM Bookings und Events und errechnet aufgrund der Controller-Abdeckungen und Events mögliche Flüge mit maximaler ATC-Abdeckung. Die Web-App zeigt dann mögliche Flüge inklusive statistischer Infos, interaktiver Karten und detaillierter Controller-Zeitpläne an.
 
 **Besonderheit:** Die Berechnungen erfolgen meistens mit A320-Geschwindigkeit (da dieser Flugzeugtyp am häufigsten genutzt wird). Ist man schneller unterwegs, passen die Zeitfenster noch besser!
-
-Die Datei wird automatisch basierend auf aktuellen VATSIM Bookings und Events generiert und enthält die empfohlenen Flugrouten für die kommenden Events mit optimaler Controller-Abdeckung.
 
 ## Was ist VATSIM?
 
