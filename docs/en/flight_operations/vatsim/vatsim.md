@@ -7,15 +7,18 @@ VATSIM (Virtual Air Traffic Simulation Network) is the world's largest network f
 
 ## Current Flight Routes
 
-Based on VATSIM Bookings and Events, current flight routes are regularly calculated and made available:
+The **[ATC Flight Planner](https://atc.emvisio.de)** is a webapp that helps plan VATSIM flights with optimal ATC coverage. It analyzes current VATSIM Bookings and Events and calculates flight routes where you encounter the most active controllers along the way.
 
-📄 **[View Current VATSIM Flight Routes](https://atc.emvisio.de)**
+### Features
 
-### How does it work?
+- **Route Finder** — searches for departure and destination airports with ATC coverage based on aircraft type, departure time and desired arrival window
+- **ATC Timeline** — shows 7-day controller booking schedules to identify the best departure times
+- **Interactive Maps** — visualizes airports with ATC coverage, color-coded by coverage quality
+- **SimBrief Integration** — ranks airports by ATC availability and pushes flight details directly into SimBrief
+- **Live Traffic** — highlights busy airports with active pilots for realistic traffic environments
+- **Event Support** — shows which airports have controllers active during VATSIM events
 
-A script regularly searches for VATSIM Bookings and Events and calculates possible flights with maximum ATC coverage based on controller coverage and events. The web app then displays possible flights including statistical information, interactive maps and detailed controller schedules.
-
-**Special feature:** The calculations are usually done with A320 speed (since this aircraft type is used most frequently). If you're flying faster, the time windows fit even better!
+**Good to know:** Route calculations default to A320 speed profiles (the most common aircraft type). If you fly faster, the ATC coverage windows fit even better!
 
 ## What is VATSIM?
 

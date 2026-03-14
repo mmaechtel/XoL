@@ -7,15 +7,18 @@ VATSIM (Virtual Air Traffic Simulation Network) ist das weltweit größte Netzwe
 
 ## Aktuelle Flugrouten
 
-Basierend auf VATSIM Bookings und Events werden regelmäßig aktuelle Flugrouten berechnet und zur Verfügung gestellt:
+Der **[ATC Flight Planner](https://atc.emvisio.de)** ist eine Webapp zur Planung von VATSIM-Flügen mit optimaler ATC-Abdeckung. Die App analysiert aktuelle VATSIM Bookings und Events und berechnet Flugrouten, auf denen möglichst viele aktive Controller entlang der Strecke anzutreffen sind.
 
-📄 **[Aktuelle VATSIM Flugrouten anzeigen](https://atc.emvisio.de)**
+### Features
 
-### Wie funktioniert das?
+- **Route Finder** — sucht Abflug- und Zielflughäfen mit ATC-Abdeckung basierend auf Flugzeugtyp, Abflugzeit und gewünschtem Ankunftsfenster
+- **ATC Timeline** — zeigt 7-Tage-Controller-Buchungspläne zur Bestimmung der besten Abflugzeiten
+- **Interaktive Karten** — visualisiert Flughäfen mit ATC-Abdeckung, farbcodiert nach Abdeckungsqualität
+- **SimBrief-Integration** — rankt Flughäfen nach ATC-Verfügbarkeit und übergibt Flugdetails direkt an SimBrief
+- **Live Traffic** — hebt stark frequentierte Flughäfen mit aktiven Piloten hervor
+- **Event-Unterstützung** — zeigt, welche Flughäfen während VATSIM-Events aktive Controller haben
 
-Ein Script sucht regelmäßig VATSIM Bookings und Events und errechnet aufgrund der Controller-Abdeckungen und Events mögliche Flüge mit maximaler ATC-Abdeckung. Die Web-App zeigt dann mögliche Flüge inklusive statistischer Infos, interaktiver Karten und detaillierter Controller-Zeitpläne an.
-
-**Besonderheit:** Die Berechnungen erfolgen meistens mit A320-Geschwindigkeit (da dieser Flugzeugtyp am häufigsten genutzt wird). Ist man schneller unterwegs, passen die Zeitfenster noch besser!
+**Gut zu wissen:** Routenberechnungen basieren standardmäßig auf A320-Geschwindigkeitsprofilen (dem häufigsten Flugzeugtyp). Wer schneller unterwegs ist, bei dem passen die ATC-Abdeckungsfenster sogar noch besser!
 
 ## Was ist VATSIM?
 
