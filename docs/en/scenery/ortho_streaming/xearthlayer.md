@@ -1,34 +1,43 @@
 ---
-description: "XEarthLayer is a Rust-based ortho streaming tool for X-Plane 12 on Linux with adaptive prefetch, two-tier cache, and CPU tuning options."
+description: "XEarthLayer is a Rust-based ortho streaming tool for X-Plane 12 on Linux with GPU-accelerated encoding, adaptive prefetch, two-tier cache, and CPU tuning options."
 ---
 # XEarthLayer
 
-**XEarthLayer** is a Rust-based alternative to [AutoOrtho](../../glossary.md#autoortho) for streaming [orthophoto](../../glossary.md#orthophotos) textures in X-Plane 12. The project is inspired by AutoOrtho but relies on a high-performance Rust implementation with adaptive prefetching and a two-tier cache system.
+**XEarthLayer** is a Rust-based alternative to [AutoOrtho](../../glossary.md#autoortho) for streaming [orthophoto](../../glossary.md#orthophotos) textures in X-Plane 12. The project is inspired by AutoOrtho but relies on a high-performance Rust implementation with optional GPU-accelerated encoding, adaptive prefetching, and a two-tier cache system.
 
 !!! note "Active Development"
     XEarthLayer is a young project under active development. Current versions run stably, but feature scope may change between releases.
 
 ## How It Works
 
-XEarthLayer uses a **[FUSE](../../glossary.md#fuse-filesystem-in-userspace)-based virtual file system** (see [How Ortho Streaming Works](how_streaming_works.md)) to provide orthophoto textures on demand. When X-Plane accesses a tile, the satellite image is downloaded from the configured map provider, converted to [DDS](../../glossary.md#dds-directdraw-surface) format (BC1/BC3 compression), and delivered to the simulator via the VFS.
+XEarthLayer uses a **[FUSE](../../glossary.md#fuse-filesystem-in-userspace)-based virtual file system** (see [How Ortho Streaming Works](how_streaming_works.md)) to provide orthophoto textures on demand. When X-Plane accesses a tile, the satellite image is downloaded from the configured map provider, compressed to [DDS](../../glossary.md#dds-directdraw-surface) format (BC1/BC3), and delivered to the simulator via the VFS.
+
+### DDS Compression Backends
+
+XEarthLayer offers three backends for DDS texture compression, selectable via `compressor` in the `[texture]` section of `config.ini`:
+
+| Backend | Description |
+|---|---|
+| **ISPC** (default) | Intel ISPC-optimized SIMD compression — significantly faster than the original pure-Rust implementation |
+| **GPU** | GPU-accelerated encoding via wgpu/WGSL compute shaders (requires `--features gpu-encode` build flag) |
+| **Software** | Pure-Rust fallback, no external dependencies |
+
+The GPU backend offloads BC1/BC3 compression to the graphics card via compute shaders, freeing CPU cores for X-Plane. When multiple GPUs are present, a specific device can be selected via `gpu_device` in the `[texture]` section.
 
 ### Two-Tier Cache
 
 XEarthLayer uses a two-tier cache system:
 
 1. **Memory cache**: Frequently used tiles are kept in RAM for minimal latency
-2. **Disk cache**: All downloaded and converted tiles are persistently stored on disk
+2. **Disk cache**: All downloaded and converted tiles are persistently stored in region-based subdirectories with parallel scanning for fast startup
 
 When the configured cache size is reached, older tiles are automatically removed to make room for new ones.
 
 ### Adaptive Prefetch
 
-A core feature of XEarthLayer is its **adaptive prefetching**, which switches between two modes:
+XEarthLayer's **adaptive prefetching** uses a boundary-driven model: a `SceneryWindow` tracks the aircraft position relative to DSF tile boundaries, and a `BoundaryMonitor` detects edge crossings on row and column axes. When an edge is crossed, tiles are preloaded with asymmetric depth — typically 3 rows deep and 3–4 columns wide, adjusted to the direction of travel.
 
-- **Ground mode (ring prefetch)**: At low altitude and speed, tiles are preloaded in concentric rings around the current position — optimal for approach situations and low-level flying
-- **Cruise mode (track prediction)**: At higher speed and altitude, the system predicts the expected flight path and preloads tiles along the projected route
-
-The system self-calibrates and adapts its prefetch strategy to available bandwidth and the current flight phase. On-demand tile requests from X-Plane always take priority over prefetch through **pipeline admission control**. A **resource-aware circuit breaker** additionally pauses prefetch when overall resource pool utilization (CPU, network, disk I/O) exceeds safe thresholds — ensuring that currently visible tiles are always loaded first.
+The system self-calibrates and adapts its prefetch strategy to available bandwidth and the current flight phase. On-demand tile requests from X-Plane always take priority over prefetch through **priority scheduling** (on-demand jobs run at higher priority than prefetch). A **resource-aware circuit breaker** pauses prefetch when resource pool utilization (CPU, network, disk I/O) exceeds safe thresholds — ensuring that currently visible tiles are always loaded first.
 
 ## Map Sources
 
@@ -46,7 +55,8 @@ XEarthLayer supports the following map providers:
 | Requirement | Recommendation |
 |---|---|
 | Operating system | Linux (FUSE required) |
-| Simulator | X-Plane 12 |
+| Simulator | X-Plane 12.3 or later |
+| GPU (optional) | 4 GB VRAM minimum, 12+ GB recommended (for GPU encoding backend) |
 | Internet connection | ≥ 500 Mbps recommended |
 | Storage | SSD for disk cache |
 | Build environment | Rust toolchain (only when building from source) |
@@ -73,8 +83,9 @@ Alternatively, XEarthLayer can be built from source (requires Rust toolchain):
 ```bash
 git clone https://github.com/samsoir/xearthlayer.git
 cd xearthlayer
-make release
-make install    # Installs to ~/.local/bin
+make release            # Standard build (ISPC + Software backends)
+# make release-gpu      # Build with GPU encoding backend
+make install            # Installs to ~/.local/bin
 xearthlayer setup
 ```
 
@@ -92,7 +103,7 @@ xearthlayer
 xearthlayer run --airport KJFK
 ```
 
-For adaptive prefetching to work, **ForeFlight telemetry** must be enabled in X-Plane (UDP port 49002) so that XEarthLayer can receive aircraft position and speed data.
+For adaptive prefetching to work, **ForeFlight telemetry** must be enabled in X-Plane (UDP port 49002) so that XEarthLayer can receive aircraft position and speed data. Alternatively, XEarthLayer can obtain position data from online networks (VATSIM, IVAO, PilotEdge) via their REST APIs.
 
 ## Regional Packages
 
@@ -113,7 +124,10 @@ The packages are sourced from the [XEarthLayer Regional Scenery Repository](http
 
 ## CPU Tuning
 
-By default, XEarthLayer uses **all available CPU cores** for parallel tile generation and DDS compression. This is optimal when XEarthLayer runs alone — but causes problems when X-Plane is active at the same time.
+By default, XEarthLayer uses **all available CPU cores** for parallel tile generation. Even with the more efficient ISPC backend, DDS compression remains CPU-intensive. This is optimal when XEarthLayer runs alone — but can lead to bottlenecks when X-Plane is active at the same time.
+
+!!! tip "GPU Encoding as Alternative"
+    With the GPU encoding backend, DDS compression is offloaded to the graphics card. This reduces CPU load but can lead to GPU bottlenecks, since X-Plane itself is GPU-intensive. The trade-off depends on available VRAM and GPU headroom.
 
 ### The Problem
 
@@ -151,16 +165,19 @@ Three settings in `~/.xearthlayer/config.ini` control CPU usage:
 
 | Dimension | XEarthLayer | AutoOrtho (ProgrammingDinosaur Fork) |
 |---|---|---|
-| Programming language | Rust | Python (+ C pipeline in 2.0) |
-| Prefetch strategy | Adaptive (ground/cruise modes) | Simple (proximity-based) |
+| Programming language | Rust (+ optional GPU compute shaders) | Python + native C pipeline |
+| DDS compression | ISPC SIMD (default) or GPU-accelerated | C-based with dedicated decode pool |
+| Prefetch strategy | Boundary-driven (adaptive depth) | Proximity-based |
 | Cache eviction | Automatic (older tiles removed) | Automatic (older tiles removed) |
-| Platform | Linux only | Windows, Linux, macOS |
+| X-Plane 12 features | Full (seasons, regional textures — via Ortho4XP-based DSF/TER packages) | Yes (seasons built-in) |
+| Platform | Linux only | Windows, Linux, macOS (Apple Silicon) |
 | Simulator | X-Plane 12 only | X-Plane 11.50+ and 12 |
-| Installation | Binary packages or from source | Binary or Python |
-| Regional packages | Separate DSF/TER packages needed | Integrated overlay downloads |
-| GUI | CLI with live status output | GUI (Python-based) |
+| Installation | Binary packages or from source | Binary installer or Python |
+| Regional packages | Integrated CLI install (`xearthlayer packages install`) | Integrated overlay downloads |
+| SimBrief integration | In development | Yes |
+| GUI | CLI with live dashboard | GUI with configuration panels |
 
-XEarthLayer is aimed at Linux users seeking maximum streaming performance. Pre-built packages make installation straightforward. AutoOrtho offers broader platform support and easier setup.
+XEarthLayer is aimed at Linux users seeking maximum streaming performance through GPU offloading and boundary-driven prefetch. AutoOrtho offers broader platform support, seasons, and an easier GUI-based setup.
 
 ---
 

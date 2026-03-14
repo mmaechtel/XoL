@@ -15,19 +15,21 @@ AutoOrtho liefert 2D-Orthophotos ohne 3D-Objekte. Für die Darstellung von Gebä
 
 Der Streaming-Prozess beeinflusst CPU-Auslastung, RAM-Verbrauch und Festplattenleistung. Der RAM-Bedarf hängt von der Konfiguration ab (Zoomstufe, Buffer-Pool, Pre-Fetch-Einstellungen). Während SSDs Engpässe minimieren, können bei suboptimalen Verbindungen oder unzureichender Hardware Frame-Drops auftreten.
 
-### Erweiterte Funktionen des Forks (Version 2.0)
+### Der ProgrammingDinosaur Fork (aktuell: 2.2.0)
 
-Der [ProgrammingDinosaur Fork](https://github.com/ProgrammingDinosaur/autoortho4xplane) baut auf der ursprünglichen Codebasis auf und hat sich mit Version 2.0 zu einer eigenständigen Weiterentwicklung mit signifikanten Verbesserungen entwickelt:
+Der [ProgrammingDinosaur Fork](https://github.com/ProgrammingDinosaur/autoortho4xplane) ist die aktiv gepflegte Weiterentwicklung von AutoOrtho. Seit Version 2.0 hat sich der Fork zu einem eigenständigen Projekt mit signifikanten Verbesserungen gegenüber dem Original entwickelt:
 
-- **C-Pipeline für Texturverarbeitung**: Neue native C-Implementierung mit bis zu 3-facher Verbesserung der Ladezeiten gegenüber der Python-Pipeline. Vier Pipeline-Modi verfügbar: Auto (automatische Auswahl), Native (reines C), Hybrid (C + Python) und Python (Fallback)
-- **.aob2 Bundle-Format**: Neues kompaktes Datenformat für Szenerie-Pakete
+- **C-Pipeline für Texturverarbeitung**: Native C-Implementierung für JPEG-Dekodierung und DDS-Generierung mit dediziertem Decode-Pool und verbessertem Speichermanagement. Vier Pipeline-Modi: Auto, Native (reines C), Hybrid (C + Python) und Python (Fallback)
+- **~2x schnellere Ladezeiten** (ab 2.2.0): Optimierte Download- und JPEG-Verarbeitung, bessere Auslastung von CPU- und Netzwerk-Ressourcen, reduzierte Leerlaufphasen bei der Tile-Generierung
+- **.aob2 Bundle-Format**: Kompaktes Datenformat für Szenerie-Pakete
+- **Seasons-Unterstützung**: Saisonale Texturvariationen
 - **Erhöhte Zoomstufen und Auflösung** für X-Plane 12
 - **Neue Benutzeroberfläche** mit modernen Frameworks
 - **Überarbeiteter Installer** mit Sicherheitsprüfungen für Zielverzeichnisse
-- **Verbesserte Szenerie-Download-Erfahrung** (schneller und benutzerfreundlicher)
 - **macOS-Kompatibilität** (nur Apple Silicon)
 - **Erweiterte Kartenanbieter**: Bing, Google, Here, Yandex und Apple Maps
 - **Automatische [scenery_packs.ini](../../glossary.md#scenery_packsini)-Konfiguration** für die Verwendung mit SimHeaven
+- **SimBrief-Integration**: Importiert den Flugplan und lädt Kacheln entlang der geplanten Route vor. Konfigurierbarer Radius und Abweichungsschwelle — weicht das Flugzeug zu weit von der SimBrief-Route ab, fällt das Prefetching auf positionsbasierte Berechnung zurück
 
 ---
 
@@ -71,6 +73,8 @@ Der [ProgrammingDinosaur Fork](https://github.com/ProgrammingDinosaur/autoortho4
 Für erweiterte Konfigurationen kann weiterhin die `.autoortho`-Konfigurationsdatei manuell bearbeitet werden, wenn gewünscht.
 
 Für optimale Erfahrung fügt SimHeaven X-World 3D-Objekte und [Autogen](../../glossary.md#autogen) hinzu, während xOrganizer/xToolbox die Szenerie-Verwaltung vereinfacht.
+
+Für einen Vergleich mit der Rust-basierten Linux-Alternative siehe [XEarthLayer](xearthlayer.md#vergleich-mit-autoortho).
 
 ---
 

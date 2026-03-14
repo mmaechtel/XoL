@@ -35,15 +35,15 @@ This documentation is an open project. Improvements or additions can be contribu
 
 ## Recent Changes
 
+### 2026-03-14
+- [XEarthLayer](scenery/ortho_streaming/xearthlayer.md) updated for v0.3.1: GPU-accelerated DDS encoding, ISPC SIMD compression as default, boundary-driven prefetch system, online network support (VATSIM/IVAO/PilotEdge)
+- [AutoOrtho](scenery/ortho_streaming/autoortho.md) updated for v2.2.0: ~2x faster loading times, SimBrief integration with route-based prefetch, seasons support
+
 ### 2026-03-06
 - [How Streaming Works](scenery/ortho_streaming/how_streaming_works.md) expanded: New section on FUSE congestion bottleneck — explains how low `max_background` defaults limit concurrent tile requests and cause frame drops at DSF boundaries
 
 ### 2026-02-27
 - [Swap & Memory Management](linux/system/swap.md), [System Tuning](linux/system/systemtuning.md), and [Tuning Case Study](linux/system/tuning_casestudy.md) revised: Updated zram recommendations — `swappiness=180` + `watermark_scale_factor=125` instead of `watermark_boost_factor=15000`, based on 14 measurement runs. Separate configuration blocks for zram and disk swap, new field notes on dirty ratio tuning and vfs_cache_pressure
-
-### 2026-02-24
-- [Tuning Case Study](linux/system/tuning_casestudy.md) expanded: New Step 5 — Watermark optimization with measured results (97% IO latency reduction, 58% fewer render-thread reclaim events)
-- [Swap & Memory Management](linux/system/swap.md) corrected: `watermark_boost_factor=15000` replaces previous recommendation of 0, based on measurement data
 
 
 

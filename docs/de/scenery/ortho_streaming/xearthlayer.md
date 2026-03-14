@@ -1,34 +1,43 @@
 ---
-description: "XEarthLayer ist ein Rust-basiertes Ortho-Streaming-Tool für X-Plane 12 unter Linux mit adaptivem Prefetch, zweistufigem Cache und CPU-Tuning."
+description: "XEarthLayer ist ein Rust-basiertes Ortho-Streaming-Tool für X-Plane 12 unter Linux mit GPU-beschleunigter Kompression, adaptivem Prefetch, zweistufigem Cache und CPU-Tuning."
 ---
 # XEarthLayer
 
-**XEarthLayer** ist eine in Rust geschriebene Alternative zu [AutoOrtho](../../glossary.md#autoortho) für das Streaming von [Orthofoto](../../glossary.md#orthofotos)-Texturen in X-Plane 12. Das Projekt ist inspiriert von AutoOrtho, setzt jedoch auf eine performante Rust-Implementierung mit adaptivem Prefetching und einem Zwei-Tier-Cache-System.
+**XEarthLayer** ist eine in Rust geschriebene Alternative zu [AutoOrtho](../../glossary.md#autoortho) für das Streaming von [Orthofoto](../../glossary.md#orthofotos)-Texturen in X-Plane 12. Das Projekt ist inspiriert von AutoOrtho, setzt jedoch auf eine performante Rust-Implementierung mit optionaler GPU-beschleunigter Kompression, adaptivem Prefetching und einem Zwei-Tier-Cache-System.
 
 !!! note "Aktive Entwicklung"
     XEarthLayer ist ein junges Projekt in aktiver Entwicklung. Aktuelle Versionen laufen stabil, der Funktionsumfang kann sich zwischen Releases aber noch ändern.
 
 ## Funktionsweise
 
-XEarthLayer nutzt ein **[FUSE](../../glossary.md#fuse-filesystem-in-userspace)-basiertes virtuelles Dateisystem** (siehe [Wie Ortho-Streaming funktioniert](how_streaming_works.md)), um Orthofoto-Texturen on demand bereitzustellen. Beim Zugriff auf eine Kachel durch X-Plane wird das Satellitenbild vom konfigurierten Kartenanbieter heruntergeladen, in das [DDS](../../glossary.md#dds-directdraw-surface)-Format (BC1/BC3-Kompression) konvertiert und über das VFS an den Simulator ausgeliefert.
+XEarthLayer nutzt ein **[FUSE](../../glossary.md#fuse-filesystem-in-userspace)-basiertes virtuelles Dateisystem** (siehe [Wie Ortho-Streaming funktioniert](how_streaming_works.md)), um Orthofoto-Texturen on demand bereitzustellen. Beim Zugriff auf eine Kachel durch X-Plane wird das Satellitenbild vom konfigurierten Kartenanbieter heruntergeladen, in das [DDS](../../glossary.md#dds-directdraw-surface)-Format (BC1/BC3) komprimiert und über das VFS an den Simulator ausgeliefert.
+
+### DDS-Komprimierungs-Backends
+
+XEarthLayer bietet drei Backends für die DDS-Texturkomprimierung, konfigurierbar über `compressor` in der `[texture]`-Sektion von `config.ini`:
+
+| Backend | Beschreibung |
+|---|---|
+| **ISPC** (Standard) | Intel ISPC-optimierte SIMD-Komprimierung — deutlich schneller als die ursprüngliche Pure-Rust-Implementierung |
+| **GPU** | GPU-beschleunigte Komprimierung über wgpu/WGSL Compute Shaders (erfordert `--features gpu-encode` Build-Flag) |
+| **Software** | Pure-Rust-Fallback, keine externen Abhängigkeiten |
+
+Das GPU-Backend lagert die BC1/BC3-Komprimierung über Compute Shaders auf die Grafikkarte aus und entlastet so die CPU für X-Plane. Bei mehreren GPUs kann über `gpu_device` in der `[texture]`-Sektion ein spezifisches Gerät ausgewählt werden.
 
 ### Zwei-Tier-Cache
 
 XEarthLayer verwendet ein zweistufiges Cache-System:
 
 1. **Memory-Cache**: Häufig genutzte Kacheln werden im Arbeitsspeicher vorgehalten für minimale Latenz
-2. **Disk-Cache**: Alle heruntergeladenen und konvertierten Kacheln werden persistent auf der Festplatte gespeichert
+2. **Disk-Cache**: Alle heruntergeladenen und konvertierten Kacheln werden persistent in regionsbasierten Unterverzeichnissen gespeichert, mit parallelem Scanning für schnellen Start
 
 Wird die konfigurierte Cache-Größe erreicht, werden ältere Kacheln automatisch entfernt, um Platz für neue zu schaffen.
 
 ### Adaptives Prefetch
 
-Ein Kernfeature von XEarthLayer ist das **adaptive Prefetching**, das zwischen zwei Modi umschaltet:
+XEarthLayers **adaptives Prefetching** nutzt ein Boundary-Driven-Modell: Ein `SceneryWindow` verfolgt die Flugzeugposition relativ zu DSF-Kachelgrenzen, ein `BoundaryMonitor` erkennt Grenzübertritte auf Reihen- und Spaltenachsen. Bei einem Grenzübertritt werden Kacheln mit asymmetrischer Tiefe vorgeladen — typischerweise 3 Reihen tief und 3–4 Spalten breit, angepasst an die Flugrichtung.
 
-- **Ground-Mode (Ring-Prefetch)**: Bei niedriger Flughöhe und geringer Geschwindigkeit werden Kacheln in konzentrischen Ringen um die aktuelle Position vorgeladen — optimal für Anflugsituationen und bodennahes Fliegen
-- **Cruise-Mode (Track-Prediction)**: Bei höherer Geschwindigkeit und Flughöhe sagt das System die voraussichtliche Flugroute voraus und lädt Kacheln entlang des prognostizierten Flugpfads vor
-
-Das System kalibriert sich selbst und passt die Prefetch-Strategie an die verfügbare Bandbreite und die aktuelle Flugphase an. On-Demand-Anfragen von X-Plane haben durch eine **Pipeline-Zugangssteuerung** immer Vorrang vor Prefetch. Ein **ressourcenbasierter Circuit Breaker** pausiert Prefetch zusätzlich, wenn die Gesamtauslastung der Ressourcenpools (CPU, Netzwerk, Disk-I/O) sichere Schwellwerte übersteigt — so wird sichergestellt, dass die aktuell sichtbaren Kacheln immer zuerst geladen werden.
+Das System kalibriert sich selbst und passt die Prefetch-Strategie an die verfügbare Bandbreite und die aktuelle Flugphase an. On-Demand-Anfragen von X-Plane haben durch **Priority Scheduling** immer Vorrang vor Prefetch (On-Demand-Jobs laufen mit höherer Priorität als Prefetch). Ein **ressourcenbasierter Circuit Breaker** pausiert Prefetch, wenn die Auslastung der Ressourcenpools (CPU, Netzwerk, Disk-I/O) sichere Schwellwerte übersteigt — so wird sichergestellt, dass die aktuell sichtbaren Kacheln immer zuerst geladen werden.
 
 ## Kartenquellen
 
@@ -46,7 +55,8 @@ XEarthLayer unterstützt folgende Kartenanbieter:
 | Anforderung | Empfehlung |
 |---|---|
 | Betriebssystem | Linux (FUSE erforderlich) |
-| Simulator | X-Plane 12 |
+| Simulator | X-Plane 12.3 oder neuer |
+| GPU (optional) | 4 GB VRAM Minimum, 12+ GB empfohlen (für GPU-Encoding-Backend) |
 | Internetverbindung | ≥ 500 Mbps empfohlen |
 | Speicher | SSD für Disk-Cache |
 | Build-Umgebung | Rust Toolchain (nur bei Build aus Quellcode) |
@@ -73,8 +83,9 @@ Alternativ kann XEarthLayer auch aus dem Quellcode gebaut werden (erfordert Rust
 ```bash
 git clone https://github.com/samsoir/xearthlayer.git
 cd xearthlayer
-make release
-make install    # Installiert nach ~/.local/bin
+make release            # Standard-Build (ISPC + Software Backends)
+# make release-gpu      # Build mit GPU-Encoding-Backend
+make install            # Installiert nach ~/.local/bin
 xearthlayer setup
 ```
 
@@ -92,7 +103,7 @@ xearthlayer
 xearthlayer run --airport KJFK
 ```
 
-Für das adaptive Prefetching muss in X-Plane die **ForeFlight-Telemetrie** aktiviert sein (UDP-Port 49002), damit XEarthLayer die Flugzeugposition und -geschwindigkeit empfangen kann.
+Für das adaptive Prefetching muss in X-Plane die **ForeFlight-Telemetrie** aktiviert sein (UDP-Port 49002), damit XEarthLayer die Flugzeugposition und -geschwindigkeit empfangen kann. Alternativ kann XEarthLayer die Positionsdaten von Online-Netzwerken (VATSIM, IVAO, PilotEdge) über deren REST-APIs beziehen.
 
 ## Regionale Pakete
 
@@ -113,7 +124,10 @@ Die Pakete stammen aus dem [XEarthLayer Regional Scenery Repository](https://git
 
 ## CPU-Tuning
 
-XEarthLayer nutzt standardmäßig **alle verfügbaren CPU-Kerne** für die parallele Tile-Generierung und DDS-Kompression. Das ist optimal, wenn XEarthLayer allein läuft — führt aber zu Problemen, wenn gleichzeitig X-Plane aktiv ist.
+XEarthLayer nutzt standardmäßig **alle verfügbaren CPU-Kerne** für die parallele Tile-Generierung. Auch mit dem effizienteren ISPC-Backend bleibt die DDS-Komprimierung CPU-intensiv. Das ist optimal, wenn XEarthLayer allein läuft — kann aber zu Engpässen führen, wenn gleichzeitig X-Plane aktiv ist.
+
+!!! tip "GPU-Encoding als Alternative"
+    Mit dem GPU-Encoding-Backend wird die DDS-Komprimierung auf die Grafikkarte ausgelagert. Das reduziert die CPU-Last, kann aber zu GPU-Engpässen führen, da X-Plane selbst GPU-intensiv ist. Der Trade-off hängt vom verfügbaren VRAM und der GPU-Auslastung ab.
 
 ### Das Problem
 
@@ -151,16 +165,19 @@ Drei Einstellungen in `~/.xearthlayer/config.ini` steuern die CPU-Nutzung:
 
 | Dimension | XEarthLayer | AutoOrtho (ProgrammingDinosaur Fork) |
 |---|---|---|
-| Programmiersprache | Rust | Python (+ C-Pipeline in 2.0) |
-| Prefetch-Strategie | Adaptiv (Ground/Cruise-Modi) | Einfach (Umgebungsbasiert) |
+| Programmiersprache | Rust (+ optionale GPU Compute Shaders) | Python + native C-Pipeline |
+| DDS-Komprimierung | ISPC SIMD (Standard) oder GPU-beschleunigt | C-basiert mit dediziertem Decode-Pool |
+| Prefetch-Strategie | Boundary-Driven (adaptive Tiefe) | Umgebungsbasiert |
 | Cache-Eviction | Automatisch (ältere Kacheln werden entfernt) | Automatisch (ältere Kacheln werden entfernt) |
-| Plattform | Nur Linux | Windows, Linux, macOS |
+| X-Plane 12 Features | Vollständig (Seasons, regionale Texturen — über Ortho4XP-basierte DSF/TER-Pakete) | Ja (Seasons integriert) |
+| Plattform | Nur Linux | Windows, Linux, macOS (Apple Silicon) |
 | Simulator | Nur X-Plane 12 | X-Plane 11.50+ und 12 |
-| Installation | Binary-Pakete oder aus Quellcode | Binary oder Python |
-| Regionale Pakete | Separate DSF/TER-Pakete nötig | Integrierte Overlay-Downloads |
-| GUI | CLI mit Live-Statusanzeige | GUI (Python-basiert) |
+| Installation | Binary-Pakete oder aus Quellcode | Binary-Installer oder Python |
+| Regionale Pakete | Integrierte CLI-Installation (`xearthlayer packages install`) | Integrierte Overlay-Downloads |
+| SimBrief-Integration | In Entwicklung | Ja |
+| GUI | CLI mit Live-Dashboard | GUI mit Konfigurationspanels |
 
-XEarthLayer richtet sich an Linux-Nutzer, die maximale Streaming-Performance suchen. Vorkompilierte Pakete machen die Installation unkompliziert. AutoOrtho bietet die breitere Plattformunterstützung und einfachere Einrichtung.
+XEarthLayer richtet sich an Linux-Nutzer, die maximale Streaming-Performance durch GPU-Offloading und Boundary-Driven-Prefetch suchen. AutoOrtho bietet breitere Plattformunterstützung, Seasons und eine einfachere GUI-basierte Einrichtung.
 
 ---
 

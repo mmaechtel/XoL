@@ -35,15 +35,15 @@ Diese Dokumentation ist ein offenes Projekt. Verbesserungen oder Ergänzungen k�
 
 ## Letzte Änderungen
 
+### 2026-03-14
+- [XEarthLayer](scenery/ortho_streaming/xearthlayer.md) aktualisiert auf v0.3.1: GPU-beschleunigte DDS-Komprimierung, ISPC-SIMD-Kompression als Standard, Boundary-Driven-Prefetch-System, Online-Netzwerk-Unterstützung (VATSIM/IVAO/PilotEdge)
+- [AutoOrtho](scenery/ortho_streaming/autoortho.md) aktualisiert auf v2.2.0: ~2x schnellere Ladezeiten, SimBrief-Integration mit routenbasiertem Prefetch, Seasons-Unterstützung
+
 ### 2026-03-06
 - [Wie Streaming funktioniert](scenery/ortho_streaming/how_streaming_works.md) ergänzt: Neuer Abschnitt zum FUSE-Congestion-Engpass — erklärt, wie niedrige `max_background`-Standardwerte parallele Tile-Anfragen limitieren und Frame-Drops an DSF-Grenzen verursachen
 
 ### 2026-02-27
 - [Swap & Speicherverwaltung](linux/system/swap.md), [Systemtuning](linux/system/systemtuning.md) und [Fallstudie Tuning](linux/system/tuning_casestudy.md) überarbeitet: Revidierte Empfehlungen für zram — `swappiness=180` + `watermark_scale_factor=125` statt `watermark_boost_factor=15000`, basierend auf 14 Messläufen. Getrennte Konfigurationsblöcke für zram und Disk-Swap, neue Praxisnotizen zu Dirty-Ratio-Tuning und vfs_cache_pressure
-
-### 2026-02-24
-- [Fallstudie Tuning](linux/system/tuning_casestudy.md) erweitert: Neuer Schritt 5 — Watermark-Optimierung mit Messergebnissen (97% IO-Latenz-Reduktion, 58% weniger Reclaim-Events auf dem Render-Thread)
-- [Swap & Speicherverwaltung](linux/system/swap.md) korrigiert: `watermark_boost_factor=15000` ersetzt bisherige Empfehlung von 0, basierend auf Messdaten
 
 
 
