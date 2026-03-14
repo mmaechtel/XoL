@@ -48,6 +48,14 @@ The app pre-calculates ATC coverage time slots for airports worldwide based on b
 4. **Check ATC timeline** — a 7-day controller booking schedule shows exactly when coverage is available at each airport
 5. **Dispatch to SimBrief** — one click generates a SimBrief flight plan with pre-filled origin, destination, aircraft, airline, and callsign
 
+### Guided Workflows
+
+The app includes built-in workflow guides (top right, next to the help button) that walk through different use cases step by step — from quick dispatch to event flying to livery-first planning.
+
+**Optimal Routes — the fastest path to a flight plan**
+
+The "Optimal Routes" workflow generates a fully populated SimBrief flight plan with 100% ATC coverage in just a few clicks: enter departure date/time, set maximum acceptable delay and desired flight duration range, then hit "Find Routes." The system automatically finds the top departure airports with ATC, searches the best destination for each, and shifts departure in 15-minute steps to maximize combined ATC coverage. The results are ranked by combined score (0–9) — one click on the best match dispatches everything to SimBrief.
+
 ### Additional Features
 
 - **Event integration** — browse upcoming VATSIM events and find matching departure or arrival airports within the event time window

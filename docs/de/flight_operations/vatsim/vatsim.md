@@ -48,6 +48,14 @@ Die App berechnet ATC-Abdeckungs-Zeitfenster für Flughäfen weltweit auf Basis 
 4. **ATC-Timeline prüfen** — ein 7-Tage-Controller-Buchungsplan zeigt genau, wann an jedem Flughafen Abdeckung verfügbar ist
 5. **An SimBrief übergeben** — ein Klick generiert einen SimBrief-Flugplan mit vorausgefülltem Abflug, Ziel, Flugzeugtyp, Airline und Callsign
 
+### Geführte Workflows
+
+Die App enthält eingebaute Workflow-Anleitungen (oben rechts, neben dem Hilfe-Button), die verschiedene Anwendungsfälle Schritt für Schritt durchgehen — von Quick Dispatch über Event-Flüge bis hin zur Livery-first-Planung.
+
+**Optimal Routes — der schnellste Weg zum Flugplan**
+
+Der "Optimal Routes"-Workflow generiert einen vollständig ausgefüllten SimBrief-Flugplan mit 100% ATC-Abdeckung in nur wenigen Klicks: Abflugdatum/-zeit eingeben, maximale akzeptable Verzögerung und gewünschte Flugdauer festlegen, dann "Find Routes" klicken. Das System findet automatisch die besten Abflughäfen mit ATC, sucht für jeden das optimale Ziel und verschiebt den Abflugzeitpunkt in 15-Minuten-Schritten, um die kombinierte ATC-Abdeckung zu maximieren. Die Ergebnisse sind nach Combined Score (0–9) gerankt — ein Klick auf das beste Ergebnis übergibt alles an SimBrief.
+
 ### Weitere Features
 
 - **Event-Integration** — anstehende VATSIM-Events durchsuchen und passende Abflug- oder Ankunftsflughäfen innerhalb des Event-Zeitfensters finden
