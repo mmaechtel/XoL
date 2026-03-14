@@ -1,24 +1,9 @@
 ---
-description: "Einstieg in VATSIM für X-Plane — Kontoerstellung, Client-Installation und automatisch generierte Flugrouten mit optimaler ATC-Abdeckung."
+description: "Einstieg in VATSIM für X-Plane — Kontoerstellung, Client-Installation und Flugplanung mit optimaler ATC-Abdeckung über den ATC Flight Planner."
 ---
 # VATSim
 
-VATSIM (Virtual Air Traffic Simulation Network) ist das weltweit größte Netzwerk für virtuelle Flugsimulation mit realistischem Flugverkehr und Flugsicherung.
-
-## Aktuelle Flugrouten
-
-Der **[ATC Flight Planner](https://atc.emvisio.de)** ist eine Webapp zur Planung von VATSIM-Flügen mit optimaler ATC-Abdeckung. Die App analysiert aktuelle VATSIM Bookings und Events und berechnet Flugrouten, auf denen möglichst viele aktive Controller entlang der Strecke anzutreffen sind.
-
-### Features
-
-- **Route Finder** — sucht Abflug- und Zielflughäfen mit ATC-Abdeckung basierend auf Flugzeugtyp, Abflugzeit und gewünschtem Ankunftsfenster
-- **ATC Timeline** — zeigt 7-Tage-Controller-Buchungspläne zur Bestimmung der besten Abflugzeiten
-- **Interaktive Karten** — visualisiert Flughäfen mit ATC-Abdeckung, farbcodiert nach Abdeckungsqualität
-- **SimBrief-Integration** — rankt Flughäfen nach ATC-Verfügbarkeit und übergibt Flugdetails direkt an SimBrief
-- **Live Traffic** — hebt stark frequentierte Flughäfen mit aktiven Piloten hervor
-- **Event-Unterstützung** — zeigt, welche Flughäfen während VATSIM-Events aktive Controller haben
-
-**Gut zu wissen:** Routenberechnungen basieren standardmäßig auf A320-Geschwindigkeitsprofilen (dem häufigsten Flugzeugtyp). Wer schneller unterwegs ist, bei dem passen die ATC-Abdeckungsfenster sogar noch besser!
+VATSIM (Virtual Air Traffic Simulation Network) ist das weltweit größte Online-Aviation-Netzwerk für virtuelle Flugsimulation mit realistischem Flugverkehr und Flugsicherung.
 
 ## Was ist VATSIM?
 
@@ -31,19 +16,46 @@ VATSIM bietet Piloten und Fluglotsen die Möglichkeit, in einer realistischen Um
 
 ## Erste Schritte
 
-Um mit VATSIM zu beginnen, benötigen Sie:
+Um mit VATSIM zu beginnen:
 
-1. **VATSIM Account**: Registrieren Sie sich kostenlos auf [vatsim.net](https://vatsim.net)
-2. **VATSIM Client**: Laden Sie einen kompatiblen Client herunter (z.B. vPilot, xPilot)
-3. **Flugplan**: Erstellen Sie einen realistischen Flugplan
-4. **Training**: Besuchen Sie die VATSIM Academy für Grundlagen
+1. **VATSIM Account** — Registrierung auf [vatsim.net](https://vatsim.net)
+2. **VATSIM Client** — einen kompatiblen Client herunterladen (z.B. xPilot für X-Plane, vPilot für MSFS)
+3. **Flugplan** — einen realistischen Flugplan erstellen
+4. **Training** — das [Pilot Learning Center](https://my.vatsim.net/learn) für Grundlagen nutzen
 
 ## Nützliche Links
 
 - [VATSIM Website](https://vatsim.net)
-- [VATSIM Academy](https://academy.vatsim.net)
+- [Pilot Learning Center](https://my.vatsim.net/learn)
 - [VATSIM Rules](https://vatsim.net/docs/policy)
-- [Client Downloads](https://vatsim.net/community/pilots/software)
+- [Approved Software](https://vatsim.net/docs/policy/approved-software)
+
+---
+
+## ATC Flight Planner
+
+Der **[ATC Flight Planner](https://atc.emvisio.de)** ist eine Webapp, die VATSIM-Flugrouten mit maximaler ATC-Abdeckung findet. Die App sammelt laufend Controller-Buchungen, Event-Zeitpläne und Live-Traffic-Daten von VATSIM und berechnet, welche Abflug-/Ankunfts-Kombinationen für ein gewähltes Zeitfenster und einen Flugzeugtyp die beste Controller-Abdeckung bieten.
+
+### Wie funktioniert das?
+
+Die App berechnet ATC-Abdeckungs-Zeitfenster für Flughäfen weltweit auf Basis gebuchter Controller-Sessions. Bei der Flugplanung werden diese Zeitfenster mit Flugzeug-Performance-Daten (Reisegeschwindigkeit, Reichweite) korreliert, um realistisch fliegbare und vollständig durch aktive Controller abgedeckte Routen zu ermitteln. Das Ergebnis ist eine nach kombiniertem ATC-Coverage-Score sortierte Liste von Abflug-Ziel-Paaren.
+
+### Flug planen
+
+1. **Flugzeug und Zeit wählen** — Flugzeugtyp und gewünschtes Abflugfenster festlegen
+2. **Routen durchsuchen** — die App rankt Flughäfen nach ATC-Verfügbarkeit, optional filterbar nach Coverage-Score, Live-Traffic-Dichte oder Bahnlänge
+3. **Karte erkunden** — Flughäfen sind farbcodiert nach Abdeckungsqualität für visuelle Routenfindung
+4. **ATC-Timeline prüfen** — ein 7-Tage-Controller-Buchungsplan zeigt genau, wann an jedem Flughafen Abdeckung verfügbar ist
+5. **An SimBrief übergeben** — ein Klick generiert einen SimBrief-Flugplan mit vorausgefülltem Abflug, Ziel, Flugzeugtyp, Airline und Callsign
+
+### Weitere Features
+
+- **Event-Integration** — anstehende VATSIM-Events durchsuchen und passende Abflug- oder Ankunftsflughäfen innerhalb des Event-Zeitfensters finden
+- **Livery-Auswahl** — Airline-Lackierungen nach Land filtern und direkt in den Flugplan übernehmen
+- **Live-Traffic-Ansicht** — zeigt, welche Flughäfen aktuell die meisten aktiven Piloten haben
+
+!!! tip "Flugzeug- und Livery-Konfiguration"
+    Die vorkonfigurierten Flugzeugtypen und Lackierungen sind auf ToLiss und X-Plane ausgerichtet. Alle Flugzeug-Performance-Daten (Reisegeschwindigkeit, Reichweite, Flugphasen-Dauern) lassen sich individuell anpassen, um jeden Flugzeugtyp abzubilden.
 
 ---
 
@@ -55,4 +67,4 @@ Um mit VATSIM zu beginnen, benötigen Sie:
 | Pushback & Taxi | [Pushback & Taxi](../atc/pushback_taxi.md) | Rollverfahren am Boden |
 | Streckenflug | [Streckenflug](../atc/enroute.md) | Center-Lotse und Frequenzwechsel |
 | Anflug | [Anflug](../atc/approach.md) | Anflugverfahren und Radar Vectors |
-| Wetter-Briefing | [Wetter-Briefing](../weather/briefing.md) | Wettervorbereitung für Online-Flüge | 
+| Wetter-Briefing | [Wetter-Briefing](../weather/briefing.md) | Wettervorbereitung für Online-Flüge |
