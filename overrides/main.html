@@ -1,7 +1,11 @@
 {% extends "base.html" %}
 
 {% block announce %}
-✈️ <a href="https://atc.emvisio.de">ATC Flight Planner</a> — plan VATSIM flights with optimal ATC coverage
+{% if config.theme.language == "de" %}
+✈️ <a href="https://atc.emvisio.de">ATC Flight Planner</a> — VATSIM-Flüge mit optimaler ATC-Abdeckung planen
+{% else %}
+✈️ <a href="https://atc.emvisio.com">ATC Flight Planner</a> — plan VATSIM flights with optimal ATC coverage
+{% endif %}
 {% endblock %}
 
 {% block header %}
