@@ -57,24 +57,24 @@ run_test() {
         if [ -n "$lang_filter" ]; then
             if [ "$lang_filter" = "de" ]; then
                 # DE pages: everything that does NOT start with /en/
-                PAGES=$(grep -oP '<loc>\K[^<]+' "$SITEMAP" \
+                PAGES=$(sed -n 's|.*<loc>\([^<]*\)</loc>.*|\1|p' "$SITEMAP" \
                     | sed 's|https://emvisio.com/||' \
                     | grep -v '^en/' \
                     | shuf -n "$NUM_PAGES")
             else
                 # EN pages: everything under /en/
-                PAGES=$(grep -oP '<loc>\K[^<]+' "$SITEMAP" \
+                PAGES=$(sed -n 's|.*<loc>\([^<]*\)</loc>.*|\1|p' "$SITEMAP" \
                     | sed 's|https://emvisio.com/||' \
                     | grep '^en/' \
                     | shuf -n "$NUM_PAGES")
             fi
         else
-            PAGES=$(grep -oP '<loc>\K[^<]+' "$SITEMAP" \
+            PAGES=$(sed -n 's|.*<loc>\([^<]*\)</loc>.*|\1|p' "$SITEMAP" \
                 | sed 's|https://emvisio.com/||' \
                 | shuf -n "$NUM_PAGES")
         fi
 
-        TOTAL_PAGES=$(grep -c '<loc>' "$SITEMAP")
+        TOTAL_PAGES=$(grep -c '<loc>' "$SITEMAP" || echo 0)
         echo ""
         echo "Pages ($NUM_PAGES random of $TOTAL_PAGES, filter: ${lang_filter:-all}):"
         while IFS= read -r page_path; do
@@ -87,7 +87,7 @@ run_test() {
     echo ""
     echo "Videos and posters${lang_filter:+ ($lang_filter)}:"
 
-    ASSET_URLS=$(grep -rhoP '(src|poster)="[^"]*\.(mp4|jpg)"' docs/ \
+    ASSET_URLS=$(grep -roh 'src="[^"]*\.mp4"\|src="[^"]*\.jpg"\|poster="[^"]*\.mp4"\|poster="[^"]*\.jpg"' docs/ \
         | sed 's/^[^"]*"//;s/"$//' \
         | sed 's|\.\./||g' \
         | sort -u)
