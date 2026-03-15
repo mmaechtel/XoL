@@ -10,9 +10,8 @@ Primaerquellen in Reihenfolge der Zuverlaessigkeit:
 
 1. **Offizielle Projektdokumentation** (kernel.org, mesa3d.org, developer.x-plane.com)
 2. **GitHub-Repositories** (READMEs, Changelogs, Issues, Commit-Messages)
-3. **Arch Wiki** (umfassendste Linux-Dokumentation)
-4. **Debian-spezifisch** (wiki.debian.org, packages.debian.org, manpages.debian.org)
-5. **Man-Pages** (man7.org)
+3. **Debian-spezifisch** (wiki.debian.org, packages.debian.org, manpages.debian.org)
+4. **Man-Pages** (man7.org)
 
 **Nicht verwenden:** Foren-Posts, Drittanbieter-Blogposts, YouTube-Transkripte, ChatGPT-generierte Inhalte.
 
