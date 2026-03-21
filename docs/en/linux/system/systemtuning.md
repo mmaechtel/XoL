@@ -3,9 +3,6 @@ description: "Kernel tuning for X-Plane on Linux: two profiles for stock and Liq
 ---
 # System Tuning for X-Plane
 
-!!! warning "Work in Progress"
-    The kernel tuning parameters are currently still under review and may not all work as described. Subject to change.
-
 ## Distributions and Their Target Profiles
 
 Linux distributions differ not just in package manager and desktop environment, but primarily in the **interplay between kernel and system software**. Each distribution makes configuration decisions for a specific use case:
@@ -148,10 +145,9 @@ isolcpus=4-11
 **Memory Behavior**
 
 ```ini title="/etc/sysctl.d/60-desktop.conf"
-vm.swappiness=20
-vm.dirty_ratio=20
-vm.dirty_background_ratio=10
-vm.vfs_cache_pressure=50
+vm.swappiness=8
+vm.dirty_ratio=10
+vm.dirty_background_ratio=3
 ```
 
 Apply:
@@ -160,7 +156,7 @@ Apply:
 sudo sysctl --system
 ```
 
-For background on how swappiness works and zram as an alternative swap strategy, see [Swap & Memory Management](swap.md).
+For background on how swappiness works and swap tuning, see [Swap & Memory Management](swap.md).
 
 ### Result Profile A
 
@@ -274,26 +270,13 @@ Reboot required.
 
 **Smooth Memory Writeback**
 
-The optimal memory parameters depend on your swap configuration. With disk swap, low swappiness avoids expensive disk I/O. With [zram](swap.md#zram), high swappiness is correct because "swap" is compressed RAM — the kernel should use it proactively.
-
-=== "Disk Swap"
-
-    ```ini title="/etc/sysctl.d/99-lowlatency.conf"
-    vm.swappiness = 10
-    vm.dirty_background_ratio = 3
-    vm.dirty_ratio = 10
-    vm.vfs_cache_pressure = 50
-    ```
-
-=== "zram (Recommended)"
-
-    ```ini title="/etc/sysctl.d/99-lowlatency.conf"
-    vm.swappiness = 180
-    vm.page-cluster = 0
-    vm.dirty_background_ratio = 3
-    vm.dirty_ratio = 10
-    vm.vfs_cache_pressure = 50
-    ```
+```ini title="/etc/sysctl.d/99-lowlatency.conf"
+vm.swappiness = 8
+vm.page_cluster = 0
+vm.watermark_scale_factor = 500
+vm.dirty_background_ratio = 3
+vm.dirty_ratio = 10
+```
 
 Apply:
 
@@ -301,10 +284,7 @@ Apply:
 sudo sysctl --system
 ```
 
-!!! tip "vfs_cache_pressure and FUSE filesystems"
-    The value 50 is chosen deliberately: FUSE-based ortho streaming (AutoOrtho, XEarthLayer) relies on the kernel's dentry/inode cache for metadata lookups. Higher values (100+) cause faster eviction of these caches, forcing more kernel-to-userspace round trips for repeated `lookup()` calls. On systems with 32+ GB RAM, keeping VFS caches longer has negligible memory cost but reduces FUSE overhead measurably. This is an area worth investigating further — the interaction between `vfs_cache_pressure` and FUSE metadata performance is not well documented. For another FUSE-specific bottleneck (concurrent request limits), see [FUSE Congestion Bottleneck](../../scenery/ortho_streaming/how_streaming_works.md#fuse-congestion-bottleneck).
-
-For background on why these values differ, how swappiness works as a cost ratio, and zram setup instructions, see [Swap & Memory Management](swap.md).
+For background on how swappiness works as a cost ratio and why `watermark_scale_factor=500` is the key parameter, see [Swap & Memory Management](swap.md).
 
 **Light Prioritization**
 
@@ -426,7 +406,7 @@ Not all settings require a reboot. The following table shows which parameters ca
 | Topic | Page | Focus |
 |---|---|---|
 | Monitoring | [Monitoring](systemtools.md) | Verify tuning measures with turbostat, mpstat, ioping |
-| Swap & Memory | [Swap & Memory Management](swap.md) | Page reclaim, zram compression, swap tuning for X-Plane |
+| Swap & Memory | [Swap & Memory Management](swap.md) | Page reclaim, watermark tuning, swap configuration for X-Plane |
 | Why Latency Matters | [Why Latency Matters](latency.md) | Motivation and context for kernel tuning |
 | Latency and Predictability | [Latency and Predictability](../../fundamentals/performance/latency.md) | Theoretical foundations — latency sources and measurement |
 | Liquorix Kernel | [Liquorix Kernel](../optimizations/liquorix.md) | Installation and features of the low-latency kernel |

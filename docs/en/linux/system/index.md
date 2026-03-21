@@ -7,6 +7,6 @@ Latency rather than throughput is the optimization target for X-Plane on Linux: 
 
 - **[Why Latency Matters](latency.md)** — Video introduction and tuning philosophy
 - **[Kernel Tuning](systemtuning.md)** — Kernel parameters, CPU governor, interrupt affinity, NVMe tuning
-- **[Swap & Memory](swap.md)** — Page reclaim, swap configuration, zram compression, OOM prevention
+- **[Swap & Memory](swap.md)** — Page reclaim, watermark tuning, swap configuration, OOM prevention
 - **[Monitoring](systemtools.md)** — btop, turbostat, perf, mpstat and other analysis tools
 - **[Tuning Case Study](tuning_casestudy.md)** — Measured tuning steps from micro-stutters to stable frame times

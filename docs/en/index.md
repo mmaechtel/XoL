@@ -35,6 +35,11 @@ This documentation is an open project. Improvements or additions can be contribu
 
 ## Recent Changes
 
+### 2026-03-21
+- [Tuning Case Study](linux/system/tuning_casestudy.md) rewritten: Three-step diagnosis from micro-stutters to stable frame times — watermark tuning, IO latency, and NVMe power management with real measurements from 16 runs
+- [Swap & Memory Management](linux/system/swap.md) rewritten: Page reclaim mechanics, watermark tuning, swap configuration — zram removed, simplified to disk swap with `watermark_scale_factor=500`
+- [Kernel Tuning](linux/system/systemtuning.md) revised: Streamlined profiles for stock and Liquorix kernels, updated memory and NVMe sections
+
 ### 2026-03-14
 - [VATSIM](flight_operations/vatsim/vatsim.md) restructured: VATSIM basics first, [ATC Flight Planner](https://atc.emvisio.de) as dedicated section with guided workflows, Optimal Routes for fully automated flight planning with 100% ATC coverage, and SimBrief integration
 - [XEarthLayer](scenery/ortho_streaming/xearthlayer.md) updated for v0.3.1: GPU-accelerated DDS encoding, ISPC SIMD compression as default, boundary-driven prefetch system, online network support (VATSIM/IVAO/PilotEdge)
@@ -42,9 +47,6 @@ This documentation is an open project. Improvements or additions can be contribu
 
 ### 2026-03-06
 - [How Streaming Works](scenery/ortho_streaming/how_streaming_works.md) expanded: New section on FUSE congestion bottleneck — explains how low `max_background` defaults limit concurrent tile requests and cause frame drops at DSF boundaries
-
-### 2026-02-27
-- [Swap & Memory Management](linux/system/swap.md), [System Tuning](linux/system/systemtuning.md), and [Tuning Case Study](linux/system/tuning_casestudy.md) revised: Updated zram recommendations — `swappiness=180` + `watermark_scale_factor=125` instead of `watermark_boost_factor=15000`, based on 14 measurement runs. Separate configuration blocks for zram and disk swap, new field notes on dirty ratio tuning and vfs_cache_pressure
 
 
 

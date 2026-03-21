@@ -1,9 +1,9 @@
 ---
-description: "Tuning-Fallstudie für X-Plane unter Linux: Fünf Schritte von Mikrorucklern zu stabilen Framezeiten — Memory Pressure, IO-Latenz, Swap-Ziel, Page-Cluster und Watermark-Tuning mit realen Messdaten."
+description: "Tuning-Fallstudie für X-Plane unter Linux: Drei Schritte von Mikrorucklern zu stabilen Framezeiten — Watermark-Tuning, IO-Latenz und NVMe-Powermanagement mit realen Messdaten."
 ---
 # Fallstudie: Mikroruckler eliminieren
 
-Die Seite [Kernel-Tuning](systemtuning.md) stellt allgemeine Tuning-Profile für Standard- und Liquorix-Kernel bereit. Diese Seite geht einen Schritt weiter: Sie zeigt, wie sich speicherbedingte Ruckler **diagnostizieren** lassen, **warum** bestimmte Parameteränderungen helfen und **welche messbare Wirkung** sie haben — basierend auf systematischen Messungen an einem Testsystem mit X-Plane, Ortho-Streaming und einer parallel laufenden KVM-Maschine.
+Die Seite [Kernel-Tuning](systemtuning.md) stellt allgemeine Tuning-Profile für Standard- und Liquorix-Kernel bereit. Diese Seite geht einen Schritt weiter: Sie zeigt, wie sich speicherbedingte Ruckler **diagnostizieren** lassen, **warum** bestimmte Parameteränderungen helfen und **welche messbare Wirkung** sie haben — basierend auf systematischen Messungen (16 Runs) an einem Testsystem mit X-Plane, Ortho-Streaming und einer parallel laufenden KVM-Maschine.
 
 !!! note "Verhältnis zu den Tuning-Profilen"
     Die sysctl-Werte in dieser Fallstudie sind aggressiver als [Profil B](systemtuning.md#profil-b-liquorix-kernel) — sie wurden für einen schweren Workload mit gleichzeitigem Ortho-Streaming, Addon-Szenerie und einem KVM-Gast optimiert. Profil B ist ein sicherer Ausgangspunkt; die Werte hier zeigen, wie weit die Parameter getrieben werden können, wenn Messungen den Bedarf bestätigen.
@@ -74,20 +74,58 @@ Das Tuning sollte auf die **Aufbauphase** abzielen — die Gleichgewichtsphase i
 
 ## Tuning-Schritte: Vom Chaos zur Stabilität
 
-Die folgenden vier Schritte wurden inkrementell auf dem Testsystem angewendet. Jeder Schritt adressiert einen spezifischen Engpass, und Messungen bestätigen die Wirkung vor dem nächsten Schritt.
+Die folgenden drei Schritte wurden inkrementell auf dem Testsystem angewendet. Jeder Schritt adressiert einen spezifischen Engpass, und Messungen bestätigen die Wirkung vor dem nächsten Schritt.
 
-### Schritt 1: Memory Pressure — kswapd Vorlauf geben
+### Schritt 1: Watermark-Tuning — kswapd Vorlauf geben
 
 **Problem:** Der Standard-Wert von `vm.min_free_kbytes` ist zu klein für Workloads, die Speicher in großen Schüben allozieren (Szenerie-Laden, Ortho-Tile-Dekompression). kswapd wacht zu spät auf, und Direct Reclaim übernimmt — wobei Anwendungs-Threads blockiert werden.
 
-**Lösung:** Die freie Speicherreserve erhöhen, damit kswapd früher mit dem Reclaim beginnt, bevor Direct Reclaim ausgelöst wird. Gleichzeitig die Dirty-Page-Limits straffen, um Writeback-Stürme zu verhindern.
+**Lösung:** Der Kernel verwaltet drei [Watermarks](swap.md#watermarks) pro Speicherzone: WMARK_HIGH (kswapd schläft), WMARK_LOW (kswapd wacht auf) und WMARK_MIN (Direct Reclaim). Der Abstand zwischen LOW und MIN ist der kswapd-Vorlauf — je größer, desto unwahrscheinlicher wird Direct Reclaim.
+
+Zwei Parameter steuern dies:
+
+- `vm.min_free_kbytes` setzt WMARK_MIN — die Notreserve. Aber es verschiebt auch alle Watermarks nach oben und sperrt RAM für den Userspace.
+- `vm.watermark_scale_factor` setzt den **Abstand** zwischen den Watermarks unabhängig von der Notreserve.
+
+Die zentrale Erkenntnis: `min_free_kbytes` konservativ (1 GB) und `watermark_scale_factor` aggressiv (500) einsetzen, um maximalen kswapd-Vorlauf bei minimalem RAM-Verlust zu erreichen:
+
+```
+ANSATZ A: min_free_kbytes=3GB, watermark_scale_factor=125
+  WMARK_MIN  = 3,0 GB  (gesperrt — verschwendet)
+  WMARK_LOW  = 4,2 GB  (kswapd wacht auf)
+  WMARK_HIGH = 5,4 GB
+  Vorlauf    = 1,2 GB
+
+ANSATZ B: min_free_kbytes=1GB, watermark_scale_factor=500
+  WMARK_MIN  = 1,0 GB  (nur 1 GB gesperrt)
+  WMARK_LOW  = 5,8 GB  (kswapd wacht FRÜHER auf)
+  WMARK_HIGH = 10,6 GB (MEHR Vorlauf)
+  Vorlauf    = 4,8 GB
+```
+
+Ansatz B liefert 4x mehr kswapd-Vorlauf bei 2 GB weniger verschwendetem RAM.
+
+**Gemessene Wirkung**
+
+| Watermark-Tuning | Direct Reclaim Main Thread | Max Latenz | FPS < 25 |
+|---|---|---|---|
+| Default (min_free=66 MB) | 12.472 Events | 80 ms | 6,9% |
+| min_free=2 GB, wsf=125 | 0 (kurze Flüge) | 0 ms | 3,1% |
+| min_free=2 GB, wsf=125 | 20.515 (Europa 90 min) | 80 ms | 3,8% |
+| min_free=3 GB, wsf=125 | 0 (Europa 150 min) | 0 ms | 3,6% |
+
+Die Tabelle oben zeigt, dass ausreichender Watermark-Abstand Direct Reclaim eliminiert — `min_free_kbytes=3GB` mit `wsf=125` erreichte selbst bei 150-minütigen Flügen null Events. Die finale Konfiguration (`min_free_kbytes=1GB`, `watermark_scale_factor=500`) bietet den gleichen Schutz bei weniger RAM-Verschwendung: der kswapd-Vorlauf ist sogar größer (4,8 GB vs. 1,2 GB), während die Notreserve von 3 GB auf 1 GB sinkt.
+
+**Vollständige sysctl-Konfiguration**
 
 ```ini title="/etc/sysctl.d/99-xplane-tuning.conf"
 vm.min_free_kbytes = 1048576
-vm.dirty_background_ratio = 1
-vm.dirty_ratio = 5
-vm.dirty_expire_centisecs = 1500
-vm.dirty_writeback_centisecs = 500
+vm.watermark_scale_factor = 500
+vm.swappiness = 8
+vm.page_cluster = 0
+vm.vfs_cache_pressure = 100
+vm.dirty_background_ratio = 3
+vm.dirty_ratio = 10
 ```
 
 ```bash
@@ -96,15 +134,15 @@ sudo sysctl --system
 
 | Parameter | Standard | Optimiert | Wirkung |
 |---|---|---|---|
-| `vm.min_free_kbytes` | ~67 MB | 1 GB | kswapd wacht mit 1 GB Vorlauf statt 67 MB auf |
-| `vm.dirty_background_ratio` | 10% | 1% | Writeback startet ab ~940 MB statt ~9,4 GB |
-| `vm.dirty_ratio` | 20% | 5% | Hard-Limit bei ~4,7 GB statt ~18,8 GB |
-| `vm.dirty_expire_centisecs` | 3000 | 1500 | Dirty Pages nach 15s statt 30s geflusht |
-| `vm.dirty_writeback_centisecs` | 500 | 500 | Flush-Thread-Intervall (unverändert) |
+| `vm.min_free_kbytes` | ~67 MB | 1 GB | Notreserve — kswapd wacht mit Vorlauf auf |
+| `vm.watermark_scale_factor` | 10 | 500 | kswapd-Vorlauf ~4,8 GB statt ~96 MB |
+| `vm.swappiness` | 60 | 8 | Swap nur bei echtem Druck — heiße Anonymous Pages schützen |
+| `vm.page_cluster` | 3 | 0 | Einzel-Page-Swap-Reads — NVMe hat keinen Seek-Overhead, Readahead verschwendet RAM bei Speicherdruck |
+| `vm.vfs_cache_pressure` | 100 | 100 | Standard — kein Tuning nötig |
+| `vm.dirty_background_ratio` | 10% | 3% | Writeback startet ab ~2,9 GB statt ~9,4 GB |
+| `vm.dirty_ratio` | 20% | 10% | Hard-Limit bei ~9,6 GB statt ~18,8 GB |
 
 Details zur Interaktion von [Watermarks](swap.md#watermarks) und [kswapd](swap.md#page-reclaim) auf der Swap-Seite.
-
-**Gemessene Wirkung:** Direct Reclaim fiel von 75.000 Pages/s auf null während des normalen Flugs — die wirksamste Einzelmaßnahme. Dirty Pages sanken von durchschnittlich 502 MB auf unter 200 MB im aktiven Flug; die verbleibende Akkumulation wurde durch IO-Tuning in Schritt 2 aufgelöst.
 
 ### Schritt 2: IO-Latenz — Software-Overhead auf NVMe entfernen
 
@@ -131,99 +169,38 @@ ACTION=="add|change", KERNEL=="nvme[0-9]*n1", ATTR{queue/read_ahead_kb}="256"
 
 **Gemessene Wirkung:** Durchschnittliche Write-Latenz sank von 36–47 ms auf 1,8 ms. TLB-Shootdowns (ein Nebeneffekt von übermäßigem Page-Remapping) fielen in vmstat auf null.
 
-### Schritt 3: Swap-Ziel — zram statt NVMe
+### Schritt 3: NVMe-Powermanagement — Aufwach-Latenz eliminieren
 
-**Problem:** Wenn Swap auf derselben NVMe wie X-Plane-Daten und Ortho-Caches liegt, konkurrieren drei IO-Ströme: Swap-Pages, Szenerie-Dateien und Ortho-Kacheln. Bei Memory Pressure sättigt Swap-IO das Laufwerk und blockiert das Szenerie-Laden — sichtbar als sekundenlange DSF-Ladezeiten.
+**Problem:** NVMe-SSDs im Energiesparmodus haben Aufwachlatenzen im Millisekundenbereich — länger als ein kompletter Frame bei 60 Hz. Block-Tracing zeigte ein charakteristisches 10–11-ms-Muster, das mit Frame-Drops korrelierte.
 
-**Lösung:** [zram](swap.md#zram) als primäres Swap-Device verwenden. zram komprimiert Pages im RAM — es findet keine Disk-IO statt. Die NVMe-Swap-Partition dient nur als Notfall-Fallback.
+**Lösung:** NVMe Autonomous Power State Transitions (APST) deaktivieren, um die Laufwerke im latenzärmsten Betriebszustand zu halten.
 
-| Konfiguration | Latenz | IO-Kontention |
-|---|---|---|
-| Swap auf gleicher NVMe | ~15 µs + Queue-Wartezeit | Konkurriert mit Szenerie- und Ortho-IO |
-| Swap auf dedizierter NVMe | ~15 µs | Eliminiert |
-| **zram (lz4)** | **~1,7 µs** | **Keine — vollständig im RAM** |
+In `/etc/default/grub` den Parameter `GRUB_CMDLINE_LINUX_DEFAULT` erweitern:
 
-Für die zram-Einrichtung und den Vergleich mit zswap siehe [zram](swap.md#zram).
-
-!!! warning "zram erfordert ausreichend Gesamt-RAM"
-    zram komprimiert Pages im RAM — die komprimierten Daten belegen weiterhin physischen Speicher. Auf dem Testsystem beanspruchten 17 GB ausgelagerte Pages nach Kompression 14,6 GB RAM (Ratio 1,17:1). Der primäre Vorteil liegt nicht in der RAM-Einsparung, sondern in der **Eliminierung der IO-Kontention** auf der NVMe. Dieser Ansatz funktioniert nur, wenn nach dem Laden der Hauptanwendungen genügend Gesamt-RAM verbleibt. Auf einem System, bei dem X-Plane, Ortho-Streaming und andere Prozesse den physischen Speicher bereits ausschöpfen, kann zram nicht helfen — die komprimierten Pages würden den verfügbaren RAM-Pool weiter verkleinern.
-
-**Gemessene Wirkung:** NVMe-Swap wurde nie angesprochen — zram absorbierte 100% des Swap-Traffics. Das Write-Volumen auf der zuvor umkämpften NVMe sank um 86%. Die DSF-Worst-Case-Ladezeit verbesserte sich von 63 Sekunden auf 22 Sekunden.
-
-### Schritt 4: Swap-Readahead
-
-**Problem:** Der Standard-Wert `vm.page-cluster=3` veranlasst den Kernel, 8 Pages (32 KiB) pro Swap-Zugriff als Readahead zu lesen. Bei zram muss jede Page einzeln dekomprimiert werden — Readahead bringt keinen Vorteil und erhöht die Latenz.
-
-**Lösung:** Page-Cluster auf 0 setzen (Einzel-Page-Reads).
-
-```ini title="/etc/sysctl.d/99-zram.conf"
-vm.page-cluster = 0
+```
+nvme_core.default_ps_max_latency_us=0
 ```
 
 ```bash
-sudo sysctl --system
+sudo update-grub
 ```
 
-**Gemessene Wirkung:** Teil des gesamten sysctl-Tunings, das ab Schritt 1 angewendet wurde. Eliminiert unnötigen Dekompressions-Overhead bei jedem Swap-In.
+Neustart erforderlich.
 
-### Schritt 5: Watermark-Optimierung — Proaktives kswapd für Burst-Allokationen
-
-**Problem:** Nach Schritt 1–4 war die Gleichgewichtsphase gelöst — null Stalls, null Direct Reclaim. Aber die **Aufbauphase** (Minute 10–60, während die Szenerie-Caches noch aufgewärmt werden) zeigte weiterhin periodische Memory-Pressure-Spitzen. Per-Prozess-Tracing ergab, dass **67% aller Direct-Reclaim-Events den X-Plane Render-Thread** direkt trafen — die Ursache der verbleibenden Mikroruckler.
-
-Die Ursachenanalyse identifizierte drei beitragende Faktoren:
-
-| Faktor | Einstellung | Wirkung |
-|---|---|---|
-| `swappiness=1` | Schritt 1 | **Hauptursache:** Anonymous Pages werden erst unter extremem Druck geswappt — kswapd hat nichts, was es proaktiv reclaimen kann, und wenn Swap schließlich einsetzt, geschieht es als Panik-Burst |
-| `min_free_kbytes=1 GB` | Schritt 1 | Nur 400 MB Spielraum über dem Schwellwert — Burst-Allokationen unterschreiten die Min-Watermark, bevor kswapd reagieren kann |
-| `watermark_boost_factor=0` | Liquorix-Standard | kswapd erhält keinen temporären Boost nach Reclaim — ein beitragender Faktor, aber nicht die Hauptursache (siehe Hinweis unten) |
-
-!!! note "Revidierte Erkenntnis: watermark_boost_factor mit zram"
-    Die initiale Messung (Run G/H in der Testreihe) wendete `watermark_boost_factor=15000` zusammen mit `swappiness=10` an, und die Kombination verbesserte die Ergebnisse. Nachfolgende Tests über mehrere zusätzliche Runs ergaben jedoch, dass die **primäre Verbesserung aus der Erhöhung der Swappiness** stammte — von 1 auf 180. Mit `swappiness=180` und `watermark_scale_factor=125` erhält kswapd genügend reclaimbare Pages, um Allokationsschüben voraus zu bleiben, ohne den Boost-Mechanismus zu benötigen. Der Boost kompensierte unzureichende Swappiness, löste kein eigenständiges Problem.
-
-    Der Liquorix-Kernel deaktiviert den Boost (`watermark_boost_factor=0`) als bewusste Gaming-Optimierung — er verhindert unvorhersehbare Reclaim-Spitzen, die die Frame-Time-Varianz erhöhen. Mit der korrekten Swappiness für zram funktioniert dieser Standard wie vorgesehen.
-
-    Für **Disk-Swap**-Konfigurationen (bei denen Swappiness bei 10–20 bleiben sollte) bleibt `watermark_boost_factor=15000` die richtige Wahl — kswapd braucht jeden Vorteil, wenn Swap-I/O langsam ist. Siehe die [Swap-Seite](swap.md#kernel-parameter-ubersicht) für den vollständigen Parametervergleich.
-
-**Lösung:** Die korrekten Parameter hängen vom Swap-Typ ab:
-
-=== "zram (Empfohlen)"
-
-    ```ini title="/etc/sysctl.d/99-xplane-tuning.conf"
-    vm.swappiness = 180
-    vm.min_free_kbytes = 1048576
-    vm.watermark_boost_factor = 0
-    vm.watermark_scale_factor = 125
-    vm.page-cluster = 0
+!!! note "Laufzeitänderungen"
+    Der sysfs-Parameter `/sys/module/nvme_core/parameters/default_ps_max_latency_us` wirkt nur auf **neu initialisierte** NVMe-Geräte. Für bereits aktive Geräte per-Device PM QOS verwenden:
+    ```bash
+    for dev in /sys/class/nvme/nvme*/device/power/pm_qos_latency_tolerance_us; do echo 0 | sudo tee "$dev"; done
     ```
+    Die GRUB-Methode ist der zuverlässigste Weg.
 
-=== "Disk-Swap"
-
-    ```ini title="/etc/sysctl.d/99-xplane-tuning.conf"
-    vm.swappiness = 10
-    vm.min_free_kbytes = 2097152
-    vm.watermark_boost_factor = 15000
-    vm.watermark_scale_factor = 50
-    ```
-
-```bash
-sudo sysctl --system
-```
-
-| Parameter | Vorher | Nachher (zram) | Nachher (Disk-Swap) | Wirkung |
-|---|---|---|---|---|
-| `vm.swappiness` | 1 | **180** | 10 | zram: Swap ist günstig — proaktiv nutzen. Disk: Swap ist teuer — sparsam nutzen |
-| `vm.min_free_kbytes` | 1 GB | **1 GB** | 2 GB | zram: 1 GB reicht, weil Swap-In schnell ist (~1,7 µs). Disk: 2 GB nötig für langsamere Erholung |
-| `vm.watermark_boost_factor` | 0 | **0** | 15000 | zram: Liquorix-Standard, hohe Swappiness kompensiert. Disk: kswapd braucht den Boost |
-| `vm.watermark_scale_factor` | 10 | **125** | 50 | Breitere Lücke = früheres kswapd. zram verträgt breitere Lücke (~1,2 GB auf 96 GB) |
-
-**Gemessene Wirkung:** Die Aufbauphase (Minute 10–60) zeigte deutlich reduzierten Speicherdruck. Direct-Reclaim-Events auf dem Render-Thread gingen zurück, und der Übergang zur Gleichgewichtsphase verlief glatter. Mit der zram-Konfiguration (swappiness=180, scale_factor=125) verkürzte sich die Aufbauphase, und das System erreichte den stall-freien Gleichgewichtszustand schneller als mit den ursprünglichen disk-swap-orientierten Parametern. Siehe [Swap-Seite](swap.md#empfohlene-konfiguration) für die allgemeinen Empfehlungen.
+**Gemessene Wirkung:** 97% der langsamen I/O-Events (>5 ms) wurden eliminiert. Das charakteristische 10–11-ms-Muster im Block-Tracing verschwand vollständig.
 
 ---
 
 ## Ergebniszusammenfassung
 
-Die kombinierte Wirkung aller fünf Schritte, gemessen auf dem Testsystem (Gleichgewichtsphasen-Werte aus einer mehrstündigen Sitzung):
+Die kombinierte Wirkung aller drei Schritte, gemessen auf dem Testsystem (Gleichgewichtsphasen-Werte aus einer mehrstündigen Sitzung):
 
 | Metrik | Ausgangszustand | Nach Tuning | Veränderung |
 |---|---|---|---|
@@ -232,28 +209,23 @@ Die kombinierte Wirkung aller fünf Schritte, gemessen auf dem Testsystem (Gleic
 | Dirty Pages (Durchschnitt) | 502 MB | 2,4 MB | -99% |
 | NVMe Write-Latenz (Durchschnitt) | 36 ms | 6 ms | -83% |
 | NVMe Write-Latenz (max, Gleichgewicht) | 260 ms | 44 ms | -83% |
-| Swap auf NVMe | Aktiv (1,1 GB Churn/5 Min) | Inaktiv (zram absorbiert 100%) | Eliminiert |
-| DSF-Ladezeit (Worst Case) | 63 s | 22 s | -65% |
 | NVMe Write-Volumen | 25 GB/Sitzung | 3,6 GB/Sitzung | -86% |
 
 !!! tip "Verallgemeinerbare Erkenntnisse"
     Die konkreten Werte hängen von System und Workload ab, aber die **Prinzipien** sind allgemein übertragbar:
 
-    1. **kswapd Vorlauf geben** — `min_free_kbytes` sollte zur Burst-Allokationsrate passen, nicht dem Systemstandard entsprechen
-    2. **Swap von Daten-IO trennen** — zram eliminiert die Kontention vollständig, ohne dedizierte SSD
-    3. **Software-Overhead auf NVMe entfernen** — Multi-Queue-Hardware profitiert nicht von einem Software-Scheduler
-    4. **Swappiness an das Swap-Medium anpassen** — mit zram (komprimiertes RAM) ist hohe Swappiness (180) korrekt; mit Disk-Swap vermeidet niedrige Swappiness (10–20) teure I/O
-    5. **Vorher und nachher messen** — aggregierte Zähler aus `/proc/vmstat` reichen aus, um zu bestätigen, ob eine Änderung die beabsichtigte Wirkung hatte
+    1. **kswapd Vorlauf geben via watermark_scale_factor** — wirksamer als `min_free_kbytes` zu erhöhen, das RAM verschwendet
+    2. **Software-Overhead auf NVMe entfernen** — Multi-Queue-Hardware profitiert nicht von einem Software-Scheduler
+    3. **NVMe-Energiesparen deaktivieren** — Aufwachlatenzen verursachen messbare Frame-Drops
+    4. **Vorher und nachher messen** — aggregierte Zähler aus `/proc/vmstat` reichen aus, um zu bestätigen, ob eine Änderung die beabsichtigte Wirkung hatte
 
 ### Praxisnotizen: Lehren aus dem Tuning-Prozess
 
-Die fünf Schritte oben sind als saubere Progression dargestellt, aber der tatsächliche Tuning-Prozess umfasste 14 Messläufe, einige Sackgassen und revidierte Schlussfolgerungen. Einige Beobachtungen, die für weitere Untersuchungen nützlich sein könnten:
+Die drei Schritte oben sind als saubere Progression dargestellt, aber der tatsächliche Tuning-Prozess umfasste 16 Messläufe und revidierte Schlussfolgerungen. Einige Beobachtungen:
 
-- **Parameter interagieren nichtlinear.** Der watermark_boost_factor erschien essenziell, als Swappiness bei 1–10 lag — kswapd konnte genuinerweise nicht Schritt halten. Aber nachdem Swappiness auf 180 angehoben wurde, wurde der Boost unnötig und sogar kontraproduktiv (sporadische Reclaim-Spitzen). Eine Parameteränderung kann Schlussfolgerungen über andere Parameter invalidieren. Bei signifikanten Änderungen immer das Gesamtset neu evaluieren.
-- **Liquorix-Defaults haben Gründe.** Die erste Reaktion auf das Zurückfallen von kswapd war, Liquorix' `watermark_boost_factor=0` mit dem Upstream-Standard (15000) zu überschreiben. Das half — behandelte aber das Symptom. Die eigentliche Ursache (zu niedrige Swappiness für zram) wurde erst nach mehreren zusätzlichen Runs identifiziert. Bevor man die bewussten Defaults einer Distribution überschreibt, sicherstellen, dass der Parameter tatsächlich die Hauptursache ist und nicht eine Fehlkonfiguration an anderer Stelle kompensiert.
-- **FUSE-Workloads reagieren empfindlich auf vfs_cache_pressure.** Bei Ortho-Streaming via FUSE kann jeder Szenerie-Verzeichnis-Lookup zu einem Kernel-zu-Userspace-Roundtrip werden, wenn der Dentry-Cache evicted ist. Werte über 100 erhöhten den FUSE-Overhead bei Szenerieübergängen messbar. Die Interaktion zwischen `vfs_cache_pressure`, FUSE-Metadaten-Caching und Kernel-Page-Cache-Konkurrenz ist ein Bereich, in dem systematischere Messungen wertvoll wären.
-- **Das Drei-Phasen-Muster ist konsistent.** Jeder Run zeigte das gleiche Aufwärm- → Aufbau- → Gleichgewichtsmuster. Tuning beeinflusst primär die Dauer und Schwere der Aufbauphase. Wenn das System im Gleichgewicht stabil ist, aber in den ersten 30–60 Minuten stottert, auf Watermark- und Swappiness-Tuning fokussieren statt auf CPU- oder GPU-Optimierung.
-- **NVMe-Power-State-Latenz ist real und messbar.** Die Deaktivierung von APST (`pm_qos_latency_tolerance_us=0`) eliminierte 97% der langsamen I/O-Events (>5 ms). Das charakteristische 10–11-ms-Muster im Block-Tracing verschwand vollständig. Das ist eine Low-Effort-/High-Impact-Änderung für jede latenzsensitive NVMe-Workload — nicht nur für Flugsimulation.
+- **Parameter interagieren nichtlinear.** Eine Parameteränderung kann Schlussfolgerungen über andere Parameter invalidieren. Bei signifikanten Änderungen immer das Gesamtset neu evaluieren.
+- **Das Drei-Phasen-Muster ist konsistent.** Jeder Run zeigte das gleiche Aufwärm- → Aufbau- → Gleichgewichtsmuster. Tuning beeinflusst primär die Dauer und Schwere der Aufbauphase. Wenn das System im Gleichgewicht stabil ist, aber in den ersten 30–60 Minuten stottert, auf Watermark-Tuning fokussieren statt auf CPU- oder GPU-Optimierung.
+- **NVMe-Power-State-Latenz ist real und messbar.** Die Deaktivierung von APST (`pm_qos_latency_tolerance_us=0`) eliminierte 97% der langsamen I/O-Events (>5 ms). Das ist eine Low-Effort-/High-Impact-Änderung für jede latenzsensitive NVMe-Workload — nicht nur für Flugsimulation.
 
 ---
 
@@ -262,7 +234,7 @@ Die fünf Schritte oben sind als saubere Progression dargestellt, aber der tats�
 | Thema | Seite | Schwerpunkt |
 |---|---|---|
 | Kernel-Tuning | [Kernel-Tuning](systemtuning.md) | Zwei Tuning-Profile — Standardkernel vs. Liquorix |
-| Swap & Speicherverwaltung | [Swap & Speicherverwaltung](swap.md) | Page Reclaim, Watermarks, zram-Setup, Swappiness |
+| Swap & Speicherverwaltung | [Swap & Speicherverwaltung](swap.md) | Page Reclaim, Watermarks, Swappiness |
 | Monitoring | [Monitoring](systemtools.md) | Werkzeuge zur Messung jeder hier referenzierten Metrik |
 | Latenz | [Latenz und Vorhersagbarkeit](../../fundamentals/performance/latency.md) | Warum Latenz wichtiger ist als Durchsatz |
 | Dateisystem | [Dateisystem](../optimizations/filesystem.md) | IO-Scheduler, Mount-Optionen, SSD-Tuning |
@@ -273,6 +245,5 @@ Die fünf Schritte oben sind als saubere Progression dargestellt, aber der tats�
 
 - [/proc/sys/vm/ — Linux Kernel Documentation](https://docs.kernel.org/admin-guide/sysctl/vm.html) — vm.min_free_kbytes, Dirty Ratios, Swappiness, Watermark-Parameter
 - [Memory Management Concepts — Linux Kernel Documentation](https://docs.kernel.org/admin-guide/mm/concepts.html) — Page Reclaim, Watermarks, kswapd-Verhalten
-- [zram block device — Linux Kernel Documentation](https://docs.kernel.org/admin-guide/blockdev/zram.html) — Komprimierter Swap im RAM
 - [Block layer: Writeback Throttling — LWN](https://lwn.net/Articles/682582/) — WBT-Mechanismus und wann er zu deaktivieren ist
-- [Zram — Arch Wiki](https://wiki.archlinux.org/title/Zram) — Praktische Einrichtung und Tuning-Empfehlungen
+- [Solid State Drive/NVMe — Arch Wiki](https://wiki.archlinux.org/title/Solid_state_drive/NVMe) — NVMe-Energieverwaltung (APST)

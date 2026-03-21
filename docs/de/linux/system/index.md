@@ -7,6 +7,6 @@ Latenz statt Durchsatz ist das Optimierungsziel für X-Plane unter Linux: ein st
 
 - **[Warum Latenz zählt](latency.md)** — Video-Einführung und Tuning-Philosophie
 - **[Kernel-Tuning](systemtuning.md)** — Kernel-Parameter, CPU-Governor, Interrupt-Affinität, NVMe-Tuning
-- **[Swap & Speicherverwaltung](swap.md)** — Page Reclaim, Swap-Konfiguration, zram-Kompression, OOM-Prävention
+- **[Swap & Speicherverwaltung](swap.md)** — Page Reclaim, Watermark-Tuning, Swap-Konfiguration, OOM-Prävention
 - **[Monitoring](systemtools.md)** — btop, turbostat, perf, mpstat und weitere Analyse-Tools
 - **[Fallstudie Tuning](tuning_casestudy.md)** — Gemessene Tuning-Schritte von Mikrorucklern zu stabilen Framezeiten

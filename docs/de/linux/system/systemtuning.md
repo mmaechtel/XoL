@@ -3,9 +3,6 @@ description: "Kernel-Tuning für X-Plane unter Linux: Zwei Profile für Standard
 ---
 # Systemtuning für X-Plane
 
-!!! warning "Work in Progress"
-    Die Parameter für das Kernel-Tuning sind aktuell noch in der Überprüfung und funktionieren möglicherweise nicht alle wie beschrieben. Änderungen vorbehalten.
-
 ## Distributionen und ihre Zielausrichtung
 
 Linux-Distributionen unterscheiden sich nicht nur in Paketmanager und Desktop-Umgebung, sondern vor allem in der **Abstimmung zwischen Kernel und Systemsoftware**. Jede Distribution trifft Konfigurationsentscheidungen für einen bestimmten Einsatzzweck:
@@ -148,10 +145,9 @@ isolcpus=4-11
 **Speicherverhalten**
 
 ```ini title="/etc/sysctl.d/60-desktop.conf"
-vm.swappiness=20
-vm.dirty_ratio=20
-vm.dirty_background_ratio=10
-vm.vfs_cache_pressure=50
+vm.swappiness=8
+vm.dirty_ratio=10
+vm.dirty_background_ratio=3
 ```
 
 Anwenden:
@@ -160,7 +156,7 @@ Anwenden:
 sudo sysctl --system
 ```
 
-Hintergründe zur Funktionsweise von swappiness und zram als alternative Swap-Strategie finden sich unter [Swap & Speicherverwaltung](swap.md).
+Hintergründe zur Funktionsweise von Swappiness und Swap-Tuning unter [Swap & Speicherverwaltung](swap.md).
 
 ### Ergebnis Profil A
 
@@ -274,26 +270,13 @@ Neustart erforderlich.
 
 **Speicher-Writeback glätten**
 
-Die optimalen Speicherparameter hängen von der Swap-Konfiguration ab. Mit Disk-Swap vermeidet niedrige Swappiness teure Disk-I/O. Mit [zram](swap.md#zram) ist hohe Swappiness korrekt, weil „Swap" komprimiertes RAM ist — der Kernel sollte es proaktiv nutzen.
-
-=== "Disk-Swap"
-
-    ```ini title="/etc/sysctl.d/99-lowlatency.conf"
-    vm.swappiness = 10
-    vm.dirty_background_ratio = 3
-    vm.dirty_ratio = 10
-    vm.vfs_cache_pressure = 50
-    ```
-
-=== "zram (Empfohlen)"
-
-    ```ini title="/etc/sysctl.d/99-lowlatency.conf"
-    vm.swappiness = 180
-    vm.page-cluster = 0
-    vm.dirty_background_ratio = 3
-    vm.dirty_ratio = 10
-    vm.vfs_cache_pressure = 50
-    ```
+```ini title="/etc/sysctl.d/99-lowlatency.conf"
+vm.swappiness = 8
+vm.page_cluster = 0
+vm.watermark_scale_factor = 500
+vm.dirty_background_ratio = 3
+vm.dirty_ratio = 10
+```
 
 Anwenden:
 
@@ -301,10 +284,7 @@ Anwenden:
 sudo sysctl --system
 ```
 
-!!! tip "vfs_cache_pressure und FUSE-Dateisysteme"
-    Der Wert 50 ist bewusst gewählt: FUSE-basiertes Ortho-Streaming (AutoOrtho, XEarthLayer) ist auf den Dentry-/Inode-Cache des Kernels für Metadaten-Lookups angewiesen. Höhere Werte (100+) bewirken schnellere Eviction dieser Caches und erzwingen mehr Kernel-zu-Userspace-Roundtrips bei wiederholten `lookup()`-Aufrufen. Auf Systemen mit 32+ GB RAM hat das längere Halten der VFS-Caches vernachlässigbare Speicherkosten, reduziert aber den FUSE-Overhead messbar. Die Interaktion zwischen `vfs_cache_pressure` und FUSE-Metadaten-Performance ist ein Bereich, der weiterer Untersuchung bedarf — sie ist nicht gut dokumentiert. Zu einem weiteren FUSE-spezifischen Engpass (Limit gleichzeitiger Anfragen) siehe [FUSE-Congestion-Engpass](../../scenery/ortho_streaming/how_streaming_works.md#fuse-congestion-engpass).
-
-Hintergründe zu den unterschiedlichen Werten, wie Swappiness als Kostenverhältnis funktioniert und zur zram-Einrichtung unter [Swap & Speicherverwaltung](swap.md).
+Hintergründe zur Funktionsweise von Swappiness als Kostenverhältnis und warum `watermark_scale_factor=500` der Schlüsselparameter ist unter [Swap & Speicherverwaltung](swap.md).
 
 **Leichte Priorisierung**
 
@@ -426,7 +406,7 @@ Nicht alle Einstellungen erfordern einen Neustart. Die folgende Tabelle zeigt, w
 | Thema | Seite | Schwerpunkt |
 |---|---|---|
 | Monitoring | [Monitoring](systemtools.md) | Tuning-Maßnahmen verifizieren mit turbostat, mpstat, ioping |
-| Swap & Speicherverwaltung | [Swap & Speicherverwaltung](swap.md) | Page Reclaim, zram-Kompression, Swap-Tuning für X-Plane |
+| Swap & Speicherverwaltung | [Swap & Speicherverwaltung](swap.md) | Page Reclaim, Watermark-Tuning, Swap-Konfiguration für X-Plane |
 | Warum Latenz zählt | [Warum Latenz zählt](latency.md) | Motivation und Kontext für Kernel-Tuning |
 | Latenz und Vorhersagbarkeit | [Latenz und Vorhersagbarkeit](../../fundamentals/performance/latency.md) | Theoretische Grundlagen — Latenzquellen und Messung |
 | Liquorix Kernel | [Liquorix Kernel](../optimizations/liquorix.md) | Installation und Features des Low-Latency-Kernels |

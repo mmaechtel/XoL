@@ -35,6 +35,11 @@ Diese Dokumentation ist ein offenes Projekt. Verbesserungen oder Ergänzungen k�
 
 ## Letzte Änderungen
 
+### 2026-03-21
+- [Fallstudie Tuning](linux/system/tuning_casestudy.md) neu geschrieben: Drei-Schritte-Diagnose von Mikrorucklern zu stabilen Framezeiten — Watermark-Tuning, IO-Latenz und NVMe-Powermanagement mit realen Messdaten aus 16 Runs
+- [Swap & Speicherverwaltung](linux/system/swap.md) neu geschrieben: Page-Reclaim-Mechanik, Watermark-Tuning, Swap-Konfiguration — zram entfernt, vereinfacht auf Disk-Swap mit `watermark_scale_factor=500`
+- [Kernel-Tuning](linux/system/systemtuning.md) überarbeitet: Gestraffte Profile für Standard- und Liquorix-Kernel, aktualisierte Speicher- und NVMe-Abschnitte
+
 ### 2026-03-14
 - [VATSIM](flight_operations/vatsim/vatsim.md) umstrukturiert: VATSIM-Grundlagen zuerst, [ATC Flight Planner](https://atc.emvisio.de) als eigener Abschnitt mit geführten Workflows, Optimal Routes für vollautomatische Flugplanung mit 100% ATC-Abdeckung und SimBrief-Integration
 - [XEarthLayer](scenery/ortho_streaming/xearthlayer.md) aktualisiert auf v0.3.1: GPU-beschleunigte DDS-Komprimierung, ISPC-SIMD-Kompression als Standard, Boundary-Driven-Prefetch-System, Online-Netzwerk-Unterstützung (VATSIM/IVAO/PilotEdge)
@@ -42,9 +47,6 @@ Diese Dokumentation ist ein offenes Projekt. Verbesserungen oder Ergänzungen k�
 
 ### 2026-03-06
 - [Wie Streaming funktioniert](scenery/ortho_streaming/how_streaming_works.md) ergänzt: Neuer Abschnitt zum FUSE-Congestion-Engpass — erklärt, wie niedrige `max_background`-Standardwerte parallele Tile-Anfragen limitieren und Frame-Drops an DSF-Grenzen verursachen
-
-### 2026-02-27
-- [Swap & Speicherverwaltung](linux/system/swap.md), [Systemtuning](linux/system/systemtuning.md) und [Fallstudie Tuning](linux/system/tuning_casestudy.md) überarbeitet: Revidierte Empfehlungen für zram — `swappiness=180` + `watermark_scale_factor=125` statt `watermark_boost_factor=15000`, basierend auf 14 Messläufen. Getrennte Konfigurationsblöcke für zram und Disk-Swap, neue Praxisnotizen zu Dirty-Ratio-Tuning und vfs_cache_pressure
 
 
 
