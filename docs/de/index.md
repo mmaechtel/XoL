@@ -35,6 +35,10 @@ Diese Dokumentation ist ein offenes Projekt. Verbesserungen oder Ergänzungen k�
 
 ## Letzte Änderungen
 
+### 2026-04-04
+- [XEarthLayer](scenery/ortho_streaming/xearthlayer.md) aktualisiert auf v0.4.1: Streaming-Mipmap-Architektur senkt Peak-Memory um 21–44%, parallele Paket-Downloads, Temp-Verzeichnis nach `~/.xearthlayer/tmp` verschoben
+- [SimLoad Manager](addon/flylua_scripts/simloadmanager.md) aktualisiert auf v3.7: Flight-Save/Resume-System, ACARS-Loadsheet-Uplink für ToLiss via Hoppie, neue Flugzeuge (Flight Factor 757/767, FPS 747-800)
+
 ### 2026-03-21
 - [Fallstudie Tuning](linux/system/tuning_casestudy.md) neu geschrieben: Drei-Schritte-Diagnose von Mikrorucklern zu stabilen Framezeiten — Watermark-Tuning, IO-Latenz und NVMe-Powermanagement mit realen Messdaten aus 16 Runs
 - [Swap & Speicherverwaltung](linux/system/swap.md) neu geschrieben: Page-Reclaim-Mechanik, Watermark-Tuning, Swap-Konfiguration — zram entfernt, vereinfacht auf Disk-Swap mit `watermark_scale_factor=500`
@@ -44,9 +48,6 @@ Diese Dokumentation ist ein offenes Projekt. Verbesserungen oder Ergänzungen k�
 - [VATSIM](flight_operations/vatsim/vatsim.md) umstrukturiert: VATSIM-Grundlagen zuerst, [ATC Flight Planner](https://atc.emvisio.de) als eigener Abschnitt mit geführten Workflows, Optimal Routes für vollautomatische Flugplanung mit 100% ATC-Abdeckung und SimBrief-Integration
 - [XEarthLayer](scenery/ortho_streaming/xearthlayer.md) aktualisiert auf v0.3.1: GPU-beschleunigte DDS-Komprimierung, ISPC-SIMD-Kompression als Standard, Boundary-Driven-Prefetch-System, Online-Netzwerk-Unterstützung (VATSIM/IVAO/PilotEdge)
 - [AutoOrtho](scenery/ortho_streaming/autoortho.md) aktualisiert auf v2.2.0: ~2x schnellere Ladezeiten, SimBrief-Integration mit routenbasiertem Prefetch, Seasons-Unterstützung
-
-### 2026-03-06
-- [Wie Streaming funktioniert](scenery/ortho_streaming/how_streaming_works.md) ergänzt: Neuer Abschnitt zum FUSE-Congestion-Engpass — erklärt, wie niedrige `max_background`-Standardwerte parallele Tile-Anfragen limitieren und Frame-Drops an DSF-Grenzen verursachen
 
 
 

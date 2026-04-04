@@ -14,7 +14,7 @@ SimLoad Manager is a [FlyWithLua](../scripting/flywithlua.md) script that simula
 - **Dependencies:** [FlyWithLua NG+](../scripting/flywithlua.md), [SGES](https://forums.x-plane.org/files/file/62296-simple-ground-equipment-services-low-tech-services/) (for ground equipment integration)
 - **Optional:** SimBrief account (manual entry and Flight Sim Deck also supported as data sources)
 
-The script is actively maintained with frequent updates. It supports Laminar default aircraft (B737-800, A330-300, MD-82), Zibo/Level Up B737 variants, ToLiss aircraft, and X-Crafts E-Jets. Q4XP is excluded (uses its own tablet system).
+The script is actively maintained with frequent updates. It supports Laminar default aircraft (B737-800, A330-300, MD-82), Zibo/Level Up B737 variants, ToLiss aircraft, X-Crafts E-Jets, Flight Factor 757/767, and FPS 747-800. Q4XP is excluded (uses its own tablet system).
 
 ## Features
 
@@ -31,6 +31,8 @@ The script is actively maintained with frequent updates. It supports Laminar def
 - **Sound effects:** Ambient sounds and AI-generated voice alerts during loading
 - **AutoDGS compatibility:** Jetway/stairs control with conflict avoidance
 - **SimChecklist.eu integration:** Connects with the online checklist service
+- **Flight save and resume:** Automatic state preservation during mode transitions — interrupted flights can be resumed via "Load Last Flight"
+- **ACARS loadsheet uplink:** Loadsheet transmission to ToLiss aircraft via Hoppie network (ACARS)
 - **API for external tools:** Custom X-Plane commands and exposed datarefs
 
 ## Value in Flight Simulation

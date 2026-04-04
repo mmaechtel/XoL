@@ -24,6 +24,8 @@ XEarthLayer offers three backends for DDS texture compression, selectable via `c
 
 The GPU backend offloads BC1/BC3 compression to the graphics card via compute shaders, freeing CPU cores for X-Plane. When multiple GPUs are present, a specific device can be selected via `gpu_device` in the `[texture]` section.
 
+All backends use a **streaming mipmap architecture** that generates mipmaps progressively instead of buffering them in memory, reducing peak memory usage significantly.
+
 ### Two-Tier Cache
 
 XEarthLayer uses a two-tier cache system:
@@ -89,7 +91,7 @@ make install            # Installs to ~/.local/bin
 xearthlayer setup
 ```
 
-The setup process configures the cache directory and the link to the X-Plane [Custom Scenery](../../glossary.md#custom-scenery) folder.
+The setup process configures the cache directory and the link to the X-Plane [Custom Scenery](../../glossary.md#custom-scenery) folder. Temporary files are stored in `~/.xearthlayer/tmp` (not the system `/tmp`, which is often RAM-backed and can cause out-of-memory issues).
 
 ## Usage
 
@@ -119,6 +121,8 @@ xearthlayer packages install eu
 # Update installed packages
 xearthlayer packages update
 ```
+
+Package downloads run in parallel (configurable 1–10 concurrent parts, default 5) with per-part progress display and automatic retry on failure.
 
 The packages are sourced from the [XEarthLayer Regional Scenery Repository](https://github.com/samsoir/xearthlayer-regional-scenery) and are based on the [Shred86 Ortho4XP fork](https://github.com/shred86/Ortho4XP).
 

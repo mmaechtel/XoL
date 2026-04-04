@@ -35,6 +35,10 @@ This documentation is an open project. Improvements or additions can be contribu
 
 ## Recent Changes
 
+### 2026-04-04
+- [XEarthLayer](scenery/ortho_streaming/xearthlayer.md) updated for v0.4.1: Streaming mipmap architecture cuts peak memory by 21–44%, parallel package downloads, temp directory moved to `~/.xearthlayer/tmp`
+- [SimLoad Manager](addon/flylua_scripts/simloadmanager.md) updated for v3.7: Flight save/resume system, ACARS loadsheet uplink for ToLiss via Hoppie, new aircraft support (Flight Factor 757/767, FPS 747-800)
+
 ### 2026-03-21
 - [Tuning Case Study](linux/system/tuning_casestudy.md) rewritten: Three-step diagnosis from micro-stutters to stable frame times — watermark tuning, IO latency, and NVMe power management with real measurements from 16 runs
 - [Swap & Memory Management](linux/system/swap.md) rewritten: Page reclaim mechanics, watermark tuning, swap configuration — zram removed, simplified to disk swap with `watermark_scale_factor=500`
@@ -44,9 +48,6 @@ This documentation is an open project. Improvements or additions can be contribu
 - [VATSIM](flight_operations/vatsim/vatsim.md) restructured: VATSIM basics first, [ATC Flight Planner](https://atc.emvisio.de) as dedicated section with guided workflows, Optimal Routes for fully automated flight planning with 100% ATC coverage, and SimBrief integration
 - [XEarthLayer](scenery/ortho_streaming/xearthlayer.md) updated for v0.3.1: GPU-accelerated DDS encoding, ISPC SIMD compression as default, boundary-driven prefetch system, online network support (VATSIM/IVAO/PilotEdge)
 - [AutoOrtho](scenery/ortho_streaming/autoortho.md) updated for v2.2.0: ~2x faster loading times, SimBrief integration with route-based prefetch, seasons support
-
-### 2026-03-06
-- [How Streaming Works](scenery/ortho_streaming/how_streaming_works.md) expanded: New section on FUSE congestion bottleneck — explains how low `max_background` defaults limit concurrent tile requests and cause frame drops at DSF boundaries
 
 
 
