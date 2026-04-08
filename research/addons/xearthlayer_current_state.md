@@ -1,17 +1,22 @@
 # XEarthLayer -- Aktueller Stand (Recherche)
 
-Recherche-Datum: 2026-02-14
+Recherche-Datum: 2026-04-08 (aktualisiert, Erstrecherche 2026-02-14)
 
 ## 1. Version und Release-Historie
 
 ### Aktuelle Version
 
-**v0.3.0** -- veröffentlicht am 5. Februar 2026
+**v0.4.3** -- veröffentlicht am 7. April 2026
 
 ### Vollständige Release-Chronologie
 
 | Version | Datum | Highlights |
 |---------|-------|------------|
+| v0.4.3 | 2026-04-07 | Config-Audit (15 Keys entfernt, CPU-Concurrency auf 50%), Prefetch-InProgress-Deadstate-Fix (3-Layer-Protection), TUI-Metriken-Fixes |
+| v0.4.2 | 2026-04-06 | DDS-Disk-Cache-Tier (3-Tier-Hierarchie), Speed-proportionale Prefetch-Box, Stale-Telemetry-Safe-Mode, GPU-Encoding built-in (kein Feature-Flag mehr), fuse3 0.9.0, Version-Update-Check |
+| v0.4.1 | 2026-03-29 | Streaming-Mipmap-Architektur (Peak-Memory -21% bis -44%), parallele Paket-Downloads, Temp-Dir nach ~/.xearthlayer/tmp |
+| v0.4.0 | 2026-03-21 | X-Plane Web API Telemetrie (ersetzt ForeFlight UDP), Sliding Prefetch Box, Debug Map, GPU Pipeline Overlap |
+| v0.3.1 | 2026-03-07 | GPU-beschleunigtes DDS-Encoding, ISPC-SIMD als Standard, Boundary-Driven Prefetch, Online-Netzwerk-Unterstützung |
 | v0.3.0 | 2026-02-05 | Adaptive Prefetch System, Job Executor Framework (kompletter Rewrite des Execution Core), Aircraft Position & Telemetry Modul, Scene Tracker, Self-Contained Cache Services |
 | v0.2.12 | 2026-01-10 | Consolidated FUSE Mounting (Single Mount Point), Tile Patches Support, Circuit Breaker für Prefetch, Ring-Based Radial Prefetching |
 | v0.2.10 | 2026-01-02 | Setup Wizard, Default-to-Run, Coverage Map Generator, Zoom Level Deduplication, Coverage Gap Analysis |
@@ -25,7 +30,7 @@ Quelle: https://github.com/samsoir/xearthlayer/releases
 
 ### Entwicklungsgeschwindigkeit
 
-8 Releases in ca. 7 Wochen (16. Dez 2025 bis 5. Feb 2026). Das Projekt ist in einer Phase sehr aktiver Entwicklung.
+13 Releases in ca. 16 Wochen (16. Dez 2025 bis 7. Apr 2026). Das Projekt ist in einer Phase sehr aktiver Entwicklung.
 
 ---
 

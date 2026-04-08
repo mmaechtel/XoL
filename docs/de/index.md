@@ -35,6 +35,9 @@ Diese Dokumentation ist ein offenes Projekt. Verbesserungen oder Ergänzungen k�
 
 ## Letzte Änderungen
 
+### 2026-04-08
+- [XEarthLayer](scenery/ortho_streaming/xearthlayer.md) aktualisiert auf v0.4.3: Dreistufiger Cache mit DDS-Disk-Ebene vermeidet Re-Encoding, geschwindigkeitsproportionale Prefetch-Box reduziert Over-Fetching um ~45%, GPU-Encoding jetzt integriert, CPU-Parallelität standardmäßig auf 50%
+
 ### 2026-04-04
 - [XEarthLayer](scenery/ortho_streaming/xearthlayer.md) aktualisiert auf v0.4.1: Streaming-Mipmap-Architektur senkt Peak-Memory um 21–44%, parallele Paket-Downloads, Temp-Verzeichnis nach `~/.xearthlayer/tmp` verschoben
 - [SimLoad Manager](addon/flylua_scripts/simloadmanager.md) aktualisiert auf v3.7: Flight-Save/Resume-System, ACARS-Loadsheet-Uplink für ToLiss via Hoppie, neue Flugzeuge (Flight Factor 757/767, FPS 747-800)
@@ -44,10 +47,6 @@ Diese Dokumentation ist ein offenes Projekt. Verbesserungen oder Ergänzungen k�
 - [Swap & Speicherverwaltung](linux/system/swap.md) neu geschrieben: Page-Reclaim-Mechanik, Watermark-Tuning, Swap-Konfiguration — zram entfernt, vereinfacht auf Disk-Swap mit `watermark_scale_factor=500`
 - [Kernel-Tuning](linux/system/systemtuning.md) überarbeitet: Gestraffte Profile für Standard- und Liquorix-Kernel, aktualisierte Speicher- und NVMe-Abschnitte
 
-### 2026-03-14
-- [VATSIM](flight_operations/vatsim/vatsim.md) umstrukturiert: VATSIM-Grundlagen zuerst, [ATC Flight Planner](https://atc.emvisio.de) als eigener Abschnitt mit geführten Workflows, Optimal Routes für vollautomatische Flugplanung mit 100% ATC-Abdeckung und SimBrief-Integration
-- [XEarthLayer](scenery/ortho_streaming/xearthlayer.md) aktualisiert auf v0.3.1: GPU-beschleunigte DDS-Komprimierung, ISPC-SIMD-Kompression als Standard, Boundary-Driven-Prefetch-System, Online-Netzwerk-Unterstützung (VATSIM/IVAO/PilotEdge)
-- [AutoOrtho](scenery/ortho_streaming/autoortho.md) aktualisiert auf v2.2.0: ~2x schnellere Ladezeiten, SimBrief-Integration mit routenbasiertem Prefetch, Seasons-Unterstützung
 
 
 

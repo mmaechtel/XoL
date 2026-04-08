@@ -35,6 +35,9 @@ This documentation is an open project. Improvements or additions can be contribu
 
 ## Recent Changes
 
+### 2026-04-08
+- [XEarthLayer](scenery/ortho_streaming/xearthlayer.md) updated for v0.4.3: Three-tier cache with DDS disk layer eliminates re-encoding, speed-proportional prefetch box reduces over-fetching by ~45%, GPU encoding now built-in, CPU concurrency defaults to 50%
+
 ### 2026-04-04
 - [XEarthLayer](scenery/ortho_streaming/xearthlayer.md) updated for v0.4.1: Streaming mipmap architecture cuts peak memory by 21–44%, parallel package downloads, temp directory moved to `~/.xearthlayer/tmp`
 - [SimLoad Manager](addon/flylua_scripts/simloadmanager.md) updated for v3.7: Flight save/resume system, ACARS loadsheet uplink for ToLiss via Hoppie, new aircraft support (Flight Factor 757/767, FPS 747-800)
@@ -44,10 +47,6 @@ This documentation is an open project. Improvements or additions can be contribu
 - [Swap & Memory Management](linux/system/swap.md) rewritten: Page reclaim mechanics, watermark tuning, swap configuration — zram removed, simplified to disk swap with `watermark_scale_factor=500`
 - [Kernel Tuning](linux/system/systemtuning.md) revised: Streamlined profiles for stock and Liquorix kernels, updated memory and NVMe sections
 
-### 2026-03-14
-- [VATSIM](flight_operations/vatsim/vatsim.md) restructured: VATSIM basics first, [ATC Flight Planner](https://atc.emvisio.de) as dedicated section with guided workflows, Optimal Routes for fully automated flight planning with 100% ATC coverage, and SimBrief integration
-- [XEarthLayer](scenery/ortho_streaming/xearthlayer.md) updated for v0.3.1: GPU-accelerated DDS encoding, ISPC SIMD compression as default, boundary-driven prefetch system, online network support (VATSIM/IVAO/PilotEdge)
-- [AutoOrtho](scenery/ortho_streaming/autoortho.md) updated for v2.2.0: ~2x faster loading times, SimBrief integration with route-based prefetch, seasons support
 
 
 

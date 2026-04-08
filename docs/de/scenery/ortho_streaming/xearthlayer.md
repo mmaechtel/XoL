@@ -1,9 +1,9 @@
 ---
-description: "XEarthLayer ist ein Rust-basiertes Ortho-Streaming-Tool für X-Plane 12 unter Linux mit GPU-beschleunigter Kompression, adaptivem Prefetch, zweistufigem Cache und CPU-Tuning."
+description: "XEarthLayer ist ein Rust-basiertes Ortho-Streaming-Tool für X-Plane 12 unter Linux mit GPU-beschleunigter Kompression, adaptivem Prefetch, dreistufigem Cache und CPU-Tuning."
 ---
 # XEarthLayer
 
-**XEarthLayer** ist eine in Rust geschriebene Alternative zu [AutoOrtho](../../glossary.md#autoortho) für das Streaming von [Orthofoto](../../glossary.md#orthofotos)-Texturen in X-Plane 12. Das Projekt ist inspiriert von AutoOrtho, setzt jedoch auf eine performante Rust-Implementierung mit optionaler GPU-beschleunigter Kompression, adaptivem Prefetching und einem Zwei-Tier-Cache-System.
+**XEarthLayer** ist eine in Rust geschriebene Alternative zu [AutoOrtho](../../glossary.md#autoortho) für das Streaming von [Orthofoto](../../glossary.md#orthofotos)-Texturen in X-Plane 12. Das Projekt ist inspiriert von AutoOrtho, setzt jedoch auf eine performante Rust-Implementierung mit integrierter GPU-beschleunigter Kompression, adaptivem Prefetching und einem Drei-Tier-Cache-System.
 
 !!! note "Aktive Entwicklung"
     XEarthLayer ist ein junges Projekt in aktiver Entwicklung. Aktuelle Versionen laufen stabil, der Funktionsumfang kann sich zwischen Releases aber noch ändern.
@@ -19,27 +19,36 @@ XEarthLayer bietet drei Backends für die DDS-Texturkomprimierung, konfigurierba
 | Backend | Beschreibung |
 |---|---|
 | **ISPC** (Standard) | Intel ISPC-optimierte SIMD-Komprimierung — deutlich schneller als die ursprüngliche Pure-Rust-Implementierung |
-| **GPU** | GPU-beschleunigte Komprimierung über wgpu/WGSL Compute Shaders (erfordert `--features gpu-encode` Build-Flag) |
+| **GPU** | GPU-beschleunigte Komprimierung über wgpu/WGSL Compute Shaders (zur Laufzeit wählbar via `texture.compressor = gpu`) |
 | **Software** | Pure-Rust-Fallback, keine externen Abhängigkeiten |
 
-Das GPU-Backend lagert die BC1/BC3-Komprimierung über Compute Shaders auf die Grafikkarte aus und entlastet so die CPU für X-Plane. Bei mehreren GPUs kann über `gpu_device` in der `[texture]`-Sektion ein spezifisches Gerät ausgewählt werden.
+Das GPU-Backend lagert die BC1/BC3-Komprimierung über Compute Shaders auf die Grafikkarte aus und entlastet so die CPU für X-Plane. Auf Systemen mit integrierter und dedizierter GPU — etwa ein AMD-Radeon-iGPU auf einem Ryzen-Prozessor neben einer dedizierten NVIDIA-Karte — kann die integrierte GPU die DDS-Komprimierung übernehmen, während die dedizierte GPU X-Plane rendert. Die Auswahl erfolgt über `gpu_device` in der `[texture]`-Sektion von `config.ini`:
+
+| Wert | Wirkung |
+|---|---|
+| `integrated` (Standard) | Integrierte GPU verwenden |
+| `discrete` | Dedizierte GPU verwenden |
+| *Name-Teilstring* | Auswahl nach Adapternamen (z.B. `Radeon`, `RTX 5090`) |
+
+Mit `xearthlayer diagnostics` lassen sich alle verfügbaren GPU-Adapter auflisten.
 
 Alle Backends nutzen eine **Streaming-Mipmap-Architektur**, die Mipmaps progressiv generiert statt sie im Speicher zu puffern, was den Peak-Speicherverbrauch deutlich reduziert.
 
-### Zwei-Tier-Cache
+### Drei-Tier-Cache
 
-XEarthLayer verwendet ein zweistufiges Cache-System:
+XEarthLayer verwendet eine dreistufige Cache-Hierarchie:
 
 1. **Memory-Cache**: Häufig genutzte Kacheln werden im Arbeitsspeicher vorgehalten für minimale Latenz
-2. **Disk-Cache**: Alle heruntergeladenen und konvertierten Kacheln werden persistent in regionsbasierten Unterverzeichnissen gespeichert, mit parallelem Scanning für schnellen Start
+2. **DDS-Disk-Cache**: Kodierte DDS-Kacheln werden persistent auf Disk gespeichert, um Re-Encoding bei Memory-Eviction zu vermeiden (~3,5 ms NVMe-Read vs ~50--200 ms Re-Encode). Budget-Aufteilung konfigurierbar über `cache.dds_disk_ratio` (Standard 60% DDS, 40% Chunks)
+3. **Chunk-Disk-Cache**: Rohe heruntergeladene Kacheln werden persistent in regionsbasierten Unterverzeichnissen gespeichert, mit parallelem Scanning für schnellen Start
 
 Wird die konfigurierte Cache-Größe erreicht, werden ältere Kacheln automatisch entfernt, um Platz für neue zu schaffen.
 
 ### Adaptives Prefetch
 
-XEarthLayers **adaptives Prefetching** nutzt ein Boundary-Driven-Modell: Ein `SceneryWindow` verfolgt die Flugzeugposition relativ zu DSF-Kachelgrenzen, ein `BoundaryMonitor` erkennt Grenzübertritte auf Reihen- und Spaltenachsen. Bei einem Grenzübertritt werden Kacheln mit asymmetrischer Tiefe vorgeladen — typischerweise 3 Reihen tief und 3–4 Spalten breit, angepasst an die Flugrichtung.
+XEarthLayers **adaptives Prefetching** nutzt eine gleitende Prefetch-Box, die der Flugzeugposition mit kursgewichteter Abdeckung folgt. Die Box-Ausdehnung skaliert linear mit der Bodengeschwindigkeit — 3,5° bei 40 kt bis 6,5° bei 450 kt+ — und reduziert Over-Fetching im Anflug um ~45%.
 
-Das System kalibriert sich selbst und passt die Prefetch-Strategie an die verfügbare Bandbreite und die aktuelle Flugphase an. On-Demand-Anfragen von X-Plane haben durch **Priority Scheduling** immer Vorrang vor Prefetch (On-Demand-Jobs laufen mit höherer Priorität als Prefetch). Ein **ressourcenbasierter Circuit Breaker** pausiert Prefetch, wenn die Auslastung der Ressourcenpools (CPU, Netzwerk, Disk-I/O) sichere Schwellwerte übersteigt — so wird sichergestellt, dass die aktuell sichtbaren Kacheln immer zuerst geladen werden.
+Das System kalibriert sich selbst und passt die Prefetch-Strategie an die verfügbare Bandbreite und die aktuelle Flugphase an. Ein **Stale-Telemetry-Safe-Mode** pausiert Prefetch vollständig, wenn die Positionsdaten von X-Plane veralten (5 s), und verhindert so unnötige Downloads während Ladebildschirmen oder Pausen. On-Demand-Anfragen von X-Plane haben durch **Priority Scheduling** immer Vorrang vor Prefetch (On-Demand-Jobs laufen mit höherer Priorität als Prefetch). Ein **ressourcenbasierter Circuit Breaker** pausiert Prefetch, wenn die Auslastung der Ressourcenpools (CPU, Netzwerk, Disk-I/O) sichere Schwellwerte übersteigt — so wird sichergestellt, dass die aktuell sichtbaren Kacheln immer zuerst geladen werden.
 
 ## Kartenquellen
 
@@ -85,8 +94,7 @@ Alternativ kann XEarthLayer auch aus dem Quellcode gebaut werden (erfordert Rust
 ```bash
 git clone https://github.com/samsoir/xearthlayer.git
 cd xearthlayer
-make release            # Standard-Build (ISPC + Software Backends)
-# make release-gpu      # Build mit GPU-Encoding-Backend
+make release            # Standard-Build (alle Backends inkl. GPU)
 make install            # Installiert nach ~/.local/bin
 xearthlayer setup
 ```
@@ -128,7 +136,7 @@ Die Pakete stammen aus dem [XEarthLayer Regional Scenery Repository](https://git
 
 ## CPU-Tuning
 
-XEarthLayer nutzt standardmäßig **alle verfügbaren CPU-Kerne** für die parallele Tile-Generierung. Auch mit dem effizienteren ISPC-Backend bleibt die DDS-Komprimierung CPU-intensiv. Das ist optimal, wenn XEarthLayer allein läuft — kann aber zu Engpässen führen, wenn gleichzeitig X-Plane aktiv ist.
+Seit v0.4.3 nutzt XEarthLayer standardmäßig **50% der logischen CPU-Kerne** für die parallele Tile-Generierung — eine deutliche Verbesserung gegenüber früheren Versionen, die alle Kerne belegten. Auch mit dem effizienteren ISPC-Backend bleibt die DDS-Komprimierung CPU-intensiv. Die neuen Standardwerte funktionieren für die meisten Setups, lassen sich aber weiter anpassen.
 
 !!! tip "GPU-Encoding als Alternative"
     Mit dem GPU-Encoding-Backend wird die DDS-Komprimierung auf die Grafikkarte ausgelagert. Das reduziert die CPU-Last, kann aber zu GPU-Engpässen führen, da X-Plane selbst GPU-intensiv ist. Der Trade-off hängt vom verfügbaren VRAM und der GPU-Auslastung ab.
@@ -148,8 +156,8 @@ Drei Einstellungen in `~/.xearthlayer/config.ini` steuern die CPU-Nutzung:
 | Einstellung | Sektion | Standard | Funktion |
 |---|---|---|---|
 | `threads` | `[generation]` | Anzahl CPUs | Worker-Threads für Tile-Generierung |
-| `cpu_concurrent` | `[executor]` | ~CPUs × 1,25 | Gleichzeitige DDS-Encoding-Operationen (wirkungsvollster Hebel) |
-| `max_concurrent_jobs` | `[control_plane]` | CPUs × 2 | Maximale gleichzeitige Tile-Jobs insgesamt |
+| `cpu_concurrent` | `[executor]` | 50% der logischen CPUs | Gleichzeitige DDS-Encoding-Operationen (wirkungsvollster Hebel) |
+| `max_concurrent_jobs` | `[executor]` | CPUs × 2 | Maximale gleichzeitige Tile-Jobs insgesamt |
 
 ### Empfohlene Werte
 

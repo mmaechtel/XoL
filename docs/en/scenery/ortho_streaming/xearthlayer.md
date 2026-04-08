@@ -1,9 +1,9 @@
 ---
-description: "XEarthLayer is a Rust-based ortho streaming tool for X-Plane 12 on Linux with GPU-accelerated encoding, adaptive prefetch, two-tier cache, and CPU tuning options."
+description: "XEarthLayer is a Rust-based ortho streaming tool for X-Plane 12 on Linux with GPU-accelerated encoding, adaptive prefetch, three-tier cache, and CPU tuning options."
 ---
 # XEarthLayer
 
-**XEarthLayer** is a Rust-based alternative to [AutoOrtho](../../glossary.md#autoortho) for streaming [orthophoto](../../glossary.md#orthophotos) textures in X-Plane 12. The project is inspired by AutoOrtho but relies on a high-performance Rust implementation with optional GPU-accelerated encoding, adaptive prefetching, and a two-tier cache system.
+**XEarthLayer** is a Rust-based alternative to [AutoOrtho](../../glossary.md#autoortho) for streaming [orthophoto](../../glossary.md#orthophotos) textures in X-Plane 12. The project is inspired by AutoOrtho but relies on a high-performance Rust implementation with built-in GPU-accelerated encoding, adaptive prefetching, and a three-tier cache system.
 
 !!! note "Active Development"
     XEarthLayer is a young project under active development. Current versions run stably, but feature scope may change between releases.
@@ -19,27 +19,36 @@ XEarthLayer offers three backends for DDS texture compression, selectable via `c
 | Backend | Description |
 |---|---|
 | **ISPC** (default) | Intel ISPC-optimized SIMD compression — significantly faster than the original pure-Rust implementation |
-| **GPU** | GPU-accelerated encoding via wgpu/WGSL compute shaders (requires `--features gpu-encode` build flag) |
+| **GPU** | GPU-accelerated encoding via wgpu/WGSL compute shaders (select at runtime via `texture.compressor = gpu`) |
 | **Software** | Pure-Rust fallback, no external dependencies |
 
-The GPU backend offloads BC1/BC3 compression to the graphics card via compute shaders, freeing CPU cores for X-Plane. When multiple GPUs are present, a specific device can be selected via `gpu_device` in the `[texture]` section.
+The GPU backend offloads BC1/BC3 compression to the graphics card via compute shaders, freeing CPU cores for X-Plane. On systems with both an integrated and a discrete GPU — for example an AMD Radeon iGPU on a Ryzen processor alongside a dedicated NVIDIA card — the integrated GPU can handle DDS encoding while the discrete GPU runs X-Plane. This is configured via `gpu_device` in the `[texture]` section of `config.ini`:
+
+| Value | Effect |
+|---|---|
+| `integrated` (default) | Use the integrated GPU |
+| `discrete` | Use the discrete GPU |
+| *name substring* | Match by adapter name (e.g. `Radeon`, `RTX 5090`) |
+
+Run `xearthlayer diagnostics` to list all available GPU adapters.
 
 All backends use a **streaming mipmap architecture** that generates mipmaps progressively instead of buffering them in memory, reducing peak memory usage significantly.
 
-### Two-Tier Cache
+### Three-Tier Cache
 
-XEarthLayer uses a two-tier cache system:
+XEarthLayer uses a three-tier cache hierarchy:
 
 1. **Memory cache**: Frequently used tiles are kept in RAM for minimal latency
-2. **Disk cache**: All downloaded and converted tiles are persistently stored in region-based subdirectories with parallel scanning for fast startup
+2. **DDS disk cache**: Encoded DDS tiles persist to disk, avoiding re-encoding on memory eviction (~3.5 ms NVMe read vs ~50--200 ms re-encode). Budget split configurable via `cache.dds_disk_ratio` (default 60% DDS, 40% chunks)
+3. **Chunk disk cache**: Raw downloaded tiles are persistently stored in region-based subdirectories with parallel scanning for fast startup
 
 When the configured cache size is reached, older tiles are automatically removed to make room for new ones.
 
 ### Adaptive Prefetch
 
-XEarthLayer's **adaptive prefetching** uses a boundary-driven model: a `SceneryWindow` tracks the aircraft position relative to DSF tile boundaries, and a `BoundaryMonitor` detects edge crossings on row and column axes. When an edge is crossed, tiles are preloaded with asymmetric depth — typically 3 rows deep and 3–4 columns wide, adjusted to the direction of travel.
+XEarthLayer's **adaptive prefetching** uses a sliding prefetch box that tracks the aircraft position with heading-biased coverage. The box extent scales linearly with ground speed — 3.5° at 40 kt to 6.5° at 450 kt+ — reducing over-fetching during approach by ~45%.
 
-The system self-calibrates and adapts its prefetch strategy to available bandwidth and the current flight phase. On-demand tile requests from X-Plane always take priority over prefetch through **priority scheduling** (on-demand jobs run at higher priority than prefetch). A **resource-aware circuit breaker** pauses prefetch when resource pool utilization (CPU, network, disk I/O) exceeds safe thresholds — ensuring that currently visible tiles are always loaded first.
+The system self-calibrates and adapts its prefetch strategy to available bandwidth and the current flight phase. A **stale telemetry safe mode** pauses prefetch entirely when X-Plane position data goes stale (5 s), preventing wasted downloads during loading screens or pauses. On-demand tile requests from X-Plane always take priority over prefetch through **priority scheduling** (on-demand jobs run at higher priority than prefetch). A **resource-aware circuit breaker** pauses prefetch when resource pool utilization (CPU, network, disk I/O) exceeds safe thresholds — ensuring that currently visible tiles are always loaded first.
 
 ## Map Sources
 
@@ -85,8 +94,7 @@ Alternatively, XEarthLayer can be built from source (requires Rust toolchain):
 ```bash
 git clone https://github.com/samsoir/xearthlayer.git
 cd xearthlayer
-make release            # Standard build (ISPC + Software backends)
-# make release-gpu      # Build with GPU encoding backend
+make release            # Standard build (all backends including GPU)
 make install            # Installs to ~/.local/bin
 xearthlayer setup
 ```
@@ -128,7 +136,7 @@ The packages are sourced from the [XEarthLayer Regional Scenery Repository](http
 
 ## CPU Tuning
 
-By default, XEarthLayer uses **all available CPU cores** for parallel tile generation. Even with the more efficient ISPC backend, DDS compression remains CPU-intensive. This is optimal when XEarthLayer runs alone — but can lead to bottlenecks when X-Plane is active at the same time.
+Since v0.4.3, XEarthLayer defaults to **50% of logical CPU cores** for parallel tile generation — a significant improvement over earlier versions that used all cores. Even with the more efficient ISPC backend, DDS compression remains CPU-intensive. The new defaults work well for most setups but can be tuned further.
 
 !!! tip "GPU Encoding as Alternative"
     With the GPU encoding backend, DDS compression is offloaded to the graphics card. This reduces CPU load but can lead to GPU bottlenecks, since X-Plane itself is GPU-intensive. The trade-off depends on available VRAM and GPU headroom.
@@ -148,8 +156,8 @@ Three settings in `~/.xearthlayer/config.ini` control CPU usage:
 | Setting | Section | Default | Function |
 |---|---|---|---|
 | `threads` | `[generation]` | Number of CPUs | Worker threads for tile generation |
-| `cpu_concurrent` | `[executor]` | ~CPUs × 1.25 | Concurrent DDS encoding operations (most effective lever) |
-| `max_concurrent_jobs` | `[control_plane]` | CPUs × 2 | Maximum concurrent tile jobs overall |
+| `cpu_concurrent` | `[executor]` | 50% of logical CPUs | Concurrent DDS encoding operations (most effective lever) |
+| `max_concurrent_jobs` | `[executor]` | CPUs × 2 | Maximum concurrent tile jobs overall |
 
 ### Recommended Values
 
