@@ -8,6 +8,13 @@ description: "XEarthLayer is a Rust-based ortho streaming tool for X-Plane 12 on
 !!! note "Active Development"
     XEarthLayer is a young project under active development. Current versions run stably, but feature scope may change between releases.
 
+!!! note "What's new in v0.4.4 (Apr 2026)"
+
+    - Prefetch coverage no longer degrades on flights >2 hours — three interacting defects fixed (verified on a 9-hour LOWW flight log)
+    - `max_concurrent_jobs` default lowered to 50% of logical CPUs — reduces X-Plane stutter during heavy prefetch
+    - TUI now shows separate hit rates for Memory, DDS-Disk and Chunks tiers
+    - Ground and cruise prefetch unified under a single `PrefetchBox` (internal cleanup)
+
 ## How It Works
 
 XEarthLayer uses a **[FUSE](../../glossary.md#fuse-filesystem-in-userspace)-based virtual file system** (see [How Ortho Streaming Works](how_streaming_works.md)) to provide orthophoto textures on demand. When X-Plane accesses a tile, the satellite image is downloaded from the configured map provider, compressed to [DDS](../../glossary.md#dds-directdraw-surface) format (BC1/BC3), and delivered to the simulator via the VFS.
@@ -136,7 +143,7 @@ The packages are sourced from the [XEarthLayer Regional Scenery Repository](http
 
 ## CPU Tuning
 
-Since v0.4.3, XEarthLayer defaults to **50% of logical CPU cores** for parallel tile generation — a significant improvement over earlier versions that used all cores. Even with the more efficient ISPC backend, DDS compression remains CPU-intensive. The new defaults work well for most setups but can be tuned further.
+Since v0.4.4, XEarthLayer defaults to **50% of logical CPU cores** for both concurrent DDS encoding (`cpu_concurrent`, since v0.4.3) and the overall job limit (`max_concurrent_jobs`, since v0.4.4) — a significant improvement over earlier versions that used all cores. Even with the more efficient ISPC backend, DDS compression remains CPU-intensive. The new defaults work well for most setups but can be tuned further.
 
 !!! tip "GPU Encoding as Alternative"
     With the GPU encoding backend, DDS compression is offloaded to the graphics card. This reduces CPU load but can lead to GPU bottlenecks, since X-Plane itself is GPU-intensive. The trade-off depends on available VRAM and GPU headroom.
@@ -157,7 +164,7 @@ Three settings in `~/.xearthlayer/config.ini` control CPU usage:
 |---|---|---|---|
 | `threads` | `[generation]` | Number of CPUs | Worker threads for tile generation |
 | `cpu_concurrent` | `[executor]` | 50% of logical CPUs | Concurrent DDS encoding operations (most effective lever) |
-| `max_concurrent_jobs` | `[executor]` | CPUs × 2 | Maximum concurrent tile jobs overall |
+| `max_concurrent_jobs` | `[executor]` | 50% of logical CPUs | Maximum concurrent tile jobs overall |
 
 ### Recommended Values
 
@@ -165,7 +172,7 @@ Three settings in `~/.xearthlayer/config.ini` control CPU usage:
 
 | Scenario | `threads` | `cpu_concurrent` | `max_concurrent_jobs` |
 |---|---|---|---|
-| XEL alone (default) | 16 | 20 | 32 |
+| XEL alone (default) | 16 | 8 | 8 |
 | XEL + X-Plane | 6–8 | 6–8 | 12–16 |
 | XEL + X-Plane + streaming | 4 | 4 | 8 |
 

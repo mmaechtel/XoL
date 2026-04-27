@@ -35,17 +35,15 @@ This documentation is an open project. Improvements or additions can be contribu
 
 ## Recent Changes
 
+### 2026-04-27
+- [XEarthLayer](scenery/ortho_streaming/xearthlayer.md) updated for v0.4.4: Long-haul prefetch fix (dead state on flights >2h eliminated, verified on 9h LOWW log), `max_concurrent_jobs` default halved to 50% of logical CPUs for less X-Plane stutter, separate hit rates for Memory/DDS-Disk/Chunks tiers in the TUI
+
 ### 2026-04-08
 - [XEarthLayer](scenery/ortho_streaming/xearthlayer.md) updated for v0.4.3: Three-tier cache with DDS disk layer eliminates re-encoding, speed-proportional prefetch box reduces over-fetching by ~45%, GPU encoding now built-in, CPU concurrency defaults to 50%
 
 ### 2026-04-04
 - [XEarthLayer](scenery/ortho_streaming/xearthlayer.md) updated for v0.4.1: Streaming mipmap architecture cuts peak memory by 21–44%, parallel package downloads, temp directory moved to `~/.xearthlayer/tmp`
 - [SimLoad Manager](addon/flylua_scripts/simloadmanager.md) updated for v3.7: Flight save/resume system, ACARS loadsheet uplink for ToLiss via Hoppie, new aircraft support (Flight Factor 757/767, FPS 747-800)
-
-### 2026-03-21
-- [Tuning Case Study](linux/system/tuning_casestudy.md) rewritten: Three-step diagnosis from micro-stutters to stable frame times — watermark tuning, IO latency, and NVMe power management with real measurements from 16 runs
-- [Swap & Memory Management](linux/system/swap.md) rewritten: Page reclaim mechanics, watermark tuning, swap configuration — zram removed, simplified to disk swap with `watermark_scale_factor=500`
-- [Kernel Tuning](linux/system/systemtuning.md) revised: Streamlined profiles for stock and Liquorix kernels, updated memory and NVMe sections
 
 
 
