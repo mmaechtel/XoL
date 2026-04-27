@@ -1,17 +1,18 @@
 # XEarthLayer -- Aktueller Stand (Recherche)
 
-Recherche-Datum: 2026-04-08 (aktualisiert, Erstrecherche 2026-02-14)
+Recherche-Datum: 2026-04-27 (aktualisiert, Erstrecherche 2026-02-14)
 
 ## 1. Version und Release-Historie
 
 ### Aktuelle Version
 
-**v0.4.3** -- veröffentlicht am 7. April 2026
+**v0.4.4** -- veröffentlicht am 17. April 2026
 
 ### Vollständige Release-Chronologie
 
 | Version | Datum | Highlights |
 |---------|-------|------------|
+| v0.4.4 | 2026-04-17 | Long-Haul-Prefetch-Fix (Dead-State auf Flügen >2 h, mit 9-h-LOWW-Log verifiziert), `max_concurrent_jobs`-Default auf `num_cpus/2` halbiert, Drei-Tier-Cache-Metriken im TUI getrennt (Memory/DDS-Disk/Chunks), Ground- und Cruise-Prefetch in einer `PrefetchBox` vereinheitlicht |
 | v0.4.3 | 2026-04-07 | Config-Audit (15 Keys entfernt, CPU-Concurrency auf 50%), Prefetch-InProgress-Deadstate-Fix (3-Layer-Protection), TUI-Metriken-Fixes |
 | v0.4.2 | 2026-04-06 | DDS-Disk-Cache-Tier (3-Tier-Hierarchie), Speed-proportionale Prefetch-Box, Stale-Telemetry-Safe-Mode, GPU-Encoding built-in (kein Feature-Flag mehr), fuse3 0.9.0, Version-Update-Check |
 | v0.4.1 | 2026-03-29 | Streaming-Mipmap-Architektur (Peak-Memory -21% bis -44%), parallele Paket-Downloads, Temp-Dir nach ~/.xearthlayer/tmp |
@@ -30,7 +31,7 @@ Quelle: https://github.com/samsoir/xearthlayer/releases
 
 ### Entwicklungsgeschwindigkeit
 
-13 Releases in ca. 16 Wochen (16. Dez 2025 bis 7. Apr 2026). Das Projekt ist in einer Phase sehr aktiver Entwicklung.
+14 Releases in ca. 17 Wochen (16. Dez 2025 bis 17. Apr 2026). Das Projekt ist in einer Phase sehr aktiver Entwicklung.
 
 ---
 
@@ -73,14 +74,15 @@ Quelle: https://xearthlayer.app/docs/how-it-works/
 
 LRU-Eviction über In-Memory-Index. Garbage Collection läuft als Executor-Job (async, cancellable).
 
-### Adaptives Prefetch-System (neu in v0.3.0)
+### Adaptives Prefetch-System (Stand v0.4.4)
 
 - **Self-Calibration**: Misst Tile-Generation-Throughput beim initialen Scene Load
 - **Flight Phase Detection**: Ground (< 40 kt Groundspeed) vs. Cruise (> 40 kt)
-- **Ground Strategy**: Ring-basiertes Prefetching um die aktuelle Position
-- **Cruise Strategy**: Track-basiertes Band-Prefetching entlang der prognostizierten Flugroute
+- **Unified PrefetchBox (seit v0.4.4)**: Ground und Cruise teilen einen Code-Pfad — Ground nutzt fixe Extent mit symmetrischer Bias (0.5), Cruise nutzt geschwindigkeitsproportionale Extent mit Heading-Bias (0.8); ersetzt die alte ring-basierte `GroundStrategy` (746 Zeilen Code entfernt)
 - **Drei Modi**: Aggressive (> 30 tiles/sec), Opportunistic (10-30 tiles/sec), Disabled (< 10 tiles/sec)
 - **Circuit Breaker**: Pausiert Prefetch automatisch, wenn X-Plane aktiv Szenen lädt (> 50 FUSE-Requests/sec)
+- **Long-Haul-Stabilität (Fix in v0.4.4, Issue #172)**: Drei zusammenwirkende Bugs (vorzeitiges `mark_in_progress`, unvollständiger `cached_tiles`-Shadow-Set tracked nur ~6% der gecachten Tiles, Chunk- vs. Tile-Coords im DDS-Disk-Lookup) verursachten permanente Dead-States nach >2 h Flugzeit; behoben durch authoritative DDS-Disk-Cache-Queries und mit 9-h-LOWW-Log verifiziert
+- **Debug-Map SSOT (seit v0.4.4)**: Coordinator publiziert Bounds einmal pro Cycle als `BoxBoundsSnapshot`, Debug-Map liest verbatim — keine Drift mehr zwischen Anzeige und Realität. Region-Farben GeoIndex-authoritativ: gelb (InProgress) bis Tile-Verifikation, dann grün (Prefetched), neu orange (Mixed) wenn FUSE Tiles aus prefetchter Region geliefert hat
 
 ### Job Executor Framework (neu in v0.3.0)
 
@@ -263,8 +265,8 @@ Terminal-basiertes TUI-Dashboard mit:
 | Einstellung | Sektion | Default | Funktion |
 |-------------|---------|---------|----------|
 | `threads` | `[generation]` | `num_cpus` | Worker-Threads für Tile-Generierung |
-| `cpu_concurrent` | `[executor]` | `max(num_cpus * 1.25, num_cpus + 2)` | Gleichzeitige CPU-intensive Ops (DDS-Encoding) |
-| `max_concurrent_jobs` | `[control_plane]` | `num_cpus * 2` | Maximale gleichzeitige Tile-Jobs |
+| `cpu_concurrent` | `[executor]` | `num_cpus / 2` (seit v0.4.3) | Gleichzeitige CPU-intensive Ops (DDS-Encoding) |
+| `max_concurrent_jobs` | `[executor]` | `num_cpus / 2` (seit v0.4.4, vorher `ceil(num_cpus × 0.75)`) | Maximale gleichzeitige Tile-Jobs |
 
 **Effektivster Hebel**: `cpu_concurrent` -- begrenzt BC1/BC3-Kompression (ca. 0,2 s pro 4096x4096 Tile).
 
@@ -281,10 +283,10 @@ Terminal-basiertes TUI-Dashboard mit:
 
 | Szenario | `threads` | `cpu_concurrent` | `max_concurrent_jobs` |
 |----------|-----------|------------------|-----------------------|
-| XEL allein (Default) | 16 | 20 | 32 |
-| XEL + X-Plane | 6-8 | 6-8 | 12-16 |
-| XEL + X-Plane + Streaming | 4 | 4 | 8 |
-| XEL im Hintergrund | 2 | 2 | 4 |
+| XEL allein (Default ab v0.4.4) | 16 | 8 | 8 |
+| XEL + X-Plane | 6-8 | 6-8 | 8 |
+| XEL + X-Plane + Streaming | 4 | 4 | 4 |
+| XEL im Hintergrund | 2 | 2 | 2 |
 
 Faustregel: Bei parallelem X-Plane-Betrieb auf die Hälfte der physischen Kerne beschränken.
 
