@@ -9,11 +9,11 @@ LinuxTrack ist eine Head-Tracking-Software für Linux und macOS, die über das [
 
 - **Entwickler:** uglyDwarf (Michal), aktiver Fork: fwfa123 (LinuxTrack X-IR)
 - **Repository:** [github.com/uglyDwarf/linuxtrack](https://github.com/uglyDwarf/linuxtrack) (MIT-Lizenz)
-- **Aktiver Fork:** [github.com/fwfa123/linuxtrackx-ir](https://github.com/fwfa123/linuxtrackx-ir)
+- **Aktiver Fork:** [gitlab.com/fwfa123/linuxtrackx-ir](https://gitlab.com/fwfa123/linuxtrackx-ir) (kanonisches Zuhause; das [GitHub-Repo](https://github.com/fwfa123/linuxtrackx-ir) ist ein Spiegel)
 - **Plattformen:** Linux, macOS
 - **Kompatibilität:** X-Plane 12
 
-Das Originalprojekt wird seit 2016 nicht mehr regulär released und hat eine veraltete Qt4-Abhängigkeit. Der aktive Fork **LinuxTrack X-IR** (v0.99.29, Januar 2026) löst diese Probleme: Qt5/Qt6-Unterstützung, AppImage-Distribution und modernisiertes X-Plane-Plugin.
+Das Originalprojekt wird seit 2016 nicht mehr regulär released und hat eine veraltete Qt4-Abhängigkeit. Der aktive Fork **LinuxTrack X-IR** (v2.0.1, Juni 2026) löst diese Probleme: eine Qt6/CMake-zentrierte Neuarchitektur, eingeführt in v2.0.0 (Mai 2026, die „WOW64-Neuarchitektur"), AppImage-Distribution und modernisiertes X-Plane-Plugin.
 
 ## Funktionsumfang
 
@@ -31,7 +31,7 @@ Head-Tracking verändert das Flugerlebnis grundlegend — natürliche Blickbeweg
 
 **Empfohlen:** Den X-IR Fork als AppImage verwenden.
 
-**Download:** [LinuxTrack X-IR Releases](https://github.com/fwfa123/linuxtrackx-ir/releases)
+**Download:** [LinuxTrack X-IR Releases](https://gitlab.com/fwfa123/linuxtrackx-ir/-/releases) (AppImages werden auf GitLab veröffentlicht)
 
 1. LinuxTrack installieren (AppImage oder aus Quellcode bauen)
 2. LinuxTrack-GUI starten (`ltr_gui`), Tracking-Gerät konfigurieren
@@ -56,5 +56,5 @@ Für Qt5-Unterstützung zusätzlich `qtbase5-dev`.
 ## Quellen
 
 - [LinuxTrack — GitHub](https://github.com/uglyDwarf/linuxtrack)
-- [LinuxTrack X-IR — GitHub](https://github.com/fwfa123/linuxtrackx-ir)
+- [LinuxTrack X-IR — GitLab](https://gitlab.com/fwfa123/linuxtrackx-ir)
 - [LinuxTrack — Wiki](https://github.com/uglyDwarf/linuxtrack/wiki)

@@ -10,7 +10,7 @@ Das [Airport Enhancement Package (AEP)](../../glossary.md#airport-enhancement-pa
 - **Entwickler:** X-Codr Designs
 - **Website:** [x-codrdesigns.com/xp-aep](https://www.x-codrdesigns.com/xp-aep)
 - **Plattformen:** Windows, macOS, Linux
-- **Kompatibilität:** X-Plane 12
+- **Kompatibilität:** X-Plane 11 und 12
 
 ## Funktionsumfang
 
@@ -41,7 +41,7 @@ Die ZIP-Datei von der [offiziellen Website](https://www.x-codrdesigns.com/xp-aep
 **Systemanforderungen:**
 
 - Grafikkarte mit 8 GB [VRAM](../../glossary.md#vram-video-ram) (mindestens 4 GB)
-- 2,1 GB Download-Größe
+- ~2 GB Download-Größe (wächst mit jedem v2-Update)
 
 ## Quellen
 

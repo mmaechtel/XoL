@@ -11,7 +11,7 @@ WINCTRL is a native [plugin](../../glossary.md#plugin) that connects Winwing coc
 - **Repository:** [github.com/rswilem/winctrl-xplane-plugin](https://github.com/rswilem/winctrl-xplane-plugin) (GPL-3.0)
 - **Download:** [X-Plane.org](https://forums.x-plane.org/files/file/95987-winctrl-plugin-for-x-plane-mac-linux-windows/)
 - **Platforms:** Linux, macOS, Windows
-- **Compatibility:** X-Plane 12
+- **Compatibility:** X-Plane 11 and 12
 
 The plugin communicates directly with the hardware via USB HID: it reads button presses, knob rotations, and switch states while driving LCD screens, LED backlighting, and annunciator lights in return. Axes (throttle levers, joystick) are deliberately left to X-Plane's built-in joystick configuration. Development is very active with frequent releases.
 
@@ -43,8 +43,14 @@ Copy the `winctrl` folder to `Resources/plugins/`. The plugin auto-detects conne
 udev rules are required for non-root HID access. Create `/etc/udev/rules.d/99-winctrl.rules`:
 
 ```
-# Winwing/WINCTRL HID devices
-SUBSYSTEM=="hidraw", ATTRS{idVendor}=="1002", MODE="0666"
+# Winwing/WINCTRL HID devices (vendor ID 4098)
+SUBSYSTEM=="hidraw", ATTRS{idVendor}=="4098", MODE="0666"
+```
+
+Winwing's USB HID vendor ID is `4098` — not `1002` (that is the AMD/ATI PCI vendor ID and matches no Winwing device). Device-specific rules follow the README form:
+
+```
+KERNEL=="hidraw*", ATTRS{idProduct}=="...", ATTRS{idVendor}=="4098", MODE="0666", SYMLINK+="..."
 ```
 
 Then reload udev rules:
@@ -53,7 +59,7 @@ Then reload udev rules:
 sudo udevadm control --reload-rules && sudo udevadm trigger
 ```
 
-The complete rule file with device-specific symlinks is documented in the [repository README](https://github.com/rswilem/winctrl-xplane-plugin#linux).
+The complete rule set with device-specific product IDs and symlinks is documented in the [repository README](https://github.com/rswilem/winctrl-xplane-plugin#linux) — use it as the authoritative source.
 
 ## Sources
 

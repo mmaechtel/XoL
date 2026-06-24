@@ -8,11 +8,11 @@ AviTab is an open-source [plugin](../../glossary.md#plugin) for [X-Plane](../../
 ## Background
 
 - **Developer:** Folke Will (fpw), contributors dave6502, mjh65
-- **Repository:** [github.com/fpw/avitab](https://github.com/fpw/avitab) (open source, AGPL-3.0)
+- **Repository:** [github.com/TeamAvitab/avitab](https://github.com/TeamAvitab/avitab) (open source, AGPL-3.0; maintained fork of the archived fpw/avitab)
 - **Platforms:** Windows, macOS, Linux (native binaries)
 - **Compatibility:** X-Plane 11.20+ and X-Plane 12
 
-Development activity is low — the last commit and the latest release (v0.7.1) date from September 2024. The repository is not archived, but there are no signs of upcoming updates.
+Development activity is low — the last commit and the latest release (v0.7.1) date from September 2024. The original [fpw/avitab](https://github.com/fpw/avitab) repository was archived (read-only) in 2026; active maintenance has moved to the [TeamAvitab/avitab](https://github.com/TeamAvitab/avitab) fork.
 
 ## Features
 
@@ -89,7 +89,7 @@ Custom map sources are defined in the `online-maps/mapconfig.json` file in the p
 
 ## Sources
 
-- [AviTab — GitHub](https://github.com/fpw/avitab)
+- [AviTab — GitHub (TeamAvitab fork)](https://github.com/TeamAvitab/avitab)
 - [AviTab v0.7.1 — Release Notes](https://github.com/fpw/avitab/releases/tag/v0.7.1)
 - [AviTab Browser — GitHub](https://github.com/rswilem/avitab-browser)
 - [Issue #232 — PDF crash on Linux](https://github.com/fpw/avitab/issues/232)

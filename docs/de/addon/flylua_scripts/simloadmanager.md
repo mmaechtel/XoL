@@ -11,8 +11,8 @@ SimLoad Manager ist ein [FlyWithLua](../scripting/flywithlua.md)-Skript, das rea
 - **Download:** [X-Plane.org](https://forums.x-plane.org/files/file/93858-simload-manager-realistic-pax-cargo-fuel-ground-operations/)
 - **Plattformen:** Windows, macOS, Linux (reines Lua)
 - **Kompatibilität:** X-Plane 12
-- **Abhängigkeiten:** [FlyWithLua NG+](../scripting/flywithlua.md), [SGES](https://forums.x-plane.org/files/file/62296-simple-ground-equipment-services-low-tech-services/) (für Bodenequipment-Integration)
-- **Optional:** SimBrief-Konto (manuelle Eingabe und Flight Sim Deck ebenfalls als Datenquellen nutzbar)
+- **Abhängigkeiten:** [FlyWithLua NG+](../scripting/flywithlua.md)
+- **Optional:** [SGES](https://forums.x-plane.org/files/file/62296-simple-ground-equipment-services-low-tech-services/) für die visuelle Bodenequipment-Integration; SimBrief-Konto (manuelle Eingabe und Flight Sim Deck ebenfalls als Datenquellen nutzbar)
 
 Das Skript wird aktiv gepflegt und häufig aktualisiert. Unterstützt werden Laminar-Standardflugzeuge (B737-800, A330-300, MD-82), Zibo/Level Up B737-Varianten, ToLiss-Flugzeuge, X-Crafts E-Jets, Flight Factor 757/767 und FPS 747-800. Q4XP ist ausgenommen (nutzt eigenes Tablet-System).
 

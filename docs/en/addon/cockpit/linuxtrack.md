@@ -9,11 +9,11 @@ LinuxTrack is a head-tracking software suite for Linux and macOS that translates
 
 - **Developer:** uglyDwarf (Michal), active fork: fwfa123 (LinuxTrack X-IR)
 - **Repository:** [github.com/uglyDwarf/linuxtrack](https://github.com/uglyDwarf/linuxtrack) (MIT license)
-- **Active fork:** [github.com/fwfa123/linuxtrackx-ir](https://github.com/fwfa123/linuxtrackx-ir)
+- **Active fork:** [gitlab.com/fwfa123/linuxtrackx-ir](https://gitlab.com/fwfa123/linuxtrackx-ir) (canonical home; the [GitHub repo](https://github.com/fwfa123/linuxtrackx-ir) is a mirror)
 - **Platforms:** Linux, macOS
 - **Compatibility:** X-Plane 12
 
-The original project has not had a regular release since 2016 and relies on an outdated Qt4 dependency. The active fork **LinuxTrack X-IR** (v0.99.29, January 2026) addresses these issues: Qt5/Qt6 support, AppImage distribution, and a modernized X-Plane plugin.
+The original project has not had a regular release since 2016 and relies on an outdated Qt4 dependency. The active fork **LinuxTrack X-IR** (v2.0.1, June 2026) addresses these issues: a Qt6/CMake-first rearchitecture introduced in v2.0.0 (May 2026, the "WOW64 rearchitecture"), AppImage distribution, and a modernized X-Plane plugin.
 
 ## Features
 
@@ -31,7 +31,7 @@ Head tracking fundamentally changes the flight experience — natural head movem
 
 **Recommended:** Use the X-IR fork as an AppImage.
 
-**Download:** [LinuxTrack X-IR Releases](https://github.com/fwfa123/linuxtrackx-ir/releases)
+**Download:** [LinuxTrack X-IR Releases](https://gitlab.com/fwfa123/linuxtrackx-ir/-/releases) (AppImages are published on GitLab)
 
 1. Install LinuxTrack (AppImage or build from source)
 2. Launch the LinuxTrack GUI (`ltr_gui`), configure the tracking device
@@ -56,5 +56,5 @@ For Qt5 support, also install `qtbase5-dev`.
 ## Sources
 
 - [LinuxTrack — GitHub](https://github.com/uglyDwarf/linuxtrack)
-- [LinuxTrack X-IR — GitHub](https://github.com/fwfa123/linuxtrackx-ir)
+- [LinuxTrack X-IR — GitLab](https://gitlab.com/fwfa123/linuxtrackx-ir)
 - [LinuxTrack — Wiki](https://github.com/uglyDwarf/linuxtrack/wiki)

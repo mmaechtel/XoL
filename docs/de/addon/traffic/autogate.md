@@ -10,7 +10,7 @@ AutoGate ist ein [Plugin](../../glossary.md#plugin) für [X-Plane](../../glossar
 - **Original:** [Marginal/AutoGate](https://github.com/Marginal/AutoGate) von Jonathan Harris (2006–2017, nicht mehr gepflegt)
 - **XP12-Fork:** [hotbso/AutoGate](https://github.com/hotbso/AutoGate) (X-Plane 12 kompatibel)
 - **Lizenz:** Plugin-Code LGPL-2.1, 3D-Objekte/Texturen CC-BY 3.0
-- **Plattformen:** Windows, macOS, Linux (native Binaries)
+- **Plattformen:** Windows und Linux (der XP12-Fork liefert native Binaries für beide; eine macOS-Binary wird nicht bereitgestellt)
 - **Kompatibilität:** X-Plane 12 (hotbso-Fork)
 
 !!! warning "Legacy-Plugin"
@@ -19,9 +19,8 @@ AutoGate ist ein [Plugin](../../glossary.md#plugin) für [X-Plane](../../glossar
 
 ## Funktionsumfang
 
-- **Animierte Jetways:** Zwei Materialtypen (Glas, Stahl) in verschiedenen Längen (12–32 m)
-- **Docking Guidance Systems:** Safedock-Typen, eigenständiges DGS und Marshaller
-- **Beacon-Steuerung:** Jetway dockt an bei Beacon-Ausschalten (Flugzeug innerhalb 0,5 m der Stoppposition), löst sich bei Beacon-Einschalten
+- **Jetways und DGS:** Zwei Jetway-Typen und vier DGS-Typen (Safedock, eigenständiges DGS und Marshaller)
+- **Andocken beim Abschalten:** Der Jetway dockt an, sobald die Triebwerke abgeschaltet werden und das Flugzeug innerhalb 0,5 m der Stoppposition steht
 
 ## Mehrwert in der Flugsimulation
 

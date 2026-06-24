@@ -8,15 +8,19 @@ AutoDGS stellt an über 5.000 Gateway-Flughäfen automatisch ein Docking Guidanc
 ## Hintergrund
 
 - **Entwickler:** hotbso (auch Entwickler von [openSAM](opensam.md) und [Better Pushback](betterpushback.md) Mod-Fork)
-- **Repository:** [github.com/hotbso/AutoDGS](https://github.com/hotbso/AutoDGS) (Open Source, LGPL-2.1)
+- **Repository:** [github.com/hotbso/AutoDGS](https://github.com/hotbso/AutoDGS) (Open Source; Code LGPL-2.1, 3D-Objekte/Texturen CC-BY, Safedock-T2-24-VDGS CC BY-NC-SA)
 - **Plattformen:** Windows, macOS, Linux (native Binaries)
-- **Kompatibilität:** [X-Plane](../../glossary.md#x-plane) 12
+- **Kompatibilität:** [X-Plane](../../glossary.md#x-plane) 11 und 12 — unter X-Plane 12 ist jedoch [openSAM](opensam.md) v5.x der gepflegte Weg, in das AutoDGS eingegliedert wurde. Das eigenständige AutoDGS ist die Legacy-Linie (XP11 über die eingefrorene 4.x-Version)
 
-AutoDGS wird aktiv gepflegt und erhält regelmäßige Updates. Das [Plugin](../../glossary.md#plugin) ist eigenständig und benötigt keine weiteren Plugins.
+!!! warning "Veraltet — in openSAM eingegliedert"
+
+    Die AutoDGS-Funktionalität wurde in [openSAM](opensam.md) v5.x überführt. Das eigenständige Plugin gilt als veraltet und wird nicht mehr unterstützt (Support nur noch über Discord). Unter X-Plane 12 ersetzt openSAM v5.x das eigenständige AutoDGS.
+
+Das [Plugin](../../glossary.md#plugin) ist eigenständig und benötigt keine weiteren Plugins.
 
 ## Funktionsumfang
 
-- **Automatisches DGS:** Aktiviert sich nach der Landung (Beacon an, Flugzeit erforderlich) und sucht passende Stands in Rollrichtung
+- **Automatisches DGS:** Aktiviert sich nach der Landung und sucht passende Stands in Rollrichtung
 - **Zwei DGS-Typen:** Animierter Marshaller (Bodenpersonal) oder elektronisches VDGS (Safedock-Stil mit Azimut- und Distanzanzeige)
 - **Vorauswahl-Modus:** Manuelle Stand-Auswahl am Boden
 - **SimBrief-Integration:** Zeigt Flugnummer, Ziel und Zeitdaten auf dem VDGS an (erfordert das optionale Plugin [simbrief_hub](../toliss/toliss_ecosystem.md#simbrief_hub))
@@ -25,7 +29,7 @@ AutoDGS wird aktiv gepflegt und erhält regelmäßige Updates. Das [Plugin](../.
 
 ## Mehrwert in der Flugsimulation
 
-Standard-Flughäfen ohne Custom-Szenerie haben kein Docking Guidance System. AutoDGS füllt diese Lücke, indem es an jedem Gateway-Flughafen mit Tower und Stands ein VDGS oder einen Marshaller bereitstellt. Das Plugin ergänzt [openSAM](opensam.md): AutoDGS übernimmt Default-Flughäfen, openSAM kümmert sich um SAM-fähige Custom-Szenerien. Beide Plugins können parallel betrieben werden — AutoDGS überspringt automatisch Flughäfen mit `sam.xml`.
+Standard-Flughäfen ohne Custom-Szenerie haben kein Docking Guidance System. AutoDGS füllt diese Lücke, indem es an jedem Gateway-Flughafen mit Tower und Stands ein VDGS oder einen Marshaller bereitstellt. Unter X-Plane 12 ist diese Funktionalität inzwischen Teil von [openSAM](opensam.md) v5.x, das sowohl Default-/Gateway-Flughäfen als auch SAM-fähige Custom-Szenerien aus einem einzigen Plugin abdeckt. Das frühere Modell, eigenständiges AutoDGS parallel zu openSAM zu betreiben — wobei AutoDGS Flughäfen mit `sam.xml` überspringt — ist Legacy.
 
 ## Installation
 

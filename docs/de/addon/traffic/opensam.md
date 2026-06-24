@@ -8,9 +8,9 @@ openSAM ist ein Open-Source-Ersatz für das kommerzielle SAM-[Plugin](../../glos
 ## Hintergrund
 
 - **Entwickler:** hotbso (auch Entwickler von [AutoDGS](autodgs.md))
-- **Repository:** [github.com/hotbso/openSAM](https://github.com/hotbso/openSAM) (Open Source, LGPL-2.1)
+- **Repository:** [github.com/hotbso/openSAM](https://github.com/hotbso/openSAM) (Open Source; Code LGPL-2.1, Assets/VDGS CC-BY und CC BY-NC-SA)
 - **Plattformen:** Windows, macOS, Linux (native Binaries)
-- **Kompatibilität:** [X-Plane](../../glossary.md#x-plane) 11 und X-Plane 12 (separate Builds)
+- **Kompatibilität:** nur [X-Plane](../../glossary.md#x-plane) 12 — das aktuelle openSAM (v5.x) läuft ausschließlich unter XP12. XP11-Nutzer müssen bei einer Legacy-4.x-Version bleiben, die nicht mehr aktiv weiterentwickelt wird
 
 openSAM wird aktiv gepflegt und ist der empfohlene Nachfolger des kommerziellen SAM-Plugins, das ab X-Plane 12.4 nicht mehr geladen wird. openSAM liest die originalen `sam.xml`-Konfigurationsdateien der Szenerien und ist somit ein Drop-in-Ersatz.
 
@@ -27,7 +27,7 @@ openSAM wird aktiv gepflegt und ist der empfohlene Nachfolger des kommerziellen 
 
 ## Mehrwert in der Flugsimulation
 
-Viele hochwertige Custom-Szenerien wurden für das kommerzielle SAM-Plugin entwickelt. Da SAM ab X-Plane 12.4 nicht mehr funktioniert, übernimmt openSAM diese Rolle als kostenloser Open-Source-Ersatz. In Kombination mit [AutoDGS](autodgs.md) (für Default-Flughäfen) ergibt sich eine vollständige Abdeckung: openSAM für Custom-Szenerien, AutoDGS für alle anderen Flughäfen.
+Viele hochwertige Custom-Szenerien wurden für das kommerzielle SAM-Plugin entwickelt. Da SAM ab X-Plane 12.4 nicht mehr funktioniert, übernimmt openSAM diese Rolle als kostenloser Open-Source-Ersatz. Ab v5.x ist [AutoDGS](autodgs.md) in openSAM integriert, sodass es Default-/Gateway-Flughäfen ebenso wie SAM-fähige Custom-Szenerien aus einem einzigen Plugin abdeckt — eine separate AutoDGS-Installation ist unter X-Plane 12 nicht mehr erforderlich.
 
 ## Installation
 

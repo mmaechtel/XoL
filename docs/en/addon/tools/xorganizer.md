@@ -5,13 +5,19 @@ description: "XOrganizer manages X-Plane scenery, plugins, and profiles — with
 
 XOrganizer is a powerful tool for managing and organizing X-Plane addons. It supports the management of sceneries, plugins, and other addons to avoid conflicts and optimize performance.
 
+!!! warning "No native Linux support"
+
+    XOrganizer is a Windows-only .NET/WPF application — there is **no native Linux build**. It runs only under [Wine](../../linux/extensions/wine.md), and even then unreliably: WPF rendering fails on most setups, the .NET Framework install is fragile, and XOrganizer writes Windows-style backslash paths into `scenery_packs.ini`, which X-Plane on Linux does not recognise.
+
+    For the core use case — sorting `scenery_packs.ini` — the native Python alternative **[Scenery Pack Organiser](https://github.com/iy4vet/SceneryPacksOrganiser)** is recommended on Linux. It covers ordering and conflict-aware sorting, though not XOrganizer's advanced profile and plugin features.
+
 > **Important Note**: Many of XOrganizer's powerful features only become apparent through thorough reading of the documentation. It is highly recommended to study the official documentation to fully unlock the tool's potential.
 
 ## Installation
 
 1. The official website of XOrganizer can be found at [4xplane.nl/xorganizer/](https://www.4xplane.nl/xorganizer/)
-2. Information about purchasing the tool is available on the official website
-3. After purchase, the download link will be provided and the tool can be installed in any desired folder
+2. XOrganizer is donationware — free to use, with an optional donation; there is no mandatory purchase
+3. Download it from the official website and install it in any desired folder
 
 ## Basic Usage
 
@@ -59,7 +65,7 @@ Through the automatic deactivation of unnecessary components, system performance
 - **Backup Function**: Backup and restore configurations
 - **Scenery Library**: Management of scenery downloads and installations
 - **Log Analysis**: Automatic analysis of X-Plane logs for issues
-- **Automatic Updates**: Regular updates with new features
+- **Updates**: New versions are downloaded manually from 4xplane.nl (no in-app auto-update)
 - **Custom Categories**: Creation of custom categories for special sceneries
 
 ## Tips and Tricks
@@ -67,7 +73,7 @@ Through the automatic deactivation of unnecessary components, system performance
 - It is recommended to create separate profiles for different flight areas
 - Conflict checking should be performed before each flight
 - Regular backups of the configuration are recommended
-- XOrganizer should be updated regularly to receive new features
+- New versions are downloaded manually from 4xplane.nl when available
 - The automatic categorization serves as a good starting point
 - Custom categories can be created for special sceneries
 
@@ -77,7 +83,7 @@ If problems occur:
 - The log files in XOrganizer should be checked
 - It should be ensured that the latest version is being used
 - Resetting the profile can be attempted
-- The [XOrganizer Forum](https://forums.x-plane.org/forums/forum/456-xorganizer/) offers additional help
+- The official [4xplane.nl/xorganizer](https://www.4xplane.nl/xorganizer/) page offers documentation and support
 
 ## Recommendation
 
@@ -96,3 +102,8 @@ The investment in XOrganizer is especially worthwhile when:
 - Time should be saved in managing the X-Plane installation
 
 The tool not only saves time in managing sceneries but also helps avoid performance issues and achieve the best possible visual quality.
+
+## Sources
+
+- [XOrganizer — 4xplane.nl](https://www.4xplane.nl/xorganizer/)
+- [Scenery Pack Organiser — GitHub](https://github.com/iy4vet/SceneryPacksOrganiser)

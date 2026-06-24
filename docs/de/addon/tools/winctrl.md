@@ -11,7 +11,7 @@ WINCTRL ist ein natives [Plugin](../../glossary.md#plugin), das Winwing-Cockpitp
 - **Repository:** [github.com/rswilem/winctrl-xplane-plugin](https://github.com/rswilem/winctrl-xplane-plugin) (GPL-3.0)
 - **Download:** [X-Plane.org](https://forums.x-plane.org/files/file/95987-winctrl-plugin-for-x-plane-mac-linux-windows/)
 - **Plattformen:** Linux, macOS, Windows
-- **Kompatibilität:** X-Plane 12
+- **Kompatibilität:** X-Plane 11 und 12
 
 Das Plugin kommuniziert direkt über USB-HID mit der Hardware: es liest Tasten, Drehregler und Schalter aus und steuert im Gegenzug LCD-Displays, LED-Beleuchtung und Annunciatoren. Achsen (Schubhebel, Joystick) werden bewusst X-Planes interner Joystick-Konfiguration überlassen. Die Entwicklung ist sehr aktiv mit regelmäßigen Releases.
 
@@ -43,8 +43,14 @@ Den Ordner `winctrl` nach `Resources/plugins/` kopieren. Das Plugin erkennt ange
 Für den HID-Zugriff ohne Root-Rechte sind udev-Regeln erforderlich. Datei `/etc/udev/rules.d/99-winctrl.rules` anlegen:
 
 ```
-# Winwing/WINCTRL HID-Geräte
-SUBSYSTEM=="hidraw", ATTRS{idVendor}=="1002", MODE="0666"
+# Winwing/WINCTRL HID-Geräte (Vendor-ID 4098)
+SUBSYSTEM=="hidraw", ATTRS{idVendor}=="4098", MODE="0666"
+```
+
+Die USB-HID-Vendor-ID von Winwing lautet `4098` — nicht `1002` (das ist die AMD/ATI-PCI-Vendor-ID und passt auf kein Winwing-Gerät). Gerätespezifische Regeln folgen der README-Form:
+
+```
+KERNEL=="hidraw*", ATTRS{idProduct}=="...", ATTRS{idVendor}=="4098", MODE="0666", SYMLINK+="..."
 ```
 
 Danach udev-Regeln neu laden:
@@ -53,7 +59,7 @@ Danach udev-Regeln neu laden:
 sudo udevadm control --reload-rules && sudo udevadm trigger
 ```
 
-Die vollständige Regel-Datei mit gerätespezifischen Symlinks ist im [Repository-README](https://github.com/rswilem/winctrl-xplane-plugin#linux) dokumentiert.
+Der vollständige Regelsatz mit gerätespezifischen Produkt-IDs und Symlinks ist im [Repository-README](https://github.com/rswilem/winctrl-xplane-plugin#linux) dokumentiert — er ist als verbindliche Quelle zu verwenden.
 
 ## Quellen
 

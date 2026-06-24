@@ -8,9 +8,9 @@ openSAM is an open-source replacement for the commercial SAM [plugin](../../glos
 ## Background
 
 - **Developer:** hotbso (also developer of [AutoDGS](autodgs.md))
-- **Repository:** [github.com/hotbso/openSAM](https://github.com/hotbso/openSAM) (open source, LGPL-2.1)
+- **Repository:** [github.com/hotbso/openSAM](https://github.com/hotbso/openSAM) (open source; code LGPL-2.1, assets/VDGS CC-BY and CC BY-NC-SA)
 - **Platforms:** Windows, macOS, Linux (native binaries)
-- **Compatibility:** [X-Plane](../../glossary.md#x-plane) 11 and X-Plane 12 (separate builds)
+- **Compatibility:** [X-Plane](../../glossary.md#x-plane) 12 only — the current openSAM (v5.x) runs on XP12 exclusively. XP11 users must stick to a legacy 4.x release, which is no longer actively developed
 
 openSAM is actively maintained and is the recommended successor to the commercial SAM plugin, which is no longer loaded starting with X-Plane 12.4. openSAM reads the original `sam.xml` configuration files from sceneries and serves as a drop-in replacement.
 
@@ -27,7 +27,7 @@ openSAM is actively maintained and is the recommended successor to the commercia
 
 ## Value in Flight Simulation
 
-Many high-quality custom sceneries were developed for the commercial SAM plugin. Since SAM no longer works with X-Plane 12.4, openSAM takes over this role as a free open-source replacement. Combined with [AutoDGS](autodgs.md) (for default airports), this provides full coverage: openSAM for custom sceneries, AutoDGS for all other airports.
+Many high-quality custom sceneries were developed for the commercial SAM plugin. Since SAM no longer works with X-Plane 12.4, openSAM takes over this role as a free open-source replacement. As of v5.x, openSAM also incorporates [AutoDGS](autodgs.md), so it covers default gateway airports as well as SAM-enabled custom sceneries from a single plugin — a separate AutoDGS installation is no longer needed on X-Plane 12.
 
 ## Installation
 

@@ -75,7 +75,7 @@ Plays flight attendant and captain announcements and manages ECAM Cabin Ready. [
 
 FlyWithLua script that announces autopilot mode changes (CLB, OP CLB, SPEED, NAV, G/S) via text-to-speech. Reads the blue FMA values from the upper PFD box. On Linux, [XLinSpeak](../tools/xlinspeak.md) is required for audible output. [→ Detail page](dk_toliss_callout.md)
 
-- **Developer:** cxn0026
+- **Developer:** DINKIssTyle
 - **Requires:** FlyWithLua
 - **Download:** [forums.x-plane.org](https://forums.x-plane.org/files/file/91367-toliss-airbus-fma-callout-flywithlua-script/)
 
@@ -115,7 +115,7 @@ Comprehensive FO/PM assistant that handles First Officer and Pilot Monitoring ta
 Lua-based mod that simulates icing on cockpit and cabin windows. Takes into account relative humidity, OAT, and spread. Ice clears only with active window heat / pitot heat and melts with realistic animation. Visual effects for A320 only; the Lua code also works with A346 and A339.
 
 - **Requires:** FlyWithLua
-- **Download:** [forums.x-plane.org](https://forums.x-plane.org/files/category/9-utilities/)
+- **Download:** [forums.x-plane.org](https://forums.x-plane.org/files/file/98503-toliss-a320-windows-icing-cabin-rain/)
 
 ## Boarding & Ground
 

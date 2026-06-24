@@ -7,7 +7,7 @@ FlyWithLua NG+ ist eine Lua-Scripting-Engine für [X-Plane](../../glossary.md#x-
 
 ## Hintergrund
 
-- **Entwickler:** X-Friese (Florian Schmid), Maintainer sparker256 / smoothchat
+- **Entwickler:** X-Friese (Carsten Lynker), Maintainer sparker256 / smoothchat
 - **Repository:** [github.com/X-Friese/FlyWithLua](https://github.com/X-Friese/FlyWithLua) (Open Source, MIT-Lizenz)
 - **Plattformen:** Windows, macOS, Linux (native Binaries)
 - **Kompatibilität:** X-Plane 12 (NG+ Edition), X-Plane 11 (ältere NG-Edition)

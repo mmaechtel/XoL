@@ -35,15 +35,14 @@ Diese Dokumentation ist ein offenes Projekt. Verbesserungen oder Ergänzungen k�
 
 ## Letzte Änderungen
 
+### 2026-06-24
+- Neue Seite [X-ProTurb](addon/flylua_scripts/xproturb.md): physikbasierte Turbulenz-Engine für X-Plane 12, modelliert die Atmosphäre nach MIL-F-8785C, FAR 25.341 und ICAO 9625 Level-D mit flugzeugspezifischer 6-DOF-Reaktion, von-Kármán-/Dryden-Spektren, CAT, Mountain-Wave- und CB-/Sturmmodellierung
+
 ### 2026-04-27
 - [XEarthLayer](scenery/ortho_streaming/xearthlayer.md) aktualisiert auf v0.4.4: Long-Haul-Prefetch-Fix (Dead-State auf Flügen >2 h behoben, mit 9-Stunden-LOWW-Log verifiziert), `max_concurrent_jobs`-Standard auf 50% der logischen CPUs halbiert für weniger X-Plane-Stuttering, getrennte Hit-Raten für Memory/DDS-Disk/Chunks-Ebenen im TUI
 
 ### 2026-04-08
 - [XEarthLayer](scenery/ortho_streaming/xearthlayer.md) aktualisiert auf v0.4.3: Dreistufiger Cache mit DDS-Disk-Ebene vermeidet Re-Encoding, geschwindigkeitsproportionale Prefetch-Box reduziert Over-Fetching um ~45%, GPU-Encoding jetzt integriert, CPU-Parallelität standardmäßig auf 50%
-
-### 2026-04-04
-- [XEarthLayer](scenery/ortho_streaming/xearthlayer.md) aktualisiert auf v0.4.1: Streaming-Mipmap-Architektur senkt Peak-Memory um 21–44%, parallele Paket-Downloads, Temp-Verzeichnis nach `~/.xearthlayer/tmp` verschoben
-- [SimLoad Manager](addon/flylua_scripts/simloadmanager.md) aktualisiert auf v3.7: Flight-Save/Resume-System, ACARS-Loadsheet-Uplink für ToLiss via Hoppie, neue Flugzeuge (Flight Factor 757/767, FPS 747-800)
 
 
 

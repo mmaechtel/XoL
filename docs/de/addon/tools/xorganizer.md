@@ -5,13 +5,19 @@ description: "XOrganizer verwaltet X-Plane-Szenerien, Plugins und Profile — mi
 
 XOrganizer ist ein leistungsstarkes Tool zur Verwaltung und Organisation von X-Plane Addons. Es unterstützt die Verwaltung von Szenerien, Plugins und anderen Addons, um Konflikte zu vermeiden und die Leistung zu optimieren.
 
+!!! warning "Kein nativer Linux-Support"
+
+    XOrganizer ist eine Windows-only .NET/WPF-Anwendung — es existiert **kein nativer Linux-Build**. Es läuft nur unter [Wine](../../linux/extensions/wine.md), und selbst dann unzuverlässig: Das WPF-Rendering schlägt auf den meisten Systemen fehl, die Installation des .NET-Frameworks ist fragil, und XOrganizer schreibt Pfade mit Windows-Backslashes in die `scenery_packs.ini`, die X-Plane unter Linux nicht erkennt.
+
+    Für den Kernanwendungsfall — das Sortieren der `scenery_packs.ini` — wird unter Linux die native Python-Alternative **[Scenery Pack Organiser](https://github.com/iy4vet/SceneryPacksOrganiser)** empfohlen. Sie deckt die Sortierung und konfliktbewusste Anordnung ab, jedoch nicht die erweiterten Profil- und Plugin-Funktionen von XOrganizer.
+
 > **Wichtiger Hinweis**: Viele der leistungsstarken Funktionen von XOrganizer erschließen sich erst durch das gründliche Lesen der Dokumentation. Es wird dringend empfohlen, die offizielle Dokumentation zu studieren, um das volle Potenzial des Tools auszuschöpfen.
 
 ## Installation
 
 1. Die offizielle Website von XOrganizer ist unter [4xplane.nl/xorganizer/](https://www.4xplane.nl/xorganizer/) zu finden
-2. Informationen zum Kauf des Tools sind auf der offiziellen Website verfügbar
-3. Nach dem Kauf wird der Download-Link bereitgestellt und das Tool kann in einem beliebigen Ordner installiert werden
+2. XOrganizer ist Donationware — kostenlos nutzbar, mit optionaler Spende; ein verpflichtender Kauf besteht nicht
+3. Das Tool wird von der offiziellen Website heruntergeladen und kann in einem beliebigen Ordner installiert werden
 
 ## Grundlegende Verwendung
 
@@ -59,7 +65,7 @@ Durch die automatische Deaktivierung unnötiger Komponenten wird die Systemleist
 - **Backup-Funktion**: Sichern und Wiederherstellen von Konfigurationen
 - **Szenerie-Bibliothek**: Verwaltung von Szenerie-Downloads und Installationen
 - **Log-Analyse**: Automatische Analyse von X-Plane-Logs auf Probleme
-- **Automatische Updates**: Regelmäßige Updates mit neuen Funktionen
+- **Updates**: Neue Versionen werden manuell von 4xplane.nl heruntergeladen (kein integriertes Auto-Update)
 - **Benutzerdefinierte Kategorien**: Erstellung benutzerdefinierter Kategorien für spezielle Szenerien
 
 ## Tipps und Tricks
@@ -67,7 +73,7 @@ Durch die automatische Deaktivierung unnötiger Komponenten wird die Systemleist
 - Es wird empfohlen, separate Profile für verschiedene Fluggebiete zu erstellen
 - Vor jedem Flug sollte eine Konfliktprüfung durchgeführt werden
 - Regelmäßige Backups der Konfiguration werden empfohlen
-- XOrganizer sollte regelmäßig aktualisiert werden, um neue Funktionen zu erhalten
+- Neue Versionen werden bei Verfügbarkeit manuell von 4xplane.nl heruntergeladen
 - Die automatische Kategorisierung dient als guter Ausgangspunkt
 - Für spezielle Szenerien können benutzerdefinierte Kategorien erstellt werden
 
@@ -78,7 +84,7 @@ Bei Problemen:
 - Die Log-Dateien in XOrganizer sollten überprüft werden
 - Es sollte sichergestellt werden, dass die neueste Version verwendet wird
 - Ein Zurücksetzen des Profils kann versucht werden
-- Das [XOrganizer-Forum](https://forums.x-plane.org/forums/forum/456-xorganizer/) bietet weitere Hilfe
+- Die offizielle Seite [4xplane.nl/xorganizer](https://www.4xplane.nl/xorganizer/) bietet Dokumentation und Support
 
 ## Empfehlung
 
@@ -97,3 +103,8 @@ Die Investition in XOrganizer lohnt sich besonders, wenn:
 - Zeit bei der Verwaltung der X-Plane-Installation gespart werden soll
 
 Das Tool spart nicht nur Zeit bei der Verwaltung der Szenerien, sondern hilft auch, Leistungsprobleme zu vermeiden und die bestmögliche visuelle Qualität zu erreichen.
+
+## Quellen
+
+- [XOrganizer — 4xplane.nl](https://www.4xplane.nl/xorganizer/)
+- [Scenery Pack Organiser — GitHub](https://github.com/iy4vet/SceneryPacksOrganiser)

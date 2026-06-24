@@ -8,15 +8,19 @@ AutoDGS automatically provides a Docking Guidance System (VDGS or marshaller) at
 ## Background
 
 - **Developer:** hotbso (also developer of [openSAM](opensam.md) and the [Better Pushback](betterpushback.md) Mod fork)
-- **Repository:** [github.com/hotbso/AutoDGS](https://github.com/hotbso/AutoDGS) (open source, LGPL-2.1)
+- **Repository:** [github.com/hotbso/AutoDGS](https://github.com/hotbso/AutoDGS) (open source; code LGPL-2.1, 3D objects/textures CC-BY, Safedock-T2-24 VDGS CC BY-NC-SA)
 - **Platforms:** Windows, macOS, Linux (native binaries)
-- **Compatibility:** [X-Plane](../../glossary.md#x-plane) 12
+- **Compatibility:** [X-Plane](../../glossary.md#x-plane) 11 and 12 — but on X-Plane 12 the maintained path is [openSAM](opensam.md) v5.x, into which AutoDGS has been merged. The standalone AutoDGS is the legacy line (XP11 via the frozen 4.x release)
 
-AutoDGS is actively maintained with regular updates. The [plugin](../../glossary.md#plugin) is standalone and does not require any other plugins.
+!!! warning "Deprecated — merged into openSAM"
+
+    AutoDGS functionality has been folded into [openSAM](opensam.md) v5.x. The standalone plugin is deprecated and no longer supported (support is Discord-only). On X-Plane 12, openSAM v5.x replaces standalone AutoDGS.
+
+The [plugin](../../glossary.md#plugin) is standalone and does not require any other plugins.
 
 ## Features
 
-- **Automatic DGS:** Activates after landing (beacon on, airtime required) and searches for suitable stands in taxi direction
+- **Automatic DGS:** Activates after landing and searches for suitable stands in taxi direction
 - **Two DGS types:** Animated marshaller (ground crew) or electronic VDGS (Safedock-style with azimuth and distance guidance)
 - **Preselect mode:** Manual stand selection while on the ground
 - **SimBrief integration:** Displays flight number, destination, and timing data on the VDGS (requires the optional [simbrief_hub](../toliss/toliss_ecosystem.md#simbrief_hub) plugin)
@@ -25,7 +29,7 @@ AutoDGS is actively maintained with regular updates. The [plugin](../../glossary
 
 ## Value in Flight Simulation
 
-Default airports without custom scenery have no docking guidance system. AutoDGS fills this gap by providing a VDGS or marshaller at every gateway airport with a tower and stands. The plugin complements [openSAM](opensam.md): AutoDGS handles default airports, openSAM takes care of SAM-enabled custom sceneries. Both plugins can run in parallel — AutoDGS automatically skips airports with a `sam.xml`.
+Default airports without custom scenery have no docking guidance system. AutoDGS fills this gap by providing a VDGS or marshaller at every gateway airport with a tower and stands. On X-Plane 12 this functionality now lives in [openSAM](opensam.md) v5.x, which covers both default/gateway airports and SAM-enabled custom sceneries from a single plugin. The earlier model of running standalone AutoDGS in parallel with openSAM — with AutoDGS skipping airports that have a `sam.xml` — is legacy.
 
 ## Installation
 

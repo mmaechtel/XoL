@@ -8,7 +8,7 @@ xa-snow ist ein eigenständiges [Plugin](../../glossary.md#plugin) von hotbso, d
 ## Hintergrund
 
 - **Entwickler:** hotbso (Holger Teutsch), ursprünglich von zodiac1214
-- **Repository:** [github.com/hotbso/xa-snow](https://github.com/hotbso/xa-snow) (Open Source, LGPL-2.1)
+- **Repository:** [github.com/hotbso/xa-snow](https://github.com/hotbso/xa-snow) (Open Source, GPL-3.0; libspng-Komponente BSD-2-Clause)
 - **Plattformen:** Windows, macOS, Linux (native Binaries)
 - **Kompatibilität:** [X-Plane](../../glossary.md#x-plane) 12
 

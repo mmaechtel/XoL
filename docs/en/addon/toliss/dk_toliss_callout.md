@@ -7,7 +7,7 @@ DK Toliss Callout is a [FlyWithLua](../scripting/flywithlua.md) script that prov
 
 ## Background
 
-- **Developer:** cxn0026
+- **Developer:** DINKIssTyle
 - **Download:** [X-Plane.org](https://forums.x-plane.org/files/file/91367-toliss-airbus-fma-callout-flywithlua-script/)
 - **Platforms:** Windows, macOS, Linux (pure Lua)
 - **Compatibility:** X-Plane 12

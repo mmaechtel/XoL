@@ -27,22 +27,25 @@ LiveTraffic wird aktiv gepflegt und nutzt die [XPMP2](https://github.com/TwinFan
 
 ### Datenquellen
 
-Drei Kanäle funktionieren sofort ohne Registrierung:
+Mehrere Kanäle funktionieren sofort ohne Registrierung:
 
 | Kanal | Kosten | Hinweise |
 |-------|--------|----------|
+| Airplanes.live | Kostenlos | Anonym, standardmäßig aktiviert |
 | adsb.fi | Kostenlos | Funktioniert sofort, anonym, standardmäßig aktiviert |
 | OpenSky Network | Kostenlos | Anonym oder registriert, Abfragelimits gelten |
 | Open Glider Network | Kostenlos | Anonym, unbegrenzt |
+| SayIntentions | Kostenlos | Anonym, virtueller Verkehr |
+| AutoATC | Kostenlos | Anonym, virtueller Verkehr |
 
 Weitere Kanäle (Registrierung oder Abo erforderlich):
 
 | Kanal | Kosten | Hinweise |
 |-------|--------|----------|
 | RealTraffic | Kostenpflichtig | Umfassendste Quelle mit geparkten Flugzeugen und Wetterdaten |
-| ADSBHub | Kostenlos | Nur für registrierte Daten-Feeder |
+| ADSBHub | Kostenlos für aktive Daten-Feeder | Erfordert einen aktiven ADSBHub-Feed |
 | ADS-B Exchange | Kostenpflichtig | API-Key erforderlich |
-| FSCharter v2 | Kostenlos | Virtuelles Verkehrsnetzwerk |
+| FSCharter | Kostenlos (Konto erforderlich) | Virtuelles Verkehrsnetzwerk, erfordert ein registriertes FSCharter-Konto |
 
 ## Mehrwert in der Flugsimulation
 

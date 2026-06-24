@@ -43,4 +43,4 @@ Es werden keine zusätzlichen Systempakete benötigt. Es sind keine Linux-spezif
 ## Quellen
 
 - [XGS — GitHub](https://github.com/hotbso/xgs)
-- [XGS — forums.x-plane.org](https://forums.x-plane.org/files/file/48018-landing-speed-plugin-reloaded/)
+- [XGS — forums.x-plane.org](https://forums.x-plane.org/files/file/45734-landing-speed-plugin-xgs-reloaded/)

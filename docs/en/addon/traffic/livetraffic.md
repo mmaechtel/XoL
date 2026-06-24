@@ -27,22 +27,25 @@ LiveTraffic is actively maintained and uses the [XPMP2](https://github.com/TwinF
 
 ### Data Sources
 
-Three channels work immediately without registration:
+Several channels work immediately without registration:
 
 | Channel | Cost | Notes |
 |---------|------|-------|
+| Airplanes.live | Free | Anonymous, enabled by default |
 | adsb.fi | Free | Works out of the box, anonymous, enabled by default |
 | OpenSky Network | Free | Anonymous or registered, request limits apply |
 | Open Glider Network | Free | Anonymous, unlimited |
+| SayIntentions | Free | Anonymous, virtual traffic |
+| AutoATC | Free | Anonymous, virtual traffic |
 
 Additional channels (registration or subscription required):
 
 | Channel | Cost | Notes |
 |---------|------|-------|
 | RealTraffic | Paid | Most comprehensive source with parked aircraft and weather data |
-| ADSBHub | Free | Only for registered data feeders |
+| ADSBHub | Free for active data feeders | Requires an active ADSBHub feed |
 | ADS-B Exchange | Paid | API key required |
-| FSCharter v2 | Free | Virtual traffic network |
+| FSCharter | Free (account required) | Virtual traffic network, requires a registered FSCharter account |
 
 ## Value in Flight Simulation
 
