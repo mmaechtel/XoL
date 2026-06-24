@@ -37,6 +37,8 @@ Diese Dokumentation ist ein offenes Projekt. Verbesserungen oder Ergänzungen k�
 
 ### 2026-06-24
 - Neue Seite [X-ProTurb](addon/flylua_scripts/xproturb.md): physikbasierte Turbulenz-Engine für X-Plane 12, modelliert die Atmosphäre nach MIL-F-8785C, FAR 25.341 und ICAO 9625 Level-D mit flugzeugspezifischer 6-DOF-Reaktion, von-Kármán-/Dryden-Spektren, CAT, Mountain-Wave- und CB-/Sturmmodellierung
+- [XEarthLayer](scenery/ortho_streaming/xearthlayer.md) aktualisiert auf v0.4.6: vierstufiger Setup-Wizard mit dynamischer Disk-Cache-Dimensionierung (25% des freien Speichers) und RAM-basiertem Memory-Cache, GPU-Adapter-Auswahlschritt sowie Cache-Fix, sodass Kacheln aus fehlgeschlagenen Downloads nicht mehr gespeichert werden
+- [AutoOrtho](scenery/ortho_streaming/autoortho.md) um die neuesten Features des ProgrammingDinosaur-Forks erweitert: vereinheitlichte Single-Process-Architektur über alle Betriebssysteme, VRAM-Optimierung durch dynamische DDS-Dimensionierung und schlanke Karten-UI ohne gebündelten Chromium-Browser
 
 ### 2026-04-27
 - [XEarthLayer](scenery/ortho_streaming/xearthlayer.md) aktualisiert auf v0.4.4: Long-Haul-Prefetch-Fix (Dead-State auf Flügen >2 h behoben, mit 9-Stunden-LOWW-Log verifiziert), `max_concurrent_jobs`-Standard auf 50% der logischen CPUs halbiert für weniger X-Plane-Stuttering, getrennte Hit-Raten für Memory/DDS-Disk/Chunks-Ebenen im TUI

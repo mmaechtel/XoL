@@ -8,12 +8,14 @@ description: "XEarthLayer is a Rust-based ortho streaming tool for X-Plane 12 on
 !!! note "Active Development"
     XEarthLayer is a young project under active development. Current versions run stably, but feature scope may change between releases.
 
-!!! note "What's new in v0.4.4 (Apr 2026)"
+!!! note "What's new in v0.4.6 (May 2026)"
 
-    - Prefetch coverage no longer degrades on flights >2 hours — three interacting defects fixed (verified on a 9-hour LOWW flight log)
-    - `max_concurrent_jobs` default lowered to 50% of logical CPUs — reduces X-Plane stutter during heavy prefetch
-    - TUI now shows separate hit rates for Memory, DDS-Disk and Chunks tiers
-    - Ground and cruise prefetch unified under a single `PrefetchBox` (internal cleanup)
+    - Setup wizard restructured into four steps: Custom Scenery → Package Location → Cache Configuration → DDS Encoding
+    - Cache step adds dynamic disk-cache sizing (default 25% of free space, floored to 10 GB) and RAM-based memory-cache defaults
+    - GPU encoding step enumerates adapters and warns on multi-GPU systems
+    - `packages.disable_overlays` suppresses overlay loading while keeping cached packages; sensitive keys (`google_api_key`, `mapbox_access_token`) are masked in config output
+    - Multi-part downloads consolidated to a single strategy with per-part retry; installs run a pre-flight disk-space check and abort cleanly on the first failure
+    - **v0.4.5:** tiles assembled from failed chunk downloads are no longer cached — magenta-filled DDS tiles no longer persist across scenery reloads; purge any leftovers via `xearthlayer cache clear`
 
 ## How It Works
 
@@ -49,7 +51,7 @@ XEarthLayer uses a three-tier cache hierarchy:
 2. **DDS disk cache**: Encoded DDS tiles persist to disk, avoiding re-encoding on memory eviction (~3.5 ms NVMe read vs ~50--200 ms re-encode). Budget split configurable via `cache.dds_disk_ratio` (default 60% DDS, 40% chunks)
 3. **Chunk disk cache**: Raw downloaded tiles are persistently stored in region-based subdirectories with parallel scanning for fast startup
 
-When the configured cache size is reached, older tiles are automatically removed to make room for new ones.
+When the configured cache size is reached, older tiles are automatically removed to make room for new ones. Since v0.4.6 the setup wizard sizes the disk cache dynamically (default 25% of free space, floored to 10 GB) and derives the memory-cache budget from available RAM.
 
 ### Adaptive Prefetch
 
@@ -106,7 +108,7 @@ make install            # Installs to ~/.local/bin
 xearthlayer setup
 ```
 
-The setup process configures the cache directory and the link to the X-Plane [Custom Scenery](../../glossary.md#custom-scenery) folder. Temporary files are stored in `~/.xearthlayer/tmp` (not the system `/tmp`, which is often RAM-backed and can cause out-of-memory issues).
+The setup process runs a four-step wizard — Custom Scenery → Package Location → Cache Configuration → DDS Encoding — that configures the link to the X-Plane [Custom Scenery](../../glossary.md#custom-scenery) folder, the package location, cache sizing, and the encoding backend (including GPU adapter selection). Temporary files are stored in `~/.xearthlayer/tmp` (not the system `/tmp`, which is often RAM-backed and can cause out-of-memory issues).
 
 ## Usage
 

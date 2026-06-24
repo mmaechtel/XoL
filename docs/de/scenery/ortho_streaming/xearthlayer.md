@@ -8,12 +8,14 @@ description: "XEarthLayer ist ein Rust-basiertes Ortho-Streaming-Tool für X-Pla
 !!! note "Aktive Entwicklung"
     XEarthLayer ist ein junges Projekt in aktiver Entwicklung. Aktuelle Versionen laufen stabil, der Funktionsumfang kann sich zwischen Releases aber noch ändern.
 
-!!! note "Neu in v0.4.4 (Apr 2026)"
+!!! note "Neu in v0.4.6 (Mai 2026)"
 
-    - Prefetch-Abdeckung bricht nicht mehr nach >2 Stunden Flugzeit ein — drei zusammenwirkende Defekte behoben (verifiziert mit 9-stündigem LOWW-Flug-Log)
-    - `max_concurrent_jobs`-Standard auf 50% der logischen CPUs gesenkt — reduziert X-Plane-Stuttering bei intensivem Prefetch
-    - TUI zeigt nun getrennte Hit-Raten für Memory, DDS-Disk und Chunks
-    - Ground- und Cruise-Prefetch werden über eine gemeinsame `PrefetchBox` abgewickelt (interner Refactor)
+    - Setup-Wizard in vier Schritte umstrukturiert: Custom Scenery → Paket-Speicherort → Cache-Konfiguration → DDS-Encoding
+    - Cache-Schritt mit dynamischer Disk-Cache-Dimensionierung (Standard 25% des freien Speichers, Untergrenze 10 GB) und RAM-basierten Memory-Cache-Standards
+    - GPU-Encoding-Schritt listet Adapter auf und warnt bei Multi-GPU-Systemen
+    - `packages.disable_overlays` unterdrückt das Laden von Overlays bei erhaltenem Paket-Cache; sensible Schlüssel (`google_api_key`, `mapbox_access_token`) werden in der Konfigurationsausgabe maskiert
+    - Multi-Part-Downloads auf eine einzige Strategie mit Retry pro Teil konsolidiert; Installationen führen einen Speicherplatz-Pre-Check durch und brechen beim ersten Fehler sauber ab
+    - **v0.4.5:** Kacheln aus fehlgeschlagenen Chunk-Downloads werden nicht mehr gecacht — magentafarbene DDS-Kacheln bleiben nicht mehr über Szenerie-Reloads erhalten; Reste lassen sich mit `xearthlayer cache clear` entfernen
 
 ## Funktionsweise
 
@@ -49,7 +51,7 @@ XEarthLayer verwendet eine dreistufige Cache-Hierarchie:
 2. **DDS-Disk-Cache**: Kodierte DDS-Kacheln werden persistent auf Disk gespeichert, um Re-Encoding bei Memory-Eviction zu vermeiden (~3,5 ms NVMe-Read vs ~50--200 ms Re-Encode). Budget-Aufteilung konfigurierbar über `cache.dds_disk_ratio` (Standard 60% DDS, 40% Chunks)
 3. **Chunk-Disk-Cache**: Rohe heruntergeladene Kacheln werden persistent in regionsbasierten Unterverzeichnissen gespeichert, mit parallelem Scanning für schnellen Start
 
-Wird die konfigurierte Cache-Größe erreicht, werden ältere Kacheln automatisch entfernt, um Platz für neue zu schaffen.
+Wird die konfigurierte Cache-Größe erreicht, werden ältere Kacheln automatisch entfernt, um Platz für neue zu schaffen. Seit v0.4.6 dimensioniert der Setup-Wizard den Disk-Cache dynamisch (Standard 25% des freien Speichers, Untergrenze 10 GB) und leitet das Memory-Cache-Budget aus dem verfügbaren RAM ab.
 
 ### Adaptives Prefetch
 
@@ -106,7 +108,7 @@ make install            # Installiert nach ~/.local/bin
 xearthlayer setup
 ```
 
-Die Einrichtung konfiguriert das Cache-Verzeichnis und die Verknüpfung mit dem [Custom Scenery](../../glossary.md#custom-scenery)-Ordner von X-Plane. Temporäre Dateien werden in `~/.xearthlayer/tmp` abgelegt (nicht im System-`/tmp`, das oft RAM-basiert ist und zu Speicherengpässen führen kann).
+Die Einrichtung läuft als vierstufiger Wizard — Custom Scenery → Paket-Speicherort → Cache-Konfiguration → DDS-Encoding — und konfiguriert die Verknüpfung mit dem [Custom Scenery](../../glossary.md#custom-scenery)-Ordner von X-Plane, den Paket-Speicherort, die Cache-Dimensionierung und das Encoding-Backend (inklusive GPU-Adapter-Auswahl). Temporäre Dateien werden in `~/.xearthlayer/tmp` abgelegt (nicht im System-`/tmp`, das oft RAM-basiert ist und zu Speicherengpässen führen kann).
 
 ## Verwendung
 

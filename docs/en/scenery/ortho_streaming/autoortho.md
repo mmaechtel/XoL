@@ -3,7 +3,7 @@ description: "AutoOrtho streams satellite imagery into X-Plane in real time via 
 ---
 # AutoOrtho
 
-Visual quality of landscapes is crucial for **Visual Flight Rules (VFR)** flights in flight simulators. While X-Plane provides standard textures, these are often perceived as outdated. **AutoOrtho** addresses this limitation through **real-time integration** of satellite imagery, enabling precise representation of infrastructure, vegetation, and other terrain features. The last version released by kubilus1, version 0.7.2 (January 21, 2024), optimized integration with X-Plane and minimized typical problems such as **scenery conflicts** or **performance issues**.
+Visual quality of landscapes is crucial for **Visual Flight Rules (VFR)** flights in flight simulators. While X-Plane provides standard textures, these are often perceived as outdated. **AutoOrtho** addresses this limitation through **real-time integration** of satellite imagery, enabling precise representation of infrastructure, vegetation, and other terrain features. The final release from kubilus1 (January 2024) optimized integration with X-Plane and minimized typical problems such as **scenery conflicts** or **performance issues**.
 
 There is now an active fork at [https://github.com/ProgrammingDinosaur/autoortho4xplane](https://github.com/ProgrammingDinosaur/autoortho4xplane) where AutoOrtho continues to be developed.
 
@@ -15,21 +15,24 @@ AutoOrtho delivers 2D orthophotos without 3D objects. For buildings and vegetati
 
 The streaming process impacts CPU, RAM, and disk performance. RAM usage depends on configuration (zoom level, buffer pool, pre-fetch settings). While SSDs minimize bottlenecks, frame drops can occur with slow connections or underpowered hardware.
 
-### The ProgrammingDinosaur Fork (Current: 2.2.0)
+### The ProgrammingDinosaur Fork
 
-The [ProgrammingDinosaur Fork](https://github.com/ProgrammingDinosaur/autoortho4xplane) is the actively maintained continuation of AutoOrtho. Starting with version 2.0, the fork has evolved into an independent project with significant improvements over the original:
+The [ProgrammingDinosaur Fork](https://github.com/ProgrammingDinosaur/autoortho4xplane) is the actively maintained continuation of AutoOrtho. It has evolved into an independent project with significant improvements over the original:
 
 - **C pipeline for texture processing**: Native C implementation for JPEG decoding and DDS generation with dedicated decode pool and improved memory management. Four pipeline modes: Auto, Native (pure C), Hybrid (C + Python), and Python (fallback)
-- **~2x faster loading times** (as of 2.2.0): Optimized download and JPEG processing, better utilization of CPU and network resources, reduced stalls during tile generation
+- **~2x faster loading times**: Optimized download and JPEG processing, better utilization of CPU and network resources, reduced stalls during tile generation
+- **Unified single-process architecture** across Windows, Linux, and macOS for improved stability and subprocess handling
+- **VRAM optimization** through dynamic DDS sizing
 - **.aob2 bundle format**: Compact data format for scenery packages
 - **Seasons support**: Seasonal texture variation
 - **Increased zoom levels and resolution** for X-Plane 12
-- **New user interface** with modern frameworks
+- **Lightweight map UI**: the in-app map is served from a local endpoint instead of a bundled Chromium browser, reducing install size and improving stability
 - **Revised installer** with safety checks for target locations
 - **macOS compatibility** (Apple Silicon only)
 - **Extended map providers**: Bing, Google, Here, Yandex, and Apple Maps
 - **Automatic [scenery_packs.ini](../../glossary.md#scenery_packsini) configuration** for use with SimHeaven
 - **SimBrief integration**: Imports the flight plan and prefetches tiles along the planned route. Configurable radius and deviation threshold — if the aircraft deviates too far from the SimBrief route, prefetch falls back to position-based calculation
+- **Cache and FUSE robustness**: coastline blending correction, partial-cache prevention, and avoidance of degraded zoom levels
 
 ---
 
@@ -87,7 +90,7 @@ AutoOrtho and [Ortho4XP](../../glossary.md#ortho4xp) pursue architecturally diff
 | Data acquisition | On-demand streaming at runtime | Pre-generated (offline) |
 | Storage requirements | Cache with automatic eviction (limit configurable) | Permanent per region (1–8 GB at ZL17) |
 | Internet required | Yes (on cache miss) | No (after generation) |
-| Max zoom level | Up to ZL18 (Fork 2.0) | Up to ZL19 |
+| Max zoom level | Up to ZL18 | Up to ZL19 |
 | Spontaneity | Instantly flyable, worldwide | Pre-generation required (30 min to hours) |
 | Visual consistency | Progressive loading on first visit | Immediate full quality |
 | Offline capability | Only cached regions | Full |

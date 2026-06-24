@@ -3,7 +3,7 @@ description: "AutoOrtho streamt Satellitenbilder in Echtzeit per FUSE in X-Plane
 ---
 # AutoOrtho
 
-Die visuelle Qualität der Landschaftsdarstellung ist ein entscheidender Faktor für **Sichtflüge (VFR)** in Flugsimulatoren. Während X-Plane mit Standardtexturen arbeitet, werden diese häufig als veraltet empfunden. **AutoOrtho** behebt diese Einschränkung durch die **Echtzeit-Integration** von Satellitenbildern und ermöglicht eine präzise Darstellung von Infrastruktur, Vegetation und weiteren Geländemerkmalen. Die letzte von kubilus1 veröffentlichte Version 0.7.2 (21. Januar 2024) optimierte die Integration mit X-Plane und minimierte typische Probleme wie **Szenerie-Konflikte** oder **Leistungseinbußen**.
+Die visuelle Qualität der Landschaftsdarstellung ist ein entscheidender Faktor für **Sichtflüge (VFR)** in Flugsimulatoren. Während X-Plane mit Standardtexturen arbeitet, werden diese häufig als veraltet empfunden. **AutoOrtho** behebt diese Einschränkung durch die **Echtzeit-Integration** von Satellitenbildern und ermöglicht eine präzise Darstellung von Infrastruktur, Vegetation und weiteren Geländemerkmalen. Die letzte Veröffentlichung von kubilus1 (Januar 2024) optimierte die Integration mit X-Plane und minimierte typische Probleme wie **Szenerie-Konflikte** oder **Leistungseinbußen**.
 
 Inzwischen existiert ein aktiver Fork unter [https://github.com/ProgrammingDinosaur/autoortho4xplane](https://github.com/ProgrammingDinosaur/autoortho4xplane), in dem AutoOrtho kontinuierlich weiterentwickelt wird.
 
@@ -15,21 +15,24 @@ AutoOrtho liefert 2D-Orthophotos ohne 3D-Objekte. Für die Darstellung von Gebä
 
 Der Streaming-Prozess beeinflusst CPU-Auslastung, RAM-Verbrauch und Festplattenleistung. Der RAM-Bedarf hängt von der Konfiguration ab (Zoomstufe, Buffer-Pool, Pre-Fetch-Einstellungen). Während SSDs Engpässe minimieren, können bei suboptimalen Verbindungen oder unzureichender Hardware Frame-Drops auftreten.
 
-### Der ProgrammingDinosaur Fork (aktuell: 2.2.0)
+### Der ProgrammingDinosaur Fork
 
-Der [ProgrammingDinosaur Fork](https://github.com/ProgrammingDinosaur/autoortho4xplane) ist die aktiv gepflegte Weiterentwicklung von AutoOrtho. Seit Version 2.0 hat sich der Fork zu einem eigenständigen Projekt mit signifikanten Verbesserungen gegenüber dem Original entwickelt:
+Der [ProgrammingDinosaur Fork](https://github.com/ProgrammingDinosaur/autoortho4xplane) ist die aktiv gepflegte Weiterentwicklung von AutoOrtho. Er hat sich zu einem eigenständigen Projekt mit signifikanten Verbesserungen gegenüber dem Original entwickelt:
 
 - **C-Pipeline für Texturverarbeitung**: Native C-Implementierung für JPEG-Dekodierung und DDS-Generierung mit dediziertem Decode-Pool und verbessertem Speichermanagement. Vier Pipeline-Modi: Auto, Native (reines C), Hybrid (C + Python) und Python (Fallback)
-- **~2x schnellere Ladezeiten** (ab 2.2.0): Optimierte Download- und JPEG-Verarbeitung, bessere Auslastung von CPU- und Netzwerk-Ressourcen, reduzierte Leerlaufphasen bei der Tile-Generierung
+- **~2x schnellere Ladezeiten**: Optimierte Download- und JPEG-Verarbeitung, bessere Auslastung von CPU- und Netzwerk-Ressourcen, reduzierte Leerlaufphasen bei der Tile-Generierung
+- **Vereinheitlichte Single-Process-Architektur** über Windows, Linux und macOS für höhere Stabilität und besseres Subprozess-Handling
+- **VRAM-Optimierung** durch dynamische DDS-Dimensionierung
 - **.aob2 Bundle-Format**: Kompaktes Datenformat für Szenerie-Pakete
 - **Seasons-Unterstützung**: Saisonale Texturvariationen
 - **Erhöhte Zoomstufen und Auflösung** für X-Plane 12
-- **Neue Benutzeroberfläche** mit modernen Frameworks
+- **Schlanke Karten-UI**: Die integrierte Karte wird über einen lokalen Endpunkt bereitgestellt statt über einen gebündelten Chromium-Browser — kleinere Installation und höhere Stabilität
 - **Überarbeiteter Installer** mit Sicherheitsprüfungen für Zielverzeichnisse
 - **macOS-Kompatibilität** (nur Apple Silicon)
 - **Erweiterte Kartenanbieter**: Bing, Google, Here, Yandex und Apple Maps
 - **Automatische [scenery_packs.ini](../../glossary.md#scenery_packsini)-Konfiguration** für die Verwendung mit SimHeaven
 - **SimBrief-Integration**: Importiert den Flugplan und lädt Kacheln entlang der geplanten Route vor. Konfigurierbarer Radius und Abweichungsschwelle — weicht das Flugzeug zu weit von der SimBrief-Route ab, fällt das Prefetching auf positionsbasierte Berechnung zurück
+- **Cache- und FUSE-Robustheit**: Korrektur des Küstenlinien-Blendings, Vermeidung partieller Caches und degradierter Zoomstufen
 
 ---
 
@@ -87,7 +90,7 @@ AutoOrtho und [Ortho4XP](../../glossary.md#ortho4xp) verfolgen architektonisch u
 | Datenbeschaffung | On-Demand-Streaming zur Laufzeit | Vorab generiert (offline) |
 | Speicherbedarf | Cache mit automatischer Bereinigung (Limit konfigurierbar) | Dauerhaft pro Region (1–8 GB bei ZL17) |
 | Internetbedarf | Ja (bei Cache-Miss) | Nein (nach Generierung) |
-| Max. Zoomstufe | Bis ZL18 (Fork 2.0) | Bis ZL19 |
+| Max. Zoomstufe | Bis ZL18 | Bis ZL19 |
 | Spontanität | Sofort fliegbar, weltweit | Vorab-Generierung erforderlich (30 Min. bis Stunden) |
 | Visuelle Konsistenz | Progressives Laden bei Erstbesuch | Sofort volle Qualität |
 | Offline-Fähigkeit | Nur gecachte Regionen | Vollständig |
