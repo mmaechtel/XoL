@@ -112,6 +112,39 @@ run_test() {
         check_url "${base_url}/${asset_path}" "$asset_path" "$type"
     done <<< "$ASSET_URLS"
 
+    # --- 3. Content drift check: top changelog date block on index.html ---
+    echo ""
+    echo "Content drift (changelog top block${lang_filter:+, $lang_filter}):"
+
+    if [ "$lang_filter" = "en" ]; then
+        local_index="site/en/index.html"
+        live_url="${base_url}/en/"
+    else
+        local_index="site/index.html"
+        live_url="${base_url}/"
+    fi
+
+    if [ ! -f "$local_index" ]; then
+        echo "  Warning: $local_index not found, skipping drift check"
+    else
+        local_top=$(grep -oE '<h3 id="[0-9]{4}-[0-9]{2}-[0-9]{2}">' "$local_index" | head -1)
+        live_top=$(curl -s --max-time 10 "$live_url" | grep -oE '<h3 id="[0-9]{4}-[0-9]{2}-[0-9]{2}">' | head -1)
+        label="$live_url top date block"
+        printf "  %-65s " "$label"
+        if [ -z "$local_top" ] || [ -z "$live_top" ]; then
+            FAIL=$((FAIL + 1))
+            FAILURES+=("  --   [DRIFT] $label (local='$local_top' live='$live_top')")
+            echo "FAIL (no date block found)"
+        elif [ "$local_top" = "$live_top" ]; then
+            PASS=$((PASS + 1))
+            echo "OK ($local_top)"
+        else
+            FAIL=$((FAIL + 1))
+            FAILURES+=("  --   [DRIFT] $label local=$local_top live=$live_top")
+            echo "FAIL (local=$local_top live=$live_top)"
+        fi
+    fi
+
     echo ""
 }
 
