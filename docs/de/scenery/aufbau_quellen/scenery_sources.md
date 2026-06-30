@@ -46,7 +46,7 @@ Für die höchste Qualität und Detailtreue stehen zahlreiche kommerzielle Szene
 
 Zur besseren Übersicht und Planung der Flugsimulation stehen zwei selbst erstellte WorldMaps zur Verfügung:
 
-- **[WorldMap der Szenerien](/Maps/airportmap.html)** – Eine interaktive Karte mit über 1700 Szenerien für X-Plane 12. Die Karte bietet detaillierte Informationen zu jedem Flughafen, um die Suche nach der passenden Szenerie zu erleichtern. Die Suche erfolgt über einen 4-stelligen gültigen ICAO-Code, wodurch kleinere Landeplätze wie Graspisten und Hubschrauberlandeplätze nicht dargestellt werden - dies würde die Karte an einigen Stellen bereits jetzt zu unübersichtlich machen. Auf direkte Download-Links wurde bewusst verzichtet, da:
+- **[WorldMap der Szenerien](/Maps/airportmap.html)** – Eine interaktive Karte mit über 1800 Szenerien für X-Plane 12. Die Karte bietet detaillierte Informationen zu jedem Flughafen, um die Suche nach der passenden Szenerie zu erleichtern. Die Suche erfolgt über einen 4-stelligen gültigen ICAO-Code, wodurch kleinere Landeplätze wie Graspisten und Hubschrauberlandeplätze nicht dargestellt werden - dies würde die Karte an einigen Stellen bereits jetzt zu unübersichtlich machen. Auf direkte Download-Links wurde bewusst verzichtet, da:
     - Keine Kaufempfehlungen für bestimmte Shops gegeben werden sollen
     - Die Aktualisierung zahlreicher Links sehr aufwändig wäre
     - Die Karte sich auf X-Plane 12 Szenerien konzentriert (XP11 Szenerien wurden nur dann aufgenommen, wenn es spezielle Anpassungen gibt, wodurch die Szenerie Features von XP12 unterstützt)

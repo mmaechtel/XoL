@@ -35,6 +35,9 @@ Diese Dokumentation ist ein offenes Projekt. Verbesserungen oder Ergänzungen k�
 
 ## Letzte Änderungen
 
+### 2026-06-30
+- [WorldMap der Szenerien](Maps.md) zeigt jetzt das letzte Aktualisierungsdatum jeder Szenerie und bietet einen **Scenery since**-Jahresfilter — nur Szenerien anzeigen, die seit einem gewählten Jahr aktualisiert wurden. Die Karte umfasst inzwischen über 1800 X-Plane-12-Szenerien
+
 ### 2026-06-24
 - Neue Seite [X-ProTurb](addon/flylua_scripts/xproturb.md): physikbasierte Turbulenz-Engine für X-Plane 12, modelliert die Atmosphäre nach MIL-F-8785C, FAR 25.341 und ICAO 9625 Level-D mit flugzeugspezifischer 6-DOF-Reaktion, von-Kármán-/Dryden-Spektren, CAT, Mountain-Wave- und CB-/Sturmmodellierung
 - Neue Seite [AnyAirline](addon/cockpit/anyairline.md): Passagier-Kabinen-Immersion mit KI-Kabinendurchsagen, routenbezogenem Passagier-Manifest, Boarding-Ambiente und kostenloser Passagier-IFE-Karte — der Desktop-Connector bringt einen offiziellen Linux-Build mit
@@ -43,9 +46,6 @@ Diese Dokumentation ist ein offenes Projekt. Verbesserungen oder Ergänzungen k�
 
 ### 2026-04-27
 - [XEarthLayer](scenery/ortho_streaming/xearthlayer.md) aktualisiert auf v0.4.4: Long-Haul-Prefetch-Fix (Dead-State auf Flügen >2 h behoben, mit 9-Stunden-LOWW-Log verifiziert), `max_concurrent_jobs`-Standard auf 50% der logischen CPUs halbiert für weniger X-Plane-Stuttering, getrennte Hit-Raten für Memory/DDS-Disk/Chunks-Ebenen im TUI
-
-### 2026-04-08
-- [XEarthLayer](scenery/ortho_streaming/xearthlayer.md) aktualisiert auf v0.4.3: Dreistufiger Cache mit DDS-Disk-Ebene vermeidet Re-Encoding, geschwindigkeitsproportionale Prefetch-Box reduziert Over-Fetching um ~45%, GPU-Encoding jetzt integriert, CPU-Parallelität standardmäßig auf 50%
 
 
 

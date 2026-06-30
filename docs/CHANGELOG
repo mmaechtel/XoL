@@ -2,6 +2,15 @@
 
 All notable changes to the XoL documentation will be documented in this file.
 
+## [2026-06-30]
+
+### Added
+- [WorldMap of Scenery](docs/de/Maps.md) gained a "Scenery since" year filter — a slider that shows only sceneries updated since a selected year
+
+### Changed
+- [ATC Flight Planner](https://atc.emvisio.de) (linked from [Maps](docs/de/Maps.md) and [VATSIM](docs/de/flight_operations/vatsim/vatsim.md)) now shows the scenery's last update date
+  - New "Scenery Date" tile in the airport scenery panel, with all archive dates in the tooltip
+
 ## [2026-02-09]
 
 ### Added

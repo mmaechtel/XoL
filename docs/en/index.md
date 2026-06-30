@@ -35,6 +35,9 @@ This documentation is an open project. Improvements or additions can be contribu
 
 ## Recent Changes
 
+### 2026-06-30
+- [WorldMap of Scenery](Maps.md) now shows each scenery's last update date and adds a **Scenery since** year filter — show only sceneries updated since a chosen year. The map now covers over 1800 X-Plane 12 sceneries
+
 ### 2026-06-24
 - New page [X-ProTurb](addon/flylua_scripts/xproturb.md): physics-based turbulence engine for X-Plane 12, modelling the atmosphere from MIL-F-8785C, FAR 25.341 and ICAO 9625 Level-D standards with per-airframe 6-DOF response, von Kármán/Dryden spectra, CAT, mountain-wave and CB/storm modelling
 - New page [AnyAirline](addon/cockpit/anyairline.md): passenger cabin immersion with AI cabin announcements, a route-aware passenger manifest, boarding ambience and a free passenger IFE map — the desktop connector ships an official Linux build
@@ -43,9 +46,6 @@ This documentation is an open project. Improvements or additions can be contribu
 
 ### 2026-04-27
 - [XEarthLayer](scenery/ortho_streaming/xearthlayer.md) updated for v0.4.4: Long-haul prefetch fix (dead state on flights >2h eliminated, verified on 9h LOWW log), `max_concurrent_jobs` default halved to 50% of logical CPUs for less X-Plane stutter, separate hit rates for Memory/DDS-Disk/Chunks tiers in the TUI
-
-### 2026-04-08
-- [XEarthLayer](scenery/ortho_streaming/xearthlayer.md) updated for v0.4.3: Three-tier cache with DDS disk layer eliminates re-encoding, speed-proportional prefetch box reduces over-fetching by ~45%, GPU encoding now built-in, CPU concurrency defaults to 50%
 
 
 
