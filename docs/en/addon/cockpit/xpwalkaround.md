@@ -3,7 +3,7 @@ description: "XP Walkaround for X-Plane 12 — first-person walkaround with flas
 ---
 # XP Walkaround
 
-XP Walkaround is a commercial [plugin](../../glossary.md#plugin) for [X-Plane](../../glossary.md#x-plane) 12 that adds first-person movement outside the cockpit — walking around the aircraft, exploring the airport environment, and inspecting the ramp at night with a built-in flashlight. The plugin runs natively on Linux.
+XP Walkaround is a commercial [plugin](../../glossary.md#plugin) for [X-Plane](../../glossary.md#x-plane) 12 that adds first-person movement outside the cockpit — walking around the aircraft, exploring the airport environment, and inspecting the ramp at night with a built-in flashlight. The plugin runs natively on Linux and is currently distributed as a beta release.
 
 ## Background
 
@@ -20,6 +20,7 @@ The plugin ships native binaries for all three platforms — no additional syste
 - **First/third-person view:** Switch between first-person and third-person perspective
 - **Mouse Look:** Toggle with M key for natural look-around while walking. Optional inverted Y axis. When disabled, X-Plane's default right-click camera remains intact.
 - **Flashlight:** Toggle with F key for dark cockpits, cabins, and nighttime ramp inspections. Volume adjustable via plugin settings.
+- **Skydiving:** Above 500 ft a "Skydive!" button appears in the plugin window. Freefall with body-position control, parachute deploy via F key (auto-deploy at 500 ft), steerable ram-air canopy, and a seamless transition into Walk Mode on touchdown.
 - **Campsite System:** Spawn a campsite with campfire in front of the current view (requires X-Plane 12.04+). Build, cancel, or tear down from the UI. Designed for bush flying and remote operations.
 - **Movement controls:** WASD movement, Q/E lean, C crouch, Backspace jump, ESC exit Walk Mode
 - **Plugin window:** Floating, resizable ImGui window accessible via Plugins menu. Optional automatic display on startup.
@@ -41,7 +42,8 @@ Install as a standalone plugin into `Resources/plugins/`. Activate the Gumroad l
 
 ## Free Alternative: SimpleWalkaround
 
-[SimpleWalkaround](https://forums.x-plane.org/files/file/96508-simplewalkaround/) is a free plugin that provides basic walkaround movement outside the cockpit. It uses WASD movement controls, sprint (C), and crouch (X) but lacks the extended features of XP Walkaround such as flashlight, campsite system, mouse look, and persistent settings.
+[SimpleWalkaround](https://forums.x-plane.org/files/file/96508-simplewalkaround/) is a free plugin that provides basic walkaround movement outside the cockpit. It uses WASD movement controls, sprint (C), and crouch (X) but lacks the extended features of XP Walkaround such as flashlight, campsite system, mouse look, and persistent settings. The developer tests on Windows only and does not guarantee behaviour on other platforms, so Linux use is untested.
+
 ## Sources
 
 - [XP Walkaround — Gumroad](https://clemacamelc.gumroad.com/l/xpwalkaround)
