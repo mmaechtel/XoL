@@ -1,0 +1,1174 @@
+[
+ {
+  "titel": "Developer-Feld auf \"Chudoba Design\" umstellen",
+  "frage": "Soll im Background-Block als Developer statt \"AnyAirline\" der Name \"Chudoba Design\" stehen?",
+  "empfehlung": "nein",
+  "begruendung": "Die staerkste Quelle ist die Vendor-Seite selbst, und deren JSON-LD deklariert die Organisation woertlich als \"AnyAirline\"; die Gegenbelege sind ein Reseller-Publisher-Feld (simMarket-Credits-Pack) und ein Forum-Upload-Account, der zudem zwischen Person (\"Filip\") und Studio (\"Chudoba Design\") schwankt. Der Haken: wenn Chudoba Design spaeter noch andere Produkte veroeffentlicht, wirkt die Produktmarke im Developer-Feld ungenau — dann waere \"Chudoba Design (AnyAirline)\" die ehrlichere Angabe.",
+  "tragweite": "niedrig",
+  "zeilen": [
+   10
+  ],
+  "page": "docs/en/addon/cockpit/anyairline.md"
+ },
+ {
+  "titel": "Open-Beta-Status ausweisen",
+  "frage": "Soll der Seite kenntlich gemacht werden, dass AnyAirline offiziell noch Open Beta ist?",
+  "empfehlung": "ja",
+  "begruendung": "Die Seite liest sich derzeit wie ein fertiges Kaufprodukt, obwohl das Forum-Listing es als OPEN BETA fuehrt — das ist fuer Kauf- und Stabilitaetserwartung relevant und mit einem Klammerzusatz in der Kompatibilitaetszeile ohne Laengenzuwachs erledigt (kein eigener Warnblock). Der Haken: \"Open Beta\" ist bei einem kommerziell vertriebenen Produkt oft nur ein Marketing-Label, das jahrelang stehen bleibt und dann als ueberholter Hinweis in der Doku haengt.",
+  "tragweite": "mittel",
+  "zeilen": [
+   13
+  ],
+  "page": "docs/en/addon/cockpit/anyairline.md"
+ },
+ {
+  "titel": "Linux-Abschnitt auf Pflicht-Pakete korrigieren",
+  "frage": "Soll der Satz \"no separate dependencies are required\" ersetzt werden durch den Hinweis, dass unter Linux ffmpeg, ffprobe und espeak-ng aus den Distro-Repos nachinstalliert werden muessen (8 GB RAM Minimum)?",
+  "empfehlung": "ja",
+  "begruendung": "Die Download-Seite des Herstellers widerspricht der aktuellen Aussage ausdruecklich und listet die drei Pakete als Linux-Anforderung — das ist genau der Linux-relevante Kern der Seite und aktuell schlicht falsch. Der Haken: die vorgeschlagene Formulierung verlaengert den Abschnitt spuerbar; sie sollte auf zwei Saetze gekuerzt werden (Paket-Liste plus RAM/Distro-Minimum), und die Ubuntu-Versionsnummern sind grenzwertig gegenueber der Versionsnummern-Regel — sie markieren hier aber die Support-Untergrenze und duerfen bleiben.",
+  "tragweite": "hoch",
+  "zeilen": [
+   39
+  ],
+  "page": "docs/en/addon/cockpit/anyairline.md",
+  "unsicher": "grenzwertig"
+ },
+ {
+  "titel": "Seite komplett auf TeamAvitab umstellen",
+  "frage": "Soll die Seite durchgaengig auf die aktive TeamAvitab-Linie umgestellt werden — Statusabsatz, Download-Link, Installationspfad/Schreibweise, Quellenlink — und der damit erledigte PDF-Crash-Warnblock entfallen?",
+  "empfehlung": "ja",
+  "begruendung": "Das fpw-Repo ist archiviert (Issues auf 410, letztes Release v0.7.1 von 2024), TeamAvitab hat das Projekt uebernommen und liefert regelmaessig Releases; der Download-Link fuehrt derzeit auf genau den Build mit dem dokumentierten PDF-Crash, den die neue Linie behoben hat — Statusaussage, Link, Pfad (`Avitab/lin_x64/Avitab.xpl`, case-sensitive, inkl. Zeile 51) und Quelle sind nur gemeinsam widerspruchsfrei. Haken: der Installationspfad ist bisher nur an einem Release-Paket verifiziert, und mit dem Warnblock verschwindet ein Linux-spezifischer Hinweis, der fuer Leser mit altem Build noch zutrifft — deshalb Warnblock ersatzlos streichen statt auf einen historischen Einzeiler aufzublasen (die Seite soll nicht laenger werden).",
+  "tragweite": "hoch",
+  "zeilen": [
+   15,
+   42,
+   44,
+   88,
+   93
+  ],
+  "page": "docs/en/addon/cockpit/avitab.md",
+  "unsicher": "nur an einem"
+ },
+ {
+  "titel": "Route-Overlay auf externe FMS-Plaene umformulieren",
+  "frage": "Soll der Feature-Punkt 'Route overlay' jetzt schon auf 'extern erstellte FMS-Plaene (z. B. SimBrief)' umgeschrieben werden?",
+  "empfehlung": "nein",
+  "begruendung": "Die Seite behauptet nirgends, AviTab erzeuge Routen selbst — sie nennt nur das Overlay, und das bleibt erhalten; die Umformulierung stuetzt sich auf eine bloss angekuendigte Feature-Entfernung. Haken: wenn TeamAvitab die Routen-Generierung tatsaechlich entfernt, ist der Hinweis auf SimBrief fuer Leser nuetzlich — dann nachziehen, sobald es im Release steht.",
+  "tragweite": "niedrig",
+  "zeilen": [
+   24
+  ],
+  "page": "docs/en/addon/cockpit/avitab.md"
+ },
+ {
+  "titel": "Einschraenkung zur Panel-Integration unter XP12",
+  "frage": "Soll beim Punkt 'Aircraft integration' ergaenzt werden, dass alte XP11-Panel-Integrationen erst nach Update des Flugzeugs auf den aktuellen Integrationsmodus wieder funktionieren?",
+  "empfehlung": "ja",
+  "begruendung": "Das ist eine echte Funktionsgrenze: Leser erwarten nach Zibo-Nennung eine funktionierende Cockpit-Integration und finden sie bei nicht aktualisierten Flugzeugen nicht — belegt durch die Release-Notes zum neuen 'Aircraft Managed'-Modus. Haken: es ist inhaltlich ein Zusatz statt eines Ersatzes, macht die Zeile also laenger — als knapper Halbsatz am selben Listenpunkt halten, keinen eigenen Abschnitt daraus machen.",
+  "tragweite": "mittel",
+  "zeilen": [
+   25
+  ],
+  "page": "docs/en/addon/cockpit/avitab.md"
+ },
+ {
+  "titel": "Developer-Angabe auf Yunus_Hakki umstellen",
+  "frage": "Soll die Developer-Zeile den erfundenen Namen \"Kadikoy34\" durch den einzigen als Entwickler ausgewiesenen Namen \"Yunus_Hakki\" ersetzen (statt beide Namen zu nennen oder die Zeile zu streichen)?",
+  "empfehlung": "ja",
+  "begruendung": "\"Kadikoy34\" ist durch keine Quelle gedeckt und muss so oder so weg; von den beiden Kandidaten ist nur Yunus_Hakki auf x-plane.to explizit als \"Developer\" gelabelt, waehrend EffectiveAir1434 dort lediglich als letzter Bearbeiter der Forum-Dateiseite auftaucht — das ist eine Rollenangabe, kein Autorennachweis. Der Haken: Die primaere Download-Quelle der Seite ist forums.x-plane.org, und ein Leser, der dort EffectiveAir1434 liest, findet den Namen auf der Doku-Seite nicht wieder; die Alternative waere die auf anderen Seiten (linuxtrack.md, xlinspeak.md) bereits genutzte Doppelnennung, die aber die Zeile verlaengert und einen Widerspruch dokumentiert statt aufloest.",
+  "tragweite": "mittel",
+  "zeilen": [
+   10
+  ],
+  "page": "docs/en/addon/cockpit/kabinxp.md",
+  "unsicher": "keine quelle"
+ },
+ {
+  "titel": "Seite auf Qt6/CMake-Stand des X-IR-Forks umstellen",
+  "frage": "Soll die Seite durchgaengig den heutigen Bauzustand des X-IR-Forks beschreiben — also Versionsnummern raus, Autotools-Pakete raus, Build-Deps auf CMake/Qt6 und die Webcam-/Wiimote-Pakete als optionale Zeile statt des Qt5-Hinweises?",
+  "empfehlung": "ja",
+  "begruendung": "Die drei Zeilen beschreiben ein und denselben Sachverhalt: Der Fork baut seit der Rearchitektur CMake/Qt6-first, Autotools und Qt5 liegen auf dem eingefrorenen Legacy-Branch. Einzeln umgesetzt entsteht Widerspruch — streicht man nur Zeile 44, verliert die Seite libopencv-dev/libv4l-dev, obwohl die Features-Sektion Webcam, PS3 Eye und Wiimote nennt; erst Zeile 47 bringt diese Pakete als optionale Stufe zurueck. Haken: Die Kernliste waechst von 12 auf 16 Pakete, das laeuft der Regel 'Seiten sollen nicht laenger werden' zuwider, und die MinGW-Wine-Bridge in Zeile 16 ist eine neue Aussage statt eines Ersatzes — die wuerde ich weglassen und dort wirklich nur die Nummern streichen.",
+  "tragweite": "hoch",
+  "zeilen": [
+   16,
+   44,
+   47
+  ],
+  "page": "docs/en/addon/cockpit/linuxtrack.md"
+ },
+ {
+  "titel": "GUI waehrend des Flugs: Verbot zu Empfehlung",
+  "frage": "Soll aus dem harten 'ltr_gui darf waehrend des Flugs nicht laufen' ein 'moeglich, aber nicht empfohlen' werden, samt Angleichung von Schritt 4 der Installationsanleitung?",
+  "empfehlung": "ja",
+  "begruendung": "Die mitgelieferte Hilfe des Forks formuliert das ausdruecklich als Empfehlung und hebt hervor, dass Tracking im Gegensatz zu NP/FreeTrack ohne GUI laeuft — das ist der eigentliche Vorteil, den die Seite transportieren sollte. Der Punkt haengt an keiner der Build-Fragen und ist unabhaengig entscheidbar. Haken: Die abgeschwaechte Formulierung ist als Handlungsanweisung weniger klar, und wer die GUI mitlaufen laesst, holt sich unnoetige Last in den Frametime-Haushalt — wer das Verbot als bewusste Vereinfachung fuer Linux-Leser gesetzt hat, kann es mit gutem Grund stehen lassen.",
+  "tragweite": "mittel",
+  "zeilen": [
+   52
+  ],
+  "page": "docs/en/addon/cockpit/linuxtrack.md"
+ },
+ {
+  "titel": "Begruendung gegen das native OpenTrack-Plugin korrigieren",
+  "frage": "Soll die Seite die unbelegte Behauptung, das native OpenTrack-X-Plane-Plugin friere unter Linux ein bzw. sende keine Daten, ueberall durch die belegte Begruendung ersetzen (wird nicht als Binary ausgeliefert, nur mit -DSDK_XPLANE baubar, local-only)?",
+  "empfehlung": "ja",
+  "begruendung": "Die Freeze-Behauptung laesst sich nicht belegen: die einzige Primaerquelle (opentrack Discussion #1836) beschreibt OpenTrack unter Wine, nicht das native Plugin; die opentrack-README belegt dagegen sauber, dass das Plugin gar nicht binaer ausgeliefert wird und local-only ist. Fliesstext (Zeile 23) und Warnbox (Zeile 62) muessen dabei gemeinsam umgestellt werden, sonst widerspricht sich die Seite. Haken: die HeadTrack-Empfehlung steht danach auf einer schwaecheren, eher pragmatischen Begruendung (Build-Aufwand statt Defekt) — wer selbst Aussetzer des Shared-Memory-Plugins gesehen hat, wuerde die alte Formulierung als praxisnaeher verteidigen.",
+  "tragweite": "hoch",
+  "zeilen": [
+   23,
+   62
+  ],
+  "page": "docs/en/addon/cockpit/opentrack.md"
+ },
+ {
+  "titel": "Stagnationshinweis zu HeadTrack aufnehmen",
+  "frage": "Soll bei HeadTrack ergaenzt werden, dass das letzte Release von Oktober 2022 stammt und die Entwicklung stillsteht, das Linux-Binary unter X-Plane 12 aber weiterhin funktioniert?",
+  "empfehlung": "ja",
+  "begruendung": "Die Seite fuehrt HeadTrack als empfohlenen Stack, ohne zu erwaehnen, dass seit Oktober 2022 kein Release und seit Ende 2023 kein Commit mehr kam und Issue #3 (\"XPlane 12\") offen ist — das ist genau der Fall, in dem eine Jahresangabe als Stagnationssignal auch nach der Versionsregel bleiben darf (Datum genuegt, Release-Tag 2209.1r2 nicht noetig). Haken: der Hinweis relativiert die eigene Empfehlung und macht den Absatz laenger; da das Binary nachweislich laeuft, koennte man ihn auch als unnoetige Verunsicherung werten — dann eher als Ersatzformulierung im bestehenden Satz statt als zusaetzliche Box.",
+  "tragweite": "mittel",
+  "zeilen": [
+   23
+  ],
+  "page": "docs/en/addon/cockpit/opentrack.md",
+  "unsicher": "unsicher"
+ },
+ {
+  "titel": "Stagnationshinweis mit Version 1.31 aufnehmen",
+  "frage": "Soll in der Zeile \"Compatibility\" stehen, dass die letzte Version 1.31 von April 2023 stammt und das Plugin seither unveraendert ist?",
+  "empfehlung": "ja",
+  "begruendung": "Die Versionsnummer-Regel nimmt Stagnationssignale und Deprecation ausdruecklich aus, und drei Jahre ohne Update sind genau die Information, die ueber \"installieren oder nicht\" entscheidet — zumal die Seite sie heute komplett verschweigt. Der Haken: Linux wird von der Downloadseite weiterhin explizit unterstuetzt, das Plugin funktioniert also, und ein Stagnationsvermerk kann abschreckender wirken, als der tatsaechliche Zustand rechtfertigt.",
+  "tragweite": "hoch",
+  "zeilen": [
+   13
+  ],
+  "page": "docs/en/addon/cockpit/terrainradar.md"
+ },
+ {
+  "titel": "Flugzeugliste komplett auf Quellstand umstellen",
+  "frage": "Soll die Aufzaehlung der ND-integrierten Flugzeuge durch die neun namentlich belegten Muster ersetzt und ToLiss ersatzlos gestrichen werden?",
+  "empfehlung": "nein",
+  "begruendung": "Die Quellliste ist selbst mit \"u.a./u.v.m.\" als unvollstaendig gekennzeichnet, das Fehlen von ToLiss belegt also keine fehlende Integration, und der Vorschlag macht die Zeile von vier auf neun Namen laenger — gegen die Regel, Seiten nicht wachsen zu lassen. Stattdessen ToLiss durch einen belegten Namen (X-Bureau A318 oder Rotate MD-80) ersetzen, Laenge bleibt gleich. Der Haken: ToLiss-Airbusse sind unter Linux-Nutzern weit verbreitet, und wenn die Integration dort wirklich fehlt, bleibt bis zur naechsten Pruefung eine unbelegte Angabe stehen.",
+  "tragweite": "mittel",
+  "zeilen": [
+   24
+  ],
+  "page": "docs/en/addon/cockpit/terrainradar.md"
+ },
+ {
+  "titel": "12.3-Hinweis nur minimal korrigieren",
+  "frage": "Soll die falsche Aussage im 12.3-Kasten knapp richtiggestellt werden, ohne Peaks Mode, Sea Level und Synthetic Vision als neue Details aufzunehmen?",
+  "empfehlung": "ja",
+  "begruendung": "Die Aussage \"12.3 fuehrte das Terrain-Display ein\" ist nachweislich falsch (es wurde nur erweitert) und muss weg; die drei Zusatzdetails sind aber X-Plane-Bordfeatures, nicht TerrainRadar, und wuerden die Seite ohne Nutzen verlaengern. Der Haken: Ohne die Erwaehnung von Synthetic Vision wirkt die Begruendung, warum das Plugin trotz Bordausstattung noch lohnt, etwas duenner belegt.",
+  "tragweite": "mittel",
+  "zeilen": [
+   32
+  ],
+  "page": "docs/en/addon/cockpit/terrainradar.md"
+ },
+ {
+  "titel": "Klammerzusatz \"2.4-Serie\" streichen statt ersetzen",
+  "frage": "Soll der Klammerzusatz zur 2.4-Serie ersatzlos gestrichen werden, sodass nur \"X-Plane 11.3+ and X-Plane 12\" stehen bleibt (also ohne den vorgeschlagenen Legacy-Build-Hinweis fuer X-Plane 9/10)?",
+  "empfehlung": "ja",
+  "begruendung": "Die 2.4 ist eine rein illustrative Produktversion, die mit dem naechsten Release veraltet — die Grenze 11.3+ traegt die Aussage allein und bleibt als XP11-vs-XP12-Entscheidungsgrenze erhalten. Der Haken: die vorgeschlagene Ersatzformulierung ueber den separaten Legacy-Build fuer X-Plane 9/10 faellt damit weg, obwohl sie fuer Umsteiger von sehr alten Installationen nuetzlich waere — sie ist aber durch das zitierte FAQ nicht gedeckt und betrifft ohnehin keine Linux-XP12-Leser.",
+  "tragweite": "niedrig",
+  "zeilen": [
+   14
+  ],
+  "page": "docs/en/addon/cockpit/xcamera.md"
+ },
+ {
+  "titel": "Quellen auf User Guide + LinuxTrack umstellen",
+  "frage": "Sollen die beiden OpenTrack-Quellenlinks im Quellenabschnitt durch X-Camera User Guide und LinuxTrack-Repository ersetzt werden, waehrend die OpenTrack-Empfehlung fuer Linux-Head-Tracking (Zeilen 28 und 49) unveraendert bleibt?",
+  "empfehlung": "ja",
+  "begruendung": "Die OpenTrack-Links belegen nichts ueber X-Camera und gehoeren nach der Quellenregel (nur belastbare Primaerquellen zum Seitenthema) nicht in den Quellenabschnitt; User Guide und LinuxTrack sind die einzigen Primaerquellen zum Linux-Head-Tracking von X-Camera. Der Haken: der Beleg zeigt, dass X-Camera `linuxtrack/pilots_head_*` liest, waehrend das OpenTrack-Plugin `sim/graphics/view/pilots_head_*` schreibt — damit steht die Empfehlung \"OpenTrack (recommended)\" plus \"LinuxTrack (unmaintained)\" ohne Beleg da und koennte praktisch falsch sein. Ich wuerde sie trotzdem nicht auf Verdacht umdrehen, sondern erst bei einem konkreten Gegenbeleg anfassen — sonst schreibt die Seite Leser auf ein unmaintained Projekt fest.",
+  "tragweite": "mittel",
+  "zeilen": [
+   57
+  ],
+  "page": "docs/en/addon/cockpit/xcamera.md"
+ },
+ {
+  "titel": "TTS-Mechanismus korrekt trennen",
+  "frage": "Soll die Seite die Checklist-Ansage der Copilot-Stimme und den Zusatzbefehl sw_remark als zwei getrennte Mechanismen beschreiben, statt sw_remark als DEN TTS-Mechanismus darzustellen?",
+  "empfehlung": "ja",
+  "begruendung": "Die aktuelle Darstellung ist schlicht falsch: Das Handbuch beschreibt die Copilot-Stimme fuer die Items und sw_remark ausdruecklich nur als zusaetzliche, gesprochene aber nicht angezeigte Zeile — ein Leser, der die Seite befolgt, baut sich sonst clist.txt-Dateien falsch. Der Haken: Zeile 20 und Zeile 51 muessen gemeinsam angefasst werden, und Zeile 51 wird durch die Unterscheidung minimal komplexer statt kuerzer; das laesst sich auffangen, indem der jetzige Halbsatz zu sw_remark in Zeile 51 ersetzt und nicht ergaenzt wird.",
+  "tragweite": "mittel",
+  "zeilen": [
+   20,
+   51
+  ],
+  "page": "docs/en/addon/cockpit/xchecklist.md"
+ },
+ {
+  "titel": "Bezugsquelle klarstellen: Forum statt GitHub-Releases",
+  "frage": "Soll die Seite offenlegen, dass die GitHub-Releases seit 2017 stagnieren und die aktuellen Binaries ausschliesslich ueber den x-plane.org-Download kommen, inklusive Entschaerfung der Aussage 'ships pre-built binaries' in Zeile 15?",
+  "empfehlung": "ja",
+  "begruendung": "Das ist eine echte Nutzerfalle: Wer dem GitHub-Link folgt, laedt eine Version von 2017, waehrend der Code bis 2026 gepflegt wird und der ChangeLog bereits weit darueber hinaus ist — Zeile 15 und Zeile 38 versprechen gemeinsam Binaries, die es dort nicht gibt. Der Haken: Die Jahreszahl 2017 ist eine Versionsangabe im weiteren Sinn und widerspricht der Sparsamkeitsregel — sie ist hier aber genau der zulaessige Fall, weil sie eine Entscheidungsgrenze markiert (GitHub = Quellcode, Forum = Binaries); die Release-Nummer 1.27r1 sollte dagegen weggelassen werden, und der Zusatz muss Zeile 15/38 ersetzen, nicht verlaengern.",
+  "tragweite": "hoch",
+  "zeilen": [
+   15,
+   38
+  ],
+  "page": "docs/en/addon/cockpit/xchecklist.md"
+ },
+ {
+  "titel": "Seite auf V2.0-Stand (Beta + Skydiving) heben",
+  "frage": "Soll die Seite den aktuell ausgelieferten Produktstand abbilden, also den Beta-Status in der Einleitung nennen und das Skydiving-Modul in die Feature-Liste aufnehmen?",
+  "empfehlung": "ja",
+  "begruendung": "Beides folgt aus derselben Tatsache: Gumroad liefert derzeit einen Beta-Stand aus, und Skydiving existiert nur in genau diesem Stand — Skydiving ohne Beta-Hinweis aufzunehmen wuerde ein Vorabfeature als fertig darstellen. Bei einem kostenpflichtigen Plugin ist der Reifegrad kaufentscheidungsrelevant und faellt damit unter die erlaubte Ausnahme (Stagnations-/Reifesignal), sofern die Nummer 'V2.0' weggelassen und nur 'currently distributed as a beta release' geschrieben wird. Haken: Beleg ist ausschliesslich die Gumroad-Verkaufsbeschreibung ohne Linux-Verifikation, und der Skydiving-Bullet verlaengert die Seite — er sollte daher knapp gehalten und der Campsite-Bullet im Gegenzug gekuerzt werden.",
+  "tragweite": "hoch",
+  "zeilen": [
+   6,
+   23
+  ],
+  "page": "docs/en/addon/cockpit/xpwalkaround.md"
+ },
+ {
+  "titel": "Linux-Vorbehalt bei SimpleWalkaround",
+  "frage": "Soll bei der kostenlosen Alternative SimpleWalkaround ergaenzt werden, dass der Autor nur unter Windows testet und Linux-Funktion nicht zusichert?",
+  "empfehlung": "nein",
+  "begruendung": "Das Zitat 'Tested in X-Plane 12 on Windows' taucht im erfassten Volltext der Belegseite nicht auf — die Aussage ist also nicht gedeckt, und ein unbelegter Vorbehalt entwertet die einzige kostenlose Alternative auf einer Linux-Seite. Haken: Sollte der Hinweis auf der Download-Seite tatsaechlich stehen, verschweigt die Seite eine fuer Linux-Leser zentrale Einschraenkung; vor einem endgueltigen Nein lohnt ein kurzer Blick auf die Originalseite.",
+  "tragweite": "hoch",
+  "zeilen": [
+   44
+  ],
+  "page": "docs/en/addon/cockpit/xpwalkaround.md"
+ },
+ {
+  "titel": "Stagnation des Upstream benennen",
+  "frage": "Soll die Seite offen sagen, dass die Entwicklung von XTextureExtractor seit Juni 2025 steht, statt \"receives occasional updates\"?",
+  "empfehlung": "ja",
+  "begruendung": "Der letzte Commit ist von Juni 2025, davor klafft eine Luecke bis 2023 — \"receives occasional updates\" ist damit schlicht falsch und suggeriert aktive Pflege. Ein Stagnationssignal ist genau der Fall, in dem deine Regel eine Datumsangabe erlaubt. Haken: Das Plugin funktioniert weiterhin einwandfrei unter Linux, und die Formulierung koennte Leser unnoetig abschrecken bzw. muss nachgepflegt werden, falls der Autor wieder aktiv wird.",
+  "tragweite": "hoch",
+  "zeilen": [
+   15
+  ],
+  "page": "docs/en/addon/cockpit/xtextureextractor.md"
+ },
+ {
+  "titel": "Android-App: Play-Store-Angabe korrigieren",
+  "frage": "Soll die frei erfundene \"Entfernung aus Google Play im Maerz 2025\" durch den Hinweis ersetzt werden, dass die App weiterhin im Play Store verfuegbar ist?",
+  "empfehlung": "ja",
+  "begruendung": "Das Store-Listing ist belegt live und das README verlinkt es unveraendert — die Behauptung ist eine Halluzination und schickt Leser unnoetig in den Selbstbau der APK. Die Android-Mindestversion (4.0 / API 14) wuerde ich weglassen, das ist illustratives Detail ohne Entscheidungsgrenze und macht die Zeile nur laenger. Haken: Die App wurde zuletzt 2022 aktualisiert, ein blosses \"available from Google Play\" klingt aktueller als die Sache ist — das faengt aber bereits der Stagnationshinweis weiter oben auf.",
+  "tragweite": "mittel",
+  "zeilen": [
+   23
+  ],
+  "page": "docs/en/addon/cockpit/xtextureextractor.md"
+ },
+ {
+  "titel": "JDK-Voraussetzung fuer den Java-Client",
+  "frage": "Soll die JDK-Anforderung des Java-Desktop-Clients aufgenommen und dafuer der pauschale Satz \"No additional system packages are required\" eingeschraenkt werden?",
+  "empfehlung": "ja",
+  "begruendung": "Das README ist eindeutig: Der Client braucht javac und java im PATH und wird ueber run-xte.sh gestartet — unter Debian ist das ein echtes Zusatzpaket, und die Seite behauptet aktuell das Gegenteil. Das ist genau die Linux-Spezifik, die auf diese Seite gehoert. Haken: Fuer reine Plugin-Nutzung (lokale Fenster) stimmt \"keine Zusatzpakete\" weiterhin, die Einschraenkung kostet also Praezision gegen etwas mehr Text — sauber loesbar, indem der Satz in Zeile 41 auf den Plugin-Teil bezogen und die JDK-Angabe in die Client-Zeile gezogen wird, statt einen neuen Absatz anzuhaengen.",
+  "tragweite": "hoch",
+  "zeilen": [
+   24
+  ],
+  "page": "docs/en/addon/cockpit/xtextureextractor.md"
+ },
+ {
+  "titel": "Stagnationshinweis bei Compatibility ergaenzen",
+  "frage": "Soll in der Zeile \"Compatibility: X-Plane 12\" ergaenzt werden, dass die letzte Version vom November 2023 stammt und seitdem unveraendert ist?",
+  "empfehlung": "ja",
+  "begruendung": "Das Skript hat kein GitHub-Repo und seit November 2023 keine Aenderung mehr — genau der Fall, den die Hausregel als erlaubte Ausnahme fuer Datums-/Versionsangaben nennt (Stagnationssignal), und fuer den Leser ist die Information vor der Installation relevant. Haken: Es ist die einzige Stelle, an der die Seite laenger statt nur ersetzt wird, und ein Alters-Hinweis liest sich leicht als Abwertung, obwohl ein reines Lua-Skript ohne API-Bindung problemlos jahrelang funktionieren kann.",
+  "tragweite": "mittel",
+  "zeilen": [
+   13
+  ],
+  "page": "docs/en/addon/flylua_scripts/3drainspeedstop.md"
+ },
+ {
+  "titel": "\"indicated airspeed\" entschaerfen oder pruefen",
+  "frage": "Soll \"indicated airspeed\" pauschal zu \"airspeed\" entschaerft werden, ohne vorher im lokal installierten .lua-Skript nachzusehen?",
+  "empfehlung": "nein",
+  "begruendung": "Die Forum-Beschreibung nennt nur den Schwellwert 100 kt und sagt zur Trigger-Groesse gar nichts — das ist ein Argument aus dem Schweigen, keine Widerlegung; das Schwesterskript derselben Familie wertet ausdruecklich die true airspeed aus, \"indicated\" koennte also schlicht falsch sein. Da das Skript als editierbare .lua-Datei lokal vorliegt, laesst sich die Dataref in Sekunden nachschauen und die Angabe praezise korrigieren statt sie zu verwischen. Haken: Das kostet einen manuellen Handgriff, und falls das Nachsehen unterbleibt, steht weiterhin eine unbelegte Angabe auf der Seite — dann waere die pauschale Entschaerfung die sichere Notloesung.",
+  "tragweite": "niedrig",
+  "zeilen": [
+   25
+  ],
+  "page": "docs/en/addon/flylua_scripts/3drainspeedstop.md"
+ },
+ {
+  "titel": "Nutzen-Absatz auf Autoren-Zweck umstellen",
+  "frage": "Soll der Absatz \"Value in Flight Simulation\" den vom Autor genannten Zweck wiedergeben — Regen macht das Fliegen bewusst anspruchsvoller — statt des bisherigen Immersions-/Optik-Nutzens mit der Aufzaehlung \"approach, acceleration, descent\"?",
+  "empfehlung": "ja",
+  "begruendung": "Die einzige Quelle zum Skript ist die Beschreibung des Autors, und die nennt ausdruecklich hoehere Schwierigkeit bei Regenwetter als Ziel; die bisherige Aufzaehlung der Flugphasen hat dort ueberhaupt keine Entsprechung und ist frei ergaenzt. Der Haken: der Autor setzt \"realistic\" selbst in Anfuehrungszeichen, die Immersions-Lesart ist damit nicht falsch, nur unbelegt — und die Umstellung aendert, wofuer der Leser das Skript einsetzen soll. Da die Korrektur ein Satz gegen einen Satz ist, wird die Seite nicht laenger.",
+  "tragweite": "mittel",
+  "zeilen": [
+   24
+  ],
+  "page": "docs/en/addon/flylua_scripts/rain_rate.md",
+  "unsicher": "unbelegt"
+ },
+ {
+  "titel": "Seite auf XP11+XP12 ausweiten",
+  "frage": "Soll die SGES-Seite kuenftig ausweisen, dass dasselbe Skript auch unter X-Plane 11 laeuft?",
+  "empfehlung": "nein",
+  "begruendung": "Die Doku ist durchgaengig auf XP12 ausgerichtet; ein Ja zieht nicht nur Zeile 13, sondern auch Frontmatter-description und Einleitung mit und oeffnet einen Scope, den du selbst nicht fliegst. Der Haken: XP11-vs-XP12 ist laut deiner eigenen Regel eine legitime Entscheidungsgrenze, und 'Compatibility: X-Plane 12' ist streng genommen unvollstaendig — wer noch XP11 nutzt, erfaehrt hier nicht, dass SGES dort ebenfalls laeuft.",
+  "tragweite": "hoch",
+  "zeilen": [
+   13
+  ],
+  "page": "docs/en/addon/flylua_scripts/sges.md"
+ },
+ {
+  "titel": "Hoppie-/METAR-Modul ergaenzen",
+  "frage": "Soll das neue Hoppie-Netzwerk-ATIS- und METAR-Modul (Logon-Code noetig) auf der Seite dokumentiert werden?",
+  "empfehlung": "nein",
+  "begruendung": "Die Korrektur haengt einen Satz an, statt zu ersetzen, verlaengert die Seite und bringt mit dem Hoppie-Logon-Code eine Account-Pflicht in eine Seite, die sonst reines Bodenequipment beschreibt. Der Haken: Es ist die groesste Funktionserweiterung des letzten Releases, und eine Feature-Liste ohne sie wirkt stellenweise veraltet — falls du es doch aufnimmst, gehoert es als ein Stichpunkt in die Features-Liste, nicht als Anhang an Zeile 29.",
+  "tragweite": "niedrig",
+  "zeilen": [
+   29
+  ],
+  "page": "docs/en/addon/flylua_scripts/sges.md"
+ },
+ {
+  "titel": "Ablageort skunkcrafts_updater.cfg streichen",
+  "frage": "Soll die unbelegte Angabe zum Ablageort von skunkcrafts_updater.cfg im FlyWithLua-Root durch einen Verweis auf das mitgelieferte PDF-Manual ersetzt werden?",
+  "empfehlung": "ja",
+  "begruendung": "Der Pfad steht in keiner login-freien Primaerquelle und kann sich mit jedem Release aendern — ein Verweis auf das mitgelieferte Manual ist belegbar und macht die Seite nicht laenger. Der Haken: Die Angabe ist praktisch wahrscheinlich korrekt und genau der Stolperstein, an dem Installationen scheitern; ein PDF-Verweis hilft dem Leser weniger als der konkrete Pfad.",
+  "tragweite": "mittel",
+  "zeilen": [
+   39
+  ],
+  "page": "docs/en/addon/flylua_scripts/sges.md",
+  "unsicher": "stützt sich auf ein unbelegtes Finding"
+ },
+ {
+  "titel": "Stagnationssignal \"last update May 2024\" aufnehmen",
+  "frage": "Soll die Compatibility-Zeile den Zusatz \"last update May 2024\" bekommen, um zu signalisieren, dass das Skript seit ueber zwei Jahren nicht mehr gepflegt wird?",
+  "empfehlung": "ja",
+  "begruendung": "Das Skript hat kein GitHub-Repo, wird ausschliesslich ueber einen einzigen x-plane.org-Download verteilt und wurde zuletzt am 17.05.2024 angefasst — genau der Fall, fuer den deine Regel eine Datumsangabe als Entscheidungsgrenze erlaubt, denn der Leser muss abschaetzen koennen, ob er sich auf ein totes Addon einlaesst. Der Haken: Das Skript ist weder deprecated noch archiviert, der Discord-Support laeuft weiter, und ein reines Lua-Skript kann schlicht fertig sein — ein Stagnationshinweis kann es unfairerweise abwerten, und das Datum veraltet mit jedem Jahr weiter.",
+  "tragweite": "hoch",
+  "zeilen": [
+   13
+  ],
+  "page": "docs/en/addon/flylua_scripts/simbrief_simple_ofp.md"
+ },
+ {
+  "titel": "Unbelegte Feature-Bullets streichen",
+  "frage": "Sollen die beiden Feature-Bullets \"Local times\" und \"Multiple alternates\" ersatzlos aus der Feature-Liste entfernt werden?",
+  "empfehlung": "ja",
+  "begruendung": "Die uebrigen vier Bullets (SimBrief-API, zwei Layouts, METAR, SELCAL) sind durch Beschreibungstext und Changelog gedeckt, diese beiden durch nichts — sie sind die einzigen unbelegten Aussagen der Seite, und Streichen passt zu deinem Stil, Seiten nicht wachsen zu lassen. Der Haken: Eine fehlende Feature-Liste auf der Download-Seite beweist nicht, dass die Features fehlen; wenn sie tatsaechlich existieren, verliert die Seite korrekte Information — ein Blick in SIMBRIEF_SIMPLE_OFP.lua wuerde das in zwei Minuten klaeren.",
+  "tragweite": "mittel",
+  "zeilen": [
+   24
+  ],
+  "page": "docs/en/addon/flylua_scripts/simbrief_simple_ofp.md",
+  "unsicher": "unbelegt"
+ },
+ {
+  "titel": "X-Plane 11 als unterstuetzt ausweisen",
+  "frage": "Soll die Kompatibilitaetszeile kuenftig X-Plane 11 neben X-Plane 12 nennen, obwohl die Doku sonst durchgaengig XP12 behandelt?",
+  "empfehlung": "nein",
+  "begruendung": "Die Doku ist bewusst auf X-Plane 12 unter Linux zugeschnitten; XP11 aufzunehmen oeffnet einen Geltungsbereich, den keine andere Seite bedient und den niemand hier verifiziert. Der Beleg ist zudem reine Marketing-Copy der Produktseite, kein technischer Nachweis, dass XP11 mit aktuellem FlyWithLua NG+ unter Linux noch laeuft. Haken: Der Upstream nennt XP11 ausdruecklich, die Seite bleibt damit bewusst enger als das Produkt.",
+  "tragweite": "hoch",
+  "zeilen": [
+   13
+  ],
+  "page": "docs/en/addon/flylua_scripts/simloadmanager.md"
+ },
+ {
+  "titel": "Flugzeug-Aussage aktualisieren (inkl. Q4XP)",
+  "frage": "Soll der Flugzeug-Absatz auf den aktuellen Upstream-Stand gebracht werden — erweiterte Modellliste und Q4XP nicht mehr als 'excluded', sondern als 'Weight-/Fuel-Integration wird dort automatisch deaktiviert'?",
+  "empfehlung": "ja",
+  "begruendung": "Beide Aussagen stehen im selben Satzblock und stammen aus derselben Quelle — sie getrennt zu behandeln wuerde einen widerspruechlichen Absatz erzeugen, in dem Q4XP als ausgeschlossen gilt, waehrend die Liste erweitert ist. Die Q4XP-Formulierung ist praeziser und in beiden Lesarten des Belegs korrekt. Haken: 'all ToLiss aircraft' ist eine unbegrenzte Zusage, die mit jedem neuen ToLiss-Modell veralten kann — hier besser bei 'ToLiss aircraft' bleiben und nur ERJ, A320 und C750 ergaenzen.",
+  "tragweite": "mittel",
+  "zeilen": [
+   17
+  ],
+  "page": "docs/en/addon/flylua_scripts/simloadmanager.md"
+ },
+ {
+  "titel": "Feature-Liste auf aktuellen Release-Stand",
+  "frage": "Sollen die neuen Upstream-Features (Tankering, Fuel Top-Up, Passenger Variability, Low-Cost-Mode, Random Events, SayIntentions.ai-API) in die bestehenden Feature-Bullets aufgenommen werden?",
+  "empfehlung": "ja",
+  "begruendung": "Es sind echte, belegte Funktionen, und Tankering bzw. Passenger Variability sind genau die Dinge, wegen derer man das Skript ueberhaupt installiert — sie zu verschweigen macht die Seite unvollstaendig. Beides sind additive Ergaenzungen an vorhandenen Bullets, also ohne neue Abschnitte umsetzbar. Haken: Der Vorschlag fuer Zeile 21 macht daraus ein sehr langes Bullet und widerspricht dem Prinzip 'nicht laenger werden' — die Aufzaehlung sollte gekuerzt und auf die bestehenden Bullets verteilt werden, nicht eins zu eins uebernommen.",
+  "tragweite": "mittel",
+  "zeilen": [
+   21,
+   36
+  ],
+  "page": "docs/en/addon/flylua_scripts/simloadmanager.md"
+ },
+ {
+  "titel": "Cloud-Shadow-Feature praeziser beschreiben",
+  "frage": "Soll die Feature-Zeile zu Cloud Shadow Render so umformuliert werden, dass sie das tatsaechliche Verhalten (Shadows werden nicht mehr laufend, sondern nur noch periodisch neu berechnet) wiedergibt?",
+  "empfehlung": "ja",
+  "begruendung": "Die aktuelle Formulierung behauptet, das Feature schalte Cloud-Shadows ab; laut Upstream werden sie nur nicht mehr kontinuierlich berechnet und periodisch neu gezeichnet — das ist eine andere Qualitaets-/Performance-Abwaegung und traegt den Abschnitt 'Value in Flight Simulation'. Umsetzen wuerde ich es als reine Ersetzung im Satz (etwa 'stops clouds from continuously calculating ground shadows'), nicht mit dem vorgeschlagenen Klammerzusatz. Der Haken: jede Praezisierung macht die Zeile etwas laenger und weicht den knappen, parallelen Listenstil der sechs Feature-Punkte leicht auf.",
+  "tragweite": "mittel",
+  "zeilen": [
+   23
+  ],
+  "page": "docs/en/addon/flylua_scripts/simreaperxp.md"
+ },
+ {
+  "titel": "Bezugsquelle: Release vs. Repository",
+  "frage": "Soll die Seite den Bezug des Scripts durchgaengig auf das GitHub-Repository statt auf 'GitHub Releases' umstellen — inklusive des Warnhinweises weiter oben?",
+  "empfehlung": "ja",
+  "begruendung": "Die Releases des Projekts haengen keine Datei an; das Script liegt im Repository, ein Leser findet unter 'Releases' also keinen Download im erwarteten Sinn. Wichtig ist, dass Warnhinweis und Installationsabschnitt gemeinsam umgestellt werden, sonst widerspricht sich die Seite. Der Haken: GitHub erzeugt zu jedem Tag automatisch ein Source-Archiv, das die Datei enthaelt — 'GitHub Releases' ist damit nicht schlicht falsch, sondern der versionierte Weg, waehrend der Verweis auf das Repository den Leser auf den moeglicherweise ungetesteten Stand von main schickt.",
+  "tragweite": "mittel",
+  "zeilen": [
+   37
+  ],
+  "page": "docs/en/addon/flylua_scripts/simreaperxp.md",
+  "unsicher": "nicht schlicht falsch"
+ },
+ {
+  "titel": "Menuepfad ergaenzen, Eintragsname belassen",
+  "frage": "Soll in Zeile 22 nur das belegte \"Plugins >\"-Praefix ergaenzt werden, waehrend der Eintragsname bei \"SimScreen Overlay: Settings\" bleibt (also ohne angehaengtes \"window\")?",
+  "empfehlung": "ja",
+  "begruendung": "Das \"Plugins >\"-Praefix ist durch die Produktseite eindeutig gedeckt und macht den Pfad im Sim nachvollziehbar; das angehaengte \"window\" steht dagegen nur in einem Fliesstext, in dem \"settings window\" auch schlicht Prosa sein kann, und die tatsaechliche Macro-Registrierung im Lua-Skript wurde nicht geprueft. Haken: Sollte der Menuestring im Sim wirklich auf \"Settings window\" enden, bleibt die Seite bei einem leicht verkuerzten String — pruefbar mit einem Blick in die Zeile `add_macro(...)` der installierten SimScreenOverlay.lua, was die Entscheidung dann eindeutig machen wuerde.",
+  "tragweite": "niedrig",
+  "zeilen": [
+   22
+  ],
+  "page": "docs/en/addon/flylua_scripts/simscreenoverlay.md"
+ },
+ {
+  "titel": "Wetter-Integration in Feature-Liste aufnehmen",
+  "frage": "Soll die Feature-Liste um die Integration des X-Plane-eigenen 3D-Wettergitters (Kompensation der Doppelzaehlung bzw. vollstaendige Uebernahme) erweitert werden?",
+  "empfehlung": "ja",
+  "begruendung": "Die Wetter-Integration ist bei beiden Primaerquellen als eigenstaendiges Kernfeature gelistet und beantwortet die naheliegendste Leserfrage, ob sich Script- und X-Plane-Turbulenz addieren — das fehlt der Seite bisher komplett. Der Haken: Es ist der einzige Punkt, der die Liste tatsaechlich verlaengert statt etwas zu ersetzen, und 'Owns mode' wie 'turbulence-ahead warning' sind nur ueber eine deutsche Paraphrase in forum-evidence.md belegt, nicht per Direktzitat. Empfehlung daher: den direkt belegten Wetter-Grid-Punkt als einen Bullet aufnehmen, die schwach belegte Vorauswarnung weglassen.",
+  "tragweite": "mittel",
+  "zeilen": [
+   41
+  ],
+  "page": "docs/en/addon/flylua_scripts/xproturb.md"
+ },
+ {
+  "titel": "Netzwerk-Split: UDP-Relay als Pflicht darstellen",
+  "frage": "Soll die Seite den Netzwerk-Split nicht mehr als empfohlenen Weg mit IP-Eingabe beschreiben, sondern als Variante, die zwingend ein UDP-Relay auf der Windows-Seite braucht?",
+  "empfehlung": "ja",
+  "begruendung": "Beide Zeilen haengen an derselben Sachfrage: Kann der MobiFlight Connector X-Plane auf einer entfernten IP ansprechen? Wenn nein, faellt die Anleitung 'IP des Linux-PCs eintragen' als schlicht nicht durchfuehrbar weg und damit auch die Empfehlung, denn der Split braucht dann exakt dieselbe Relay-Konstruktion (sudppipe.exe) wie die VM-Variante — die auf der Seite als einzige tatsaechlich getestet markiert ist. Der Haken: Der Beleg ist ein offener Feature-Request-Issue mit Label 'planned' und keine offizielle Doku-Aussage; sollte der Connector inzwischen doch eine IP-Konfiguration haben oder demnaechst bekommen, wuerde die Seite eine funktionierende Loesung unnoetig abwerten. Da die Aenderung reiner Ersatztext ist und die Seite nicht laenger macht, ueberwiegt das Risiko einer nicht durchfuehrbaren Anleitung.",
+  "tragweite": "hoch",
+  "zeilen": [
+   29,
+   36
+  ],
+  "page": "docs/en/addon/kvm/mobiflight.md"
+ },
+ {
+  "titel": "Connector statt Plugin, Praxis statt Herstellerdoku",
+  "frage": "Soll der Verbindungsabsatz auf die Herstellerbezeichnung \"Connector\" umgeschrieben und die Ziel-IP-Behauptung durch die tatsaechlich von dir getestete Netzwerkverbindung ersetzt werden?",
+  "empfehlung": "ja",
+  "begruendung": "\"Plugin\" ist nachweislich falsch: Es gibt kein X-Plane-Plugin, sondern einen Windows-Connector auf dem Simulator-Rechner, und eine dokumentierte Ziel-IP-Einstellung existiert nirgends ausser auf dieser Seite selbst (Zirkelbeleg). Der Haken: Der Beleg ist nur ein Fehlen von Herstellerdoku, kein Gegenbeweis — und du betreibst das Setup nachweislich erfolgreich, weshalb die vorgeschlagene Formulierung \"nicht von der Herstellerdoku abgedeckt\" nicht uebernommen werden sollte, da sie dem Tipp-Block direkt darunter widerspraeche. Ersetzen, nicht ergaenzen: ein Satz, der Connector-Terminologie und die Netzwerkerreichbarkeit Gast-zu-Host aus deiner Praxis beschreibt.",
+  "tragweite": "hoch",
+  "zeilen": [
+   41
+  ],
+  "page": "docs/en/addon/kvm/myfs_flights.md"
+ },
+ {
+  "titel": "Feature-Block schlank und tier-neutral halten",
+  "frage": "Soll der Features-Block schlank und ohne Bezahlmodell-Sprache bleiben, also die Zahl \"650+\" ersatzlos streichen und auf neue Bullets fuer Entourage Suite, SkyOps und FlightLine verzichten?",
+  "empfehlung": "ja",
+  "begruendung": "Die \"650+\" ist eine reine Momentaufnahme ohne Entscheidungsgrenze und faellt nach deiner Versionsnummern-Regel ohnehin weg; \"AI voices: Regionally distinct accents in 15 languages\" reicht und bleibt neutral, waehrend \"Premium voices\" eine Tier-Aussage neu einfuehrt, die die Seite bisher bewusst nicht trifft. Der Haken: die Feature-Liste bleibt damit hinter dem offiziellen Stand zurueck, Leser sehen Entourage/SkyOps/FlightLine hier nicht und der Bullet \"AI Co-Pilot\" verschweigt, dass er inzwischen auch Steuerung automatisiert.",
+  "tragweite": "mittel",
+  "zeilen": [
+   19,
+   21
+  ],
+  "page": "docs/en/addon/kvm/sayintentions.md"
+ },
+ {
+  "titel": "Traffic Injection streichen",
+  "frage": "Soll der Traffic-Injection-Bullet auf dieser X-Plane-Seite ersatzlos gestrichen werden, statt ihn mit dem Zusatz \"MSFS 2020/2024 only\" stehen zu lassen?",
+  "empfehlung": "ja",
+  "begruendung": "Traffic Injection ist laut Hersteller MSFS-exklusiv und auf einer reinen X-Plane-Linux-Seite schlicht kein Feature — Streichen entfernt die falsche Erwartung, ohne die Seite mit einem Negativ-Hinweis zu verlaengern, wie es dein Stil vorgibt. Der Haken: Leser, die das Feature aus der SayIntentions-Werbung kennen, finden hier keine Erklaerung, warum es fehlt, und koennten es faelschlich als Doku-Luecke lesen; ein Einzeiler mit Einschraenkung waere fuer sie informativer.",
+  "tragweite": "hoch",
+  "zeilen": [
+   22
+  ],
+  "page": "docs/en/addon/kvm/sayintentions.md"
+ },
+ {
+  "titel": "Toten Freshdesk-Quellenlink ersetzen",
+  "frage": "Soll der nicht mehr oeffentlich erreichbare Freshdesk-Artikel im Quellenabschnitt durch die neue Wissensdatenbank unter kb.sayintentions.ai ersetzt werden?",
+  "empfehlung": "ja",
+  "begruendung": "Die alte URL laeuft in eine Login-Schleife und ist als Beleg wertlos, der neue KB antwortet mit HTTP 200 — ein toter Link im Quellenabschnitt schadet mehr als ein etwas allgemeinerer Einstiegspunkt. Der Haken: es ist der generische KB-Index statt eines spezifischen Features-Artikels, und ob der Inhalt ohne SayIntentions-Account vollstaendig lesbar ist, ist nicht belegt; falls nicht, waere Streichen des Eintrags die sauberere Alternative, da Website und Pricing-Seite als Belege bleiben.",
+  "tragweite": "mittel",
+  "zeilen": [
+   48
+  ],
+  "page": "docs/en/addon/kvm/sayintentions.md",
+  "unsicher": "nicht belegt"
+ },
+ {
+  "titel": "Seite auf XP12-only umstellen",
+  "frage": "Soll die Kompatibilitaetsangabe auf \"X-Plane 12\" reduziert werden, sodass der XP11-Support der alten 1.x-Linie ersatzlos entfaellt?",
+  "empfehlung": "ja",
+  "begruendung": "Die Herstellerseite nennt im Anforderungsblock nur noch X-Plane 12; die aktuell verkaufte Generation ist XP12-only, XP11 wurde nur von der nicht mehr vertriebenen 1.x-Linie unterstuetzt. Der Haken: Wer noch eine alte AEP-1.x-Lizenz unter XP11 nutzt, findet den Hinweis darauf nirgends mehr — das ist aber eine Randgruppe, und die Seite dokumentiert das kaufbare Produkt.",
+  "tragweite": "hoch",
+  "zeilen": [
+   13
+  ],
+  "page": "docs/en/addon/scenery_addons/aep.md"
+ },
+ {
+  "titel": "Feature-Abschnitt auf v2-Stand umschreiben",
+  "frage": "Soll der Feature-Abschnitt auf den aktuellen Produktstand umgeschrieben werden — prozedurale Ground-Overlays statt \"weather maps\", AEP-Live-Plugin fuer Taxisigns statt des Decals-Bullets, Decal-Detailtexturen statt \"2-4 pixels per inch\"?",
+  "empfehlung": "ja",
+  "begruendung": "Die drei Bullets haengen zusammen: Die Decal-Aussage wandert in den Ground-Markings-Bullet, dadurch wird der Decals-Bullet frei fuer das bisher voellig fehlende AEP-Live-Plugin, und die veraltete Pixeldichte aus der 1.x-Ankuendigung wird durch die Decal-Formulierung ersetzt. Einzeln beantwortet entstehen Dopplungen oder Luecken. Der Haken: Die vorgeschlagenen Formulierungen sind laenger als der knappe Seitenstil — beim Uebernehmen auf je einen Halbsatz eindampfen (Ersatz, nicht Zusatz), und die Erwaehnung von \"UHD textures\" in Zeile 35 mitziehen.",
+  "tragweite": "mittel",
+  "zeilen": [
+   21,
+   23,
+   27
+  ],
+  "page": "docs/en/addon/scenery_addons/aep.md"
+ },
+ {
+  "titel": "Installation als Payware + SkunkCrafts",
+  "frage": "Soll der Installationsabschnitt den Download-von-der-Herstellerseite-Text durch Payware-Bezug ueber den X-Plane.org-Store, zwei Ordner (AEP + AEP Overlays) und SkunkCrafts-Updates ersetzen?",
+  "empfehlung": "ja",
+  "begruendung": "Die aktuelle Anleitung ist schlicht falsch: Es gibt keinen ZIP-Download auf der Herstellerseite, und wer nur einen Ordner kopiert, bekommt die Overlays nicht. Auch \"Value in Flight Simulation\" suggeriert bisher, man spare sich Payware — der Absatz sollte beim Ja mitgezogen werden. Der Haken: Die Seite nennt damit erstmals einen kommerziellen Store als Bezugsquelle; einen Preis sollte sie bewusst nicht nennen, weil der veraltet.",
+  "tragweite": "hoch",
+  "zeilen": [
+   39
+  ],
+  "page": "docs/en/addon/scenery_addons/aep.md"
+ },
+ {
+  "titel": "VRAM-Untergrenze streichen",
+  "frage": "Soll die unbelegte Angabe \"(minimum 4 GB)\" entfallen und die 8-GB-Angabe als Empfehlung statt als Anforderung formuliert werden?",
+  "empfehlung": "ja",
+  "begruendung": "Die Herstellerseite kennt nur \"8 GB+ VRAM Recommended\"; eine 4-GB-Untergrenze steht in keiner Primaerquelle und ist damit erfunden. Der Haken: Leser mit schwaecherer Karte verlieren jede Orientierung, ob AEP fuer sie ueberhaupt in Frage kommt — eine erfundene Zahl ist dafuer aber die schlechtere Hilfe als gar keine.",
+  "tragweite": "niedrig",
+  "zeilen": [
+   43
+  ],
+  "page": "docs/en/addon/scenery_addons/aep.md"
+ },
+ {
+  "titel": "Installation/Linux-Abschnitt auf neuen LST-Stand bringen",
+  "frage": "Soll der Installations- und Linux-Abschnitt auf den Stand nach dem LST-Rewrite umgestellt werden - offizieller Web-Editor statt 'Entwicklertools Windows-only', lst-utils nur noch fuer das Legacy-Format, Updates ueber den SkunkCrafts Updater?",
+  "empfehlung": "ja",
+  "begruendung": "Das ist die einzige Aenderung, die deine Kernaussage direkt betrifft: aktuell steht dort, die offiziellen Entwicklertools seien Windows-only und Linux brauche eine Community-Notloesung - genau das ist mit dem browserbasierten Editor nicht mehr wahr, und lst-utils zielt seit dem Formatwechsel auf ein Paketformat, das die aktuelle Version nicht mehr schreibt. Wer der Seite folgt, baut gegen ein totes Format. Der Haken: du wertest eine bisher empfohlene Open-Source-Alternative ab und verlaesst dich auf einen Editor, den der Anbieter selbst noch als Beta kennzeichnet; den Updater-Hinweis auf einen Halbsatz begrenzen, damit der Abschnitt nicht waechst, und die Versionsnummer des Rewrites im Text weglassen ('seit dem Wechsel auf das neue Paketformat').",
+  "tragweite": "hoch",
+  "zeilen": [
+   36,
+   42
+  ],
+  "page": "docs/en/addon/scenery_addons/lst.md"
+ },
+ {
+  "titel": "Feature-Liste auf aktuellen Funktionsstand",
+  "frage": "Soll die Feature-Liste an die offizielle Funktionsbeschreibung angeglichen werden - Trigger-Eintrag um Kamera-Trigger, Interaktionsmenues und Dataref-Steuerung erweitert, Performance-Eintrag von der Prozentzahl auf die Architekturaussage umgestellt?",
+  "empfehlung": "ja",
+  "begruendung": "Die Angabe 'weniger als 5-10 % Frame-Rate-Einbusse' ist durch keine Primaerquelle gedeckt und muss ohnehin weg - offen ist nur, ob die belegte Architekturaussage (eigener Thread, asynchrones Laden, optionale Range-Limits) an ihre Stelle tritt, und die ist fuer deine Leserschaft naeher am Thema als eine erfundene Zahl. Der Haken: beide Korrekturvorschlaege sind deutlich laenger als die jetzigen Bullets und der Trigger-Punkt ist inhaltlich reine Ergaenzung, kein Fehler - wenn du zustimmst, dann als Ersatz in je einer Zeile formuliert, nicht als zusaetzliche Listenpunkte.",
+  "tragweite": "mittel",
+  "zeilen": [
+   25,
+   26
+  ],
+  "page": "docs/en/addon/scenery_addons/lst.md"
+ },
+ {
+  "titel": "XP11-Kompatibilitaet ausweisen",
+  "frage": "Soll die Seite neben X-Plane 12 auch X-Plane 11 als kompatibel ausweisen?",
+  "empfehlung": "nein",
+  "begruendung": "Die Doku ist durchgaengig XP12-Linux; eine XP11-Angabe waere neuer Scope, und die Seite wuerde sich selbst widersprechen, weil Frontmatter und Fliesstext weiter nur von XP12 sprechen - konsequent waere eine Aenderung an drei Stellen fuer eine Version, die du nicht dokumentierst. Der Haken: der Beleg stammt von der offiziellen Produktseite, und XP11-vs-XP12 ist nach deiner eigenen Regel eine zulaessige Entscheidungsgrenze - unklar bleibt allerdings, ob der Satz nach dem Rewrite noch Alttext aus der 1.x-Aera ist.",
+  "tragweite": "mittel",
+  "zeilen": [
+   14
+  ],
+  "page": "docs/en/addon/scenery_addons/lst.md"
+ },
+ {
+  "titel": "70-nm-Bullet korrigieren statt streichen",
+  "frage": "Soll der Bullet \"Predictive algorithm\" durch eine kurze Formulierung ersetzt werden, die die 70 nm korrekt als Wiederverwendungs-Radius des letzten gueltigen Schneewerts beschreibt (statt ihn ersatzlos zu streichen)?",
+  "empfehlung": "ja",
+  "begruendung": "Die bisherige Aussage ist nachweislich falsch: Im Code ist 70 nm der Radius, in dem der zuletzt gueltige Schneewert weiterverwendet wird (weather.py: `if dist < 70: snow = nsnow`), keine Vorausberechnung entlang des Flugwegs; die Kurs-Suche endet bei ~60 km. Weil die Zahl 70 nm in der Community bekannt ist, ist Korrigieren besser als Streichen — aber nur in einer Kurzfassung von einer Zeile, ohne die im Vorschlag ergaenzten, unbelegten Zusaetze (\"for example over water\", \"searches neighbouring grid cells\") und ohne die ~60-km-Grenze, sonst wird aus einer Feature-Liste eine Code-Erklaerung. Der Haken: der Beleg zeigt auf den beweglichen Branch xp12-master statt auf Tag v12.4, und jede Beschreibung eines Implementierungsdetails altert mit dem naechsten Release — wer das vermeiden will, streicht den Bullet ganz und verliert dabei ein echtes Unterscheidungsmerkmal des Plugins.",
+  "tragweite": "mittel",
+  "zeilen": [
+   21
+  ],
+  "page": "docs/en/addon/scenery_addons/noaa_weather.md",
+  "unsicher": "unbelegt"
+ },
+ {
+  "titel": "Linux-Notes: Paket- und Bibliotheksnamen korrigieren",
+  "frage": "Soll der Linux-Notes-Block neu geschrieben werden — richtiger Bibliotheksname (libcurl-gnutls.so.4), Runtime- statt -dev-Paket, Versionsnummer raus, Steam/Proton-Begruendung bleibt drin?",
+  "empfehlung": "ja",
+  "begruendung": "Der aktuelle apt-Befehl installiert das Entwicklungspaket libcurl4-gnutls-dev, das zum Betrieb des Plugins gar nicht gebraucht wird — das ist der einzige handlungsleitende Befehl der Seite und er ist falsch. Der Haken: der Ersatzname libcurl3t64-gnutls ist trixie-spezifisch, auf bookworm und aelteren Ubuntu-Releases heisst das Paket libcurl3-gnutls; wer generisch 'Debian-based systems' adressiert, sollte den Befehl entweder auf Debian ab trixie eingrenzen oder distro-neutral formulieren. Die Steam/Proton-Begruendung ist durch die Release-Notes belegt und eine Linux-Aussage — sie darf beim Streichen der Versionsnummer nicht mit verschwinden.",
+  "tragweite": "hoch",
+  "zeilen": [
+   42,
+   46
+  ],
+  "page": "docs/en/addon/scenery_addons/xa-snow.md"
+ },
+ {
+  "titel": "Per-Scenery-Abschnitt sachlich richtigstellen",
+  "frage": "Soll der Abschnitt 'Per-Scenery Configuration' inklusive Ueberschrift dahingehend richtiggestellt werden, dass xa-snow.cfg eine Nutzeraktion zur Schneebegrenzung auf Legacy-/XP11-Sceneries ist?",
+  "empfehlung": "ja",
+  "begruendung": "Die derzeitige Aussage ist schlicht falsch: Es ist kein Feature fuer Scenery-Entwickler, sondern ein Sample im Plugin-Verzeichnis, das der Nutzer selbst in eine Scenery kopiert — und der Zweck ist eng, naemlich unbrauchbare Runways in XP11-Altsceneries. Der Haken: der Abschnitt wandelt sich damit von Beschreibung zu Anleitung, die Ueberschrift muss mit geaendert werden und die Seite wird etwas laenger; das laesst sich abfedern, indem die Anleitung auf einen Satz komprimiert wird.",
+  "tragweite": "hoch",
+  "zeilen": [
+   28
+  ],
+  "page": "docs/en/addon/scenery_addons/xa-snow.md"
+ },
+ {
+  "titel": "Upstream-Einschraenkungen in Feature-Bullets uebernehmen",
+  "frage": "Sollen die Bullets 'Historical snow' und 'Auto update' die vom Upstream genannten Einschraenkungen nennen (lueckenhaftes Archiv, Datum vor Flugbeginn; ressourcenintensiv und moeglicherweise instabil)?",
+  "empfehlung": "ja",
+  "begruendung": "Beide Bullets versprechen derzeit mehr, als der Autor selbst zusagt — das Archiv beschreibt er als angestrebt und lueckenhaft, das Auto-Update als ressourcenschwer und potenziell wieder entfallend. Wer sich auf die Seite verlaesst, sucht Fehler bei seinem Linux-System statt beim Feature. Der Haken: die Bullets werden dadurch laenger und lesen sich weniger wie eine Feature-Liste, eher wie ein Vorbehaltskatalog; beides bleibt aber ein Wertetausch ohne neue Zeilen.",
+  "tragweite": "mittel",
+  "zeilen": [
+   21,
+   22
+  ],
+  "page": "docs/en/addon/scenery_addons/xa-snow.md"
+ },
+ {
+  "titel": "Shoreline-Handling in die Feature-Liste",
+  "frage": "Soll die Feature-Liste um die Shoreline-Extrapolation samt optionaler Temperature Correction erweitert werden?",
+  "empfehlung": "ja",
+  "begruendung": "Die Kuestenextrapolation ist einer der zwei Kernmechanismen des Plugins und die Temperature Correction ist das einzige Feature des juengsten Releases — ohne sie wirkt die Liste veraltet. Der Haken: das ist echter Zuwachs, kein Ersatz, und widerspricht dem Grundsatz, Seiten nicht laenger werden zu lassen; wenn das stoert, laesst sich der Punkt in den bestehenden Interpolations-Bullet einfalten statt als eigener Bullet zu erscheinen.",
+  "tragweite": "mittel",
+  "zeilen": [
+   20
+  ],
+  "page": "docs/en/addon/scenery_addons/xa-snow.md"
+ },
+ {
+  "titel": "XRoads-Installationsschritt korrekt beschreiben",
+  "frage": "Soll der letzte Satz des Linux-Installationsabschnitts durch den tatsaechlichen Ablauf ersetzt werden (Binary ins X-Plane-Basisverzeichnis kopieren und dort ausfuehren, Scan nach zOrtho/zPhoto/zVstates/z_-Ordnern, Xroads-Ordner ganz oben in scenery_packs.ini)?",
+  "empfehlung": "ja",
+  "begruendung": "Der aktuelle Satz beschreibt den Ablauf schlicht falsch — das Binary wird nicht \"auf die Ortho-Scenery angewendet\", sondern wechselt in sein eigenes Verzeichnis und scannt von dort; wer es woanders startet, bekommt den Xroads-Ordner an der falschen Stelle und ohne den scenery_packs.ini-Hinweis wirkt die Library gar nicht. Das ist genau der Linux-Pfad, den die Seite als Alleinstellungsmerkmal hat. Haken: die Korrektur ist ein Ersatz-Satz, aber ein laengerer (aus einem werden zwei bis drei Saetze), und der Linux-spezifische Teil ist aus xroads.c abgeleitet, nicht aus der README belegt — die README dokumentiert nur die Windows-/macOS-Binaries.",
+  "tragweite": "hoch",
+  "zeilen": [
+   46
+  ],
+  "page": "docs/en/addon/scenery_addons/xroad.md"
+ },
+ {
+  "titel": "AutoATC durch SGES als Beispiel ersetzen",
+  "frage": "Soll AutoATC als Beispiel fuer ein FlyWithLua-abhaengiges Plugin durch SGES ersetzt werden, statt es ersatzlos zu streichen?",
+  "empfehlung": "ja",
+  "begruendung": "AutoATC ist belegbar ein eigenstaendiges C/C++-Plugin ohne jeden Lua-Bezug, die Aussage ist schlicht falsch und muss weg. Ein Ersatz statt Streichung haelt die Satzaussage 'viele Plugins haengen von FlyWithLua ab' belegt und die Seite gleich lang. Haken: SGES ist nur ueber eine forums.x-plane.org-Dateiseite belegt, also ein etwas schwaecherer und langfristig stale-anfaelligerer Beleg als ein GitHub-Repo — X-ProTurb waere die Alternative.",
+  "tragweite": "mittel",
+  "zeilen": [
+   15
+  ],
+  "page": "docs/en/addon/scripting/flywithlua.md"
+ },
+ {
+  "titel": "Forky neu aufnehmen oder nur Trixie korrigieren",
+  "frage": "Soll Forky (testing) neu als unterstuetzte Debian-Variante in die Seite aufgenommen werden?",
+  "empfehlung": "nein",
+  "begruendung": "Nur 'Trixie (Testing)' zu 'Trixie (stable)' korrigieren: das ist die eigentliche Falschaussage, bleibt gleich lang und braucht keinen neuen Beleg. Fuer Forky liegt kein Nachweis der Package-Filelist vor, debian.org/releases belegt nur den Testing-Status. Haken: Forky-Nutzer sind damit nicht explizit abgedeckt, und die Zeile veraltet beim naechsten Debian-Release erneut — eine release-agnostische Formulierung ('ab Trixie') waere langlebiger.",
+  "tragweite": "niedrig",
+  "zeilen": [
+   62
+  ],
+  "page": "docs/en/addon/scripting/flywithlua.md"
+ },
+ {
+  "titel": "FMOD-Fehler: Harmlosigkeit behalten, Status-Verweis entschaerfen",
+  "frage": "Soll die Aussage 'der Fehler ist harmlos, das Plugin laeuft weiter' bleiben und nur der Verweis auf einen 'Status' in Issue #126 zu 'offen, bisher unbeantwortet' entschaerft werden?",
+  "empfehlung": "ja",
+  "begruendung": "Die Harmlosigkeit deckt sich mit der eigenen Linux-Praxis und ist die praktisch relevante Information; nur der Verweis auf einen 'Status' ist falsch, denn Issue #126 hat null Kommentare und keinerlei Maintainer-Reaktion. Haken: 'harmlos' bleibt damit eine Erfahrungsaussage ohne externen Beleg — wenn spaeter doch ein Sound-Defekt daraus wird, steht sie unbelegt in der Doku.",
+  "tragweite": "mittel",
+  "zeilen": [
+   72
+  ],
+  "page": "docs/en/addon/scripting/flywithlua.md",
+  "unsicher": "unbelegt"
+ },
+ {
+  "titel": "Quell-Repo auf pbuckner-Fork umstellen",
+  "frage": "Soll die Seite als Source-Repo den aktiv gepflegten Fork github.com/pbuckner/x-plane_plugins nennen und uglyDwarf nur noch als Legacy-Ursprung fuehren?",
+  "empfehlung": "ja",
+  "begruendung": "Der aktuelle Maintainer entwickelt seit Jahren ausschliesslich im Fork (letzter Push 2026-07-19), waehrend uglyDwarf seit 2023-02-21 stillsteht — die Sources-Zeile schickt Leser derzeit auf einen toten Stand. Zeile 12 weist uglyDwarf bereits korrekt als 'legacy Python-3 port' aus, dort ist also nichts zu aendern, nur die Sources-Zeile wird ersetzt (nicht ergaenzt). Haken: Ein personengebundener Fork ist als Langzeit-Link fragiler als das Ursprungs-Repo, und wenn die Doku spaeter offiziell umzieht, muss der Link erneut nachgezogen werden.",
+  "tragweite": "mittel",
+  "zeilen": [
+   68
+  ],
+  "page": "docs/en/addon/scripting/xppython3.md"
+ },
+ {
+  "titel": "Forum-Quelle v4.6.1 streichen",
+  "frage": "Soll der Forum-Quelleneintrag zum Release-Announcement ersatzlos entfernt werden, obwohl der Link funktioniert?",
+  "empfehlung": "nein",
+  "begruendung": "Die Versionsregel zielt auf Versionsnummern in Aussagesaetzen der Doku, nicht auf den Originaltitel einer zitierten Quelle — den kann man nicht kuerzen, ohne die Zitation zu faelschen. Streicht man ihn, bleiben nur readthedocs und ein GitHub-Fork uebrig, also faktisch eine einzige unabhaengige Quelle. Haken: Der Titel nennt v4.6.1 (Nov 2025), waehrend v4.7.1 aktuell ist — beim Ueberfliegen kann die Quellenliste dadurch veraltet wirken; wer das vermeiden will, ersetzt den Eintrag durch den aktuellen Release-Thread statt ihn zu loeschen.",
+  "tragweite": "niedrig",
+  "zeilen": [
+   69
+  ],
+  "page": "docs/en/addon/scripting/xppython3.md"
+ },
+ {
+  "titel": "Installation auf Handbuch-Vorgabe umstellen (inkl. Plugin)",
+  "frage": "Soll der Installationsabschnitt auf die Handbuch-Vorgabe umgestellt werden — beide Ordner (`fmod/` und `plugins/`) ins Aircraft-Root statt nur der FMOD-Banks ins `fmod/`?",
+  "empfehlung": "ja",
+  "begruendung": "Die aktuelle Anleitung ist funktional falsch: Wer nur die FMOD-Banks nach `fmod/` kopiert, installiert das auf derselben Seite beschriebene C-Plugin mit In-Sim-Menue gar nicht — die Seite widerspricht sich also selbst. Das offizielle Handbuch des Entwicklers beschreibt eindeutig das Aircraft-Root als Ziel. Haken: Der Beleg ist ein Scribd-Upload und das Handbuch dokumentiert nur \"INSTALLATION (WIN)\"; ob das mitgelieferte Plugin ein `lin_x64/`-Binary hat, ist unbelegt — deshalb vor Veroeffentlichung einmal ins eigene Archiv schauen und, falls kein `lin_x64/` vorhanden ist, den Menue-Hinweis (Zeile 21/44) streichen statt ihn stehen zu lassen.",
+  "tragweite": "hoch",
+  "zeilen": [
+   35,
+   41
+  ],
+  "page": "docs/en/addon/sounds/kosp_project.md",
+  "unsicher": "unbelegt"
+ },
+ {
+  "titel": "Kompatibilitaet um X-Plane 11 erweitern",
+  "frage": "Soll die Kompatibilitaetszeile von \"X-Plane 12\" auf \"X-Plane 12 and X-Plane 11\" erweitert werden?",
+  "empfehlung": "ja",
+  "begruendung": "Der \"Requirement\"-Abschnitt der offiziellen Produktseite nennt explizit XP12 oder XP11; die derzeitige Angabe ist damit schlicht unvollstaendig, und die XP11/XP12-Grenze ist nach eurer eigenen Regel eine zulaessige Entscheidungsgrenze. Haken: Der Beleg ist nur ein Wayback-Snapshot (Live-Abruf 403), und fuer eine Doku, die sich an XP12 unter Linux richtet, ist die XP11-Angabe praktisch ohne Nutzen — wer XP11 fliegt, ist nicht die Zielgruppe.",
+  "tragweite": "mittel",
+  "zeilen": [
+   11
+  ],
+  "page": "docs/en/addon/sounds/kosp_project.md"
+ },
+ {
+  "titel": "Versionszeile 1.7 entfernen",
+  "frage": "Soll die Zeile \"Current version: 1.7 (December 2025)\" ersatzlos entfallen?",
+  "empfehlung": "ja",
+  "begruendung": "Das Produkt wird gepflegt und ist weiterhin gelistet — es gibt kein Deprecation- oder Stagnationssignal, also markiert die Nummer keine Entscheidungsgrenze und faellt unter die Regel \"keine aktuellen Versionsnummern\". Haken: Die Seite verliert damit ihren einzigen Aktualitaetsanker; bei einem Closed-Source-Produkt ohne Repo kann ein Leser sonst nicht einschaetzen, ob das Paket noch lebt.",
+  "tragweite": "niedrig",
+  "zeilen": [
+   12
+  ],
+  "page": "docs/en/addon/sounds/kosp_project.md"
+ },
+ {
+  "titel": "Triebwerkstabelle durch Sammelaussage ersetzen",
+  "frage": "Soll die Tabelle \"Aircraft / Engine Variants\" durch eine belegbare Sammelaussage zu Mustern und Triebwerkssets ersetzt werden?",
+  "empfehlung": "ja",
+  "begruendung": "Die Zuordnung pro Muster ist durch keine Primaerquelle gedeckt, und mindestens \"A321 CEO: nur CFM56\" ist zweifelhaft, da der reale A321ceo auch mit IAE V2500 existiert; das Handbuch behandelt ohnehin alle Varianten identisch (ein Archiv, ungenutzte Banks werden nicht geladen). Der Ersatz macht die Seite zudem kuerzer statt laenger. Haken: Die Tabelle ist die uebersichtlichste Information der Seite, und \"nicht belegt\" heisst nicht \"falsch\" — ein Satz Fliesstext beantwortet die Frage \"passt das zu meinem Muster?\" weniger direkt.",
+  "tragweite": "mittel",
+  "zeilen": [
+   25
+  ],
+  "page": "docs/en/addon/sounds/kosp_project.md",
+  "unsicher": "nicht belegt"
+ },
+ {
+  "titel": "Background-Block: Kompatibilitaet + Plattformen",
+  "frage": "Soll die Zeile \"Compatibility: X-Plane 12\" durch eine Zeile ersetzt werden, die sowohl XP11+XP12 als auch Windows/macOS/Linux nennt?",
+  "empfehlung": "ja",
+  "begruendung": "Beide Findings haengen an derselben Zeile und derselben Belegquelle (Distributor-Produktseiten von Orbx/iniBuilds), deshalb ist es eine Entscheidung: entweder man traut diesen Angaben oder nicht. Umgesetzt als Ersatz statt Ergaenzung — z. B. \"- **Compatibility:** X-Plane 11 and X-Plane 12 (Windows, macOS, Linux)\" — bleibt die Seite gleich lang, die XP11/XP12-Grenze steht korrekt, und die fuer eine Linux-Doku zentrale Plattformaussage ist erstmals belegt vorhanden. Haken: Prerequisites-Felder in Shops sind notorisch veraltete Copy-Paste-Angaben, die Vendor-Seite selbst bestaetigt XP11 nicht — es ist also moeglich, dass XP11 nur pro forma gelistet wird, und du selbst fliegst ohnehin nur XP12; wer XP11 ausserhalb des Doku-Scopes sieht, verneint hier und laesst nur die Plattformangabe einfliessen.",
+  "tragweite": "hoch",
+  "zeilen": [
+   13
+  ],
+  "page": "docs/en/addon/sounds/mango_studios.md"
+ },
+ {
+  "titel": "Feste Preisangabe entfernen",
+  "frage": "Soll die konkrete Preisangabe von $19.99 fuer das ToLiss-Family-Bundle durch eine preisfreie Formulierung ersetzt werden?",
+  "empfehlung": "ja",
+  "begruendung": "Der Preis ist nachweislich schon jetzt falsch (Vendor-Seite: $15.00 im Sale) und variiert zusaetzlich je Distributor — eine fest verdrahtete Zahl veraltet zwangslaeufig und erzeugt genau die Pflegelast, die die Versionsnummern-Regel vermeiden soll. Ersatz statt Streichung: \"...combines the A319, A320, and A321 packs at a reduced price.\" Haken: die konkrete Zahl ist fuer Leser die nuetzlichste Information beim Kaufentscheid; ohne sie muss jeder erst den Shop oeffnen, um die Groessenordnung zu kennen.",
+  "tragweite": "mittel",
+  "zeilen": [
+   25
+  ],
+  "page": "docs/en/addon/sounds/mango_studios.md"
+ },
+ {
+  "titel": "Stagnationshinweis in Kompatibilitaetszeile",
+  "frage": "Soll die Kompatibilitaetszeile den Stagnationsstand des Skripts nennen (letztes Release Juni 2024, seither unveraendert), statt nur \"X-Plane 12\" zu sagen?",
+  "empfehlung": "ja",
+  "begruendung": "Das Skript wird nur ueber X-Plane.org verteilt, hat kein Repo und seit Juni 2024 kein Update, waehrend die ToLiss-Muster laufend weiterentwickelt werden — genau der Fall, in dem die Datumsangabe eine Entscheidungsgrenze markiert und daher trotz Versionsnummern-Regel bleiben darf. Der Haken: das Skript laeuft funktional weiterhin, ein Stagnationssignal wertet also ab, ohne dass ein konkreter Defekt belegt ist, und die Angabe veraltet selbst, wenn DINKIssTyle doch noch nachliefert. Deshalb als knapper Zusatz in Zeile 13 und nicht als eigener Warnhinweis — die Seite wird so nicht laenger.",
+  "tragweite": "mittel",
+  "zeilen": [
+   13
+  ],
+  "page": "docs/en/addon/toliss/dk_toliss_callout.md"
+ },
+ {
+  "titel": "Beacon-Trigger beim Abflug streichen",
+  "frage": "Soll die unbelegte Behauptung, das Anschalten des Beacon-Lights loese den Abflug-Countdown aus, ersatzlos entfallen und nur die belegte Zeitangabe (4-8 Minuten, skaliert nach Passagierzahl) stehenbleiben?",
+  "empfehlung": "ja",
+  "begruendung": "Die Forum-Beschreibung nennt ueberhaupt kein ausloesendes Ereignis, und die repo-eigene Research-Notiz nennt mit 'nach Tuerenschluss' ein drittes — es gibt also zwei konkurrierende, beide unbelegte Trigger. Sauber ist, gar keinen zu nennen statt einen zu raten. Haken: die Beschreibung wird dadurch vager, und wer das Skript nutzt, weiss nicht mehr, ab wann er die Uhr laufen sieht; ausserdem muss der gleichlautende Beacon-Satz im Features-Block (Zeile 25) mitgezogen werden, sonst widerspricht sich die Seite.",
+  "tragweite": "mittel",
+  "zeilen": [
+   18
+  ],
+  "page": "docs/en/addon/toliss/toicabrdy.md",
+  "unsicher": "unbelegt"
+ },
+ {
+  "titel": "Go-around-Bullet abschwaechen",
+  "frage": "Soll das Feature-Bullet 'Go-around safe' zu 'Go-around aware' mit ausdruecklichem Zuverlaessigkeits-Vorbehalt umformuliert werden?",
+  "empfehlung": "nein",
+  "begruendung": "Der Beleg traegt die Abwertung nicht: der Autor schraenkt den Testumfang ein ('only tested with normal routing'), er berichtet keine tatsaechlichen Fehlzustaende. Der Vorbehalt steht zudem bereits im Fliesstext (Zeile 21), die Korrektur wuerde ihn nur duplizieren und die Seite verlaengern. Haken: 'safe ... without incorrect states' ist als Formulierung trotzdem zu stark; wer minimal nachbessern will, benennt das Bullet auf 'Go-around aware' um und laesst den Zusatz weg — das waere kein Dazuschreiben.",
+  "tragweite": "niedrig",
+  "zeilen": [
+   27
+  ],
+  "page": "docs/en/addon/toliss/toicabrdy.md"
+ },
+ {
+  "titel": "Flugzeugliste am ToLiss-Katalog ausrichten",
+  "frage": "Soll die Klammeraufzaehlung der unterstuetzten Muster an den offiziellen ToLiss-Produktkatalog angeglichen werden (A320 CEO ergaenzt, A330neo zu A330-900, A321/neo zu A321 CEO/NEO)?",
+  "empfehlung": "ja",
+  "begruendung": "Die Seite behauptet ohnehin 'entire ToLiss Airbus family' — dann muss die Klammer den Katalog korrekt wiedergeben, sonst ist sie schlicht falsch, und A330neo/A321neo sind auch als Produktnamen unsauber. Haken: die A320 CEO wird damit erstmals als unterstuetzt zugesagt, ohne dass der Skript-Autor je eine Musterliste bestaetigt hat — der Schluss vom Verkaufskatalog auf die Skript-Kompatibilitaet bleibt ein Analogieschluss.",
+  "tragweite": "mittel",
+  "zeilen": [
+   28
+  ],
+  "page": "docs/en/addon/toliss/toicabrdy.md"
+ },
+ {
+  "titel": "TOBUS auf hotbso-Fork als Referenzversion umstellen",
+  "frage": "Soll der TOBUS-Abschnitt den hotbso-Fork als beschriebene Referenzversion behandeln statt der Forum-Originalfassung?",
+  "empfehlung": "ja",
+  "begruendung": "Alle drei offenen Punkte im TOBUS-Abschnitt fallen mit dieser einen Antwort: Nur der Fork ist ueberhaupt belegbar (GitHub-Quelltext), waehrend die Forum-Originalfassung hinter Cloudflare liegt und weder die drei Modi Real/Fast/Instant noch die X-Airbus-Library-Abhaengigkeit bestaetigt werden koennen. Mit Ja werden Feature-Beschreibung (A346, Tuerlogik, simbrief_hub-Passagierimport, CPDLC/Telex-Loadsheet via Hoppie), Geschwindigkeitsangabe (stufenlos Sekunden pro Passagier plus Instant-Option) und Requires-Zeile (FlyWithLua NG+, simbrief_hub) konsistent auf dieselbe belegte Quelle gezogen. Der Haken: der Fork ist nicht das, was hinter dem Forum-Download-Link steckt — wer dem Link folgt, bekommt eine Version, deren Verhalten die Seite dann nicht mehr exakt beschreibt; und der Hoppie-Logon-Code ist eine zusaetzliche Account-Pflicht, die der Leser erst spaeter bemerkt. Wenn Ja, sollte der Download-Link entsprechend auf GitHub zeigen oder klar als Originalfassung gekennzeichnet bleiben.",
+  "tragweite": "hoch",
+  "zeilen": [
+   124,
+   126
+  ],
+  "page": "docs/en/addon/toliss/toliss_ecosystem.md",
+  "unsicher": "stützt sich auf ein unbelegtes Finding"
+ },
+ {
+  "titel": "SkunkCrafts-Auto-Update bei simbrief_hub nennen",
+  "frage": "Soll in der simbrief_hub-Installationszeile ergaenzt werden, dass das Plugin SkunkCrafts-Updater-Configs mitbringt und sich selbst aktuell haelt?",
+  "empfehlung": "ja",
+  "begruendung": "Die Aussage ist hart belegt (die Updater-Configs liegen im Release-ZIP) und aendert das Wartungsverhalten fuer den Leser spuerbar: Wer den SkunkCrafts Updater ohnehin einsetzt, muss simbrief_hub nicht manuell nachziehen. Der Haken: es ist reines Dazuschreiben, die Zeile wird laenger und verstoesst damit gegen die Stilregel — das laesst sich abfangen, indem der cdm_cfg-Teil der Zeile knapper gefasst wird, statt die Klausel einfach anzuhaengen.",
+  "tragweite": "mittel",
+  "zeilen": [
+   45
+  ],
+  "page": "docs/en/addon/toliss/toliss_ecosystem.md"
+ },
+ {
+  "titel": "Carda-Installer auf iy4vet-Nachfolger umstellen",
+  "frage": "Soll der gesamte Installer-Teil der Carda-Sektion vom entfernten Todaloo-Installer auf den aktuellen iy4vet-Installer (Eintrag file/99205) umgestellt werden?",
+  "empfehlung": "ja",
+  "begruendung": "Der bisher verlinkte Eintrag file/94704 ist nachweislich entfernt, die Seite verweist also derzeit ins Leere; der iy4vet-Installer ist der einzige gepflegte Ersatz und zieht Entwicklername, Downloadlink, den nun eingebauten Mod Fix (separater Link entfaellt) und den Linux-Hinweis gemeinsam mit. Wichtig fuer Linux: der neue Installer bringt ein natives Linux-Binary plus reinen Python-Weg, der Windows-only-Warnhinweis samt KVM-Umweg ist damit sachlich falsch und sollte durch einen kurzen note-Block ersetzt werden. Haken: der Nachfolger ist ein Community-Projekt eines anderen Autors ohne offizielle Uebergabe durch Todaloo, und der Beleg stuetzt sich auf den Forum-Eintrag selbst — faellt auch dieser Eintrag weg, muss die Sektion erneut angefasst werden. Die Versionsangabe v2.0r1 nicht uebernehmen, sie markiert keine Entscheidungsgrenze.",
+  "tragweite": "hoch",
+  "zeilen": [
+   24,
+   26,
+   27,
+   29
+  ],
+  "page": "docs/en/addon/toliss/toliss_mods.md"
+ },
+ {
+  "titel": "Easy Freighter: Beschreibung korrigieren",
+  "frage": "Soll der Easy-Freighter-Absatz durch die korrigierte Fassung ersetzt werden, inklusive der livery.tlscfg-Voraussetzung (external_Extras = YES / custom_Cabin = F)?",
+  "empfehlung": "ja",
+  "begruendung": "Die aktuellen Aussagen sind schlicht falsch: das Kit ist kein FlyWithLua-Objekt, sondern reines Drag-and-drop in den objects/-Ordner, und es liegen keine Frachtairline-Liveries bei, sondern nur eine Demo-Livery. Die tlscfg-Zeilen sind kein Zusatzwissen, sondern die Bedingung, ohne die der Mod nicht funktioniert — und da FlyWithLua- und Livery-Behauptung gleichzeitig wegfallen, wird der Absatz unterm Strich nicht laenger. Haken: es ist streng genommen eine neue Installationsangabe, die sonst nur in der Mod-Doku steht, und sie muss bei Aenderungen am Mod mitgepflegt werden.",
+  "tragweite": "mittel",
+  "zeilen": [
+   10
+  ],
+  "page": "docs/en/addon/toliss/toliss_mods.md"
+ },
+ {
+  "titel": "Feature-Liste auf aktuellen Funktionsumfang bringen",
+  "frage": "Sollen die beiden seither dazugekommenen Kernfunktionen — Werteverlauf-Graph im Detailfenster und Command-History-Fenster — in die bestehenden Feature-Bullets eingearbeitet werden?",
+  "empfehlung": "ja",
+  "begruendung": "Beide Korrekturen erweitern vorhandene Bullets, statt neue anzulegen — die Seite wird um maximal eine Zeile laenger, und die Feature-Liste ist der eigentliche Zweck der Seite. Der Haken: es ist trotzdem reines Dazuschreiben, kein Ersetzen falscher Angaben — wer die Liste bewusst als Kurzueberblick haelt, kann beides mit gutem Grund weglassen, ohne dass die Seite falsch wird.",
+  "tragweite": "mittel",
+  "zeilen": [
+   20,
+   23
+  ],
+  "page": "docs/en/addon/tools/datareftool.md"
+ },
+ {
+  "titel": "Tuning-Hinweis zur Update-Rate aufnehmen",
+  "frage": "Soll zusaetzlich zur Korrektur der Performance-Aussage der Hinweis aufgenommen werden, dass sich die Update-Rate im DRT-Menue senken laesst?",
+  "empfehlung": "nein",
+  "begruendung": "Die eigentliche Faktenkorrektur — DRT liest nicht mehr *alle* Datarefs pro Frame, sondern nur die fensterrelevanten — ist durch das woertliche Release-Zitat gedeckt und sollte ohnehin erfolgen; der Zusatz zur Update-Rate stammt dagegen nur aus einer paraphrasierten Website-Sektion, verlaengert den Satz und ist faktisch eine Handlungsempfehlung ans FPS-Tuning. Der Haken: fuer ein Linux-Setup, in dem FPS knapp sind, ist genau dieser Regler die praktisch nuetzlichste Information der ganzen Seite — wenn er rein soll, dann als eigener kurzer Satz und nicht als Einschub.",
+  "tragweite": "niedrig",
+  "zeilen": [
+   31
+  ],
+  "page": "docs/en/addon/tools/datareftool.md"
+ },
+ {
+  "titel": "Linux-Mindestanforderung gegen Herstellerangabe anheben",
+  "frage": "Soll die Systemvoraussetzung entgegen der Herstellerangabe (Ubuntu 20.04+) auf glibc 2.34+ / Debian 12+ korrigiert werden?",
+  "empfehlung": "ja",
+  "begruendung": "Die objdump-Pruefung des ausgelieferten lin.xpl zeigt Symbolversionen bis GLIBC_2.34; auf Ubuntu 20.04 (glibc 2.31) laedt das Plugin schlicht nicht — die Herstellerangabe ist veraltet, und eine Doku, die Leser auf eine nicht funktionierende Kombination schickt, ist schlechter als gar keine Angabe. Der Haken: die Aussage widerspricht offen der Herstellerseite und stuetzt sich auf eine Eigenmessung an genau einem Release-Stand, muss also bei kuenftigen Releases nachgehalten werden; die genannte glibc-Zahl ist zudem eine Versionsnummer, sie ist hier aber als echte Lauf-/Nicht-lauf-Grenze zulaessig.",
+  "tragweite": "hoch",
+  "zeilen": [
+   37
+  ],
+  "page": "docs/en/addon/tools/datareftool.md"
+ },
+ {
+  "titel": "Versionsnummer raus, alte URL behalten",
+  "frage": "Sollen die beiden Links auf den unbelegten v32e-Slug umgestellt werden?",
+  "empfehlung": "nein",
+  "begruendung": "Der erfasste Volltext des Threads 292710 zeigt durchgaengig v3.2d und exakt den heute verlinkten Slug; die im Finding zitierten Strings ('v3.2e', 'Edited June 19 by Lionel') kommen in keiner erfassten Quelle vor, das Direktzitat ist also nicht belegt. Ich wuerde stattdessen nur die illustrative Versionsnummer aus dem Linktext in Zeile 65 streichen ('Standalone Client Release Thread') und beide bestehenden, funktionierenden URLs unveraendert lassen. Haken: bleibt der Slug irgendwann wirklich hinter der aktuellen Version zurueck, zeigt die Doku auf eine aeltere Thread-Adresse — Forum-Slugs leiten aber in der Regel per Topic-ID weiter, das Risiko eines 404 ist kleiner als beim Sprung auf einen Slug, den niemand verifiziert hat.",
+  "tragweite": "mittel",
+  "zeilen": [
+   36,
+   65
+  ],
+  "page": "docs/en/addon/tools/skunkcrafts_updater.md"
+ },
+ {
+  "titel": "Linux-Binary auf SkunkcraftsUpdater_lin korrigieren",
+  "frage": "Soll die Seite den Linux-Dateinamen von '.lin'-Endung auf 'SkunkcraftsUpdater_lin' umstellen — inklusive der beiden Shell-Befehle ohne Glob?",
+  "empfehlung": "ja",
+  "begruendung": "Beschreibungssatz und Codeblock beschreiben dieselbe Datei; sie koennen nur gemeinsam richtig oder falsch sein. Ist die Angabe falsch, scheitert das dokumentierte Kommando mit 'No such file or directory' und blockiert genau den Linux-Leser, fuer den die Seite existiert. Haken: Beleg ist die X-Crafts-Anleitung, also ein Drittanbieter-Snapshot des ZIP-Inhalts, nicht der Distributor — dafuer laesst sich das in 10 Sekunden am eigenen Rechner gegenpruefen, und diese Pruefung sollte vor dem Uebernehmen stehen.",
+  "tragweite": "hoch",
+  "zeilen": [
+   38,
+   41
+  ],
+  "page": "docs/en/addon/tools/skunkcrafts_updater.md"
+ },
+ {
+  "titel": "\"pedals\" streichen statt durch \"throttles\" ersetzen",
+  "frage": "Soll in der Einleitung das falsche \"pedals\" ersatzlos gestrichen werden, statt es wie vorgeschlagen durch \"throttles\" zu ersetzen?",
+  "empfehlung": "ja",
+  "begruendung": "Dass Pedale nicht unterstuetzt werden, ist belegt (im Quellcode ausdruecklich als \"not yet implemented\" markiert, kein Pedal-Produkt vorhanden) — die Streichung ist unstrittig. Der vorgeschlagene Ersatz \"throttles\" wuerde die Seite dagegen in einen Selbstwiderspruch stuerzen, weil Zeile 16 sagt, dass Achsen inklusive Throttle-Hebel bewusst der X-Plane-Joystick-Konfiguration ueberlassen werden. Haken: die Aufzaehlung schrumpft auf drei Beispiele (MCDU, FCU, EFIS) und wirkt dadurch etwas duenner; wer die ORION- oder URSA-MINOR-Hardware sucht, findet sie erst weiter unten in der Hardware-Liste.",
+  "tragweite": "hoch",
+  "zeilen": [
+   6
+  ],
+  "page": "docs/en/addon/tools/winctrl.md"
+ },
+ {
+  "titel": "Hardware- und Flugzeugliste kuratiert lassen",
+  "frage": "Sollen die Hardware- und die Flugzeugliste kurze kuratierte Auswahlen bleiben, statt auf den vollen Stand der README-Kompatibilitaetsmatrix erweitert zu werden?",
+  "empfehlung": "ja",
+  "begruendung": "Beide Korrekturvorschlaege streichen nichts, sondern haengen an: fuenf zusaetzliche Geraete (TCAS32, RMP32, NWS-Tiller, ORION Joystick/Throttle Base II) und vier zusaetzliche Muster (X-Crafts E-Jets/ERJ, Rotate MD-11, IXEG 737, Hot Start CL650) — das laeuft deiner Regel \"ersetzen statt dazuschreiben\" zuwider, und die README ist am Seitenende ohnehin als autoritative Quelle verlinkt. Die einzige echte Falschaussage in diesem Block, \"iniSimulations A300/A310\", ist frei erfunden (kein Treffer in README oder Quellbaum) und wird unabhaengig von dieser Entscheidung ersatzlos gestrichen. Haken: die Listen bleiben unvollstaendig, und ein Leser mit TCAS32-, RMP32- oder ORION-Base-II-Hardware koennte aus dem Fehlen schliessen, sein Geraet werde nicht unterstuetzt — dem beugt das abschliessende \"and others\" nur halb vor.",
+  "tragweite": "mittel",
+  "zeilen": [
+   27,
+   29
+  ],
+  "page": "docs/en/addon/tools/winctrl.md"
+ },
+ {
+  "titel": "Stagnation offen benennen",
+  "frage": "Soll die Seite statt \"actively maintained\" offen sagen, dass die Entwicklung steht (letztes Release Juni 2023, letzter Commit Oktober 2024), dass das Plugin aber weiter funktioniert?",
+  "empfehlung": "ja",
+  "begruendung": "\"Actively maintained\" ist nach drei Jahren ohne Release schlicht falsch und die einzige Aussage der Seite, die eine Erwartung setzt; die beiden Daten sind hier keine Versionspflege, sondern genau das erlaubte Stagnationssignal. Der Haken: das Repo ist weder archiviert noch abgeloest, XGS laeuft unter Linux tadellos — eine zu deutliche Formulierung schreckt Leser von einem funktionierenden Plugin ab, deshalb muss der Satz das Weiterfunktionieren mitnennen.",
+  "tragweite": "hoch",
+  "zeilen": [
+   15
+  ],
+  "page": "docs/en/addon/tools/xgs.md"
+ },
+ {
+  "titel": "Feature-Liste auf Release V3.46 ausrichten",
+  "frage": "Soll die Feature-Liste den tatsaechlich herunterladbaren Stand V3.46 beschreiben — also \"Indicated airspeed\" statt \"Ground speed\" und der Bank-Angle-Punkt ersatzlos raus?",
+  "empfehlung": "ja",
+  "begruendung": "Die Seite verlinkt ausdruecklich den GitHub-Release-Download, also muss sie beschreiben, was in diesem ZIP steckt; \"Ground speed\" ist ohnehin falsch (XGS liest indicated_airspeed) und der Bank-Angle-Report kam erst mit einem Commit nach dem Release. Beides ist dieselbe Frage: Release-Stand oder master-Stand. Der Haken: der Bank-Angle-Ausschluss stuetzt sich nur auf den Datumsvergleich Commit-vs-Release, nicht auf geprueften ZIP-Inhalt, und wer selbst aus master baut, sieht das Feature sehr wohl — dann fehlt es in der Doku.",
+  "tragweite": "mittel",
+  "zeilen": [
+   21,
+   22
+  ],
+  "page": "docs/en/addon/tools/xgs.md"
+ },
+ {
+  "titel": "Ueberflughoehe ueber der Schwelle ergaenzen",
+  "frage": "Soll der Touchdown-Distance-Punkt so umformuliert werden, dass er auch die gemeldete Ueberflughoehe ueber der Schwelle nennt?",
+  "empfehlung": "ja",
+  "begruendung": "Der Wert steht in der README-Featureliste und wird zusammen mit der Touchdown-Distanz ausgegeben; die Zeile wird ersetzt, nicht ergaenzt, die Seite wird also nicht laenger. Der Haken: es ist eine echte inhaltliche Zutat statt einer Fehlerkorrektur, und wie bei den anderen Feature-Punkten stammt der Beleg aus master — im ZIP wurde er nicht direkt verifiziert.",
+  "tragweite": "niedrig",
+  "zeilen": [
+   23
+  ],
+  "page": "docs/en/addon/tools/xgs.md"
+ },
+ {
+  "titel": "Stagnation von XLinSpeak kenntlich machen",
+  "frage": "Soll die Compatibility-Zeile den Stillstand des sparker256-Forks (letzter Commit Anfang 2023, keine Releases) benennen?",
+  "empfehlung": "ja",
+  "begruendung": "Beide Repos sind seit ueber drei Jahren unveraendert, und die Seite empfiehlt das Plugin bisher ohne jeden Vorbehalt — ein Stagnationssignal ist genau der Fall, in dem deine Regel eine Jahresangabe erlaubt. Als knappen Zusatz in der bestehenden Zeile formulieren, nicht als eigenen Warnblock. Haken: Das lin_x64-Binary funktioniert weiterhin und der Hinweis kann Leser unnoetig abschrecken, obwohl es fuer XPLMSpeakString unter Linux schlicht keine Alternative gibt.",
+  "tragweite": "hoch",
+  "zeilen": [
+   14
+  ],
+  "page": "docs/en/addon/tools/xlinspeak.md"
+ },
+ {
+  "titel": "Piper-Aussage bei speech-dispatcher korrigieren",
+  "frage": "Soll die Aussage \"Piper als speech-dispatcher-Backend ist unzuverlaessig\" durch \"es gibt gar kein fertiges Piper-Modul, nur manuelle Anbindung ueber das generische Modul\" ersetzt werden?",
+  "empfehlung": "ja",
+  "begruendung": "Der aktuelle Satz ist sachlich falsch: Debian liefert fuer speech-dispatcher nur espeak-ng, espeak, festival, flite, cicero, openjtalk und pico — ein Piper-Modul existiert nicht, es waere nur ueber GenericExecuteSynth handzubauen. Die Korrektur sollte auf einen Satz zusammengezogen werden und den bestehenden ersetzen, nicht die vorgeschlagenen drei Saetze anhaengen. Haken: Der Unterschied zwischen \"unzuverlaessig\" und \"nicht vorhanden\" ist fuer den Leser praktisch folgenlos — er nimmt in beiden Faellen espeak-ng.",
+  "tragweite": "mittel",
+  "zeilen": [
+   40
+  ],
+  "page": "docs/en/addon/tools/xlinspeak.md"
+ },
+ {
+  "titel": "Piper-Bezugsquelle fuer PTTSM auf den Fork umstellen",
+  "frage": "Soll die Doku fuer die Piper-Binary bei PTTSM auf den Fork TheLouisHong/piper verweisen statt auf OHF-Voice/piper1-gpl?",
+  "empfehlung": "ja",
+  "begruendung": "PTTSM braucht ein Standalone-Binary in Resources/Piper_LIN; piper1-gpl liefert ausschliesslich Python-Wheels, die dort schlicht nicht funktionieren — der aktuelle Link fuehrt den Leser also in eine Sackgasse, und die PTTSM-README nennt selbst den Fork mit piper_linux_x86_64.tar.gz. Der Sources-Eintrag zu piper1-gpl kann als Upstream-Kontext stehen bleiben. Haken: Du verweist damit auf einen ungepflegten Drittanbieter-Fork von 2024, und die Zeile wird laenger, weil beide Repos genannt werden muessen — kuerzbar auf Fork-Link plus Halbsatz, warum Upstream nicht passt.",
+  "tragweite": "hoch",
+  "zeilen": [
+   66
+  ],
+  "page": "docs/en/addon/tools/xlinspeak.md"
+ },
+ {
+  "titel": "XOrganizer als Kaufprodukt darstellen",
+  "frage": "Soll die Seite XOrganizer statt als Donationware als kommerzielles Closed-Source-Produkt aus dem X-Plane.org Store darstellen, inklusive Bezugsquelle fuer Updates?",
+  "empfehlung": "ja",
+  "begruendung": "Die offizielle Projektseite verlinkt ausdruecklich auf den Kauf im X-Plane.org Store, und 4xplane.nl bietet ueberhaupt keine Programm-Downloads, sondern nur Dokumentation und Knowledgebase — die aktuelle Darstellung 'frei nutzbar, Spende optional' ist damit sachlich falsch und fuehrt Leser auf eine Seite, auf der sie nichts herunterladen koennen. Beide Zeilen haengen zwingend zusammen: wer die Bezugsquelle korrigiert, muss auch die Update-Zeile mitziehen, sonst widerspricht sich die Seite. Der Haken: die PayPal-Box auf 4xplane.nl kann den Eindruck eines Spendenmodells erzeugt haben, und wenn frueher tatsaechlich eine freie Version existierte, verliert die Seite den Hinweis darauf — fuer ein Windows-only-Tool ohne Linux-Build ist die Preisangabe zudem ein zusaetzliches Argument, das die ohnehin bestehende Nicht-Empfehlung fuer Linux verstaerkt.",
+  "tragweite": "hoch",
+  "zeilen": [
+   19,
+   76
+  ],
+  "page": "docs/en/addon/tools/xorganizer.md"
+ },
+ {
+  "titel": "Performance-Optimierung als Feature streichen",
+  "frage": "Soll die behauptete automatische Performance-Optimierung ersatzlos entfallen und die Einleitung stattdessen den belegten Funktionsumfang nennen?",
+  "empfehlung": "ja",
+  "begruendung": "Die offizielle Feature-Liste kennt weder eine Performance-Analyse noch automatische Optimierungsvorschlaege; belegt sind Sortierung, Profile, Coverage-Karte sowie Bibliotheks- und Shortcut-Pruefung sowie vier Profil-Domaenen (Scenery, Plugins/Skripte, X-Plane-Preferences, Aircraft). Einleitung und Feature-Bullet behaupten dieselbe nicht belegte Sache, deshalb eine Entscheidung. Der Haken: eine sortierte scenery_packs.ini wirkt sich indirekt sehr wohl auf die Performance aus, die Aussage ist also nicht voellig aus der Luft gegriffen — nach dem Streichen steht das Performance-Argument nur noch im Abschnitt 'Recommendation', was etwas unrund wirken kann.",
+  "tragweite": "mittel",
+  "zeilen": [
+   6,
+   64
+  ],
+  "page": "docs/en/addon/tools/xorganizer.md",
+  "unsicher": "nicht belegt"
+ },
+ {
+  "titel": "Eigene Kategorien zu Sortierregeln korrigieren",
+  "frage": "Soll die Seite die behaupteten benutzerdefinierten Kategorien durch die belegten benutzerdefinierten Sortierregeln ersetzen?",
+  "empfehlung": "ja",
+  "begruendung": "Belegt ist automatische Kategorisierung nach Kontinent/Land plus eigener Sortierregeln — nicht die Anlage eigener Kategorien; das ist eine funktionale Verwechslung, kein Wortspiel. Feature-Bullet und Tipp-Zeile behaupten dasselbe und muessen zusammen geaendert werden, sonst bleibt die Falschaussage an einer Stelle stehen. Der Haken: der praktische Unterschied ist fuer Leser gering, und die Korrektur ist reine Wortwahl ohne Erkenntnisgewinn — sie kostet Aufwand fuer wenig Wirkung.",
+  "tragweite": "niedrig",
+  "zeilen": [
+   69,
+   78
+  ],
+  "page": "docs/en/addon/tools/xorganizer.md"
+ },
+ {
+  "titel": "Scenery Library zu Library Check korrigieren",
+  "frage": "Soll das Feature 'Scenery Library — Verwaltung von Downloads und Installationen' durch die belegte Bibliotheks- und Versionspruefung ersetzt werden?",
+  "empfehlung": "ja",
+  "begruendung": "XOrganizer laedt und installiert nichts; belegt sind das Mitfuehren von Versionen und Download-Adressen als Metadaten sowie die Pruefung auf fehlende oder veraltete Scenery-Libraries. In der jetzigen Formulierung erwarten Leser einen Downloader, den es nicht gibt. Der Haken: 'Library' meint hier X-Plane-Scenery-Libraries und nicht eine Sammlung eigener Szenerien — die Korrektur ist nur dann verstaendlich, wenn die Formulierung praezise bleibt, sonst tauscht man ein Missverstaendnis gegen ein anderes.",
+  "tragweite": "mittel",
+  "zeilen": [
+   66
+  ],
+  "page": "docs/en/addon/tools/xorganizer.md"
+ },
+ {
+  "titel": "Beacon-Voraussetzung in Feature-Bullet aufnehmen",
+  "frage": "Soll der Bullet \"Automatic DGS\" um die Bedingung ergaenzt werden, dass das Beacon eingeschaltet sein muss?",
+  "empfehlung": "ja",
+  "begruendung": "Ohne eingeschaltetes Beacon deaktiviert sich das Plugin sofort — das ist laut README der haeufigste FAQ-Fall und damit keine Feinheit, sondern die Erklaerung fuer das typische \"funktioniert nicht\". Der Zusatz sind vier Woerter im bestehenden Bullet, die Seite wird faktisch nicht laenger. Der Haken: belegt ist die Bedingung nur aus der main-Branch-README, die bereits den deprecated/5.0-Stand traegt, waehrend die Seite die eingefrorene 4.x-Linie fuer XP11 beschreibt — es ist plausibel, aber nicht bewiesen, dass 4.x sich identisch verhaelt.",
+  "tragweite": "mittel",
+  "zeilen": [
+   23
+  ],
+  "page": "docs/en/addon/traffic/autodgs.md"
+ },
+ {
+  "titel": "Helicopter-Support als neuen Bullet ergaenzen",
+  "frage": "Soll die Feature-Liste um einen zusaetzlichen Bullet \"Helicopter support\" erweitert werden?",
+  "empfehlung": "nein",
+  "begruendung": "Die Seite ist ausdruecklich als deprecated markiert und verweist Leser auf openSAM v5.x; ein zusaetzlicher Feature-Bullet verlaengert ausgerechnet den Legacy-Pfad, ohne eine Entscheidung des Lesers zu beeinflussen — anders als die Beacon-Bedingung erklaert er kein Fehlverhalten. Der Haken: es ist eine dokumentierte, vollwertige Betriebsart, und ihr Fehlen macht die Feature-Liste gegenueber der README unvollstaendig — wer mit Helikoptern fliegt, erfaehrt hier nicht, dass AutoDGS ihn ueberhaupt unterstuetzt.",
+  "tragweite": "niedrig",
+  "zeilen": [
+   27
+  ],
+  "page": "docs/en/addon/traffic/autodgs.md"
+ },
+ {
+  "titel": "Docking-Ausloeser auf Beacon umstellen",
+  "frage": "Soll die Seite den Docking-Ausloeser als \"Beacon aus\" beschreiben statt als \"Triebwerke abgestellt\"?",
+  "empfehlung": "ja",
+  "begruendung": "Der Quellcode des hotbso-Forks (check_running() liest ausschliesslich sim/cockpit2/switches/beacon_on) belegt das aktuelle Verhalten; die Triebwerks-Formulierung stammt erkennbar aus dem mitgeschleppten Abschnitt \"Original README\" (Stand 1.72) und beschreibt XP11-Verhalten. Haken: Der Beleg-Link zeigt auf /commit ohne Hash, ist also nicht direkt nachpruefbar, und das offizielle README des Forks enthaelt weiterhin die alte Aussage — ein Leser, der dort nachschlaegt, findet einen Widerspruch. Die 3-Sekunden-Stabilitaetsbedingung wuerde ich bewusst weglassen: sie ist Implementierungsdetail, fuer den Piloten nicht handlungsrelevant und macht die Zeile nur laenger.",
+  "tragweite": "mittel",
+  "zeilen": [
+   23
+  ],
+  "page": "docs/en/addon/traffic/autogate.md"
+ },
+ {
+  "titel": "libopenal1 als Linux-Voraussetzung nennen",
+  "frage": "Soll die Installationszeile statt \"keine Systempakete noetig\" kuenftig `libopenal1` als Linux-Voraussetzung nennen?",
+  "empfehlung": "ja",
+  "begruendung": "Das Linux-Binary aus dem Release-ZIP linkt dynamisch gegen libopenal.so.1 (Makefile.lin64 setzt -lopenal); fehlt das Paket, laedt das Plugin schlicht nicht — genau die Art Linux-Spezifikum, fuer die diese Doku existiert, und die bisherige Aussage ist schlicht falsch. Haken: libopenal1 ist auf praktisch jedem Debian-Desktop ueber Abhaengigkeiten schon installiert, die Warnung koennte also eine Huerde suggerieren, die kaum jemand trifft. Der Satz sollte den alten ersetzen, nicht ergaenzen, damit die Seite nicht waechst.",
+  "tragweite": "hoch",
+  "zeilen": [
+   33
+  ],
+  "page": "docs/en/addon/traffic/autogate.md"
+ },
+ {
+  "titel": "Stabilen Forum-Download vor GitHub-Beta stellen",
+  "frage": "Soll bei den Downloads der forums.x-plane.org-Link als stabile Version zuerst stehen und die GitHub Releases des olivierbutler-Forks als Beta-Kanal gekennzeichnet werden?",
+  "empfehlung": "ja",
+  "begruendung": "Die README des empfohlenen Forks bezeichnet forums.x-plane.org ausdruecklich als Quelle des stabilen Builds und GitHub Releases als Beta-/Pre-Release-Kanal — die Seite empfiehlt derzeit also unbeabsichtigt den Beta-Kanal als Erstwahl. Der Haken: die Kennzeichnung macht die Zeile etwas laenger und der Forum-Download setzt einen (kostenlosen) org-Account voraus, waehrend GitHub ohne Login funktioniert; ein Leser, der bewusst den neuesten Stand will, muss jetzt eine Zeile weiter lesen.",
+  "tragweite": "mittel",
+  "zeilen": [
+   34
+  ],
+  "page": "docs/en/addon/traffic/betterpushback.md"
+ },
+ {
+  "titel": "Seite auf Release 2 (X-Plane 12) als Referenzlinie umstellen",
+  "frage": "Soll die Seite durchgaengig Release 2 / \"Follow the Greens 4D\" fuer X-Plane 12 als die dokumentierte Version behandeln — also Kompatibilitaetszeile auf XP12 umstellen, XP11 nur noch als abgekuendigte Release-1-Linie erwaehnen und die Installationsanleitung entsprechend auf `PI_FollowTheGreens.py` + `followthegreens/` reduzieren?",
+  "empfehlung": "ja",
+  "begruendung": "Upstream ist eindeutig: Release 1 ist am 2026-01-14 ausdruecklich als \"last version\" eingefroren, Release 2 laeuft nur unter XP12+, und die offizielle Installationsanleitung nennt genau zwei Elemente — die Runway-Dimmung sitzt in Release 2 im Preference-Parameter RUNWAY_LIGHT_LEVEL_WHILE_FTG statt in einem eigenen Skript. Da der Betreiber selbst XP12 unter Linux fliegt, ist eine Seite, die zwei divergierende Produktlinien gleichzeitig beschreibt, nur Ballast; die Versionsangaben XP11/XP12 und Release 1/2 duerfen bleiben, weil sie genau die Deprecation-Grenze markieren. Der Haken: der Beleg fuer die Streichung von `PI_SetRunwayLightIntensity.py` ist nur die skunkcrafts_updater_whitelist.txt, also der Umfang des Auto-Updaters und nicht zwingend die vollstaendige Erstinstallations-Dateiliste — faellt die Datei zu Unrecht raus, fehlt Lesern ein Installationsschritt, und Feature-Zeile 24 (\"Runway light intensity adjustable\") muss im selben Zug auf den Preference-Parameter umformuliert werden, sonst steht ein Feature ohne Mechanismus da.",
+  "tragweite": "hoch",
+  "zeilen": [
+   13,
+   38
+  ],
+  "page": "docs/en/addon/traffic/followthegreens.md",
+  "unsicher": "nicht zwingend"
+ },
+ {
+  "titel": "Navigraph/FR24 als Datenkanal aufnehmen",
+  "frage": "Soll der mit v4.6.0 neu hinzugekommene Kanal Navigraph/FR24 in die Tabelle der kostenpflichtigen Zusatzkanaele aufgenommen werden?",
+  "empfehlung": "ja",
+  "begruendung": "Die Kanal-Tabelle ist der eigentliche Gebrauchswert der Seite; fehlt ein aktueller Kanal, ist sie unvollstaendig und der Leser sucht anderswo weiter. Der Haken: Es ist die einzige Aenderung, die die Seite laenger macht (eine Tabellenzeile), und der Kanal ist hinter einem Navigraph-Unlimited-Abo, also fuer einen Teil der Leser irrelevant; die Limits 20 s / 80 nm sind zudem vom Anbieter gesetzt und koennten sich aendern — sie sind aber Nutzungsgrenzen, keine Versionsnummern, und damit nach der Hausregel unbedenklich.",
+  "tragweite": "mittel",
+  "zeilen": [
+   47
+  ],
+  "page": "docs/en/addon/traffic/livetraffic.md"
+ },
+ {
+  "titel": "Steam-libcurl: Symlink-Workaround statt \"kein Workaround\"",
+  "frage": "Soll der CURL_OPENSSL_4-Absatz den in der offiziellen Doku beschriebenen Symlink-Workaround nennen, statt weiterhin zu behaupten, es gebe keinen universellen Workaround?",
+  "empfehlung": "ja",
+  "begruendung": "Die bestehende Aussage ist schlicht falsch — die offizielle Requirements-Seite beschreibt einen konkreten Weg (libcurl der Steam-Runtime nach .bak umbenennen, Symlink auf die System-Bibliothek), und die Seite raet dem Linux-Leser derzeit faelschlich zur Resignation. Es ist ausserdem ein reiner Ersatz, die Seite wird nicht laenger. Der Haken: Der Eingriff liegt im Steam-Runtime-Verzeichnis und wird von Steam-Updates wieder ueberschrieben, muss also gelegentlich wiederholt werden — wer das nicht dazusagt, erzeugt spaeter Rueckfragen; der bisherige LD_PRELOAD-Hinweis entfaellt dabei ersatzlos.",
+  "tragweite": "hoch",
+  "zeilen": [
+   78
+  ],
+  "page": "docs/en/addon/traffic/livetraffic.md"
+ },
+ {
+  "titel": "AutoDGS/SAM-Seasons als Deinstallations-Pflicht",
+  "frage": "Soll der Installationsabschnitt explizit vorschreiben, AutoDGS und einen separat installierten SAM-Seasons-Emulator vor dem ersten Start zu entfernen?",
+  "empfehlung": "ja",
+  "begruendung": "Die Seite nennt bisher nur das kommerzielle SAM-Plugin; wer AutoDGS installiert hat (die Seite verlinkt es als eigenes Addon) betreibt danach zwei DGS-Plugins parallel — ein realer Fehlerfall, kein Nice-to-have. Haken: die Seite wird um einen Satz laenger, und die Aussage steht inhaltlich schon in Zeile 23 und 30, also doppelt — deshalb sollte sie dort gekuerzt und in die Installation verschoben statt zusaetzlich aufgenommen werden.",
+  "tragweite": "mittel",
+  "zeilen": [
+   41
+  ],
+  "page": "docs/en/addon/traffic/opensam.md"
+ },
+ {
+  "titel": "Airport-Editor in Feature-Liste",
+  "frage": "Soll der neue eingebaute Airport-Editor als Feature auf der Seite erscheinen?",
+  "empfehlung": "nein",
+  "begruendung": "Der Vorschlag ersetzt nichts, sondern haengt einen Halbsatz an einen bestehenden Bullet — genau die Art Zuwachs, die laut Stilregel vermieden werden soll, und der Editor ist ein optionales Komfort-Feature ohne Linux-Bezug. Haken: wer die Standardzuordnung (Jetway-Stand = VDGS, sonst Marshaller) aendern will, findet auf der Seite keinen Hinweis, dass das ueberhaupt geht und wo die Config liegt.",
+  "tragweite": "niedrig",
+  "zeilen": [
+   20
+  ],
+  "page": "docs/en/addon/traffic/opensam.md"
+ }
+]

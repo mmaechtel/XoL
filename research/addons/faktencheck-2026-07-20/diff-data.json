@@ -1,0 +1,1664 @@
+[
+ {
+  "page": "docs/en/addon/cockpit/anyairline.md",
+  "upstream": "Aktiv gepflegt. Connector-Stable-Build v1.5.0, Forum-Release vom 13.07.2026 (\"What's New in Version 07/13/2026\"); simMarket fuehrt v1.2.0 seit 23.06.2026. Kein GitHub-Repo — Distribution ueber anyairline.app, forums.x-plane.org und simMarket. Status laut Forum-Listing: OPEN BETA. Kein Deprecation-, Archivierungs- oder Nachfolge-Signal. Beleg: https://forums.x-plane.org/files/file/100112-anyairline-ai-cabin-crew-passenger-ife-airline-immersion/ und https://anyairline.app/download",
+  "findings": [
+   {
+    "severity": "WARN",
+    "category": "features",
+    "line": 10,
+    "claim": "- **Developer:** AnyAirline",
+    "evidence": "\"AnyAirline\" ist der Produktname, nicht der Entwickler. Das Forum-Listing nennt als Autor \"Filip / Chudoba Design\" (Profil filachudobik). Die simMarket-Produktseite fuehrt als Publisher/Developer woertlich \"CHUDOBA DESIGN\".",
+    "source_url": "https://secure.simmarket.com/chudoba-design-anyairline-1500-credits-shorthaul-pass.phtml",
+    "correction": "- **Developer:** Chudoba Design"
+   },
+   {
+    "severity": "WARN",
+    "category": "deprecation",
+    "line": 13,
+    "claim": "- **Compatibility:** X-Plane 12, MSFS 2020/2024",
+    "evidence": "Das Forum-Listing weist das Produkt als OPEN BETA aus (Stand Release 13.07.2026, Version 1.5.0). Die Seite erwaehnt den Beta-Status an keiner Stelle und suggeriert damit ein fertiges Produkt — fuer eine Kaufentscheidung und fuer die Stabilitaetserwartung unter Linux relevant.",
+    "source_url": "https://forums.x-plane.org/files/file/100112-anyairline-ai-cabin-crew-passenger-ife-airline-immersion/",
+    "correction": "- **Compatibility:** X-Plane 12, MSFS 2020/2024 (open beta)"
+   },
+   {
+    "severity": "FAIL",
+    "category": "installation",
+    "line": 39,
+    "claim": "The connector officially supports Linux with a packaged runtime included (8 GB RAM recommended) — no separate dependencies are required.",
+    "evidence": "Die Download-Seite widerspricht dem ausdruecklich fuer Linux. Allgemeiner Hinweis unter \"Requirements / Supported systems\": \"The packages include their own Python runtime where applicable. Windows includes FFmpeg and ffprobe; macOS and Linux may require them to be installed or linked.\" Die Linux-x64-Spalte listet als Anforderung woertlich: \"Ubuntu 22.04/24.04 LTS or compatible x64 desktop\", \"8 GB RAM minimum\", \"2 GB free disk space\", \"FFmpeg, ffprobe, and espeak-ng for local audio fallback\". Damit sind unter Linux drei externe Pakete Pflicht, und die RAM-Angabe ist ein Minimum, kein Empfehlungswert. Genau das ist der Linux-relevante Kernpunkt der Seite und aktuell falsch dargestellt.",
+    "source_url": "https://anyairline.app/download",
+    "correction": "The connector officially supports Linux with a packaged Python runtime included (8 GB RAM minimum, Ubuntu 22.04/24.04 LTS or a compatible x64 desktop). Unlike the Windows build, the Linux package does not bundle FFmpeg — `ffmpeg`, `ffprobe` and `espeak-ng` for the local voice fallback have to be installed from the distribution repositories. The cloud features run in the browser-based workspace and are platform-independent."
+   }
+  ]
+ },
+ {
+  "page": "docs/en/addon/cockpit/avitab.md",
+  "upstream": "Aktiv gepflegt. Projekt wurde von fpw an TeamAvitab uebergeben: `fpw/avitab` ist archiviert (GitHub-API `archived: true`, letzter Push 2026-03-30, Issues deaktiviert/HTTP 410), `TeamAvitab/avitab` ist aktiv — letzter Commit 2026-07-19 (\"feature: support download of chart calibration datasets\"), Releases v1.0.0 (2026-04-13), v1.0.1, v1.0.2, v1.1.0 (2026-06-16). Belege: https://api.github.com/repos/TeamAvitab/avitab und https://github.com/TeamAvitab/avitab/releases",
+  "findings": [
+   {
+    "severity": "FAIL",
+    "category": "version",
+    "line": 15,
+    "claim": "Development activity is low — the last commit and the latest release (v0.7.1) date from September 2024. The original [fpw/avitab](https://github.com/fpw/avitab) repository was archived (read-only) in 2026; active maintenance has moved to the [TeamAvitab/avitab](https://github.com/TeamAvitab/avitab) fork.",
+    "evidence": "GitHub-API `repos/TeamAvitab/avitab`: `\"archived\": false`, `\"pushed_at\": \"2026-07-19T19:21:44Z\"`. Releases: v1.0.0 (2026-04-13), v1.0.1 (2026-04-18), v1.0.2 (2026-04-21), v1.1.0 (2026-06-16). Release-Notes v1.0.0: \"This is the first update to Avitab overseen by TeamAvitab after Folke Will stepped back from full-time maintenance.\" v0.7.1 (2024-09-01) ist ausschliesslich das letzte Release des archivierten fpw-Repos.",
+    "source_url": "https://github.com/TeamAvitab/avitab/releases",
+    "correction": "The original [fpw/avitab](https://github.com/fpw/avitab) repository is archived (read-only, issue tracker disabled) after Folke Will stepped back from maintenance. Development continues actively under TeamAvitab, which took over the project and has published several releases since."
+   },
+   {
+    "severity": "WARN",
+    "category": "features",
+    "line": 24,
+    "claim": "- **Route overlay:** FMS files as overlay on the moving map",
+    "evidence": "Release-Notes v1.0.0, \"Feature Removal Notices\": \"We plan to remove the route generation feature from the Routes app. […] Navigraph's free SimBrief is a much better way to create route plans and these can then be exported as X-Plane FMS files and imported into Avitab for overlay in the Maps app.\" Ebenfalls angekuendigt: Entfernung der X-Plane-Kartenquelle aus der Maps-App. Der Overlay bleibt, die Routen-Generierung entfaellt — die Formulierung sollte klarstellen, dass Routen extern (z. B. SimBrief) erstellt werden.",
+    "source_url": "https://github.com/TeamAvitab/avitab/releases/tag/v1.0.0",
+    "correction": "- **Route overlay:** Externally created FMS flight plans (e.g. from SimBrief) as overlay on the moving map"
+   },
+   {
+    "severity": "WARN",
+    "category": "features",
+    "line": 25,
+    "claim": "- **Aircraft integration:** Some aircraft (e.g., Zibo 737) have a 3D tablet model with AviTab integration",
+    "evidence": "Release-Notes v1.1.0: \"adds the **Aircraft Managed** panel integration mode which enables aircraft using the latest cockpit digital instruments for X-Plane 12 to support Avitab in their cockpit or EFB models. […] Existing aircraft that had an Avitab panel integration that stopped working sometime around the transition to X-Plane 12 will need to be updated to use this new panel integration mode.\" Panel-Integrationen aus XP11-Zeiten funktionieren also nicht mehr automatisch.",
+    "source_url": "https://github.com/TeamAvitab/avitab/releases/tag/v1.1.0",
+    "correction": "- **Aircraft integration:** Some aircraft (e.g., Zibo 737) have a 3D tablet model with AviTab integration; panel integration for X-Plane 12 requires the aircraft to opt into the current integration mode"
+   },
+   {
+    "severity": "FAIL",
+    "category": "installation",
+    "line": 42,
+    "claim": "**Download:** [github.com/fpw/avitab/releases](https://github.com/fpw/avitab/releases/tag/v0.7.1) or [forums.x-plane.org](https://forums.x-plane.org/files/file/44825-avitab-vr-compatible-tablet-with-pdf-viewer-moving-maps-and-more/)",
+    "evidence": "README des aktiven Repos: \"Download the latest release from the [release page](https://github.com/teamavitab/avitab/releases/latest)\". Das verlinkte fpw-Repo ist archiviert (`\"archived\": true`) und liefert nur noch das veraltete v0.7.1-Paket mit dem bekannten PDF-Crash.",
+    "source_url": "https://github.com/TeamAvitab/avitab/releases/latest",
+    "correction": "**Download:** [github.com/TeamAvitab/avitab/releases](https://github.com/TeamAvitab/avitab/releases/latest) or [forums.x-plane.org](https://forums.x-plane.org/files/file/44825-avitab-vr-compatible-tablet-with-pdf-viewer-moving-maps-and-more/)"
+   },
+   {
+    "severity": "FAIL",
+    "category": "installation",
+    "line": 44,
+    "claim": "Extract the ZIP file to `Resources/plugins/`. This creates the `AviTab/` folder with the Linux binary at `lin_x64/AviTab.xpl`.",
+    "evidence": "`unzip -l Avitab-1.1.0.zip` zeigt eine Wrapper-Ebene und abweichende Schreibweise: `Avitab-1.1.0/Avitab/lin_x64/Avitab.xpl` (24.896.544 Bytes), daneben `INSTALLATION.md`: \"The `Avitab` directory in the downloaded package should be copied into the X-Plane `plugins` directory.\" Der Ordner heisst `Avitab` (nicht `AviTab`) und das Binary `Avitab.xpl` — unter Linux ist die Gross-/Kleinschreibung relevant.",
+    "source_url": "https://github.com/TeamAvitab/avitab/releases/download/v1.1.0/Avitab-1.1.0.zip",
+    "correction": "Extract the ZIP file and copy the `Avitab/` folder it contains into `Resources/plugins/`. The Linux binary is at `Avitab/lin_x64/Avitab.xpl`."
+   },
+   {
+    "severity": "FAIL",
+    "category": "deprecation",
+    "line": 88,
+    "claim": "**Workaround:** A community member fixed the crash by recompiling AviTab with a newer MuPDF version (1.26.11). This requires self-compilation — an official update is pending. Moving map and other apps work normally regardless.",
+    "evidence": "RELEASE_NOTES.md aus Avitab-1.1.0.zip, Abschnitt \"Avitab v1.0.0 (April 2026) / Bug fixes\": \"Avitab's support for PDF and other documents is implemented by the MuPDF library, and this has now been updated to a newer version which resolves simulation crashes that had been reported in Avitab v0.7.1.\" Ergaenzend Issue TeamAvitab/avitab#18 (geschlossen 2026-04-04): \"Updates to the 3rd-party libraries to use the correct MT variant of the lcms2 library which is required by MuPDF.\" Das offizielle Update ist also erschienen, ein Workaround ist nicht mehr noetig.",
+    "source_url": "https://github.com/TeamAvitab/avitab/issues/18",
+    "correction": "Kompletten Abschnitt \"### PDF Crash on Linux\" (Zeilen 76-88) ENTFERNEN. Alternativ auf einen Satz im Installationsteil reduzieren: \"Older builds (v0.7.1 and earlier) crashed with SIGSEGV when opening PDFs on Linux systems with newer `lcms2` versions; current releases from TeamAvitab bundle an updated MuPDF and are no longer affected.\""
+   },
+   {
+    "severity": "VERSION_ENTFERNEN",
+    "category": "version",
+    "line": 93,
+    "claim": "- [AviTab v0.7.1 — Release Notes](https://github.com/fpw/avitab/releases/tag/v0.7.1)",
+    "evidence": "v0.7.1 (2024-09-01) ist das letzte Release des archivierten fpw-Repos und markiert keine Entscheidungsgrenze mehr; die aktuellen Release-Notes liegen unter TeamAvitab (`RELEASE_NOTES.md` im Release-Paket, Releases-Seite ab v1.0.0 vom 2026-04-13).",
+    "source_url": "https://github.com/TeamAvitab/avitab/releases",
+    "correction": "- [AviTab — Release Notes](https://github.com/TeamAvitab/avitab/releases)"
+   },
+   {
+    "severity": "FAIL",
+    "category": "links",
+    "line": 95,
+    "claim": "- [Issue #232 — PDF crash on Linux](https://github.com/fpw/avitab/issues/232)",
+    "evidence": "`curl -s -o /dev/null -w \"%{http_code}\" https://github.com/fpw/avitab/issues/232` liefert 404; die GitHub-API antwortet mit `{\"message\": \"Issues are disabled for this repo\", \"status\": \"410\"}`, da `fpw/avitab` archiviert ist. Der Link ist tot.",
+    "source_url": "https://api.github.com/repos/fpw/avitab/issues/232",
+    "correction": "ENTFERNEN"
+   }
+  ]
+ },
+ {
+  "page": "docs/en/addon/cockpit/kabinxp.md",
+  "upstream": "Aktiv gepflegt. Letztes Update: x-plane.org-Dateiseite \\\"What's New in Version 06/18/2026\\\" (released 18. Juni 2026, major bug fixes, updated UI, Ankuendigung \\\"KabinXP Enhanced\\\"); x-plane.to fuehrt Version 1.4 vom 15. Juni 2026. Kein GitHub-Repo, kein Umzug, keine Deprecation. Belege: https://forums.x-plane.org/files/file/98298-kabinxp/ (Volltext im Forum-Evidence-Dump, Stand 2026-07-20) und https://x-plane.to/file/2078/kabinxp",
+  "findings": [
+   {
+    "severity": "HALLUZINIERT",
+    "category": "features",
+    "line": 10,
+    "claim": "- **Developer:** Kadikoy34",
+    "evidence": "Keine erreichbare Primaerquelle nennt \"Kadikoy34\". Die x-plane.to-Listung des Plugins fuehrt \"Developer: Yunus_Hakki (joined October 2024)\", und das Profil https://x-plane.to/profile/Yunus_Hakki listet KabinXP als eines von vier veroeffentlichten Add-ons. Die x-plane.org-Dateiseite (Volltext-Beleg, Stand 2026-07-20) weist als Eigentuemer/Bearbeiter \"Edited June 15 by EffectiveAir1434\" aus; es existiert dazu passend eine Downloads-Uebersicht \"EffectiveAir1434's Content\" (forums.x-plane.org/profile/1247255-effectiveair1434/content/?type=downloads_file). Beide unabhaengigen Quellen widersprechen \"Kadikoy34\".",
+    "source_url": "https://x-plane.to/profile/Yunus_Hakki",
+    "correction": "- **Developer:** EffectiveAir1434 (x-plane.org), listed as Yunus_Hakki on x-plane.to"
+   },
+   {
+    "severity": "WARN",
+    "category": "installation",
+    "line": 37,
+    "claim": "KabinXP is a compiled plugin. Verify that the download includes a `lin.xpl` binary. If only Windows and macOS binaries are present, the plugin does not support Linux natively.",
+    "evidence": "Der Dateiname `lin.xpl` im Plugin-Wurzelverzeichnis ist das alte 32-Bit-Layout. Die X-Plane-SDK-Doku gibt fuer die XPLM-3.0-Fat-Plugin-Struktur woertlich vor: \"you can package plugins like this: my_plugin/ mac_x64/ my_plugin.xpl win_x64/ my_plugin.xpl lin_x64/ my_plugin.xpl\" — das Linux-64-Bit-Binary liegt also unter `lin_x64/`.",
+    "source_url": "https://developer.x-plane.com/article/building-and-installing-plugins/",
+    "correction": "KabinXP is a compiled plugin. Verify that the download includes a `lin_x64/KabinXP.xpl` binary. If only `win_x64` and `mac_x64` binaries are present, the plugin does not support Linux natively."
+   }
+  ]
+ },
+ {
+  "page": "docs/en/addon/cockpit/linuxtrack.md",
+  "upstream": "Aktiv gepflegt, aber verlagert: Das Original uglyDwarf/linuxtrack stagniert (letzter Tag 0.99.19 vom 13.11.2016, https://github.com/uglyDwarf/linuxtrack/tags), nicht archiviert. Der aktive Fork LinuxTrack X-IR wird auf GitLab entwickelt — letztes Release v2.1.0 vom 2026-06-28 mit AppImage-Asset (GitLab-API /projects/fwfa123%2Flinuxtrackx-ir/releases), letzter Commit f8014da vom 2026-06-28. GitHub-Repo fwfa123/linuxtrackx-ir antwortet mit HTTP 200 (Mirror). Build ist Qt6/CMake-first, Wine-Bridge via MinGW-w64 (NSIS entfernt).",
+  "findings": [
+   {
+    "severity": "VERSION_ENTFERNEN",
+    "category": "version",
+    "line": 16,
+    "claim": "The active fork **LinuxTrack X-IR** (v2.0.1, June 2026) addresses these issues: a Qt6/CMake-first rearchitecture introduced in v2.0.0 (May 2026, the \"WOW64 rearchitecture\"), AppImage distribution, and a modernized X-Plane plugin.",
+    "evidence": "Die genannten Nummern sind rein illustrativ und zudem bereits ueberholt: Das aktuelle Release ist v2.1.0 vom 2026-06-28 (GitLab-Releases-API: tag_name \"v2.1.0\", released_at \"2026-06-28\", Asset LinuxTrack-X-IR-2.1.0-x86_64.AppImage), letzter Commit f8014da vom 2026-06-28. Keine Entscheidungsgrenze im Sinne der Versionsregel — die Beschreibung traegt ohne Nummern.",
+    "source_url": "https://gitlab.com/api/v4/projects/fwfa123%2Flinuxtrackx-ir/releases",
+    "correction": "The active fork **LinuxTrack X-IR** addresses these issues: a Qt6/CMake-first rearchitecture, AppImage distribution, a MinGW-based Wine bridge, and a modernized X-Plane plugin."
+   },
+   {
+    "severity": "FAIL",
+    "category": "installation",
+    "line": 38,
+    "claim": "In the \"Misc.\" tab, click \"Install XPlane plugin...\" and select the X-Plane directory",
+    "evidence": "Im Fork-Quellcode gibt es keinen \"Misc.\"-Tab. src/qt_gui/ltr.ui listet die Tabs \"Device Setup\", \"Model Setup\", \"Tracking setup\", \"Gaming\" (tab_4, Zeile 118-119), \"System\", \"Advanced\". Der Button XplanePluginButton mit dem Text \"Install Xplane plugin...\" (ltr.ui Zeile 267-275) liegt im gamingTabLayout des Gaming-Tabs. Der Dialog xplugin.ui Zeile 43 sagt zudem: \"Press the Browse button and navigate to the XPlane executable. Select it and press Open button to install the plugin.\" — also die ausfuehrbare Datei, nicht das Verzeichnis.",
+    "source_url": "https://gitlab.com/fwfa123/linuxtrackx-ir/-/blob/main/src/qt_gui/ltr.ui",
+    "correction": "In the \"Gaming\" tab, click \"Install Xplane plugin...\", then browse to the X-Plane executable and confirm with \"Open\""
+   },
+   {
+    "severity": "FAIL",
+    "category": "installation",
+    "line": 44,
+    "claim": "sudo apt install build-essential git automake libmxml-dev libopencv-dev libtool libusb-1.0-0-dev zlib1g-dev libv4l-dev bison flex",
+    "evidence": "Der Fork baut seit v2.0.0 CMake/Qt6-first, Autotools sind weg: docs/readme/debian-ubuntu.md sagt \"Built with **CMake + Qt6**. The Wine bridge ships as real **MinGW-w64 PE** artifacts — the old winegcc / classic Wine Unix library build path is no longer used.\" und nennt als Level-2-Kernpakete: \"sudo apt install build-essential cmake pkg-config / sudo apt install libusb-1.0-0-dev zlib1g-dev bison flex / sudo apt install qt6-base-dev qt6-tools-dev qt6-tools-dev-tools libqt6opengl6-dev / sudo apt install libmxml-dev libx11-dev libxrandr-dev libgl1-mesa-dev libglu1-mesa-dev\". automake und libtool kommen dort nicht mehr vor; cmake, pkg-config und die Qt6-/X11-Pakete fehlen auf der Seite.",
+    "source_url": "https://gitlab.com/fwfa123/linuxtrackx-ir/-/blob/main/docs/readme/debian-ubuntu.md",
+    "correction": "sudo apt install build-essential git cmake pkg-config libusb-1.0-0-dev zlib1g-dev bison flex qt6-base-dev qt6-tools-dev qt6-tools-dev-tools libqt6opengl6-dev libmxml-dev libx11-dev libxrandr-dev libgl1-mesa-dev libglu1-mesa-dev"
+   },
+   {
+    "severity": "FAIL",
+    "category": "installation",
+    "line": 47,
+    "claim": "For Qt5 support, also install `qtbase5-dev`.",
+    "evidence": "Der aktuelle Zweig baut ausschliesslich gegen Qt6. README.md: \"Uses **Qt6 (CMake)** and a **MinGW PE Wine bridge** — no NSIS, no `winegcc`.\" Die Qt5-Aera liegt auf dem eingefrorenen Branch legacy/1.0.x (\"The **1.0.x** AppImage/Qt5-era tree is preserved on `legacy/1.0.x`\"). Fuer Webcam- und Face-Tracking nennt die README stattdessen `libv4l-dev`, `libopencv-dev` und `libcwiid-dev` als optionale Level-4-bis-7-Pakete.",
+    "source_url": "https://gitlab.com/fwfa123/linuxtrackx-ir/-/blob/main/README.md",
+    "correction": "For webcam, face tracking, and Wiimote support, also install `libv4l-dev`, `libopencv-dev`, and `libcwiid-dev`."
+   },
+   {
+    "severity": "WARN",
+    "category": "features",
+    "line": 52,
+    "claim": "The GUI (`ltr_gui`) must **not** be running while flying — only the daemon `ltr_server1`",
+    "evidence": "Die mitgelieferte Hilfe formuliert das als Empfehlung, nicht als Verbot: src/qt_gui/help/axes_setup.htm Zeile 41: \"note, that while it is possible to run ltr_gui in parallel with a client program/game, it is not recommended. The tracking does work without the GUI running, unlike other popular alternatives (NP, FreeTrack, FaceTrack NoIR...).\"",
+    "source_url": "https://gitlab.com/fwfa123/linuxtrackx-ir/-/blob/main/src/qt_gui/help/axes_setup.htm",
+    "correction": "Running the GUI (`ltr_gui`) during flight is possible but not recommended — tracking works with the daemon `ltr_server1` alone"
+   }
+  ]
+ },
+ {
+  "page": "docs/en/addon/cockpit/opentrack.md",
+  "upstream": "OpenTrack: aktiv gepflegt — letzter Commit auf master ca03ee7 vom 2026-07-19, letztes Release 2026.1.0 (2025-12-31), ISC, Linux aktiv, macOS unmaintained (https://github.com/opentrack/opentrack). HeadTrack (amyinorbit): nicht archiviert, aber stagniert — letztes Release 2209.1r2 vom 2022-10-10, letzter Push 2023-11-12, 5 offene Issues (https://github.com/amyinorbit/headtrack). lin_x64/htrack.xpl existiert im Release-ZIP, Installationspfad der Seite korrekt.",
+  "findings": [
+   {
+    "severity": "WARN",
+    "category": "features",
+    "line": 23,
+    "claim": "the recommended connection method on Linux, where the built-in OpenTrack X-Plane plugin has known reliability issues.",
+    "evidence": "Die einzige auffindbare Primaerquelle zu dem Linux-Problem ist opentrack Discussion #1836 (\"OpenTrack and X-Plane 12 in Linux fix\", 2024-04-14). Der dort beschriebene Fehlerfall ist nicht das native Plugin, sondern OpenTrack unter Wine: \"X-Plane 12.0.9-rc-5 on Kubuntu 23.10 Linux with OpenTrack 2.3.0 running in Wine\". Die Loesung besteht aus (1) OpenTrack nativ fuer Linux kompilieren statt unter Wine und (2) amyinorbits UDP-Plugin auf 127.0.0.1:4242. Ein Beleg fuer \"freezing / failing to transmit data\" des nativen Shared-Memory-Plugins existiert nicht.",
+    "source_url": "https://github.com/opentrack/opentrack/discussions/1836",
+    "correction": "the recommended connection method on Linux: it works with a natively built OpenTrack and needs no X-Plane SDK build step, unlike OpenTrack's own shared-memory plugin."
+   },
+   {
+    "severity": "WARN",
+    "category": "deprecation",
+    "line": 23,
+    "claim": "HeadTrack is a lightweight X-Plane plugin that receives 6DOF tracking data over UDP port 4242.",
+    "evidence": "HeadTrack-Repo: letztes Release `2209.1r2` vom 2022-10-10, letzter Push 2023-11-12, Repo nicht archiviert, 5 offene Issues (u. a. #3 \"XPlane 12\", offen seit 2022-10-04). Das Release-ZIP enthaelt `htrack/lin_x64/htrack.xpl` mit `build time: 2022-10-10T22:46:15Z`, `build git ref: 2209.1r2`. Die Seite gibt keinerlei Hinweis auf diesen Stillstand, obwohl sie das Plugin als \"recommended head-tracking stack\" fuehrt.",
+    "source_url": "https://github.com/amyinorbit/headtrack",
+    "correction": "HeadTrack is a lightweight X-Plane plugin that receives 6DOF tracking data over UDP port 4242. Its last release dates from October 2022 and development has stalled, but the Linux binary still works with X-Plane 12."
+   },
+   {
+    "severity": "FAIL",
+    "category": "installation",
+    "line": 62,
+    "claim": "OpenTrack ships its own X-Plane plugin (shared memory based). Under X-Plane 12 on Linux, this plugin has reported reliability issues — freezing or failing to transmit data. Use the HeadTrack plugin with UDP output instead.",
+    "evidence": "opentrack/x-plane-plugin/README.md (Stand master, Commit ca03ee7 vom 2026-07-19): \"The plugin is only compiled when the X-Plane SDK path is provided via the `SDK_XPLANE` CMake cache variable; with an empty path it is silently skipped.\" und \"Both targets need `SDK_XPLANE` set. Without it, the output dropdown shows only non-X-Plane protocols.\" Bestaetigt durch x-plane-plugin/CMakeLists.txt: `set(SDK_XPLANE \"\" CACHE PATH ...)` / `if(SDK_XPLANE)`. Es wird also kein fertiges Plugin ausgeliefert. Zusaetzlich dokumentiert dieselbe README als Limitation: \"No UDP fallback in the plugin. ... use opentrack's UDP over network output and a different plugin on the X-Plane side. This plugin is local-only.\"",
+    "source_url": "https://github.com/opentrack/opentrack/blob/master/x-plane-plugin/README.md",
+    "correction": "OpenTrack has its own X-Plane output protocol with a companion plugin (`opentrack.xpl`, POSIX shared memory). It is not shipped as a binary — it is only built when the X-Plane SDK path is passed via `-DSDK_XPLANE=`, and it is local-only. Use the HeadTrack plugin with UDP output instead."
+   }
+  ]
+ },
+ {
+  "page": "docs/en/addon/cockpit/terrainradar.md",
+  "upstream": "Stagniert. Kein GitHub-Repo — Distribution ausschliesslich ueber X-Plane.org (File 37864). Letzter Stand laut Primaerquelle: Version 1.31, \"Edited April 26, 2023 by DrGluck\" — seit ueber drei Jahren unveraendert. Linux wird weiterhin explizit genannt (\"Windows, Linux and MacOS (included Apple Silicon)\"), also kein Linux-Problem. Beleg: https://forums.x-plane.org/files/file/37864-terrain-radar-vertical-situation-display/ (Volltext-Abruf 2026-07-20, forum-evidence.md)",
+  "findings": [
+   {
+    "severity": "WARN",
+    "category": "deprecation",
+    "line": 13,
+    "claim": "- **Compatibility:** X-Plane 12",
+    "evidence": "Die Downloadseite weist als aktuellen Stand \"Version 1.31\" mit \"Edited April 26, 2023 by DrGluck\" aus; seither kein Update. Ein Stagnationssignal von ueber drei Jahren fehlt auf der Seite vollstaendig, obwohl X-Plane 12 seitdem mehrere Minor-Versionen erhalten hat.",
+    "source_url": "https://forums.x-plane.org/files/file/37864-terrain-radar-vertical-situation-display/",
+    "correction": "- **Compatibility:** X-Plane 12 — last release v1.31 (April 2023), unchanged since"
+   },
+   {
+    "severity": "HALLUZINIERT",
+    "category": "features",
+    "line": 24,
+    "claim": "**Wide aircraft support:** Integrated ND mode for Zibo 737, FlightFactor 777, ToLiss-compatible aircraft, iniSimulations A300/A310, and many more",
+    "evidence": "Die offizielle Beschreibung auf der Downloadseite zaehlt die Aircraft mit ND-Integration namentlich auf: Zibo 737-800 (XP11+XP12), 737 LevelUp, default 737-800, default 747-400, FlightFactor 777, X-Crafts E175/E195 und ERJ, Magknight 787, Rotate MD-80, iniSimulations A300/A310, X-Bureau A318, AKD GLF550. ToLiss kommt in dieser Liste nicht vor — auch nicht der naheliegende Kandidat A319/A321; genannt wird stattdessen ausdruecklich der X-Bureau A318. Auch eine Websuche liefert als einzige Quelle fuer \"ToLiss-Unterstuetzung\" die XoL-Seite selbst (Zirkelbeleg).",
+    "source_url": "https://forums.x-plane.org/files/file/37864-terrain-radar-vertical-situation-display/",
+    "correction": "- **Wide aircraft support:** Integrated ND mode for Zibo 737, 737 LevelUp, the default 737-800 and 747-400, FlightFactor 777, X-Crafts E175/E195, Magknight 787, Rotate MD-80, iniSimulations A300/A310, and many more"
+   },
+   {
+    "severity": "FAIL",
+    "category": "features",
+    "line": 32,
+    "claim": "X-Plane 12.3 introduced native terrain display on the X1000 avionics instruments.",
+    "evidence": "Die X-Plane 12.3.0 Release Notes fuehren keine Neueinfuehrung eines Terrain-Displays auf. Woertlich steht dort nur: \"Added Peaks Mode and Sea Level to the EGPWS terrain display\" — das EGPWS-Terrain-Display existierte also bereits vorher und wurde in 12.3 lediglich erweitert. Neu in 12.3 war Synthetic Vision: \"We've added Synthetic Vision to our X1000.\"",
+    "source_url": "https://www.x-plane.com/kb/x-plane-12-3-0-release-notes/",
+    "correction": "X-Plane 12.3 extended the built-in EGPWS terrain display of the X1000 avionics with Peaks Mode and Sea Level, and added Synthetic Vision to the PFD. TerrainRadar continues to add value through broader aircraft support, the VSD feature, and the universal overlay mode."
+   }
+  ]
+ },
+ {
+  "page": "docs/en/addon/cockpit/xcamera.md",
+  "upstream": "Gepflegt, kommerziell/closed source, kein GitHub-Repo. Aktueller Download X-Camera_2.4.4.zip (ZIP-Verzeichniseintraege datiert 2025-10-05) plus User Guide 2.4.4; Copyright-Zeile im Guide \"Copyright © 2017 - 2025 Stick and Rudder Studios, LLC.\". Linux-Binary weiterhin enthalten (X-Camera/64/lin.xpl, zusaetzlich 32/lin.xpl). Beleg: https://stickandrudderstudios.com/x-camera/download-x-camera/ bzw. https://www.stickandrudderstudios.com/downloads/X-Camera_2.4.4.zip",
+  "findings": [
+   {
+    "severity": "VERSION_ENTFERNEN",
+    "category": "version",
+    "line": 14,
+    "claim": "- **Compatibility:** X-Plane 11.3+ and X-Plane 12 (11.3 is the minimum requirement of the current 2.4 series)",
+    "evidence": "Die FAQ knuepft die Mindestanforderung nicht an eine 2.4er-Reihe, sondern generisch an die jeweils aktuelle Version: \"The latest version of X-Camera only supports X-Plane 11.3 and higher.\" Die Nummer 2.4 ist damit rein illustrativ und veraltet mit dem naechsten Release; die XP-11.3-Grenze traegt die Information bereits allein.",
+    "source_url": "https://stickandrudderstudios.com/x-camera-faq/",
+    "correction": "- **Compatibility:** X-Plane 11.3+ and X-Plane 12 (older X-Plane 9/10 releases are served by a separate legacy build with bug fixes only)"
+   },
+   {
+    "severity": "WARN",
+    "category": "links",
+    "line": 57,
+    "claim": "- [OpenTrack — GitHub](https://github.com/opentrack/opentrack)\n- [OpenTrack X-Plane Plugin — included in OpenTrack build](https://github.com/opentrack/opentrack/tree/master/x-plane-plugin)",
+    "evidence": "Beide URLs sind erreichbar, belegen aber nichts zu X-Camera: das OpenTrack-X-Plane-Plugin schreibt `sim/graphics/view/pilots_head_*`, waehrend X-Camera `linuxtrack/pilots_head_*` liest. Die belastbaren Primaerquellen zur Linux-Kopfverfolgung von X-Camera sind der User Guide (\"via LinuxTrack and the xlinuxtrack plugin on Linux and Mac OSX\") und das LinuxTrack-Repository.",
+    "source_url": "https://www.stickandrudderstudios.com/downloads/X-Camera_User_Guide_2.4.4.pdf",
+    "correction": "- [X-Camera User Guide — Stick and Rudder Studios](https://stickandrudderstudios.com/x-camera/download-x-camera/)\n- [LinuxTrack — GitHub](https://github.com/uglyDwarf/linuxtrack)"
+   }
+  ]
+ },
+ {
+  "page": "docs/en/addon/cockpit/xchecklist.md",
+  "upstream": "Gepflegt. Repo github.com/sparker256/xchecklist ist nicht archiviert, MIT-lizenziert, letzter Commit/Push 2026-01-25 (\\\"Merge pull request #11 from delgod/patch-1\\\"), 10 offene Issues (keines Linux-spezifisch; #14 \\\"Spoken language\\\" betrifft Windows 11). Kein Deprecation-, Umzugs- oder Merge-Hinweis. Linux-Support intakt: src/CMakeLists.txt baut unter UNIX das Target mit OUTPUT_NAME \\\"lin\\\" (-> 64/lin.xpl), simon/CMakeLists.txt baut simon_lin64 aus simon.c + speech_sd.c, das zur Laufzeit dlopen(\\\"libspeechd.so.2\\\") ausfuehrt — die TTS-Beschreibung der Seite ist damit belegt. Achtung: GitHub-Releases stagnieren bei 1.27r1 (2017-09-18), Vertrieb der Binaries laeuft ueber forums.x-plane.org. Beleg: https://api.github.com/repos/sparker256/xchecklist und https://api.github.com/repos/sparker256/xchecklist/releases",
+  "findings": [
+   {
+    "severity": "WARN",
+    "category": "features",
+    "line": 20,
+    "claim": "**Text-to-speech:** Reads checklist items aloud via the `sw_remark:` command in checklist files",
+    "evidence": "Der offizielle User Manual beschreibt zwei getrennte Mechanismen. Die Checklist-Items selbst werden ueber die Copilot-Stimme gesprochen: \"Features speaking \\\"copilot\\\" saying checklist items for you\" (docs/XchecklistUserManual.tex, Z. 100) und \"**Voice Prompt** when checked will speak a prompt for the upcoming item.\" (Z. 174). `sw_remark` ist dagegen eine zusaetzliche, nur gesprochene Zeile: \"This item is somewhat similar to the sw_itemvoid, with the only distinction that it is read by the speech synthesizer.\" (Z. 490). Auch der ChangeLog fuehrt sie als Zusatzbefehl ein: \"Ver 1.12 ... Added two commands, sw_remark: which will speak the text following it\" (docs/ChangeLog.txt). Die Seite stellt also einen Zusatzbefehl als den TTS-Mechanismus fuer Checklist-Items dar.",
+    "source_url": "https://github.com/sparker256/xchecklist/blob/master/docs/XchecklistUserManual.tex",
+    "correction": "- **Text-to-speech:** A copilot voice reads the checklist items aloud; the `sw_remark:` command adds extra lines that are spoken but not displayed as items"
+   },
+   {
+    "severity": "WARN",
+    "category": "installation",
+    "line": 38,
+    "claim": "Building from source is optional — pre-built binaries are included in each release.",
+    "evidence": "Die GitHub-Releases des Repos enthalten nur ein einziges, veraltetes Artefakt: letzter Release-Tag ist 1.27r1 vom 2017-09-18 mit dem Asset Xchecklist_1_27.zip (GitHub API /releases, 6 Releases, alle aus September 2017), waehrend der letzte Commit vom 2026-01-25 stammt und der ChangeLog bereits Ver. 1.53 auffuehrt. Das Repo-Verzeichnis `Xchecklist/` enthaelt ausserdem keine Binaries, nur `Documentation/` und `Checker/clist.txt` — die Binaries werden ausschliesslich ueber den x-plane.org-Download verteilt. Ein Leser, der dem Repository-Link folgt, laedt sonst eine Version von 2017.",
+    "source_url": "https://api.github.com/repos/sparker256/xchecklist/releases",
+    "correction": "Building from source is optional — the forum download already contains the pre-built binaries. The GitHub repository ships source code only; its tagged releases have not been updated since 2017."
+   }
+  ]
+ },
+ {
+  "page": "docs/en/addon/cockpit/xpwalkaround.md",
+  "upstream": "Aktiv gepflegt, kommerziell ueber Gumroad. Produktseite (Stand 2026-07-20) fuehrt den aktuellen Stand als \"BETA RELEASE V2.0\" mit neuem Skydiving-Modul; Linux weiterhin ausdruecklich unterstuetzt (\"Cross-Plattform compatible: MacOS, Windows &amp; Linux supported.\"). Kein oeffentliches GitHub-Repo, Support laeuft ueber Discord. Beleg: https://clemacamelc.gumroad.com/l/xpwalkaround",
+  "findings": [
+   {
+    "severity": "WARN",
+    "category": "version",
+    "line": 6,
+    "claim": "XP Walkaround is a commercial [plugin](../../glossary.md#plugin) for [X-Plane](../../glossary.md#x-plane) 12 that adds first-person movement outside the cockpit",
+    "evidence": "Die Produktseite kennzeichnet den aktuell ausgelieferten Stand ausdruecklich als Vorabversion: \"Immersive First-Person Walkaround for X-Plane 12 —— BETA RELEASE V2.0 ——\". Die Doku-Seite erweckt dagegen den Eindruck eines fertigen Stable-Produkts; fuer eine Kaufentscheidung ist der Beta-Status relevant.",
+    "source_url": "https://clemacamelc.gumroad.com/l/xpwalkaround",
+    "correction": "XP Walkaround is a commercial [plugin](../../glossary.md#plugin) for [X-Plane](../../glossary.md#x-plane) 12 that adds first-person movement outside the cockpit — walking around the aircraft, exploring the airport environment, and inspecting the ramp at night with a built-in flashlight. The plugin runs natively on Linux and is currently distributed as a beta release."
+   },
+   {
+    "severity": "FAIL",
+    "category": "features",
+    "line": 23,
+    "claim": "- **Campsite System:** Spawn a campsite with campfire in front of the current view (requires X-Plane 12.04+). Build, cancel, or tear down from the UI. Designed for bush flying and remote operations.",
+    "evidence": "Die Gumroad-Produktbeschreibung fuehrt Skydiving als eigenstaendiges Hauptfeature: \"XP Walkaround introduces a full skydiving experience. When you're flying above 500 feet, a new 'Skydive!' button appears in the plugin window.\" Weiter: \"Deploy your parachute by pressing F, or let it auto-deploy at 500 feet if you forget\" und \"The moment your feet hit the ground, you seamlessly transition into the familiar walk-around mode\". Die Feature-Liste der Seite erwaehnt dieses Modul mit keinem Wort.",
+    "source_url": "https://clemacamelc.gumroad.com/l/xpwalkaround",
+    "correction": "Neuen Bullet vor dem Campsite-Eintrag einfuegen:\n\n- **Skydiving:** Above 500 ft a \"Skydive!\" button appears in the plugin window. Freefall with body-position control, parachute deploy via F key (auto-deploy at 500 ft), steerable ram-air canopy, and a seamless transition into Walk Mode on touchdown."
+   },
+   {
+    "severity": "WARN",
+    "category": "kompatibilitaet",
+    "line": 44,
+    "claim": "[SimpleWalkaround](https://forums.x-plane.org/files/file/96508-simplewalkaround/) is a free plugin that provides basic walkaround movement outside the cockpit. It uses WASD movement controls, sprint (C), and crouch (X) but lacks the extended features of XP Walkaround such as flashlight, campsite system, mouse look, and persistent settings.",
+    "evidence": "Die Download-Seite von SimpleWalkaround enthaelt eine ausdrueckliche Einschraenkung des Autors: \"Tested in X-Plane 12 on Windows; functionality in other versions is not guaranteed.\" Auf einer Linux-Doku-Seite wird die kostenlose Alternative damit ohne den relevanten Vorbehalt praesentiert, dass der Autor Linux-Funktion nicht zusichert.",
+    "source_url": "https://forums.x-plane.org/files/file/96508-simplewalkaround/",
+    "correction": "[SimpleWalkaround](https://forums.x-plane.org/files/file/96508-simplewalkaround/) is a free plugin that provides basic walkaround movement outside the cockpit. It uses WASD movement controls, sprint (C), and crouch (X) but lacks the extended features of XP Walkaround such as flashlight, campsite system, mouse look, and persistent settings. The developer tests on Windows only and does not guarantee behaviour on other platforms, so Linux use is untested."
+   }
+  ]
+ },
+ {
+  "page": "docs/en/addon/cockpit/xtextureextractor.md",
+  "upstream": "Gepflegt-aber-stagniert: github.com/waynepiekarski/XTextureExtractor ist nicht archiviert und nicht umgezogen (GPL-3.0), letzter Commit 2025-06-11 (\\\"XTextureExtractor v3.3 release …\\\"), keine GitHub-Releases (Distribution über `Uploads/XTextureExtractor-latest.zip`), 4 offene Issues (u.a. #21 ToLiss A320, #26 ToLiss A319, #25 Refresh rate). Linux-Binary `Plugin-XTextureExtractor-x64-Release/64/lin.xpl` weiterhin vorhanden. Beleg: https://api.github.com/repos/waynepiekarski/XTextureExtractor",
+  "findings": [
+   {
+    "severity": "WARN",
+    "category": "deprecation",
+    "line": 15,
+    "claim": "The plugin receives occasional updates and supports over 40 preconfigured aircraft configurations",
+    "evidence": "Letzter Commit im Repo ist vom 2025-06-11: \"XTextureExtractor v3.3 release with support for Mac with 64-bit ARM processors\"; davor klafft eine Lücke bis 2023-09-07. GitHub-API meldet `archived: false`, `pushed_at: 2025-06-11`, keine GitHub-Releases (Releases-API liefert leeres Array). Seit über einem Jahr keine Entwicklung.",
+    "source_url": "https://api.github.com/repos/waynepiekarski/XTextureExtractor/commits",
+    "correction": "Development has stalled — the last commit dates from June 2025. The plugin supports over 40 preconfigured aircraft configurations"
+   },
+   {
+    "severity": "HALLUZINIERT",
+    "category": "features",
+    "line": 23,
+    "claim": "**Android app:** Displays 2 panels simultaneously with automatic X-Plane discovery (removed from Google Play in March 2025 — APK can be built from source)",
+    "evidence": "Das Google-Play-Listing net.waynepiekarski.xtextureextractor ist am 2026-07-20 weiterhin live abrufbar (HTTP 200), Feld \"Updated on\" = \"Oct 4, 2022\". Auch das README verlinkt den Store unverändert: \"The Android app can be downloaded from https://play.google.com/store/apps/details?id=net.waynepiekarski.xtextureextractor&hl=en and works on any device back to Android 4.0 (API 14).\" Keine Primärquelle nennt eine Entfernung im März 2025.",
+    "source_url": "https://play.google.com/store/apps/details?id=net.waynepiekarski.xtextureextractor&hl=en",
+    "correction": "- **Android app:** Displays 2 panels simultaneously with automatic X-Plane discovery, available from Google Play (Android 4.0 / API 14 and later)"
+   },
+   {
+    "severity": "FAIL",
+    "category": "installation",
+    "line": 24,
+    "claim": "**Java desktop client:** Cross-platform (Windows, Linux, macOS, Raspberry Pi), included in the download",
+    "evidence": "README (Repo-Root, Datei `README`): \"There is also a java-client included in the download archive, which can run on most Windows, Linux, OSX, and Raspberry Pi hardware. It requires the Java JDK with the javac compiler and java runtime available in your system PATH. You need to then use the run-xte.bat (Windows) or run-xte.sh (Linux/OSX/RPi3) to start up the display client.\" Die Seite behauptet dagegen in Zeile 41 pauschal \"No additional system packages are required\" — unter Debian wird für den Client ein JDK (javac) benötigt.",
+    "source_url": "https://github.com/waynepiekarski/XTextureExtractor/blob/master/README",
+    "correction": "- **Java desktop client:** Cross-platform (Windows, Linux, macOS, Raspberry Pi), included in the download — started via `run-xte.sh` and requires a JDK (`javac` and `java` in `PATH`, e.g. `default-jdk`)"
+   }
+  ]
+ },
+ {
+  "page": "docs/en/addon/flylua_scripts/3drainspeedstop.md",
+  "upstream": "Stagniert. Kein GitHub-Repo; einzige Distribution ist X-Plane.org File 88602 (\"3d Rain Stop Lua Script XP12\", domvc10). Letzter Stand: v1.0.0, released 3. November 2023, \"Edited November 3, 2023 by domvc10\" — seit 2023 unveraendert. Nicht deprecated, kein Nachfolger, kein Umzug. Beleg: https://forums.x-plane.org/files/file/88602-3d-rain-stop-lua-script-xp12/ (Volltext-Snapshot vom 2026-07-20 in forum-evidence.md; WebFetch liefert dort systembedingt 403).",
+  "findings": [
+   {
+    "severity": "WARN",
+    "category": "version",
+    "line": 13,
+    "claim": "- **Compatibility:** X-Plane 12",
+    "evidence": "Stagnationssignal fehlt auf der Seite: Die Download-Seite steht unverändert auf \"Version 1.0.0, released November 3, 2023\" / \"Edited November 3, 2023 by domvc10\" — seit 2023 kein Update.",
+    "source_url": "https://forums.x-plane.org/files/file/88602-3d-rain-stop-lua-script-xp12/",
+    "correction": "- **Compatibility:** X-Plane 12 (last release November 2023, unchanged since)"
+   },
+   {
+    "severity": "HALLUZINIERT",
+    "category": "features",
+    "line": 19,
+    "claim": "**3drainheightstop.lua** — Disables 3D rain above 7,000 ft AGL, re-enables below that altitude",
+    "evidence": "Die Download-Seite nennt nur eine Hoehe ohne Bezugssystem: \"3drainheightstop.lua — stoppt Rain ab 7000 ft, startet wieder darunter\". Ein AGL-Bezug (Above Ground Level) wird nirgends behauptet; die Quelle unterscheidet nicht zwischen AGL und MSL.",
+    "source_url": "https://forums.x-plane.org/files/file/88602-3d-rain-stop-lua-script-xp12/",
+    "correction": "- **3drainheightstop.lua** — Disables 3D rain above 7,000 ft, re-enables below that altitude"
+   },
+   {
+    "severity": "WARN",
+    "category": "features",
+    "line": 25,
+    "claim": "**Speed-based rain control:** Automatic on/off based on indicated airspeed",
+    "evidence": "Die Quelle nennt nur den Schwellwert: \"3drainspeedstop.lua — stoppt 3D-Rain ab 100 kt, startet wieder bei 99 und darunter.\" Ob IAS, TAS oder Groundspeed ausgewertet wird, ist nicht belegt.",
+    "source_url": "https://forums.x-plane.org/files/file/88602-3d-rain-stop-lua-script-xp12/",
+    "correction": "- **Speed-based rain control:** Automatic on/off based on airspeed"
+   },
+   {
+    "severity": "HALLUZINIERT",
+    "category": "features",
+    "line": 26,
+    "claim": "**Altitude-based rain control:** Alternative variant using AGL altitude as trigger",
+    "evidence": "Gleiche Quelle: nur \"ab 7000 ft\". Kein Beleg fuer AGL als Triggergroesse — die Angabe ist eine unbelegte Praezisierung.",
+    "source_url": "https://forums.x-plane.org/files/file/88602-3d-rain-stop-lua-script-xp12/",
+    "correction": "- **Altitude-based rain control:** Alternative variant using altitude as trigger"
+   }
+  ]
+ },
+ {
+  "page": "docs/en/addon/flylua_scripts/rain_rate.md",
+  "upstream": "Forum-only-Skript ohne GitHub-Repo. X-Plane.org Datei 97500 \"Dynamic Rain Rate\" von GusRodrigues, eingereicht 14. November 2025, 1,62 kB, ~875 Downloads, kein Changelog-Block und kein Versionshinweis auf der Datei-Seite. Seit Einreichung unveraendert, aber noch zu jung fuer ein Stagnationssignal. Kein Nachfolger, keine Deprecation. Direkter WebFetch auf forums.x-plane.org liefert erwartungsgemaess HTTP 403 (Cloudflare) — Volltext-Beleg aus scratchpad/forum-evidence.md. Reines Lua, keine Binaries, damit unter Linux ohne Einschraenkung lauffaehig. Beleg-URL: https://forums.x-plane.org/files/file/97500-dynamic-rain-rate/",
+  "findings": [
+   {
+    "severity": "WARN",
+    "category": "features",
+    "line": 24,
+    "claim": "Dynamic Rain Rate addresses this by making rain intensity respond to speed, creating a more immersive weather experience especially during speed transitions (approach, acceleration, descent).",
+    "evidence": "Die vollstaendige Upstream-Beschreibung der Datei-Seite lautet: \"Lua script that runs ever half second and checks the current true airspeed and ajust the rain rate to a more 'realistic' rate to make rainy days... challenging.\" Der vom Autor genannte Zweck ist also ausdruecklich eine hoehere Schwierigkeit bei Regenwetter, nicht ein Immersionseffekt bei Geschwindigkeitswechseln. Die Aufzaehlung \"approach, acceleration, descent\" hat keine Entsprechung in der Quelle.",
+    "source_url": "https://forums.x-plane.org/files/file/97500-dynamic-rain-rate/",
+    "correction": "Dynamic Rain Rate addresses this by tying rain intensity to true airspeed, which — as intended by the author — makes flying in rain noticeably more demanding rather than merely better looking."
+   }
+  ]
+ },
+ {
+  "page": "docs/en/addon/flylua_scripts/sges.md",
+  "upstream": "Aktiv gepflegt. Forum-only (kein GitHub). Letztes Release laut Downloadseite \"What's New in Version 06/29/2026\" (29.06.2026), zuletzt bearbeitet 01.07.2026 durch XPJavelin; v79.6 stable, v80.1 nur ueber SkunkCrafts-Beta-Channel. Beleg: https://forums.x-plane.org/files/file/62296-simple-ground-equipment-services-low-tech-services/ (Volltext via Browser, scratchpad/forum-evidence.md, Stand 2026-07-20). Spiegel-Seite x-plane.to/file/176 erreichbar.",
+  "findings": [
+   {
+    "severity": "FAIL",
+    "category": "kompatibilitaet",
+    "line": 13,
+    "claim": "- **Compatibility:** X-Plane 12",
+    "evidence": "Beschreibung des Autors auf der Downloadseite: \"For X-Plane 11 and X-Plane 12. The same script works in both simulators.\" — bestaetigt auch im Forum-Volltext (scratchpad/forum-evidence.md, Abschnitt sges.md): \"Fuer XP11 UND XP12 — dasselbe Skript in beiden.\"",
+    "source_url": "https://x-plane.to/file/176/simple-ground-equipment-services-low-tech-ground-services",
+    "correction": "- **Compatibility:** X-Plane 11 and X-Plane 12 (same script for both)"
+   },
+   {
+    "severity": "WARN",
+    "category": "features",
+    "line": 29,
+    "claim": "All equipment is toggleable via a non-intrusive popup menu. Compatible with X-Plane 12.2+ native chocks.",
+    "evidence": "Aktueller Funktionsumfang laut Downloadseite-Changelog (Stand 29.06.2026, Forum-Volltext scratchpad/forum-evidence.md): \"Hoppie-Network ATIS (IVAO/VATSIM/PilotEdge, Hoppie-Logon-Code noetig); direkter METAR-Abruf\" — dieses Modul fehlt auf der Seite vollstaendig.",
+    "source_url": "https://forums.x-plane.org/files/file/62296-simple-ground-equipment-services-low-tech-services/",
+    "correction": "All equipment is toggleable via a non-intrusive popup menu. Compatible with X-Plane 12.2+ native chocks. SGES also retrieves network ATIS via Hoppie (IVAO, VATSIM, PilotEdge; Hoppie logon code required) and METAR directly."
+   },
+   {
+    "severity": "NV",
+    "category": "installation",
+    "line": 39,
+    "claim": "The included `skunkcrafts_updater.cfg` goes into `Resources/plugins/FlyWithLua/` (root, not Scripts).",
+    "evidence": "Die Installationsangaben der Primaerquelle nennen nur: \"Easy installation: drag the files in the FlyWithLua scripts folder, open the keyboard menu in X-Plane and attribute a key to toggle the menu, then generate the airport cache in the Plugin > FlyWithLua menu\" sowie \"Updates are available through the SkunkCrafts Updater for people already running at least version 78.0\". Ein separater Ablageort fuer skunkcrafts_updater.cfg (FlyWithLua-Root statt Scripts) ist in keiner login-freien Primaerquelle belegt; Details stehen nur im PDF-Manual.",
+    "source_url": "https://x-plane.to/file/176/simple-ground-equipment-services-low-tech-ground-services",
+    "correction": "Place the SGES files into `Resources/plugins/FlyWithLua/Scripts/`. Follow the included PDF manual for the SkunkCrafts Updater configuration file."
+   }
+  ]
+ },
+ {
+  "page": "docs/en/addon/flylua_scripts/simbrief_simple_ofp.md",
+  "upstream": "Stagniert. Kein GitHub-Repo; einzige Distribution ist x-plane.org Downloads File 75422. Letzte Veroeffentlichung/Bearbeitung: 17. Mai 2024 (\\\"Published May 17, 2024\\\", \\\"Updated May 17, 2024\\\", \\\"Edited May 17, 2024 by HurricanetwistR\\\"), letzter Changelog-Eintrag 2024-05-15. Nicht deprecated, nicht archiviert, kein Nachfolger; Support laeuft weiter ueber Discord (https://discord.gg/aFuVKBdsnV), der auf der Seite als \\\"Add-on Help, Latest Version download & Support\\\" genannt wird. Beleg: http://web.archive.org/web/20250610211731/https://forums.x-plane.org/files/file/75422-simbrief-simple-operational-flight-plan-ofp-xp1112/ (Snapshot 2025-06-10; Live-Abruf scheitert an Cloudflare 403).",
+  "findings": [
+   {
+    "severity": "WARN",
+    "category": "deprecation",
+    "line": 13,
+    "claim": "- **Compatibility:** X-Plane 11/12",
+    "evidence": "Die Download-Seite zeigt \"Published May 17, 2024 / Updated May 17, 2024\" und \"Edited May 17, 2024 by HurricanetwistR\". Letzter Changelog-Eintrag: \"2024-05-15 - Updated metar abbreviation, so it an be encoded\". Seit ueber zwei Jahren (Stand 2026-07) keine Aktualisierung — Stagnationssignal, das die Seite nicht nennt.",
+    "source_url": "http://web.archive.org/web/20250610211731/https://forums.x-plane.org/files/file/75422-simbrief-simple-operational-flight-plan-ofp-xp1112/",
+    "correction": "- **Compatibility:** X-Plane 11/12 — last update May 2024"
+   },
+   {
+    "severity": "NV",
+    "category": "features",
+    "line": 24,
+    "claim": "- **Local times:** Local time conversion for departure and arrival\n- **Multiple alternates:** Support for flight plans with multiple alternate airports",
+    "evidence": "Die Download-Seite fuehrt keine Feature-Liste; der gesamte Beschreibungstext lautet \"This script will download your latest generated Flight Plan from Simbrief.com in an XML format and will process it into a readable format.\" Der einzige veroeffentlichte Changelog (Version vom 17.05.2024) nennt ausschliesslich \"Updated metar abbreviation\" und \"Added aircraft SELCAL code to layout 1\". Fuer Local-Time-Umrechnung und Multiple-Alternates-Unterstuetzung existiert keine Primaerquelle.",
+    "source_url": "http://web.archive.org/web/20250610211731/https://forums.x-plane.org/files/file/75422-simbrief-simple-operational-flight-plan-ofp-xp1112/",
+    "correction": "ENTFERNEN"
+   }
+  ]
+ },
+ {
+  "page": "docs/en/addon/flylua_scripts/simloadmanager.md",
+  "upstream": "Aktiv gepflegt. Letztes Release \"What's New in Version 07/12/2026\" (V4.1), released 12. Juli 2026, edited by RackhamRPL. Kein GitHub-Repo, Distribution ausschliesslich ueber X-Plane.org. Reines Lua-Skript, daher unter Linux ohne Binary-Abhaengigkeit lauffaehig; keine Linux-spezifischen Probleme belegbar. Beleg: https://forums.x-plane.org/files/file/93858-simload-manager-realistic-pax-cargo-fuel-ground-operations/",
+  "findings": [
+   {
+    "severity": "FAIL",
+    "category": "kompatibilitaet",
+    "line": 13,
+    "claim": "- **Compatibility:** X-Plane 12",
+    "evidence": "Produktseite (Stand 07/12/2026, V4.1): \"SimLoad Manager brings X-Plane 12 & X-Plane 11 flights to life with realistic cargo, fuel and passenger loading simulations\". Upstream nennt ausdruecklich beide Simulator-Generationen, die Seite nur XP12.",
+    "source_url": "https://forums.x-plane.org/files/file/93858-simload-manager-realistic-pax-cargo-fuel-ground-operations/",
+    "correction": "- **Compatibility:** X-Plane 11, X-Plane 12"
+   },
+   {
+    "severity": "WARN",
+    "category": "features",
+    "line": 17,
+    "claim": "It supports Laminar default aircraft (B737-800, A330-300, MD-82), Zibo/Level Up B737 variants, ToLiss aircraft, X-Crafts E-Jets, Flight Factor 757/767, and FPS 747-800.",
+    "evidence": "Aktuelle Produktseite listet zusaetzlich Laminar Cessna Citation X (C750), die komplette ToLiss-Reihe, X-Crafts ERJ neben den E-Jets sowie FlightFactor A320 zusaetzlich zur 757/767-Familie.",
+    "source_url": "https://forums.x-plane.org/files/file/93858-simload-manager-realistic-pax-cargo-fuel-ground-operations/",
+    "correction": "It supports Laminar default aircraft (B737-800, A330-300, MD-82, C750), Zibo/Level Up B737 variants, all ToLiss aircraft, X-Crafts E-Jets and ERJ, Flight Factor 757/767 and A320, and FPS 747-800."
+   },
+   {
+    "severity": "WARN",
+    "category": "features",
+    "line": 17,
+    "claim": "Q4XP is excluded (uses its own tablet system).",
+    "evidence": "Upstream beschreibt keinen generellen Ausschluss, sondern dass SLM beim Q4XP die Weight-/Fuel-Integration automatisch deaktiviert (das Flugzeug verwaltet Beladung ueber sein eigenes Tablet).",
+    "source_url": "https://forums.x-plane.org/files/file/93858-simload-manager-realistic-pax-cargo-fuel-ground-operations/",
+    "correction": "For the Q4XP, SimLoad Manager automatically disables its weight and fuel integration (the aircraft manages loading through its own tablet)."
+   },
+   {
+    "severity": "WARN",
+    "category": "features",
+    "line": 21,
+    "claim": "- **Realistic loading simulation:** Passengers board dynamically based on cargo and fuel progress, with automatic unit detection (kg/lbs)",
+    "evidence": "Aktuelles Release nennt zusaetzlich zentrale Fuel- und PAX-Mechaniken, die auf der Seite fehlen: \"A tankering system has been added for low-cost operations to load extra fuel on the outbound leg to avoid a full refuel during turnaround\", ausserdem Fuel Top-Up, Passenger Variability (No-shows, Standbys), Low-Cost-Mode und ein Random-Events-System mit eigenem Audio.",
+    "source_url": "https://forums.x-plane.org/files/file/93858-simload-manager-realistic-pax-cargo-fuel-ground-operations/",
+    "correction": "- **Realistic loading simulation:** Passengers board dynamically based on cargo and fuel progress, with automatic unit detection (kg/lbs), passenger variability (no-shows, standbys), fuel top-up, a tankering system for low-cost operations, and random events during the turnaround"
+   },
+   {
+    "severity": "WARN",
+    "category": "features",
+    "line": 36,
+    "claim": "- **API for external tools:** Custom X-Plane commands and exposed datarefs",
+    "evidence": "Aktuelles Release listet ausdruecklich SayIntentions.ai-API-Support als eigene Integration; die Seite erwaehnt sie nicht.",
+    "source_url": "https://forums.x-plane.org/files/file/93858-simload-manager-realistic-pax-cargo-fuel-ground-operations/",
+    "correction": "- **API for external tools:** Custom X-Plane commands and exposed datarefs, including SayIntentions.ai API support"
+   },
+   {
+    "severity": "VERSION_ENTFERNEN",
+    "category": "version",
+    "line": 55,
+    "claim": "Delete all previous SimLoad Manager files from `FlyWithLua/Scripts/` before installing v3.x.",
+    "evidence": "Upstream ist inzwischen bei V4.1 (Release 12.07.2026); die Anweisung \"delete your old files before updating\" gilt versionsunabhaengig fuer jedes Update. Die Nennung von v3.x ist rein illustrativ und inzwischen ueberholt.",
+    "source_url": "https://forums.x-plane.org/files/file/93858-simload-manager-realistic-pax-cargo-fuel-ground-operations/",
+    "correction": "Delete all previous SimLoad Manager files from `FlyWithLua/Scripts/` before installing a new version."
+   }
+  ]
+ },
+ {
+  "page": "docs/en/addon/flylua_scripts/simreaperxp.md",
+  "upstream": "Aktiv gepflegt. Repository github.com/alstr/simreaperxp nicht archiviert, MIT-Lizenz (LICENSE: \\\"Copyright (c) 2025 Alastair Mooney\\\"), 0 offene Issues. Letztes Release Tag v1.3 vom 2026-01-15, letzter Commit 2026-01-15 (\\\"Update README.md\\\"). Reines Lua-Script (keine Binaries, kein lin_x64 noetig) — Linux-Nutzung unverandert gegeben. Keine Deprecation, kein Nachfolger, kein Umzug. Quelle: https://github.com/alstr/simreaperxp",
+  "findings": [
+   {
+    "severity": "WARN",
+    "category": "features",
+    "line": 23,
+    "claim": "**Cloud Shadow Render:** Stops clouds from calculating ground shadows",
+    "evidence": "README: \"Cloud Shadow Render: Stops clouds from calculating their shadows across the world. Saves CPU without breaking visuals. Cloud shadows will be periodically redrawn.\" — Commit \"Redraw cloud shadows every so often\" vom 2026-01-15.",
+    "source_url": "https://github.com/alstr/simreaperxp",
+    "correction": "**Cloud Shadow Render:** Stops clouds from continuously calculating ground shadows (shadows are only periodically redrawn)"
+   },
+   {
+    "severity": "WARN",
+    "category": "installation",
+    "line": 37,
+    "claim": "**Download:** [GitHub Releases](https://github.com/alstr/simreaperxp)",
+    "evidence": "Die GitHub-Releases des Repos (Tags v1.3, v1.2.1, v1.2) enthalten jeweils `assets: []`, also keine herunterladbare Script-Datei. Das Lua-Script wird direkt aus dem Repository bezogen (`SimReaperXP.lua` im Branch `main`).",
+    "source_url": "https://github.com/alstr/simreaperxp",
+    "correction": "**Download:** [GitHub repository](https://github.com/alstr/simreaperxp)"
+   },
+   {
+    "severity": "WARN",
+    "category": "installation",
+    "line": 39,
+    "claim": "Place `simreaperxp.lua` into `Resources/plugins/FlyWithLua/Scripts/`.",
+    "evidence": "Die einzige Script-Datei im Repository heisst `SimReaperXP.lua` (GitHub-Contents-Listing des Default-Branch `main`: LICENSE, README.md, SimReaperXP.lua). Ein Dateiname `simreaperxp.lua` existiert im Repo nicht — auf case-sensitiven Linux-Dateisystemen ist die Schreibweise nicht identisch.",
+    "source_url": "https://github.com/alstr/simreaperxp",
+    "correction": "Place `SimReaperXP.lua` into `Resources/plugins/FlyWithLua/Scripts/`."
+   }
+  ]
+ },
+ {
+  "page": "docs/en/addon/flylua_scripts/simscreenoverlay.md",
+  "upstream": "Gepflegt. Reines Lua-Skript ohne GitHub-Repo; einzige Distributionsquelle ist x-plane.to. Aktuelles Release vom 23.02.2026 (Erstveroeffentlichung 11.09.2025), Changelog-Eintrag: \\\"Fixed: Settings window flickering rapidly on recent X-Plane versions.\\\" Kein Deprecation-, Archivierungs- oder Nachfolgehinweis; Download-URL https://x-plane.to/file/1910/simscreen-overlay ist ohne Redirect erreichbar. Da es sich um pures Lua handelt, gibt es kein lin_x64-Binary und keine Linux-spezifischen Abhaengigkeiten; die Linux-Angabe der Platforms-Zeile ist korrekt. Belege: https://x-plane.to/file/1910/simscreen-overlay",
+  "findings": [
+   {
+    "severity": "WARN",
+    "category": "features",
+    "line": 22,
+    "claim": "**Settings UI:** Configurable via `FlyWithLua Macros > SimScreen Overlay: Settings`",
+    "evidence": "Die offizielle Produktseite nennt den Menueeintrag vollstaendig als \"SimScreen Overlay: Settings window\" (\"open the settings window via Plugins → FlyWithLua Macros → SimScreen Overlay: Settings window\"). Der Menuepfad beginnt zudem bei \"Plugins\". Die Seite kuerzt den Eintragsnamen ab, wodurch der im Sim sichtbare Menuetext nicht exakt getroffen wird.",
+    "source_url": "https://x-plane.to/file/1910/simscreen-overlay",
+    "correction": "- **Settings UI:** Configurable via `Plugins > FlyWithLua Macros > SimScreen Overlay: Settings window`"
+   }
+  ]
+ },
+ {
+  "page": "docs/en/addon/flylua_scripts/xproturb.md",
+  "upstream": "Aktiv und sehr haeufig gepflegt. Kein GitHub-Repo; Distribution ausschliesslich ueber forums.x-plane.org (Datei 100195) und Spiegel auf x-plane.to. Letztes Release 30.06.2026 (v2.3.1), Autor sfkcyl; keine Deprecation, kein Umzug, kein Nachfolger. Beleg: https://x-plane.to/file/2348/x-proturb-professional-turbulence-engine (\"Version: 2.3.1 (released 30 June 2026)\") sowie Forum-Volltext in scratchpad/forum-evidence.md (\"What's New in Version 06/30/2026\").",
+  "findings": [
+   {
+    "severity": "WARN",
+    "category": "features",
+    "line": 41,
+    "claim": "- **CB / storm modelling:** Cumulonimbus cores, hail and heavy-rain turbulence scaled to the official FAA severity bands (light → extreme)",
+    "evidence": "Beide Primaerquellen fuehren die Integration des X-Plane-eigenen 3D-Wettergitters als eigenstaendiges Kernfeature. x-plane.to: \"**Weather Integration**: Reads X-Plane's 3D weather grid to avoid double-counting turbulence\". Die Forum-Seite (Stand 30.06.2026, Volltext in forum-evidence.md) nennt zusaetzlich: \"liest XP-eigenes 3D-Weather-Grid via FFI und kompensiert Doppelzaehlung, oder 'Owns mode'; Turbulence-ahead-Warnung\". Die Feature-Liste der Seite erwaehnt keines von beidem.",
+    "source_url": "https://x-plane.to/file/2348/x-proturb-professional-turbulence-engine",
+    "correction": "- **CB / storm modelling:** Cumulonimbus cores, hail and heavy-rain turbulence scaled to the official FAA severity bands (light → extreme), with a turbulence-ahead warning\n- **Weather integration:** The engine reads X-Plane's own 3D weather grid and compensates for double-counting, or takes over turbulence entirely in its own mode"
+   }
+  ]
+ },
+ {
+  "page": "docs/en/addon/kvm/mobiflight.md",
+  "upstream": "Aktiv gepflegt. GitHub MobiFlight/MobiFlight-Connector nicht archiviert, ~1.897 Commits auf main, 227 offene Issues; letztes Release v11.1.0 vom 2026-05-13, Issue-Aktivitaet bis 2026-07-19. Weiterhin MIT, weiterhin Windows-only (kein Linux-Build). https://github.com/MobiFlight/MobiFlight-Connector/releases",
+  "findings": [
+   {
+    "severity": "FAIL",
+    "category": "features",
+    "line": 29,
+    "claim": "### Network Split (recommended)",
+    "evidence": "Da MobiFlight die X-Plane-Verbindung nicht auf eine entfernte IP richten kann (Issue #1093, open, \"the connection configuration for xplane is static and assumes that xplane runs on the same computer\"), funktioniert ein Netzwerk-Split nur mit vorgeschaltetem UDP-Relay. Die auf der Seite selbst beschriebene VM-Variante mit `sudppipe.exe` (Zeile 48) ist genau dieses Relay und damit der belegte Weg.",
+    "source_url": "https://github.com/MobiFlight/MobiFlight-Connector/issues/1093",
+    "correction": "\"### Network Split\" — das Praedikat \"(recommended)\" ENTFERNEN und Zeile 31 anpassen: \"MobiFlight communicates with X-Plane over UDP, but the Connector only ever talks to `127.0.0.1`. A split setup therefore requires a UDP forwarder on the Windows side:\""
+   },
+   {
+    "severity": "FAIL",
+    "category": "features",
+    "line": 36,
+    "claim": "In MobiFlight, enter the IP address of the Linux PC (instead of `127.0.0.1`). X-Plane accepts UDP connections on port 49000 by default.",
+    "evidence": "GitHub-Issue #1093 \"Allow for remote connection to XPlane\" (Status: open, zuletzt aktualisiert 2026-04-05, Label \"planned\"): \"the connection configuration for xplane is static and assumes that xplane runs on the same computer\" — Feature-Request: \"Allow for configuration of ip address and port so that Mobiflight Connector can connect to XPlane even if that is running on a remote computer.\" Eine IP-Eingabe fuer die X-Plane-Verbindung existiert im Connector also nicht; MobiFlight verbindet sich fest auf localhost.",
+    "source_url": "https://github.com/MobiFlight/MobiFlight-Connector/issues/1093",
+    "correction": "MobiFlight bietet fuer X-Plane **keine** IP-Konfiguration — die Verbindung ist fest auf `127.0.0.1` verdrahtet (offener Feature-Request, seit 2023 unerledigt). Ersatztext: \"MobiFlight has no IP setting for X-Plane — the connection is hardwired to `127.0.0.1` on the machine the Connector runs on. A UDP relay on the Windows side must therefore forward port 49000 to the Linux PC.\""
+   },
+   {
+    "severity": "WARN",
+    "category": "links",
+    "line": 55,
+    "claim": "- [MobiFlight — X-Plane Quick Start Guide](https://www.mobiflight.com/en/tutorials/x-plane-quick-start-guide.html)",
+    "evidence": "curl: https://www.mobiflight.com/en/tutorials/x-plane-quick-start-guide.html -> 301 auf https://mobiflight.com/en/tutorials/x-plane-quick-start-guide.html -> 301 auf https://github.com/MobiFlight/MobiFlight-Connector/wiki/Getting-started-with-XPlane (HTTP 200). Die Tutorial-Seite existiert nicht mehr eigenstaendig, der Inhalt liegt jetzt im GitHub-Wiki.",
+    "source_url": "https://github.com/MobiFlight/MobiFlight-Connector/wiki/Getting-started-with-XPlane",
+    "correction": "- [MobiFlight — Getting started with X-Plane (Wiki)](https://github.com/MobiFlight/MobiFlight-Connector/wiki/Getting-started-with-XPlane)"
+   }
+  ]
+ },
+ {
+  "page": "docs/en/addon/kvm/myfs_flights.md",
+  "upstream": "Aktiv gepflegt. Die Windows-App \"My FS Flights\" (Publisher: Agile Software Management Limited) wurde im Microsoft Store zuletzt am 2026-07-11 aktualisiert (LastUpdateDateUtc \"2026-07-11T13:54:05Z\"), Mindest-OS \"Windows 10 version 17763.0 or higher\". Website myfs.flights ist erreichbar, Footer \"© 2026 MyFS.Flights\". Kein GitHub-Repo, closed source, kein Linux-Build. Der Firmen-Blog blog.myfs.flights stagniert (letzter Post April 2023), das Produkt selbst nicht. Beleg: https://storeedgefd.dsx.mp.microsoft.com/v9.0/products/9pgb7ngn6l24?market=US&locale=en-US&deviceFamily=Windows.Desktop",
+  "findings": [
+   {
+    "severity": "HALLUZINIERT",
+    "category": "installation",
+    "line": 41,
+    "claim": "The My FS Flights plugin allows configuring the target IP address directly in its settings. This makes it possible to connect to an X-Plane instance on another machine — or from a KVM guest to X-Plane running on the Linux host.",
+    "evidence": "Der Hersteller nennt die Datensammel-Komponente nicht \"plugin\", sondern \"connector\", und dokumentiert sie ausdruecklich als auf dem Simulator-Rechner laufend. Microsoft-Store-Beschreibung woertlich: \"Install the connector on your simulator computer where it will automatically detect and connect to a compatible simulator, and your flight data will then be sent to the My FS Flights cloud servers for real-time flight analysis.\" Weder auf myfs.flights, im Store-Eintrag noch in der Store-Beschreibung existiert eine dokumentierte Einstellung fuer eine Ziel-IP-Adresse oder ein Remote-/Netzwerk-Setup; eine Websuche nach dieser Angabe liefert als einzigen Treffer die XoL-Seite selbst (Zirkelbeleg). Es gibt zudem kein X-Plane-Plugin von My FS Flights (kein lin_x64-Binary, keine Installation nach Resources/plugins dokumentiert) — die Erkennung laeuft ueber den Windows-Connector. Die Vorrunde hatte die Stelle bereits als \"nicht extern belegbar\" markiert; jetzt liegt zusaetzlich eine gegenteilige Herstelleraussage vor.",
+    "source_url": "https://storeedgefd.dsx.mp.microsoft.com/v9.0/products/9pgb7ngn6l24?market=US&locale=en-US&deviceFamily=Windows.Desktop",
+    "correction": "My FS Flights installs a *connector* on the simulator machine, which detects the simulator automatically — there is no X-Plane plugin and no vendor-documented setting for a remote target address. A KVM guest therefore has to reach X-Plane on the Linux host over the network, which is not a configuration covered by the vendor documentation."
+   }
+  ]
+ },
+ {
+  "page": "docs/en/addon/kvm/sayintentions.md",
+  "upstream": "Aktiv gepflegt und kommerziell weiterentwickelt (closed source, kein GitHub-Repo). Offizielle Seite mit Stand 2026: Footer \"SayAgain Solutions, LLC © 2026\", Blog/News aktuell, \"FSExpo 2026 Best #FSExpoFriday Announcement\" (https://www.sayintentions.ai/). Client weiterhin Windows-only — Premium-Seite woertlich: \"Windows Only. Mac/Linux Unsupported.\" (https://www.sayintentions.ai/premium). Die Wissensdatenbank ist von sayintentionsai.freshdesk.com nach kb.sayintentions.ai umgezogen. Der zitierte Community-Workaround paulfisher53/SayIntentionsForMac stagniert: letzter Commit 20. Mai 2024, einziges Release v0.0.1 (20. Mai 2024), 3 Commits, nicht archiviert.",
+  "findings": [
+   {
+    "severity": "WARN",
+    "category": "kompatibilitaet",
+    "line": 13,
+    "claim": "- **Compatibility:** X-Plane 11/12, MSFS 2020/2024, Prepar3D v5/v6",
+    "evidence": "Offizielle Premium-Seite, Zeile \"Compatible with\": \"MSFS 2020/24 · X-Plane 11/12 · P3Dv5*\" mit Fussnote \"* P3D support for professional / commercial use. Windows Only.\" Prepar3D v6 wird von SayIntentions.AI nirgends als unterstuetzt genannt.",
+    "source_url": "https://www.sayintentions.ai/premium",
+    "correction": "- **Compatibility:** X-Plane 11/12, MSFS 2020/2024, Prepar3D v5"
+   },
+   {
+    "severity": "HALLUZINIERT",
+    "category": "features",
+    "line": 19,
+    "claim": "- **650+ AI voices:** Regionally distinct accents in 15 languages",
+    "evidence": "Die Zahl 650+ ist auf keiner Primaerquelle von SayIntentions.AI auffindbar. Die offizielle Premium-Seite nennt ausschliesslich \"Premium Voices — 15 Languages\" und \"Unlimited Premium Voices\", die Startseite \"Premium Voices — 15 Languages\" bzw. \"15-language support\". Keine veroeffentlichte Stimmenanzahl.",
+    "source_url": "https://www.sayintentions.ai/premium",
+    "correction": "- **Premium voices:** Regionally distinct accents in 15 languages"
+   },
+   {
+    "severity": "WARN",
+    "category": "features",
+    "line": 21,
+    "claim": "- **AI Co-Pilot:** Handles radio communications and checklists",
+    "evidence": "Die offizielle Feature-Liste umfasst inzwischen die \"Entourage Suite\" und weitere Kernfunktionen, die die Seite nicht nennt: \"Cabin Crews\", \"Mentors\", \"Tour Guides\", \"Ground Ops\", sowie \"SkyOps Missions\" und \"FlightLine\" (Premium-Feature-Liste: \"Unscripted AI ATC ... AI Co-Pilot, Customizable Checklists, Entourage Suite Included, SkyOps Missions, CPDLC & ACARS, FlightLine\"). Der Co-Pilot automatisiert laut Website zudem die Steuerung (\"even automate the controls!\").",
+    "source_url": "https://www.sayintentions.ai/premium",
+    "correction": "- **AI crew (Entourage):** AI co-pilot for radio communications and checklists, plus cabin crews, ground ops, mentors and tour guides\n- **SkyOps & FlightLine:** AI-generated missions and pre-flight clearance/ATIS retrieval"
+   },
+   {
+    "severity": "FAIL",
+    "category": "features",
+    "line": 22,
+    "claim": "- **Traffic injection:** Commercial and GA traffic from real-world schedules",
+    "evidence": "Offizielle Startseite, Fussnote zum Premium-Feature-Block: \"* Traffic injection: MSFS 2020 and 2024 only at this time.\" Ebenso Premium-Seite unter \"AI Living World\": \"MSFS 2020 and 2024.\" Der Feature-Bullet suggeriert auf einer X-Plane-Linux-Seite eine Verfuegbarkeit, die es fuer X-Plane nicht gibt.",
+    "source_url": "https://www.sayintentions.ai/premium",
+    "correction": "- **Traffic injection:** Commercial and GA traffic from real-world schedules — MSFS 2020/2024 only, not available for X-Plane"
+   },
+   {
+    "severity": "FAIL",
+    "category": "links",
+    "line": 48,
+    "claim": "- [SayIntentions.AI — Features Overview](https://sayintentionsai.freshdesk.com/support/solutions/articles/154000219433)",
+    "evidence": "Die URL ist oeffentlich nicht mehr abrufbar: HTTP 302 auf https://sayintentionsai.freshdesk.com/support/login, von dort Weiterleitungsschleife ueber sayintentions.myfreshworks.com/oauth/authorize mit \"error=login_required\". Die Wissensdatenbank liegt jetzt unter kb.sayintentions.ai (HTTP 200).",
+    "source_url": "https://kb.sayintentions.ai/knowledgebase",
+    "correction": "- [SayIntentions.AI — Help Center / Knowledge Base](https://kb.sayintentions.ai/knowledgebase)"
+   }
+  ]
+ },
+ {
+  "page": "docs/en/addon/scenery_addons/aep.md",
+  "upstream": "Aktiv gepflegt und kommerziell vertrieben. Major-Release v2.0 am 27. Maerz 2026, letztes Wartungsupdate 18. April 2026 (\"2.0.14, April 18th, 2026 — Fix skids on unpaved surfaces ... Update to 12.4.2 airports\"). Kein GitHub-Repo; Primaerquelle ist die Herstellerseite mit Changelog. Vertrieb ueber den X-Plane.org-Store (\"Browse on X-Plane.org\"), Updates seit v2 ueber SkunkCrafts Updater. Anforderungsblock der Herstellerseite nennt jetzt nur noch \"X-Plane 12\". Beleg: https://x-codrdesigns.com/xp-aep/",
+  "findings": [
+   {
+    "severity": "FAIL",
+    "category": "kompatibilitaet",
+    "line": 13,
+    "claim": "- **Compatibility:** X-Plane 11 and 12",
+    "evidence": "Der Anforderungsblock der Produktseite nennt ausschliesslich \"X-Plane 12\" (neben \"Windows, Mac or Linux\", \"8 GB+ VRAM Recommended\", \"Download Size: 2 GB\"). Das aktuelle Release ist eine XP12-Generation; XP11-Support stammt aus der 1.x-Linie (Changelog \"1.2, September 5th 2022 — Support for X-Plane 12 added\").",
+    "source_url": "https://x-codrdesigns.com/xp-aep/",
+    "correction": "- **Compatibility:** X-Plane 12"
+   },
+   {
+    "severity": "FAIL",
+    "category": "features",
+    "line": 21,
+    "claim": "- **[Ground markings](../../glossary.md#ground-markings):** Revised markings and pavements with weather effect support (weather maps)",
+    "evidence": "Die aktuelle Feature-Liste kennt keine \"weather maps\", sondern prozedurale Overlays und FAA-basierte Markierungen: \"Procedural Overlays generated by in-house software — Aircraft and vehicle skids / Oil leaks and dirt in ramps / Pollution grunge based on region ...\" sowie \"Revamped ground textures — Realistic coloring and large scale variation / Ultra detailed decals for close-up detail / Custom marking textures based on FAA guidlines\".",
+    "source_url": "https://x-codrdesigns.com/xp-aep/",
+    "correction": "- **[Ground markings](../../glossary.md#ground-markings):** Revamped ground textures with procedurally generated skids, oil leaks, and regional grunge, plus ultra-detailed decals and marking textures based on FAA guidelines"
+   },
+   {
+    "severity": "FAIL",
+    "category": "features",
+    "line": 23,
+    "claim": "- **Decals:** Realistic patterns to avoid repetition",
+    "evidence": "Das zentrale neue Feature — der mitgelieferte AEP-Live-Plugin — fehlt auf der Seite komplett. Herstellerseite: \"Custom taxisigns — AEP Live plugin replaces taxisigns in real-time / Detailed taxisign models based closely on FAA guidlines / Accurate fonts, sizing, colors, and character spacing / Fully compatible with 3rd party airports\". (Decals sind in der Korrektur zu Zeile 21 aufgenommen.)",
+    "source_url": "https://x-codrdesigns.com/xp-aep/",
+    "correction": "- **Custom taxi signs:** The bundled AEP Live plugin replaces taxiway signs in real time with FAA-conformant models, including at third-party airports"
+   },
+   {
+    "severity": "WARN",
+    "category": "features",
+    "line": 27,
+    "claim": "- UHD textures (2–4 pixels per inch)",
+    "evidence": "Die Angabe \"4 pixel per inch\" stammt aus der Ankuendigung der 1.x-Linie (2020). Die aktuelle Produktseite nennt keine Pixeldichte mehr, sondern beschreibt den Detailgewinn ueber Decals: \"Decals enable previously impossible levels of detail, while using less VRAM\".",
+    "source_url": "https://x-codrdesigns.com/xp-aep/",
+    "correction": "- Decal-based detail textures with normal maps, delivering close-up detail at lower VRAM cost"
+   },
+   {
+    "severity": "FAIL",
+    "category": "installation",
+    "line": 39,
+    "claim": "Download the ZIP file from the [official website](https://www.x-codrdesigns.com/xp-aep) and extract the included folder to `Custom Scenery/`. The `scenery_packs.ini` is automatically updated on the next X-Plane startup.",
+    "evidence": "AEP ist Payware und wird nicht auf der Herstellerseite zum Download angeboten; die Produktseite verlinkt nur \"Browse on X-Plane.org\" (Store-Preis 22,95 USD). Seit v2 laufen Updates ueber SkunkCrafts: \"which is why I've decided to implement support for Skunkcrafts Updater! Rather than having to log in to the store, redownload AEP, and copy it into your Custom Scenery folder, you'll just have to click update, and you're done!\" Ausserdem besteht die Installation aus zwei Ordnern — FAQ: \"Do I need to add 'AEP' to my scenery_packs.ini, or just 'AEP Overlays'? A: No, you do not need to add 'AEP' ... you can let X-Plane add it automatically\".",
+    "source_url": "https://x-codrdesigns.com/post/aep-2-feature-preview/",
+    "correction": "AEP is payware and is purchased from the X-Plane.org store, which the [official website](https://www.x-codrdesigns.com/xp-aep) links to. Extract both included folders (`AEP` and `AEP Overlays`) to `Custom Scenery/`; the `scenery_packs.ini` is updated automatically on the next X-Plane startup. Subsequent updates are delivered through the SkunkCrafts Updater."
+   },
+   {
+    "severity": "WARN",
+    "category": "installation",
+    "line": 43,
+    "claim": "- Graphics card with 8 GB [VRAM](../../glossary.md#vram-video-ram) (minimum 4 GB)",
+    "evidence": "Der Anforderungsblock der Herstellerseite nennt nur \"8 GB+ VRAM Recommended\". Ein Minimum von 4 GB ist dort nicht angegeben und in keiner Primaerquelle belegt.",
+    "source_url": "https://x-codrdesigns.com/xp-aep/",
+    "correction": "- Graphics card with 8 GB or more [VRAM](../../glossary.md#vram-video-ram) recommended"
+   },
+   {
+    "severity": "VERSION_ENTFERNEN",
+    "category": "version",
+    "line": 44,
+    "claim": "- ~2 GB download size (grows with each v2 update)",
+    "evidence": "Herstellerseite: \"Download Size: 2 GB\". Ein Wachstum \"mit jedem v2-Update\" ist nicht belegt; die Wartungsreleases sind Fixes (\"2.0.14, April 18th, 2026 — Fix skids on unpaved surfaces ... Update to 12.4.2 airports\"). Die Versionsnennung \"v2\" ist rein illustrativ.",
+    "source_url": "https://x-codrdesigns.com/xp-aep/",
+    "correction": "- Approximately 2 GB download size"
+   }
+  ]
+ },
+ {
+  "page": "docs/en/addon/scenery_addons/lst.md",
+  "upstream": "Aktiv gepflegt und gerade grundlegend erneuert: LST 2.0 (kompletter Rewrite, XML-Paketformat, Threaded-Movement-Engine, neuer browserbasierter Web Editor statt CLI-Utility) angekuendigt am 15. Juli 2026; davor v1.12 im Juli 2025. Vertrieb weiterhin freeware ueber x-codrdesigns.com und X-Plane.org (Datei 82876), Auslieferung/Updates ueber SkunkCrafts Updater. Kein Deprecation-, Umzugs- oder Nachfolgehinweis; Linux-Binary weiterhin Teil des Pakets (\"Support for Mac, Windows, and Linux\"). Beleg: https://x-codrdesigns.com/post/lst-2/ und https://x-codrdesigns.com/living-scenery-technology/ (sitemap lastmod 2026-03-17). Community-Tooling devleaks/lst-utils (Python, MIT) existiert weiter, ist aber ohne Release und auf das Legacy-Textformat ausgerichtet.",
+  "findings": [
+   {
+    "severity": "WARN",
+    "category": "kompatibilitaet",
+    "line": 14,
+    "claim": "- **Compatibility:** X-Plane 12",
+    "evidence": "The official product page lists under its feature summary: \"Support for X-Plane 11 and X-Plane 12\".",
+    "source_url": "https://x-codrdesigns.com/living-scenery-technology/",
+    "correction": "- **Compatibility:** X-Plane 11 and X-Plane 12"
+   },
+   {
+    "severity": "WARN",
+    "category": "features",
+    "line": 25,
+    "claim": "- **Location triggers:** Trigger events at specific positions (e.g., door opening on vehicle arrival)",
+    "evidence": "Beyond position triggers, the official feature list names user-interaction menus, Pilot Controlled Lighting, and dataref control \"with simple keyframing and math operations\"; the LST 2.0 post adds \"Camera trigger systems based on camera location\" and \"Menus can be added to enable users to interact with the scenery\". None of this appears on the page.",
+    "source_url": "https://x-codrdesigns.com/living-scenery-technology/",
+    "correction": "- **Triggers, menus and datarefs:** Events fire at defined positions or on camera proximity (e.g. door opening on vehicle arrival); sceneries can offer interaction menus, pilot-controlled lighting, and dataref animation via keyframing and math operations"
+   },
+   {
+    "severity": "WARN",
+    "category": "features",
+    "line": 26,
+    "claim": "- **Performance:** Thousands of animated objects with less than 5–10% frame rate impact",
+    "evidence": "No primary source states a 5–10% figure. The developer describes the architecture instead: \"Core logic runs on a 2nd thread while the sim runs for near-zero overhead\" and \"Asynchronous loading of assets for minimal stutters\"; the LST 2.0 post claims the threaded rewrite allows \"dramatically more objects (in my testing, upwards of 10x), with no performance impact\" plus optional range limits.",
+    "source_url": "https://x-codrdesigns.com/post/lst-2/",
+    "correction": "- **Performance:** The movement logic runs on its own thread, and assets load asynchronously; optional range limits keep distant objects from being processed"
+   },
+   {
+    "severity": "WARN",
+    "category": "installation",
+    "line": 36,
+    "claim": "Copy the `Living Scenery Technology` folder to `Resources/plugins/`. The plugin activates automatically when an LST-enabled scenery is loaded.",
+    "evidence": "The official product page advertises \"Automatic updates via Skunkcrafts Updater\"; the LST 2.0 post additionally tells users to \"wait until 2.0 is live on Skunkcrafts Updater\" rather than using the beta. The page's installation section omits this entirely.",
+    "source_url": "https://x-codrdesigns.com/living-scenery-technology/",
+    "correction": "Copy the `Living Scenery Technology` folder to `Resources/plugins/`. The plugin activates automatically when an LST-enabled scenery is loaded and keeps itself up to date via the SkunkCrafts Updater."
+   },
+   {
+    "severity": "FAIL",
+    "category": "features",
+    "line": 42,
+    "claim": "The official developer tools (converter, generator) are Windows-only. For Linux, the community alternative [lst-utils](https://github.com/devleaks/lst-utils) (Python, MIT license) is available.",
+    "evidence": "X-Codr's LST 2.0 announcement (July 15th, 2026) states the CLI tooling has been replaced: a new \"Web Editor\" replaces the CLI utility, \"running locally in-browser without uploading files\". The editor is reachable at https://x-codrdesigns.com/living-scenery-technology/editor (\"This editor is still in beta, use with caution!\") and the LST product page lists a \"Developer Web Editor\" with no OS requirement. LST 2.0 also migrated the package format from comma-separated text files to XML, so the Python lst-utils converter/generator (built against the legacy GroundTraffic/CSV format, no releases published) no longer targets the current format.",
+    "source_url": "https://x-codrdesigns.com/post/lst-2/",
+    "correction": "The official developer editor is a browser-based Web Editor that runs locally without uploading files — it works on Linux like on any other platform. The older command-line converter and generator were Windows-only; the community alternative [lst-utils](https://github.com/devleaks/lst-utils) (Python, MIT license) still targets the legacy text-based package format."
+   }
+  ]
+ },
+ {
+  "page": "docs/en/addon/scenery_addons/noaa_weather.md",
+  "upstream": "Gepflegt. github.com/biuti/XplaneNoaaWeather ist nicht archiviert (`\\\"archived\\\": false`), letzter Commit 2026-02-24 (\\\"version bump\\\"), letztes Release v12.4 \\\"(only for X-Plane 12.4+)\\\" vom 2026-02-24, 0 offene Issues. Kein Umzug, keine Deprecation, kein Nachfolger. Linux-Binary `noaaweather/bin/linux-wgrib2` weiterhin im Repo vorhanden. Lizenz per Datei-Header GPLv2-or-later (keine LICENSE-Datei). Belege: https://api.github.com/repos/biuti/XplaneNoaaWeather und https://github.com/biuti/XplaneNoaaWeather/releases/tag/v12.4",
+  "findings": [
+   {
+    "severity": "WARN",
+    "category": "features",
+    "line": 21,
+    "claim": "**Predictive algorithm:** Calculates snow coverage up to 70 nm ahead along the flight path when GFS data is unavailable for individual grid cells",
+    "evidence": "Der Quellcode von v12.4 kennt zwei getrennte Mechanismen, keiner davon ist \"70 nm voraus entlang des Flugwegs\". (1) Die Suche nach einem gueltigen Wert entlang des aktuellen Kurses ist auf ~60 km (~32 nm) begrenzt — noaaweather/gfs.py: `# look for valid values ahead along present track` / `d = 28000  # 28 Km, 1 GFS grid` ... `d += 28000` / `if d > 60000: break` (zusaetzlich Umkreissuche in 45-Grad-Schritten). (2) Die Zahl 70 nm ist keine Vorausberechnung, sondern der Radius, in dem der zuletzt gueltige Schneewert weiterverwendet wird — noaaweather/weather.py: `dist = c.m2nm(c.greatCircleDistance((lat, lon), (nlat, nlon)))  # in nm` / `if dist < 70: snow = nsnow` / `else: # delete old nearest value`.",
+    "source_url": "https://github.com/biuti/XplaneNoaaWeather/blob/xp12-master/noaaweather/weather.py",
+    "correction": "- **Snow value retention:** Where GFS reports no valid value (for example over water), the plugin searches neighbouring grid cells and along the current track, then reuses the last valid snow depth within a radius of 70 nm"
+   }
+  ]
+ },
+ {
+  "page": "docs/en/addon/scenery_addons/xa-snow.md",
+  "upstream": "Gepflegt, nicht archiviert, nicht umgezogen. Repo github.com/hotbso/xa-snow: archived=false, license GPL-3.0, open_issues=0, letzter Push 2026-03-09, letztes Release v2.4.0 vom 2026-03-01. Release-ZIP enthaelt lin_x64/XA-snow.xpl — Linux-Support unveraendert nativ vorhanden. Support laut README ausschliesslich ueber Discord, GitHub-Issues werden kommentarlos geschlossen. Beleg: https://github.com/hotbso/xa-snow/releases",
+  "findings": [
+   {
+    "severity": "WARN",
+    "category": "features",
+    "line": 20,
+    "claim": "- **Spatial interpolation:** Overcomes X-Plane's limitation of uniform regional snow coverage at 0.25° lat/lon resolution",
+    "evidence": "Die Feature-Liste laesst zwei zentrale Mechanismen aus. README, Abschnitt \"Shoreline snow\": \"As result raw NOAA data virtually never reports snow for many shorelines.\\\\ _The plugin tries to overcome this by extrapolation of close inland snow to the shoreline._\" Und das einzige Feature des aktuellen Releases v2.4.0 (2026-03-01): \"New option **Enable Temperature Correction for extended snow** — Let extended coastal snow melt if the temperature on ground is high. Limits unwanted snow on shorelines with high ambient temperatures, e.g. LFMN.\"",
+    "source_url": "https://github.com/hotbso/xa-snow/releases/tag/v2.4.0",
+    "correction": "Bestehenden Bullet belassen und direkt darunter ergaenzen: \"- **Shoreline handling:** Extrapolates inland snow to coastlines that NOAA's IR imagery misses, with optional temperature correction that melts extended coastal snow when ground temperature is high\""
+   },
+   {
+    "severity": "WARN",
+    "category": "features",
+    "line": 21,
+    "claim": "- **Historical snow:** Access archived snow data for specific dates (365-day archive)",
+    "evidence": "README: \"We are trying to keep an archive of the 365 days of snow data although there may be gaps and delays. When you enable this option xa-snow tries to download snow data of the data and time you've set up **before starting the flight**.\\\\ This may work for you or not.\" Der Upstream beschreibt das Archiv ausdruecklich als bestenfalls angestrebt und lueckenhaft; die Seite stellt es als zugesicherte Eigenschaft dar und verschweigt, dass das Datum vor Flugbeginn gesetzt werden muss.",
+    "source_url": "https://github.com/hotbso/xa-snow/blob/main/README.md",
+    "correction": "- **Historical snow:** Optionally loads archived snow data for a past date, set before starting the flight — the archive covers roughly a year but has gaps"
+   },
+   {
+    "severity": "WARN",
+    "category": "features",
+    "line": 22,
+    "claim": "- **Auto update:** Optionally updates snow coverage during flight as you move across regions",
+    "evidence": "README: \"**Enable Snow Depth Auto Update**\\\\ When enabled during a longer a flight xa-snow updates snow depth data. As downloading and (one-time) preprocessing of snow data is quite resource heavy use this option with care.\\\\ As this may lead to stability issues the option may go away in future updates.\" Das Update haengt an der Flugdauer bzw. neuen NOAA-Daten, nicht daran, dass man \"across regions\" fliegt; die ausdrueckliche Ressourcen- und Stabilitaetswarnung fehlt auf der Seite komplett.",
+    "source_url": "https://github.com/hotbso/xa-snow/blob/main/README.md",
+    "correction": "- **Auto update:** Optionally refreshes snow depth data during long flights — resource-heavy and flagged upstream as potentially unstable"
+   },
+   {
+    "severity": "FAIL",
+    "category": "features",
+    "line": 28,
+    "claim": "Scenery developers can include `xa-snow.cfg` files to fine-tune snow behavior for specific airports or regions.",
+    "evidence": "README, Abschnitt \"Limit snow for legacy airports\": \"Legacy (= mostly XP11) sceneries do not feature weather aware textures and show way too much snow making runways and taxiways unusable. […] A sample file ```xa-snow.cfg-sample``` explaining typical configurations is in the the plugin directory.\\\\ Copy this over into your scenery directory, rename it to ```xa-snow.cfg``` and edit to your liking.\" Es ist also eine Nutzeraktion (Sample aus dem Plugin-Verzeichnis kopieren) mit dem konkreten Zweck, uebermaessigen Schnee auf Legacy-/XP11-Sceneries zu begrenzen — kein Feature fuer Scenery-Entwickler und kein allgemeines \"fine-tune\". Das Sample liegt bestaetigt im Release-ZIP als XA-snow/xa-snow.cfg-sample.",
+    "source_url": "https://github.com/hotbso/xa-snow/blob/main/README.md",
+    "correction": "Legacy (mostly XP11) sceneries show excessive snow on runways and taxiways. Copying `xa-snow.cfg-sample` from the plugin directory into a scenery directory as `xa-snow.cfg` caps the snow depth for that airport."
+   },
+   {
+    "severity": "VERSION_ENTFERNEN",
+    "category": "version",
+    "line": 42,
+    "claim": "Since v2.3.1, the Linux binary links against `libcurl4-gnutls` for better compatibility with Steam/Proton environments.",
+    "evidence": "Release-Notes v2.3.1 (2026-01-13): \"the linux binary is linked against libcurl4-gnutls for better support on steam. Let's see how it works out.\" Die Versionsnummer markiert keine Entscheidungsgrenze (keine Parallel-Linie, keine XP11/XP12-Grenze, keine Deprecation, kein Stagnationssignal) — sie ist rein illustrativ, da Nutzer ohnehin das aktuelle Release beziehen. Der Soname des ausgelieferten Binaries lautet zudem libcurl-gnutls.so.4, nicht \"libcurl4-gnutls\".",
+    "source_url": "https://github.com/hotbso/xa-snow/releases/tag/v2.3.1",
+    "correction": "The Linux binary links against `libcurl-gnutls.so.4`. On Debian-based systems:"
+   },
+   {
+    "severity": "FAIL",
+    "category": "installation",
+    "line": 46,
+    "claim": "sudo apt install libcurl4-gnutls-dev",
+    "evidence": "`objdump -p` auf XA-snow/lin_x64/XA-snow.xpl aus dem v2.4.0-Release liefert: NEEDED libcurl-gnutls.so.4. Diese Runtime-Bibliothek liefert auf Debian trixie das Paket libcurl3t64-gnutls (Filelist: /usr/lib/x86_64-linux-gnu/libcurl-gnutls.so.4). libcurl4-gnutls-dev ist laut packages.debian.org das Entwicklungspaket: \"This package provides the development files (ie. includes, static library, manual pages) that allow one to build software which uses libcurl.\" — zum Ausfuehren des Plugins nicht erforderlich. Ein Paket libcurl3-gnutls existiert in trixie nicht mehr (HTTP-Fehlerseite).",
+    "source_url": "https://packages.debian.org/trixie/amd64/libcurl3t64-gnutls/filelist",
+    "correction": "sudo apt install libcurl3t64-gnutls"
+   }
+  ]
+ },
+ {
+  "page": "docs/en/addon/scenery_addons/xroad.md",
+  "upstream": "Gepflegt. GitHub github.com/melbo911/xroads (nicht archiviert, kein Redirect, keine Nachfolge). Letzter Commit 2026-02-27 (\\\"changes\\\"), aktuelle Programmversion laut src/c/CHANGES 0.49. Keine GitHub-Releases (\\\"No releases published\\\"), Distribution ueber forums.x-plane.org. Nur Windows- (xroads.exe) und macOS-Binary (xroads.app) im Repo — unter Linux muss aus xroads.c gebaut werden (README: \\\"macOS or Linux: make xroads\\\"), was die Seite korrekt beschreibt. Beleg: https://github.com/melbo911/xroads",
+  "findings": [
+   {
+    "severity": "FAIL",
+    "category": "installation",
+    "line": 46,
+    "claim": "The generated executable is then applied to the ortho scenery to generate the `library.txt`. The resulting library is placed as a scenery folder in `Custom Scenery/`.",
+    "evidence": "Upstream README (src/c/README.md, Installation): \"Download the ZIP file and copy the correct binary (xroads.exe for Windows, xroads.app for macOS) to your X-Plane base directory and execute it. The program creates a folder \\\"Xroads\\\" in your \\\"Custom Scenery\\\" folder. Then it copies the \\\"roads.net\\\" and \\\"roads-EU.net\\\" files from the \\\"default scenery\\\" to it and modifies them on the fly.\" Also: \"'xroads' looks for folders and shortcuts starting with 'zOrtho...' ... 'zPhoto...', 'zVstates..' and 'z_...'\" and section scenery_packs.ini: \"Make sure the Xroads folder stay on the top of your scenery_packs.ini.\" The C source confirms the binary chdir's into its own location on non-Windows before scanning (xroads.c: `strcpy(tmp,dirname(argv[0])); chdir(tmp);`), so running it from anywhere other than the X-Plane root produces the Xroads folder in the wrong place.",
+    "source_url": "https://github.com/melbo911/xroads/blob/master/src/c/README.md",
+    "correction": "The compiled binary is copied into the X-Plane base directory and executed there — it changes into its own directory and scans for scenery folders starting with `zOrtho`, `zPhoto`, `zVstates` or `z_`. It creates `Custom Scenery/Xroads` with the modified `roads.net` files and the generated `library.txt`. This folder has to stay at the top of `scenery_packs.ini`."
+   }
+  ]
+ },
+ {
+  "page": "docs/en/addon/scripting/flywithlua.md",
+  "upstream": "Gepflegt, aber verlangsamt. GitHub-Repo X-Friese/FlyWithLua ist NICHT archiviert, MIT-Lizenz, letzter Commit 2026-04-15 (\"Merge pull request #129 from sparker256/master\"), 14 offene Issues. Aktive Committer 2024-2026: sparker256 (22), smoothchat (10). Einziges GitHub-Release ist v2.7.32 (2021-11-07, NG-Edition); die XP12-NG+-Binaries werden ueber forums.x-plane.org (File 82888) und GitHub-Actions-Artefakte verteilt, nicht ueber GitHub Releases. ChangeLog.txt endet bei v2.8.14; lin_x64/FlyWithLua.xpl existiert weiterhin im Repo-Baum. Belege: https://github.com/X-Friese/FlyWithLua (README, FlyWithLua/Documentation/ChangeLog.txt), GitHub-API repos/X-Friese/FlyWithLua (archived=false, pushed_at=2026-04-15T15:26:33Z).",
+  "findings": [
+   {
+    "severity": "HALLUZINIERT",
+    "category": "features",
+    "line": 15,
+    "claim": "Many other plugins such as 3jFPS or AutoATC require FlyWithLua as a dependency.",
+    "evidence": "AutoATC ist ein eigenstaendiges natives C/C++-Plugin ohne jeden FlyWithLua-Bezug. Die README nennt als Installation nur: \"Extract the \\\"AutoATC\\\" folder to \\\"X-Plane/Resources/plugins\\\"\" und als Build-Dependencies \"openAL, X-Plane SDK, Make ... or Visual Studio Community\". Das Wort \"lua\" kommt in der README kein einziges Mal vor (grep -i lua: 0 Treffer). Beschreibung: \"C/C++ Source code for the AutoATC plugin for X-Plane 11.\" Belegbare FlyWithLua-abhaengige Plugins sind dagegen z.B. SGES (\"Voraussetzung: FlyWithLua\", forums.x-plane.org/files/file/62296) oder X-ProTurb (\"laeuft unter FlyWithLua NG+\", forums.x-plane.org/files/file/100195).",
+    "source_url": "https://github.com/mSparks43/XPlane-11-AutoATC-plugin/blob/master/README.md",
+    "correction": "The [plugin](../../glossary.md#plugin) has been in development since X-Plane 9 and is one of the most widely used X-Plane plugins. Many other plugins such as 3jFPS or SGES (Simple Ground Equipment & Services) require FlyWithLua as a dependency."
+   },
+   {
+    "severity": "FAIL",
+    "category": "installation",
+    "line": 54,
+    "claim": "On Debian Bookworm (Stable), the `libglut3.12` package does not include a `libglut.so.3` symlink.",
+    "evidence": "Debian Bookworm (12) ist seit dem Trixie-Release am 9. August 2025 nur noch oldstable: \"The current stable distribution of Debian is version 13, codenamed trixie\"; Bookworm ist als \"Current oldstable release\" gelistet. Der technische Kern der Aussage stimmt weiterhin (Bookworm-Filelist von libglut3.12 enthaelt nur libglut.so.3.12 und libglut.so.3.12.0, kein libglut.so.3), nur die Release-Einstufung ist ueberholt.",
+    "source_url": "https://www.debian.org/releases/",
+    "correction": "On Debian Bookworm (oldstable), the `libglut3.12` package does not include a `libglut.so.3` symlink. FlyWithLua links against `libglut.so.3` and silently fails to load without it — no error message appears in `Log.txt`."
+   },
+   {
+    "severity": "FAIL",
+    "category": "installation",
+    "line": 62,
+    "claim": "On Debian Trixie (Testing) and Ubuntu 24.04+, the symlink is already included in the package.",
+    "evidence": "Trixie ist seit 2025-08-09 Debian stable, nicht mehr testing: \"The current stable distribution of Debian is version 13, codenamed trixie\" / \"The current testing distribution is forky.\" Die Symlink-Aussage selbst ist korrekt und gilt auch fuer Forky: die Filelist von libglut3.12 enthaelt in trixie und forky jeweils /usr/lib/x86_64-linux-gnu/libglut.so.3.",
+    "source_url": "https://www.debian.org/releases/",
+    "correction": "On Debian Trixie (stable), Forky (testing) and Ubuntu 24.04+, the symlink is already included in the package."
+   },
+   {
+    "severity": "WARN",
+    "category": "deprecation",
+    "line": 72,
+    "claim": "The error is non-fatal — the plugin continues to function. See [Issue #126](https://github.com/X-Friese/FlyWithLua/issues/126) for status.",
+    "evidence": "Issue #126 hat null Kommentare und wurde seit dem Anlegen nicht mehr angefasst (created_at 2025-11-09T14:28:32Z, updated_at 2025-11-09T14:33:01Z, state=open, comments=0). Es gibt dort also keinen \"status\" und keine Entwickler-Bestaetigung der Harmlosigkeit; der Melder selbst formuliert es als offene Frage: \"I'm not sure if it is a problem?\"",
+    "source_url": "https://github.com/X-Friese/FlyWithLua/issues/126",
+    "correction": "The plugin continues to load and function despite the message. [Issue #126](https://github.com/X-Friese/FlyWithLua/issues/126) is open and so far unanswered by the maintainers."
+   }
+  ]
+ },
+ {
+  "page": "docs/en/addon/scripting/xppython3.md",
+  "upstream": "Aktiv gepflegt. Stable v4.7.1 vom 12-Jul-2026 (Changelog: \\\"v4.7.1 (12-Jul-2026)\\\"), zusaetzlich v4.8.0 BETA verfuegbar; Doku-Stand latest. Aktives Source-Repo ist github.com/pbuckner/x-plane_plugins (nicht archiviert, letzter Push 2026-07-19); das auf der Seite verlinkte uglyDwarf/x-plane_plugins ist der Legacy-Ursprung mit letztem Push 2023-02-21. Keine Deprecation, kein Umzug, kein Nachfolger. Linux-Support unveraendert nativ: lin_x64/XPPython3.xpl plus gebuendeltes python3.12, Downloads xp3-linux.zip (stable) / xp3-linuxb.zip (beta) auf maps.avnwx.com. Belege: https://xppython3.readthedocs.io/en/latest/changelog.html und https://github.com/pbuckner/x-plane_plugins",
+  "findings": [
+   {
+    "severity": "VERSION_ENTFERNEN",
+    "category": "version",
+    "line": 16,
+    "claim": "A major C-to-C++ rewrite in v4.6 brought approximately 20% performance improvement.",
+    "evidence": "Changelog v4.6.0 (6-Nov-2025): \"About 30,000 lines of code was converted from C to C++...Simple tests show about a 20% reduction in time spent with XPPython3.\" Die Aussage ist inhaltlich korrekt, die Versionsnummer v4.6 markiert aber keine Entscheidungsgrenze (keine parallele Produktlinie, keine XP11/XP12-Grenze, keine Deprecation, kein Stagnationssignal) — der Rewrite ist in jedem aktuellen Release enthalten.",
+    "source_url": "https://xppython3.readthedocs.io/en/latest/changelog.html",
+    "correction": "XPPython3 is the successor to Sandy Barbour's PythonInterface (Python 2 only). The current v4.x line bundles Python 3.12 internally — no system Python installation is needed. The core is written in C++, which reduces the runtime overhead of the Python bridge by roughly 20% compared with the earlier C implementation."
+   },
+   {
+    "severity": "FAIL",
+    "category": "links",
+    "line": 68,
+    "claim": "[XPPython3 — GitHub](https://github.com/uglyDwarf/x-plane_plugins)",
+    "evidence": "GitHub-API repos/uglyDwarf/x-plane_plugins: \"pushed_at\":\"2023-02-21T20:36:18Z\" — seit 2023 kein Code-Push. Das aktive Repo ist der Fork des aktuellen Maintainers: repos/pbuckner/x-plane_plugins: \"fork\":true, \"parent\":\"uglyDwarf/x-plane_plugins\", \"archived\":false, \"pushed_at\":\"2026-07-19T17:24:31Z\". Die Sources-Zeile fuehrt damit auf den stagnierten Legacy-Stand, nicht auf die gepflegte Quelle.",
+    "source_url": "https://github.com/pbuckner/x-plane_plugins",
+    "correction": "- [XPPython3 Source Code — GitHub](https://github.com/pbuckner/x-plane_plugins)"
+   },
+   {
+    "severity": "VERSION_ENTFERNEN",
+    "category": "version",
+    "line": 69,
+    "claim": "[XPPython3 v4.6.1 Released — forums.x-plane.org](https://forums.x-plane.org/forums/topic/338833-xppython3-v461-released/)",
+    "evidence": "Der Changelog weist v4.6.1 als 9-Nov-2025 aus, waehrend die aktuelle Stable v4.7.1 vom 12-Jul-2026 ist (\"v4.7.1 (12-Jul-2026)\", darueber hinaus v4.8.0 BETA). Der Quelleneintrag verankert damit eine rein illustrative, inzwischen ueberholte Versionsnummer in der Quellenliste, ohne eine Entscheidungsgrenze zu markieren.",
+    "source_url": "https://xppython3.readthedocs.io/en/latest/changelog.html",
+    "correction": "ENTFERNEN"
+   }
+  ]
+ },
+ {
+  "page": "docs/en/addon/sounds/kosp_project.md",
+  "upstream": "Gepflegt, kommerzielles Closed-Source-Produkt ohne GitHub-Repo. Letztes Release: v1.7 vom 23.12.2025 (Version History der Produktseite, Wayback-Snapshot vom 24.04.2026). Kein Deprecation-, Umzugs- oder Nachfolgehinweis; Produkt weiterhin im X-Plane.org Store gelistet. Beleg: http://web.archive.org/web/20260424161404/https://store.x-plane.org/KOSP-PROJECT--A319-A320-A321-Full-Soundscape_p_1773.html — Live-Abruf von store.x-plane.org per WebFetch nur 403 (Cloudflare), daher Wayback + offizielles Handbuch (https://www.scribd.com/document/728432112/KOSP-USER-MANUAL, hochgeladen von Entwickler Nguyen Duc Binh) als Primaerbelege.",
+  "findings": [
+   {
+    "severity": "FAIL",
+    "category": "kompatibilitaet",
+    "line": 11,
+    "claim": "- **Compatibility:** X-Plane 12",
+    "evidence": "Produktseite (Wayback-Snapshot 2026-04-24), Abschnitt \"Requirement\": \"Toliss A319 or A320 or A321 is required X-Plane 12 or X-Plane 11\". Der Soundpack laeuft also auch unter X-Plane 11 — das ist eine echte XP11/XP12-Entscheidungsgrenze.",
+    "source_url": "http://web.archive.org/web/20260424161404/https://store.x-plane.org/KOSP-PROJECT--A319-A320-A321-Full-Soundscape_p_1773.html",
+    "correction": "- **Compatibility:** X-Plane 12 and X-Plane 11"
+   },
+   {
+    "severity": "VERSION_ENTFERNEN",
+    "category": "version",
+    "line": 12,
+    "claim": "- **Current version:** 1.7 (December 2025)",
+    "evidence": "Version History der Produktseite: \"Version: 1.7 (Dec 23rd 2025)\". Die Angabe ist inhaltlich korrekt, markiert aber keine Entscheidungsgrenze (keine Produktlinien-Trennung, keine XP11/XP12-Grenze, keine Deprecation, kein Stagnationssignal) und ist damit rein illustrativ.",
+    "source_url": "http://web.archive.org/web/20260424161404/https://store.x-plane.org/KOSP-PROJECT--A319-A320-A321-Full-Soundscape_p_1773.html",
+    "correction": "ENTFERNEN"
+   },
+   {
+    "severity": "NV",
+    "category": "features",
+    "line": 25,
+    "claim": "| Aircraft | Engine Variants |\n|----------|----------------|\n| ToLiss A319 | CFM56, IAE V2500 |\n| ToLiss A320 CEO | CFM56, IAE V2500 |\n| ToLiss A320 NEO | LEAP-1A, PW1000G |\n| ToLiss A321 CEO | CFM56 |\n| ToLiss A321 NEO | LEAP-1A |",
+    "evidence": "Keine Primaerquelle belegt diese Zuordnung pro Muster. Die Produktseite nennt die Triebwerke nur pauschal fuer die Familie: \"including a set of delicately crafted CFM56, IAE2500, LEAP1A and PW1000 engines\". Das Handbuch behandelt alle Varianten identisch: \"Step 2: Drop the content into any variant of the A3XX you like ... (don't worry about the stuff for other variants in the fmod folder, additional stuff won't get loaded)\". Insbesondere die Einschraenkung \"A321 CEO: nur CFM56\" (der reale A321ceo existiert auch mit IAE V2500) und \"A321 NEO: nur LEAP-1A\" ist unbelegt.",
+    "source_url": "http://web.archive.org/web/20260424161404/https://store.x-plane.org/KOSP-PROJECT--A319-A320-A321-Full-Soundscape_p_1773.html",
+    "correction": "Tabelle durch eine belegbare Aussage ersetzen: \"The package covers the ToLiss A319, A320 CEO/NEO and A321 CEO/NEO with CFM56, IAE V2500, LEAP-1A and PW1000G engine sets; the same archive is used for every variant, unused banks are simply not loaded.\""
+   },
+   {
+    "severity": "NV",
+    "category": "installation",
+    "line": 35,
+    "claim": "## Installation",
+    "evidence": "Linux-Relevanz nicht belegbar: Das offizielle Handbuch dokumentiert ausschliesslich \"INSTALLATION (WIN)\" und keinen weiteren Plattform-Abschnitt; weder Produktseite noch Handbuch nennen ein `lin_x64`-Binary fuer das mitgelieferte C-Plugin. Ob der In-Sim-Menue-Teil unter Linux funktioniert, laesst sich aus Primaerquellen nicht klaeren (store.x-plane.org per WebFetch 403, kein GitHub-Repo, keine oeffentliche Projektseite).",
+    "source_url": "https://www.scribd.com/document/728432112/KOSP-USER-MANUAL",
+    "correction": "Vor Veroeffentlichung Linux-Binary pruefen: enthaelt `plugins/KOSP/` ein `lin_x64/`-Verzeichnis? Falls nein, gilt der Menue-Hinweis unter Linux nicht und muss gestrichen werden. Solange unbelegt: keine Aussage zur Plattform des Plugins treffen."
+   },
+   {
+    "severity": "FAIL",
+    "category": "installation",
+    "line": 41,
+    "claim": "Copy the FMOD bank files into the aircraft's `fmod/` folder (e.g., `Aircraft/ToLissA321/fmod/`)",
+    "evidence": "Offizielles KOSP USER MANUAL (hochgeladen von Nguyen Duc Binh): \"Copy and paste all the content in the zip you've downloaded (the /fmod and /plugins) into the ToLiss A3XX root folder. Click 'Replace' when prompted.\" Das Archiv enthaelt also zwei Ordner, und Ziel ist das Aircraft-ROOT-Verzeichnis, nicht `fmod/`. Kopiert man nur die FMOD-Banks, wird das auf der Seite selbst beschriebene C-Plugin (Zeile 21/44) gar nicht installiert.",
+    "source_url": "https://www.scribd.com/document/728432112/KOSP-USER-MANUAL",
+    "correction": "Copy the KOSP archive contents into the ToLiss aircraft root directory:\n\n1. Back up the original `fmod/` and `plugins/` folders\n2. Extract the KOSP archive\n3. Copy both the `fmod/` and `plugins/` folders into the aircraft root (e.g., `Aircraft/ToLissA321/`)\n4. Replace existing files when prompted"
+   }
+  ]
+ },
+ {
+  "page": "docs/en/addon/sounds/mango_studios.md",
+  "upstream": "Aktiv gepflegt, kein Deprecation-Signal. Kommerzieller Closed-Source-Vendor ohne GitHub-Repo; Vertrieb ueber mangostudiossounds.com sowie Orbx, iniBuilds, simMarket und store.x-plane.org. Support-Unterforum forums.x-plane.org/forums/forum/653 zeigt Vendor-Aktivitaet bis Juli 2026 (Threads zu MD80-Installation, Rotate-MD80-Pack, Engine-Volume). Neuere Produkte 2025/2026 (A330CEO, Concorde, PT-6, ATR-72-500, Trent-7000-Engine-Mod) belegen laufende Entwicklung. Linux wird laut Distributor-Angaben weiterhin unterstuetzt. Belege: https://www.mangostudiossounds.com/ und https://orbxdirect.com/product/mango-toliss-a320-xplane",
+  "findings": [
+   {
+    "severity": "FAIL",
+    "category": "kompatibilitaet",
+    "line": 13,
+    "claim": "- **Compatibility:** X-Plane 12",
+    "evidence": "Die Packs sind fuer X-Plane 11 UND 12 freigegeben. Orbx-Produktseite \"Mango Studios ToLiss A320 Family Soundpack\", Abschnitt Prerequisites: \"X-Plane 11 and X-Plane 12\". iniBuilds \"Mango Studios ToLiss Airbus A340 Sound Pack\": \"X-Plane 11/12\". iniBuilds A319-Pack: unterstuetzt X-Plane 11 und X-Plane 12. Die XP11/XP12-Grenze ist eine echte Entscheidungsgrenze und muss korrekt stehen.",
+    "source_url": "https://orbxdirect.com/product/mango-toliss-a320-xplane",
+    "correction": "- **Compatibility:** X-Plane 11 and X-Plane 12"
+   },
+   {
+    "severity": "WARN",
+    "category": "kompatibilitaet",
+    "line": 13,
+    "claim": "- **Developer:** Mango Studios (Simon)\n- **Website:** [mangostudiossounds.com](https://www.mangostudiossounds.com/)\n- **Support:** [Discord](https://discord.gg/YUG4yTz)\n- **Compatibility:** X-Plane 12",
+    "evidence": "Der Background-Block nennt keine Plattformen, obwohl Linux-Unterstuetzung ausdruecklich dokumentiert ist. Orbx-Produktseite \"Mango Studios ToLiss A320 Family Soundpack\" listet unter den unterstuetzten Betriebssystemen \"Windows, macOS, and Linux\". Fuer eine Linux-Doku ist genau diese Angabe die zentrale Information und fehlt derzeit ganz.",
+    "source_url": "https://orbxdirect.com/product/mango-toliss-a320-xplane",
+    "correction": "Im Background-Block nach der Website-/Support-Zeile ergaenzen: \"- **Platforms:** Windows, macOS, Linux\""
+   },
+   {
+    "severity": "VERSION_ENTFERNEN",
+    "category": "version",
+    "line": 17,
+    "claim": "| Pack | Aircraft | Engine Variants | Version |",
+    "evidence": "Die Versionsspalte ist rein illustrativ und zugleich nachweislich falsch. simMarket-Produktseite \"MANGO STUDIOS A330-900 SOUNDPACK XP12/11\": \"Current version is 1.03, released on October 24, 2024\" — die Seite behauptet fuer denselben Stand \"1.03 (Oct 2025)\". iniBuilds-Produktseite ToLiss A340 Sound Pack: \"Product Version 1.0.6\" — die Seite behauptet \"2.01 (Oct 2025)\". Keine dieser Nummern markiert eine Entscheidungsgrenze (keine parallelen Produktlinien, keine XP11/XP12-Grenze, keine Deprecation).",
+    "source_url": "https://secure.simmarket.com/mango-studios-mango-studios-a330-900-soundpack-xp1211.phtml",
+    "correction": "Versionsspalte samt aller Werte ersatzlos streichen. Tabellenkopf: \"| Pack | Aircraft | Engine Variants |\" mit \"|------|----------|----------------|\" und entsprechend gekuerzten Datenzeilen (z. B. \"| A319 | ToLiss A319 | CFM56, IAE V2500 |\")."
+   },
+   {
+    "severity": "WARN",
+    "category": "features",
+    "line": 25,
+    "claim": "The **ToLiss Airbus Family Bundle** (A319 + A320 + A321) is available for $19.99.",
+    "evidence": "Die offizielle Produktseite mangostudiossounds.com \"Mango Studios ToLiss Airbus Family Sound Pack\" weist aktuell \"$15.00\" (\"On sale\") aus, nicht $19.99. Der Preis ist volatil und ueber Distributoren (Orbx, iniBuilds, simMarket, store.x-plane.org) zusaetzlich unterschiedlich — eine fest verdrahtete Preisangabe veraltet zwangslaeufig.",
+    "source_url": "https://www.mangostudiossounds.com/product/mango-studios-toliss-airbus-family-sound-pack",
+    "correction": "The **ToLiss Airbus Family Bundle** combines the A319, A320, and A321 packs at a reduced price."
+   }
+  ]
+ },
+ {
+  "page": "docs/en/addon/toliss/dk_toliss_callout.md",
+  "upstream": "Kein GitHub-Repo. Distribution ausschliesslich ueber X-Plane.org File 91367 (DINKIssTyle). Letzter Stand v1.0.1, released 18. Juni 2024, seither unveraendert (Seite zuletzt am 18. Juni 2024 editiert). Kein Nachfolger, keine Archivierung, kein Merge — schlicht stagnierend. Beleg: https://forums.x-plane.org/files/file/91367-toliss-airbus-fma-callout-flywithlua-script/ (Volltext via Browser, Stand 2026-07-20)",
+  "findings": [
+   {
+    "severity": "WARN",
+    "category": "deprecation",
+    "line": 13,
+    "claim": "- **Compatibility:** X-Plane 12",
+    "evidence": "Forum-Volltext File 91367 (Stand 2026-07-20): \"v1.0.1, released June 18 2024. Edited June 18, 2024 by DINKIssTyle.\" — seit ueber zwei Jahren kein Update, waehrend die ToLiss-Muster laufend aktualisiert werden. Das Stagnationssignal fehlt auf der Seite vollstaendig.",
+    "source_url": "https://forums.x-plane.org/files/file/91367-toliss-airbus-fma-callout-flywithlua-script/",
+    "correction": "- **Compatibility:** X-Plane 12 — last release June 2024, unchanged since"
+   }
+  ]
+ },
+ {
+  "page": "docs/en/addon/toliss/toicabrdy.md",
+  "upstream": "Gepflegt-statisch, kein Deprecation-Signal: Kein GitHub-Repo, ausschliesslich Forum-Distribution ueber Datei 91876. Die Download-Seite war beim Browser-Abruf am 2026-07-20 erreichbar (Volltext in forum-evidence.md), enthaelt aber weder Changelog-Block noch Versionsangabe, sodass sich kein Release-Datum bestimmen laesst. Reines Lua-Skript ohne Binaries — unter Linux identisch lauffaehig, keine lin_x64-Komponente und keine Paketabhaengigkeiten ausser FlyWithLua NG+. Belegt unter https://forums.x-plane.org/files/file/91876-toliss-airbus-cabin-ready-automatic-flywithlua-script/ (WebFetch liefert dort Cloudflare-403, daher Browser-Beleg).",
+  "findings": [
+   {
+    "severity": "HALLUZINIERT",
+    "category": "features",
+    "line": 18,
+    "claim": "**Departure:** Initiates a countdown (4–8 minutes, scaled by passenger count) when the beacon light is turned on",
+    "evidence": "Die Beschreibung der Forum-Datei 91876 (Volltext via Browser abgerufen 2026-07-20, forum-evidence.md, sowie identisch in der Websuche zitiert) nennt ausschliesslich: \"at departure, the cabin will be ready about 4~8 minutes based on passenger number\" — ein ausloesendes Ereignis wird nirgends genannt, insbesondere nicht das Beacon-Light. Die repo-eigene Recherchenotiz research/addons/toliss_flywithlua_scripts.md:246 nennt zudem ein anderes Ereignis: \"Departure: cabin ready 4-8 minutes after doors close (based on passenger count)\". Die Beacon-Behauptung ist damit weder belegt noch konsistent.",
+    "source_url": "https://forums.x-plane.org/files/file/91876-toliss-airbus-cabin-ready-automatic-flywithlua-script/",
+    "correction": "- **Departure:** Cabin ready follows about 4–8 minutes after the start of the departure phase, scaled by passenger count"
+   },
+   {
+    "severity": "WARN",
+    "category": "features",
+    "line": 27,
+    "claim": "**Go-around safe:** Handles missed approaches without incorrect states",
+    "evidence": "Der Autor schraenkt genau das ein: \"Only tested with normal routing flight condition, including go-around and through flight. In worst case, you might need to press the FWD call manually, or you get unnecessary ding, it won't cancel ready.\" Fehlzustaende (unnoetiger Chime, manueller FWD CALL) sind also ausdruecklich moeglich — \"without incorrect states\" ueberzeichnet die Quelle.",
+    "source_url": "https://forums.x-plane.org/files/file/91876-toliss-airbus-cabin-ready-automatic-flywithlua-script/",
+    "correction": "- **Go-around aware:** Missed approaches and through-flights are covered; in rare cases a manual FWD CALL or an extra chime may occur"
+   },
+   {
+    "severity": "WARN",
+    "category": "kompatibilitaet",
+    "line": 28,
+    "claim": "**All ToLiss aircraft:** Works with the entire ToLiss Airbus family (A319, A320neo, A321/neo, A330neo, A340-600)",
+    "evidence": "Die offizielle Produktseite toliss.com listet sieben Produkte: A319, A320 NEO, A320 CEO (Addon zur A320 NEO), A321 CEO, A321 NEO (Addon zur A321 CEO), A330-900, A340-600. Die Aufzaehlung auf der Seite laesst die A320 CEO aus und stellt die A321 als \"A321/neo\" statt als CEO-Basis mit NEO-Addon dar.",
+    "source_url": "https://toliss.com/",
+    "correction": "- **All ToLiss aircraft:** Works with the entire ToLiss Airbus family (A319, A320 CEO/NEO, A321 CEO/NEO, A330-900, A340-600)"
+   }
+  ]
+ },
+ {
+  "page": "docs/en/addon/toliss/toliss_ecosystem.md",
+  "upstream": "Gemischt, aber durchweg gepflegt. simbrief_hub: aktiv, nicht archiviert, letztes Release v2.3.0 vom 2026-07-02, LGPL-2.1, Linux-Binary lin_x64/simbrief_hub.xpl im Release-ZIP vorhanden (https://github.com/hotbso/simbrief_hub/releases). TOBUS (hotbso-Fork): aktiv, nicht archiviert, letztes Release v3.7.1 vom 2026-06-13, Default-Branch master (https://github.com/hotbso/TOBUS). Alle uebrigen Skripte der Seite werden ausschliesslich ueber forums.x-plane.org verteilt und sind wegen Cloudflare-403 nicht per WebFetch pruefbar; forum-evidence.md deckt davon nur dk_toliss_callout (Datei 91367) und toicabrdy (Datei 91876) ab, beide unveraendert gueltig.",
+  "findings": [
+   {
+    "severity": "FAIL",
+    "category": "features",
+    "line": 42,
+    "claim": "VATSIM CDM support: pulls Collaborative Departure Management data (TOBT, TSAT, CTOT) for compatible VDGS plugins",
+    "evidence": "CDM steht fuer \"Collaborative Decision-Making\", nicht \"Collaborative Departure Management\". EUROCONTROL: A-CDM = \"Airport Collaborative Decision-Making\". Die von simbrief_hub genutzten Dienste heissen entsprechend vACDM (cdm.vatsim.fr, vacdm.vatprc.net, siehe cdm_cfg.default.json im README). TOBT/TSAT/CTOT selbst sind korrekt — in sbh.h ist struct CdmInfo mit den Feldern F(tobt); F(tsat); F(ctot); definiert.",
+    "source_url": "https://www.eurocontrol.int/concept/airport-collaborative-decision-making",
+    "correction": "- VATSIM CDM support: pulls Collaborative Decision-Making data (TOBT, TSAT, CTOT) for compatible VDGS plugins"
+   },
+   {
+    "severity": "WARN",
+    "category": "installation",
+    "line": 45,
+    "claim": "**Installation:** Extract to `Resources/plugins/`. The Linux binary is at `lin_x64/simbrief_hub.xpl`. The plugin ships with `cdm_cfg.default.json` for regional CDM servers — copy to `cdm_cfg.json` to customize.",
+    "evidence": "Pfade und Dateinamen stimmen (Release-ZIP v2.3.0 enthaelt simbrief_hub/lin_x64/simbrief_hub.xpl und simbrief_hub/cdm_cfg.default.json). Nicht erwaehnt ist der SkunkCrafts-Updater-Support: dasselbe ZIP liefert skunkcrafts_updater.cfg, skunkcrafts_updater_beta.cfg, skunkcrafts_updater_blacklist.txt, skunkcrafts_updater_sizeslist.txt und skunkcrafts_updater_whitelist.txt aus, das Plugin haelt sich also ueber SkunkCrafts selbst aktuell.",
+    "source_url": "https://github.com/hotbso/simbrief_hub/releases/download/v2.3.0/simbrief_hub-v2.3.0.zip",
+    "correction": "**Installation:** Extract to `Resources/plugins/`. The Linux binary is at `lin_x64/simbrief_hub.xpl`. The plugin ships with SkunkCrafts Updater configs for automatic updates and with `cdm_cfg.default.json` for regional CDM servers — copy to `cdm_cfg.json` to customize."
+   },
+   {
+    "severity": "WARN",
+    "category": "features",
+    "line": 124,
+    "claim": "An enhanced version by hotbso ([GitHub](https://github.com/hotbso/TOBUS/releases)) offers additional door options and A346 support.",
+    "evidence": "Die hotbso-Version bietet inzwischen deutlich mehr als Tuer-Optionen und A346: automatischer Loadsheet-Versand per CPDLC oder Telex ueber einen Hoppie-Logon-Code, Passagierimport aus simbrief_hub sowie die Commands `FlyWithLua/TOBUS/start_boarding` und `FlyWithLua/TOBUS/start_deboarding`. README: \"Set your Hoppie logon code / Set method for receiving your loadsheet (CPDLC or Telex)\" und \"Import your passenger number automatically from simbrief_hub.\" Letztes Release v3.7.1 vom 2026-06-13.",
+    "source_url": "https://github.com/hotbso/TOBUS/blob/master/README.md",
+    "correction": "An enhanced version by hotbso ([GitHub](https://github.com/hotbso/TOBUS/releases)) adds A346 support, separate door logic, passenger import via simbrief_hub, and an automatic loadsheet delivered via CPDLC or Telex (requires a Hoppie logon code)."
+   },
+   {
+    "severity": "NV",
+    "category": "features",
+    "line": 124,
+    "claim": "Three speed modes: Real, Fast, Instant.",
+    "evidence": "Nicht belegbar. Die einzige einsehbare Primaerquelle (hotbso-Fork, tobusBoarding.lua) kennt keine drei benannten Modi, sondern einen stufenlosen Regler `imgui.SliderFloat(\"Boarding speed\", cfg.s_per_pax, 1, 6, \"s / pax: %.1f\")` plus einen separaten Button \"Instant Boarding\". Die Originalfassung liegt nur auf forums.x-plane.org (Datei 87996) und ist weder per WebFetch (Cloudflare 403) noch ueber forum-evidence.md belegt.",
+    "source_url": "https://github.com/hotbso/TOBUS/blob/master/Scripts/tobusBoarding.lua",
+    "correction": "Boarding speed is adjustable in seconds per passenger, with an instant option for both boarding and deboarding."
+   },
+   {
+    "severity": "FAIL",
+    "category": "installation",
+    "line": 126,
+    "claim": "- **Requires:** FlyWithLua, X-Airbus Library (in Modules folder)",
+    "evidence": "Die hotbso-TOBUS-Installationsanleitung nennt keine X-Airbus Library: \"1. Install current version of FlyWithLua NG+ ... 2. For Simbrief integration to work install the simbrief_hub plugin.\" Der Modules-Ordner des Repos enthaelt ausschliesslich LIP.lua (INI-Parser, MIT, Carreras Nicolas); tobusBoarding.lua laedt nur `require(\"LIP\")`, socket und socket.http — kein X-Airbus-Modul.",
+    "source_url": "https://github.com/hotbso/TOBUS/blob/master/README.md",
+    "correction": "- **Requires:** FlyWithLua NG+, simbrief_hub (for SimBrief import)"
+   }
+  ]
+ },
+ {
+  "page": "docs/en/addon/toliss/toliss_mods.md",
+  "upstream": "Gepflegt, aber umgezogen: Der auf der Seite verlinkte \"Carda Engine Installer\" (Todaloo, forums.x-plane.org file/94704) existiert nicht mehr (echter Browserabruf: \"We could not locate the item you are trying to view. Error code: 2D161/2\"). Nachfolger ist der \"Carda Engine Mod Installer for ToLiss A319 / A320 / A321\" von iy4vet, v2.0r1, released April 6 2026, GPL v3, GitHub-Repo https://github.com/iy4vet/xplane-toliss-carda-installer. Die Carda-Engine-OBJs selbst liegen weiter auf den Threshold Forums. Easy Freighter (XPJavelin) unveraendert aktiv: Version 3.3, released December 18 2024, zuletzt editiert August 31 2025. Belege: https://forums.x-plane.org/files/file/99205-carda-engine-mod-installer-for-toliss-a319-a320-a321/ , https://forums.x-plane.org/files/file/92976-easy-freighter-conversion-kit-for-the-toliss-321/",
+  "findings": [
+   {
+    "severity": "HALLUZINIERT",
+    "category": "features",
+    "line": 10,
+    "claim": "Simulates a cargo main door for the A321P2F/A321PCF with rigid cargo barrier and window plugs as a FlyWithLua object. Includes freight airline liveries.",
+    "evidence": "Die Produktbeschreibung nennt kein FlyWithLua, sondern reines Drag-and-Drop eines Objekts: \"Drag and drop the new object in the Airbus 321 object folder, install a compatible livery. Done.\" Ausserdem: \"The freighter kit is distributed with a demonstration livery.\" — es liegen also keine Frachtairline-Liveries bei, andere Liveries werden nur verlinkt. Zusaetzlich noetig: \"Ensure your cargo livery is configured with livery.tlscfg containing the following two lines: external_Extras = YES / custom_Cabin = F\".",
+    "source_url": "https://forums.x-plane.org/files/file/92976-easy-freighter-conversion-kit-for-the-toliss-321/",
+    "correction": "Simulates an A321 freighter conversion (A321P2F/A321PCF). The kit is a drag-and-drop object for the aircraft's `objects/` folder; the cargo livery must contain `external_Extras = YES` and `custom_Cabin = F` in its `livery.tlscfg`. A demonstration livery is included. A separate version also exists for the A320. Not officially approved by ToLiss."
+   },
+   {
+    "severity": "FAIL",
+    "category": "installation",
+    "line": 24,
+    "claim": "- **Installer developer:** Todaloo",
+    "evidence": "Der aktuelle Installer stammt von iy4vet: \"Edited April 6 by iy4vet\", \"Feel free to message me on Discord - my username is iy4vet\"; GitHub-Projekt https://github.com/iy4vet/xplane-toliss-carda-installer.",
+    "source_url": "https://forums.x-plane.org/files/file/99205-carda-engine-mod-installer-for-toliss-a319-a320-a321/",
+    "correction": "- **Installer developer:** iy4vet"
+   },
+   {
+    "severity": "FAIL",
+    "category": "links",
+    "line": 26,
+    "claim": "- **Installer download:** [forums.x-plane.org](https://forums.x-plane.org/files/file/94704-carda-engine-installer-for-toliss-a320-family/)",
+    "evidence": "Abruf ueber echten Browser (kein Cloudflare-403) liefert: \"Sorry, you do not have permission for that! ... We could not locate the item you are trying to view. Error code: 2D161/2\" — der Eintrag wurde entfernt. Aktueller Installer-Eintrag ist file/99205 \"Carda Engine Mod Installer for ToLiss A319 / A320 / A321\", v2.0r1, \"Released April 6\".",
+    "source_url": "https://forums.x-plane.org/files/file/99205-carda-engine-mod-installer-for-toliss-a319-a320-a321/",
+    "correction": "- **Installer download:** [forums.x-plane.org](https://forums.x-plane.org/files/file/99205-carda-engine-mod-installer-for-toliss-a319-a320-a321/)"
+   },
+   {
+    "severity": "WARN",
+    "category": "links",
+    "line": 27,
+    "claim": "- **Mod Fix download:** [Threshold Forums](https://forum.thresholdx.net/files/file/3685-carda-engines-mod-fix-for-toliss-airbus/)",
+    "evidence": "Der separate Fix wird nicht mehr gebraucht — der aktuelle Installer bindet ihn ein: \"@Chris E - dataref fixes for ToLiss compatibility ... With their permission, I've included their fixes in this script. They were: correcting N1 speed and fan rotation datarefs from stock X-Plane paths to the AirbusFBW equivalents used by ToLiss, and fixing the LEAP blade rotation axis direction.\"",
+    "source_url": "https://forums.x-plane.org/files/file/99205-carda-engine-mod-installer-for-toliss-a319-a320-a321/",
+    "correction": "ENTFERNEN"
+   },
+   {
+    "severity": "FAIL",
+    "category": "installation",
+    "line": 29,
+    "claim": "!!! warning \"Linux: Installer is Windows-only\"\n\n    The Carda Engine Installer is a Windows `.exe`. On Linux, it can be run inside a [KVM](../../linux/extensions/kvm.md) Windows VM.",
+    "evidence": "Die Installer-Seite listet unter \"Step 3 - Run the installer / Option A: Pre-built binary (no Python needed)\" explizit \"Linux x64 | install-carda-linux-x64\" und \"Linux ARM64 | install-carda-linux-arm64\", mit Linux-Beispiel: \"cd \\\"/path/to/Airbus A321 (ToLiss)\\\" / chmod +x install-carda-linux-x64 / ./install-carda-linux-x64\". Option B: \"Run with Python. Requires Python 3.10+. No external dependencies.\" Ein Windows-VM/KVM-Umweg ist damit gegenstandslos.",
+    "source_url": "https://forums.x-plane.org/files/file/99205-carda-engine-mod-installer-for-toliss-a319-a320-a321/",
+    "correction": "!!! note \"Linux: native installer binary\"\n\n    The installer ships a native Linux binary (`install-carda-linux-x64`, also ARM64). Make it executable with `chmod +x` and run it from the aircraft folder. Alternatively `install_carda.py` runs directly with Python 3.10+ and needs no external dependencies. The engine models themselves (OBJ/DDS) are platform-independent. The installer must be re-run after every ToLiss aircraft update."
+   }
+  ]
+ },
+ {
+  "page": "docs/en/addon/tools/datareftool.md",
+  "upstream": "Aktiv gepflegt. Letztes Release v2.6.6 vom 2026-06-08 (https://datareftool.com/download), regelmaessige Releases seit 2022, allein 2026 sechs Releases (2.6.0 bis 2.6.6). Vertrieb ausschliesslich ueber datareftool.com; das GitHub-Repo leecbaker/datareftool ist nur noch v1-Archiv (\"This github repo contains DRT version 1 ... and remains only as an archive\", letzter Commit 2021, https://github.com/leecbaker/datareftool). Linux wird nativ unterstuetzt (lin.xpl im Release-ZIP); ein Linux-spezifischer Bug (\"once-per-second pulsing on Linux\") wurde in 2.6.3 am 2026-03-14 behoben. XP11-Support wurde mit 2.5.0 entfernt.",
+  "findings": [
+   {
+    "severity": "WARN",
+    "category": "features",
+    "line": 20,
+    "claim": "- **Dataref browser:** Read, write, and search all datarefs (including arrays)",
+    "evidence": "Value graphing was added as a marquee feature and is not described on the page. Release notes 2.6.0 (2026-03-07): \"Improvement: Datarefs are now graphed in their detail windows.\"",
+    "source_url": "https://datareftool.com/download/2-6-0/",
+    "correction": "- **Dataref browser:** Read, write, and search all datarefs (including arrays); detail windows graph the value over time"
+   },
+   {
+    "severity": "WARN",
+    "category": "features",
+    "line": 23,
+    "claim": "- **Watch window:** Monitor specific dataref values in a separate panel",
+    "evidence": "The command history is a headline feature of the current release line and is missing from the page. Release notes 2.5.0 (2025-08-23): \"Feature: The command history shows commands events as they happen. This is a separate window from the search window.\" It is also documented on the product page: \"Identify recently used commands with the Ch change detection ... If you don't know the name, try opening the command history.\"",
+    "source_url": "https://datareftool.com/download/2-5-0/",
+    "correction": "- **Watch window and command history:** Monitor selected dataref values in a compact panel; a separate command history window logs command events as they are triggered"
+   },
+   {
+    "severity": "FAIL",
+    "category": "features",
+    "line": 31,
+    "claim": "With windows open, DRT reads all datarefs every frame, which can reduce [FPS](../../glossary.md#fps-frames-per-second) — with windows closed, the performance impact is zero.",
+    "evidence": "Release notes 2.6.0 (2026-03-07): \"Optimization: Only datarefs pertinant to the open windows are being read every frame. This should provide significant performance benefits when the search window is closed.\" The datareftool.com Performance section additionally documents a configurable scan rate: \"Update values at a lower rate will lower the load on your system. You can configure this in the DataRefTool menu\". DRT therefore no longer reads *all* datarefs every frame, and the frame-rate impact is tunable rather than all-or-nothing.",
+    "source_url": "https://datareftool.com/download/2-6-0/",
+    "correction": "With windows open, DRT reads the datarefs relevant to those windows every frame, which can reduce [FPS](../../glossary.md#fps-frames-per-second) — the update rate can be lowered in the DRT menu, and with all windows closed the performance impact is zero."
+   },
+   {
+    "severity": "WARN",
+    "category": "installation",
+    "line": 37,
+    "claim": "Minimum system requirement on Linux: Ubuntu 20.04+ (or equivalent glibc version).",
+    "evidence": "The Linux binary shipped in the current release requires a newer glibc than Ubuntu 20.04 provides. `objdump -T DataRefTool_v2.6.6/64/lin.xpl` on the ZIP from datareftool.com/download lists required symbol versions up to `GLIBC_2.34`; Ubuntu 20.04 ships glibc 2.31, so the plugin cannot load there. Debian 12 (glibc 2.36) and Ubuntu 22.04 (glibc 2.35) satisfy it. Dependency list is otherwise minimal (`libgcc_s.so.1`, `libm.so.6`, `libc.so.6`), confirming that no extra packages are needed.",
+    "source_url": "https://datareftool.com/download/DataRefTool_v2.6.6.zip",
+    "correction": "Minimum system requirement on Linux: glibc 2.34 or newer (Debian 12 Bookworm and later) — the vendor's stated Ubuntu 20.04+ is too low for the shipped binary."
+   }
+  ]
+ },
+ {
+  "page": "docs/en/addon/tools/skunkcrafts_updater.md",
+  "upstream": "Aktiv gepflegt. Standalone-Client v3.2e; der Release-Thread (Topic 292710) wurde zuletzt am 19. Juni 2026 von Lionel bearbeitet (\"Edited June 19 by Lionel / New version\"). Kein GitHub-Repo (closed source), Distribution weiterhin ueber forums.x-plane.org. Beleg: https://forums.x-plane.org/forums/topic/292710-20250206-skunkcrafts-updater-standalone-client-v32e-available/",
+  "findings": [
+   {
+    "severity": "VERSION_ENTFERNEN",
+    "category": "version",
+    "line": 36,
+    "claim": "[forums.x-plane.org release thread](https://forums.x-plane.org/forums/topic/292710-20250206-skunkcrafts-updater-standalone-client-v32d-available/)",
+    "evidence": "Der Thread traegt inzwischen den Titel \"2025/02/06 SkunkCrafts Updater Standalone client v3.2e available\" (Erstpost: \"SkunkCrafts Updater v3.2e ... Download link to SkunkCrafts Updater Standalone client v3.2e\", \"Edited June 19 by Lionel / New version\"). Der v3.2d-Slug ist veraltet; die Version ist zudem rein illustrativ.",
+    "source_url": "https://forums.x-plane.org/forums/topic/292710-20250206-skunkcrafts-updater-standalone-client-v32e-available/",
+    "correction": "[forums.x-plane.org release thread](https://forums.x-plane.org/forums/topic/292710-20250206-skunkcrafts-updater-standalone-client-v32e-available/)"
+   },
+   {
+    "severity": "FAIL",
+    "category": "installation",
+    "line": 38,
+    "claim": "The Linux binary is a single file with the `.lin` extension.",
+    "evidence": "Die offizielle X-Crafts-Anleitung zum SkunkCrafts-Standalone-Updater listet den Inhalt des ZIP auf: \"SkunkcraftsUpdater_lin for GNU/Linux (tested on Ubuntu 22.04)\" — der Dateiname endet auf den Suffix `_lin`, es gibt keine Dateiendung `.lin`.",
+    "source_url": "https://www.xcrafts.com/how-to-update-download-new-version",
+    "correction": "The Linux binary is a single file named `SkunkcraftsUpdater_lin`."
+   },
+   {
+    "severity": "FAIL",
+    "category": "installation",
+    "line": 41,
+    "claim": "chmod +x SkunkCrafts_Updater*.lin\n./SkunkCrafts_Updater*.lin",
+    "evidence": "Die tatsaechliche Datei im Release-ZIP heisst `SkunkcraftsUpdater_lin` (X-Crafts: \"SkunkcraftsUpdater_lin for GNU/Linux\"). Das angegebene Glob-Muster `SkunkCrafts_Updater*.lin` trifft auf keine existierende Datei zu; die Befehle scheitern mit \"No such file or directory\".",
+    "source_url": "https://www.xcrafts.com/how-to-update-download-new-version",
+    "correction": "chmod +x SkunkcraftsUpdater_lin\n./SkunkcraftsUpdater_lin"
+   },
+   {
+    "severity": "VERSION_ENTFERNEN",
+    "category": "version",
+    "line": 65,
+    "claim": "[Standalone Client v3.2d Release Thread — forums.x-plane.org](https://forums.x-plane.org/forums/topic/292710-20250206-skunkcrafts-updater-standalone-client-v32d-available/)",
+    "evidence": "Der Release-Thread heisst aktuell \"...Standalone client v3.2e available\" und wurde am 19. Juni 2026 aktualisiert. Die Nummer v3.2d ist ueberholt und markiert keine Entscheidungsgrenze.",
+    "source_url": "https://forums.x-plane.org/forums/topic/292710-20250206-skunkcrafts-updater-standalone-client-v32e-available/",
+    "correction": "[Standalone Client Release Thread — forums.x-plane.org](https://forums.x-plane.org/forums/topic/292710-20250206-skunkcrafts-updater-standalone-client-v32e-available/)"
+   }
+  ]
+ },
+ {
+  "page": "docs/en/addon/tools/winctrl.md",
+  "upstream": "Aktiv gepflegt. GitHub rswilem/winctrl-xplane-plugin (GPL-3.0), letztes Release 0.0.43 vom 2026-07-16, 570 Commits, C++ 92,4 %. Das aeltere Repo rswilem/winwing-xplane-plugin wurde in winctrl-xplane-plugin umbenannt; der in der Seite verlinkte Pfad ist bereits der aktuelle. README: \"For X-Plane 11 and X-Plane 12. Formerly the Winwing plugin for X-Plane.\" Quelle: https://github.com/rswilem/winctrl-xplane-plugin",
+  "findings": [
+   {
+    "severity": "HALLUZINIERT",
+    "category": "features",
+    "line": 6,
+    "claim": "connects Winwing cockpit panels (MCDU, FCU, EFIS, pedals) directly to X-Plane via USB HID",
+    "evidence": "Der Quellcode listet die Rudder Pedals ausdruecklich als NICHT implementiert: in src/include/utils/usbdevice/usbdevice.cpp steht unter dem Geraete-Switch \"// Not yet implemented devices:\" gefolgt von \"// 0xB980 = WINCTRL Orion 32 Rudder Pedals Metal\". Kein Pedal-Produkt existiert unter src/include/products/ (agp, ecam, fcu-efis, fmc, joystick, nws, orion-throttle, pap3-mcp, pdc, rmp, tcas, ursa-minor-throttle). Auch die README-Kompatibilitaetsmatrix fuehrt keine Pedale.",
+    "source_url": "https://github.com/rswilem/winctrl-xplane-plugin/blob/main/src/include/utils/usbdevice/usbdevice.cpp",
+    "correction": "WINCTRL is a native [plugin](../../glossary.md#plugin) that connects Winwing cockpit panels (MCDU, FCU, EFIS, throttles) directly to X-Plane via USB HID — without the Windows-only SimAppPro software. For Linux and macOS users, it is the only way to fully utilize Winwing hardware."
+   },
+   {
+    "severity": "FAIL",
+    "category": "features",
+    "line": 27,
+    "claim": "**Supported hardware:** MCDU-32, PFP 3N/4/7, FCU, EFIS, ECAM32, PAP3, AGP, URSA MINOR Joystick/Throttle, 3N/3M PDC",
+    "evidence": "Die README-Kompatibilitaetsmatrix fuehrt zusaetzlich Geraetezeilen, die auf der Seite fehlen: \"32 TCAS\", \"32 RMP\", \"ORION Throttle Base II\", \"Joystick (URSA MINOR Airline L+R, ORION Joystick Base II)\" und \"nws\". Der Quellcode bestaetigt dies mit eigenen Produktklassen: ProductRMP (0xBB83/84/85 RMP L/R/C), ProductNWS (0xB961 \"WINCTRL 32 NWS (Nosewheel Steering tiller)\") und ProductOrionThrottle (0xBD64 \"Orion Throttle Base II\"), sowie den Produktverzeichnissen src/include/products/{tcas,rmp,nws,orion-throttle}.",
+    "source_url": "https://github.com/rswilem/winctrl-xplane-plugin/blob/main/README.md",
+    "correction": "**Supported hardware:** MCDU-32, PFP 3N/4/7, FCU, EFIS, ECAM32, TCAS32, RMP32, PAP3 MCP, AGP, 3N/3M PDC, NWS tiller, URSA MINOR Joystick/Throttle, ORION Joystick/Throttle Base II"
+   },
+   {
+    "severity": "HALLUZINIERT",
+    "category": "features",
+    "line": 29,
+    "claim": "iniSimulations A300/A310",
+    "evidence": "Die README-Kompatibilitaetsmatrix nennt 24 Muster (ToLiss A3xx, Zibo/LevelUp 737, X-Crafts E-Jets, X-Crafts ERJ, FlightFactor 767, FlightFactor 777, FlightFactor A350 V1, Rotate MD-11, IXEG 737, FPS 747-800i, JustFlight 146, CIS Seneca II, Laminar 737, Laminar A330, Laminar Citation X, Laminar C172, Airfoillabs C172, Sparky 744, JarDesign A330, Stratosphere Studios 777-300ER, Airfoillabs King Air 350, cl650, pa28, q4xp) — iniSimulations kommt nicht vor. Auch ein rekursives grep nach \"iniSim\", \"A300\" und \"A310\" ueber den gesamten src/-Baum liefert null Treffer.",
+    "source_url": "https://github.com/rswilem/winctrl-xplane-plugin/blob/main/README.md",
+    "correction": "**Supported aircraft:** ToLiss A3XX family, Zibo/LevelUp 737, Laminar 737/A330/Citation X/C172, FlightFactor 767/777/A350, X-Crafts E-Jets/ERJ, Rotate MD-11, IXEG 737, JustFlight BAe 146, Hot Start CL650, and others"
+   },
+   {
+    "severity": "WARN",
+    "category": "links",
+    "line": 62,
+    "claim": "documented in the [repository README](https://github.com/rswilem/winctrl-xplane-plugin#linux)",
+    "evidence": "Die README-Ueberschrift lautet \"### Linux udev rules\", GitHub erzeugt daraus den Anker `#linux-udev-rules`. Ein Anker `#linux` existiert in der README nicht; der Link landet am Seitenanfang statt beim udev-Abschnitt.",
+    "source_url": "https://github.com/rswilem/winctrl-xplane-plugin/blob/main/README.md",
+    "correction": "The complete rule set with device-specific product IDs and symlinks is documented in the [repository README](https://github.com/rswilem/winctrl-xplane-plugin#linux-udev-rules) — use it as the authoritative source."
+   }
+  ]
+ },
+ {
+  "page": "docs/en/addon/tools/xgs.md",
+  "upstream": "Stagniert, aber nicht deprecated. github.com/hotbso/xgs ist aktiv erreichbar, `archived: false`, `disabled: false`, GPL-2.0, kein Umzug und kein Nachfolgeprojekt. Letztes Release V3.46 vom 2023-06-27 (Asset xgs-3.46.zip), letzter Commit 2024-10-22 (`pushed_at: 2024-10-22T17:59:33Z`). Einzige offene Issue (#5) betrifft macOS M1, keine offene Linux-Issue. Linux-Support intakt und geprueft: Release-ZIP enthaelt xgs/64/lin.xpl, xgs/64/mac.xpl, xgs/64/win.xpl — der auf der Seite genannte Pfad 64/lin.xpl ist korrekt. `readelf -d` auf lin.xpl liefert keine einzige NEEDED-Eintragung (statisch gelinkt), was die Aussage \\\"No additional system packages are required\\\" bestaetigt. Beleg: https://api.github.com/repos/hotbso/xgs und https://api.github.com/repos/hotbso/xgs/releases",
+  "findings": [
+   {
+    "severity": "FAIL",
+    "category": "deprecation",
+    "line": 15,
+    "claim": "XGS is an evolution of the original Landing Speed Plugin and is actively maintained.",
+    "evidence": "GitHub API repos/hotbso/xgs: letztes Release V3.46 vom 2023-06-27, `pushed_at: 2024-10-22T17:59:33Z`; letzter Commit 2024-10-22 \"add A339 to acf_mapping.cfg\". Seit ueber drei Jahren kein Release, seit fast zwei Jahren kein Commit. \"actively maintained\" ist damit nicht mehr haltbar (Repo ist aber nicht archiviert: `archived: false`, kein Nachfolger/Merge erkennbar).",
+    "source_url": "https://api.github.com/repos/hotbso/xgs/releases",
+    "correction": "XGS is an evolution of the original Landing Speed Plugin. Development has stalled — the last release dates from June 2023, the last commit from October 2024. The plugin still works, and the repository is neither archived nor superseded."
+   },
+   {
+    "severity": "FAIL",
+    "category": "features",
+    "line": 21,
+    "claim": "- **Speed & pitch:** Ground speed and pitch angle at touchdown",
+    "evidence": "XGS liest keine Groundspeed-Dataref. `xgs.c:174` `acf_ias_dr = XPLMFindDataRef(\"sim/flightmodel/position/indicated_airspeed\")`, fuer ToLiss `xgs.c:188` `AirbusFBW/IASCapt`. Ausgabe `xgs.c:521/524`: `\"IAS / VLS: %.0f / %.0f %s\"` bzw. `\"IAS: %.0f %s\"`. README: \"IAS / VLS and pitch at toutchdown\". Angezeigt wird die indizierte Fluggeschwindigkeit, nicht die Grundgeschwindigkeit.",
+    "source_url": "https://github.com/hotbso/xgs/blob/master/xgs.c",
+    "correction": "- **Speed & pitch:** Indicated airspeed and pitch angle at touchdown; on ToLiss Airbus models the VLS is shown alongside the IAS"
+   },
+   {
+    "severity": "WARN",
+    "category": "features",
+    "line": 22,
+    "claim": "- **Bank angle:** Lateral bank angle at touchdown",
+    "evidence": "Die Bank-Angle-Ausgabe stammt aus Commit 6bca962 \"report bank angle as well\" vom 2024-01-26 (`xgs.c:514` `\"Vy: %.0f fpm / %.2f m/s / p %.1f° / b %.1f°\"`). Das juengste Release V3.46 wurde am 2023-06-27 veroeffentlicht, also VOR diesem Commit. Das per GitHub Releases herunterladbare `xgs-3.46.zip` — der auf der Seite genannte Download — enthaelt dieses Feature nicht; es existiert nur im Quellcode auf master.",
+    "source_url": "https://github.com/hotbso/xgs/commit/6bca962",
+    "correction": "ENTFERNEN"
+   },
+   {
+    "severity": "WARN",
+    "category": "features",
+    "line": 23,
+    "claim": "- **Touchdown distance:** Distance from threshold crossing to touchdown",
+    "evidence": "XGS meldet zusaetzlich die Ueberflughoehe ueber der Schwelle — README-Featureliste: \"Reporting - height above threshold - touchdown distance from threshold\"; `xgs.c:533` `sprintf(landMsg[i++], \"Above:         %.f ft / %.f m\", landing_cross_height * M_2_FT, landing_cross_height)`. Die Seite listet alle anderen Reporting-Werte auf, laesst diesen aber aus.",
+    "source_url": "https://github.com/hotbso/xgs/blob/master/README.md",
+    "correction": "- **Threshold crossing:** Height above the threshold and distance from the threshold to touchdown"
+   }
+  ]
+ },
+ {
+  "page": "docs/en/addon/tools/xlinspeak.md",
+  "upstream": "Stagniert (beide Teile). XLinSpeak: sparker256/XLinSpeak ist ein Fork von uglyDwarf/x-plane_plugins, nicht archiviert, aber letzter Push 2023-02-22, keine Releases; das Original uglyDwarf/x-plane_plugins letzter Push 2023-02-21 (https://github.com/sparker256/XLinSpeak). Das lin_x64-Binary XLinSpeak/lin_x64/XLinSpeak.xpl existiert weiterhin im Repo, Build-Deps (gcc, nasm, -lspeechd) stimmen mit src/Makefile ueberein. Piper TTS Manager: JT8D-17/Piper-TTS-Manager-for-X-Plane, nicht archiviert, letzter Push 2024-03-14, 0 Releases, EUPL-1.2 laut README (https://github.com/JT8D-17/Piper-TTS-Manager-for-X-Plane). Piper selbst: rhasspy/piper ist archiviert, Nachfolger OHF-Voice/piper1-gpl aktiv (v1.5.0, 2026-07-17), liefert aber nur Python-Wheels.",
+  "findings": [
+   {
+    "severity": "WARN",
+    "category": "deprecation",
+    "line": 14,
+    "claim": "- **Compatibility:** X-Plane 12 (sparker256 fork)",
+    "evidence": "Der Fork sparker256/XLinSpeak hat pushed_at 2023-02-22T16:51:55Z und null Releases (GitHub API: repos/sparker256/XLinSpeak, releases-Endpunkt liefert leere Liste). Das Ursprungs-Repo uglyDwarf/x-plane_plugins wurde zuletzt am 2023-02-21T20:36:18Z gepusht. Beide Repos sind seit ueber drei Jahren unveraendert; die Seite enthaelt keinerlei Hinweis auf diesen Stagnationszustand.",
+    "source_url": "https://github.com/sparker256/XLinSpeak",
+    "correction": "- **Compatibility:** X-Plane 12 (sparker256 fork; letzter Commit Februar 2023, keine Releases)"
+   },
+   {
+    "severity": "WARN",
+    "category": "installation",
+    "line": 40,
+    "claim": "Piper as an alternative speech-dispatcher backend is currently unreliable (configuration issues, hangs)",
+    "evidence": "Es gibt gar kein gepacktes Piper-Ausgabemodul fuer speech-dispatcher. Die Debian-Paketseite von speech-dispatcher listet als Synthesizer-Module nur espeak-ng (recommended), espeak, festival, flite, cicero, openjtalk, pico — kein piper. Laut ArchWiki laesst sich Piper nur ueber das generische Modul (GenericExecuteSynth mit eigener Shell-Kommandozeile) anbinden, wobei Newlines herausgefiltert werden muessen, \"since piper-tts exits on newline\". Die Formulierung der Seite suggeriert ein vorhandenes, nur unzuverlaessiges Backend.",
+    "source_url": "https://packages.debian.org/trixie/speech-dispatcher",
+    "correction": "The default espeak-ng backend works reliably. Ein fertiges Piper-Ausgabemodul fuer speech-dispatcher gibt es nicht — Debian liefert nur espeak-ng, espeak, festival, flite, cicero, openjtalk und pico; Piper laesst sich lediglich manuell ueber das generische Modul anbinden. Das ist ein anderes Thema als der weiter unten beschriebene Piper TTS Manager, der speech-dispatcher komplett umgeht."
+   },
+   {
+    "severity": "FAIL",
+    "category": "installation",
+    "line": 66,
+    "claim": "Piper TTS binary — Linux build available from [OHF-Voice/piper1-gpl](https://github.com/OHF-Voice/piper1-gpl/releases) (successor to the archived rhasspy/piper)",
+    "evidence": "Die aktuelle piper1-gpl-Release (v1.5.0, 2026-07-17) enthaelt ausschliesslich Python-Wheels als Assets: piper_tts-1.5.0-cp39-abi3-manylinux_2_17_x86_64...whl, piper_tts-1.5.0.tar.gz — kein Standalone-Linux-Binary-Tarball. PTTSM benoetigt aber genau ein solches: die README sagt \"Download Piper's latest release for your operating system from [this Piper TTS fork](https://github.com/TheLouisHong/piper/releases): Linux x86-64: _piper_linux_x86_64.tar.gz_\" und weiter \"Move the content of the unzipped _\"piper\"_ folder (not the folder itself!) to: **Linux:** \"Resources/plugins/FlyWithLua/Modules/PiperTTSManager/Resources/Piper_LIN\"\". Der Release-Assets-Check von TheLouisHong/piper (Tag 2024.2.25) bestaetigt das Asset piper_linux_x86_64.tar.gz.",
+    "source_url": "https://github.com/JT8D-17/Piper-TTS-Manager-for-X-Plane",
+    "correction": "- Piper TTS binary — PTTSM erwartet das Standalone-Binary; die README verweist auf `piper_linux_x86_64.tar.gz` aus dem Fork [TheLouisHong/piper](https://github.com/TheLouisHong/piper/releases), entpackt nach `Modules/PiperTTSManager/Resources/Piper_LIN`. Das aktuelle Upstream-Projekt [OHF-Voice/piper1-gpl](https://github.com/OHF-Voice/piper1-gpl) (Nachfolger des archivierten rhasspy/piper) liefert nur Python-Wheels und ist so nicht direkt verwendbar."
+   }
+  ]
+ },
+ {
+  "page": "docs/en/addon/tools/xorganizer.md",
+  "upstream": "Gepflegt, aber langsam getaktet und kommerziell/closed source. Offizielle Projektseite www.4xplane.nl (Entwickler MH1212) ist aktiv, Knowledgebase mit XO-V3-Artikeln vorhanden. Letztes belegtes Release V3.5.0 (26.06.2025); Vertrieb ausschliesslich als Kaufprodukt ueber den X-Plane.org Store (xOrganizer v3 XP12, https://store.x-plane.org/xOrganizer-v3-XP12_p_1636.html, 15 USD). Weiterhin Windows-only .NET/WPF, kein nativer Linux-Build, kein Linux-Support angekuendigt. Belege: https://www.4xplane.nl/xorganizer/ (\"You can buy xToolbox in the X-Plane.org store: xOrganizer\"), https://www.4xplane.nl/knowledgebase/",
+  "findings": [
+   {
+    "severity": "WARN",
+    "category": "features",
+    "line": 6,
+    "claim": "It supports the management of sceneries, plugins, and other addons to avoid conflicts and optimize performance.",
+    "evidence": "Die offizielle Seite nennt vier gleichrangige Domaenen: \"use profiles for scenery, plugins/scripts, X-Plane preferences and aircraft\". Aircraft- und Preferences-Verwaltung fehlen auf der Seite komplett, waehrend nicht belegte Performance-Optimierung behauptet wird.",
+    "source_url": "https://www.4xplane.nl/xorganizer/",
+    "correction": "It supports the management of sceneries, plugins and scripts, X-Plane preferences, and aircraft through switchable profiles, and helps avoid load-order conflicts."
+   },
+   {
+    "severity": "FAIL",
+    "category": "installation",
+    "line": 19,
+    "claim": "XOrganizer is donationware — free to use, with an optional donation; there is no mandatory purchase",
+    "evidence": "Die offizielle Projektseite verweist ausdruecklich auf einen Kauf: \"You can buy xToolbox in the X-Plane.org store: xOrganizer\" (Link auf store.x-plane.org). Das aktuelle Produkt xOrganizer v3 XP12 wird im X-Plane.org Store fuer 15 USD verkauft (store.x-plane.org/xOrganizer-v3-XP12_p_1636.html). Die PayPal-Spendenbox auf 4xplane.nl (\"Support 4xplane!\") betrifft die Website, nicht das Produkt.",
+    "source_url": "https://www.4xplane.nl/xorganizer/",
+    "correction": "XOrganizer is a commercial, closed-source product — it is purchased from the [X-Plane.org Store](https://store.x-plane.org/xOrganizer-v3-XP12_p_1636.html); 4xplane.nl itself only hosts documentation and a knowledge base"
+   },
+   {
+    "severity": "HALLUZINIERT",
+    "category": "features",
+    "line": 64,
+    "claim": "**Performance Optimization**: Automatic suggestions for performance improvement",
+    "evidence": "In der offiziellen Feature-Liste auf 4xplane.nl existiert keine Performance-Analyse oder automatische Optimierungsempfehlung; die genannten Funktionen sind Sortierung, Profile, Coverage-Karte, Bibliotheks- und Shortcut-Pruefung. Auch die Knowledgebase fuehrt kein solches Thema.",
+    "source_url": "https://www.4xplane.nl/xorganizer/",
+    "correction": "ENTFERNEN"
+   },
+   {
+    "severity": "HALLUZINIERT",
+    "category": "features",
+    "line": 66,
+    "claim": "**Scenery Library**: Management of scenery downloads and installations",
+    "evidence": "XOrganizer verwaltet keine Downloads oder Installationen. Die Projektseite nennt lediglich \"keep track of versions and download locations\" (reine Metadaten-Erfassung) und \"check for missing or outdated libraries\" (Pruefung von X-Plane-Scenery-Libraries).",
+    "source_url": "https://www.4xplane.nl/xorganizer/",
+    "correction": "**Library Check**: Tracks versions and download locations of packages and detects missing or outdated scenery libraries"
+   },
+   {
+    "severity": "HALLUZINIERT",
+    "category": "features",
+    "line": 67,
+    "claim": "**Log Analysis**: Automatic analysis of X-Plane logs for issues",
+    "evidence": "Die offizielle Feature-Aufzaehlung auf 4xplane.nl nennt kein Log-Analyse-Modul (gelistet sind u.a. \"check for bad shortcuts, symlinks and junctions\", \"check for missing or outdated libraries\", \"export data to a spreadsheet\"). Auch die Knowledgebase (16 XO-General-Artikel, 10 XO-Scenery, 9 Video-Tutorials) enthaelt keinen Artikel zu Log-Analyse.",
+    "source_url": "https://www.4xplane.nl/knowledgebase/",
+    "correction": "ENTFERNEN"
+   },
+   {
+    "severity": "WARN",
+    "category": "features",
+    "line": 69,
+    "claim": "**Custom Categories**: Creation of custom categories for special sceneries",
+    "evidence": "Weder die Feature-Liste auf 4xplane.nl noch die Knowledgebase kennen benutzerdefinierte Kategorien. Belegt ist stattdessen automatische Kategorisierung bzw. \"automatic sorting per continent/country\" sowie eigene Sortierregeln.",
+    "source_url": "https://www.4xplane.nl/xorganizer/",
+    "correction": "**Custom Sorting Rules**: User-defined rules that override the automatic categorisation for special sceneries"
+   },
+   {
+    "severity": "FAIL",
+    "category": "installation",
+    "line": 76,
+    "claim": "New versions are downloaded manually from 4xplane.nl when available",
+    "evidence": "Gleiche Quellenlage wie Zeile 68: 4xplane.nl bietet keine Programm-Downloads, nur Dokumentation und den Store-Verweis (\"You can buy xToolbox in the X-Plane.org store: xOrganizer\").",
+    "source_url": "https://www.4xplane.nl/xorganizer/",
+    "correction": "New versions are re-downloaded manually from the X-Plane.org Store account page when available"
+   },
+   {
+    "severity": "WARN",
+    "category": "features",
+    "line": 78,
+    "claim": "Custom categories can be created for special sceneries",
+    "evidence": "Siehe Zeile 69: Die offizielle Feature-Liste nennt keine benutzerdefinierten Kategorien, sondern automatische Kategorisierung und Sortierung \"per continent/country\".",
+    "source_url": "https://www.4xplane.nl/xorganizer/",
+    "correction": "Custom sorting rules can be defined for sceneries the automatic categorisation gets wrong"
+   }
+  ]
+ },
+ {
+  "page": "docs/en/addon/traffic/autodgs.md",
+  "upstream": "Deprecated, aber Nachfolge aktiv: github.com/hotbso/AutoDGS ist nicht archiviert, letztes PROD-Release v4.6.1 (2026-03-04), danach nur noch v5.0.0-beta-1 (2026-05-11) als Abschiedsmeldung (\"There won't be a 5.x version for AutoDGS. The functionality of AutoDGS will be integrated into openSAM 5.x\"). README-Kopfzeile: \"AutoDGS is deprecated and no longer supported. Use openSAM > v5.x.\" Nachfolger github.com/hotbso/openSAM ist aktiv gepflegt (v5.2.1 vom 2026-07-20, XP12-only). Linux: lin_x64/AutoDGS.xpl vorhanden (Makefile.lin64), keine offenen Linux-Issues — die einzige Linux-Meldung (Issue #6, \"Not working on linux\") ist seit 2025-05-20 geschlossen. Belege: https://github.com/hotbso/AutoDGS/releases , https://github.com/hotbso/openSAM/releases",
+  "findings": [
+   {
+    "severity": "WARN",
+    "category": "features",
+    "line": 23,
+    "claim": "**Automatic DGS:** Activates after landing and searches for suitable stands in taxi direction",
+    "evidence": "README (Usage / Automatic Mode): \"After you LAND (= some air time!) on an airport the plugin activates and populates all stands with jetways with a VDGS. It then searches actively for suitable stands in the direction that you are taxiing. Note that you MUST have your beacon on.\" Die Beacon-Bedingung ist zudem der erste Punkt der FAQ (\"Your beacon is off. So the plugin deactivates immediately.\"). Die Seite laesst diese harte Aktivierungsvoraussetzung weg.",
+    "source_url": "https://raw.githubusercontent.com/hotbso/AutoDGS/main/README.md",
+    "correction": "- **Automatic DGS:** Activates after landing (beacon must be on) and searches for suitable stands in taxi direction"
+   },
+   {
+    "severity": "WARN",
+    "category": "features",
+    "line": 27,
+    "claim": "- **Jetway docking:** Automatic X-Plane 12 jetway animation on arrival",
+    "evidence": "README hat einen eigenen Abschnitt \"### Helicopter support\": \"For helicopters the plugin activates when you are below 10m AGL for at least 10 seconds. Note that guidance signals are the same as for fixed wing aircrafts.\" Diese dokumentierte Betriebsart fehlt in der Feature-Liste der Seite vollstaendig.",
+    "source_url": "https://raw.githubusercontent.com/hotbso/AutoDGS/main/README.md",
+    "correction": "- **Jetway docking:** Automatic X-Plane 12 jetway animation on arrival\n- **Helicopter support:** Activates below 10 m AGL after 10 seconds, with the same guidance signals as fixed-wing aircraft"
+   }
+  ]
+ },
+ {
+  "page": "docs/en/addon/traffic/autogate.md",
+  "upstream": "Gepflegt, aber stagnierend. hotbso/AutoGate (XP12-Fork von Marginal/AutoGate) ist aktiv/nicht archiviert; letztes Release 1.82 vom 2023-10-26, letzter Commit 2026-01-07 (nur README-Update: Support-Link + Build-Hinweise). Issues sind im Fork deaktiviert (has_issues=false), Support laut README ausschliesslich ueber Discord. Das Original Marginal/AutoGate ist seit 2018-07-08 ohne Push (README: \\\"a fork of the original AutoGate 1.72 that was abandoned 2017\\\"). Kein Umzug, kein Merge in openSAM. Belege: https://github.com/hotbso/AutoGate/releases und https://github.com/hotbso/AutoGate",
+  "findings": [
+   {
+    "severity": "WARN",
+    "category": "kompatibilitaet",
+    "line": 13,
+    "claim": "**Platforms:** Windows and Linux (the XP12 fork ships native binaries for both; no macOS binary is provided)",
+    "evidence": "Das aktuelle Release-ZIP enthaelt drei Binaries: `AutoGate/64/lin.xpl`, `AutoGate/64/mac.xpl`, `AutoGate/64/win.xpl` (Inhaltsverzeichnis von AutoGate-1.82.zip). Passend dazu Commit vom 2023-10-26: \"add build scripts for macOS (without openal)\" sowie `src/Makefile.osxcross` und `src/linkscript.mac` im Repo. Der Zusatz \"no macOS binary is provided\" ist damit falsch.",
+    "source_url": "https://github.com/hotbso/AutoGate/releases",
+    "correction": "- **Platforms:** Windows, macOS and Linux (the XP12 fork ships native binaries for all three)"
+   },
+   {
+    "severity": "WARN",
+    "category": "features",
+    "line": 22,
+    "claim": "**Jetways and DGS:** Two jetway types and four DGS types (Safedock, standalone DGS, and marshaller)",
+    "evidence": "Die Klammer nennt nur drei Eintraege und ist falsch beschriftet. Das Repository enthaelt genau vier DGS-Verzeichnisse: `DGSs-Marshaller`, `DGSs-Safedock2S`, `DGSs-SafedockT2`, `DGSs-Safegate` (plus `Jetways-Glass` und `Jetways-Steel`). `Standalone/` enthaelt kein DGS, sondern nur `StoppingPoint.blend` / `StoppingPoint.obj`.",
+    "source_url": "https://github.com/hotbso/AutoGate",
+    "correction": "- **Jetways and DGS:** Two jetway types (glass, steel) and four DGS types (Safedock2S, SafedockT2, Safegate, and marshaller)"
+   },
+   {
+    "severity": "FAIL",
+    "category": "features",
+    "line": 23,
+    "claim": "**Docking on shutdown:** Jetway docks when the engines are shut down with the aircraft within 0.5 m of the stop position",
+    "evidence": "Der XP12-Fork hat den Ausloeser auf den Beacon-Schalter umgestellt. Commit vom 2023-02-07: \"determine parked/running by beacon only\". In `src/autogate.c` liest `check_running()` ausschliesslich `XPLMFindDataRef(\"sim/cockpit2/switches/beacon_on\")` und meldet einen Zustandswechsel erst nach 3 s Stabilitaet (\"Report only state transitions when the new state persisted for 3 seconds\"). Der Text ueber Triebwerks-Shutdown steht nur im mitgeschleppten Abschnitt \"Original README\" (Stand 1.72). Die 0,5-m-Toleranz stimmt weiterhin (`autogate.h`: `static const float GOOD_Z= 0.5;`).",
+    "source_url": "https://github.com/hotbso/AutoGate/commit",
+    "correction": "- **Docking on beacon off:** Jetway docks when the beacon is switched off with the aircraft within 0.5 m of the stop position"
+   },
+   {
+    "severity": "FAIL",
+    "category": "installation",
+    "line": 33,
+    "claim": "No additional system packages are required. There are no known Linux-specific issues.",
+    "evidence": "Das Linux-Binary aus dem offiziellen Release-ZIP (AutoGate-1.82.zip, `AutoGate/64/lin.xpl`) linkt dynamisch gegen OpenAL: `ldd` liefert `libopenal.so.1 => /lib/x86_64-linux-gnu/libopenal.so.1`. Passend dazu setzt `src/Makefile.lin64` `LIBS=-lopenal`. Auf Debian liefert `libopenal.so.1` das Paket `libopenal1` (packages.debian.org Contents-Suche, stable/amd64). Ohne dieses Paket laedt das Plugin nicht.",
+    "source_url": "https://github.com/hotbso/AutoGate/blob/master/src/Makefile.lin64",
+    "correction": "Extract the ZIP file to `Resources/plugins/`. The Linux binary links against OpenAL — install `libopenal1` if it is not already present. There are no further known Linux-specific issues."
+   }
+  ]
+ },
+ {
+  "page": "docs/en/addon/traffic/betterpushback.md",
+  "upstream": "Zweigeteilt und korrekt auf der Seite abgebildet. Original skiselkov/BetterPushbackC: archived=true (GitHub API), letzter Push 2024-04-12; ein Wayback-Snapshot vom 2025-09-19 zeigt noch keinen Archiv-Banner, die Angabe \\\"archived since December 2025\\\" wird also nicht widerlegt (https://github.com/skiselkov/BetterPushbackC). Empfohlener Fork olivierbutler/BetterPusbackMod: archived=false, aktiv gepflegt, letzter Push 2026-05-26, juengstes Release V1.13 vom 2026-05-26, kein Repo-Redirect (https://github.com/olivierbutler/BetterPusbackMod/releases). Linux voll unterstuetzt: Release-ZIP enthaelt BetterPushback/lin_x64/BetterPushback.xpl; `readelf -d` zeigt keine einzige NEEDED-Eintragung, d. h. keine externen Bibliotheken noetig — die Aussage zur statischen Verlinkung ist belegt. Lizenz CDDL 1.0 per COPYING bestaetigt. Manual Push und Magic Squares existieren nur im Fork (Code-Suche im Originalrepo: 0 Treffer fuer \\\"manual_push\\\" bzw. \\\"magic\\\"). Das Symlink-Problem unter Linux ist als offenes Issue #29 (2026-01-06) belegt.",
+  "findings": [
+   {
+    "severity": "WARN",
+    "category": "installation",
+    "line": 34,
+    "claim": "**Download:** [GitHub Releases (olivierbutler fork)](https://github.com/olivierbutler/BetterPusbackMod/releases) or [forums.x-plane.org](https://forums.x-plane.org/files/file/90556-better-pushback-for-x-plane-1112/)",
+    "evidence": "Die README des empfohlenen Forks bezeichnet forums.x-plane.org als Quelle des stabilen Builds und GitHub Releases ausdruecklich als Beta-Kanal: \"You can get the last binary release from here: https://forums.x-plane.org/files/file/90556-better-pushback-for-x-plane-1112\" und \"Some Beta / Pre-Releases can be found here: https://github.com/olivierbutler/BetterPusbackMod/releases (Please be aware that pre-releases maybe still has some issues inside and maybe is not final tested.)\". Die Seite stellt die Reihenfolge um und praesentiert den Beta-Kanal als primaeren Download.",
+    "source_url": "https://github.com/olivierbutler/BetterPusbackMod#downloading-betterpushback",
+    "correction": "**Download:** [forums.x-plane.org](https://forums.x-plane.org/files/file/90556-better-pushback-for-x-plane-1112/) (stable release) or [GitHub Releases (olivierbutler fork)](https://github.com/olivierbutler/BetterPusbackMod/releases) (beta/pre-releases)"
+   }
+  ]
+ },
+ {
+  "page": "docs/en/addon/traffic/followthegreens.md",
+  "upstream": "Gepflegt. GitHub devleaks/followthegreens ist aktiv, nicht archiviert, MIT-Lizenz, 0 offene Issues; letzter Commit 2026-07-13, letztes Release der aktuellen Linie 2026-02-11 (\\\"Follow the greens 4D\\\"). Die alte Release-1-Linie fuer X-Plane 11 ist mit dem Release vom 2026-01-14 ausdruecklich als \\\"last version\\\" eingefroren. Doku unter devleaks.github.io/followthegreens/ ist aktuell. Belege: https://github.com/devleaks/followthegreens/releases und https://devleaks.github.io/followthegreens/",
+  "findings": [
+   {
+    "severity": "FAIL",
+    "category": "kompatibilitaet",
+    "line": 13,
+    "claim": "**Compatibility:** [X-Plane](../../glossary.md#x-plane) 11 and 12 (current \"Follow the Greens 4D\", requires [XPPython3](../scripting/xppython3.md) 4.5+)",
+    "evidence": "Offizielle Projektdoku, Abschnitt \"Installation\": \"Release 2 will not work on X-Plane 11. If you want to use Follow the greens on X-Plane 11, you have to use Release 1.\" und im Fazit: \"Follow the Greens 4D is experimental, SMGCS Level 4 compliant, and only exist and run here in X-Plane 12+!\". Der letzte Release-1-Stand ist auf GitHub ausdruecklich als \"Follow the greens Release 1 (last version)\" (2026-01-14) gekennzeichnet, wird also nicht mehr weiterentwickelt.",
+    "source_url": "https://devleaks.github.io/followthegreens/",
+    "correction": "- **Compatibility:** [X-Plane](../../glossary.md#x-plane) 12 (\"Follow the Greens 4D\", Release 2, requires [XPPython3](../scripting/xppython3.md) 4.5+). X-Plane 11 only with the discontinued Release 1"
+   },
+   {
+    "severity": "WARN",
+    "category": "installation",
+    "line": 38,
+    "claim": "Copy the files `PI_FollowTheGreens.py`, `PI_SetRunwayLightIntensity.py`, and the `followthegreens/` folder to `Resources/plugins/PythonPlugins/`.",
+    "evidence": "Die offizielle Installationsanleitung nennt nur zwei Elemente: \"Place both the file PI_Followthegreens.py and the folder followthegreens in <X-Plane 12 Folder>/resources/plugins/PythonPlugins.\" Auch die vom SkunkCrafts Updater verwaltete Dateiliste (skunkcrafts_updater_whitelist.txt, Stand main) enthaelt ausschliesslich LICENSE, README.md, PI_FollowTheGreens.py und followthegreens/* — PI_SetRunwayLightIntensity.py ist nicht enthalten. Die Runway-Dimmung erfolgt in Release 2 ueber den Preference-Parameter RUNWAY_LIGHT_LEVEL_WHILE_FTG.",
+    "source_url": "https://github.com/devleaks/followthegreens/blob/main/skunkcrafts_updater_whitelist.txt",
+    "correction": "Copy the file `PI_FollowTheGreens.py` and the `followthegreens/` folder to `Resources/plugins/PythonPlugins/`."
+   }
+  ]
+ },
+ {
+  "page": "docs/en/addon/traffic/livetraffic.md",
+  "upstream": "Aktiv gepflegt. github.com/TwinFan/LiveTraffic ist nicht archiviert, letzter Push 2026-07-19; letztes Release v4.6.0 vom 2026-06-28 (\"Navigraph/FR24\"), davor v4.5.0 (2026-05-29) und v4.4.0 (2026-04-28). Keine offenen Linux-Issues (5 offene Issues, alle Feature-Requests aus 2018-2022). Kein Umzug, keine Deprecation, kein Nachfolger. Lizenz MIT (LICENSE: \"MIT License, Copyright (c) 2018 Birger Hoppe\") — Seitenangabe korrekt. Abhaengige XPMP2-Bibliothek ebenfalls aktiv (Push 2026-05-23). Belege: https://github.com/TwinFan/LiveTraffic/releases",
+  "findings": [
+   {
+    "severity": "FAIL",
+    "category": "features",
+    "line": 47,
+    "claim": "| ADS-B Exchange | Paid | API key required |",
+    "evidence": "Release-Notes v4.6.0 (2026-06-28): \"Added new channel Navigraph/FR24. You need a Navigraph Unlimited subscription. Refresh is restricted by Navigraph to 20s period / 150km (80nm) range.\" Auch die Kanalliste der offiziellen Doku fuehrt \"Navigraph | Paid subscription | Registration required\" als eigenen Kanal. Auf der Seite fehlt er komplett.",
+    "source_url": "https://github.com/TwinFan/LiveTraffic/releases/tag/v4.6.0",
+    "correction": "| Navigraph/FR24 | Paid | Requires a Navigraph Unlimited subscription; refresh limited to 20 s and 80 nm range |\n| ADS-B Exchange | Paid | API key required |"
+   },
+   {
+    "severity": "WARN",
+    "category": "installation",
+    "line": 78,
+    "claim": "There is no universal workaround. In some cases, `LD_PRELOAD` of the system libcurl in Steam launch options helps, but results vary by distribution.",
+    "evidence": "Die offizielle Doku (Requirements, Abschnitt Linux) nennt fuer Steam einen konkreten, dokumentierten Workaround: die inkompatible Bibliothek im Steam-Runtime-Verzeichnis mit Endung `.bak` umbenennen und stattdessen einen Symlink auf die System-Bibliothek setzen (\"ln -s /usr/lib64/libcurl.so.4\" in den Steam-Runtime-Ordner). LD_PRELOAD wird dort nicht als primaerer Weg beschrieben.",
+    "source_url": "https://twinfan.gitbook.io/livetraffic/introduction/requirements",
+    "correction": "The documented workaround is to rename the libcurl shipped in the Steam runtime directory to `libcurl.so.4.bak` and create a symbolic link to the system library in its place. Details are in the [LiveTraffic documentation](https://twinfan.gitbook.io/livetraffic/introduction/requirements). The issue does not affect non-Steam X-Plane installations."
+   }
+  ]
+ },
+ {
+  "page": "docs/en/addon/traffic/opensam.md",
+  "upstream": "Aktiv gepflegt. github.com/hotbso/openSAM ist nicht archiviert (GitHub-API `archived: false`), letzter Push 2026-07-20, aktuellstes Release am selben Tag (v5.2.x); die 5er-Reihe laeuft seit 2026-06-13, davor 4.5.5 vom 2026-05-11. Lizenz LGPL-2.1. Release-ZIP enthaelt `openSAM/lin_x64/openSAM.xpl` — natives Linux-Binary vorhanden. Support laut README nur ueber Discord, GitHub-Issues sind deaktiviert/werden kommentarlos geschlossen. Quelle: https://github.com/hotbso/openSAM/releases",
+  "findings": [
+   {
+    "severity": "WARN",
+    "category": "features",
+    "line": 20,
+    "claim": "- **VDGS:** Activates after landing (beacon on), shows azimuth and distance guidance to the stand",
+    "evidence": "The current release adds a built-in Airport Editor that the feature list does not mention: README \"Airport Editor — A full customization of all DGS be done with the Airport Editor\" and \"The configuration is saved in ```<xp_dir>/Output/openSAM/<airport_icao>.cfg``` and loaded automatically on your next visit of the airport.\" Per-stand assignment is editable: \"Per default all stands with jetways get a VDGS and all others get a Marshaller. This can easily be changed with the UI for the active stand.\"",
+    "source_url": "https://github.com/hotbso/openSAM#airport-editor",
+    "correction": "- **VDGS:** Activates after landing (beacon on), shows azimuth and distance guidance to the stand; a built-in airport editor allows per-stand customization (Marshaller or VDGS type), stored in `Output/openSAM/<ICAO>.cfg`"
+   },
+   {
+    "severity": "WARN",
+    "category": "installation",
+    "line": 41,
+    "claim": "If the commercial SAM plugin is still installed, it should be removed (the `SAM_Library` can remain if needed by sceneries).",
+    "evidence": "README \"Initial Installation\" lists as mandatory steps: \"2. Remove the AutoDGS plugin. It's functionality is included in openSAM.\" and \"5. If installed remove the 'SAM Seasons emulator' plugin. Its functionality is included in openSAM.\" The page's installation section names only the SAM plugin, although it links AutoDGS as a separate page — a reader with AutoDGS installed will end up with a conflicting duplicate.",
+    "source_url": "https://github.com/hotbso/openSAM#initial-installation",
+    "correction": "In `scenery_packs.ini`, `openSAM_Library` must be placed above `SAM_Library`. Before the first start, the AutoDGS plugin and a separately installed SAM Seasons emulator must be removed — both are part of openSAM now. If the commercial SAM plugin is still installed, it should be removed as well (the `SAM_Library` can remain if needed by sceneries)."
+   }
+  ]
+ }
+]
