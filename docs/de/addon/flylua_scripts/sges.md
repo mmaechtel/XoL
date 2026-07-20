@@ -36,7 +36,7 @@ SGES füllt die Lücke zwischen statischen Default-Vorfeldern und kostenpflichti
 
 **Download:** [forums.x-plane.org](https://forums.x-plane.org/files/file/62296-simple-ground-equipment-services-low-tech-services/)
 
-Die SGES-Dateien in `Resources/plugins/FlyWithLua/Scripts/` ablegen. Die mitgelieferte `skunkcrafts_updater.cfg` kommt nach `Resources/plugins/FlyWithLua/` (Root, nicht Scripts).
+Die SGES-Dateien in `Resources/plugins/FlyWithLua/Scripts/` ablegen. Für die Konfigurationsdatei des SkunkCrafts Updaters gilt das mitgelieferte PDF-Handbuch.
 
 Nach dem ersten Start eine Taste für das SGES-Menü zuweisen über `Settings > Keyboard`. Den Flughafen-Cache über `Plugins > FlyWithLua > Macros > SGES refresh` generieren.
 

@@ -36,7 +36,7 @@ SGES fills the gap between static default ramps and paid ground service solution
 
 **Download:** [forums.x-plane.org](https://forums.x-plane.org/files/file/62296-simple-ground-equipment-services-low-tech-services/)
 
-Place the SGES files into `Resources/plugins/FlyWithLua/Scripts/`. The included `skunkcrafts_updater.cfg` goes into `Resources/plugins/FlyWithLua/` (root, not Scripts).
+Place the SGES files into `Resources/plugins/FlyWithLua/Scripts/`. Follow the included PDF manual for the SkunkCrafts Updater configuration file.
 
 After first launch, assign a keyboard key to toggle the SGES menu via `Settings > Keyboard`. Generate the airport cache via `Plugins > FlyWithLua > Macros > SGES refresh`.
 
