@@ -20,7 +20,7 @@ OpenTrack is actively maintained and serves as the successor to FaceTrackNoIR. I
 - **Repository:** [github.com/amyinorbit/headtrack](https://github.com/amyinorbit/headtrack) (MIT license)
 - **Platforms:** Windows, Linux, macOS
 
-HeadTrack is a lightweight X-Plane plugin that receives 6DOF tracking data over UDP port 4242. It acts as the bridge between OpenTrack and X-Plane — the recommended connection method on Linux, where the built-in OpenTrack X-Plane plugin has known reliability issues.
+HeadTrack is a lightweight X-Plane plugin that receives 6DOF tracking data over UDP port 4242. Its last release dates from October 2022 and development has stalled, but the Linux binary still works with X-Plane 12. It acts as the bridge between OpenTrack and X-Plane — the recommended connection method on Linux, because OpenTrack's own X-Plane plugin is not distributed as a binary.
 
 ## Features
 
@@ -59,7 +59,7 @@ HeadTrack plugin (amyinorbit) in X-Plane
 
 !!! warning "Avoid the built-in OpenTrack X-Plane plugin"
 
-    OpenTrack ships its own X-Plane plugin (shared memory based). Under X-Plane 12 on Linux, this plugin has reported reliability issues — freezing or failing to transmit data. Use the HeadTrack plugin with UDP output instead.
+    OpenTrack has its own X-Plane output protocol with a companion plugin (`opentrack.xpl`, POSIX shared memory). It is not shipped as a binary — it is only built when the X-Plane SDK path is passed via `-DSDK_XPLANE=`, and it is local-only. Use the HeadTrack plugin with UDP output instead.
 
 ## Installation
 
