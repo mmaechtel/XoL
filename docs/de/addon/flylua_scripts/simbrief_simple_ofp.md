@@ -10,7 +10,7 @@ SimBrief Simple OFP ist ein [FlyWithLua](../scripting/flywithlua.md)-Skript, das
 - **Entwickler:** HurricanetwistR
 - **Download:** [X-Plane.org](https://forums.x-plane.org/files/file/75422-simbrief-simple-operational-flight-plan-ofp-xp1112/)
 - **Plattformen:** Windows, macOS, Linux (reines Lua)
-- **Kompatibilität:** X-Plane 11/12
+- **Kompatibilität:** X-Plane 11/12 — letzte Aktualisierung Mai 2024
 - **Abhängigkeiten:** [FlyWithLua NG+](../scripting/flywithlua.md), SimBrief-Konto (kostenlos), xml2lua-Bibliothek (im Download enthalten)
 
 Das Skript verbindet sich über den SimBrief-Benutzernamen mit der SimBrief-API, lädt den Flugplan im XML-Format herunter und stellt ihn als formatierten OFP dar. Zwei Layout-Optionen stehen zur Verfügung. Aufruf über `Plugins > FlyWithLua > FlyWithLua Macros`.
@@ -21,8 +21,6 @@ Das Skript verbindet sich über den SimBrief-Benutzernamen mit der SimBrief-API,
 - **Zwei OFP-Layouts:** Verschiedene Darstellungsformate zur Auswahl
 - **METAR-Abkürzungen:** Dekodierte Wetterinformationen im OFP
 - **SELCAL-Codes:** SELCAL-Code des Flugzeugs in Layout 1
-- **Lokalzeiten:** Lokale Zeitumrechnung für Abflug und Ankunft
-- **Mehrere Ausweichflughäfen:** Unterstützung für Flugpläne mit mehreren Alternates
 
 ## Mehrwert in der Flugsimulation
 
