@@ -13,7 +13,7 @@ LinuxTrack ist eine Head-Tracking-Software für Linux und macOS, die über das [
 - **Plattformen:** Linux, macOS
 - **Kompatibilität:** X-Plane 12
 
-Das Originalprojekt wird seit 2016 nicht mehr regulär released und hat eine veraltete Qt4-Abhängigkeit. Der aktive Fork **LinuxTrack X-IR** (v2.0.1, Juni 2026) löst diese Probleme: eine Qt6/CMake-zentrierte Neuarchitektur, eingeführt in v2.0.0 (Mai 2026, die „WOW64-Neuarchitektur"), AppImage-Distribution und modernisiertes X-Plane-Plugin.
+Das Originalprojekt wird seit 2016 nicht mehr regulär released und hat eine veraltete Qt4-Abhängigkeit. Der aktive Fork **LinuxTrack X-IR** löst diese Probleme: eine Qt6/CMake-zentrierte Neuarchitektur, AppImage-Distribution, eine MinGW-basierte Wine-Bridge und ein modernisiertes X-Plane-Plugin.
 
 ## Funktionsumfang
 
@@ -41,15 +41,15 @@ Head-Tracking verändert das Flugerlebnis grundlegend — natürliche Blickbeweg
 ### Debian-Abhängigkeiten (Build aus Quellcode)
 
 ```bash
-sudo apt install build-essential git automake libmxml-dev libopencv-dev libtool libusb-1.0-0-dev zlib1g-dev libv4l-dev bison flex
+sudo apt install build-essential git cmake pkg-config libusb-1.0-0-dev zlib1g-dev bison flex qt6-base-dev qt6-tools-dev qt6-tools-dev-tools libqt6opengl6-dev libmxml-dev libx11-dev libxrandr-dev libgl1-mesa-dev libglu1-mesa-dev
 ```
 
-Für Qt5-Unterstützung zusätzlich `qtbase5-dev`.
+Für Webcam-, Face-Tracking- und Wiimote-Unterstützung zusätzlich `libv4l-dev`, `libopencv-dev` und `libcwiid-dev`.
 
 ### Hinweise
 
 - TrackIR 4/5 erfordert eine Firmware-Extraktion beim ersten Start
-- Die GUI (`ltr_gui`) darf beim Fliegen **nicht** laufen — nur der Daemon `ltr_server1`
+- Die GUI (`ltr_gui`) kann beim Fliegen laufen, empfohlen ist es nicht — das Tracking funktioniert allein mit dem Daemon `ltr_server1`
 - Alternative: [OpenTrack](opentrack.md) bietet ähnliche Funktionalität mit Webcam-basiertem KI-Tracking und breiterer Plattformunterstützung
 - [XCamera](xcamera.md) unterstützt LinuxTrack als Eingabe für Head-Tracking
 

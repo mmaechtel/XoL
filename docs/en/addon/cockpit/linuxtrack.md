@@ -13,7 +13,7 @@ LinuxTrack is a head-tracking software suite for Linux and macOS that translates
 - **Platforms:** Linux, macOS
 - **Compatibility:** X-Plane 12
 
-The original project has not had a regular release since 2016 and relies on an outdated Qt4 dependency. The active fork **LinuxTrack X-IR** (v2.0.1, June 2026) addresses these issues: a Qt6/CMake-first rearchitecture introduced in v2.0.0 (May 2026, the "WOW64 rearchitecture"), AppImage distribution, and a modernized X-Plane plugin.
+The original project has not had a regular release since 2016 and relies on an outdated Qt4 dependency. The active fork **LinuxTrack X-IR** addresses these issues: a Qt6/CMake-first rearchitecture, AppImage distribution, a MinGW-based Wine bridge, and a modernized X-Plane plugin.
 
 ## Features
 
@@ -41,15 +41,15 @@ Head tracking fundamentally changes the flight experience — natural head movem
 ### Debian Dependencies (Build from Source)
 
 ```bash
-sudo apt install build-essential git automake libmxml-dev libopencv-dev libtool libusb-1.0-0-dev zlib1g-dev libv4l-dev bison flex
+sudo apt install build-essential git cmake pkg-config libusb-1.0-0-dev zlib1g-dev bison flex qt6-base-dev qt6-tools-dev qt6-tools-dev-tools libqt6opengl6-dev libmxml-dev libx11-dev libxrandr-dev libgl1-mesa-dev libglu1-mesa-dev
 ```
 
-For Qt5 support, also install `qtbase5-dev`.
+For webcam, face tracking, and Wiimote support, also install `libv4l-dev`, `libopencv-dev`, and `libcwiid-dev`.
 
 ### Notes
 
 - TrackIR 4/5 requires firmware extraction on first launch
-- The GUI (`ltr_gui`) must **not** be running while flying — only the daemon `ltr_server1`
+- Running the GUI (`ltr_gui`) during flight is possible but not recommended — tracking works with the daemon `ltr_server1` alone
 - Alternative: [OpenTrack](opentrack.md) offers similar functionality with webcam-based AI tracking and broader platform support
 - [XCamera](xcamera.md) supports LinuxTrack as one of its head tracking inputs
 
