@@ -35,7 +35,7 @@ Head-Tracking verändert das Flugerlebnis grundlegend — natürliche Blickbeweg
 
 1. LinuxTrack installieren (AppImage oder aus Quellcode bauen)
 2. LinuxTrack-GUI starten (`ltr_gui`), Tracking-Gerät konfigurieren
-3. Im Tab „Misc." auf „Install XPlane plugin..." klicken und das X-Plane-Verzeichnis auswählen
+3. Im Tab „Gaming" auf „Install Xplane plugin..." klicken, dann zur X-Plane-Programmdatei navigieren und mit „Open" bestätigen
 4. GUI schließen — nur der Hintergrund-Daemon (`ltr_server1`) darf während des Fluges laufen
 
 ### Debian-Abhängigkeiten (Build aus Quellcode)
