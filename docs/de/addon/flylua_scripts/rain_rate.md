@@ -21,7 +21,7 @@ Dynamic Rain Rate ist ein [FlyWithLua](../scripting/flywithlua.md)-Skript, das d
 
 ## Mehrwert in der Flugsimulation
 
-X-Plane 12 verwendet eine feste Regenrate unabhängig von der Flugzeuggeschwindigkeit, was unrealistisch wirkt — langsames Rollen sieht genauso aus wie schneller Reiseflug. Dynamic Rain Rate sorgt dafür, dass die Regenintensität auf die Geschwindigkeit reagiert und schafft ein immersiveres Wettererlebnis, besonders bei Geschwindigkeitsübergängen (Anflug, Beschleunigung, Sinkflug).
+X-Plane 12 verwendet eine feste Regenrate unabhängig von der Flugzeuggeschwindigkeit, was unrealistisch wirkt — langsames Rollen sieht genauso aus wie schneller Reiseflug. Dynamic Rain Rate koppelt die Regenintensität an die wahre Fluggeschwindigkeit — nach der ausdrücklichen Absicht des Autors wird das Fliegen bei Regen dadurch spürbar anspruchsvoller, nicht bloß ansehnlicher.
 
 ## Installation
 

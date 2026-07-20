@@ -21,7 +21,7 @@ Dynamic Rain Rate is a [FlyWithLua](../scripting/flywithlua.md) script that dyna
 
 ## Value in Flight Simulation
 
-X-Plane 12 uses a fixed rain rate regardless of aircraft speed, which looks unrealistic — slow taxi appears the same as fast cruise. Dynamic Rain Rate addresses this by making rain intensity respond to speed, creating a more immersive weather experience especially during speed transitions (approach, acceleration, descent).
+X-Plane 12 uses a fixed rain rate regardless of aircraft speed, which looks unrealistic — slow taxi appears the same as fast cruise. Dynamic Rain Rate addresses this by tying rain intensity to true airspeed, which — as intended by the author — makes flying in rain noticeably more demanding rather than merely better looking.
 
 ## Installation
 
