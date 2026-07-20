@@ -7,7 +7,7 @@ KabinXP ist ein leichtgewichtiges Cabin-Announcement-Plugin für [X-Plane](../..
 
 ## Hintergrund
 
-- **Entwickler:** Kadikoy34
+- **Entwickler:** EffectiveAir1434 (x-plane.org), auf x-plane.to als Yunus_Hakki geführt
 - **Download:** [forums.x-plane.org](https://forums.x-plane.org/files/file/98298-kabinxp/)
 - **Plattformen:** Windows, macOS, Linux
 - **Kompatibilität:** X-Plane 12
