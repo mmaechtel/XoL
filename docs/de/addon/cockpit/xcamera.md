@@ -11,7 +11,7 @@ XCamera ist ein Kamerasystem für [X-Plane](../../glossary.md#x-plane) 11/12, da
 - **Website:** [stickandrudderstudios.com/x-camera](https://stickandrudderstudios.com/x-camera/)
 - **Lizenz:** Kommerziell (Closed Source)
 - **Plattformen:** Windows, macOS, Linux (native Binaries)
-- **Kompatibilität:** X-Plane 11.3+ und X-Plane 12 (11.3 ist die Mindestanforderung der aktuellen 2.4-Serie)
+- **Kompatibilität:** X-Plane 11.3+ und X-Plane 12 (ältere X-Plane-9/10-Versionen bedient ein separater Legacy-Build, der nur noch Fehlerkorrekturen erhält)
 
 XCamera wird aktiv gepflegt. Das [Plugin](../../glossary.md#plugin) ist ein eigenständiges XPLM-Plugin und benötigt weder FlyWithLua noch andere Scripting-Frameworks.
 
@@ -54,5 +54,5 @@ In XCamera: Die „TrackIR"-Checkbox bei den gewünschten Views aktivieren — X
 
 - [X-Camera — Stick and Rudder Studios](https://stickandrudderstudios.com/x-camera/)
 - [X-Camera — forums.x-plane.org](https://forums.x-plane.org/files/file/24209-x-camera-linmacwin-32-64/)
-- [OpenTrack — GitHub](https://github.com/opentrack/opentrack)
-- [OpenTrack X-Plane Plugin — im OpenTrack-Build enthalten](https://github.com/opentrack/opentrack/tree/master/x-plane-plugin)
+- [X-Camera User Guide — Stick and Rudder Studios](https://stickandrudderstudios.com/x-camera/download-x-camera/)
+- [LinuxTrack — GitHub](https://github.com/uglyDwarf/linuxtrack)
