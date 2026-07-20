@@ -17,7 +17,7 @@ Xchecklist is actively maintained and ships pre-built binaries for all three pla
 ## Features
 
 - **Interactive checklists:** 2D window and VR overlay that tracks completed items during each flight phase
-- **Text-to-speech:** Reads checklist items aloud via the `sw_remark:` command in checklist files
+- **Text-to-speech:** A copilot voice reads the checklist items aloud; the `sw_remark:` command adds extra lines that are spoken but not displayed as items
 - **Aircraft-specific checklists:** Custom `clist.txt` files per aircraft — community checklists available for Zibo 737, ToLiss, and many others
 - **Companion tools:** Simon (TTS helper process for Linux/macOS speech output) and Checker (validation tool for custom checklists)
 
@@ -35,7 +35,7 @@ No additional system packages are required for basic operation. For TTS support,
 
 ### Build from Source
 
-Building from source is optional — pre-built binaries are included in each release.
+Building from source is optional — the forum download already contains the pre-built binaries. The GitHub repository ships source code only; its tagged releases have not been updated since 2017.
 
 ```bash
 sudo apt install build-essential cmake git freeglut3-dev libudev-dev libopenal-dev libspeechd-dev
@@ -48,7 +48,7 @@ cp ./build/lin.xpl ./Xchecklist/64/
 
 ## Text-to-Speech on Linux
 
-Xchecklist spawns a companion process (`simon`) that connects to speech-dispatcher via `libspeechd`. This handles the `sw_remark:` commands in checklist files — the items that are read aloud as you work through the checklist. The plugin itself does not call `XPLMSpeakString()` on Linux — all speech is routed through the simon/speech-dispatcher mechanism.
+Xchecklist spawns a companion process (`simon`) that connects to speech-dispatcher via `libspeechd`. This carries both the spoken checklist items and the extra `sw_remark:` lines. The plugin itself does not call `XPLMSpeakString()` on Linux — all speech is routed through the simon/speech-dispatcher mechanism.
 
 !!! tip "Recommended setup"
 
