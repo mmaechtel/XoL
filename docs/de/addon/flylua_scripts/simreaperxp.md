@@ -15,12 +15,12 @@ SimReaperXP ist ein [FlyWithLua](../scripting/flywithlua.md)-Skript, das FPS in 
 
 !!! warning "Offizieller Download nur über GitHub"
 
-    Die Version auf X-Plane.org wird nicht unterstützt und ist veraltet. Der Entwickler hat deren Entfernung beantragt. Nur den [GitHub-Release](https://github.com/alstr/simreaperxp) verwenden.
+    Die Version auf X-Plane.org wird nicht unterstützt und ist veraltet. Der Entwickler hat deren Entfernung beantragt. Nur das [GitHub-Repository](https://github.com/alstr/simreaperxp) verwenden.
 
 ## Funktionsumfang
 
 - **Shadow Prep:** Entfernt Cockpit-Schattenrendering (enthält Belichtungsanpassung, falls das Cockpit zu hell wird)
-- **Cloud Shadow Render:** Stoppt die Berechnung von Wolkenschatten auf dem Boden
+- **Cloud Shadow Render:** Stoppt die kontinuierliche Berechnung von Wolkenschatten auf dem Boden (Schatten werden nur noch periodisch neu gezeichnet)
 - **GBuff Lights:** Deaktiviert Lichtprojektion auf Oberflächen (kann sich nachts automatisch reaktivieren, um dunkle Flughäfen zu verhindern)
 - **Planes:** Macht externe Flugzeugmodelle unsichtbar, das Cockpit bleibt funktional (kann sich in Außenansicht automatisch reaktivieren)
 - **Water:** Deaktiviert Wasser-Rendering
@@ -34,9 +34,9 @@ Leistungshungrige Payware-Flugzeuge (Hot Start CL650, ToLiss A340) an detaillier
 
 ## Installation
 
-**Download:** [GitHub Releases](https://github.com/alstr/simreaperxp)
+**Download:** [GitHub-Repository](https://github.com/alstr/simreaperxp)
 
-`simreaperxp.lua` in `Resources/plugins/FlyWithLua/Scripts/` ablegen.
+`SimReaperXP.lua` in `Resources/plugins/FlyWithLua/Scripts/` ablegen.
 
 ## Quellen
 
