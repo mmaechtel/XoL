@@ -35,6 +35,9 @@ This documentation is an open project. Improvements or additions can be contribu
 
 ## Recent Changes
 
+### 2026-07-26
+- [Ortho4XP](scenery/orthophotography/ortho4xp.md) now covers [OrthoForge](https://xpconnect.me/orthoforge.html): an independently developed successor with a native Linux setup script, separate land/seabed elevation sources and pre-baked OpenStreetMap data
+
 ### 2026-06-30
 - [WorldMap of Scenery](Maps.md) now shows each scenery's last update date and adds a **Scenery since** year filter — show only sceneries updated since a chosen year. The map now covers over 1800 X-Plane 12 sceneries
 
@@ -43,9 +46,6 @@ This documentation is an open project. Improvements or additions can be contribu
 - New page [AnyAirline](addon/cockpit/anyairline.md): passenger cabin immersion with AI cabin announcements, a route-aware passenger manifest, boarding ambience and a free passenger IFE map — the desktop connector ships an official Linux build
 - [XEarthLayer](scenery/ortho_streaming/xearthlayer.md) updated for v0.4.6: four-step setup wizard with dynamic disk-cache sizing (25% of free space) and RAM-based memory cache, GPU adapter selection step, and a cache fix so tiles from failed downloads are no longer stored
 - [AutoOrtho](scenery/ortho_streaming/autoortho.md) expanded with the latest ProgrammingDinosaur-fork features: unified single-process architecture across all OS, VRAM optimization via dynamic DDS sizing, and a lightweight map UI that drops the bundled Chromium browser
-
-### 2026-04-27
-- [XEarthLayer](scenery/ortho_streaming/xearthlayer.md) updated for v0.4.4: Long-haul prefetch fix (dead state on flights >2h eliminated, verified on 9h LOWW log), `max_concurrent_jobs` default halved to 50% of logical CPUs for less X-Plane stutter, separate hit rates for Memory/DDS-Disk/Chunks tiers in the TUI
 
 
 
