@@ -18,6 +18,10 @@ while [[ $# -gt 0 ]]; do
     esac
 done
 
+# Die Bot-Abwehr auf dem Server (emvisio-botblock.conf) blockt u.a. den
+# curl-Standard-UA — dieser UA ist dort explizit freigeschaltet.
+UA="XoL-smoketest/1"
+
 PASS=0
 FAIL=0
 FAILURES=()
@@ -27,7 +31,7 @@ check_url() {
     local label="$2"
     local type="$3"
     local status
-    status=$(curl -o /dev/null -s -w "%{http_code}" --head --max-time 10 "$url" 2>/dev/null || echo "000")
+    status=$(curl -A "$UA" -o /dev/null -s -w "%{http_code}" --head --max-time 10 "$url" 2>/dev/null || echo "000")
 
     printf "  %-65s " "$label"
     if [[ "$status" =~ ^(200|301|302)$ ]]; then
@@ -128,7 +132,7 @@ run_test() {
         echo "  Warning: $local_index not found, skipping drift check"
     else
         local_top=$(grep -oE '<h3 id="[0-9]{4}-[0-9]{2}-[0-9]{2}">' "$local_index" | head -1)
-        live_top=$(curl -s --max-time 10 "$live_url" | grep -oE '<h3 id="[0-9]{4}-[0-9]{2}-[0-9]{2}">' | head -1)
+        live_top=$(curl -A "$UA" -s --max-time 10 "$live_url" | grep -oE '<h3 id="[0-9]{4}-[0-9]{2}-[0-9]{2}">' | head -1)
         label="$live_url top date block"
         printf "  %-65s " "$label"
         if [ -z "$local_top" ] || [ -z "$live_top" ]; then

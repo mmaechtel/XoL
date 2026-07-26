@@ -35,6 +35,9 @@ Diese Dokumentation ist ein offenes Projekt. Verbesserungen oder Ergänzungen k�
 
 ## Letzte Änderungen
 
+### 2026-07-26
+- [Ortho4XP](scenery/orthophotography/ortho4xp.md) behandelt jetzt auch [OrthoForge](https://xpconnect.me/orthoforge.html): ein eigenständig weiterentwickelter Nachfolger mit nativem Linux-Setup-Skript, getrennten Höhendaten für Land und Meeresboden sowie vorgefertigten OpenStreetMap-Daten
+
 ### 2026-06-30
 - [WorldMap der Szenerien](Maps.md) zeigt jetzt das letzte Aktualisierungsdatum jeder Szenerie und bietet einen **Scenery since**-Jahresfilter — nur Szenerien anzeigen, die seit einem gewählten Jahr aktualisiert wurden. Die Karte umfasst inzwischen über 1800 X-Plane-12-Szenerien
 
@@ -43,9 +46,6 @@ Diese Dokumentation ist ein offenes Projekt. Verbesserungen oder Ergänzungen k�
 - Neue Seite [AnyAirline](addon/cockpit/anyairline.md): Passagier-Kabinen-Immersion mit KI-Kabinendurchsagen, routenbezogenem Passagier-Manifest, Boarding-Ambiente und kostenloser Passagier-IFE-Karte — der Desktop-Connector bringt einen offiziellen Linux-Build mit
 - [XEarthLayer](scenery/ortho_streaming/xearthlayer.md) aktualisiert auf v0.4.6: vierstufiger Setup-Wizard mit dynamischer Disk-Cache-Dimensionierung (25% des freien Speichers) und RAM-basiertem Memory-Cache, GPU-Adapter-Auswahlschritt sowie Cache-Fix, sodass Kacheln aus fehlgeschlagenen Downloads nicht mehr gespeichert werden
 - [AutoOrtho](scenery/ortho_streaming/autoortho.md) um die neuesten Features des ProgrammingDinosaur-Forks erweitert: vereinheitlichte Single-Process-Architektur über alle Betriebssysteme, VRAM-Optimierung durch dynamische DDS-Dimensionierung und schlanke Karten-UI ohne gebündelten Chromium-Browser
-
-### 2026-04-27
-- [XEarthLayer](scenery/ortho_streaming/xearthlayer.md) aktualisiert auf v0.4.4: Long-Haul-Prefetch-Fix (Dead-State auf Flügen >2 h behoben, mit 9-Stunden-LOWW-Log verifiziert), `max_concurrent_jobs`-Standard auf 50% der logischen CPUs halbiert für weniger X-Plane-Stuttering, getrennte Hit-Raten für Memory/DDS-Disk/Chunks-Ebenen im TUI
 
 
 
