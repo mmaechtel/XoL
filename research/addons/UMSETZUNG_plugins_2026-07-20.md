@@ -1,30 +1,33 @@
 # Umsetzungsstand: Plugin-Faktencheck
 
-**Datum:** 2026-07-20
+**Datum:** 2026-07-26 (begonnen 2026-07-20)
 **Branch:** `faktencheck-plugins-2026-07`
-**Stand:** 13 von 46 Seiten umgesetzt, 15 Commits, Working Tree sauber
+**Stand:** 22 von 46 Seiten umgesetzt, Working Tree sauber
 
 ---
 
+## Prompt fuer die naechste Session
+
+> Setze den Plugin-Faktencheck auf Branch `faktencheck-plugins-2026-07` fort.
+> Stand und Arbeitsregeln: `research/addons/UMSETZUNG_plugins_2026-07-20.md`.
+> Rohdaten (Findings, Entscheidungen, AUTO-Liste): `research/addons/faktencheck-2026-07-20/`
+> — Format und Extraktions-Rezept im dortigen README. Naechste Seite:
+> `docs/en/addon/scenery_addons/lst.md`. Pro Seite: Findings + Entscheidungen +
+> AUTO per Skript ziehen, EN zuerst aendern, DE angleichen, Zeilenzahl EN==DE
+> pruefen, `mkdocs build`, ein Commit pro Seite. Entscheidungen mit
+> `empfehlung: nein` nicht umsetzen, aber im Commit vermerken.
+> Token-sparsam: nur Zielstellen der Seiten lesen (grep + Read mit offset).
+
 ## Wo weitermachen
 
-Die naechste Seite ist `docs/en/addon/flylua_scripts/simloadmanager.md`.
+Die naechste Seite ist `docs/en/addon/scenery_addons/lst.md`.
+Die Findings zu den restlichen `scenery_addons`-Seiten (lst, noaa_weather,
+xa-snow, xroad) sind bereits extrahiert und unauffaellig bis auf:
+lst Z14 (XP11) hat `empfehlung: nein`; bei xa-snow ist der Ersatz-Paketname
+`libcurl3t64-gnutls` trixie-spezifisch (Formulierung beachten).
 
-Alle Eingangsdaten liegen im Session-Scratchpad:
-
-| Datei | Inhalt |
-|-------|--------|
-| `diff-data.json` | 154 bestaetigte Findings mit Zitat, Beleg, Quell-URL, Korrekturtext |
-| `cluster-final.json` | 103 Entscheidungen (Titel, Frage, Empfehlung, Tragweite, Zeilen) |
-| `umsetzen.json` | dieselben 103 minus der zurueckgestellten KabinXP-Entscheidung |
-| `umsetzen-pages.json` | Seitenliste in Bearbeitungsreihenfolge |
-| `triage-final.json` | Bucket AUTO/REVIEW je Finding |
-| `auto-per-page.json` | die 17 AUTO-Findings nach Seite |
-| `forum-evidence.md` | Browser-Volltext der 14 x-plane.org-Seiten |
-
-Pfad: `/tmp/claude-1000/-home-maechtel-Work-Git-XoL/<session>/scratchpad/`
-
-**Achtung:** Das Scratchpad ist sessiongebunden. Ist es weg, muss der Faktencheck neu laufen — dann ueber `/faktencheck-bulk addon`. Die Review-Seite liegt unter
+Alle Eingangsdaten liegen versioniert in `research/addons/faktencheck-2026-07-20/`
+(Dateibeschreibung und Extraktions-Rezept: dortiges README). Die Review-Seite liegt unter
 `https://claude.ai/code/artifact/aa32a2fa-7ad1-476e-9b2f-93367c99232c`.
 
 ---
@@ -46,18 +49,22 @@ Pfad: `/tmp/claude-1000/-home-maechtel-Work-Git-XoL/<session>/scratchpad/`
 | `flylua_scripts/rain_rate.md` | Nutzen auf den Zweck des Autors umgestellt |
 | `flylua_scripts/sges.md` | unbelegter Ablageort der Updater-Konfiguration entfernt |
 | `flylua_scripts/simbrief_simple_ofp.md` | zwei unbelegte Feature-Bullets gestrichen |
+| `flylua_scripts/simloadmanager.md` | Flugzeugliste/Q4XP/Features aktualisiert; XP11 bewusst nicht |
+| `flylua_scripts/simreaperxp.md` | Cloud-Shadow praezisiert; Repo statt Releases; Dateiname |
+| `flylua_scripts/simscreenoverlay.md` | Menuepfad um Plugins-Praefix ergaenzt ("window" bewusst nicht) |
+| `flylua_scripts/xproturb.md` | Wetter-Integration + Turbulenz-Vorwarnung ergaenzt |
+| `cockpit/xtextureextractor.md` | Stagnationshinweis; Play-Store-Halluzination; JDK-Voraussetzung |
+| `kvm/mobiflight.md` | Netzwerk-Split: Connector kann nur 127.0.0.1, UDP-Relay Pflicht |
+| `kvm/myfs_flights.md` | Connector statt erfundenem Plugin mit IP-Einstellung |
+| `kvm/sayintentions.md` | P3D v6 raus, 650+ neutralisiert, Traffic Injection gestrichen; Entourage bewusst nicht |
+| `scenery_addons/aep.md` | v2-Stand: XP12-only, AEP Live, Payware-Installation, VRAM |
 
 ---
 
-## Offen (33 Seiten)
+## Offen (24 Seiten)
 
-`cockpit` 1 (`xtextureextractor`) · `flylua_scripts` 4 (`simloadmanager`,
-`simreaperxp`, `simscreenoverlay`, `xproturb`) · `kvm` 3 · `scenery_addons` 5 ·
+`scenery_addons` 4 (`lst`, `noaa_weather`, `xa-snow`, `xroad`) ·
 `scripting` 2 · `sounds` 2 · `toliss` 4 · `tools` 6 · `traffic` 6
-
-Fuer die naechsten fuenf Seiten sind die Zielzeilen bereits ermittelt —
-`simloadmanager` Z17/21/36/55, `simreaperxp` Z23/37/39, `simscreenoverlay` Z22,
-`xproturb` Z41, `xtextureextractor` Z15/23/24.
 
 ---
 
