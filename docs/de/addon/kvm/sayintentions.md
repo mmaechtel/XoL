@@ -10,16 +10,15 @@ SayIntentions.AI ist ein KI-basiertes Air Traffic Control (ATC) System für Flug
 - **Entwickler:** SayAgain Solutions, LLC
 - **Website:** [sayintentions.ai](https://www.sayintentions.ai/)
 - **Plattformen:** Nur Windows 10/11
-- **Kompatibilität:** X-Plane 11/12, MSFS 2020/2024, Prepar3D v5/v6
+- **Kompatibilität:** X-Plane 11/12, MSFS 2020/2024, Prepar3D v5
 
 ## Funktionsumfang
 
 - **AI ATC:** 24/7 weltweite Abdeckung an ~88.000 Flughäfen, vollständige IFR/VFR-Unterstützung
 - **Natürliche Sprachkommunikation:** Pilot spricht frei per Mikrofon, KI antwortet dynamisch (keine Menü-Auswahl)
-- **650+ KI-Stimmen:** Regional unterschiedliche Akzente in 15 Sprachen
+- **KI-Stimmen:** Regional unterschiedliche Akzente in 15 Sprachen
 - **ACARS/CPDLC:** Text-basierte Kommunikation zwischen Pilot und ATC
 - **AI Co-Pilot:** Übernimmt Funkkommunikation und Checklisten
-- **Traffic Injection:** Kommerzieller und GA-Verkehr aus realen Flugplänen
 - **Taxi-Arrows:** Visuelle Rollhilfe im Simulator
 
 Die Kommunikation mit X-Plane erfolgt über DataRefs und UDP (Port 49000).
@@ -45,5 +44,5 @@ Der SayIntentions Client kommuniziert mit X-Plane über UDP Port 49000. Bei Brid
 
 - [SayIntentions.AI — Offizielle Website](https://www.sayintentions.ai/)
 - [SayIntentions.AI — Pricing](https://www.sayintentions.ai/pricing)
-- [SayIntentions.AI — Features Overview](https://sayintentionsai.freshdesk.com/support/solutions/articles/154000219433)
+- [SayIntentions.AI — Help Center / Knowledge Base](https://kb.sayintentions.ai/knowledgebase)
 - [SayIntentionsForMac — GitHub (Community-Workaround)](https://github.com/paulfisher53/SayIntentionsForMac)
