@@ -14,11 +14,11 @@ SimLoad Manager ist ein [FlyWithLua](../scripting/flywithlua.md)-Skript, das rea
 - **Abhängigkeiten:** [FlyWithLua NG+](../scripting/flywithlua.md)
 - **Optional:** [SGES](https://forums.x-plane.org/files/file/62296-simple-ground-equipment-services-low-tech-services/) für die visuelle Bodenequipment-Integration; SimBrief-Konto (manuelle Eingabe und Flight Sim Deck ebenfalls als Datenquellen nutzbar)
 
-Das Skript wird aktiv gepflegt und häufig aktualisiert. Unterstützt werden Laminar-Standardflugzeuge (B737-800, A330-300, MD-82), Zibo/Level Up B737-Varianten, ToLiss-Flugzeuge, X-Crafts E-Jets, Flight Factor 757/767 und FPS 747-800. Q4XP ist ausgenommen (nutzt eigenes Tablet-System).
+Das Skript wird aktiv gepflegt und häufig aktualisiert. Unterstützt werden Laminar-Standardflugzeuge (B737-800, A330-300, MD-82, C750), Zibo/Level Up B737-Varianten, alle ToLiss-Flugzeuge, X-Crafts E-Jets und ERJ, Flight Factor 757/767 und A320 sowie FPS 747-800. Beim Q4XP deaktiviert SimLoad Manager die Weight- und Fuel-Integration automatisch (das Flugzeug verwaltet die Beladung über sein eigenes Tablet).
 
 ## Funktionsumfang
 
-- **Realistische Beladungssimulation:** Passagiere steigen dynamisch basierend auf Cargo- und Treibstoff-Fortschritt ein, mit automatischer Einheitenerkennung (kg/lbs)
+- **Realistische Beladungssimulation:** Passagiere steigen dynamisch basierend auf Cargo- und Treibstoff-Fortschritt ein, mit automatischer Einheitenerkennung (kg/lbs), Passagier-Variabilität (No-Shows, Standbys), Fuel Top-up, Tankering-System für Low-Cost-Operationen und Zufallsereignissen während des Turnarounds
 - **Mehrere Datenquellen:** SimBrief Auto-Import, manuelle Eingabe oder Flight Sim Deck-Integration
 - **Departure- und Arrival-Modi:** Zwei getrennte Workflows mit jeweils eigenen Schritten
 - **Turnaround und RON:** Automatische Flugplanerkennung beim Turnaround, Remain Over Night-Handling
@@ -33,7 +33,7 @@ Das Skript wird aktiv gepflegt und häufig aktualisiert. Unterstützt werden Lam
 - **SimChecklist.eu-Integration:** Anbindung an den Online-Checklisten-Dienst
 - **Flight-Save und Fortsetzen:** Automatische Zustandssicherung bei Mode-Wechseln — unterbrochene Flüge per „Load Last Flight" fortsetzbar
 - **ACARS-Loadsheet-Uplink:** Loadsheet-Übertragung an ToLiss-Flugzeuge über das Hoppie-Netzwerk (ACARS)
-- **API für externe Tools:** Eigene X-Plane-Commands und exponierte DataRefs
+- **API für externe Tools:** Eigene X-Plane-Commands und exponierte DataRefs, einschließlich SayIntentions.ai-API-Support
 
 ## Mehrwert in der Flugsimulation
 
@@ -52,7 +52,7 @@ Den `SLM-Data/`-Ordner und dessen Inhalte nicht umbenennen.
 
 !!! warning "Update von früheren Versionen"
 
-    Vor der Installation von v3.x alle bisherigen SimLoad Manager-Dateien aus `FlyWithLua/Scripts/` löschen. Die Ordnerstruktur hat sich geändert — alte Dateien wie `SimLoadManager_loadsheet.lua` und `SimLoad-Manager-Sounds/` werden nicht mehr verwendet.
+    Vor der Installation einer neuen Version alle bisherigen SimLoad Manager-Dateien aus `FlyWithLua/Scripts/` löschen. Die Ordnerstruktur hat sich geändert — alte Dateien wie `SimLoadManager_loadsheet.lua` und `SimLoad-Manager-Sounds/` werden nicht mehr verwendet.
 
 ## Quellen
 
