@@ -38,7 +38,8 @@ Turbulence is derived from recognised aviation norms rather than tuned curves:
 - **von Kármán / Dryden spectra:** Two established gust models that distribute turbulence energy across realistic wavelengths instead of flat random noise
 - **CAT:** Clear Air Turbulence using a Richardson-number model, a tropopause-locked CAT profile and Kelvin–Helmholtz billows — the insidious turbulence that strikes without visual warning
 - **Mountain-Wave suite:** Queney lee waves, rotor zones, wave breaking, hydraulic jump (Boulder/Bora downslope windstorms) and the Scorer parameter for trapped vs. propagating waves
-- **CB / storm modelling:** Cumulonimbus cores, hail and heavy-rain turbulence scaled to the official FAA severity bands (light → extreme)
+- **CB / storm modelling:** Cumulonimbus cores, hail and heavy-rain turbulence scaled to the official FAA severity bands (light → extreme), with a turbulence-ahead warning
+- **Weather integration:** The engine reads X-Plane's own 3D weather grid and compensates for double-counting, or takes over turbulence entirely in its own mode
 - **Fly-by-wire detection:** On Airbus-style aircraft the engine recognises the electronic flight-control system and lets its control laws set the ride, the way the real aircraft would
 
 ## Value in Flight Simulation
