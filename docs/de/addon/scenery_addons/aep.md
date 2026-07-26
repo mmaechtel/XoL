@@ -10,7 +10,7 @@ Das [Airport Enhancement Package (AEP)](../../glossary.md#airport-enhancement-pa
 - **Entwickler:** X-Codr Designs
 - **Website:** [x-codrdesigns.com/xp-aep](https://www.x-codrdesigns.com/xp-aep)
 - **Plattformen:** Windows, macOS, Linux
-- **Kompatibilität:** X-Plane 11 und 12
+- **Kompatibilität:** X-Plane 12
 
 ## Funktionsumfang
 
@@ -18,13 +18,13 @@ AEP ersetzt Standard-[Flughafenelemente](../../glossary.md#flughafenelemente) du
 
 - **Gebäude und Fassaden:** Flughafengebäude, Fassaden, statische Fahrzeuge und Bodenobjekte
 - **Landebahnausstattung:** Lichter, Baken und Navigationshilfen
-- **[Bodenmarkierungen](../../glossary.md#bodenmarkierungen):** Überarbeitete Markierungen und Beläge mit Wettereffekt-Unterstützung (Weather Maps)
+- **[Bodenmarkierungen](../../glossary.md#bodenmarkierungen):** Überarbeitete Bodentexturen mit prozedural generierten Bremsspuren, Ölflecken und regionaler Verwitterung, dazu hochdetaillierte Decals und Markierungstexturen nach FAA-Richtlinien
 - **Vegetation:** Standard-[Flughafenvegetation](../../glossary.md#flughafenvegetation) durch neue 3D-Vegetation ersetzt
-- **Decals:** Realistische Muster zur Vermeidung von Wiederholungen
+- **Eigene Rollwegschilder:** Das mitgelieferte AEP-Live-Plugin ersetzt Rollwegschilder in Echtzeit durch FAA-konforme Modelle, auch an Drittanbieter-Flughäfen
 
 Alle Modelle sind mit moderner Technologie ausgestattet:
 
-- UHD-Texturen (2–4 Pixel pro Zoll)
+- Decal-basierte Detailtexturen mit Normalmaps — Nahdetails bei geringerem VRAM-Bedarf
 - [PBR](../../glossary.md#pbr)-Normalmaps für Details und Reflexionen
 - LODs für gute Performance bei hoher Detailstufe
 - Einfache Innenräume für zusätzliche Tiefe
@@ -32,16 +32,16 @@ Alle Modelle sind mit moderner Technologie ausgestattet:
 
 ## Mehrwert in der Flugsimulation
 
-AEP wertet Standard-Flughäfen auf, ohne dass teure Payware-Szenerien gekauft werden müssen. Die PBR-Materialien und UHD-Texturen erzeugen ein deutlich realistischeres Erscheinungsbild als die Standard-Elemente. Durch die Regionalisierung passen sich die Gebäude und Objekte an die jeweilige Region an.
+AEP wertet Standard-Flughäfen weltweit in einem einzigen Paket auf — eine Alternative zum Kauf von Payware-Szenerien für jeden einzelnen Flughafen. Die PBR-Materialien und Detail-Decals erzeugen ein deutlich realistischeres Erscheinungsbild als die Standard-Elemente. Durch die Regionalisierung passen sich die Gebäude und Objekte an die jeweilige Region an.
 
 ## Installation
 
-Die ZIP-Datei von der [offiziellen Website](https://www.x-codrdesigns.com/xp-aep) herunterladen und den enthaltenen Ordner nach `Custom Scenery/` entpacken. Die `scenery_packs.ini` wird beim nächsten X-Plane-Start automatisch aktualisiert.
+AEP ist Payware und wird über den X-Plane.org-Store gekauft, auf den die [offizielle Website](https://www.x-codrdesigns.com/xp-aep) verlinkt. Beide enthaltenen Ordner (`AEP` und `AEP Overlays`) nach `Custom Scenery/` entpacken; die `scenery_packs.ini` wird beim nächsten X-Plane-Start automatisch aktualisiert. Spätere Updates kommen über den SkunkCrafts Updater.
 
 **Systemanforderungen:**
 
-- Grafikkarte mit 8 GB [VRAM](../../glossary.md#vram-video-ram) (mindestens 4 GB)
-- ~2 GB Download-Größe (wächst mit jedem v2-Update)
+- Grafikkarte mit 8 GB [VRAM](../../glossary.md#vram-video-ram) oder mehr empfohlen
+- Etwa 2 GB Download-Größe
 
 ## Quellen
 
