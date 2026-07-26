@@ -7,7 +7,7 @@ Ortho4XP is a powerful tool for creating orthophotos for X-Plane. It enables the
 
 ## Installation and Versions
 
-Ortho4XP is available in two main versions:
+Ortho4XP is available in several versions:
 
 1. **Original version** by Oscar Pilote:
     * [GitHub Repository](https://github.com/oscarpilote/Ortho4XP)
@@ -19,6 +19,14 @@ Ortho4XP is available in two main versions:
     * [Detailed documentation](https://github.com/shred86/Ortho4XP/wiki)
     * Contains numerous improvements and new features
     * [Binaries for various operating systems](https://github.com/shred86/Ortho4XP/wiki/Installation)
+
+
+3. **OrthoForge** (independently developed successor):
+    * [Website](https://xpconnect.me/orthoforge.html)
+    * [Codeberg Repository](https://codeberg.org/xbard/OrthoForge)
+    * Began as the English fork of Roland (Ypsos)'s ORTHO4XP_V3, now developed independently
+    * Native setup script for Linux (`OrthoForge_Setup_Linux.sh`) that builds the Python environment automatically
+    * Notable additions: separate land/seabed elevation sources, pre-baked OpenStreetMap data (avoids rate limits), progressive coastal masks, multilingual interface
 
 ### Installation Methods
 
