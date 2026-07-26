@@ -26,14 +26,14 @@ MobiFlight ist eine Open-Source-Middleware für den Bau von Home-Cockpits. Die S
 
 Da der MobiFlight Connector nicht unter Linux läuft (Wine/Proton ist aufgrund tiefer Windows-API-Abhängigkeiten nicht praktikabel), gibt es zwei Wege:
 
-### Netzwerk-Split (empfohlen)
+### Netzwerk-Split
 
-MobiFlight kommuniziert mit X-Plane über UDP — das Protokoll ist netzwerkbasiert und plattformunabhängig. Damit lässt sich ein Split-Setup betreiben:
+MobiFlight kommuniziert mit X-Plane über UDP, der Connector spricht aber ausschließlich `127.0.0.1` an. Ein Split-Setup erfordert daher einen UDP-Forwarder auf der Windows-Seite:
 
 - **Linux-PC:** X-Plane 12 (nativ)
 - **Windows-PC oder -VM:** MobiFlight Connector + angeschlossene Hardware
 
-In MobiFlight die IP-Adresse des Linux-PCs eintragen (statt `127.0.0.1`). X-Plane akzeptiert UDP-Verbindungen standardmäßig auf Port 49000.
+MobiFlight bietet für X-Plane keine IP-Einstellung — die Verbindung ist fest auf `127.0.0.1` der Maschine verdrahtet, auf der der Connector läuft. Ein UDP-Relay auf der Windows-Seite muss Port 49000 daher an den Linux-PC weiterleiten.
 
 ### Windows-VM mit USB-Passthrough
 
@@ -52,5 +52,5 @@ Für das UDP-Forwarding zwischen VM und nativem X-Plane auf dem Host eignet sich
 - [MobiFlight — Offizielle Website](https://www.mobiflight.com)
 - [MobiFlight — GitHub Repository](https://github.com/MobiFlight/MobiFlight-Connector)
 - [MobiFlight — Dokumentation](https://docs.mobiflight.com)
-- [MobiFlight — X-Plane Quick Start Guide](https://www.mobiflight.com/en/tutorials/x-plane-quick-start-guide.html)
+- [MobiFlight — Getting started with X-Plane (Wiki)](https://github.com/MobiFlight/MobiFlight-Connector/wiki/Getting-started-with-XPlane)
 - [HubHop — Community-Preset-Datenbank](https://hubhop.mobiflight.com)
