@@ -40,7 +40,7 @@ Die ZIP-Datei nach `Resources/plugins/` entpacken. Nach der Erstinstallation üb
 
 ### Linux-Hinweise
 
-Die Linux-Binary linkt gegen `libcurl-gnutls.so.4` für bessere Kompatibilität mit Steam/Proton-Umgebungen. Auf Debian trixie und später:
+Die Linux-Binary linkt gegen `libcurl-gnutls.so.4` für bessere Kompatibilität mit Steam/Proton-Umgebungen. Ab Debian Trixie:
 
 ```bash
 sudo apt install libcurl3t64-gnutls
