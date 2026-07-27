@@ -42,7 +42,7 @@ A central data provider that fetches the current SimBrief OFP (Operational Fligh
 - VATSIM CDM support: pulls Collaborative Decision-Making data (TOBT, TSAT, CTOT) for compatible VDGS plugins
 - Fake CDM mode for offline flying — replaced automatically when connecting to VATSIM
 
-**Installation:** Extract to `Resources/plugins/`. The Linux binary is at `lin_x64/simbrief_hub.xpl`. The plugin includes SkunkCrafts Updater config and CDM server settings (customize `cdm_cfg.json` as needed).
+**Installation:** Extract to `Resources/plugins/`. The Linux binary is at `lin_x64/simbrief_hub.xpl`. The plugin ships with SkunkCrafts Updater configs for automatic updates and with `cdm_cfg.default.json` for regional CDM servers — copy to `cdm_cfg.json` to customize.
 
 ## Callouts & Sound
 

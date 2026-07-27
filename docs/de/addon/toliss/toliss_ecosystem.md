@@ -42,7 +42,7 @@ Ein zentraler Datenprovider, der den aktuellen SimBrief OFP (Operational Flight 
 - VATSIM-CDM-Unterstützung: ruft Collaborative Decision-Making-Daten (TOBT, TSAT, CTOT) für kompatible VDGS-Plugins ab
 - Fake-CDM-Modus für Offline-Flüge — wird bei VATSIM-Verbindung automatisch durch echte Daten ersetzt
 
-**Installation:** Nach `Resources/plugins/` entpacken. Die Linux-Binary liegt unter `lin_x64/simbrief_hub.xpl`. Das Plugin enthält SkunkCrafts-Updater-Konfiguration und CDM-Einstellungen — `cdm_cfg.json` nach Bedarf anpassen.
+**Installation:** Nach `Resources/plugins/` entpacken. Die Linux-Binary liegt unter `lin_x64/simbrief_hub.xpl`. Das Plugin bringt SkunkCrafts-Updater-Konfigurationen für automatische Updates sowie `cdm_cfg.default.json` für regionale CDM-Server mit — zum Anpassen nach `cdm_cfg.json` kopieren.
 
 ## Callouts & Sound
 
