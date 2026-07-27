@@ -20,7 +20,7 @@ The [plugin](../../glossary.md#plugin) is standalone and does not require any ot
 
 ## Features
 
-- **Automatic DGS:** Activates after landing and searches for suitable stands in taxi direction
+- **Automatic DGS:** Activates after landing (beacon must be on) and searches for suitable stands in taxi direction
 - **Two DGS types:** Animated marshaller (ground crew) or electronic VDGS (Safedock-style with azimuth and distance guidance)
 - **Preselect mode:** Manual stand selection while on the ground
 - **SimBrief integration:** Displays flight number, destination, and timing data on the VDGS (requires the optional [simbrief_hub](../toliss/toliss_ecosystem.md#simbrief_hub) plugin)
