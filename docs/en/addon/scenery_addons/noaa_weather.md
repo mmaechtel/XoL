@@ -18,7 +18,7 @@ Since X-Plane 12 already uses NOAA GFS data for its own weather engine, this plu
 ## Features
 
 - **Snow coverage:** Downloads NOAA GFS snow depth and precipitation data to generate location-specific snow that X-Plane 12 cannot depict correctly on its own
-- **Predictive algorithm:** Calculates snow coverage up to 70 nm ahead along the flight path when GFS data is unavailable for individual grid cells
+- **Snow value retention:** Reuses the last valid snow depth within a 70 nm radius when GFS data is unavailable
 - **METAR comparison:** Displays X-Plane 12 Real Weather METAR alongside external sources (NOAA, IVAO, VATSIM) in a dedicated window
 - **Runway friction:** Simulates tarmac treatment in cold weather for more realistic braking behavior (X-Plane 12.4+)
 - **Real Weather monitoring:** Monitors and visualizes in real time what X-Plane's internal weather engine is actually producing

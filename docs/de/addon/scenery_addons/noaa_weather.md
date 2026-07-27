@@ -18,7 +18,7 @@ Da X-Plane 12 seine eigene Wettererzeugung auf NOAA-GFS-Daten aufbaut, arbeitet 
 ## Funktionsumfang
 
 - **Schneebedeckung:** Lädt NOAA-GFS-Schneehöhen- und Niederschlagsdaten herunter und erzeugt standortspezifischen Schnee, den X-Plane 12 nativ nicht korrekt darstellen kann
-- **Vorausschauender Algorithmus:** Berechnet die Schneebedeckung bis zu 70 nm voraus entlang der Flugroute, wenn für einzelne Gitterzellen keine GFS-Daten vorliegen
+- **Schneewert-Wiederverwendung:** Nutzt den letzten gültigen Schneewert in einem Radius von 70 nm erneut, wenn GFS-Daten nicht verfügbar sind
 - **METAR-Vergleich:** Zeigt X-Plane-12-Real-Weather-METAR neben externen Quellen (NOAA, IVAO, VATSIM) in einem eigenen Fenster an
 - **Pistenreibung:** Simuliert Pistenbehandlung bei kaltem Wetter für realistischeres Bremsverhalten (ab X-Plane 12.4+)
 - **Real-Weather-Monitoring:** Überwacht und visualisiert in Echtzeit, was X-Planes interne Wetter-Engine tatsächlich erzeugt
