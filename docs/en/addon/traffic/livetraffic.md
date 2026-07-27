@@ -76,7 +76,7 @@ sudo apt install libcurl4 xdg-utils
 
     The Steam Runtime ships an older `libcurl.so.4` that lacks the `CURL_OPENSSL_4` symbol. LiveTraffic is built against the system version of libcurl which provides this symbol.
 
-    **Workaround:** Rename the Steam Runtime's `libcurl.so.4` to `libcurl.so.4.bak` and create a symlink to the system version. The Steam Runtime directory is usually `/opt/steamapps/common/SteamRuntime` or similar. This workaround must be reapplied after Steam updates. Refer to the [LiveTraffic documentation](https://twinfan.gitbook.io/livetraffic) for detailed instructions. The issue does not affect non-Steam X-Plane installations.
+    **Workaround:** Rename the libcurl shipped in the Steam Runtime directory to `libcurl.so.4.bak` and create a symbolic link to the system library in its place. Details are in the [LiveTraffic documentation](https://twinfan.gitbook.io/livetraffic/introduction/requirements). The issue does not affect non-Steam X-Plane installations.
 
 ### RealTraffic Ports (Firewall)
 
