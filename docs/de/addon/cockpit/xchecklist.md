@@ -63,7 +63,7 @@ sudo apt install speech-dispatcher
 Das Standard-Backend espeak-ng funktioniert zuverlässig. Prüfen, ob speech-dispatcher läuft:
 
 ```bash
-spd-say "Checklisten-Test"
+spd-say "checklist test"
 ```
 
 Falls kein Audio zu hören ist, den speech-dispatcher-Dienst und die korrekte Audioausgabe überprüfen.

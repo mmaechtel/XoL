@@ -3,7 +3,7 @@ description: "AutoGate steuert animierte Fluggastbrücken und Andocksysteme für
 ---
 # AutoGate
 
-AutoGate ist ein [Plugin](../../glossary.md#plugin) für [X-Plane](../../glossary.md#x-plane), das animierte Jetways und Docking Guidance Systems für Szenerien bereitstellt, die mit dem AutoGate-Bausatz erstellt wurden.
+AutoGate ist ein [Plugin](../../glossary.md#plugin) für [X-Plane](../../glossary.md#x-plane), das animierte Jetways und Docking Guidance Systems für Szenerien bereitstellt, die mit dem AutoGate-Toolkit erstellt wurden.
 
 ## Hintergrund
 
@@ -15,7 +15,7 @@ AutoGate ist ein [Plugin](../../glossary.md#plugin) für [X-Plane](../../glossar
 
 !!! warning "Legacy-Plugin"
 
-    AutoGate befindet sich im Wartungsmodus. Für neue Szenerien wird **[openSAM](opensam.md)** empfohlen. AutoGate ist nur noch für ältere Szenerie-Pakete relevant, die mit dem AutoGate-Bausatz erstellt wurden.
+    AutoGate befindet sich im Wartungsmodus. Für neue Szenerien wird **[openSAM](opensam.md)** empfohlen. AutoGate ist nur noch für ältere Szenerie-Pakete relevant, die mit dem AutoGate-Toolkit erstellt wurden.
 
 ## Funktionsumfang
 

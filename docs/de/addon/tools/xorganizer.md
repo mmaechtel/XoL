@@ -15,9 +15,8 @@ XOrganizer ist ein leistungsstarkes Tool zur Verwaltung und Organisation von X-P
 
 ## Installation
 
-1. Die offizielle Website von XOrganizer ist unter [4xplane.nl/xorganizer/](https://www.4xplane.nl/xorganizer/) zu finden
-2. XOrganizer ist ein kommerzielles, Closed-Source-Produkt — gekauft wird es im [X-Plane.org Store](https://store.x-plane.org)
-3. Das Tool wird aus dem [X-Plane.org Store](https://store.x-plane.org/xOrganizer-v3-XP12_p_1636.html) heruntergeladen und kann in einem beliebigen Ordner installiert werden — 4xplane.nl selbst stellt nur die Dokumentation bereit
+1. Die offizielle Website von XOrganizer ist unter [4xplane.nl/xorganizer/](https://www.4xplane.nl/xorganizer/) zu finden — sie stellt nur die Dokumentation bereit
+2. XOrganizer ist ein kommerzielles, Closed-Source-Produkt — Kauf und Download über den [X-Plane.org Store](https://store.x-plane.org/xOrganizer-v3-XP12_p_1636.html), danach in einem beliebigen Ordner installieren
 
 ## Grundlegende Verwendung
 

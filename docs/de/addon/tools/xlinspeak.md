@@ -63,7 +63,7 @@ PTTSM überwacht eine Text-Eingabedatei und generiert WAV-Audio über Piper, sob
 ### Abhängigkeiten
 
 - [FlyWithLua](../scripting/flywithlua.md) NG+ für X-Plane 12
-- Piper-TTS-Binary — [TheLouisHong/piper](https://github.com/TheLouisHong/piper/releases) Fork nutzen (piper_linux_x86_64.tar.gz); das OHF-Voice/piper1-gpl-Upstream liefert nur Python-Wheels. Der Inhalt des entpackten `piper`-Ordners (nicht der Ordner selbst) gehört nach `Resources/plugins/FlyWithLua/Modules/PiperTTSManager/Resources/Piper_LIN`
+- Piper-TTS-Binary — [TheLouisHong/piper](https://github.com/TheLouisHong/piper/releases) Fork nutzen (piper_linux_x86_64.tar.gz); das OHF-Voice/piper1-gpl-Upstream liefert nur Python-Wheels. Der Inhalt des entpackten `piper`-Ordners gehört nach `Resources/plugins/FlyWithLua/Modules/PiperTTSManager/Resources/Piper_LIN`
 - Sprachmodelle (`.onnx` + `.onnx.json`) von [Hugging Face piper-voices](https://huggingface.co/rhasspy/piper-voices/tree/main)
 
 
