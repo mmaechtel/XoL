@@ -12,7 +12,7 @@ Xchecklist ist ein Open-Source-[Plugin](../../glossary.md#plugin) für [X-Plane]
 - **Plattformen:** Windows, macOS, Linux (natives `lin.xpl`)
 - **Kompatibilität:** X-Plane 10, 11, 12
 
-Xchecklist wird aktiv weiterentwickelt und enthält vorkompilierte Binaries für alle drei Plattformen. Das Plugin nutzt das XPLM SDK und benötigt weder FlyWithLua noch ein anderes Scripting-Framework.
+Xchecklist wird aktiv weiterentwickelt; der Forum-Download enthält vorkompilierte Binaries für alle drei Plattformen. Das Plugin nutzt das XPLM SDK und benötigt weder FlyWithLua noch ein anderes Scripting-Framework.
 
 ## Funktionsumfang
 
