@@ -13,7 +13,7 @@ XPPython3 is a Python 3 scripting engine for [X-Plane](../../glossary.md#x-plane
 - **Platforms:** Windows, macOS, Linux (native binaries)
 - **Compatibility:** X-Plane 12 (v4.x); X-Plane 11.50+ (legacy v3.1.5)
 
-XPPython3 is the successor to Sandy Barbour's PythonInterface (Python 2 only). The current v4.x line bundles Python 3.12 internally — no system Python installation is needed.
+XPPython3 is the successor to Sandy Barbour's PythonInterface (Python 2 only). The current v4.x line bundles Python 3.12 internally — no system Python installation is needed. The core is written in C++, which reduces the runtime overhead of the Python bridge by roughly 20% compared with the earlier C implementation.
 
 ## Features
 
