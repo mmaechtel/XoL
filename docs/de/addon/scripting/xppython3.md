@@ -13,7 +13,7 @@ XPPython3 ist eine Python-3-Scripting-Engine für [X-Plane](../../glossary.md#x-
 - **Plattformen:** Windows, macOS, Linux (native Binaries)
 - **Kompatibilität:** X-Plane 12 (v4.x); X-Plane 11.50+ (Legacy v3.1.5)
 
-XPPython3 ist der Nachfolger von Sandy Barbours PythonInterface (nur Python 2). Die aktuelle v4.x-Linie bündelt Python 3.12 intern — keine systemweite Python-Installation nötig. Ein umfassender C-zu-C++-Rewrite in v4.6 brachte rund 20 % Leistungsverbesserung.
+XPPython3 ist der Nachfolger von Sandy Barbours PythonInterface (nur Python 2). Die aktuelle v4.x-Linie bündelt Python 3.12 intern — keine systemweite Python-Installation nötig.
 
 ## Funktionsumfang
 
@@ -65,5 +65,5 @@ Jede Zeile mit `not found` zeigt eine fehlende Abhängigkeit an.
 ## Quellen
 
 - [XPPython3 Dokumentation — xppython3.readthedocs.io](https://xppython3.readthedocs.io/en/latest/)
-- [XPPython3 — GitHub](https://github.com/uglyDwarf/x-plane_plugins)
+- [XPPython3 Quellcode — GitHub](https://github.com/pbuckner/x-plane_plugins)
 - [XPPython3 v4.6.1 Released — forums.x-plane.org](https://forums.x-plane.org/forums/topic/338833-xppython3-v461-released/)
