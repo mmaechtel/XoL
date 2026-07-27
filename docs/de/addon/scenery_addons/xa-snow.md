@@ -18,14 +18,15 @@ xa-snow ersetzt X-Planes einheitlichen regionalen Schnee durch standortspezifisc
 
 - **NOAA-Schneedaten:** Lädt 6-Stunden-Vorhersagen der akkumulierten Schneehöhe für die gesamte Erde herunter
 - **Räumliche Interpolation:** Überwindet X-Planes Beschränkung auf einheitliche regionale Schneebedeckung mit 0,25° Lat/Lon-Auflösung
-- **Historischer Schnee:** Zugriff auf archivierte Schneedaten für bestimmte Daten (365-Tage-Archiv)
-- **Auto-Update:** Aktualisiert die Schneebedeckung optional während des Fluges beim Wechsel zwischen Regionen
+- **Küstenlinien-Bearbeitung:** Extrapoliert Landschnee zu Küstenlinien, die NOAA-IR-Bilder übersehen, mit optionaler Temperaturkorrektur zum Abschmelzen von ausgedehntem Küstenschnee bei hoher Bodentemperatur
+- **Historischer Schnee:** Lädt optional archivierte Schneedaten für ein vergangenes Datum (vor Flugstart) — das Archiv umfasst ungefähr ein Jahr, enthält aber Lücken
+- **Auto-Update:** Aktualisiert optional die Schneehöhen-Daten während langer Flüge — ressourcenintensiv und vom Upstream als potenziell instabil eingestuft
 - **Pistenreibung:** Einstellbares Pisteneis-Verhalten über die Option „Lock Elsa Up" (reduziert Pistenreibung in X-Plane 12.4.x+)
 - **Manuelles Wetter überschreiben:** Erzwingt den Schnee-Download auch bei manuellem Wetter (Standard: überspringt Download, um Sommerszenerie beizubehalten)
 
 **Per-Scenery-Konfiguration**
 
-Szenerie-Entwickler können `xa-snow.cfg`-Dateien einbinden, um das Schneeverhalten für bestimmte Flughäfen oder Regionen anzupassen.
+Legacy-Szeneries (meist aus XP11) zeigen übermäßig Schnee auf Runways und Taxiways. `xa-snow.cfg-sample` aus dem Plugin-Verzeichnis als `xa-snow.cfg` in eine Szenerie kopieren, um die Schneehöhe auf diesem Flughafen zu begrenzen.
 
 ## Mehrwert in der Flugsimulation
 
@@ -39,10 +40,10 @@ Die ZIP-Datei nach `Resources/plugins/` entpacken. Nach der Erstinstallation üb
 
 ### Linux-Hinweise
 
-Seit v2.3.1 linkt die Linux-Binary gegen `libcurl4-gnutls` für bessere Kompatibilität mit Steam/Proton-Umgebungen. Auf Debian-basierten Systemen:
+Die Linux-Binary linkt gegen `libcurl-gnutls.so.4` für bessere Kompatibilität mit Steam/Proton-Umgebungen. Auf Debian trixie und später:
 
 ```bash
-sudo apt install libcurl4-gnutls-dev
+sudo apt install libcurl3t64-gnutls
 ```
 
 Weitere Linux-spezifische Probleme sind nicht bekannt.

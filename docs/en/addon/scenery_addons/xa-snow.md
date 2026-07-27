@@ -18,14 +18,15 @@ xa-snow replaces X-Plane's uniform regional snow with location-specific coverage
 
 - **NOAA snow data:** Downloads 6-hour accumulated snow depth forecasts covering the entire globe
 - **Spatial interpolation:** Overcomes X-Plane's limitation of uniform regional snow coverage at 0.25° lat/lon resolution
-- **Historical snow:** Access archived snow data for specific dates (365-day archive)
-- **Auto update:** Optionally updates snow coverage during flight as you move across regions
+- **Shoreline handling:** Extrapolates inland snow to coastlines that NOAA's IR imagery misses, with optional temperature correction that melts extended coastal snow when ground temperature is high
+- **Historical snow:** Optionally loads archived snow data for a past date, set before starting the flight — the archive covers roughly a year but has gaps
+- **Auto update:** Optionally refreshes snow depth data during long flights — resource-heavy and flagged upstream as potentially unstable
 - **Runway friction:** Adjustable runway ice behavior via "Lock Elsa Up" option (reduces runway friction in X-Plane 12.4.x+)
 - **Manual weather override:** Forces snow downloads even when using manual weather (default: skips download to preserve summer scenery)
 
 **Per-Scenery Configuration**
 
-Scenery developers can include `xa-snow.cfg` files to fine-tune snow behavior for specific airports or regions.
+Legacy (mostly XP11) sceneries show excessive snow on runways and taxiways. Copying `xa-snow.cfg-sample` from the plugin directory into a scenery directory as `xa-snow.cfg` caps the snow depth for that airport.
 
 ## Value in Flight Simulation
 
@@ -39,10 +40,10 @@ Extract the ZIP file to `Resources/plugins/`. After the initial installation, [S
 
 ### Linux Notes
 
-Since v2.3.1, the Linux binary links against `libcurl4-gnutls` for better compatibility with Steam/Proton environments. On Debian-based systems:
+The Linux binary links against `libcurl-gnutls.so.4` for better compatibility with Steam/Proton environments. On Debian trixie and later:
 
 ```bash
-sudo apt install libcurl4-gnutls-dev
+sudo apt install libcurl3t64-gnutls
 ```
 
 No other Linux-specific issues are known.
