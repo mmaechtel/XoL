@@ -7,7 +7,7 @@ Aircraft modifications for the ToLiss fleet (A319, A320 CEO/NEO, A321 CEO/NEO) â
 
 ## Easy Freighter â€” A321 P2F Cargo Door Mod
 
-Simulates an A321 freighter conversion (A321P2F/A321PCF). The kit is a drag-and-drop object for the aircraft's `objects/` folder; the cargo livery must be added separately. A separate version also exists for the A320. Not officially approved by ToLiss.
+Simulates an A321 freighter conversion (A321P2F/A321PCF). The kit is a drag-and-drop object for the aircraft's `objects/` folder; the cargo livery must contain `external_Extras = YES` and `custom_Cabin = F` in its `livery.tlscfg`. A demonstration livery is included. A separate version also exists for the A320. Not officially approved by ToLiss.
 
 - **Developer:** XPJavelin
 - **Download:** [forums.x-plane.org](https://forums.x-plane.org/files/file/92976-easy-freighter-conversion-kit-for-the-toliss-321/)
@@ -27,4 +27,4 @@ Installation requires two steps: downloading the engine OBJ files from the Thres
 
 !!! note "Linux: native installer binary"
 
-    The installer ships a native Linux binary (`install-carda-linux-x64`, also ARM64). Make it executable with `chmod +x`, then run it directly. The engine models themselves (OBJ/DDS) are platform-independent. The installer must be re-run after every ToLiss aircraft update.
+    The installer ships a native Linux binary (`install-carda-linux-x64`, also ARM64). Make it executable with `chmod +x` and run it from the aircraft folder. Alternatively, `install_carda.py` runs directly with Python 3.10+ and needs no external dependencies. The engine models themselves (OBJ/DDS) are platform-independent. The installer must be re-run after every ToLiss aircraft update.
