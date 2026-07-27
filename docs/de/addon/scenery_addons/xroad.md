@@ -43,7 +43,7 @@ Anschließend im XRoads-Verzeichnis:
 make xroads
 ```
 
-Das erzeugte Executable wird dann auf die Ortho-Szenerien angewendet, um die `library.txt` zu generieren. Die resultierende Bibliothek wird als Szenerie-Ordner in `Custom Scenery/` abgelegt.
+Das Executable wird ins X-Plane-Basisverzeichnis kopiert und dort ausgeführt — es wechselt in sein eigenes Verzeichnis und scannt nach Szenerie-Ordnern, die mit `zOrtho`, `zPhoto`, `zVstates` oder `z_` beginnen. Es erstellt `Custom Scenery/Xroads` mit den modifizierten `roads.net`-Dateien und der generierten `library.txt`. Dieser Ordner muss oben in `scenery_packs.ini` stehen.
 
 ## Quellen
 
