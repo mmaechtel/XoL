@@ -22,7 +22,7 @@ Das ursprüngliche Repository [fpw/avitab](https://github.com/fpw/avitab) ist ar
 - **ChartFox-Integration:** Kostenlose Charts über Vatsim-Login
 - **Airport-App:** Flughafeninformationen, Runway-Daten, lokale Charts
 - **Routen-Overlay:** FMS-Dateien als Overlay auf der Moving Map
-- **Aircraft-Integration:** Einige Flugzeuge (z.B. Zibo 737) haben ein 3D-Tablet-Modell mit AviTab-Integration
+- **Aircraft-Integration:** Einige Flugzeuge (z.B. Zibo 737) haben ein 3D-Tablet-Modell mit AviTab-Integration; die Panel-Integration unter X-Plane 12 setzt voraus, dass das Flugzeug den aktuellen Integrationsmodus nutzt
 - **Standalone-Modus:** Kann auch als eigenständige Anwendung außerhalb von X-Plane laufen
 
 ### AviTab Browser (Ergänzungs-Plugin)
