@@ -3,7 +3,7 @@ description: "WINCTRL connects Winwing cockpit panels to X-Plane on Linux and ma
 ---
 # WINCTRL
 
-WINCTRL is a native [plugin](../../glossary.md#plugin) that connects Winwing cockpit panels (MCDU, FCU, EFIS, pedals) directly to X-Plane via USB HID — without the Windows-only SimAppPro software. For Linux and macOS users, it is the only way to fully utilize Winwing hardware.
+WINCTRL is a native [plugin](../../glossary.md#plugin) that connects Winwing cockpit panels (MCDU, FCU, EFIS) directly to X-Plane via USB HID — without the Windows-only SimAppPro software. For Linux and macOS users, it is the only way to fully utilize Winwing hardware.
 
 ## Background
 
@@ -26,7 +26,7 @@ The plugin communicates directly with the hardware via USB HID: it reads button 
 
 **Supported hardware:** MCDU-32, PFP 3N/4/7, FCU, EFIS, ECAM32, PAP3, AGP, URSA MINOR Joystick/Throttle, 3N/3M PDC
 
-**Supported aircraft:** ToLiss A3XX family, Laminar A330/737, Zibo/LevelUp 737, FlightFactor 767/777/A350, iniSimulations A300/A310, JustFlight BAe 146, and others
+**Supported aircraft:** ToLiss A3XX family, Laminar A330/737, Zibo/LevelUp 737, FlightFactor 767/777/A350, JustFlight BAe 146, and others
 
 ## Value in Flight Simulation
 
@@ -59,7 +59,7 @@ Then reload udev rules:
 sudo udevadm control --reload-rules && sudo udevadm trigger
 ```
 
-The complete rule set with device-specific product IDs and symlinks is documented in the [repository README](https://github.com/rswilem/winctrl-xplane-plugin#linux) — use it as the authoritative source.
+The complete rule set with device-specific product IDs and symlinks is documented in the [repository README](https://github.com/rswilem/winctrl-xplane-plugin#linux-udev-rules) — use it as the authoritative source.
 
 ## Sources
 
