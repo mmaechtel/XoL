@@ -38,7 +38,7 @@ Die ZIP-Datei enthält zwei Komponenten:
 - `openSAM` → nach `Resources/plugins/` entpacken
 - `openSAM_Library` → nach `Custom Scenery/` entpacken
 
-In der `scenery_packs.ini` muss `openSAM_Library` über `SAM_Library` stehen. Vor dem Start von X-Plane müssen alle Installationen des kommerziellen SAM-Plugins, von [AutoDGS](autodgs.md) oder eines separaten SAM-Seasons-Emulators entfernt werden — openSAM beinhaltet beides.
+In der `scenery_packs.ini` muss `openSAM_Library` über `SAM_Library` stehen. Vor dem ersten Start müssen das [AutoDGS](autodgs.md)-Plugin und ein separat installierter SAM-Seasons-Emulator entfernt werden — openSAM enthält AutoDGS und die Seasons-Emulation bereits. Ist zusätzlich das kommerzielle SAM-Plugin installiert, sollte auch dieses entfernt werden (die `SAM_Library` kann bleiben, falls Szenerien sie benötigen).
 
 Es werden keine zusätzlichen Systempakete benötigt. Es sind keine Linux-spezifischen Probleme bekannt. Automatische Updates über den [SkunkCrafts Updater](../tools/skunkcrafts_updater.md) werden unterstützt.
 
