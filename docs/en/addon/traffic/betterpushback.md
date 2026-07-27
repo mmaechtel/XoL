@@ -31,7 +31,7 @@ Better Pushback replaces X-Plane's rudimentary default pushback function with a 
 
 ## Installation
 
-**Download:** [GitHub Releases (olivierbutler fork)](https://github.com/olivierbutler/BetterPusbackMod/releases) or [forums.x-plane.org](https://forums.x-plane.org/files/file/90556-better-pushback-for-x-plane-1112/)
+**Download:** [forums.x-plane.org](https://forums.x-plane.org/files/file/90556-better-pushback-for-x-plane-1112/) (stable) or [GitHub Releases (olivierbutler fork)](https://github.com/olivierbutler/BetterPusbackMod/releases) (beta)
 
 Extract the ZIP file to `Resources/plugins/`. This creates the `BetterPushback/` folder with the Linux binary at `lin_x64/BetterPushback.xpl`.
 
