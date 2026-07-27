@@ -35,7 +35,7 @@ Da Dutzende kommerzieller und Freeware-Entwickler das SkunkCrafts-Protokoll nutz
 
 **Download:** Der Standalone-Client wird über den [forums.x-plane.org Release-Thread](https://forums.x-plane.org/forums/topic/292710-20250206-skunkcrafts-updater-standalone-client-v32d-available/) verteilt. Ein kostenloser X-Plane.org-Account ist erforderlich.
 
-Das Linux-Binary ist eine einzelne Datei mit dem Namen `SkunkcraftsUpdater_lin`. Sie wird im X-Plane-Stammverzeichnis abgelegt (der Ordner, der `X-Plane-x86_64` enthält) und ausführbar gemacht:
+Die Linux-Binary ist eine einzelne Datei mit dem Namen `SkunkcraftsUpdater_lin`. Sie wird im X-Plane-Stammverzeichnis abgelegt (der Ordner, der `X-Plane-x86_64` enthält) und ausführbar gemacht:
 
 ```bash
 chmod +x SkunkcraftsUpdater_lin
