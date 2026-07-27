@@ -19,8 +19,8 @@ AutoGate ist ein [Plugin](../../glossary.md#plugin) für [X-Plane](../../glossar
 
 ## Funktionsumfang
 
-- **Jetways und DGS:** Zwei Jetway-Typen und vier DGS-Typen (Safedock, eigenständiges DGS und Marshaller)
-- **Andocken beim Abschalten:** Der Jetway dockt an, sobald die Triebwerke abgeschaltet werden und das Flugzeug innerhalb 0,5 m der Stoppposition steht
+- **Jetways und DGS:** Zwei Jetway-Typen (Glas, Stahl) und vier DGS-Typen (Safedock, eigenständiges DGS und Marshaller)
+- **Andocken bei Beacon-Aus:** Der Jetway dockt an, sobald der Beacon abgeschaltet wird und sich das Flugzeug an der Stoppposition befindet
 
 ## Mehrwert in der Flugsimulation
 
@@ -30,7 +30,7 @@ AutoGate war das erste Open-Source-Jetway-System für X-Plane und hat den Grunds
 
 **Download:** [GitHub Releases (hotbso-Fork)](https://github.com/hotbso/AutoGate/releases)
 
-Die ZIP-Datei nach `Resources/plugins/` entpacken. Es werden keine zusätzlichen Systempakete benötigt. Es sind keine Linux-spezifischen Probleme bekannt.
+Die ZIP-Datei nach `Resources/plugins/` entpacken. Die Linux-Binary linkt gegen OpenAL; es muss sichergestellt werden, dass libopenal1 installiert ist.
 
 ## Quellen
 
