@@ -43,7 +43,7 @@ Anschließend im XRoads-Verzeichnis:
 make xroads
 ```
 
-Das Executable wird ins X-Plane-Basisverzeichnis kopiert und dort ausgeführt — es wechselt in sein eigenes Verzeichnis und scannt nach Szenerie-Ordnern, die mit `zOrtho`, `zPhoto`, `zVstates` oder `z_` beginnen. Es erstellt `Custom Scenery/Xroads` mit den modifizierten `roads.net`-Dateien und der generierten `library.txt`. Dieser Ordner muss oben in `scenery_packs.ini` stehen.
+Die kompilierte Binary wird ins X-Plane-Basisverzeichnis kopiert und dort ausgeführt — es wechselt in sein eigenes Verzeichnis und scannt nach Szenerie-Ordnern, die mit `zOrtho`, `zPhoto`, `zVstates` oder `z_` beginnen. Es erstellt `Custom Scenery/Xroads` mit den modifizierten `roads.net`-Dateien und der generierten `library.txt`. Dieser Ordner muss oben in `scenery_packs.ini` stehen.
 
 ## Quellen
 
