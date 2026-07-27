@@ -12,7 +12,7 @@ FlyWithLua NG+ ist eine Lua-Scripting-Engine für [X-Plane](../../glossary.md#x-
 - **Plattformen:** Windows, macOS, Linux (native Binaries)
 - **Kompatibilität:** X-Plane 12 (NG+ Edition), X-Plane 11 (ältere NG-Edition)
 
-Das [Plugin](../../glossary.md#plugin) wird seit X-Plane 9 entwickelt und ist eines der meistverbreiteten X-Plane-Plugins. Viele andere Plugins wie 3jFPS oder AutoATC setzen FlyWithLua als Voraussetzung voraus.
+Das [Plugin](../../glossary.md#plugin) wird seit X-Plane 9 entwickelt und ist eines der meistverbreiteten X-Plane-Plugins. Viele Lua-basierte Skripte wie SGES setzen FlyWithLua als Voraussetzung voraus.
 
 ## Funktionsumfang
 
@@ -51,7 +51,7 @@ sudo apt install libglut3.12 libopenal1
 
 ### Fehlender libglut-Symlink auf Debian Bookworm
 
-Auf Debian Bookworm (Stable) enthält das Paket `libglut3.12` keinen `libglut.so.3`-Symlink. FlyWithLua linkt gegen `libglut.so.3` und lädt ohne diesen Symlink nicht — ohne Fehlermeldung im `Log.txt`.
+Auf Debian Bookworm (oldstable) enthält das Paket `libglut3.12` keinen `libglut.so.3`-Symlink. FlyWithLua linkt gegen `libglut.so.3` und lädt ohne diesen Symlink nicht — ohne Fehlermeldung im `Log.txt`.
 
 **Workaround:**
 
@@ -69,7 +69,7 @@ Beim Laden von Flugzeugen mit FMOD-Soundpaket (z.B. ToLiss A321) kann im `Log.tx
 FlyWithLua Error: Error in ../Fmod/FmodIntegration.cpp, line 732: An invalid parameter was passed to this function.
 ```
 
-Der Fehler ist nicht-fatal — das Plugin funktioniert weiterhin. Siehe [Issue #126](https://github.com/X-Friese/FlyWithLua/issues/126) für den aktuellen Stand.
+Das Plugin lädt und funktioniert trotz der Meldung weiterhin.
 
 ## Skript-Installation
 
