@@ -1,112 +1,59 @@
 # Umsetzungsstand: Plugin-Faktencheck
 
-**Datum:** 2026-07-26 (begonnen 2026-07-20)
+**Datum:** 2026-07-27 (begonnen 2026-07-20)
 **Branch:** `faktencheck-plugins-2026-07`
-**Stand:** 22 von 46 Seiten umgesetzt, Working Tree sauber
+**Stand:** ABGESCHLOSSEN — 46 von 46 Seiten umgesetzt, Review-Zyklus durchlaufen, Working Tree sauber
 
 ---
 
-## Prompt fuer die naechste Session
+## Ablauf und Endstand
 
-> Setze den Plugin-Faktencheck auf Branch `faktencheck-plugins-2026-07` fort.
-> Stand und Arbeitsregeln: `research/addons/UMSETZUNG_plugins_2026-07-20.md`.
-> Rohdaten (Findings, Entscheidungen, AUTO-Liste): `research/addons/faktencheck-2026-07-20/`
-> — Format und Extraktions-Rezept im dortigen README. Naechste Seite:
-> `docs/en/addon/scenery_addons/lst.md`. Pro Seite: Findings + Entscheidungen +
-> AUTO per Skript ziehen, EN zuerst aendern, DE angleichen, Zeilenzahl EN==DE
-> pruefen, `mkdocs build`, ein Commit pro Seite. Entscheidungen mit
-> `empfehlung: nein` nicht umsetzen, aber im Commit vermerken.
-> Token-sparsam: nur Zielstellen der Seiten lesen (grep + Read mit offset).
+1. **Umsetzung (46/46 Seiten).** Alle Findings aus `diff-data.json`, alle 17
+   AUTO-Findings aus `auto-per-page.json` und alle Ja-Entscheidungen aus
+   `umsetzen.json` sind umgesetzt; ein Commit pro Seite. Nein-Entscheidungen
+   wurden nicht umgesetzt und sind in den jeweiligen Commits vermerkt.
+   Seiten 23–46 wurden von Haiku-Subagenten umgesetzt (Betreiber-Vorgabe:
+   guenstige Modelle), sequenziell in drei Gruppen.
+2. **Opus-Review (alle 46 Paare).** Ergebnis: 9 kritische, 11 mittlere,
+   9 Hinweis-Findings — u.a. drei vom Haiku-Durchgang erfundene Aussagen
+   (XCamera Legacy-Build, KOSP "automatische Triebwerksauswahl",
+   LiveTraffic Steam-Pfad) und zwei vergessene AUTO-Findings (AutoGate).
+3. **Fix-Pass (18 Commits, `5bd1a9e`..`b24dfa9`).** Alle Findings behoben,
+   gegen die Original-Corrections gegengeprueft. Einzige bewusste Ausnahme:
+   `simbrief_simple_ofp.md` blieb unveraendert (war bereits korrekt;
+   "last update" ist die belegte Formulierung).
+4. **Opus-Nachpruefung.** Alle 28 Findings als behoben verifiziert,
+   **EN fuer freigabereif erklaert.** Betreiber-Entscheidung: EN ist ab
+   jetzt die Referenz (Truth), DE wird 1:1 daran ausgerichtet.
+5. **DE-Ausrichtungspass (5 Commits, `908c07a`..`de0fb63`).** Alle 46 Paare
+   geprueft, 5 DE-Seiten angeglichen (avitab, kabinxp, xroad, datareftool,
+   skunkcrafts_updater); Binary-Genus in geaenderten Zeilen auf feminin
+   vereinheitlicht. EN==DE-Zeilenzahl bei allen 46 Paaren.
 
-## Wo weitermachen
+Alle `mkdocs build`-Laeufe sauber (nur INFO). Stagnationshinweise
+vereinheitlicht auf "— letztes Release <Monat Jahr>, seitdem unverändert".
 
-Die naechste Seite ist `docs/en/addon/scenery_addons/lst.md`.
-Die Findings zu den restlichen `scenery_addons`-Seiten (lst, noaa_weather,
-xa-snow, xroad) sind bereits extrahiert und unauffaellig bis auf:
-lst Z14 (XP11) hat `empfehlung: nein`; bei xa-snow ist der Ersatz-Paketname
-`libcurl3t64-gnutls` trixie-spezifisch (Formulierung beachten).
+## Bewusst offen gelassen
 
-Alle Eingangsdaten liegen versioniert in `research/addons/faktencheck-2026-07-20/`
-(Dateibeschreibung und Extraktions-Rezept: dortiges README). Die Review-Seite liegt unter
+- **KabinXP Fat-Plugin-Hinweis:** zurueckgestellt (unbelegt), unveraendert.
+- **XP Walkaround Z44:** Windows-Vorbehalt trotz Nein-Empfehlung
+  aufgenommen — ausdrueckliche Betreiber-Vorgabe.
+- **Commit-Sprachen gemischt** (24 englische Titel aus den Subagenten-Gruppen).
+  Nur relevant, falls vor dem Merge gesquasht wird.
+- Vorbestehende Altlasten ausserhalb des Branch-Diffs (z.B. "Kabinakustik"-Tippfehler
+  in kosp_project.md, "Bausatz"/"Toolkit" in autogate.md, uebersetzter
+  `spd-say`-String in xchecklist.md) — nicht Teil dieses Faktenchecks.
+
+## Restschritte
+
+- Changelog-Sammeleintrag 2026-07-27 in `docs/{de,en}/index.md` (mit diesem
+  Stand committet).
+- Merge nach `main` bzw. `/abschluss` — Entscheidung des Betreibers.
+
+---
+
+## Eingangsdaten
+
+Rohdaten (Findings, Entscheidungen, AUTO-Liste, Format-README):
+`research/addons/faktencheck-2026-07-20/`. Review-Seite der Freigabe:
 `https://claude.ai/code/artifact/aa32a2fa-7ad1-476e-9b2f-93367c99232c`.
-
----
-
-## Erledigt (13 Seiten)
-
-| Seite | Kern der Aenderung |
-|-------|--------------------|
-| `cockpit/anyairline.md` | Linux-Build bringt kein FFmpeg mit (Aussage war falsch); Open-Beta-Status |
-| `cockpit/avitab.md` | komplett auf TeamAvitab-Fork; PDF-Crash-Abschnitt entfaellt (14 Zeilen) |
-| `cockpit/kabinxp.md` | unbelegter Entwicklername ersetzt |
-| `cockpit/linuxtrack.md` | Qt6/CMake-Build-Deps; GUI-Verbot zu Empfehlung; Install-Tab korrigiert |
-| `cockpit/opentrack.md` | unbelegte Freeze-Behauptung durch echten Grund ersetzt (2 Stellen) |
-| `cockpit/terrainradar.md` | Stagnation seit v1.31; 12.3-Aussage praezisiert |
-| `cockpit/xcamera.md` | Kompatibilitaetszusatz; falsche Quellen (OpenTrack) ersetzt |
-| `cockpit/xchecklist.md` | sw_remark-Mechanismus an 2 Stellen korrigiert; Bezugsquelle |
-| `cockpit/xpwalkaround.md` | Beta-Status, Skydiving-Feature, Windows-Vorbehalt zu SimpleWalkaround |
-| `flylua_scripts/3drainspeedstop.md` | erfundener AGL-Bezug an 2 Stellen entfernt |
-| `flylua_scripts/rain_rate.md` | Nutzen auf den Zweck des Autors umgestellt |
-| `flylua_scripts/sges.md` | unbelegter Ablageort der Updater-Konfiguration entfernt |
-| `flylua_scripts/simbrief_simple_ofp.md` | zwei unbelegte Feature-Bullets gestrichen |
-| `flylua_scripts/simloadmanager.md` | Flugzeugliste/Q4XP/Features aktualisiert; XP11 bewusst nicht |
-| `flylua_scripts/simreaperxp.md` | Cloud-Shadow praezisiert; Repo statt Releases; Dateiname |
-| `flylua_scripts/simscreenoverlay.md` | Menuepfad um Plugins-Praefix ergaenzt ("window" bewusst nicht) |
-| `flylua_scripts/xproturb.md` | Wetter-Integration + Turbulenz-Vorwarnung ergaenzt |
-| `cockpit/xtextureextractor.md` | Stagnationshinweis; Play-Store-Halluzination; JDK-Voraussetzung |
-| `kvm/mobiflight.md` | Netzwerk-Split: Connector kann nur 127.0.0.1, UDP-Relay Pflicht |
-| `kvm/myfs_flights.md` | Connector statt erfundenem Plugin mit IP-Einstellung |
-| `kvm/sayintentions.md` | P3D v6 raus, 650+ neutralisiert, Traffic Injection gestrichen; Entourage bewusst nicht |
-| `scenery_addons/aep.md` | v2-Stand: XP12-only, AEP Live, Payware-Installation, VRAM |
-
----
-
-## Offen (24 Seiten)
-
-`scenery_addons` 4 (`lst`, `noaa_weather`, `xa-snow`, `xroad`) ·
-`scripting` 2 · `sounds` 2 · `toliss` 4 · `tools` 6 · `traffic` 6
-
----
-
-## Arbeitsregeln fuer die Fortsetzung
-
-1. **Eine Seite pro Commit**, EN und DE gemeinsam. Kein Parallelbetrieb — ausdrueckliche Vorgabe des Betreibers.
-2. **AUTO-Findings mitfuehren.** Sie stehen NICHT in den Entscheidungskarten, sondern in `auto-per-page.json`. Sie waeren bei LinuxTrack beinahe verlorengegangen.
-3. **Entscheidungen mit `empfehlung: nein` nicht umsetzen** — im Commit vermerken, dass und warum sie ausbleiben.
-4. **Folgestellen mitziehen.** Wenn eine Korrektur eine zweite Stelle derselben Seite widersprüchlich zurueckliesse, diese mitaendern und im Commit nennen (bisher: AviTab Chart-Pfad Z51, OpenTrack Einleitungssatz Z23, Xchecklist Linux-Abschnitt Z51).
-5. **Kontrolle nach jeder Seite:** Zeilenzahl EN gegen DE, dann `mkdocs build` (muss ohne Warning/Error durchlaufen).
-6. **Kein Inhaltsverlust.** Nur streichen, wo die Entscheidung es ausdruecklich vorsieht.
-
----
-
-## Zurueckgestellt
-
-**`cockpit/kabinxp.md` — Linux-Hinweis auf Fat-Plugin-Layout.** Die Pruefung
-schreibt selbst, dass niemand den Archivinhalt verifiziert hat, dass es fuer den
-Dateinamen keine Quelle gibt und dass die bisherige Formulierung "nicht schlicht
-falsch" ist. Eine unbelegte Aussage durch eine andere zu ersetzen waere das
-Gegenteil eines Faktenchecks. Wird nur auf ausdrueckliche Anweisung nachgezogen.
-
----
-
-## Am Ende faellig
-
-- Changelog in `docs/de/index.md` und `docs/en/index.md`: **ein** komprimierter Sammeleintrag, keine Einzelliste. Maximal 3 Datumsbloecke, `index.md` zuletzt aendern.
-- Abschliessender `mkdocs build`.
-- Merge nach `main` bzw. Abschluss ueber `/abschluss`.
-
----
-
-## Abweichungen von der Empfehlung
-
-`cockpit/xpwalkaround.md`: Der Windows-Vorbehalt zu SimpleWalkaround wurde
-aufgenommen, obwohl die Empfehlung "nein" lautete — auf ausdrueckliche Vorgabe
-des Betreibers.
-
----
-
-## Bekannte Einschraenkung
-
-`docs/assets/video` ist ein Symlink auf `/mnt/videos/XoL/video`. Ist das Share
-nicht gemountet, bricht `mkdocs build` mit `FileNotFoundError` ab. Das ist kein
-Fehler der Aenderungen.
