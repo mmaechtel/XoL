@@ -11,7 +11,7 @@ XCamera ist ein Kamerasystem für [X-Plane](../../glossary.md#x-plane) 11/12, da
 - **Website:** [stickandrudderstudios.com/x-camera](https://stickandrudderstudios.com/x-camera/)
 - **Lizenz:** Kommerziell (Closed Source)
 - **Plattformen:** Windows, macOS, Linux (native Binaries)
-- **Kompatibilität:** X-Plane 11.3+ und X-Plane 12 (ältere X-Plane-9/10-Versionen bedient ein separater Legacy-Build, der nur noch Fehlerkorrekturen erhält)
+- **Kompatibilität:** X-Plane 11.3+ und X-Plane 12
 
 XCamera wird aktiv gepflegt. Das [Plugin](../../glossary.md#plugin) ist ein eigenständiges XPLM-Plugin und benötigt weder FlyWithLua noch andere Scripting-Frameworks.
 
