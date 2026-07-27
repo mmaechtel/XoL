@@ -17,7 +17,7 @@ XOrganizer is a powerful tool for managing and organizing X-Plane addons. It sup
 
 1. The official website of XOrganizer can be found at [4xplane.nl/xorganizer/](https://www.4xplane.nl/xorganizer/)
 2. XOrganizer is a commercial, closed-source product — it is purchased from the [X-Plane.org Store](https://store.x-plane.org)
-3. Download it from the official website and install it in any desired folder
+3. Download it from the [X-Plane.org Store](https://store.x-plane.org/xOrganizer-v3-XP12_p_1636.html) and install it in any desired folder — 4xplane.nl itself only hosts documentation
 
 ## Basic Usage
 
@@ -64,7 +64,7 @@ Through the automatic deactivation of unnecessary components, system performance
 - **Backup Function**: Backup and restore configurations
 - **Library Check**: Tracks versions and download locations of packages and detects missing or outdated scenery libraries
 - **Updates**: New versions are re-downloaded manually from the X-Plane.org Store account page (no in-app auto-update)
-- **Custom Sorting Rules**: User-defined rules that override the automatic categorisation
+- **Custom Sorting Rules**: User-defined rules that override the automatic categorization
 
 ## Tips and Tricks
 
@@ -73,7 +73,7 @@ Through the automatic deactivation of unnecessary components, system performance
 - Regular backups of the configuration are recommended
 - New versions are re-downloaded manually from the X-Plane.org Store account page
 - The automatic categorization serves as a good starting point
-- Custom sorting rules can be defined for sceneries the automatic categorisation gets wrong
+- Custom sorting rules can be defined for sceneries the automatic categorization gets wrong
 
 ## Troubleshooting
 
