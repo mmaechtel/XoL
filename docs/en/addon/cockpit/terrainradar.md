@@ -10,7 +10,7 @@ TerrainRadar is a native [plugin](../../glossary.md#plugin) that provides an EGP
 - **Developer:** Denis Antontsev (DrGluck) and Sergey Popovichev (Vanger)
 - **Download:** [X-Plane.org](https://forums.x-plane.org/files/file/37864-terrain-radar-vertical-situation-display/)
 - **Platforms:** Windows, macOS, Linux (native binaries)
-- **Compatibility:** X-Plane 12
+- **Compatibility:** X-Plane 12 — last release v1.31 (April 2023), unchanged since
 
 The plugin operates in two modes: for supported aircraft, it integrates directly into the navigation display (TERR button); for all other aircraft, a freely positionable overlay window is available.
 
@@ -29,7 +29,7 @@ Terrain awareness is safety-critical during approaches in mountainous terrain an
 
 !!! note "X-Plane 12.3+"
 
-    X-Plane 12.3 introduced native terrain display on the X1000 avionics instruments. TerrainRadar continues to add value through broader aircraft support, the VSD feature, and the universal overlay mode.
+    X-Plane 12.3 extended the built-in EGPWS terrain display of the X1000 avionics with Peaks Mode and Sea Level, and added Synthetic Vision to the PFD. TerrainRadar continues to add value through broader aircraft support, the VSD feature, and the universal overlay mode.
 
 ## Installation
 

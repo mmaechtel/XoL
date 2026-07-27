@@ -12,7 +12,7 @@ AviTab ist ein Open-Source-[Plugin](../../glossary.md#plugin) für [X-Plane](../
 - **Plattformen:** Windows, macOS, Linux (native Binaries)
 - **Kompatibilität:** X-Plane 11.20+ und X-Plane 12
 
-Die Entwicklungsaktivität ist gering — der letzte Commit und das letzte Release (v0.7.1) stammen vom September 2024. Das ursprüngliche Repository [fpw/avitab](https://github.com/fpw/avitab) wurde 2026 archiviert (schreibgeschützt); die aktive Pflege ist auf den Fork [TeamAvitab/avitab](https://github.com/TeamAvitab/avitab) übergegangen.
+Das ursprüngliche Repository [fpw/avitab](https://github.com/fpw/avitab) ist archiviert (schreibgeschützt, Issue-Tracker deaktiviert), nachdem sich Folke Will aus der Pflege zurückgezogen hat. Die Entwicklung wird unter [TeamAvitab/avitab](https://github.com/TeamAvitab/avitab) fortgeführt, wo regelmäßig Releases erscheinen.
 
 ## Funktionsumfang
 
@@ -22,7 +22,7 @@ Die Entwicklungsaktivität ist gering — der letzte Commit und das letzte Relea
 - **ChartFox-Integration:** Kostenlose Charts über Vatsim-Login
 - **Airport-App:** Flughafeninformationen, Runway-Daten, lokale Charts
 - **Routen-Overlay:** FMS-Dateien als Overlay auf der Moving Map
-- **Aircraft-Integration:** Einige Flugzeuge (z.B. Zibo 737) haben ein 3D-Tablet-Modell mit AviTab-Integration
+- **Aircraft-Integration:** Einige Flugzeuge (z.B. Zibo 737) haben ein 3D-Tablet-Modell mit AviTab-Integration; die Panel-Integration unter X-Plane 12 setzt voraus, dass das Flugzeug den aktuellen Integrationsmodus nutzt
 - **Standalone-Modus:** Kann auch als eigenständige Anwendung außerhalb von X-Plane laufen
 
 ### AviTab Browser (Ergänzungs-Plugin)
@@ -39,16 +39,16 @@ AviTab löst das Problem, dass während des Flugs häufig Karten, Checklisten od
 
 ## Installation
 
-**Download:** [github.com/fpw/avitab/releases](https://github.com/fpw/avitab/releases/tag/v0.7.1) oder [forums.x-plane.org](https://forums.x-plane.org/files/file/44825-avitab-vr-compatible-tablet-with-pdf-viewer-moving-maps-and-more/)
+**Download:** [github.com/TeamAvitab/avitab/releases](https://github.com/TeamAvitab/avitab/releases/latest) oder [forums.x-plane.org](https://forums.x-plane.org/files/file/44825-avitab-vr-compatible-tablet-with-pdf-viewer-moving-maps-and-more/)
 
-Die ZIP-Datei nach `Resources/plugins/` entpacken. Es entsteht der Ordner `AviTab/` mit der Linux-Binary unter `lin_x64/AviTab.xpl`.
+Die ZIP-Datei entpacken und den enthaltenen Ordner `Avitab/` nach `Resources/plugins/` kopieren. Die Linux-Binary liegt unter `Avitab/lin_x64/Avitab.xpl`.
 
 Alle Abhängigkeiten sind statisch gelinkt — es werden keine zusätzlichen Systempakete benötigt.
 
 **PDF-Charts ablegen:**
 
 ```bash
-cp meine_charts/*.pdf /pfad/zu/X-Plane\ 12/Resources/plugins/AviTab/charts/
+cp my_charts/*.pdf /path/to/X-Plane\ 12/Resources/plugins/Avitab/charts/
 ```
 
 Unterordner werden unterstützt und als Verzeichnisstruktur im Plugin angezeigt.
@@ -73,24 +73,9 @@ Eigene Kartenquellen werden über die Datei `online-maps/mapconfig.json` im Plug
 ]
 ```
 
-### PDF-Crash auf Linux
-
-!!! warning "PDF-Viewer auf bestimmten Distributionen nicht nutzbar"
-
-    AviTab stürzt beim Öffnen von PDF-Dateien auf Linux-Systemen mit neuerer `lcms2`-Bibliothek ab (SIGSEGV in `cmsSignalError`). Die statisch gelinkte MuPDF-Bibliothek kollidiert mit der systemweiten `lcms2`-Version.
-
-    **Betroffene Distributionen (bestätigt):**
-
-    - Ubuntu 24.04 / Kubuntu 24.10
-
-    **Debian Bookworm** (lcms2 2.14) ist nicht betroffen. Distributionen mit lcms2 ≥ 2.16 könnten ebenfalls betroffen sein.
-
-    **Workaround:** Ein Community-Mitglied hat den Crash durch Neukompilierung von AviTab mit einer neueren MuPDF-Version (1.26.11) behoben. Dies erfordert allerdings Selbstkompilierung — ein offizielles Update steht aus. Moving Map und andere Apps funktionieren unabhängig davon normal.
-
 ## Quellen
 
 - [AviTab — GitHub (TeamAvitab-Fork)](https://github.com/TeamAvitab/avitab)
-- [AviTab v0.7.1 — Release Notes](https://github.com/fpw/avitab/releases/tag/v0.7.1)
+- [AviTab — Release Notes](https://github.com/TeamAvitab/avitab/releases)
 - [AviTab Browser — GitHub](https://github.com/rswilem/avitab-browser)
-- [Issue #232 — PDF-Crash auf Linux](https://github.com/fpw/avitab/issues/232)
 - [AviTab — forums.x-plane.org](https://forums.x-plane.org/files/file/44825-avitab-vr-compatible-tablet-with-pdf-viewer-moving-maps-and-more/)

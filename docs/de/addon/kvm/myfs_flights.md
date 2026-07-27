@@ -38,7 +38,7 @@ Da My FS Flights keinen Linux-Build bietet, muss die App in einer Windows-VM lau
 
 **Verbindung**
 
-Im My FS Flights Plugin lässt sich die Ziel-IP-Adresse direkt in den Einstellungen konfigurieren. Damit kann eine Verbindung zu einer X-Plane-Instanz auf einem anderen Rechner hergestellt werden — oder vom KVM-Guest zu X-Plane auf dem Linux-Host.
+My FS Flights installiert einen *Connector* auf dem Simulator-Rechner, der den Simulator automatisch erkennt — es gibt kein X-Plane-Plugin und keine vom Hersteller dokumentierte Einstellung für eine entfernte Ziel-Adresse. Ein KVM-Guest muss X-Plane auf dem Linux-Host daher über das Netzwerk erreichen — eine Konfiguration, die die Herstellerdokumentation nicht abdeckt.
 
 !!! tip "Mit KVM und X-Plane unter Linux getestet"
 

@@ -11,7 +11,7 @@ XLinSpeak ist ein Linux-only [Plugin](../../glossary.md#plugin), das Text-to-Spe
 - **Repository:** [github.com/sparker256/XLinSpeak](https://github.com/sparker256/XLinSpeak) (XP12)
 - **Original:** [github.com/uglyDwarf/x-plane_plugins](https://github.com/uglyDwarf/x-plane_plugins/tree/master/XLinSpeak)
 - **Plattform:** Nur Linux
-- **Kompatibilität:** X-Plane 12 (sparker256-Fork)
+- **Kompatibilität:** X-Plane 12 (sparker256-Fork; letzter Commit Februar 2023, keine Releases seitdem)
 
 X-Plane 12 verwendet für das eingebaute ATC vorgenerierte Audiodateien, die auch unter Linux funktionieren. XLinSpeak wird primär für **Plugin-generierte Sprache** benötigt — etwa [Xchecklist](../cockpit/xchecklist.md)-Ansagen, 124thATC oder andere Plugins, die `XPLMSpeakString()` aufrufen.
 
@@ -37,7 +37,7 @@ Die vorkompilierte Binary befindet sich im Repository unter `XLinSpeak/lin_x64/X
 sudo apt install speech-dispatcher
 ```
 
-Das Standard-Backend espeak-ng funktioniert zuverlässig. Piper als alternatives speech-dispatcher-Backend ist derzeit unzuverlässig (Konfigurationsprobleme, Hänger) — das ist ein anderes Problem als der unten beschriebene Piper TTS Manager, der speech-dispatcher vollständig umgeht.
+Das Standard-Backend espeak-ng funktioniert zuverlässig. Kein dediziertes Piper-Modul für speech-dispatcher vorhanden — Piper lässt sich nur manuell via GenericExecuteSynth integrieren, anders als der unten beschriebene Piper TTS Manager.
 
 ### Build aus Quellcode
 
@@ -63,7 +63,7 @@ PTTSM überwacht eine Text-Eingabedatei und generiert WAV-Audio über Piper, sob
 ### Abhängigkeiten
 
 - [FlyWithLua](../scripting/flywithlua.md) NG+ für X-Plane 12
-- Piper-TTS-Binary — Linux-Build verfügbar bei [OHF-Voice/piper1-gpl](https://github.com/OHF-Voice/piper1-gpl/releases) (Nachfolger des archivierten rhasspy/piper)
+- Piper-TTS-Binary — [TheLouisHong/piper](https://github.com/TheLouisHong/piper/releases) Fork nutzen (piper_linux_x86_64.tar.gz); das OHF-Voice/piper1-gpl-Upstream liefert nur Python-Wheels. Der Inhalt des entpackten `piper`-Ordners gehört nach `Resources/plugins/FlyWithLua/Modules/PiperTTSManager/Resources/Piper_LIN`
 - Sprachmodelle (`.onnx` + `.onnx.json`) von [Hugging Face piper-voices](https://huggingface.co/rhasspy/piper-voices/tree/main)
 
 

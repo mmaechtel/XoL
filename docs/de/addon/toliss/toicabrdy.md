@@ -15,7 +15,7 @@ TOI Cabin Ready ist ein [FlyWithLua](../scripting/flywithlua.md)-Skript, das aut
 
 Das Skript automatisiert zwei Cabin-Ready-Auslöser:
 
-- **Abflug:** Startet einen Countdown (4–8 Minuten, skaliert nach Passagieranzahl), wenn das Beacon-Licht eingeschaltet wird
+- **Abflug:** Cabin Ready folgt etwa 4–8 Minuten nach dem Start der Abflugphase, skaliert nach Passagieranzahl
 - **Anflug:** Sendet Cabin Ready wenige Sekunden nachdem Klappen und Fahrwerk in der unteren Position sind
 
 Sonderfälle wie Durchstarten und Durchgangsflüge werden berücksichtigt — im schlechtesten Fall muss die FWD-CALL-Taste manuell gedrückt oder ein unnötiger Ton hingenommen werden. Das Skript hebt einen bestehenden Cabin-Ready-Status niemals auf.
@@ -25,7 +25,7 @@ Sonderfälle wie Durchstarten und Durchgangsflüge werden berücksichtigt — im
 - **Automatischer Abflug-Auslöser:** Beacon-On startet einen PAX-skalierten Countdown
 - **Automatischer Anflug-Auslöser:** Klappen + Fahrwerk unten löst Cabin Ready aus
 - **Go-Around-sicher:** Verarbeitet Fehlanflüge ohne fehlerhafte Zustände
-- **Alle ToLiss-Flugzeuge:** Funktioniert mit der gesamten ToLiss-Airbus-Familie (A319, A320neo, A321/neo, A330neo, A340-600)
+- **Alle ToLiss-Flugzeuge:** Funktioniert mit der gesamten ToLiss-Airbus-Familie (A319, A320 CEO/NEO, A321 CEO/NEO, A330-900, A340-600)
 
 ## Mehrwert in der Flugsimulation
 

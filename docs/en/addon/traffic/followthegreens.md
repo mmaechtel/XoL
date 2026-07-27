@@ -10,7 +10,7 @@ Follow the Greens (FtG) is a taxiway guidance system based on the real-world A-S
 - **Developer:** Pierre Mareschal (devleaks)
 - **Repository:** [github.com/devleaks/followthegreens](https://github.com/devleaks/followthegreens) (open source, MIT license)
 - **Platforms:** Windows, macOS, Linux (cross-platform via Python)
-- **Compatibility:** [X-Plane](../../glossary.md#x-plane) 11 and 12 (current "Follow the Greens 4D", requires [XPPython3](../scripting/xppython3.md) 4.5+)
+- **Compatibility:** [X-Plane](../../glossary.md#x-plane) 12 (current "Follow the Greens 4D"; Release 1 for X-Plane 11 is deprecated; requires [XPPython3](../scripting/xppython3.md) 4.5+)
 
 The plugin is actively developed. "Follow the Greens 4D" adds speed management — an A-SMGCS Level 4 feature.
 
@@ -35,7 +35,7 @@ The yellow ground arrows in X-Plane show the general taxi direction but offer no
 
 **Download:** [GitHub Releases](https://github.com/devleaks/followthegreens/releases)
 
-Copy the files `PI_FollowTheGreens.py`, `PI_SetRunwayLightIntensity.py`, and the `followthegreens/` folder to `Resources/plugins/PythonPlugins/`. After reloading Python scripts, a "Follow the greens..." entry appears in the Plugin menu.
+Copy the file `PI_FollowTheGreens.py` and the `followthegreens/` folder to `Resources/plugins/PythonPlugins/`. After reloading Python scripts, a "Follow the greens..." entry appears in the Plugin menu.
 
 Since FtG is a pure Python plugin, no native binaries are needed. There are no known Linux-specific issues.
 

@@ -12,7 +12,7 @@ AviTab is an open-source [plugin](../../glossary.md#plugin) for [X-Plane](../../
 - **Platforms:** Windows, macOS, Linux (native binaries)
 - **Compatibility:** X-Plane 11.20+ and X-Plane 12
 
-Development activity is low — the last commit and the latest release (v0.7.1) date from September 2024. The original [fpw/avitab](https://github.com/fpw/avitab) repository was archived (read-only) in 2026; active maintenance has moved to the [TeamAvitab/avitab](https://github.com/TeamAvitab/avitab) fork.
+The original [fpw/avitab](https://github.com/fpw/avitab) repository is archived (read-only, issue tracker disabled) after Folke Will stepped back from maintenance. Development continues under [TeamAvitab/avitab](https://github.com/TeamAvitab/avitab), which took over the project and publishes releases regularly.
 
 ## Features
 
@@ -22,7 +22,7 @@ Development activity is low — the last commit and the latest release (v0.7.1) 
 - **ChartFox integration:** Free charts via Vatsim login
 - **Airport app:** Airport information, runway data, local charts
 - **Route overlay:** FMS files as overlay on the moving map
-- **Aircraft integration:** Some aircraft (e.g., Zibo 737) have a 3D tablet model with AviTab integration
+- **Aircraft integration:** Some aircraft (e.g., Zibo 737) have a 3D tablet model with AviTab integration; panel integration for X-Plane 12 requires the aircraft to opt into the current integration mode
 - **Standalone mode:** Can also run as a standalone application outside of X-Plane
 
 ### AviTab Browser (Companion Plugin)
@@ -39,16 +39,16 @@ AviTab solves the problem of needing to look up charts, checklists, or manuals d
 
 ## Installation
 
-**Download:** [github.com/fpw/avitab/releases](https://github.com/fpw/avitab/releases/tag/v0.7.1) or [forums.x-plane.org](https://forums.x-plane.org/files/file/44825-avitab-vr-compatible-tablet-with-pdf-viewer-moving-maps-and-more/)
+**Download:** [github.com/TeamAvitab/avitab/releases](https://github.com/TeamAvitab/avitab/releases/latest) or [forums.x-plane.org](https://forums.x-plane.org/files/file/44825-avitab-vr-compatible-tablet-with-pdf-viewer-moving-maps-and-more/)
 
-Extract the ZIP file to `Resources/plugins/`. This creates the `AviTab/` folder with the Linux binary at `lin_x64/AviTab.xpl`.
+Extract the ZIP file and copy the `Avitab/` folder it contains into `Resources/plugins/`. The Linux binary is at `Avitab/lin_x64/Avitab.xpl`.
 
 All dependencies are statically linked — no additional system packages are required.
 
 **Placing PDF charts:**
 
 ```bash
-cp my_charts/*.pdf /path/to/X-Plane\ 12/Resources/plugins/AviTab/charts/
+cp my_charts/*.pdf /path/to/X-Plane\ 12/Resources/plugins/Avitab/charts/
 ```
 
 Subdirectories are supported and displayed as a folder structure in the plugin.
@@ -73,24 +73,9 @@ Custom map sources are defined in the `online-maps/mapconfig.json` file in the p
 ]
 ```
 
-### PDF Crash on Linux
-
-!!! warning "PDF viewer unusable on certain distributions"
-
-    AviTab crashes when opening PDF files on Linux systems with newer `lcms2` library versions (SIGSEGV in `cmsSignalError`). The statically linked MuPDF library conflicts with the system-wide `lcms2` version.
-
-    **Affected distributions (confirmed):**
-
-    - Ubuntu 24.04 / Kubuntu 24.10
-
-    **Debian Bookworm** (lcms2 2.14) is not affected. Distributions with lcms2 ≥ 2.16 may also be affected.
-
-    **Workaround:** A community member fixed the crash by recompiling AviTab with a newer MuPDF version (1.26.11). This requires self-compilation — an official update is pending. Moving map and other apps work normally regardless.
-
 ## Sources
 
 - [AviTab — GitHub (TeamAvitab fork)](https://github.com/TeamAvitab/avitab)
-- [AviTab v0.7.1 — Release Notes](https://github.com/fpw/avitab/releases/tag/v0.7.1)
+- [AviTab — Release Notes](https://github.com/TeamAvitab/avitab/releases)
 - [AviTab Browser — GitHub](https://github.com/rswilem/avitab-browser)
-- [Issue #232 — PDF crash on Linux](https://github.com/fpw/avitab/issues/232)
 - [AviTab — forums.x-plane.org](https://forums.x-plane.org/files/file/44825-avitab-vr-compatible-tablet-with-pdf-viewer-moving-maps-and-more/)

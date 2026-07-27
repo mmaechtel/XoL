@@ -12,7 +12,7 @@ FlyWithLua NG+ is a Lua scripting engine for [X-Plane](../../glossary.md#x-plane
 - **Platforms:** Windows, macOS, Linux (native binaries)
 - **Compatibility:** X-Plane 12 (NG+ Edition), X-Plane 11 (older NG Edition)
 
-The [plugin](../../glossary.md#plugin) has been in development since X-Plane 9 and is one of the most widely used X-Plane plugins. Many other plugins such as 3jFPS or AutoATC require FlyWithLua as a dependency.
+The [plugin](../../glossary.md#plugin) has been in development since X-Plane 9 and is one of the most widely used X-Plane plugins. Many plugins and scripts such as 3jFPS or SGES require FlyWithLua as a dependency.
 
 ## Features
 
@@ -51,7 +51,7 @@ sudo apt install libglut3.12 libopenal1
 
 ### Missing libglut Symlink on Debian Bookworm
 
-On Debian Bookworm (Stable), the `libglut3.12` package does not include a `libglut.so.3` symlink. FlyWithLua links against `libglut.so.3` and silently fails to load without it — no error message appears in `Log.txt`.
+On Debian Bookworm (oldstable), the `libglut3.12` package does not include a `libglut.so.3` symlink. FlyWithLua links against `libglut.so.3` and silently fails to load without it — no error message appears in `Log.txt`.
 
 **Workaround:**
 
@@ -59,7 +59,7 @@ On Debian Bookworm (Stable), the `libglut3.12` package does not include a `libgl
 sudo ln -s /usr/lib/x86_64-linux-gnu/libglut.so.3.12 /usr/lib/x86_64-linux-gnu/libglut.so.3
 ```
 
-On Debian Trixie (Testing) and Ubuntu 24.04+, the symlink is already included in the package.
+On Debian Trixie (stable) and Ubuntu 24.04+, the symlink is already included in the package.
 
 ### FMOD Error with Certain Aircraft
 
@@ -69,7 +69,7 @@ When loading aircraft with FMOD sound packages (e.g., ToLiss A321), the followin
 FlyWithLua Error: Error in ../Fmod/FmodIntegration.cpp, line 732: An invalid parameter was passed to this function.
 ```
 
-The error is non-fatal — the plugin continues to function. See [Issue #126](https://github.com/X-Friese/FlyWithLua/issues/126) for status.
+The plugin continues to load and function despite the message. [Issue #126](https://github.com/X-Friese/FlyWithLua/issues/126) is open and so far unanswered by the maintainers.
 
 ## Script Installation
 

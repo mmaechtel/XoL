@@ -10,20 +10,20 @@ description: "3D Rain Stop für X-Plane 12 — FlyWithLua-Skript zum Abschalten 
 - **Entwickler:** domvc10
 - **Download:** [X-Plane.org](https://forums.x-plane.org/files/file/88602-3d-rain-stop-lua-script-xp12/)
 - **Plattformen:** Windows, macOS, Linux (reines Lua)
-- **Kompatibilität:** X-Plane 12
+- **Kompatibilität:** X-Plane 12 — letztes Release November 2023, seitdem unverändert
 - **Abhängigkeit:** [FlyWithLua NG+](../scripting/flywithlua.md)
 
 Der Download enthält zwei Skripte — nur eines sollte gleichzeitig aktiv sein:
 
 - **3drainspeedstop.lua** — Deaktiviert 3D-Regen über 100 Knoten, reaktiviert unter 99 Knoten
-- **3drainheightstop.lua** — Deaktiviert 3D-Regen über 7.000 ft AGL, reaktiviert unterhalb dieser Höhe
+- **3drainheightstop.lua** — Deaktiviert 3D-Regen über 7.000 ft, reaktiviert unterhalb dieser Höhe
 
 Beide Schwellenwerte lassen sich durch Bearbeiten der Werte in der `.lua`-Datei anpassen.
 
 ## Funktionsumfang
 
 - **Geschwindigkeitsbasierte Regensteuerung:** Automatisches Ein/Aus basierend auf der angezeigten Fluggeschwindigkeit
-- **Höhenbasierte Regensteuerung:** Alternative Variante mit AGL-Höhe als Auslöser
+- **Höhenbasierte Regensteuerung:** Alternative Variante mit der Höhe als Auslöser
 - **Windschutzscheibe unbeeinflusst:** Deaktiviert nur die fallenden 3D-Regenpartikel — der Regeneffekt auf der Windschutzscheibe bleibt aktiv
 - **Editierbare Schwellenwerte:** Geschwindigkeits- und Höhenwerte sind im Skript-Quelltext konfigurierbar
 

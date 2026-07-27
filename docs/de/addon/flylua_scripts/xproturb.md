@@ -38,7 +38,8 @@ Turbulenz wird aus anerkannten Luftfahrtnormen abgeleitet statt aus abgestimmten
 - **von-Kármán- / Dryden-Spektren:** Zwei anerkannte Böenmodelle, die die Turbulenzenergie über realistische Wellenlängen verteilen statt über flaches Zufallsrauschen
 - **CAT:** Clear Air Turbulence mit Richardson-Zahl-Modell, tropopausen-fixiertem CAT-Profil und Kelvin-Helmholtz-Billows — die heimtückische Turbulenz, die ohne sichtbare Vorwarnung auftritt
 - **Mountain-Wave-Suite:** Queney-Leewellen, Rotorzonen, Wave-Breaking, hydraulischer Sprung (Boulder/Bora-Fallwinde) und der Scorer-Parameter für gefangene vs. propagierende Wellen
-- **CB-/Sturmmodellierung:** Cumulonimbus-Kerne, Hagel- und Starkregen-Turbulenz nach den offiziellen FAA-Schweregraden (leicht → extrem)
+- **CB-/Sturmmodellierung:** Cumulonimbus-Kerne, Hagel- und Starkregen-Turbulenz nach den offiziellen FAA-Schweregraden (leicht → extrem), mit Turbulenz-Vorwarnung
+- **Wetter-Integration:** Die Engine liest X-Planes eigenes 3D-Wettergitter und kompensiert Doppelzählung — oder übernimmt die Turbulenz im eigenen Modus vollständig
 - **Fly-by-Wire-Erkennung:** Bei Airbus-Maschinen erkennt die Engine das elektronische Steuerungssystem und lässt dessen Flight-Control-Laws die Charakteristik bestimmen, wie es das reale Flugzeug auch täte
 
 ## Mehrwert in der Flugsimulation

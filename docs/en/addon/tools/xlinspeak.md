@@ -11,7 +11,7 @@ XLinSpeak is a Linux-only [plugin](../../glossary.md#plugin) that adds text-to-s
 - **Repository:** [github.com/sparker256/XLinSpeak](https://github.com/sparker256/XLinSpeak) (XP12)
 - **Original:** [github.com/uglyDwarf/x-plane_plugins](https://github.com/uglyDwarf/x-plane_plugins/tree/master/XLinSpeak)
 - **Platform:** Linux only
-- **Compatibility:** X-Plane 12 (sparker256 fork)
+- **Compatibility:** X-Plane 12 (sparker256 fork; last commit February 2023, no releases since)
 
 X-Plane 12 uses pre-generated audio files for its built-in ATC, which work on Linux without any TTS engine. XLinSpeak is primarily needed for **plugin-generated speech** — such as [Xchecklist](../cockpit/xchecklist.md) announcements, 124thATC, or other plugins calling `XPLMSpeakString()`.
 
@@ -37,7 +37,7 @@ The pre-compiled binary is in the repository at `XLinSpeak/lin_x64/XLinSpeak.xpl
 sudo apt install speech-dispatcher
 ```
 
-The default espeak-ng backend works reliably. Piper as an alternative speech-dispatcher backend is currently unreliable (configuration issues, hangs) — this is a different issue from the Piper TTS Manager described below, which bypasses speech-dispatcher entirely.
+The default espeak-ng backend works reliably. No dedicated Piper module for speech-dispatcher exists — Piper can only be integrated manually via GenericExecuteSynth, which is different from the Piper TTS Manager described below.
 
 ### Build from Source
 
@@ -63,7 +63,7 @@ PTTSM monitors a text input file and generates WAV audio via Piper whenever new 
 ### Dependencies
 
 - [FlyWithLua](../scripting/flywithlua.md) NG+ for X-Plane 12
-- Piper TTS binary — Linux build available from [OHF-Voice/piper1-gpl](https://github.com/OHF-Voice/piper1-gpl/releases) (successor to the archived rhasspy/piper)
+- Piper TTS binary — use [TheLouisHong/piper](https://github.com/TheLouisHong/piper/releases) fork (piper_linux_x86_64.tar.gz); the OHF-Voice/piper1-gpl upstream provides only Python wheels. Extract the contents of the unzipped `piper` folder into `Resources/plugins/FlyWithLua/Modules/PiperTTSManager/Resources/Piper_LIN`
 - Voice models (`.onnx` + `.onnx.json`) from [Hugging Face piper-voices](https://huggingface.co/rhasspy/piper-voices/tree/main)
 
 

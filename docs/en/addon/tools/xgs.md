@@ -12,15 +12,14 @@ XGS (Landing Speed Plugin Reloaded) is a standalone [plugin](../../glossary.md#p
 - **Platforms:** Windows, macOS, Linux (native binaries)
 - **Compatibility:** [X-Plane](../../glossary.md#x-plane) 12
 
-XGS is an evolution of the original Landing Speed Plugin and is actively maintained.
+XGS is an evolution of the original Landing Speed Plugin. Development has stalled (last release June 2023, last commit October 2024), but the plugin remains functional.
 
 ## Features
 
 - **Sink rate & G-forces:** Maximum sink rate (fpm) and maximum G-force on landing
 - **Quality rating:** Textual landing quality assessment from a configurable file (e.g., "Smooth landing", "Hard landing, requires inspection")
-- **Speed & pitch:** Ground speed and pitch angle at touchdown
-- **Bank angle:** Lateral bank angle at touchdown
-- **Touchdown distance:** Distance from threshold crossing to touchdown
+- **Speed & pitch:** Indicated airspeed and pitch angle at touchdown; on ToLiss Airbus models the VLS is shown alongside the IAS
+- **Threshold crossing:** Height above the threshold and distance from the threshold to touchdown
 - **Centerline deviation:** Lateral and angular deviation from runway centerline
 - **ToLiss detection:** For ToLiss models, XGS detects ground contact via main landing gear strut compression and additionally reports nosewheel touchdown distance
 

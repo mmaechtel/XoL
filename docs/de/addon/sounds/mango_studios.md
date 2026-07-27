@@ -10,19 +10,20 @@ Mango Studios produziert FMOD-basierte Sound-Replacements für die gesamte ToLis
 - **Entwickler:** Mango Studios (Simon)
 - **Website:** [mangostudiossounds.com](https://www.mangostudiossounds.com/)
 - **Support:** [Discord](https://discord.gg/YUG4yTz)
-- **Kompatibilität:** X-Plane 12
+- **Kompatibilität:** X-Plane 11 und X-Plane 12
+- **Plattformen:** Windows, macOS, Linux
 
 ## Verfügbare Pakete
 
-| Paket | Flugzeug | Triebwerksvarianten | Version |
-|-------|----------|---------------------|---------|
-| A319 | ToLiss A319 | CFM56, IAE V2500 | 1.02 (Okt 2025) |
-| A320neo+CEO | ToLiss A320 NEO + CEO | LEAP-1A, PW1100G, CFM56, IAE V2500 | 1.03 (Sep 2025) |
-| A321 | ToLiss A321 CEO + NEO | CFM56, LEAP-1A, IAE V2500, PW1100G | 1.03 (Okt 2025) |
-| A330-900 | ToLiss A330-900neo | Trent 7000, Trent 700, PW4000, CF-6 | 1.03 (Okt 2025) |
-| A340 | ToLiss A340-600 | Rolls Royce Trent 556 | 2.01 (Okt 2025) |
+| Paket | Flugzeug | Triebwerksvarianten |
+|-------|----------|---------------------|
+| A319 | ToLiss A319 | CFM56, IAE V2500 |
+| A320neo+CEO | ToLiss A320 NEO + CEO | LEAP-1A, PW1100G, CFM56, IAE V2500 |
+| A321 | ToLiss A321 CEO + NEO | CFM56, LEAP-1A, IAE V2500, PW1100G |
+| A330-900 | ToLiss A330-900neo | Trent 7000, Trent 700, PW4000, CF-6 |
+| A340 | ToLiss A340-600 | Rolls Royce Trent 556 |
 
-Das **ToLiss Airbus Family Bundle** (A319 + A320 + A321) ist für $19.99 erhältlich.
+Das **ToLiss Airbus Family Bundle** kombiniert die A319-, A320- und A321-Packs zu reduziertem Preis.
 
 ## Funktionsumfang
 

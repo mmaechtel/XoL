@@ -12,7 +12,7 @@ XTextureExtractor verwandelt Tablets, Monitore oder Raspberry Pis in Live-Cockpi
 - **Plattformen:** Windows, macOS, Linux (native Binaries)
 - **Kompatibilität:** X-Plane 11 und X-Plane 12 ([Vulkan](../../glossary.md#vulkan-api) und OpenGL)
 
-Das Plugin wird gelegentlich aktualisiert und unterstützt über 40 vorkonfigurierte Flugzeugkonfigurationen, darunter Zibo 737, ToLiss A321, Flight Factor A320/757/767/777 und viele Laminar-Standardflugzeuge.
+Die Entwicklung ist ins Stocken geraten — der letzte Commit stammt vom Juni 2025. Das Plugin unterstützt über 40 vorkonfigurierte Flugzeugkonfigurationen, darunter Zibo 737, ToLiss A321, Flight Factor A320/757/767/777 und viele Laminar-Standardflugzeuge.
 
 ## Funktionsumfang
 
@@ -20,8 +20,8 @@ Das Plugin wird gelegentlich aktualisiert und unterstützt über 40 vorkonfiguri
 - **Lokale Fenster:** Instrumente in separaten X-Plane-Fenstern anzeigen, auf externe Monitore verschieben, Positionen speichern
 - **Netzwerk-Streaming:** Streamt PNG-kodierte Instrumenten-Frames über TCP an verbundene Clients
 - **Aircraft-Definitionen:** Einfache `.tex`-Textdateien definieren Instrumentbereiche — eigene Flugzeuge können leicht ergänzt werden
-- **Android-App:** Zeigt 2 Panels gleichzeitig mit automatischer X-Plane-Erkennung (seit März 2025 nicht mehr im Google Play Store — APK über den Quellcode kompilierbar)
-- **Java-Desktop-Client:** Plattformübergreifend (Windows, Linux, macOS, Raspberry Pi), im Download enthalten
+- **Android-App:** Zeigt 2 Panels gleichzeitig mit automatischer X-Plane-Erkennung, verfügbar über Google Play
+- **Java-Desktop-Client:** Plattformübergreifend (Windows, Linux, macOS, Raspberry Pi), im Download enthalten — Start über `run-xte.sh`, benötigt ein JDK (`javac` und `java` im `PATH`, z.B. `default-jdk`)
 
 ### Einschränkungen
 

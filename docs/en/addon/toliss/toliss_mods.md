@@ -7,7 +7,7 @@ Aircraft modifications for the ToLiss fleet (A319, A320 CEO/NEO, A321 CEO/NEO) â
 
 ## Easy Freighter â€” A321 P2F Cargo Door Mod
 
-Simulates a cargo main door for the A321P2F/A321PCF with rigid cargo barrier and window plugs as a FlyWithLua object. Includes freight airline liveries. A separate version also exists for the A320. Not officially approved by ToLiss.
+Simulates an A321 freighter conversion (A321P2F/A321PCF). The kit is a drag-and-drop object for the aircraft's `objects/` folder; the cargo livery must contain `external_Extras = YES` and `custom_Cabin = F` in its `livery.tlscfg`. A demonstration livery is included. A separate version also exists for the A320. Not officially approved by ToLiss.
 
 - **Developer:** XPJavelin
 - **Download:** [forums.x-plane.org](https://forums.x-plane.org/files/file/92976-easy-freighter-conversion-kit-for-the-toliss-321/)
@@ -21,11 +21,10 @@ Available engines: CFM56-5A, CFM56-5B, IAE V2500 (CEO variants), CFM LEAP-1A, PW
 Installation requires two steps: downloading the engine OBJ files from the Threshold Forums, then patching the `.acf` file to reference the new models. The **Carda Engine Installer** by Todaloo automates the `.acf` patching step. The separate **Carda Engines Mod Fix** by Travis is recommended to fix animation bugs.
 
 - **Engine mod developer:** Carda Jowol
-- **Installer developer:** Todaloo
+- **Installer developer:** iy4vet
 - **Engine downloads:** [Threshold Forums](https://forum.thresholdx.net/files/category/36-mods/) (free)
-- **Installer download:** [forums.x-plane.org](https://forums.x-plane.org/files/file/94704-carda-engine-installer-for-toliss-a320-family/)
-- **Mod Fix download:** [Threshold Forums](https://forum.thresholdx.net/files/file/3685-carda-engines-mod-fix-for-toliss-airbus/)
+- **Installer download:** [forums.x-plane.org](https://forums.x-plane.org/files/file/99205-carda-engine-mod-installer-for-toliss-a319-a320-a321/)
 
-!!! warning "Linux: Installer is Windows-only"
+!!! note "Linux: native installer binary"
 
-    The Carda Engine Installer is a Windows `.exe`. On Linux, it can be run inside a [KVM](../../linux/extensions/kvm.md) Windows VM. The engine models themselves (OBJ/DDS) are platform-independent and work on Linux without modification. The installer must be re-run after every ToLiss aircraft update.
+    The installer ships a native Linux binary (`install-carda-linux-x64`, also ARM64). Make it executable with `chmod +x` and run it from the aircraft folder. Alternatively, `install_carda.py` runs directly with Python 3.10+ and needs no external dependencies. The engine models themselves (OBJ/DDS) are platform-independent. The installer must be re-run after every ToLiss aircraft update.

@@ -19,7 +19,7 @@ SimScreen Overlay ist ein [FlyWithLua](../scripting/flywithlua.md)-Skript, das X
 - **SimBrief-Integration:** Automatischer Import von Flugplandaten über die Pilot-ID
 - **Editierbare Felder:** Flugzeugtyp, Abflug-ICAO und Ankunft-ICAO lassen sich manuell eingeben (für VFR oder Flüge ohne SimBrief)
 - **Nur bei Aufnahme sichtbar:** Overlay wird nur im Moment des Screenshots aktiviert
-- **Einstellungs-UI:** Konfigurierbar über `FlyWithLua Macros > SimScreen Overlay: Settings`
+- **Einstellungs-UI:** Konfigurierbar über `Plugins > FlyWithLua Macros > SimScreen Overlay: Settings`
 
 ## Mehrwert in der Flugsimulation
 

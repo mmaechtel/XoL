@@ -3,7 +3,7 @@ description: "XP Walkaround für X-Plane 12 — First-Person-Walkaround mit Tasc
 ---
 # XP Walkaround
 
-XP Walkaround ist ein kommerzielles [Plugin](../../glossary.md#plugin) für [X-Plane](../../glossary.md#x-plane) 12, das First-Person-Bewegung außerhalb des Cockpits ermöglicht — um das Flugzeug herumgehen, die Flughafenumgebung erkunden und das Vorfeld nachts mit integrierter Taschenlampe inspizieren. Das Plugin läuft nativ unter Linux.
+XP Walkaround ist ein kommerzielles [Plugin](../../glossary.md#plugin) für [X-Plane](../../glossary.md#x-plane) 12, das First-Person-Bewegung außerhalb des Cockpits ermöglicht — um das Flugzeug herumgehen, die Flughafenumgebung erkunden und das Vorfeld nachts mit integrierter Taschenlampe inspizieren. Das Plugin läuft nativ unter Linux und wird derzeit als Beta-Release ausgeliefert.
 
 ## Hintergrund
 
@@ -20,6 +20,7 @@ Das Plugin liefert native Binaries für alle drei Plattformen — unter Linux si
 - **Erst-/Drittperson-Ansicht:** Wechsel zwischen Erst- und Drittperson-Perspektive
 - **Mouse Look:** Mit M-Taste umschalten für natürliches Umsehen beim Gehen. Optionale invertierte Y-Achse. Bei deaktiviertem Mouse Look bleibt X-Planes Standard-Rechtsklick-Kamera erhalten.
 - **Taschenlampe:** Mit F-Taste umschalten für dunkle Cockpits, Kabinen und nächtliche Vorfeld-Inspektionen. Lautstärke über Plugin-Einstellungen regelbar.
+- **Fallschirmspringen:** Ab 500 ft erscheint im Plugin-Fenster eine Schaltfläche „Skydive!". Freier Fall mit Körperlagensteuerung, Schirmöffnung über die F-Taste (automatisch bei 500 ft), steuerbarer Gleitschirm und nahtloser Übergang in den Walk Mode bei der Landung.
 - **Campsite-System:** Lagerplatz mit Lagerfeuer vor der aktuellen Blickrichtung aufstellen (erfordert X-Plane 12.04+). Aufbau, Abbruch oder Abbau über die Benutzeroberfläche. Konzipiert für Bush Flying und abgelegene Landeplätze.
 - **Steuerung:** WASD-Bewegung, Q/E Neigen, C Ducken, Backspace Springen, ESC Walk Mode beenden
 - **Plugin-Fenster:** Schwebendes, größenveränderbares ImGui-Fenster über das Plugins-Menü erreichbar. Optionale automatische Anzeige beim Start.
@@ -41,7 +42,8 @@ Als Standalone-Plugin nach `Resources/plugins/` installieren. Nach dem ersten St
 
 ## Kostenlose Alternative: SimpleWalkaround
 
-[SimpleWalkaround](https://forums.x-plane.org/files/file/96508-simplewalkaround/) ist ein kostenloses Plugin für einfache Walkaround-Bewegung außerhalb des Cockpits. Es nutzt WASD-Bewegungssteuerung, Sprint (C) und Ducken (X), bietet aber nicht die erweiterten Funktionen von XP Walkaround wie Taschenlampe, Campsite-System, Mouse Look und persistente Einstellungen.
+[SimpleWalkaround](https://forums.x-plane.org/files/file/96508-simplewalkaround/) ist ein kostenloses Plugin für einfache Walkaround-Bewegung außerhalb des Cockpits. Es nutzt WASD-Bewegungssteuerung, Sprint (C) und Ducken (X), bietet aber nicht die erweiterten Funktionen von XP Walkaround wie Taschenlampe, Campsite-System, Mouse Look und persistente Einstellungen. Der Entwickler testet ausschließlich unter Windows und sichert das Verhalten auf anderen Plattformen nicht zu — der Linux-Betrieb ist also ungetestet.
+
 ## Quellen
 
 - [XP Walkaround — Gumroad](https://clemacamelc.gumroad.com/l/xpwalkaround)

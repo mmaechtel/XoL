@@ -8,38 +8,26 @@ KOSP Project ist ein umfassendes FMOD-Sound-Replacement für die ToLiss A319, A3
 ## Hintergrund
 
 - **Entwickler:** Nguyen Duc Binh (auch Sound-Designer des FlightFactor 777v2)
-- **Kompatibilität:** X-Plane 12
-- **Aktuelle Version:** 1.7 (Dezember 2025)
+- **Kompatibilität:** X-Plane 11 und X-Plane 12
 
 ## Funktionsumfang
 
 - **4 Triebwerksvarianten:** CFM56, IAE V2500, LEAP-1A, PW1000G — alle in einem Paket
 - **Cockpit-Sounds:** Schalter, Knöpfe, Drehregler, Türen — aufgenommen an einer echten A320
-- **System-Sounds:** APU, PTU, Hydraulik, Fahrwerk, Blower, Kabinakustik
+- **System-Sounds:** APU, PTU, Hydraulik, Fahrwerk, Blower, Kabinenakustik
 - **Umgebung:** Environmental Sounds, Ambient Noise, Ground Roll
 - **100% Surround Sound**
 - **C-Plugin** mit In-Sim-Menü für Mixer, Equalizer, Speaker/Headset-Konfiguration
 
 ## Unterstützte Flugzeuge
 
-| Flugzeug | Triebwerksvarianten |
-|----------|---------------------|
-| ToLiss A319 | CFM56, IAE V2500 |
-| ToLiss A320 CEO | CFM56, IAE V2500 |
-| ToLiss A320 NEO | LEAP-1A, PW1000G |
-| ToLiss A321 CEO | CFM56 |
-| ToLiss A321 NEO | LEAP-1A |
-
-A330 und A340 werden nicht unterstützt.
+Das KOSP-Paket enthält Soundbanks für die ToLiss A319, A320 und A321 (CEO- und NEO-Varianten) und deckt die Triebwerksvarianten CFM56, IAE V2500, LEAP-1A und PW1000G ab. Für jede Variante wird dasselbe Archiv verwendet — Soundbanks, die zum installierten Flugzeug nicht passen, werden schlicht nicht geladen. A330 und A340 werden nicht unterstützt.
 
 ## Installation
 
-Den Inhalt des `fmod/`-Ordners im ToLiss-Flugzeugverzeichnis ersetzen:
-
-1. Originalen `fmod/`-Ordner sichern
-2. KOSP-Archiv entpacken
-3. FMOD-Bankdateien in den `fmod/`-Ordner des Flugzeugs kopieren (z.B. `Aircraft/ToLissA321/fmod/`)
-4. Vorhandene Dateien ersetzen
+1. Das Originalverzeichnis des Flugzeugs sichern
+2. KOSP-Archiv in das Wurzelverzeichnis des Flugzeugs entpacken (z.B. `Aircraft/ToLissA321/`)
+3. Vorhandene Dateien ersetzen
 
 Das mitgelieferte C-Plugin bietet ein In-Sim-Menü für Lautstärke-, Mixer- und Equalizer-Einstellungen.
 

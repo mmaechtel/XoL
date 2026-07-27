@@ -12,7 +12,7 @@ XTextureExtractor turns tablets, monitors, or Raspberry Pis into live cockpit in
 - **Platforms:** Windows, macOS, Linux (native binaries)
 - **Compatibility:** X-Plane 11 and X-Plane 12 ([Vulkan](../../glossary.md#vulkan-api) and OpenGL)
 
-The plugin receives occasional updates and supports over 40 preconfigured aircraft configurations, including Zibo 737, ToLiss A321, Flight Factor A320/757/767/777, and many Laminar default aircraft.
+Development has stalled — the last commit dates from June 2025. The plugin supports over 40 preconfigured aircraft configurations, including Zibo 737, ToLiss A321, Flight Factor A320/757/767/777, and many Laminar default aircraft.
 
 ## Features
 
@@ -20,8 +20,8 @@ The plugin receives occasional updates and supports over 40 preconfigured aircra
 - **Local windows:** Display instruments in separate X-Plane windows, move to external monitors, save positions
 - **Network streaming:** Streams PNG-encoded instrument frames over TCP to connected clients
 - **Aircraft definitions:** Simple `.tex` text files define instrument regions — custom aircraft can be added easily
-- **Android app:** Displays 2 panels simultaneously with automatic X-Plane discovery (removed from Google Play in March 2025 — APK can be built from source)
-- **Java desktop client:** Cross-platform (Windows, Linux, macOS, Raspberry Pi), included in the download
+- **Android app:** Displays 2 panels simultaneously with automatic X-Plane discovery, available from Google Play
+- **Java desktop client:** Cross-platform (Windows, Linux, macOS, Raspberry Pi), included in the download — started via `run-xte.sh` and requires a JDK (`javac` and `java` in `PATH`, e.g. `default-jdk`)
 
 ### Limitations
 

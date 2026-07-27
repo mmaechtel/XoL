@@ -10,7 +10,7 @@ AnyAirline is a passenger cabin immersion tool for [X-Plane](../../glossary.md#x
 - **Developer:** AnyAirline
 - **Download:** [forums.x-plane.org](https://forums.x-plane.org/files/file/100112-anyairline-ai-cabin-crew-passenger-ife-airline-immersion) · [anyairline.app](https://anyairline.app)
 - **Platforms:** Windows, Linux, macOS (desktop connector, packaged runtime included)
-- **Compatibility:** X-Plane 12, MSFS 2020/2024
+- **Compatibility:** X-Plane 12, MSFS 2020/2024 (open beta)
 - **Account:** Free AnyAirline account required (online workspace for sync, workshop and credits)
 - **Pricing:** Freemium — local English voice and passenger IFE map are free
 
@@ -36,7 +36,7 @@ Create a free AnyAirline account, then install the desktop connector — the loc
 
 ### Linux Notes
 
-The connector officially supports Linux with a packaged runtime included (8 GB RAM recommended) — no separate dependencies are required. The cloud features run in the browser-based workspace and are platform-independent.
+The connector officially supports Linux with a packaged Python runtime included (8 GB RAM minimum, Ubuntu 22.04/24.04 LTS or a compatible x64 desktop). Unlike the Windows build it does not bundle FFmpeg — install `ffmpeg`, `ffprobe` and `espeak-ng` from the distribution repositories for the local voice fallback. The cloud features run in the browser-based workspace and are platform-independent.
 
 ## Sources
 

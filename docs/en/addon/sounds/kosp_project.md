@@ -8,8 +8,7 @@ KOSP Project is a comprehensive FMOD sound replacement for the ToLiss A319, A320
 ## Background
 
 - **Developer:** Nguyen Duc Binh (also sound designer for the FlightFactor 777v2)
-- **Compatibility:** X-Plane 12
-- **Current version:** 1.7 (December 2025)
+- **Compatibility:** X-Plane 11 and X-Plane 12
 
 ## Features
 
@@ -22,24 +21,13 @@ KOSP Project is a comprehensive FMOD sound replacement for the ToLiss A319, A320
 
 ## Supported Aircraft
 
-| Aircraft | Engine Variants |
-|----------|----------------|
-| ToLiss A319 | CFM56, IAE V2500 |
-| ToLiss A320 CEO | CFM56, IAE V2500 |
-| ToLiss A320 NEO | LEAP-1A, PW1000G |
-| ToLiss A321 CEO | CFM56 |
-| ToLiss A321 NEO | LEAP-1A |
-
-A330 and A340 are not supported.
+The KOSP package includes sound banks for the ToLiss A319, A320, and A321 aircraft families (CEO and NEO variants), covering CFM56, IAE V2500, LEAP-1A, and PW1000G engine sets. The same archive is used for every variant — sound banks that do not apply to the installed aircraft are simply not loaded. A330 and A340 are not supported.
 
 ## Installation
 
-Replace the `fmod/` folder contents in the ToLiss aircraft directory:
-
-1. Back up the original `fmod/` folder
-2. Extract the KOSP archive
-3. Copy the FMOD bank files into the aircraft's `fmod/` folder (e.g., `Aircraft/ToLissA321/fmod/`)
-4. Replace existing files when prompted
+1. Back up the original aircraft directory
+2. Extract the KOSP archive to the aircraft root directory (e.g., `Aircraft/ToLissA321/`)
+3. Replace existing files when prompted
 
 The included C plugin provides an in-simulator menu for volume, mixer, and equalizer adjustments.
 

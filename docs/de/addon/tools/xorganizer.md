@@ -3,7 +3,7 @@ description: "XOrganizer verwaltet X-Plane-Szenerien, Plugins und Profile — mi
 ---
 # XOrganizer
 
-XOrganizer ist ein leistungsstarkes Tool zur Verwaltung und Organisation von X-Plane Addons. Es unterstützt die Verwaltung von Szenerien, Plugins und anderen Addons, um Konflikte zu vermeiden und die Leistung zu optimieren.
+XOrganizer ist ein leistungsstarkes Tool zur Verwaltung und Organisation von X-Plane Addons. Es unterstützt die Verwaltung von Szenerien, Plugins und Skripten, X-Plane-Einstellungen und Flugzeug-Profile, um Konflikte zu vermeiden und die Konfiguration zu organisieren.
 
 !!! warning "Kein nativer Linux-Support"
 
@@ -15,9 +15,8 @@ XOrganizer ist ein leistungsstarkes Tool zur Verwaltung und Organisation von X-P
 
 ## Installation
 
-1. Die offizielle Website von XOrganizer ist unter [4xplane.nl/xorganizer/](https://www.4xplane.nl/xorganizer/) zu finden
-2. XOrganizer ist Donationware — kostenlos nutzbar, mit optionaler Spende; ein verpflichtender Kauf besteht nicht
-3. Das Tool wird von der offiziellen Website heruntergeladen und kann in einem beliebigen Ordner installiert werden
+1. Die offizielle Website von XOrganizer ist unter [4xplane.nl/xorganizer/](https://www.4xplane.nl/xorganizer/) zu finden — sie stellt nur die Dokumentation bereit
+2. XOrganizer ist ein kommerzielles, Closed-Source-Produkt — Kauf und Download über den [X-Plane.org Store](https://store.x-plane.org/xOrganizer-v3-XP12_p_1636.html), danach in einem beliebigen Ordner installieren
 
 ## Grundlegende Verwendung
 
@@ -61,21 +60,19 @@ Durch die automatische Deaktivierung unnötiger Komponenten wird die Systemleist
 
 ## Erweiterte Funktionen
 
-- **Leistungsoptimierung**: Automatische Vorschläge zur Leistungsverbesserung
 - **Backup-Funktion**: Sichern und Wiederherstellen von Konfigurationen
-- **Szenerie-Bibliothek**: Verwaltung von Szenerie-Downloads und Installationen
-- **Log-Analyse**: Automatische Analyse von X-Plane-Logs auf Probleme
-- **Updates**: Neue Versionen werden manuell von 4xplane.nl heruntergeladen (kein integriertes Auto-Update)
-- **Benutzerdefinierte Kategorien**: Erstellung benutzerdefinierter Kategorien für spezielle Szenerien
+- **Bibliotheks-Prüfung**: Verfolgt Versionen und Download-Quellen von Paketen und erkennt fehlende oder veraltete Szenerie-Bibliotheken
+- **Updates**: Neue Versionen werden manuell von der X-Plane.org Store-Kontoseite heruntergeladen (kein integriertes Auto-Update)
+- **Benutzerdefinierte Sortierregeln**: Vom Benutzer definierte Regeln, die die automatische Kategorisierung überschreiben
 
 ## Tipps und Tricks
 
 - Es wird empfohlen, separate Profile für verschiedene Fluggebiete zu erstellen
 - Vor jedem Flug sollte eine Konfliktprüfung durchgeführt werden
 - Regelmäßige Backups der Konfiguration werden empfohlen
-- Neue Versionen werden bei Verfügbarkeit manuell von 4xplane.nl heruntergeladen
+- Neue Versionen werden manuell von der X-Plane.org Store-Kontoseite heruntergeladen
 - Die automatische Kategorisierung dient als guter Ausgangspunkt
-- Für spezielle Szenerien können benutzerdefinierte Kategorien erstellt werden
+- Benutzerdefinierte Sortierregeln können für Szenerien definiert werden, bei denen die automatische Kategorisierung nicht passt
 
 ## Fehlerbehebung
 

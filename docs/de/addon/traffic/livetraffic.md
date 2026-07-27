@@ -45,6 +45,7 @@ Weitere Kanäle (Registrierung oder Abo erforderlich):
 | RealTraffic | Kostenpflichtig | Umfassendste Quelle mit geparkten Flugzeugen und Wetterdaten |
 | ADSBHub | Kostenlos für aktive Daten-Feeder | Erfordert einen aktiven ADSBHub-Feed |
 | ADS-B Exchange | Kostenpflichtig | API-Key erforderlich |
+| Navigraph/FR24 | Kostenpflichtig | Erfordert Navigraph Unlimited Abo; 20-Sekunden- / 80-nm-Update-Limits |
 | FSCharter | Kostenlos (Konto erforderlich) | Virtuelles Verkehrsnetzwerk, erfordert ein registriertes FSCharter-Konto |
 
 ## Mehrwert in der Flugsimulation
@@ -75,7 +76,7 @@ sudo apt install libcurl4 xdg-utils
 
     Die Steam Runtime liefert eine ältere `libcurl.so.4` aus, der das Symbol `CURL_OPENSSL_4` fehlt. LiveTraffic ist gegen die Systemversion von libcurl gebaut, die dieses Symbol bereitstellt.
 
-    Es gibt keinen universellen Workaround. In manchen Fällen hilft ein `LD_PRELOAD` der System-libcurl in den Steam-Startoptionen, aber das Ergebnis variiert je nach Distribution. Hinweise dazu finden sich in der [LiveTraffic-Dokumentation](https://twinfan.gitbook.io/livetraffic). Bei Nicht-Steam-Installationen tritt das Problem nicht auf.
+    **Workaround:** Die im Steam-Runtime-Verzeichnis mitgelieferte `libcurl.so.4` in `libcurl.so.4.bak` umbenennen und stattdessen einen symbolischen Link auf die Systembibliothek anlegen. Details stehen in der [LiveTraffic-Dokumentation](https://twinfan.gitbook.io/livetraffic/introduction/requirements). Bei Nicht-Steam-Installationen tritt das Problem nicht auf.
 
 ### RealTraffic-Ports (Firewall)
 

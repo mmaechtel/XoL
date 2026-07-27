@@ -17,10 +17,10 @@ The [plugin](../../glossary.md#plugin) has existed since X-Plane 10. Version 2 w
 
 ## Features
 
-- **Dataref browser:** Read, write, and search all datarefs (including arrays)
+- **Dataref browser:** Read, write, and search all datarefs (including arrays); detail windows graph the value over time
 - **Command browser:** Search for and execute commands directly
 - **Change detection:** Highlight datarefs that have changed recently
-- **Watch window:** Monitor specific dataref values in a separate panel
+- **Watch window and command history:** Monitor selected dataref values in a compact panel; a separate command history window logs command events as they are triggered
 - **Regex search:** Multiple search terms, regular expressions, optional case sensitivity
 - **Plugin/scenery reload:** Trigger reloads directly from DRT
 - **Multi-window:** Multiple DRT windows can be open simultaneously
@@ -28,13 +28,13 @@ The [plugin](../../glossary.md#plugin) has existed since X-Plane 10. Version 2 w
 
 ## Value in Flight Simulation
 
-DRT is the standard tool for plugin development and troubleshooting in X-Plane. It enables real-time observation of all datarefs, which is invaluable for analyzing plugin conflicts or developing custom FlyWithLua scripts. With windows open, DRT reads all datarefs every frame, which can reduce [FPS](../../glossary.md#fps-frames-per-second) — with windows closed, the performance impact is zero.
+DRT is the standard tool for plugin development and troubleshooting in X-Plane. It enables real-time observation of all datarefs, which is invaluable for analyzing plugin conflicts or developing custom FlyWithLua scripts. With windows open, DRT reads the datarefs relevant to those windows every frame, which can reduce [FPS](../../glossary.md#fps-frames-per-second) — with windows closed, the performance impact is zero.
 
 ## Installation
 
 **Download:** [datareftool.com/download](https://datareftool.com/download)
 
-Extract the ZIP file to `Resources/plugins/`. Minimum system requirement on Linux: Ubuntu 20.04+ (or equivalent glibc version). No additional system packages are required. There are no known Linux-specific issues.
+Extract the ZIP file to `Resources/plugins/`. Minimum system requirement on Linux: glibc 2.34 or newer (Debian 12 Bookworm and later). No additional system packages are required. There are no known Linux-specific issues.
 
 ## Sources
 

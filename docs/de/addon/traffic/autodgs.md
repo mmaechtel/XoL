@@ -20,7 +20,7 @@ Das [Plugin](../../glossary.md#plugin) ist eigenständig und benötigt keine wei
 
 ## Funktionsumfang
 
-- **Automatisches DGS:** Aktiviert sich nach der Landung und sucht passende Stands in Rollrichtung
+- **Automatisches DGS:** Aktiviert sich nach der Landung (Beacon muss an sein) und sucht passende Stands in Rollrichtung
 - **Zwei DGS-Typen:** Animierter Marshaller (Bodenpersonal) oder elektronisches VDGS (Safedock-Stil mit Azimut- und Distanzanzeige)
 - **Vorauswahl-Modus:** Manuelle Stand-Auswahl am Boden
 - **SimBrief-Integration:** Zeigt Flugnummer, Ziel und Zeitdaten auf dem VDGS an (erfordert das optionale Plugin [simbrief_hub](../toliss/toliss_ecosystem.md#simbrief_hub))

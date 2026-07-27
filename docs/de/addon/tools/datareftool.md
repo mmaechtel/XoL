@@ -17,10 +17,10 @@ Das [Plugin](../../glossary.md#plugin) existiert seit X-Plane 10. Version 2 wurd
 
 ## Funktionsumfang
 
-- **Dataref-Browser:** Alle Datarefs lesen, schreiben und durchsuchen (inkl. Arrays)
+- **Dataref-Browser:** Alle Datarefs lesen, schreiben und durchsuchen (inkl. Arrays); Detailfenster stellen den Wertverlauf grafisch dar
 - **Command-Browser:** Commands suchen und direkt ausführen
 - **Änderungserkennung:** Datarefs hervorheben, die sich kürzlich geändert haben
-- **Watch-Fenster:** Bestimmte Dataref-Werte in einem separaten Panel überwachen
+- **Watch-Fenster und Befehlsverlauf:** Bestimmte Dataref-Werte in einem kompakten Panel überwachen; ein separates Befehlsverlauf-Fenster protokolliert Befehle, wenn sie ausgelöst werden
 - **Regex-Suche:** Mehrere Suchbegriffe, reguläre Ausdrücke, Groß-/Kleinschreibung optional
 - **Plugin-/Szenerie-Reload:** Neuladen direkt aus DRT anstoßen
 - **Multi-Window:** Mehrere DRT-Fenster gleichzeitig möglich
@@ -28,13 +28,13 @@ Das [Plugin](../../glossary.md#plugin) existiert seit X-Plane 10. Version 2 wurd
 
 ## Mehrwert in der Flugsimulation
 
-DRT ist das Standardwerkzeug für Plugin-Entwicklung und Fehlersuche in X-Plane. Es ermöglicht die Echtzeitbeobachtung aller Datarefs, was bei der Analyse von Plugin-Konflikten oder der Entwicklung eigener FlyWithLua-Skripte unverzichtbar ist. Bei geöffneten Fenstern liest DRT jeden Frame alle Datarefs, was die [FPS](../../glossary.md#fps-frames-per-second) reduzieren kann — bei geschlossenen Fenstern liegt der Performance-Einfluss bei null.
+DRT ist das Standardwerkzeug für Plugin-Entwicklung und Fehlersuche in X-Plane. Es ermöglicht die Echtzeitbeobachtung aller Datarefs, was bei der Analyse von Plugin-Konflikten oder der Entwicklung eigener FlyWithLua-Skripte unverzichtbar ist. Bei geöffneten Fenstern liest DRT jeden Frame die fensterrelevanten Datarefs, was die [FPS](../../glossary.md#fps-frames-per-second) reduzieren kann — bei geschlossenen Fenstern liegt der Performance-Einfluss bei null.
 
 ## Installation
 
 **Download:** [datareftool.com/download](https://datareftool.com/download)
 
-Die ZIP-Datei nach `Resources/plugins/` entpacken. Minimale Systemanforderung auf Linux: Ubuntu 20.04+ (oder vergleichbare glibc-Version). Es werden keine zusätzlichen Systempakete benötigt. Es sind keine Linux-spezifischen Probleme bekannt.
+Die ZIP-Datei nach `Resources/plugins/` entpacken. Minimale Systemanforderung auf Linux: glibc 2.34 oder neuer (ab Debian 12 Bookworm). Es werden keine zusätzlichen Systempakete benötigt. Es sind keine Linux-spezifischen Probleme bekannt.
 
 ## Quellen
 
