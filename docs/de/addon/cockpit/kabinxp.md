@@ -34,7 +34,7 @@ Als eigenständiges Plugin nach `Resources/plugins/KabinXP/` installieren. In je
 
 ### Linux-Hinweise
 
-KabinXP ist ein kompiliertes Plugin. Vor der Installation prüfen, ob der Download eine `lin.xpl`-Binärdatei enthält. Falls nur Windows- und macOS-Binaries vorhanden sind, unterstützt das Plugin Linux nicht nativ.
+KabinXP ist ein kompiliertes Plugin. Prüfen, ob der Download eine `lin.xpl`-Binärdatei enthält. Falls nur Windows- und macOS-Binaries vorhanden sind, unterstützt das Plugin Linux nicht nativ.
 
 ## Quellen
 
