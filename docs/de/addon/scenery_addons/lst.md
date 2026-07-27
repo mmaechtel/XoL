@@ -22,8 +22,8 @@ LST ist der moderne Nachfolger des älteren GroundTraffic-Plugins. Wo GroundTraf
 - **Mindestabstand:** Fahrzeuge halten automatisch Abstand und bremsen stufenweise ab (Stau-Simulation)
 - **Partikelsystem:** Zugriff auf X-Plane-12-Partikeleffekte (Abgase, Rauch) an Szenerieobjekten
 - **FMOD-Sound:** Richtungsabhängige, entfernungsgedämpfte Sounds an bewegten und statischen Objekten
-- **Positions-Trigger:** Ereignisse an bestimmten Orten auslösen (z.B. Türen öffnen bei Fahrzeugankunft)
-- **Performance:** Tausende animierte Objekte bei weniger als 5–10 % Framerate-Einbuße
+- **Trigger, Menüs und Datarefs:** Ereignisse lösen an definierten Positionen oder bei Kameranähe aus (z.B. Türen öffnen bei Fahrzeugankunft); Szenerien können Interaktionsmenüs, pilotengesteuerte Beleuchtung und Dataref-Animation per Keyframing und Rechenoperationen anbieten
+- **Performance:** Die Bewegungslogik läuft auf einem eigenen Thread, Assets laden asynchron; optionale Reichweitenbegrenzungen verhindern, dass entfernte Objekte verarbeitet werden
 
 ## Mehrwert in der Flugsimulation
 
@@ -33,13 +33,13 @@ Ohne LST wirken Flughafenszenerien statisch — Vorfeldfahrzeuge stehen reglos, 
 
 **Download:** [X-Plane.org](https://forums.x-plane.org/files/file/82876-living-scenery-technology/)
 
-Den Ordner `Living Scenery Technology` nach `Resources/plugins/` kopieren. Das Plugin aktiviert sich automatisch, sobald eine LST-fähige Szenerie geladen wird.
+Den Ordner `Living Scenery Technology` nach `Resources/plugins/` kopieren. Das Plugin aktiviert sich automatisch, sobald eine LST-fähige Szenerie geladen wird, und hält sich über den SkunkCrafts Updater selbst aktuell.
 
 ### Linux-Hinweise
 
 Die Linux-Binary ist im Download enthalten. Es sind keine Linux-spezifischen Probleme bekannt.
 
-Die offiziellen Entwickler-Tools (Konverter, Generator) sind Windows-only. Für Linux existiert die Community-Alternative [lst-utils](https://github.com/devleaks/lst-utils) (Python, MIT-Lizenz).
+Der offizielle Entwickler-Editor ist ein browserbasierter Web-Editor, der lokal läuft, ohne Dateien hochzuladen — er funktioniert unter Linux wie auf jeder anderen Plattform. Die älteren Kommandozeilen-Tools (Konverter, Generator) waren Windows-only; die Community-Alternative [lst-utils](https://github.com/devleaks/lst-utils) (Python, MIT-Lizenz) zielt weiterhin auf das textbasierte Legacy-Paketformat.
 
 ## Quellen
 

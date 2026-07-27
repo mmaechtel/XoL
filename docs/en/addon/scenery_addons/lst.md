@@ -22,8 +22,8 @@ LST is the modern successor to the older GroundTraffic plugin. Where GroundTraff
 - **Minimum spacing:** Vehicles automatically maintain distance and decelerate gradually (traffic jam simulation)
 - **Particle system:** Access to X-Plane 12's particle effects (exhaust, smoke) on scenery objects
 - **FMOD sound:** Directional, distance-attenuated sounds on moving and static objects
-- **Location triggers:** Trigger events at specific positions (e.g., door opening on vehicle arrival)
-- **Performance:** Thousands of animated objects with less than 5–10% frame rate impact
+- **Triggers, menus and datarefs:** Events fire at defined positions or on camera proximity (e.g. door opening on vehicle arrival); sceneries can offer interaction menus, pilot-controlled lighting, and dataref animation via keyframing and math operations
+- **Performance:** The movement logic runs on its own thread, and assets load asynchronously; optional range limits keep distant objects from being processed
 
 ## Value in Flight Simulation
 
@@ -33,13 +33,13 @@ Without LST, airport sceneries feel static — ramp vehicles sit motionless, roa
 
 **Download:** [X-Plane.org](https://forums.x-plane.org/files/file/82876-living-scenery-technology/)
 
-Copy the `Living Scenery Technology` folder to `Resources/plugins/`. The plugin activates automatically when an LST-enabled scenery is loaded.
+Copy the `Living Scenery Technology` folder to `Resources/plugins/`. The plugin activates automatically when an LST-enabled scenery is loaded and keeps itself up to date via the SkunkCrafts Updater.
 
 ### Linux Notes
 
 The Linux binary is included in the download. No Linux-specific issues are known.
 
-The official developer tools (converter, generator) are Windows-only. For Linux, the community alternative [lst-utils](https://github.com/devleaks/lst-utils) (Python, MIT license) is available.
+The official developer editor is a browser-based Web Editor that runs locally without uploading files — it works on Linux like on any other platform. The older command-line converter and generator were Windows-only; the community alternative [lst-utils](https://github.com/devleaks/lst-utils) (Python, MIT license) still targets the legacy text-based package format.
 
 ## Sources
 
