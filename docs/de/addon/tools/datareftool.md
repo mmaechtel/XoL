@@ -34,7 +34,7 @@ DRT ist das Standardwerkzeug für Plugin-Entwicklung und Fehlersuche in X-Plane.
 
 **Download:** [datareftool.com/download](https://datareftool.com/download)
 
-Die ZIP-Datei nach `Resources/plugins/` entpacken. Minimale Systemanforderung auf Linux: glibc 2.34 oder neuer (Debian 12 Bookworm und später). Es werden keine zusätzlichen Systempakete benötigt. Es sind keine Linux-spezifischen Probleme bekannt.
+Die ZIP-Datei nach `Resources/plugins/` entpacken. Minimale Systemanforderung auf Linux: glibc 2.34 oder neuer (ab Debian 12 Bookworm). Es werden keine zusätzlichen Systempakete benötigt. Es sind keine Linux-spezifischen Probleme bekannt.
 
 ## Quellen
 
