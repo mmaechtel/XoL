@@ -35,11 +35,11 @@ Because dozens of commercial and freeware developers have adopted the SkunkCraft
 
 **Download:** The standalone client is distributed via the [forums.x-plane.org release thread](https://forums.x-plane.org/forums/topic/292710-20250206-skunkcrafts-updater-standalone-client-v32d-available/). A free X-Plane.org account is required.
 
-The Linux binary is a single file with the `.lin` extension. Place it in the X-Plane root directory (the folder containing `X-Plane-x86_64`) and make it executable:
+The Linux binary is a single file named `SkunkcraftsUpdater_lin`. Place it in the X-Plane root directory (the folder containing `X-Plane-x86_64`) and make it executable:
 
 ```bash
-chmod +x SkunkCrafts_Updater*.lin
-./SkunkCrafts_Updater*.lin
+chmod +x SkunkcraftsUpdater_lin
+./SkunkcraftsUpdater_lin
 ```
 
 The updater must be launched from the X-Plane root directory — it discovers addons by scanning subdirectories relative to its own location. A legacy in-game plugin version exists but is no longer actively developed.
@@ -62,6 +62,6 @@ The Fyne toolkit supports Wayland but may fall back to XWayland depending on the
 ## Sources
 
 - [SkunkCrafts Updater — forums.x-plane.org](https://forums.x-plane.org/forums/forum/406-skunkcrafts-updater/)
-- [Standalone Client v3.2d Release Thread — forums.x-plane.org](https://forums.x-plane.org/forums/topic/292710-20250206-skunkcrafts-updater-standalone-client-v32d-available/)
+- [Standalone Client Release Thread — forums.x-plane.org](https://forums.x-plane.org/forums/topic/292710-20250206-skunkcrafts-updater-standalone-client-v32d-available/)
 - [glibc Requirement Discussion — forums.x-plane.org](https://forums.x-plane.org/forums/topic/302313-linux-standalone-skunkcrafts-updater-requires-glibc-232-or-higher/)
 - [openSAM SkunkCrafts Integration — GitHub](https://github.com/hotbso/openSAM)
