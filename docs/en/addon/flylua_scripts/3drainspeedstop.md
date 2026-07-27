@@ -10,7 +10,7 @@ description: "3D Rain Stop for X-Plane 12 — FlyWithLua script that disables di
 - **Developer:** domvc10
 - **Download:** [X-Plane.org](https://forums.x-plane.org/files/file/88602-3d-rain-stop-lua-script-xp12/)
 - **Platforms:** Windows, macOS, Linux (pure Lua)
-- **Compatibility:** X-Plane 12 (last release November 2023, unchanged since)
+- **Compatibility:** X-Plane 12 — last release November 2023, unchanged since
 - **Dependency:** [FlyWithLua NG+](../scripting/flywithlua.md)
 
 The download contains two scripts — only one should be active at a time:
