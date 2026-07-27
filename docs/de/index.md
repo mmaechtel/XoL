@@ -35,20 +35,11 @@ Diese Dokumentation ist ein offenes Projekt. Verbesserungen oder Ergänzungen k�
 
 ## Letzte Änderungen
 
+### 2026-07-27
+- Faktencheck über alle 46 [Addon-Seiten](addon/index.md): jede Aussage gegen aktuelle Primärquellen geprüft. Highlights: AviTab dokumentiert jetzt den gepflegten TeamAvitab-Fork, das LST-Entwicklerwerkzeug ist ein browserbasierter Web-Editor, der auch unter Linux läuft, XOrganizer wird inzwischen über den X-Plane.org Store verkauft, XPPython3 verweist auf den gepflegten Nachfolge-Fork, und stagnierende Projekte (XGS, XLinSpeak, TerrainRadar u.a.) sind mit ihrem letzten Release-Datum gekennzeichnet
+
 ### 2026-07-26
 - [Ortho4XP](scenery/orthophotography/ortho4xp.md) behandelt jetzt auch [OrthoForge](https://xpconnect.me/orthoforge.html): ein eigenständig weiterentwickelter Nachfolger mit nativem Linux-Setup-Skript, getrennten Höhendaten für Land und Meeresboden sowie vorgefertigten OpenStreetMap-Daten
 
 ### 2026-06-30
 - [WorldMap der Szenerien](Maps.md) zeigt jetzt das letzte Aktualisierungsdatum jeder Szenerie und bietet einen **Scenery since**-Jahresfilter — nur Szenerien anzeigen, die seit einem gewählten Jahr aktualisiert wurden. Die Karte umfasst inzwischen über 1800 X-Plane-12-Szenerien
-
-### 2026-06-24
-- Neue Seite [X-ProTurb](addon/flylua_scripts/xproturb.md): physikbasierte Turbulenz-Engine für X-Plane 12, modelliert die Atmosphäre nach MIL-F-8785C, FAR 25.341 und ICAO 9625 Level-D mit flugzeugspezifischer 6-DOF-Reaktion, von-Kármán-/Dryden-Spektren, CAT, Mountain-Wave- und CB-/Sturmmodellierung
-- Neue Seite [AnyAirline](addon/cockpit/anyairline.md): Passagier-Kabinen-Immersion mit KI-Kabinendurchsagen, routenbezogenem Passagier-Manifest, Boarding-Ambiente und kostenloser Passagier-IFE-Karte — der Desktop-Connector bringt einen offiziellen Linux-Build mit
-- [XEarthLayer](scenery/ortho_streaming/xearthlayer.md) aktualisiert auf v0.4.6: vierstufiger Setup-Wizard mit dynamischer Disk-Cache-Dimensionierung (25% des freien Speichers) und RAM-basiertem Memory-Cache, GPU-Adapter-Auswahlschritt sowie Cache-Fix, sodass Kacheln aus fehlgeschlagenen Downloads nicht mehr gespeichert werden
-- [AutoOrtho](scenery/ortho_streaming/autoortho.md) um die neuesten Features des ProgrammingDinosaur-Forks erweitert: vereinheitlichte Single-Process-Architektur über alle Betriebssysteme, VRAM-Optimierung durch dynamische DDS-Dimensionierung und schlanke Karten-UI ohne gebündelten Chromium-Browser
-
-
-
-
-
-

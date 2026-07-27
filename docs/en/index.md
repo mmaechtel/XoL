@@ -35,20 +35,11 @@ This documentation is an open project. Improvements or additions can be contribu
 
 ## Recent Changes
 
+### 2026-07-27
+- Fact-check across all 46 [addon pages](addon/index.md): every claim verified against current primary sources. Highlights: AviTab now documents the maintained TeamAvitab fork, LST's developer tooling is a browser-based Web Editor that also runs on Linux, XOrganizer is now sold via the X-Plane.org Store, XPPython3 points to its maintained successor fork, and stagnant projects (XGS, XLinSpeak, TerrainRadar and others) are marked with their last release date
+
 ### 2026-07-26
 - [Ortho4XP](scenery/orthophotography/ortho4xp.md) now covers [OrthoForge](https://xpconnect.me/orthoforge.html): an independently developed successor with a native Linux setup script, separate land/seabed elevation sources and pre-baked OpenStreetMap data
 
 ### 2026-06-30
 - [WorldMap of Scenery](Maps.md) now shows each scenery's last update date and adds a **Scenery since** year filter — show only sceneries updated since a chosen year. The map now covers over 1800 X-Plane 12 sceneries
-
-### 2026-06-24
-- New page [X-ProTurb](addon/flylua_scripts/xproturb.md): physics-based turbulence engine for X-Plane 12, modelling the atmosphere from MIL-F-8785C, FAR 25.341 and ICAO 9625 Level-D standards with per-airframe 6-DOF response, von Kármán/Dryden spectra, CAT, mountain-wave and CB/storm modelling
-- New page [AnyAirline](addon/cockpit/anyairline.md): passenger cabin immersion with AI cabin announcements, a route-aware passenger manifest, boarding ambience and a free passenger IFE map — the desktop connector ships an official Linux build
-- [XEarthLayer](scenery/ortho_streaming/xearthlayer.md) updated for v0.4.6: four-step setup wizard with dynamic disk-cache sizing (25% of free space) and RAM-based memory cache, GPU adapter selection step, and a cache fix so tiles from failed downloads are no longer stored
-- [AutoOrtho](scenery/ortho_streaming/autoortho.md) expanded with the latest ProgrammingDinosaur-fork features: unified single-process architecture across all OS, VRAM optimization via dynamic DDS sizing, and a lightweight map UI that drops the bundled Chromium browser
-
-
-
-
-
-
