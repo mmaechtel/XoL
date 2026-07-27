@@ -39,10 +39,10 @@ A central data provider that fetches the current SimBrief OFP (Operational Fligh
 
 - OFP auto-fetch at startup, stored in datarefs as byte arrays
 - Status datarefs: `sbh/seqno` (sequence number for OFP updates) and `sbh/stale` (failed download indicator)
-- VATSIM CDM support: pulls Collaborative Departure Management data (TOBT, TSAT, CTOT) for compatible VDGS plugins
+- VATSIM CDM support: pulls Collaborative Decision-Making data (TOBT, TSAT, CTOT) for compatible VDGS plugins
 - Fake CDM mode for offline flying — replaced automatically when connecting to VATSIM
 
-**Installation:** Extract to `Resources/plugins/`. The Linux binary is at `lin_x64/simbrief_hub.xpl`. The plugin ships with `cdm_cfg.default.json` for regional CDM servers — copy to `cdm_cfg.json` to customize.
+**Installation:** Extract to `Resources/plugins/`. The Linux binary is at `lin_x64/simbrief_hub.xpl`. The plugin includes SkunkCrafts Updater config and CDM server settings (customize `cdm_cfg.json` as needed).
 
 ## Callouts & Sound
 
@@ -121,9 +121,9 @@ Lua-based mod that simulates icing on cockpit and cabin windows. Takes into acco
 
 ### TOBUS — Boarding/Deboarding
 
-Simulates a realistic boarding and deboarding process with live payload adjustment. Passenger count can be set manually or imported via SimBrief. Three speed modes: Real, Fast, Instant. Front and rear door or front door only. An enhanced version by hotbso ([GitHub](https://github.com/hotbso/TOBUS/releases)) offers additional door options and A346 support.
+Simulates a realistic boarding and deboarding process with live payload adjustment. Passenger count can be set manually or imported via SimBrief. Boarding speed is adjustable in seconds per passenger, with an instant option for both boarding and deboarding. The maintained fork by hotbso ([GitHub](https://github.com/hotbso/TOBUS/releases)) adds A346 support, separate door logic, passenger import via simbrief_hub, and CPDLC/Telex-Loadsheet support via Hoppie API.
 
-- **Requires:** FlyWithLua, X-Airbus Library (in Modules folder)
+- **Requires:** FlyWithLua NG+, simbrief_hub (for SimBrief import)
 - **Download:** [forums.x-plane.org](https://forums.x-plane.org/files/file/87996-tobus-your-toliss-boarding-lua-script/)
 
 ### ToLiss Ground Services

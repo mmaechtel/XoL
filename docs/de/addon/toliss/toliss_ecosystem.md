@@ -39,10 +39,10 @@ Ein zentraler Datenprovider, der den aktuellen SimBrief OFP (Operational Flight 
 
 - OFP-Auto-Fetch beim Start, gespeichert als Byte-Arrays in Datarefs
 - Status-Datarefs: `sbh/seqno` (Sequenznummer für OFP-Updates) und `sbh/stale` (Indikator für fehlgeschlagenen Download)
-- VATSIM-CDM-Unterstützung: ruft Collaborative Departure Management-Daten (TOBT, TSAT, CTOT) für kompatible VDGS-Plugins ab
+- VATSIM-CDM-Unterstützung: ruft Collaborative Decision-Making-Daten (TOBT, TSAT, CTOT) für kompatible VDGS-Plugins ab
 - Fake-CDM-Modus für Offline-Flüge — wird bei VATSIM-Verbindung automatisch durch echte Daten ersetzt
 
-**Installation:** Nach `Resources/plugins/` entpacken. Die Linux-Binary liegt unter `lin_x64/simbrief_hub.xpl`. Das Plugin enthält `cdm_cfg.default.json` für regionale CDM-Server — zum Anpassen als `cdm_cfg.json` kopieren.
+**Installation:** Nach `Resources/plugins/` entpacken. Die Linux-Binary liegt unter `lin_x64/simbrief_hub.xpl`. Das Plugin enthält SkunkCrafts-Updater-Konfiguration und CDM-Einstellungen — `cdm_cfg.json` nach Bedarf anpassen.
 
 ## Callouts & Sound
 
@@ -121,9 +121,9 @@ Lua-basiertes Mod, das Vereisung der Cockpit- und Kabinenfenster simuliert. Ber�
 
 ### TOBUS — Boarding/Deboarding
 
-Simuliert einen realistischen Boarding- und Deboarding-Prozess mit Live-Anpassung der Payload. Passagierzahl manuell wählbar oder per SimBrief importierbar. Drei Geschwindigkeitsmodi: Real, Fast, Instant. Vorder- und Hintertür oder nur Vordertür. Eine verbesserte Version von hotbso ([GitHub](https://github.com/hotbso/TOBUS/releases)) bietet zusätzliche Tür-Optionen und A346-Unterstützung.
+Simuliert einen realistischen Boarding- und Deboarding-Prozess mit Live-Anpassung der Payload. Passagierzahl manuell wählbar oder per SimBrief importierbar. Boarding-Geschwindigkeit in Sekunden pro Passagier einstellbar, mit Instant-Option für Boarding und Deboarding. Der gepflegte Fork von hotbso ([GitHub](https://github.com/hotbso/TOBUS/releases)) ergänzt A346-Unterstützung, separate Tür-Logik, Passagier-Import via simbrief_hub und CPDLC/Telex-Loadsheet-Unterstützung via Hoppie-API.
 
-- **Benötigt:** FlyWithLua, X-Airbus Library (im Modules-Ordner)
+- **Benötigt:** FlyWithLua NG+, simbrief_hub (für SimBrief-Import)
 - **Download:** [forums.x-plane.org](https://forums.x-plane.org/files/file/87996-tobus-your-toliss-boarding-lua-script/)
 
 ### ToLiss Ground Services
