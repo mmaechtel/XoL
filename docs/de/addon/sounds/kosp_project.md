@@ -8,7 +8,7 @@ KOSP Project ist ein umfassendes FMOD-Sound-Replacement für die ToLiss A319, A3
 ## Hintergrund
 
 - **Entwickler:** Nguyen Duc Binh (auch Sound-Designer des FlightFactor 777v2)
-- **Kompatibilität:** X-Plane 12, X-Plane 11
+- **Kompatibilität:** X-Plane 11 und X-Plane 12
 
 ## Funktionsumfang
 
@@ -21,11 +21,11 @@ KOSP Project ist ein umfassendes FMOD-Sound-Replacement für die ToLiss A319, A3
 
 ## Unterstützte Flugzeuge
 
-Das KOSP-Paket enthält Soundbanks für die ToLiss A319, A320 und A321 (CEO- und NEO-Varianten). Triebwerksvarianten werden während der Installation automatisch ausgewählt. A330 und A340 werden nicht unterstützt.
+Das KOSP-Paket enthält Soundbanks für die ToLiss A319, A320 und A321 (CEO- und NEO-Varianten) und deckt die Triebwerksvarianten CFM56, IAE V2500, LEAP-1A und PW1000G ab. Für jede Variante wird dasselbe Archiv verwendet — Soundbanks, die zum installierten Flugzeug nicht passen, werden schlicht nicht geladen. A330 und A340 werden nicht unterstützt.
 
 ## Installation
 
-1. Originales Flugzeugverzeichnis sichern
+1. Das Originalverzeichnis des Flugzeugs sichern
 2. KOSP-Archiv in das Wurzelverzeichnis des Flugzeugs entpacken (z.B. `Aircraft/ToLissA321/`)
 3. Vorhandene Dateien ersetzen
 
