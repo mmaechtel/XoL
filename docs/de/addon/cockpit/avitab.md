@@ -48,7 +48,7 @@ Alle Abhängigkeiten sind statisch gelinkt — es werden keine zusätzlichen Sys
 **PDF-Charts ablegen:**
 
 ```bash
-cp meine_charts/*.pdf /pfad/zu/X-Plane\ 12/Resources/plugins/Avitab/charts/
+cp my_charts/*.pdf /path/to/X-Plane\ 12/Resources/plugins/Avitab/charts/
 ```
 
 Unterordner werden unterstützt und als Verzeichnisstruktur im Plugin angezeigt.
