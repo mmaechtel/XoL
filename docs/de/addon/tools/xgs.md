@@ -12,13 +12,13 @@ XGS (Landing Speed Plugin Reloaded) ist ein eigenständiges [Plugin](../../gloss
 - **Plattformen:** Windows, macOS, Linux (native Binaries)
 - **Kompatibilität:** [X-Plane](../../glossary.md#x-plane) 12
 
-XGS ist eine Weiterentwicklung des ursprünglichen Landing Speed Plugins. Die Entwicklung hat Stillstand (letztes Release Juni 2023, letzter Commit Oktober 2024), aber das Plugin funktioniert weiter.
+XGS ist eine Weiterentwicklung des ursprünglichen Landing Speed Plugins. Die Entwicklung stagniert (letztes Release Juni 2023, letzter Commit Oktober 2024), aber das Plugin funktioniert weiter.
 
 ## Funktionsumfang
 
 - **Sinkrate & G-Kräfte:** Maximale Sinkrate (fpm) und maximale G-Kraft bei der Landung
 - **Qualitätsbewertung:** Textuelle Bewertung der Landequalität aus konfigurierbarer Datei (z.B. "Smooth landing", "Hard landing, requires inspection")
-- **Geschwindigkeit & Pitch:** Angezeigte Fluggeschwindigkeit und Pitch-Winkel beim Aufsetzen
+- **Geschwindigkeit & Pitch:** Angezeigte Fluggeschwindigkeit und Pitch-Winkel beim Aufsetzen; bei ToLiss-Airbus-Modellen wird zusätzlich die VLS neben der IAS angezeigt
 - **Schwellenüberflug:** Höhe über der Schwelle und Entfernung von der Schwelle bis zum Aufsetzen
 - **Centerline-Abweichung:** Laterale und Winkel-Abweichung von der Bahnmitte
 - **ToLiss-Erkennung:** Bei ToLiss-Modellen erkennt XGS den Bodenkontakt über die Kompression der Hauptfahrwerksstreben und meldet zusätzlich die Touchdown-Distanz für das Bugrad
