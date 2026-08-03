@@ -10,13 +10,17 @@ XPME is one product family covering two simulators — Microsoft Flight Simulato
 The decisive difference from the alternatives is the licensing model. XPME is freemium: the free tier is usable but capped, and the features most people associate with ortho streaming — high-resolution ground textures and preloading — sit behind a paid subscription. AutoOrtho and XEarthLayer are free and open source. That is not a verdict on quality, but it is the first thing to weigh before investing setup time.
 
 !!! warning "Pro Is a Subscription, Not a Purchase"
-    The order form at `k.aiflygo.com/purchase` prices the X-Plane 12 license at **$5 for 30 days** and **$40 for 365 days** — the form builds its price display dynamically, so confirm the current figures there before paying. There is no perpetual license. One license is valid for exactly one PC, is bound to the hardware (changing the CPU or disk, or reinstalling the system, can invalidate it), and commercial use — flight schools, training centres, any for-profit operation — is explicitly prohibited. Payment runs through PayPal or Buy Me a Coffee; the vendor states a 7-day refund window.
+    The order form at `k.aiflygo.com/purchase` prices the X-Plane 12 license at **$5 for 30 days** and **$40 for 365 days**. The form builds its price display dynamically, so confirm the current figures there before paying. There is no perpetual license.
+
+    One license is valid for exactly one PC and is bound to the hardware — changing the CPU or disk, or reinstalling the system, can invalidate it. Commercial use is explicitly prohibited: flight schools, training centers, any for-profit operation. Payment runs through PayPal or Buy Me a Coffee, and the vendor states a 7-day refund window.
 
 ## How It Works
 
 XPME mounts a **virtual filesystem** into the X-Plane scenery tree and answers texture reads from the network instead of from disk — the same principle described under [How Ortho Streaming Works](how_streaming_works.md). The platform-specific mount layer is what the dependency list reveals: WinFSP on Windows, FUSE-T on macOS, and [FUSE](../../glossary.md#fuse-filesystem-in-userspace) 3 on Linux. Imagery is fetched, compressed to [DDS](../../glossary.md#dds-directdraw-surface), and handed to the simulator; the documentation names the DDS conversion as a main source of CPU load.
 
-Unlike AutoOrtho and XEarthLayer, XPME does not read the terrain [mesh](../../glossary.md#mesh) from X-Plane's own scenery. It ships **base packages** — regional [DSF](../../glossary.md#dsf-distribution-scenery-format)/terrain data generated with a modified [Ortho4XP](../../glossary.md#ortho4xp) fork at ZL16 — which take the same role that the DSF/TER packages take in XEarthLayer. Base packages cannot be installed by hand: they are hosted on Cloudflare and pulled by the in-app downloader, which uses `aria2c` as its transfer backend and installs the selected packages sequentially. Users behind restrictive networks are told to configure an HTTP proxy or a VPN.
+Unlike AutoOrtho and XEarthLayer, XPME does not read the terrain [mesh](../../glossary.md#mesh) from X-Plane's own scenery. It ships **base packages** — regional [DSF](../../glossary.md#dsf-distribution-scenery-format)/terrain data generated with a modified [Ortho4XP](../../glossary.md#ortho4xp) fork at ZL16 — which take the same role that the DSF/TER packages take in XEarthLayer.
+
+Base packages cannot be installed by hand. They are hosted on Cloudflare and pulled by the in-app downloader, which uses `aria2c` as its transfer backend and installs the selected packages sequentially. Users behind restrictive networks are told to configure an HTTP proxy or a VPN.
 
 Map sources selectable in the interface are Bing, ArcGIS, Google, and Apple. Switching sources mid-flight is possible but does not take effect immediately — X-Plane has to reload the affected textures.
 

@@ -85,6 +85,18 @@ Ortho4XP is available in several versions:
 
 All settings live in `Ortho4XP.cfg` in the Ortho4XP directory. When a tile is built, Ortho4XP writes the tile-specific subset of these keys into `Tiles/zOrtho4XP_+dd+ddd/Ortho4XP_+dd+ddd.cfg`, so an existing tile keeps the settings it was built with even if the global config changes later. The defaults below are the ones defined in `src/O4_Cfg_Vars.py`.
 
+The parameters are grouped by the question they answer:
+
+| Group | Answers |
+|---|---|
+| Directories and imagery source | Where tiles are written and which provider supplies the imagery |
+| Mesh generation | How dense and how well-shaped the terrain triangles are |
+| Roads | How much of the road network is flattened into the terrain |
+| Terrain appearance | Shadows, decals and overlay draw distance |
+| High-resolution airport coverage | Where the scenery switches to a higher zoom level |
+| Masks and water | Coastlines, inland water and their transparency |
+| Elevation | Which elevation dataset the mesh is built from |
+
 **Directories and imagery source**
 
 | Parameter | Default | Description |
@@ -198,7 +210,9 @@ The `sea_smoothing_mode` values differ substantially:
 
 **Global settings versus per-tile settings**
 
-Most of the parameters above are written into each tile's own config and can therefore differ from tile to tile. A few are only read from the global `Ortho4XP.cfg` and never appear in a tile config — among them `skip_downloads` and `skip_converts`, which suppress the imagery download and the DDS conversion. Both default to `False` and are the two settings that matter when Ortho4XP is used to produce mesh-only packages; see [Building Packages for Ortho Streaming](#building-packages-for-ortho-streaming). Also global-only: `verbosity`, `cleaning_level`, `max_download_slots`, `max_convert_slots`, `overpass_server_choice`, `custom_scenery_dir`, `custom_overlay_src` and `custom_overlay_src_alternate`.
+Most of the parameters above are written into each tile's own config and can therefore differ from tile to tile. A few are only read from the global `Ortho4XP.cfg` and never appear in a tile config.
+
+The two that matter most are `skip_downloads` and `skip_converts`, which suppress the imagery download and the DDS conversion. Both default to `False`, and they are what turns Ortho4XP into a producer of mesh-only packages — see [Building Packages for Ortho Streaming](#building-packages-for-ortho-streaming). Also global-only: `verbosity`, `cleaning_level`, `max_download_slots`, `max_convert_slots`, `overpass_server_choice`, `custom_scenery_dir`, `custom_overlay_src` and `custom_overlay_src_alternate`.
 
 !!! warning "Same key names in OrthoForge, different defaults"
 
@@ -260,7 +274,9 @@ road_level=3
 water_tech=XP12
 ```
 
-Every value moves in the direction of more detail: `curvature_tol=1.0` halves the tolerance and lets the mesh follow correspondingly finer terrain, `min_angle=15.0` keeps those extra triangles well-shaped, `mask_zl=16` is the finest permitted mask resolution and `masks_width=25` narrows the shoreline transition to match. `apt_smoothing_pix=4` blurs the elevation raster less over airports, so airport terrain keeps more of its real shape. `cover_zl=19` requires `mesh_zl` to be at least `19`. Build time and package size rise steeply; with a high-resolution `custom_dem`, add an explicit `limit_tris` so the triangle count stays bounded.
+Every value moves in the direction of more detail. `curvature_tol=1.0` halves the tolerance and lets the mesh follow correspondingly finer terrain, and `min_angle=15.0` keeps those extra triangles well-shaped. `mask_zl=16` is the finest permitted mask resolution, with `masks_width=25` narrowing the shoreline transition to match, and `apt_smoothing_pix=4` blurs the elevation raster less over airports so their terrain keeps more of its real shape.
+
+`cover_zl=19` requires `mesh_zl` to be at least `19`. Build time and package size rise steeply — with a high-resolution `custom_dem`, add an explicit `limit_tris` so the triangle count stays bounded.
 
 #### Performance-Optimized
 
@@ -352,7 +368,9 @@ WET
 NO_SHADOW
 ```
 
-The `BASE_TEX_NOWRAP` path names the exact DDS file the streaming layer has to deliver at runtime — provider code and zoom level are part of the filename (`_BI17.dds`). The package does not merely suggest a resolution; it demands one specific file per terrain definition. That is why the zoom-level choice is not arbitrary in a build without imagery, and why `default_website` must match what the streaming layer actually serves: a package built with `BI` asks for `_BI17.dds`, and a layer configured for a different provider will not answer that name.
+The `BASE_TEX_NOWRAP` path names the exact DDS file the streaming layer has to deliver at runtime — provider code and zoom level are part of the filename (`_BI17.dds`). The package does not merely suggest a resolution; it demands one specific file per terrain definition.
+
+That is why the zoom-level choice is not arbitrary in a build without imagery, and why `default_website` must match what the streaming layer actually serves. A package built with `BI` asks for `_BI17.dds`, and a layer configured for a different provider will not answer that name.
 
 The same tile shows what `cover_zl` does to that contract. Of its 752 `.ter` files, 559 reference `_BI17` and 193 reference `_BI18` — the base zoom level across most of the tile, the higher cover zoom level confined to the airport surroundings. Those are numbers from one observed tile, an illustration of the mechanism rather than a target ratio — the split depends entirely on `cover_extent` and on how many airports the tile contains.
 
@@ -374,7 +392,9 @@ The streaming profile above is a conservative starting point. Real configuration
 | `road_level` | `1` (default) | `3` |
 | `masks_width` | `100` (default) | `25` |
 
-The widest spread is in `cover_extent`, the radius in kilometers around an airport that receives high-resolution coverage. Between `0.5` and `6.0` km the radius grows twelvefold and the covered surface roughly a hundredfold, which makes it the single strongest lever on package size and on the number of high-resolution texture requests a busy terminal area produces. It also determines how often the scenery changes zoom level between the base texture and the airport texture. `0.5` keeps packages small and is a reasonable default for wide-area coverage; `6.0` is a choice for a setup where a handful of home airports matter more than total package size.
+The widest spread is in `cover_extent`, the radius in kilometers around an airport that receives high-resolution coverage. Between `0.5` and `6.0` km the radius grows twelvefold and the covered surface roughly a hundredfold. That makes it the single strongest lever on package size, on the number of high-resolution texture requests a busy terminal area produces, and on how often the scenery changes zoom level between base and airport texture.
+
+Which end of that range fits depends on the setup: `0.5` keeps packages small and is a reasonable default for wide-area coverage, while `6.0` suits a setup where a handful of home airports matter more than total package size.
 
 The remaining differences follow the same logic: a higher `mask_zl` with a narrower `masks_width` produces finer but tighter coastlines, `masking_mode=rocks` suits alpine and rocky shorelines better than the `sand` default, and `road_level=3` adds secondary road networks at the cost of more vector data per tile.
 

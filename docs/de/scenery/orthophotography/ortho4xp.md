@@ -85,6 +85,18 @@ Ortho4XP ist in mehreren Versionen verfügbar:
 
 Alle Einstellungen stehen in `Ortho4XP.cfg` im Ortho4XP-Verzeichnis. Beim Bau einer Kachel schreibt Ortho4XP die kachelspezifische Teilmenge dieser Schlüssel nach `Tiles/zOrtho4XP_+dd+ddd/Ortho4XP_+dd+ddd.cfg`. Eine fertige Kachel behält damit die Einstellungen, mit denen sie gebaut wurde, auch wenn sich die globale Konfiguration später ändert. Die folgenden Vorgabewerte sind die in `src/O4_Cfg_Vars.py` definierten.
 
+Die Parameter sind danach gruppiert, welche Frage sie beantworten:
+
+| Gruppe | Beantwortet |
+|---|---|
+| Verzeichnisse und Bildquelle | Wohin die Kacheln geschrieben werden und welcher Anbieter die Bilddaten liefert |
+| Mesh-Erzeugung | Wie dicht und wie gut geformt die Geländedreiecke sind |
+| Straßen | Wie viel des Straßennetzes ins Gelände eingeebnet wird |
+| Terrain-Darstellung | Schatten, Decals und Zeichenweite der Overlays |
+| Hochauflösende Flughafenabdeckung | Wo die Szenerie auf eine höhere Zoomstufe wechselt |
+| Masken und Wasser | Küstenlinien, Binnengewässer und ihre Transparenz |
+| Höhendaten | Aus welchem Höhendatensatz das Mesh gebaut wird |
+
 **Verzeichnisse und Bildquelle**
 
 | Parameter | Vorgabe | Beschreibung |
@@ -198,7 +210,9 @@ Die Werte von `sea_smoothing_mode` unterscheiden sich deutlich:
 
 **Globale Einstellungen und Einstellungen pro Kachel**
 
-Die meisten der obigen Parameter werden in die Konfiguration jeder einzelnen Kachel geschrieben und können daher von Kachel zu Kachel abweichen. Einige wenige werden ausschließlich aus der globalen `Ortho4XP.cfg` gelesen und erscheinen nie in einer Kachel-Konfiguration — darunter `skip_downloads` und `skip_converts`, die den Bilddaten-Download und die DDS-Konvertierung unterdrücken. Beide stehen vorgabemäßig auf `False` und sind die beiden Einstellungen, auf die es ankommt, wenn Ortho4XP Mesh-only-Pakete erzeugen soll; siehe [Pakete für Ortho-Streaming bauen](#pakete-fur-ortho-streaming-bauen). Ebenfalls nur global: `verbosity`, `cleaning_level`, `max_download_slots`, `max_convert_slots`, `overpass_server_choice`, `custom_scenery_dir`, `custom_overlay_src` und `custom_overlay_src_alternate`.
+Die meisten der obigen Parameter werden in die Konfiguration jeder einzelnen Kachel geschrieben und können daher von Kachel zu Kachel abweichen. Einige wenige werden ausschließlich aus der globalen `Ortho4XP.cfg` gelesen und erscheinen nie in einer Kachel-Konfiguration.
+
+Die beiden wichtigsten sind `skip_downloads` und `skip_converts`, die den Bilddaten-Download und die DDS-Konvertierung unterdrücken. Beide stehen vorgabemäßig auf `False`, und sie sind es, die aus Ortho4XP einen Erzeuger von Mesh-only-Paketen machen — siehe [Pakete für Ortho-Streaming bauen](#pakete-fur-ortho-streaming-bauen). Ebenfalls nur global: `verbosity`, `cleaning_level`, `max_download_slots`, `max_convert_slots`, `overpass_server_choice`, `custom_scenery_dir`, `custom_overlay_src` und `custom_overlay_src_alternate`.
 
 !!! warning "Gleiche Schlüsselnamen in OrthoForge, andere Vorgabewerte"
 
@@ -260,7 +274,9 @@ road_level=3
 water_tech=XP12
 ```
 
-Jeder Wert bewegt sich in Richtung mehr Detail: `curvature_tol=1.0` halbiert die Toleranz und lässt das Mesh entsprechend feinerem Gelände folgen, `min_angle=15.0` hält die zusätzlichen Dreiecke gut geformt, `mask_zl=16` ist die feinste zulässige Maskenauflösung und `masks_width=25` verengt den Uferübergang passend dazu. `apt_smoothing_pix=4` zeichnet das Höhenraster über Flughäfen weniger weich, sodass das Flughafengelände mehr von seiner tatsächlichen Form behält. `cover_zl=19` setzt ein `mesh_zl` von mindestens `19` voraus. Bauzeit und Paketgröße steigen steil an; bei einem hochauflösenden `custom_dem` sollte ein ausdrückliches `limit_tris` hinzukommen, damit die Dreieckszahl begrenzt bleibt.
+Jeder Wert bewegt sich in Richtung mehr Detail. `curvature_tol=1.0` halbiert die Toleranz und lässt das Mesh entsprechend feinerem Gelände folgen, `min_angle=15.0` hält die zusätzlichen Dreiecke gut geformt. `mask_zl=16` ist die feinste zulässige Maskenauflösung, `masks_width=25` verengt den Uferübergang passend dazu, und `apt_smoothing_pix=4` zeichnet das Höhenraster über Flughäfen weniger weich, sodass deren Gelände mehr von seiner tatsächlichen Form behält.
+
+`cover_zl=19` setzt ein `mesh_zl` von mindestens `19` voraus. Bauzeit und Paketgröße steigen steil an — bei einem hochauflösenden `custom_dem` sollte ein ausdrückliches `limit_tris` hinzukommen, damit die Dreieckszahl begrenzt bleibt.
 
 #### Performance-optimiert
 
@@ -352,7 +368,9 @@ WET
 NO_SHADOW
 ```
 
-Der Pfad hinter `BASE_TEX_NOWRAP` benennt genau die DDS-Datei, die der Streaming-Layer zur Laufzeit liefern muss — Anbietercode und Zoomstufe sind Teil des Dateinamens (`_BI17.dds`). Das Paket schlägt keine Auflösung vor, es fordert je Terrain-Definition eine bestimmte Datei. Deshalb ist die Wahl der Zoomstufe auch in einem Build ohne Bilddaten nicht beliebig, und deshalb muss `default_website` zu dem passen, was der Streaming-Layer tatsächlich ausliefert: Ein mit `BI` gebautes Paket fragt nach `_BI17.dds`, und ein auf einen anderen Anbieter eingestellter Layer beantwortet diesen Namen nicht.
+Der Pfad hinter `BASE_TEX_NOWRAP` benennt genau die DDS-Datei, die der Streaming-Layer zur Laufzeit liefern muss — Anbietercode und Zoomstufe sind Teil des Dateinamens (`_BI17.dds`). Das Paket schlägt keine Auflösung vor, es fordert je Terrain-Definition eine bestimmte Datei.
+
+Deshalb ist die Wahl der Zoomstufe auch in einem Build ohne Bilddaten nicht beliebig, und deshalb muss `default_website` zu dem passen, was der Streaming-Layer tatsächlich ausliefert. Ein mit `BI` gebautes Paket fragt nach `_BI17.dds`, und ein auf einen anderen Anbieter eingestellter Layer beantwortet diesen Namen nicht.
 
 Dieselbe Kachel zeigt, was `cover_zl` mit diesem Vertrag macht. Von ihren 752 `.ter`-Dateien verweisen 559 auf `_BI17` und 193 auf `_BI18` — die Basis-Zoomstufe über den größten Teil der Kachel, die höhere Cover-Zoomstufe auf das Flughafenumfeld beschränkt. Das sind Zahlen aus einer einzelnen beobachteten Kachel, eine Veranschaulichung des Mechanismus und kein Zielverhältnis — die Aufteilung hängt vollständig von `cover_extent` ab und davon, wie viele Flughäfen die Kachel enthält.
 
@@ -374,7 +392,9 @@ Das obige Streaming-Profil ist ein konservativer Ausgangspunkt. Tatsächlich im 
 | `road_level` | `1` (Vorgabe) | `3` |
 | `masks_width` | `100` (Vorgabe) | `25` |
 
-Die größte Spanne liegt bei `cover_extent`, dem Radius in Kilometern um einen Flughafen, der hochauflösend abgedeckt wird. Zwischen `0.5` und `6.0` km wächst der Radius um das Zwölffache und die abgedeckte Fläche um rund das Hundertfache, was diesen Wert zum stärksten Einzelhebel auf die Paketgröße macht und darauf, wie viele hochauflösende Texturanforderungen ein belebter Nahverkehrsbereich erzeugt. Er bestimmt zugleich, wie oft die Szenerie zwischen Basistextur und Flughafentextur die Zoomstufe wechselt. `0.5` hält Pakete klein und ist eine vernünftige Vorgabe für großflächige Abdeckung; `6.0` ist die Wahl für ein Setup, in dem eine Handvoll Heimatflughäfen wichtiger ist als die Gesamtpaketgröße.
+Die größte Spanne liegt bei `cover_extent`, dem Radius in Kilometern um einen Flughafen, der hochauflösend abgedeckt wird. Zwischen `0.5` und `6.0` km wächst der Radius um das Zwölffache und die abgedeckte Fläche um rund das Hundertfache. Das macht ihn zum stärksten Einzelhebel auf die Paketgröße, auf die Zahl der hochauflösenden Texturanforderungen in einem belebten Nahverkehrsbereich und darauf, wie oft die Szenerie zwischen Basistextur und Flughafentextur die Zoomstufe wechselt.
+
+Welches Ende dieser Spanne passt, hängt vom Setup ab: `0.5` hält Pakete klein und ist eine vernünftige Vorgabe für großflächige Abdeckung, `6.0` passt dort, wo eine Handvoll Heimatflughäfen wichtiger ist als die Gesamtpaketgröße.
 
 Die übrigen Abweichungen folgen derselben Logik: Ein höheres `mask_zl` mit einem schmaleren `masks_width` erzeugt feinere, aber engere Küstenlinien, `masking_mode=rocks` passt besser zu alpinen und felsigen Ufern als die Vorgabe `sand`, und `road_level=3` fügt sekundäre Straßennetze hinzu, um den Preis von mehr Vektordaten pro Kachel.
 
