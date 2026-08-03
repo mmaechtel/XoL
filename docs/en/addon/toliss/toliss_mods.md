@@ -1,5 +1,5 @@
 ---
-description: "ToLiss aircraft mods for X-Plane 12: Easy Freighter A321 P2F cargo door conversion and Carda high-detail 3D engine replacements with 4K textures."
+description: "ToLiss aircraft mods for X-Plane 12: Easy Freighter A321 P2F cargo door conversion, Carda 3D engine replacements, the Durantula wing mod with new flaps and native wingflex, and the RealWings wing replacement."
 ---
 # ToLiss Mods
 
@@ -18,7 +18,7 @@ High-detail 3D engine replacements by Carda Jowol with 4K textures, animated thr
 
 Available engines: CFM56-5A, CFM56-5B, IAE V2500 (CEO variants), CFM LEAP-1A, PW1100G (NEO variants).
 
-Installation requires two steps: downloading the engine OBJ files from the Threshold Forums, then patching the `.acf` file to reference the new models. The **Carda Engine Installer** by Todaloo automates the `.acf` patching step. The separate **Carda Engines Mod Fix** by Travis is recommended to fix animation bugs.
+Installation requires two steps: downloading the engine OBJ files from the Threshold Forums, then patching the `.acf` file to reference the new models. The **Carda Engine Mod Installer** by iy4vet automates the `.acf` patching step; an older, separate installer by Todaloo covers the same ground. The separate **Carda Engines Mod Fix** by Travis is recommended to fix animation bugs.
 
 - **Engine mod developer:** Carda Jowol
 - **Installer developer:** iy4vet
@@ -28,3 +28,59 @@ Installation requires two steps: downloading the engine OBJ files from the Thres
 !!! note "Linux: native installer binary"
 
     The installer ships a native Linux binary (`install-carda-linux-x64`, also ARM64). Make it executable with `chmod +x` and run it from the aircraft folder. Alternatively, `install_carda.py` runs directly with Python 3.10+ and needs no external dependencies. The engine models themselves (OBJ/DDS) are platform-independent. The installer must be re-run after every ToLiss aircraft update.
+
+## Durantula Wing Enhancement MOD
+
+New wing geometry for the A319, A320 and A321. The mod consists of two independent parts that can be installed separately or together:
+
+- **Flaps** — replaces the stock flaps and flap-track fairings in the wing OBJs with new meshes and their own textures. On CEO airframes the obsolete engine "kit" geometry overlapping the new fairings is removed as well: from the Carda engine OBJs if those are installed, otherwise from the stock `engines.obj`
+- **Wingflex** — replaces ToLiss's own winglet-flex animations in the wing, glass, decal, light and particle OBJs with X-Plane's native `wing_tip_deflection_deg` animation, and sets the wing damping properties in the `.acf`
+
+An optional "New Wing Textures" paint kit is included; the finished livery goes into the aircraft's `liveries/` folder manually.
+
+Installed by hand, the mod means editing OBJ files in a text editor and the `.acf` in Plane Maker. The **Durantula Wing Mod Installer** by iy4vet automates every one of those edits. It matches on geometry and animation content instead of line numbers, so it still works when other mods — the Carda engines or a lighting mod — have shifted the line numbering, and it is safe to re-run. Backups are written as `*.durantula.bak` before any file is touched, and the engine family is read from the `.acf` automatically.
+
+- **Mod developer:** Durantula2405 (3D modelling and animation: Giorgi_Z4)
+- **Installer developer:** iy4vet
+- **Mod download:** [forums.x-plane.org](https://forums.x-plane.org/files/file/88518-toliss-a319-a320-and-a321-wing-enhancement-mod/)
+- **Installer:** [github.com/iy4vet](https://github.com/iy4vet/xplane-toliss-durantula-installer) (GPL-3.0, with pre-built binaries)
+
+!!! note "Linux: native installer binary"
+
+    A native Linux binary is available (`install-durantula-linux-x64`, also ARM64). Make it executable with `chmod +x` and run it from the aircraft folder, or run `install_durantula.py` directly with Python 3.10+ — no external dependencies. Both accept `--aircraft`, `--parts`, `--flaps-engine` and `--textures` for a fully non-interactive install. A ToLiss update via SkunkCraftsUpdater restores the stock files, so the installer has to be re-run afterwards.
+
+## RealWings
+
+Where the Durantula mod reworks parts of the stock wing, RealWings replaces it outright: fully re-modelled wing geometry with new 4K textures, a Substance 3D Painter paintkit for repainters, and new window frames as a bonus. The mod is purely visual — it ships no original ToLiss files and does not touch the aircraft's systems code. It is built to sit alongside the Carda CFM/IAE engines.
+
+There is one download per type, each covering the relevant wingtip variants:
+
+| Download | Aircraft | Variants |
+|----------|----------|----------|
+| RealWings319 | A319 | CEO |
+| RealWings320 | A320 | NEO, CEO with sharklets, CEO with wingtips |
+| RealWings321 | A321 | NEO, CEO with sharklets, CEO with wingtips |
+
+The installer — again by iy4vet, same architecture as the Carda and Durantula ones — swaps the stock wing OBJs for the RealWings versions at the correct positions, removes the geometry blocks that become obsolete, and corrects the engine coordinates if it finds the Carda mod installed. Only one wingtip variant is active at a time; re-running the installer switches between them. For the A320 and A321 the download contains nested `CEO/` and `NEO/` folders, which the installer merges on its own.
+
+- **Mod developer:** GeoBuilds, together with Durantula2405
+- **Installer developer:** iy4vet
+- **Downloads:** [RealWings319](https://forums.x-plane.org/files/file/99042-realwings319-wing-replacement-mod-for-toliss-a319/) · [RealWings320](https://forums.x-plane.org/files/file/99352-realwings320-wing-replacement-mod-for-toliss-a320neo/) · [RealWings321](https://forums.x-plane.org/files/file/99442-realwings321-wing-replacement-mod-for-toliss-a321neoceo/)
+- **Installer:** [github.com/iy4vet](https://github.com/iy4vet/xplane-toliss-realwings-installer) (GPL-3.0, with pre-built binaries)
+
+!!! note "Linux: native installer binary"
+
+    As with the other two installers, native Linux binaries are available (`install-realwings-linux-x64` and `-arm64`); `chmod +x`, then run from the aircraft folder. `install_realwings.py` works directly with Python 3.10+ without external dependencies. Non-interactive via `--aircraft`, `--variant`, `--frames` and `--aircraft-dir`.
+
+!!! warning "RealWings and the Durantula mod overlap"
+
+    Both mods work on the same wing OBJs — RealWings replaces them wholesale, the Durantula mod edits them in place. Neither project documents combining the two, so treat them as alternatives rather than a stack.
+
+## Sources
+
+- [Toliss A319, A320 and A321 — Wing Enhancement MOD](https://forums.x-plane.org/files/file/88518-toliss-a319-a320-and-a321-wing-enhancement-mod/) — mod by Durantula2405
+- [RealWings320](https://forums.x-plane.org/files/file/99352-realwings320-wing-replacement-mod-for-toliss-a320neo/) — wing replacement mod by GeoBuilds (A319 and A321 versions linked above)
+- [xplane-toliss-realwings-installer](https://github.com/iy4vet/xplane-toliss-realwings-installer) — installer source, binaries and documentation
+- [xplane-toliss-durantula-installer](https://github.com/iy4vet/xplane-toliss-durantula-installer) — installer source, binaries and documentation
+- [Carda Engine Mod Installer](https://forums.x-plane.org/files/file/99205-carda-engine-mod-installer-for-toliss-a319-a320-a321/) — installer for the Carda engine mods
+- [Easy Freighter Conversion Kit](https://forums.x-plane.org/files/file/92976-easy-freighter-conversion-kit-for-the-toliss-321/) — A321 P2F cargo door mod

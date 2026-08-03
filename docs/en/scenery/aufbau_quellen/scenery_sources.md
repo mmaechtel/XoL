@@ -1,5 +1,5 @@
 ---
-description: "Available X-Plane scenery options: standard scenery with Gateway airports, SimHeaven X-World autogen, freeware, payware, and interactive WorldMaps."
+description: "Available X-Plane scenery options: standard scenery with Gateway airports, SimHeaven X-World and X-World Pro autogen, freeware, payware, and interactive WorldMaps."
 ---
 # Scenery
 
@@ -26,11 +26,46 @@ The [X-Plane Gateway Server](https://gateway.x-plane.com/) provides a central pl
 
 ## SimHeaven X-World
 
-SimHeaven X-World represents a free scenery extension that significantly improves X-Plane's standard scenery. The extension provides detailed buildings and cityscapes, realistic vegetation and trees, as well as improved road networks and highways. Particularly noteworthy are the correct building heights and shapes, as well as regional architectural styles that enable an authentic representation of various regions.
+SimHeaven X-World represents a scenery extension that significantly improves X-Plane's standard scenery. The extension provides detailed buildings and cityscapes, realistic vegetation and trees, as well as improved road networks and highways. Particularly noteworthy are the correct building heights and shapes, as well as regional architectural styles that enable an authentic representation of various regions.
 
 The extension covers various regions: X-World Europe offers detailed European cities and landscapes, X-World America encompasses North and South American regions, X-World Asia presents Asian cities and landscapes, X-World Africa shows African regions, and X-World Oceania represents Australia and Oceania.
 
 Installation is done manually in the Custom Scenery directory. The extension is compatible with Ortho4XP and AutoOrtho, optimized for X-Plane 12, and is continuously developed through regular updates and improvements.
+
+The classic X-World packages for X-Plane 11 and X-Plane 12 remain free downloads on [simheaven.com](https://simheaven.com/xp12-sceneries/) and continue to receive updates. Alongside them, SimHeaven now offers a commercial line, [X-World Pro](https://simheaven.com/x-world-pro/).
+
+### X-World Pro
+
+X-World Pro is a VFR-oriented scenery line for X-Plane 12, sold through the X-Plane.org store either per continent or as a discounted world bundle. It does not replace the free packages — those stay available — but it removes the content reductions the free versions carry.
+
+**What Pro adds over the free packages**
+
+- Full VFR data instead of the reduced set used in the free X-World packages
+- Complete network layers (road, ship, aerial) including traffic density, which the free packages omit or trim heavily
+- A noticeably wider variety of objects, vegetation, and farmland/crop detail
+- Animated effects such as chimney smoke, steam, and geysers, plus road traffic moving at region-appropriate speeds
+- Landmarks placed worldwide as visual navigation references
+
+Object placement is derived from OpenStreetMap and Microsoft Building Footprints, the same data foundation the free packages use — the difference lies in density and completeness, not in a different data source.
+
+A free test scenery covering roughly 15 tiles in the Ruhr area, Luxembourg, and parts of the Netherlands, Belgium, and France is available on the SimHeaven site. It is intended for checking frame rates and loading behaviour before buying.
+
+**Installation**
+
+Pro consists of the scenery layers plus a separate library package (`simHeaven_X-WORLD-Pro_Library`), which supplies vegetation and the referenced X-Plane 12 assets. Both are unpacked into `Custom Scenery/` and registered in [scenery_packs.ini](../../glossary.md#scenery_packsini) following the usual order — airports and regional sceneries first, then the X-World layers, then libraries, then overlays, ortho, and mesh.
+
+!!! warning "Vegetation library needs a symlink on Linux"
+
+    SimHeaven's vegetation libraries do not ship X-Plane's forest definitions; they link to them. Windows users double-click a supplied `.bat` file, which has no effect on Linux. If the library directory contains such a batch file, create the link manually instead:
+
+    ```bash
+    cd "X-Plane 12/Custom Scenery/simHeaven_X-World_Vegetation_Library"   # or the Pro library folder
+    ln -sf "../../Resources/default scenery/1200 forests" "1200 forests"
+    ```
+
+    Without it, X-Plane aborts loading with `Failed to find resource 'simheaven/forests/….for'`. Copying the `1200 forests` folder instead works but wastes disk space and breaks on X-Plane updates.
+
+SimHeaven does not document running X-World Pro and a free X-World package for the same continent side by side. Since both place autogen from the same source data, stacking them duplicates objects — one line per region is the safe choice.
 
 ## Freeware and Shareware
 
