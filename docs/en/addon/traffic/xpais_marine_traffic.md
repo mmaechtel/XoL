@@ -17,15 +17,15 @@ XPAIS Marine Traffic puts real ships on the water. The plugin subscribes to the 
 
     The repository was set to read-only on 2026-07-07; the last commit dates from 2026-06-16. The code remains available and buildable, but there will be no fixes or new features. Anyone using it is on their own.
 
-    Not to be confused with the similarly named **XP AIS Traffic** by nestasko on the X-Plane.org forums: a separate, closed-source project whose supported platform is Windows 64-bit only. Its author lists Linux support as a roadmap item — as of August 2026 no Linux build exists.
+    Not to be confused with the similarly named **XP AIS-Traffic** by nestasko on the X-Plane.org forums: a separate project that names X-Plane 12 and Windows 64-bit as its supported platform. Its author calls Linux and macOS support "definitely on the roadmap" with no ETA — as of August 2026 no Linux build exists.
 
 ## How It Works
 
 Two threads with a clean split of responsibilities: `ais_client` owns the WebSocket connection over TLS and never touches the X-Plane API, while everything sim-facing runs on the flight-loop thread. That is the correct design for a plugin — X-Plane's SDK is not thread-safe, and network jitter never reaches the frame loop.
 
-Vessels are rendered **60 seconds behind real time**. That sounds like a flaw and is in fact the more honest approach: the plugin interpolates between two known AIS fixes instead of extrapolating a guessed position forward. Ships move smoothly and never have to jump when the next report contradicts a prediction.
+Vessels are rendered **60 seconds behind real time**. That sounds like a flaw and is in fact the more honest approach: in steady state the plugin interpolates between two known AIS fixes instead of extrapolating a guessed position forward. It only extrapolates briefly, and capped, at the leading edge — right after a vessel appears or when its feed stalls. Ships move smoothly and never have to jump when the next report contradicts a prediction.
 
-The hulls come from X-Plane's own default ship objects, selected by AIS type code and by the vessel's reported length and beam. [OpenSceneryX](https://www.opensceneryx.com/) is optional but worth having: X-Plane 12 ships no passenger vessel models, so without it ferries and liners fall back to yacht hulls.
+The hulls come from X-Plane's own default ship objects, selected by AIS type code and by the vessel's reported length and beam. [OpenSceneryX](https://www.opensceneryx.com/) is optional but worth having: X-Plane 12 ships no passenger vessel models, so without it liners and ferries fall back to a generic cargo hull, and small passenger craft to a yacht model.
 
 ## Installation
 
@@ -35,7 +35,7 @@ The plugin is built from source. Required are `cmake`, a C++17 compiler and the 
 sudo apt install cmake g++ libssl-dev
 ```
 
-The X-Plane SDK is vendored in the repository, so no separate download is needed:
+The X-Plane SDK is vendored in the repository, so it needs no separate download — but the build fetches IXWebSocket and nlohmann/json at configure time, so it does need network access:
 
 ```bash
 ./build.sh            # builds into dist/XPAISTraffic/
@@ -48,9 +48,14 @@ The target is `X-Plane 12/Resources/plugins/XPAISTraffic/`. An AISStream API key
 [AIS]
 ApiKey=<your key>
 
+[Logging]
+Debug=true
+
 [Display]
 ShowTraffic=true
 Labels=false
+Wakes=false
+HideNoHeading=false
 OpenSceneryX=true
 ```
 
@@ -64,17 +69,18 @@ The **Plugins → XP AIS Traffic** menu exposes the live settings, including the
 |-----------|--------|
 | Show traffic | Master switch |
 | Show labels | Vessel name, heading and speed above the ship |
-| Use OpenSceneryX ships | Prefer the better hulls when available |
+| Show wakes | Unfinished, off by default |
 | Hide vessels w/o heading (HDG 000) | Suppresses vessels that report no heading |
-| Contacts: N | Live count of tracked vessels |
+| Use OpenSceneryX ships (if installed) | Prefer the better hulls when available |
+| Contacts: N | Live count of tracked vessels — `Contacts: (off)` while traffic is switched off |
 
 The HDG-000 filter addresses a quirk of the data: anchored and stationary vessels frequently transmit neither true heading nor course over ground, so they all end up pointing due north. The filter is off by default, and the developer names its limitation plainly — AIS offers no way to distinguish "reported no heading" from "genuinely steaming north", so a real northbound ship is hidden along with the rest.
 
 Wakes exist but default to off, as they were never finished. They reference X-Plane's own `wake.png` rather than copying it.
 
-!!! note "Turn off \"Show ships and balloons\""
+!!! note "Turn off \"Draw boats and balloons\""
 
-    X-Plane's own ship traffic is positionally closed: it spawns synthetic boats stochastically along the density raster `shipping-lanes-for-boats.png` and steers them itself. There is no public dataref or SDK call to place a vessel at a given position, so AIS ships cannot be fed into that system — which is also why they cannot inherit its procedural wake.
+    X-Plane's own ship traffic is positionally closed. The only writable position datarefs are `sim/world/boat/*` under `override_boats`, and those cover just the carrier and the frigate — the ambient boats cannot be placed from outside, which is also why AIS vessels cannot inherit their procedural wake.
 
     Leaving X-Plane's own traffic on is actively harmful: its synthetic boats have nothing to do with real traffic and duplicate as ghosts right next to the AIS vessels. The plugin's ships are instanced independently and render regardless of the setting.
 
@@ -82,10 +88,15 @@ Wakes exist but default to off, as they were never finished. They reference X-Pl
 
 ## Limitations
 
-Beyond the archived status, the project documents its own boundaries clearly:
+Two things the project lists as deliberate design choices rather than shortcomings, because they do not apply to a renderer driven by live AIS:
 
 - **No collision avoidance:** vessels render exactly where AIS places them, including in each other
 - **No berth or port scripting:** everything comes from the live feed, nothing is choreographed
+
+The gaps the project does name as gaps are different: passenger vessels need OpenSceneryX to look right, the car-carrier hulls are a deliberate mix, and the visuals were never tuned in the simulator.
+
+Two further limits come from the data rather than the plugin:
+
 - **Coverage varies:** AIS quality depends on transponders, shore stations and satellite reception. Parts of the world are simply empty — testers found no data at all in the Strait of Hormuz
 - **Data quality:** spoofed or duplicated AIS entries occur and cannot be corrected by the plugin
 

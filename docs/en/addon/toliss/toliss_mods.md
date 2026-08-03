@@ -31,7 +31,7 @@ Installation requires two steps: downloading the engine OBJ files from the Thres
 
 ## Durantula Wing Enhancement MOD
 
-New wing geometry for the A319, A320 and A321. The mod consists of two independent parts that can be installed separately or together:
+New flap and flap-track-fairing geometry plus a native wingflex for the A319, A320 and A321. The mod consists of two independent parts that can be installed separately or together:
 
 - **Flaps** — replaces the stock flaps and flap-track fairings in the wing OBJs with new meshes and their own textures. On CEO airframes the obsolete engine "kit" geometry overlapping the new fairings is removed as well: from the Carda engine OBJs if those are installed, otherwise from the stock `engines.obj`
 - **Wingflex** — replaces ToLiss's own winglet-flex animations in the wing, glass, decal, light and particle OBJs with X-Plane's native `wing_tip_deflection_deg` animation, and sets the wing damping properties in the `.acf`
@@ -53,7 +53,7 @@ Installed by hand, the mod means editing OBJ files in a text editor and the `.ac
 
 Where the Durantula mod reworks parts of the stock wing, RealWings replaces it outright: fully re-modelled wing geometry with new 4K textures, a Substance 3D Painter paintkit for repainters, and new window frames as a bonus. The mod is purely visual — it ships no original ToLiss files and does not touch the aircraft's systems code. It is built to sit alongside the Carda CFM/IAE engines.
 
-There is one download per type, each covering the relevant wingtip variants:
+There is one download per narrowbody type, each covering the relevant wingtip variants (a RealWings340 for the ToLiss A340-600 exists as well, outside the scope of this page):
 
 | Download | Aircraft | Variants |
 |----------|----------|----------|
@@ -61,7 +61,7 @@ There is one download per type, each covering the relevant wingtip variants:
 | RealWings320 | A320 | NEO, CEO with sharklets, CEO with wingtips |
 | RealWings321 | A321 | NEO, CEO with sharklets, CEO with wingtips |
 
-The installer — again by iy4vet, same architecture as the Carda and Durantula ones — swaps the stock wing OBJs for the RealWings versions at the correct positions, removes the geometry blocks that become obsolete, and corrects the engine coordinates if it finds the Carda mod installed. Only one wingtip variant is active at a time; re-running the installer switches between them. For the A320 and A321 the download contains nested `CEO/` and `NEO/` folders, which the installer merges on its own.
+The installer — again by iy4vet — swaps the stock wing OBJs for the RealWings versions at the correct positions, removes the geometry blocks that become obsolete, and corrects the engine coordinates if it finds the Carda mod installed. Only one wingtip variant is active at a time; re-running the installer switches between them. For the A320 and A321 the download contains nested `CEO/` and `NEO/` folders, which the installer merges on its own. One step stays manual: if a livery brings its own RealWings textures, its `objects/RealWings3XX/` folder has to be copied into the matching livery folder.
 
 - **Mod developer:** GeoBuilds, together with Durantula2405
 - **Installer developer:** iy4vet
@@ -74,7 +74,7 @@ The installer — again by iy4vet, same architecture as the Carda and Durantula 
 
 !!! warning "RealWings and the Durantula mod overlap"
 
-    Both mods work on the same wing OBJs — RealWings replaces them wholesale, the Durantula mod edits them in place. Neither project documents combining the two, so treat them as alternatives rather than a stack.
+    Both mods target the same files. RealWings does not rewrite the stock wing OBJs but removes them from the `.acf` outright, which silently voids the Durantula mod's in-place edits; beyond that, both also edit `Decals.obj`, the lighting OBJ and the Carda engine OBJs. Neither installer knows about the other — they detect only the Carda mod — and RealWings deletes the obsolete Carda "kit" geometry by line number, which a previous Durantula run has already shifted. Treat the two as alternatives, not a stack.
 
 ## Sources
 

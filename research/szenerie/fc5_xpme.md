@@ -51,7 +51,25 @@ Belegstärke: sichtbarer Seitentext
 Tragweite: niedrig
 Vorschlag: keine Änderung.
 
-## B5-06 7 Tage Rückgabefrist — NICHT BELEGBAR
+## B5-06 7 Tage Rückgabefrist — **WIDERRUFEN, der Befund war falsch**
+
+!!! Korrektur 2026-08-04 (Gegenprüfung)
+
+    Dieser Punkt ist widerlegt. Die Rückgabefrist steht wörtlich auf der Lizenzseite:
+    `<h1 id="ask-for-refund">Ask for refund</h1>` … *„If you are not satisfied with the pro
+    license, please tell me why and I will give you a refund. The refund period is 7 days after
+    I sent out the license."* Nachgeprüft am 2026-08-04 per `curl` auf das Roh-HTML von
+    <https://www.aiflygo.com/docs/license/> (HTTP 200, 32.181 Bytes, vier Treffer auf „refund"),
+    zusätzlich bestätigt im Wayback-Snapshot vom 2025-11-26. Die untenstehende Volltextsuche muss
+    also fehlgeschlagen sein — vermutlich wurde eine gerenderte oder gekürzte Fassung durchsucht.
+    Der Abschnitt steht am **Ende** der Seite, hinter „Ask for help", und fehlt im
+    Inhaltsverzeichnis, das unten zitiert wird.
+
+    Der Fehler ist in `docs/{de,en}/scenery/ortho_streaming/xpme.md` eingebaut worden und dort
+    am 2026-08-04 korrigiert. Lehre: Ein „kommt im Roh-HTML kein einziges Mal vor" braucht die
+    Angabe, welche Datei durchsucht wurde und wie groß sie war.
+
+### Ursprünglicher Befund (überholt)
 Behauptung (Z. 15): "and the vendor states a 7-day refund window."
 Urteil: UNBELEGBAR
 Beleg: kein Beleg auffindbar. Das Wort "refund" kommt im Roh-HTML von https://www.aiflygo.com/docs/license/, https://k.aiflygo.com/purchase, https://www.aiflygo.com/docs/xplane-map-enhancement/{faq,download,usage}/ und https://www.aiflygo.com/docs/msfs-map-enhancement/faq/ **kein einziges Mal** vor (grep über die abgerufenen Dateien, Stand 2026-08-03). Die Inhaltsverzeichnisse der Lizenzseite lauten vollständig: "Purchase / How to use the license / When does license become invalid? / Error when Linking Device / Can I unlink my device…? / Can I use my license on multiple devices? / I changed my computer…" — kein Rückgabe-Abschnitt.

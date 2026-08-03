@@ -31,7 +31,7 @@ Die Installation erfordert zwei Schritte: Die Engine-OBJ-Dateien von den Thresho
 
 ## Durantula Wing Enhancement MOD
 
-Neue Flügelgeometrie für A319, A320 und A321. Der Mod besteht aus zwei unabhängigen Teilen, die sich einzeln oder gemeinsam installieren lassen:
+Neue Klappen- und Klappenträger-Geometrie sowie eine native Wingflex-Animation für A319, A320 und A321. Der Mod besteht aus zwei unabhängigen Teilen, die sich einzeln oder gemeinsam installieren lassen:
 
 - **Klappen** — ersetzt die Original-Landeklappen und Klappenschienen-Verkleidungen in den Flügel-OBJs durch neue Meshes mit eigenen Texturen. Bei CEO-Mustern wird zusätzlich die überflüssige Triebwerks-„Kit"-Geometrie entfernt, die sich mit den neuen Verkleidungen überschneidet: aus den Carda-Triebwerks-OBJs, falls installiert, sonst aus der Original-`engines.obj`
 - **Wingflex** — ersetzt die ToLiss-eigenen Winglet-Flex-Animationen in den Flügel-, Glas-, Decal-, Licht- und Partikel-OBJs durch die X-Plane-native `wing_tip_deflection_deg`-Animation und setzt die Flügel-Dämpfungswerte in der `.acf`
@@ -53,7 +53,7 @@ Von Hand installiert bedeutet der Mod, OBJ-Dateien im Texteditor und die `.acf` 
 
 Während der Durantula-Mod Teile des Originalflügels überarbeitet, ersetzt RealWings ihn komplett: neu modellierte Flügelgeometrie mit neuen 4K-Texturen, ein Substance-3D-Painter-Paintkit für Repainter und als Dreingabe neue Fensterrahmen. Der Mod ist rein visuell — er enthält keine Originaldateien von ToLiss und greift nicht in den Systemcode des Flugzeugs ein. Er ist darauf ausgelegt, neben den Carda-Triebwerken (CFM/IAE) zu bestehen.
 
-Pro Muster gibt es einen eigenen Download, der jeweils die passenden Flügelspitzen-Varianten abdeckt:
+Pro Schmalrumpf-Muster gibt es einen eigenen Download, der jeweils die passenden Flügelspitzen-Varianten abdeckt (ein RealWings340 für die ToLiss A340-600 existiert ebenfalls, liegt aber außerhalb dieser Seite):
 
 | Download | Flugzeug | Varianten |
 |----------|----------|-----------|
@@ -61,7 +61,7 @@ Pro Muster gibt es einen eigenen Download, der jeweils die passenden Flügelspit
 | RealWings320 | A320 | NEO, CEO mit Sharklets, CEO mit Wingtips |
 | RealWings321 | A321 | NEO, CEO mit Sharklets, CEO mit Wingtips |
 
-Der Installer — wieder von iy4vet, nach derselben Architektur wie der Carda- und der Durantula-Installer — tauscht die Original-Flügel-OBJs an den richtigen Stellen gegen die RealWings-Versionen, entfernt die dadurch überflüssigen Geometrieblöcke und korrigiert die Triebwerkskoordinaten, falls er den Carda-Mod vorfindet. Es ist immer nur eine Flügelspitzen-Variante aktiv; ein erneuter Lauf wechselt zwischen ihnen. Bei A320 und A321 enthält der Download verschachtelte `CEO/`- und `NEO/`-Ordner, die der Installer selbstständig zusammenführt.
+Der Installer — wieder von iy4vet — tauscht die Original-Flügel-OBJs an den richtigen Stellen gegen die RealWings-Versionen, entfernt die dadurch überflüssigen Geometrieblöcke und korrigiert die Triebwerkskoordinaten, falls er den Carda-Mod vorfindet. Es ist immer nur eine Flügelspitzen-Variante aktiv; ein erneuter Lauf wechselt zwischen ihnen. Bei A320 und A321 enthält der Download verschachtelte `CEO/`- und `NEO/`-Ordner, die der Installer selbstständig zusammenführt. Ein Schritt bleibt manuell: Bringt eine Livery eigene RealWings-Texturen mit, ist deren Ordner `objects/RealWings3XX/` in den passenden Livery-Ordner zu kopieren.
 
 - **Mod-Entwickler:** GeoBuilds, gemeinsam mit Durantula2405
 - **Installer-Entwickler:** iy4vet
@@ -74,7 +74,7 @@ Der Installer — wieder von iy4vet, nach derselben Architektur wie der Carda- u
 
 !!! warning "RealWings und Durantula-Mod überschneiden sich"
 
-    Beide Mods arbeiten an denselben Flügel-OBJs — RealWings ersetzt sie vollständig, der Durantula-Mod bearbeitet sie an Ort und Stelle. Keines der beiden Projekte dokumentiert eine Kombination, sie sind daher als Alternativen zu behandeln und nicht als Stapel.
+    Beide Mods greifen auf dieselben Dateien zu. RealWings überschreibt die Original-Flügel-OBJs nicht, sondern entfernt sie ganz aus der `.acf` — womit die Änderungen des Durantula-Mods still wirkungslos werden; darüber hinaus bearbeiten beide auch `Decals.obj`, die Beleuchtungs-OBJ und die Carda-Triebwerks-OBJs. Keiner der beiden Installer kennt den jeweils anderen — erkannt wird nur der Carda-Mod — und RealWings löscht die überflüssige Carda-„kit"-Geometrie über Zeilennummern, die ein vorheriger Durantula-Lauf bereits verschoben hat. Die beiden sind als Alternativen zu behandeln, nicht als Stapel.
 
 ## Quellen
 

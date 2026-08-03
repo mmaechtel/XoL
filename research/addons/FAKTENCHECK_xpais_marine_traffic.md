@@ -87,3 +87,37 @@ nachgezogen — der Widerspruch bleibt dauerhaft bestehen.
   auffindbar. Falls sich das ändert, Seite aktualisieren.
 - **Ob das Plugin gegen aktuelle X-Plane-12-Versionen noch baut und läuft**, ist mangels Pflege
   ungetestet. Nicht behauptet, aber der Archiv-Hinweis warnt entsprechend.
+
+---
+
+## Korrekturen aus der Gegenprüfung (2026-08-04)
+
+Vollständiger Bericht: `research/GEGENPRUEFUNG_2026-08-04.md`.
+
+- **GPL-3.0 stammt nicht aus den Repo-Metadaten.** Die Codeberg-API hat für dieses Repository gar
+  kein `license`-Feld (und meldet als Sprache fälschlich „Pascal"). Beleg ist die `LICENSE`-Datei
+  plus der README-Satz „Licensed under the GNU General Public License v3.0".
+- **Der Einstellungsname war falsch.** X-Plane 12.4.3 nennt die Option `Draw boats and balloons`
+  (Pref-Key `renopt_boats`, verifiziert an den Binary-Strings), nicht „Show ships and balloons" —
+  diese Schreibweise benutzen nur Entwickler und Tester im Forum.
+- **Die zwei „Limitations" waren sinnverdreht.** „No collision avoidance" und „No berth or port
+  scripting" stehen im README unter `## Design choices (not bugs)`. Die echten
+  `## Known gaps (genuine)` sind andere: Passagierschiffe brauchen OpenSceneryX, die
+  Autotransporter-Rümpfe sind eine bewusste Mischung, die Optik ist im Sim nie feinabgestimmt
+  worden.
+- **Rumpf-Fallback korrigiert:** Kreuzfahrtschiffe (`L>=160`) und Fähren (`L>=50`) fallen auf einen
+  Bulker-Rumpf zurück, nur Passagierboote unter 50 m auf `kYacht` (`ships.cpp:163-166`).
+- **Unvollständig waren** `config.ini` (es fehlten `[Logging] Debug`, `Wakes`, `HideNoHeading`),
+  die Menütabelle (`Show wakes` fehlte, OpenSceneryX-Eintrag gekürzt) und der Build-Abschnitt
+  (IXWebSocket und nlohmann/json werden zur Configure-Zeit geholt, Netzzugang nötig).
+- **Offener Punkt geschlossen:** Die Entwickler-Korrektur zur Einstellung ist im Forum belegt
+  (2026-06-15): „‚Show ships and balloons': confirmed, you can leave it off. Our vessels are
+  plugin-instanced so they render regardless". Ebenso „Leaving XP's traffic on actively hurts …
+  they'd ghost and duplicate right next to our real AIS vessels."
+- **Zum Windows-Projekt:** Dateiseite 100400 nennt „Supported Platform: X-Plane 12 / Windows
+  64-bit"; der Autor schreibt „Linux and Mac support are definitely on the roadmap … No ETA yet".
+  Ob es quelloffen ist, sagt die Seite nicht — die Seite spricht daher nicht mehr von
+  „quellgeschlossen".
+- **Weiterhin offen:** Der Grund der Archivierung ist nach wie vor nirgends genannt. Das Repository
+  ist am 2026-08-04 unverändert archiviert (`"archived": true`, `archived_at`
+  `2026-07-07T15:15:41+02:00`).

@@ -36,36 +36,42 @@ Die klassischen X-World-Pakete für X-Plane 11 und X-Plane 12 bleiben kostenlose
 
 ### X-World Pro
 
-X-World Pro ist eine VFR-orientierte Szenerie-Linie für X-Plane 12 und wird über den X-Plane.org Store verkauft — entweder einzelne Kontinente oder ein vergünstigtes World-Bundle. Die kostenlosen Pakete werden dadurch nicht abgelöst, sie bleiben verfügbar; Pro verzichtet lediglich auf die inhaltlichen Kürzungen der freien Versionen.
+X-World Pro ist eine VFR-orientierte Szenerie-Linie für X-Plane 12 und wird über den X-Plane.org Store verkauft — entweder einzelne Kontinente oder ein vergünstigtes World-Bundle. Die kostenlosen Pakete werden nicht eingestellt — sie bleiben verfügbar und werden weiter gepflegt; Pro ist aber eine eigene Linie und keine Ergänzung zu ihnen.
 
 **Was Pro gegenüber den freien Paketen bietet**
 
-- Vollständige VFR-Daten statt des reduzierten Umfangs der freien X-World-Pakete
-- Komplette Netz-Layer (Straße, Schiff, Luft) inklusive Verkehrsdichte, die in den freien Paketen fehlen oder stark gekürzt sind
+- Das Netz ist auf drei Layer aufgeteilt (Luft, Schiff, Straße), wo die freie Linie einen einzigen kombinierten Layer führt, und bringt dynamischen Schiffs- und regionalen Bahnverkehr mit
+- Straßenverkehrsdichte, die sich an die Umgebung — städtisch oder ländlich — und an die Tageszeit anpasst
 - Deutlich größere Objektvielfalt sowie mehr Detail bei Vegetation, Feldern und Feldfrüchten
-- Animierte Effekte wie Schornsteinrauch, Dampf und Geysire sowie Straßenverkehr mit regionstypischen Geschwindigkeiten
+- Animierte Effekte wie Schornsteinrauch, Kühlturmdampf, Springbrunnen und Geysire
 - Weltweit platzierte Landmarks als visuelle Navigationsreferenz
 
-Die Objektplatzierung basiert auf OpenStreetMap und Microsoft Building Footprints — derselben Datengrundlage wie bei den freien Paketen. Der Unterschied liegt in Dichte und Vollständigkeit, nicht in einer anderen Datenquelle.
+Die Objektplatzierung basiert auf OpenStreetMap und weltweiten Gebäudegrundriss-Datensätzen. Die freie Linie nennt Microsoft Building Footprints ausdrücklich, das Pro-Handbuch spricht nur allgemein von globalen Gebäudegrundrissen.
 
 Auf der SimHeaven-Seite steht eine kostenlose Testszenerie über rund 15 Kacheln im Ruhrgebiet, in Luxemburg sowie in Teilen der Niederlande, Belgiens und Frankreichs bereit. Sie dient dazu, Framerate und Ladeverhalten vor dem Kauf zu prüfen.
 
 **Installation**
 
-Pro besteht aus den Szenerie-Layern und einem separaten Library-Paket (`simHeaven_X-WORLD-Pro_Library`), das Vegetation und die referenzierten X-Plane-12-Assets liefert. Beides wird nach `Custom Scenery/` entpackt und in der [scenery_packs.ini](../../glossary.md#scenery_packsini) in der üblichen Reihenfolge eingetragen: zuerst Flughäfen und regionale Szenerien, dann die X-World-Layer, anschließend Libraries, Overlays, Ortho und Mesh.
+Pro besteht aus den Szenerie-Layern und einem separaten Library-Paket (`simHeaven_X-WORLD-Pro_Library`), das Vegetation und die referenzierten X-Plane-12-Assets liefert — und es ist die einzige Library, die Pro benötigt. Beides wird nach `Custom Scenery/` entpackt und in der [scenery_packs.ini](../../glossary.md#scenery_packsini) in der Reihenfolge eingetragen, die das Installationsskript ausgibt: zuerst eigene und regionale Flughäfen, dann `GLOBAL_AIRPORTS`, dann die X-World-Pro-Layer, anschließend Libraries, Overlays, Ortho und Mesh.
 
-!!! warning "Vegetations-Library braucht unter Linux einen Symlink"
+Eine Entscheidung betrifft Ortho4XP-Nutzer unmittelbar. Die Brücken-Ebene liegt in zwei Varianten vor — `…-01-bridges_O4XP-Mesh` und `…-01-bridges_XP12-Mesh`. Genau eine davon bleibt aktiv: Die Verkehrsführung richtet sich nach dem Bodenmesh, und das Ortho4XP-Mesh weicht vom Standard-Mesh von X-Plane 12 ab. Mit der falschen Variante passt der Verkehr nicht zu den Brücken.
 
-    Die Vegetations-Libraries von SimHeaven liefern die Wald-Definitionen von X-Plane nicht mit, sondern verlinken sie. Unter Windows erledigt das ein mitgeliefertes `.bat`-Skript, das unter Linux wirkungslos ist. Liegt im Library-Verzeichnis eine solche Batch-Datei, ist der Link manuell anzulegen:
+!!! warning "Pro: das mitgelieferte Linux-Skript ausführen, die Links nicht von Hand anlegen"
+
+    Die Pro-Library liefert neben der Windows-Batchdatei ein `install_XWP_Linux_Mac.sh` mit. Es wird einmalig aus `Custom Scenery/simHeaven_X-WORLD-Pro_Library/` heraus ausgeführt. Es legt `XP12_libs` als Verweis auf das gesamte Verzeichnis `Resources/default scenery` an und verlinkt die geänderten Saisontexturen nach `1200 forests` — also einen anderen und größeren Satz von Links, als die freie Vegetations-Library braucht. Einen `1200 forests`-Link von Hand anzulegen führt dort zu einer defekten Installation.
+
+!!! note "Freie Vegetations-Library: Symlink unter Linux von Hand"
+
+    Die freie `simHeaven_X-World_Vegetation_Library` liefert die Wald-Definitionen von X-Plane nicht mit, sondern verlinkt sie. Unter Windows erledigt das `set_link_WIN.bat`, das eine Verzeichnis-Junction anlegt und unter Linux wirkungslos ist. SimHeaven dokumentiert die manuelle Entsprechung:
 
     ```bash
-    cd "X-Plane 12/Custom Scenery/simHeaven_X-World_Vegetation_Library"   # oder das Pro-Library-Verzeichnis
+    cd "X-Plane 12/Custom Scenery/simHeaven_X-World_Vegetation_Library"
     ln -sf "../../Resources/default scenery/1200 forests" "1200 forests"
     ```
 
-    Fehlt der Link, bricht X-Plane das Laden mit `Failed to find resource 'simheaven/forests/….for'` ab. Den Ordner `1200 forests` stattdessen zu kopieren funktioniert zwar, kostet aber Plattenplatz und geht bei X-Plane-Updates verloren.
+    Fehlt der Link, füllt sich das Log mit `Failed to find resource 'simheaven/forests/….for'` — eine Fehlermeldung, kein Abbruch des Ladevorgangs. Den Ordner `1200 forests` stattdessen zu kopieren funktioniert zwar, kostet aber Plattenplatz und veraltet bei X-Plane-Updates.
 
-Ob X-World Pro und ein freies X-World-Paket für denselben Kontinent parallel betrieben werden können, dokumentiert SimHeaven nicht. Da beide Autogen aus derselben Datengrundlage platzieren, führt ein Stapeln zu doppelten Objekten — pro Region sollte nur eine Linie aktiv sein.
+Pro und die freie Linie schließen sich gegenseitig aus: pro Kontinent läuft entweder die eine oder die andere, nie beide. Beide platzieren ihre Objekte aus derselben OSM-Grundlage, gemeinsam aktiv verdoppeln sie sie also.
 
 ## Freeware und Shareware
 

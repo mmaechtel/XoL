@@ -36,36 +36,42 @@ The classic X-World packages for X-Plane 11 and X-Plane 12 remain free downloads
 
 ### X-World Pro
 
-X-World Pro is a VFR-oriented scenery line for X-Plane 12, sold through the X-Plane.org store either per continent or as a discounted world bundle. It does not replace the free packages — those stay available — but it removes the content reductions the free versions carry.
+X-World Pro is a VFR-oriented scenery line for X-Plane 12, sold through the X-Plane.org store either per continent or as a discounted world bundle. The free packages are not discontinued — they stay available and keep being updated — but Pro is a separate line, not an add-on to them.
 
 **What Pro adds over the free packages**
 
-- Full VFR data instead of the reduced set used in the free X-World packages
-- Complete network layers (road, ship, aerial) including traffic density, which the free packages omit or trim heavily
+- The network is split into three layers (aerials, ships, roads) where the free line has a single combined one, and it brings dynamic shipping and regional rail traffic
+- Road traffic density that adapts to the surroundings — urban or rural — and to the time of day
 - A noticeably wider variety of objects, vegetation, and farmland/crop detail
-- Animated effects such as chimney smoke, steam, and geysers, plus road traffic moving at region-appropriate speeds
+- Animated effects such as chimney smoke, cooling-tower steam, fountains and geysers
 - Landmarks placed worldwide as visual navigation references
 
-Object placement is derived from OpenStreetMap and Microsoft Building Footprints, the same data foundation the free packages use — the difference lies in density and completeness, not in a different data source.
+Object placement is derived from OpenStreetMap plus global building-footprint datasets. The free line names Microsoft Building Footprints explicitly; the Pro manual only speaks of global building footprints.
 
 A free test scenery covering roughly 15 tiles in the Ruhr area, Luxembourg, and parts of the Netherlands, Belgium, and France is available on the SimHeaven site. It is intended for checking frame rates and loading behaviour before buying.
 
 **Installation**
 
-Pro consists of the scenery layers plus a separate library package (`simHeaven_X-WORLD-Pro_Library`), which supplies vegetation and the referenced X-Plane 12 assets. Both are unpacked into `Custom Scenery/` and registered in [scenery_packs.ini](../../glossary.md#scenery_packsini) following the usual order — airports and regional sceneries first, then the X-World layers, then libraries, then overlays, ortho, and mesh.
+Pro consists of the scenery layers plus a separate library package (`simHeaven_X-WORLD-Pro_Library`), which supplies vegetation and the referenced X-Plane 12 assets — and it is the only library Pro needs. Both are unpacked into `Custom Scenery/` and registered in [scenery_packs.ini](../../glossary.md#scenery_packsini) following the order the installer prints: own and regional airports first, then `GLOBAL_AIRPORTS`, then the X-World Pro layers, then libraries, then overlays, ortho, and mesh.
 
-!!! warning "Vegetation library needs a symlink on Linux"
+One choice concerns Ortho4XP users directly. The bridge layer ships in two variants — `…-01-bridges_O4XP-Mesh` and `…-01-bridges_XP12-Mesh`. Exactly one of them stays enabled: traffic routing follows the ground mesh, and the Ortho4XP mesh differs from the stock X-Plane 12 one, so the wrong variant leaves the traffic misaligned with the bridges.
 
-    SimHeaven's vegetation libraries do not ship X-Plane's forest definitions; they link to them. Windows users double-click a supplied `.bat` file, which has no effect on Linux. If the library directory contains such a batch file, create the link manually instead:
+!!! warning "Pro: run the bundled Linux script, do not build the links by hand"
+
+    The Pro library ships `install_XWP_Linux_Mac.sh` alongside the Windows batch file. Run it once from inside `Custom Scenery/simHeaven_X-WORLD-Pro_Library/`. It creates `XP12_libs` pointing at the whole `Resources/default scenery` directory and links the modified season textures into `1200 forests` — a different and larger set of links than the free vegetation library needs. Building a `1200 forests` link by hand there produces a broken install.
+
+!!! note "Free vegetation library: symlink by hand on Linux"
+
+    The free `simHeaven_X-World_Vegetation_Library` does not ship X-Plane's forest definitions; it links to them. Windows users double-click `set_link_WIN.bat`, which creates a directory junction and does nothing on Linux. SimHeaven documents the manual equivalent:
 
     ```bash
-    cd "X-Plane 12/Custom Scenery/simHeaven_X-World_Vegetation_Library"   # or the Pro library folder
+    cd "X-Plane 12/Custom Scenery/simHeaven_X-World_Vegetation_Library"
     ln -sf "../../Resources/default scenery/1200 forests" "1200 forests"
     ```
 
-    Without it, X-Plane aborts loading with `Failed to find resource 'simheaven/forests/….for'`. Copying the `1200 forests` folder instead works but wastes disk space and breaks on X-Plane updates.
+    Without it the log fills with `Failed to find resource 'simheaven/forests/….for'` — an error message, not an aborted load. Copying the `1200 forests` folder instead works but wastes disk space and goes stale on X-Plane updates.
 
-SimHeaven does not document running X-World Pro and a free X-World package for the same continent side by side. Since both place autogen from the same source data, stacking them duplicates objects — one line per region is the safe choice.
+Pro and the free line are mutually exclusive: run one or the other per continent, never both. Both place their objects from the same OSM base, so having both active duplicates them.
 
 ## Freeware and Shareware
 

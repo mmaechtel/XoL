@@ -3,7 +3,7 @@ description: "XPME (X-Plane Map Enhancement) streamt Satellitenbilder über ein 
 ---
 # XPME (X-Plane Map Enhancement)
 
-**X-Plane Map Enhancement (XPME)** ist eine dritte Streaming-Lösung neben [AutoOrtho](autoortho.md) und [XEarthLayer](xearthlayer.md). Es lädt Satellitenbilder zur Laufzeit und setzt sie an die Stelle der Bodentexturen von X-Plane, erfüllt also dieselbe Aufgabe wie die beiden etablierten Werkzeuge: weltweite [Orthofoto](../../glossary.md#orthofotos)-Abdeckung, ohne die Kacheln vorher offline zu erzeugen. Entwickler ist `derekhe`, veröffentlicht unter der Marke AIFlyGo; die Anwendung ist Closed Source, GitHub dient nur der Auslieferung der Release-Binaries.
+**X-Plane Map Enhancement (XPME)** ist eine dritte Streaming-Lösung neben [AutoOrtho](autoortho.md) und [XEarthLayer](xearthlayer.md). Es lädt Satellitenbilder zur Laufzeit und setzt sie an die Stelle der Bodentexturen von X-Plane, erfüllt also dieselbe Aufgabe wie die beiden etablierten Werkzeuge: weltweite [Orthofoto](../../glossary.md#orthofotos)-Abdeckung, ohne die Kacheln vorher offline zu erzeugen. Entwickler ist `derekhe`, Dokumentation und Bestellformular liegen auf `aiflygo.com`; die Anwendung ist Closed Source, GitHub dient nur der Auslieferung der Release-Binaries.
 
 XPME ist eine Produktfamilie für zwei Simulatoren — Microsoft Flight Simulator und X-Plane. Nur die X-Plane-Seite ist hier von Belang, und sie hat eine eigene Dokumentation, eigene Basispakete und eine eigene Lizenz.
 
@@ -12,7 +12,7 @@ Der entscheidende Unterschied zu den Alternativen ist das Lizenzmodell. XPME ist
 !!! warning "Pro ist ein Abonnement, kein Kauf"
     Das Bestellformular unter `k.aiflygo.com/purchase` weist die Lizenz für X-Plane 12 mit **5 $ für 30 Tage** und **40 $ für 365 Tage** aus. Das Formular baut seine Preisanzeige dynamisch auf, die aktuellen Beträge sind also dort vor dem Bezahlen zu prüfen. Eine dauerhafte Lizenz gibt es nicht.
 
-    Eine Lizenz gilt für genau einen PC und ist an die Hardware gebunden — ein Wechsel von CPU oder Datenträger sowie eine Neuinstallation des Systems können sie ungültig machen. Laut Anbieter lässt sich eine Lizenz mit Benutzernamen und Kauf-E-Mail auf ein neues Gerät umziehen. Die kommerzielle Nutzung ist ohne ausdrückliche schriftliche Genehmigung untersagt. Die Zahlung läuft über PayPal oder Buy Me a Coffee. Die Lizenzbedingungen nennen keine Rückgabefrist — im Issue-Tracker wurde eine Erstattung im Einzelfall gewährt, verlassen sollte man sich darauf nicht.
+    Eine Lizenz gilt für genau einen PC und ist an die Hardware gebunden — ein Wechsel von CPU oder Datenträger sowie eine Neuinstallation des Systems können sie ungültig machen. Laut Anbieter lässt sich eine Lizenz mit Benutzernamen und Kauf-E-Mail auf ein neues Gerät umziehen. Die kommerzielle Nutzung ist ohne ausdrückliche schriftliche Genehmigung untersagt. Die Zahlung läuft über PayPal oder Buy Me a Coffee. Die Lizenzbedingungen nennen eine Rückgabefrist: *„The refund period is 7 days after I sent out the license."*
 
 ## Funktionsweise
 
@@ -88,7 +88,7 @@ chmod +x xplane-map-enhancement-<version>.AppImage
 !!! warning "Linux-Builds erscheinen nicht in jedem Release"
     Nicht jedes Release bringt Linux-Dateien mit. Mehrere Releases enthalten nur die Windows-`.exe` und das macOS-`.dmg`, darunter auch neuere — `.AppImage` und `.deb` erscheinen in den meisten Releases, aber nicht verlässlich im jeweils neuesten. Vor dem Herunterladen die Dateiliste des Releases prüfen und notfalls auf das jüngste Release ausweichen, das einen Linux-Build enthält.
 
-Nach dem ersten Start in den Einstellungen den **Pfad für die Basispakete** auf eine schnelle SSD legen und dann in der Ansicht „Downloader" die zu befliegenden Regionen auswählen und installieren. Die Downloads laufen nacheinander und können groß werden. Die Anwendung muss laufen und vor X-Plane gestartet sein, damit das virtuelle Dateisystem eingehängt ist. Fürs Beenden dokumentiert der Anbieter die umgekehrte Reihenfolge: erst X-Plane schließen, dann in XPME auf „Stop" drücken.
+Nach dem ersten Start in den Einstellungen den **Pfad für die Basispakete** auf eine schnelle SSD legen und dann in der Ansicht „Downloader" die zu befliegenden Regionen auswählen und installieren. Die Downloads laufen nacheinander und können groß werden. Der Anbieter dokumentiert die Reihenfolge in beide Richtungen: XPME öffnen und auf „Start" drücken, bevor X-Plane startet, und beim Beenden zuerst X-Plane schließen, dann auf „Stop" — damit ist laut Anbieter sichergestellt, dass alle Vorgänge des Werkzeugs sauber aufgeräumt werden.
 
 ## Bekannte Einschränkungen unter Linux
 

@@ -131,3 +131,30 @@ aktuell; keine Stale-Kennzeichnung nötig.
   Auf der Seite nicht erwähnt — für Leser ohne Nutzwert, für spätere Prüfungen hier notiert.
 - **Dateigrößen und Versionsnummern** (RealWings321 358,21 MB, Versionen 1.1.x) nicht
   übernommen — volatil bzw. gemäß Plugin-Versionskonvention.
+
+---
+
+## Korrekturen aus der Gegenprüfung (2026-08-04)
+
+Vollständiger Bericht: `research/GEGENPRUEFUNG_2026-08-04.md`.
+
+- **Fünf Belegstellen sind keine wörtlichen Zitate.** „The mod provides two optional components",
+  „Replaces older animation systems with X-Plane's native wing deflection animations and configures
+  wing damping properties", „Python 3.10+ required", der Abschnittsname „Supported Aircraft &
+  Variants" und „Only one variant remains active at a time; re-running switches between them"
+  stehen so nicht in den aktuellen READMEs. Inhaltlich hält jeder Punkt, die Belegspalte ist aber
+  nicht zitierfähig.
+- **`anim/winglex` ist kein Tippfehler der Quelle.** Es ist der echte ToLiss-Bezeichner; der
+  Installer matcht auf die literale Zeichenkette (`install_durantula.py:316`, Abschnittskopf
+  „Wingflex: the 'anim/winglex' → 'wing_tip_deflection_deg' replacement"). Die frühere Einordnung
+  unter „Nicht übernommen" ist damit hinfällig.
+- **Durantula liefert keine neue Flügelgeometrie**, sondern Klappen und Klappenträger plus die
+  Wingflex-Umstellung. Auf der Seite korrigiert.
+- **RealWings folgt nicht derselben Architektur** wie der Durantula-Installer: Es löscht die
+  Carda-„kit"-TRIS und die A319-`engines.obj`-Zeilen über fest codierte Zeilennummern
+  (`_CARDA_TRIS_TARGETS`), obwohl sein Changelog „no hard-coded line numbers" behauptet. Daraus
+  folgt der konkrete Konflikt mit einem vorher installierten Durantula-Mod.
+- **Giorgi_Z4 bestätigt** (Forum-Datei 88518, wörtlich: „Many thanks to @Giorgi_Z4 for modeling and
+  animating!"), ebenso alle RealWings-Beschreibungsmerkmale (Forum-Datei 99352).
+- **Nicht dokumentiert war** der manuelle Schritt, den Ordner `objects/RealWings3XX/` einer Livery
+  in den passenden Livery-Ordner zu kopieren; ergänzt.

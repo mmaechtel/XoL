@@ -3,7 +3,7 @@ description: "XPME (X-Plane Map Enhancement) streams satellite imagery into X-Pl
 ---
 # XPME (X-Plane Map Enhancement)
 
-**X-Plane Map Enhancement (XPME)** is a third streaming solution alongside [AutoOrtho](autoortho.md) and [XEarthLayer](xearthlayer.md). It loads satellite imagery at runtime and substitutes it for X-Plane's ground textures, so it fills the same role as the two established tools: global [orthophoto](../../glossary.md#orthophotos) coverage without generating tiles offline beforehand. The developer is `derekhe`, published under the AIFlyGo brand; the application is closed source, and GitHub is used only to host release binaries.
+**X-Plane Map Enhancement (XPME)** is a third streaming solution alongside [AutoOrtho](autoortho.md) and [XEarthLayer](xearthlayer.md). It loads satellite imagery at runtime and substitutes it for X-Plane's ground textures, so it fills the same role as the two established tools: global [orthophoto](../../glossary.md#orthophotos) coverage without generating tiles offline beforehand. The developer is `derekhe`, and the documentation and order form are hosted on `aiflygo.com`; the application is closed source, and GitHub is used only to host release binaries.
 
 XPME is one product family covering two simulators — Microsoft Flight Simulator and X-Plane. Only the X-Plane side is relevant here, and it has its own documentation, its own base packages, and its own license.
 
@@ -12,7 +12,7 @@ The decisive difference from the alternatives is the licensing model. XPME is fr
 !!! warning "Pro Is a Subscription, Not a Purchase"
     The order form at `k.aiflygo.com/purchase` prices the X-Plane 12 license at **$5 for 30 days** and **$40 for 365 days**. The form builds its price display dynamically, so confirm the current figures there before paying. There is no perpetual license.
 
-    One license is valid for exactly one PC and is bound to the hardware — changing the CPU or disk, or reinstalling the system, can invalidate it. The vendor states that a license can be relinked to a new device using the username and email it was bought with. Commercial use is prohibited without explicit written permission. Payment runs through PayPal or Buy Me a Coffee. The license terms name no refund policy — a refund has been granted case by case in the issue tracker, but do not count on it.
+    One license is valid for exactly one PC and is bound to the hardware — changing the CPU or disk, or reinstalling the system, can invalidate it. The vendor states that a license can be relinked to a new device using the username and email it was bought with. Commercial use is prohibited without explicit written permission. Payment runs through PayPal or Buy Me a Coffee. The license terms name a refund window: *"The refund period is 7 days after I sent out the license."*
 
 ## How It Works
 
@@ -88,7 +88,7 @@ chmod +x xplane-map-enhancement-<version>.AppImage
 !!! warning "Linux Builds Are Release-Dependent"
     Not every release ships Linux assets. Several releases contain only the Windows `.exe` and the macOS `.dmg`, including recent ones — the `.AppImage` and `.deb` appear in most releases but not reliably in the newest. Check the asset list of the release before downloading, and fall back to the most recent release that does include a Linux build.
 
-After the first start, open the settings and set the **base package path** on a fast SSD, then use the "Downloader" view to select and install the regions to be flown. Downloads run sequentially and can be large. The application must be running and started before X-Plane so that the virtual filesystem is mounted. On exit the vendor documents the reverse order: close X-Plane first, then press "Stop" in XPME.
+After the first start, open the settings and set the **base package path** on a fast SSD, then use the "Downloader" view to select and install the regions to be flown. Downloads run sequentially and can be large. The vendor documents the order in both directions: open XPME and press "Start" before launching X-Plane, and on exit close X-Plane first, then press "Stop" — which, per the vendor, ensures everything the tool did is cleaned up.
 
 ## Known Limitations on Linux
 

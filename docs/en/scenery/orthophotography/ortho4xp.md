@@ -17,16 +17,16 @@ Ortho4XP is available in several versions:
     - [GitHub Repository](https://github.com/shred86/Ortho4XP)
     - [Detailed documentation](https://github.com/shred86/Ortho4XP/wiki)
     - Contains numerous improvements and new features
-    - [Binaries for various operating systems](https://github.com/shred86/Ortho4XP/wiki/Installation)
+    - [Prebuilt bundles](https://github.com/shred86/Ortho4XP/wiki/Installation) for Windows, macOS (ARM) and Linux (Debian and Arch builds, x86-64)
 
 3. **OrthoForge** (independently developed successor):
     - [Project page and documentation](https://xpconnect.me/orthoforge.html) — GPL v3, maintained by xbard
     - Started as the English fork of ORTHO4XP_V3 by Roland (Ypsos) and is now developed independently; changes are no longer synchronized with any upstream Ortho4XP branch. The project credits Oscar Pilote (original Ortho4XP), shred86 (1.40 line) and Roland/Ypsos (V3 architecture)
-    - Targets X-Plane 12 — `XP11 + bathy` water is no longer supported at all. The XP12 material extras, such as terrain roughness, are opt-in and off by default
+    - Targets X-Plane 12 — `XP11 + bathy` water is no longer supported in the V2 engine. The XP12 material extras, such as terrain roughness, are opt-in and off by default
 
 !!! warning "The OrthoForge source repository is being retired"
 
-    The [Codeberg repository](https://codeberg.org/xbard/OrthoForge) states: *"Due to changes in Codeberg policy, this repo will soon be deleted and hosted at https://xpconnect.me/orthoforge.html"*. It is still the place the project page sends you to download from, and it is still being committed to — but treat the link as one that may disappear, and use the project page as the durable entry point.
+    The description of the [Codeberg repository](https://codeberg.org/xbard/OrthoForge) reads: *"Due to changes in Codeberg policy, this repo will soon be deleted and hosted at https://xpconnect.me/orthoforge.html"*. It is still the place the project page sends you to download from, and it is still being committed to — but treat the link as one that may disappear, and use the project page as the durable entry point.
 
 **What OrthoForge does differently**
 
@@ -42,13 +42,13 @@ Ortho4XP is available in several versions:
 - `OrthoForge_Setup_Linux.sh` runs a guided setup; `setup_venv.sh` is the plain-shell alternative for distributions with a locked-down system pip (PEP 668) and needs no root
 - Requires Python 3.10 or newer. The build runs from a virtual environment created with `--system-site-packages`, so it inherits system-installed tkinter and the optional GDAL bindings instead of rebuilding them
 - Distribution packages needed beforehand: tkinter and Pillow's Tk bindings. GDAL is optional — the elevation path prefers rasterio
-- Setup is documented for Fedora, Debian/Ubuntu, Arch and openSUSE Tumbleweed
+- The bundled `INSTALL_PREREQUISITES.py` covers Fedora, Debian/Ubuntu, Arch and macOS. On other distributions the packages have to be installed by hand
 
 ### Installation Methods
 
-1. **Using Binaries (recommended)**:
-    - Download the appropriate version for your operating system
-    - Extract the archive
+1. **Using prebuilt bundles (recommended)**:
+    - The download links live on the fork's wiki installation page, not on the GitHub releases page — the releases carry no assets. They point to Google Drive and come with SHA-256 checksums
+    - Pick the bundle matching the operating system, extract the archive
     - Run the executable file
 
 2. **Manual Installation**:
@@ -120,8 +120,8 @@ There is no `zoomlevel` and no `provider` key — those names appear in older do
 | `apt_curv_ext` | `0.5` | Extent of the airport curvature zone, in km |
 | `coast_curv_tol` | `1.0` | Curvature tolerance along coastlines |
 | `coast_curv_ext` | `0.5` | Extent of the coastal curvature zone, in km |
-| `limit_tris` | `3.0` | Upper bound on the triangle count of a tile, in millions. At `0` a hard limit of 5 million applies |
-| `apt_smoothing_pix` | `8` | Strength of the Gaussian blur applied to the elevation raster for altitude queries over airports, in raster pixels |
+| `limit_tris` | `3.0` | Upper bound on the triangle count of a tile, in millions. At `0` — and at values of 50 or more — a hard limit of 5 million applies |
+| `apt_smoothing_pix` | `8` | Strength of the blur applied to the elevation raster for altitude queries over airports, in raster pixels |
 
 `min_angle` is the strongest single lever on mesh quality and one of the first values worth adjusting. Raising it forces better-shaped triangles and removes the thin slivers that cause shading artifacts and unstable runway surfaces; lowering it produces a coarser, cheaper mesh. Raising `min_angle` and lowering `curvature_tol` both increase the triangle count, so `limit_tris` acts as the ceiling. Set it explicitly whenever a high-resolution DEM is in use — such a dataset can otherwise drive the count far beyond what the tile needs.
 
@@ -136,7 +136,7 @@ There is no `zoomlevel` and no `provider` key — those names appear in older do
 The `road_level` steps are cumulative:
 
 - `0` — nothing
-- `1` — motorways, primary and secondary roads, railway lines
+- `1` — motorways, trunk, primary and secondary roads, railway lines
 - `2` — additionally tertiary roads
 - `3` — additionally residential and unclassified roads
 - `4` — additionally service roads
@@ -168,14 +168,14 @@ When changing between levels `2` and `5`, the cached `small_roads.osm` has to be
 | Parameter | Default | Description |
 |---|---|---|
 | `mask_zl` | `14` | Zoom level of the coastal transparency masks. Permitted values are only `14`, `15` and `16` |
-| `masks_width` | `100` | Width of the mask transition zone, in meters. In older versions this was counted in ZL14 pixels, roughly a factor of 10 |
-| `masking_mode` | `sand` | Which texture the mask blends toward — `sand`, `rocks` or `3steps` |
+| `masks_width` | `100` | Maximum extent of the masks perpendicular to the coastline, in meters. In `rocks` mode the effective extent is half this value. In older versions this was counted in ZL14 pixels, roughly a factor of 10 |
+| `masking_mode` | `sand` | Algorithm used for the coastal alpha transition — `sand`, `rocks` or `3steps` |
 | `use_masks_for_inland` | `False` | Uses masks for inland water instead of the constant `ratio_water` transparency. Expensive in VRAM and, per the upstream hint, probably not worth the effort |
 | `imprint_masks_to_dds` | `False` | Bakes the masks into the DDS textures. Doubles the file size of masked textures (DXT5 instead of DXT1) but lowers VRAM usage — a trade-off, not a clear improvement either way. The original by Oscar Pilote defaults to `True` |
 | `sea_smoothing_mode` | `zero` | How sea elevation is handled — see below |
 | `water_smoothing` | `10` | Number of smoothing passes over inland water triangles |
 | `ratio_water` | `0.25` | Transparency of the ortho overlay over inland water, `0`–`1`. At `0` the ortho image is fully opaque |
-| `ratio_bathy` | `1.0` | Bathymetry multiplier for near-shore vertices, range `0`–`1`. Scales the modelled sea-bed depth — not a transparency |
+| `ratio_bathy` | `1.0` | Bathymetry multiplier for near-shore vertices, range `0`–`1`. Scales the modelled sea-bed depth — not a transparency. Only effective with `distance_masks_too=True`, and the result is clamped to `0.1` at the low end |
 | `min_area` | `0.001` | Minimum size of a water body that is still modeled, in km². Contiguous water surfaces are merged **before** the area is computed |
 | `max_area` | `200.0` | Water bodies above this size are masked like sea, in km² |
 | `sea_texture_blur` | `0.0` | Blur radius in meters for layers of type `mask` in combined provider imagery, to tone down over-prominent wave and reflection patterns |
@@ -194,9 +194,9 @@ The `sea_smoothing_mode` values differ substantially:
 | Parameter | Default | Description |
 |---|---|---|
 | `custom_dem` | `""` | Path to an external elevation raster, replacing the default viewfinderpanoramas.org data |
-| `fill_nodata` | `True` | Fills no-data values by nearest neighbour. When off they become 0 |
+| `fill_nodata` | `True` | Fills no-data values by nearest neighbour. When off they become 0. A raster with too much no-data is zeroed even when this is on |
 
-`custom_dem` is what separates a build using high-quality LiDAR-derived elevation from a stock build. The raster must be in EPSG:4326, requires GDAL, and does not have to match the tile boundary — areas it does not cover are mapped to elevation 0, which makes it usable for high-resolution data over individual islands. Switching `fill_nodata` off is the matching setting for rasters without ocean coverage or for partial LiDAR datasets. The datasets are region-specific and have to be obtained separately — see [LiDAR Data Integration](#lidar-data-integration) below.
+`custom_dem` is what separates a build using high-quality LiDAR-derived elevation from a stock build. The raster must be in EPSG:4326 (EPSG:4269 is accepted as well) and does not have to match the tile boundary — outside its extent the elevation query is clamped to the nearest edge value rather than to zero, which makes it usable for high-resolution data over individual islands. `.hgt` files are read directly; every other raster format needs GDAL. Switching `fill_nodata` off is the matching setting for rasters without ocean coverage or for partial LiDAR datasets. The datasets are region-specific and have to be obtained separately — see [LiDAR Data Integration](#lidar-data-integration) below.
 
 !!! warning "Set `water_tech=XP12` on X-Plane 12"
 
@@ -212,7 +212,7 @@ The `sea_smoothing_mode` values differ substantially:
 
 Most of the parameters above are written into each tile's own config and can therefore differ from tile to tile. A few are only read from the global `Ortho4XP.cfg` and never appear in a tile config.
 
-The one that matters most is `skip_downloads`, which suppresses the imagery download and, with it, the DDS conversion. It defaults to `False`, and it is what turns Ortho4XP into a producer of mesh-only packages — see [Building Packages for Ortho Streaming](#building-packages-for-ortho-streaming). Also global-only: `verbosity`, `cleaning_level`, `max_download_slots`, `max_convert_slots`, `overpass_server_choice`, `custom_scenery_dir`, `custom_overlay_src` and `custom_overlay_src_alternate`.
+The one that matters most is `skip_downloads`, which suppresses the imagery download and, with it, the DDS conversion. It defaults to `False`, and it is what turns Ortho4XP into a producer of mesh-only packages — see [Building Packages for Ortho Streaming](#building-packages-for-ortho-streaming). Also global-only, among others: `verbosity`, `cleaning_level`, `max_download_slots`, `max_convert_slots`, `overpass_server_choice`, `custom_scenery_dir`, `custom_overlay_src`, `custom_overlay_src_alternate`, `check_tms_response`, `http_timeout`, `max_connect_retries`, `max_baddata_retries`, `ovl_exclude_pol` and `ovl_exclude_net`.
 
 !!! note "These parameters in OrthoForge"
 
@@ -386,7 +386,7 @@ The streaming profile above is a conservative starting point. Real configuration
 | `road_level` | `1` (default) | `3` |
 | `masks_width` | `100` (default) | `25` |
 
-The widest spread is in `cover_extent`, the radius in kilometers around an airport that receives high-resolution coverage. Between `0.5` and `6.0` km the radius grows twelvefold and the covered surface roughly a hundredfold. That makes it the single strongest lever on package size, on the number of high-resolution texture requests a busy terminal area produces, and on how often the scenery changes zoom level between base and airport texture.
+The widest spread is in `cover_extent`, the margin in kilometers added around the airport's bounding box. Between `0.5` and `6.0` km the margin grows twelvefold; how much surface that adds depends on the size and shape of the airport, but it is always a large multiple. That makes it the single strongest lever on package size, on the number of high-resolution texture requests a busy terminal area produces, and on how often the scenery changes zoom level between base and airport texture.
 
 Which end of that range fits depends on the setup: `0.5` keeps packages small and is a reasonable default for wide-area coverage, while `6.0` suits a setup where a handful of home airports matter more than total package size.
 
@@ -492,21 +492,19 @@ The OrthoForge project runs two supporting services that are useful independentl
 
 **Sonny DTM mirror**
 
-The same site hosts a mirror of Sonny's elevation data, offered as standard SRTM-style `.hgt` tiles at 3″ and 1″, plus 0.5″ tiles for the United States. Ortho4XP uses these exactly like the originals: unpack into `Elevation_data`, as described above. OrthoForge can point at them through `custom_dem_search_dirs`.
+The same site hosts a mirror of Sonny's elevation data, offered as standard SRTM-style `.hgt` tiles at 3″ and 1″, plus 0.5″ tiles — Sonny's own for the Alps, where he publishes that resolution for Austria and Switzerland, and OrthoForge's own bakes for parts of the United States. Ortho4XP uses these exactly like the originals: unpack into `Elevation_data`, as described above. OrthoForge can point at them through `custom_dem_search_dirs`.
 
 The 0.5″ US tiles are not Sonny's data — they are rebuilt from USGS 3DEP and carry that attribution instead.
 
-The mirror is a convenience copy limited to what the OrthoForge project has staged. [sonny.4lima.de](https://sonny.4lima.de) remains the canonical source with the complete coverage and the current updates — use it as the first address and treat the [mirror](https://xpconnect.me/sonny.html) as an alternative when a specific tile set is more convenient to pull from there. Sonny's own data is CC BY 4.0 and attributed to Sonny in both places.
+For Sonny's own data, [sonny.4lima.de](https://sonny.4lima.de) is the canonical source with the full European coverage and the current updates; the [mirror](https://xpconnect.me/sonny.html) carries a subset of it as a convenience copy. The US 0.5″ tiles are the exception — those exist only on the mirror. Sonny's data is CC BY 4.0 and attributed to Sonny in both places.
 
 ## Ortho Patches for Sceneries
 
-Many sceneries — both default and third-party — were originally designed for X-Plane's old, flat mesh model. In the `apt.dat` file, the metadata line `1302 flatten 1` may be set. This flag causes the scenery itself, and often a larger surrounding area, to be rendered completely flat. This is counterproductive to the goal of creating a highly accurate and realistic ground mesh with Ortho4XP.
+Since X-Plane 10.50 runways always follow the terrain, and flattening is requested per airport instead: the `apt.dat` metadata line `1302 flatten 1` marks an airport as one that has to be flattened. Laminar describes the effect as a hard flatten covering the airport and a margin of the surrounding terrain, destroying its topography. Many sceneries — both default and third-party — carry the flag because they were built for a flat surface, which works against the goal of a highly accurate ground mesh from Ortho4XP.
 
 For some sceneries, special Ortho patches exist, provided either by the developer or by active X-Plane users. With these patches, the mesh model generated by Ortho4XP can be specifically adapted to the respective scenery. Additionally, modifications to the scenery may allow it to work correctly without using `flatten 1`.
 
-If no such modifications or patches are available, manually removing the `1302 flatten 1` line from the relevant `apt.dat` can often help adapt the scenery to the new, detailed ground model. Minor artifacts may remain — objects not sitting exactly on the ground, floating slightly above it or partially sunk into it.
-
-The reverse is worth knowing too. X-Plane 12 no longer offers the old "runways follow terrain contours" option, so on a highly detailed Ortho4XP mesh an airport can end up with a visibly uneven surface. In that case *adding* `1302 flatten 1` is the fix, not removing it.
+The reverse is worth knowing too. Since X-Plane 11 there is no "runways follow terrain contours" rendering option any more — contour-following is always on — so on a highly detailed Ortho4XP mesh an airport can end up with a visibly uneven surface. In that case *adding* `1302 flatten 1` is the fix, not removing it: that is exactly the per-airport mechanism the flag was introduced for.
 
 ## Important Notes and Troubleshooting
 
@@ -554,7 +552,7 @@ In case of problems:
 1. Check the log files in the Ortho4XP directory
 2. Ensure all Python dependencies are installed
 3. Consult the [shred86 fork documentation](https://github.com/shred86/Ortho4XP/wiki)
-4. Visit the [X-Plane Forum](https://forums.x-plane.org/index.php?/forums/forum/310-ortho4xp/)
+4. Visit the [X-Plane Forum](https://forums.x-plane.org/forums/forum/322-ortho4xp/)
 
 ---
 
@@ -580,4 +578,4 @@ In case of problems:
 - [OrthoForge](https://xpconnect.me/orthoforge.html) — xbard, independently developed successor
 - [Pre-baked OSM tiles](https://xpconnect.me/orthoforge-data.html) — OrthoForge project, OpenStreetMap vector data
 - [Sonny's LiDAR Digital Terrain Models](https://sonny.4lima.de) — Sonny, elevation datasets for Europe
-- [Ortho4XP forum](https://forums.x-plane.org/index.php?/forums/forum/310-ortho4xp/) — X-Plane.org, community support
+- [Ortho4XP forum](https://forums.x-plane.org/forums/forum/322-ortho4xp/) — X-Plane.org, community support
