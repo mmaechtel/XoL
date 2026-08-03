@@ -22,11 +22,11 @@ Ortho4XP ist in mehreren Versionen verfügbar:
 3. **OrthoForge** (eigenständig entwickelter Nachfolger):
     - [Projektseite und Dokumentation](https://xpconnect.me/orthoforge.html) — GPL v3, gepflegt von xbard
     - Begann als englischer Fork des ORTHO4XP_V3 von Roland (Ypsos) und wird inzwischen eigenständig entwickelt; ein Abgleich mit einem Ortho4XP-Upstream findet nicht mehr statt. Das Projekt nennt Oscar Pilote (ursprüngliches Ortho4XP), shred86 (1.40er-Linie) und Roland/Ypsos (V3-Architektur) als Grundlage
-    - Ausgerichtet auf X-Plane 12 — die XP12-Wasser- und Materialpfade sind Voreinstellung, nicht Option
+    - Ausgerichtet auf X-Plane 12 — `XP11 + bathy` wird gar nicht mehr unterstützt. Die XP12-Materialzusätze wie die Terrain-Rauheit sind zuschaltbar und vorgabemäßig aus
 
 !!! warning "Das OrthoForge-Quell-Repository wird abgebaut"
 
-    Im Codeberg-Repository steht: *"Due to changes in Codeberg policy, this repo will soon be deleted and hosted at https://xpconnect.me/orthoforge.html"*. Als Einstieg dient die Projektseite; jeder Codeberg-Link bricht ohne Vorwarnung weg.
+    Im [Codeberg-Repository](https://codeberg.org/xbard/OrthoForge) steht: *"Due to changes in Codeberg policy, this repo will soon be deleted and hosted at https://xpconnect.me/orthoforge.html"*. Es ist weiterhin der Ort, auf den die Projektseite zum Herunterladen verweist, und es wird weiterhin bespielt — der Link kann aber jederzeit wegbrechen, dauerhafter Einstieg ist die Projektseite.
 
 **Was OrthoForge anders macht**
 
@@ -79,11 +79,11 @@ Ortho4XP ist in mehreren Versionen verfügbar:
     - Die gewünschte Zoomstufe (ZL)
     - Die Bildquelle (z.B. Bing, Google, Here)
 
-3. Auf "Build" klicken, um den Vorgang zu starten
+3. Den Bau starten. Die Oberfläche bietet die Schritte einzeln an — "Assemble Vector data", "Triangulate 3D Mesh", "Draw Water Masks", "Build Imagery/DSF" — oder "All in one", um sie nacheinander auszuführen
 
 ### Wichtige Parameter
 
-Alle Einstellungen stehen in `Ortho4XP.cfg` im Ortho4XP-Verzeichnis. Beim Bau einer Kachel schreibt Ortho4XP die kachelspezifische Teilmenge dieser Schlüssel nach `Tiles/zOrtho4XP_+dd+ddd/Ortho4XP_+dd+ddd.cfg`. Eine fertige Kachel behält damit die Einstellungen, mit denen sie gebaut wurde, auch wenn sich die globale Konfiguration später ändert. Die folgenden Vorgabewerte sind die in `src/O4_Cfg_Vars.py` definierten.
+Alle Einstellungen stehen in `Ortho4XP.cfg` im Ortho4XP-Verzeichnis. Beim Bau einer Kachel schreibt Ortho4XP die kachelspezifische Teilmenge dieser Schlüssel nach `Tiles/zOrtho4XP_+dd+ddd/Ortho4XP_+dd+ddd.cfg`. Eine fertige Kachel behält damit die Einstellungen, mit denen sie gebaut wurde, auch wenn sich die globale Konfiguration später ändert. Die folgenden Vorgabewerte sind die des shred86-Forks, definiert in `src/O4_Cfg_Vars.py`. Das Original von Oscar Pilote führt dieselben Definitionen inline in `src/O4_Config_Utils.py`; wo beide abweichen, steht es auf dieser Seite.
 
 Die Parameter sind danach gruppiert, welche Frage sie beantworten:
 
@@ -103,8 +103,8 @@ Die Parameter sind danach gruppiert, welche Frage sie beantworten:
 |---|---|---|
 | `custom_scenery_dir` | `""` | Ziel für das Anlegen und Entfernen symbolischer Links aus den Ortho4XP-Kacheln per Ein-Klick-Funktion — kein Build-Ziel |
 | `custom_overlay_src` | `""` | Quelle für Overlay-Daten. Das Verzeichnis eine Ebene **über** `Earth nav data` auswählen |
-| `custom_overlay_src_alternate` | `""` | Ausweichpfad, wird genutzt, wenn die erste Quelle für eine Kachel nichts liefert |
-| `default_website` | `""` | Bildquelle, z.B. `BI` (Bing), `GO2` (Google), `ES` (ESRI) |
+| `custom_overlay_src_alternate` | `""` | Ausweichpfad, wird genutzt, wenn die erste Quelle für eine Kachel nichts liefert. Nur im shred86-Fork — das Original ignoriert ihn |
+| `default_website` | `""` | Bildquelle, z.B. `BI` (Bing), `GO2` (Google), `Arc` (ESRI World Imagery). Die verfügbaren Kürzel sind die `.lay`-Dateien unter `Providers/` |
 | `default_zl` | `16` | Basis-Zoomstufe der Orthotexturen |
 
 Einen Schlüssel `zoomlevel` oder `provider` gibt es nicht — diese Namen tauchen in älterer Dokumentation und im internen Code auf, doch eine Konfigurationsdatei, die sie enthält, wird ohne Wirkung eingelesen. Stattdessen `default_zl` und `default_website` verwenden.
@@ -159,9 +159,9 @@ Beim Wechsel zwischen den Stufen `2` und `5` muss die zwischengespeicherte `smal
 |---|---|---|
 | `cover_airports_with_highres` | `False` | `ICAO` deckt Flughäfen mit ICAO-Code in höherer Zoomstufe ab, `Existing` übernimmt die bereits in der Kachel vorhandenen Flughafenzonen |
 | `cover_zl` | `18` | Zoomstufe innerhalb der hochauflösenden Zone |
-| `cover_extent` | `1.0` | Radius der hochauflösenden Zone um jeden Flughafen, in km |
+| `cover_extent` | `1.0` | Wie weit die hochauflösende Zone über die Flugplatzgrenze hinausreicht, in km. Die Zone ist ein Rechteck um die Bounding-Box des Flugplatzes, nach außen auf ganze Texturen bei `cover_zl` aufgerundet |
 
-`cover_extent` ist der wesentliche Hebel auf die Paketgröße, und die sinnvolle Spanne ist weit — Werte von `0.5` bis `6.0` sind alle plausibel, ein zwölffacher Unterschied im Radius und rund ein hundertfacher in der abgedeckten Fläche pro Flughafen.
+`cover_extent` ist der wesentliche Hebel auf die Paketgröße. Es ist ein Rand, kein Radius: Ortho4XP nimmt die Bounding-Box der Flugplatzfläche, erweitert sie auf allen Seiten um diesen Abstand und rundet das Ergebnis nach außen auf ganze Texturen bei `cover_zl` auf. Wie viel Zusatzfläche dabei entsteht, hängt daher von Größe und Zuschnitt des Flugplatzes ab — ein großer Verkehrsflughafen wächst weit stärker als eine einzelne Piste. Der Wert bestimmt zugleich, wie oft die Szenerie zwischen Basistextur und Flughafentextur die Zoomstufe wechselt.
 
 **Masken und Wasser**
 
@@ -171,17 +171,17 @@ Beim Wechsel zwischen den Stufen `2` und `5` muss die zwischengespeicherte `smal
 | `masks_width` | `100` | Breite der Masken-Übergangszone, in Metern. In älteren Versionen wurde sie in ZL14-Pixeln gezählt, das entspricht etwa Faktor 10 |
 | `masking_mode` | `sand` | Textur, auf die die Maske überblendet — `sand`, `rocks` oder `3steps` |
 | `use_masks_for_inland` | `False` | Verwendet Masken auch für Binnengewässer statt der konstanten `ratio_water`-Transparenz. VRAM-intensiv und laut Hinweis im Quellcode den Aufwand vermutlich nicht wert |
-| `imprint_masks_to_dds` | `False` | Brennt die Masken in die DDS-Texturen ein. Verdoppelt die Dateigröße maskierter Texturen (DXT5 statt DXT1), senkt aber den VRAM-Bedarf — eine Abwägung, kein eindeutiger Gewinn |
+| `imprint_masks_to_dds` | `False` | Brennt die Masken in die DDS-Texturen ein. Verdoppelt die Dateigröße maskierter Texturen (DXT5 statt DXT1), senkt aber den VRAM-Bedarf — eine Abwägung, kein eindeutiger Gewinn. Das Original von Oscar Pilote steht hier auf `True` |
 | `sea_smoothing_mode` | `zero` | Behandlung der Meereshöhe — siehe unten |
 | `water_smoothing` | `10` | Anzahl der Glättungsdurchläufe über Binnengewässer-Dreiecke |
 | `ratio_water` | `0.25` | Transparenz der Ortho-Überlagerung über Binnengewässern, `0`–`1`. Bei `0` ist das Orthofoto vollständig deckend |
-| `ratio_bathy` | `1.0` | Dasselbe Prinzip für die Bathymetrie (Meeresboden) |
+| `ratio_bathy` | `1.0` | Multiplikator für die Bathymetrie an ufernahen Stützpunkten, Bereich `0`–`1`. Skaliert die modellierte Wassertiefe — keine Transparenz |
 | `min_area` | `0.001` | Mindestgröße eines noch modellierten Gewässers, in km². Zusammenhängende Wasserflächen werden **vor** der Flächenberechnung zusammengefasst |
 | `max_area` | `200.0` | Gewässer oberhalb dieser Größe werden wie Meer maskiert, in km² |
 | `sea_texture_blur` | `0.0` | Weichzeichnungsradius in Metern für Layer vom Typ `mask` in kombinierten Anbieter-Bilddaten, um zu präsente Wellen- und Reflexionsmuster abzumildern |
 | `water_tech` | `XP11 + bathy` | Generation der Wasserdarstellung — unter X-Plane 12 auf `XP12` setzen, siehe Hinweiskasten unten |
 
-Binnengewässer werden als untere Lage X-Plane-Wasser mit einer darüberliegenden Ortho-Überlagerung konstanter Transparenz gezeichnet; `ratio_water` steuert diese Transparenz. `masking_mode=3steps` macht aus dem Küstenübergang einen gestuften Übergang und erwartet `masks_width` als Liste `[a,b,c]`, wobei `a` die Länge in Metern eines ersten Übergangs von vollständig deckenden Bilddaten an der Uferlinie zur `ratio_water`-Transparenz angibt und `b` die zweite Übergangszone.
+Binnengewässer werden als untere Lage X-Plane-Wasser mit einer darüberliegenden Ortho-Überlagerung konstanter Transparenz gezeichnet; `ratio_water` steuert diese Transparenz. `masking_mode=3steps` macht aus dem Küstenübergang einen gestuften Übergang und erwartet `masks_width` als Liste `[a,b,c]` in Metern: `a` ist ein erster Übergang von vollständig deckenden Bilddaten an der Uferlinie zur `ratio_water`-Transparenz, `b` eine Zone, die diese Transparenz hält, und `c` die abschließende Ausblendung.
 
 Die Werte von `sea_smoothing_mode` unterscheiden sich deutlich:
 
@@ -212,21 +212,15 @@ Die Werte von `sea_smoothing_mode` unterscheiden sich deutlich:
 
 Die meisten der obigen Parameter werden in die Konfiguration jeder einzelnen Kachel geschrieben und können daher von Kachel zu Kachel abweichen. Einige wenige werden ausschließlich aus der globalen `Ortho4XP.cfg` gelesen und erscheinen nie in einer Kachel-Konfiguration.
 
-Die beiden wichtigsten sind `skip_downloads` und `skip_converts`, die den Bilddaten-Download und die DDS-Konvertierung unterdrücken. Beide stehen vorgabemäßig auf `False`, und sie sind es, die aus Ortho4XP einen Erzeuger von Mesh-only-Paketen machen — siehe [Pakete für Ortho-Streaming bauen](#pakete-fur-ortho-streaming-bauen). Ebenfalls nur global: `verbosity`, `cleaning_level`, `max_download_slots`, `max_convert_slots`, `overpass_server_choice`, `custom_scenery_dir`, `custom_overlay_src` und `custom_overlay_src_alternate`.
+Die wichtigste ist `skip_downloads`, die den Bilddaten-Download und damit auch die DDS-Konvertierung unterdrückt. Sie steht vorgabemäßig auf `False`, und sie ist es, die aus Ortho4XP einen Erzeuger von Mesh-only-Paketen macht — siehe [Pakete für Ortho-Streaming bauen](#pakete-fur-ortho-streaming-bauen). Ebenfalls nur global: `verbosity`, `cleaning_level`, `max_download_slots`, `max_convert_slots`, `overpass_server_choice`, `custom_scenery_dir`, `custom_overlay_src` und `custom_overlay_src_alternate`.
 
-!!! warning "Gleiche Schlüsselnamen in OrthoForge, andere Vorgabewerte"
+!!! note "Diese Parameter in OrthoForge"
 
-    OrthoForge übernimmt die Schlüsselnamen von Ortho4XP unverändert (`default_zl`, `default_website`, `mesh_zl`, `mask_zl`, `curvature_tol`, `cover_zl`, `road_level`, `water_tech`, `custom_dem` und die übrigen) und ergänzt lediglich weitere. Die Beschreibungen dieser Seite gelten daher — die Werte jedoch nicht:
+    OrthoForge übernimmt die Schlüsselnamen von Ortho4XP unverändert und ergänzt lediglich weitere, und die eigene Konfigurationsreferenz nennt dieselben Vorgabewerte — `default_zl` `16`, `mesh_zl` `19`, `mask_zl` `14`, `cover_zl` `18`. Die obigen Tabellen gelten also unmittelbar.
 
-    | Schlüssel | Ortho4XP | OrthoForge |
-    |---|---|---|
-    | `default_zl` | `16` | `18` |
-    | `mesh_zl` | `19` | `20` |
-    | `mask_zl` | `14` | `18` |
-    | `cover_zl` | `18` | `19` |
-    | `water_tech` | `XP11 + bathy` | `XP12` |
+    Ein Wert weicht ab, und zwar der unter X-Plane 12 entscheidende: `water_tech` steht vorgabemäßig auf `XP12`, und die OrthoForge-Dokumentation erklärt `XP11 + bathy` für nicht mehr unterstützt. Den Hinweiskasten zu `water_tech` weiter oben können OrthoForge-Nutzer also übergehen.
 
-    Die obigen Tabellen beschreiben, *was ein Parameter bewirkt*, nicht *worauf er eingestellt ist*. Die OrthoForge-Grundeinstellung bedeutet spürbar längere Bauzeiten und größere Kacheln, als die Zahlen hier vermuten lassen.
+    Die mitgelieferte `OrthoForge.cfg.example` ist nicht die Vorgabe. Sie ist ein Preset mit deutlich aggressiveren Werten (darunter `min_angle=0.5`, `limit_tris=50`, `cover_extent=5.0`) und wird nicht automatisch gelesen — ohne globale Konfigurationsdatei greifen die oben genannten Vorgabewerte.
 
 ### Empfohlene Einstellungen
 
@@ -316,23 +310,23 @@ cover_zl=17
 cover_extent=0.5
 imprint_masks_to_dds=False
 skip_downloads=True
-skip_converts=True
 ```
 
-`default_zl=16` als Basis hält Paketgröße und Kachelzahl beherrschbar; der Streaming-Layer erzeugt die Bilddaten zur Laufzeit ohnehin neu, eine höhere Basis-Zoomstufe bringt zur Bauzeit also nichts. `default_website=BI` ist hier nicht bloß informativ: Der Anbietercode steht in jedem Texturdateinamen, den die Terrain-Definitionen anfordern (`..._BI17.dds`), und muss deshalb zu dem passen, was der Streaming-Layer ausliefert. `water_tech=XP12` ist unter X-Plane 12 unabhängig vom Profil zwingend. `skip_downloads` und `skip_converts` sind die beiden Einstellungen, die aus einem normalen Build einen reinen Mesh- und Terrain-Build machen — siehe [Pakete für Ortho-Streaming bauen](#pakete-fur-ortho-streaming-bauen).
+`default_zl=16` als Basis hält Paketgröße und Kachelzahl beherrschbar; der Streaming-Layer erzeugt die Bilddaten zur Laufzeit ohnehin neu, eine höhere Basis-Zoomstufe bringt zur Bauzeit also nichts. `default_website=BI` ist hier nicht bloß informativ: Der Anbietercode steht in jedem Texturdateinamen, den die Terrain-Definitionen anfordern (`..._BI17.dds`), und muss deshalb zu dem passen, was der Streaming-Layer ausliefert. `water_tech=XP12` ist unter X-Plane 12 unabhängig vom Profil zwingend. `skip_downloads` ist die Einstellung, die aus einem normalen Build einen reinen Mesh- und Terrain-Build macht; sie unterdrückt die DDS-Konvertierung gleich mit — siehe [Pakete für Ortho-Streaming bauen](#pakete-fur-ortho-streaming-bauen).
 
 ## Pakete für Ortho-Streaming bauen
 
 Beim [Ortho-Streaming](../ortho_streaming/index.md) entstehen die Bodentexturen zur Laufzeit auf Anforderung — der Streaming-Layer lädt die Bilddaten, kodiert sie nach DDS und reicht sie über ein virtuelles Dateisystem an X-Plane weiter. Ein Paket für ein solches Setup muss deshalb nur liefern, was der Streaming-Layer **nicht** erzeugt: das **Mesh** und die **Terrain-Definitionen** (die DSF-Dateien unter `Earth nav data` und das Verzeichnis `terrain`). Bilddaten-Download und DDS-Konvertierung sind in diesem Ablauf reine Verschwendung.
 
-Zwei Einstellungen schalten sie ab:
+Eine Einstellung erledigt das:
 
 ```ini
 skip_downloads=True
-skip_converts=True
 ```
 
-Beide stehen vorgabemäßig auf `False`. Bleiben sie so, lädt und konvertiert ein Paket-Build Gigabytes an Bilddaten, die der Streaming-Layer zur Laufzeit ersetzt und die anschließend verworfen werden — Stunden an Rechenzeit und Plattenplatz für nichts.
+Sie steht vorgabemäßig auf `False`. Bleibt sie so, lädt und konvertiert ein Paket-Build Gigabytes an Bilddaten, die der Streaming-Layer zur Laufzeit ersetzt und die anschließend verworfen werden — Stunden an Rechenzeit und Plattenplatz für nichts.
+
+`skip_downloads` unterdrückt **beide** Schritte, nicht nur den Download: In der Bauschleife steckt die Konvertierungsstufe innerhalb der Download-Stufe, ohne Download gibt es also nichts zu konvertieren. Es gibt eine zweite Einstellung, `skip_converts`, und zu ihr greift man leicht versehentlich — allein gesetzt lädt sie weiterhin die vollständigen Bilddaten herunter und überspringt nur die Umwandlung von JPEG nach DDS. Das ist das Gegenteil dessen, was ein Streaming-Paket braucht. Beide zu setzen schadet nicht, aber `skip_downloads` ist der wirksame Schalter.
 
 Eine dritte Einstellung gehört in dieselbe Gruppe:
 
@@ -352,7 +346,7 @@ Die meisten übrigen Build-Parameter, darunter `default_zl`, `cover_zl`, `cover_
 
 Bilddaten zu überspringen macht die Bildeinstellungen nicht bedeutungslos — es macht sie verbindlich. `default_zl`, `cover_zl` und `default_website` sind fest in die Terrain-Definitionen eingebrannt, die der Build erzeugt, und diese Definitionen sind der Vertrag zwischen Paket und Streaming-Layer.
 
-Eine `.ter`-Datei aus einer mit `skip_downloads=True` und `skip_converts=True` gebauten Kachel — hier eine mit `default_zl=17` und `cover_zl=18` gebaute, nicht mit den Profilwerten oben — sieht so aus:
+Eine `.ter`-Datei aus einer mit `skip_downloads=True` gebauten Kachel — hier eine mit `default_zl=17` und `cover_zl=18` gebaute, nicht mit den Profilwerten oben — sieht so aus:
 
 ```
 A
@@ -374,7 +368,7 @@ Deshalb ist die Wahl der Zoomstufe auch in einem Build ohne Bilddaten nicht beli
 
 Dieselbe Kachel zeigt, was `cover_zl` mit diesem Vertrag macht. Von ihren 752 `.ter`-Dateien verweisen 559 auf `_BI17` und 193 auf `_BI18` — die Basis-Zoomstufe über den größten Teil der Kachel, die höhere Cover-Zoomstufe auf das Flughafenumfeld beschränkt. Das sind Zahlen aus einer einzelnen beobachteten Kachel, eine Veranschaulichung des Mechanismus und kein Zielverhältnis — die Aufteilung hängt vollständig von `cover_extent` ab und davon, wie viele Flughäfen die Kachel enthält.
 
-Ihr Verzeichnis `textures/` enthält 118 Dateien gegenüber diesen 752 Terrain-Definitionen. Das ist das erwartete Bild eines Mesh-only-Builds: Terrain-Definitionen vollständig, Bilddaten weitgehend abwesend.
+Ihr Verzeichnis `textures/` enthält 118 Dateien gegenüber diesen 752 Terrain-Definitionen — und keine einzige davon ist eine DDS. Es sind die PNG-Küstenmasken, passend zu genau 118 `BORDER_TEX`-Verweisen. Das ist das Bild eines Mesh-only-Builds: Terrain-Definitionen und Masken vollständig, Bilddaten gar nicht vorhanden.
 
 Die Mesh-Parameter (`mesh_zl`, `min_angle`, `curvature_tol`, `limit_tris`) und die Masken-Parameter (`mask_zl`, `masks_width`, `masking_mode`) behalten ihre volle Wirkung, denn Mesh und Masken sind genau das, was das Paket enthält.
 
@@ -396,11 +390,11 @@ Die größte Spanne liegt bei `cover_extent`, dem Radius in Kilometern um einen 
 
 Welches Ende dieser Spanne passt, hängt vom Setup ab: `0.5` hält Pakete klein und ist eine vernünftige Vorgabe für großflächige Abdeckung, `6.0` passt dort, wo eine Handvoll Heimatflughäfen wichtiger ist als die Gesamtpaketgröße.
 
-Die übrigen Abweichungen folgen derselben Logik: Ein höheres `mask_zl` mit einem schmaleren `masks_width` erzeugt feinere, aber engere Küstenlinien, `masking_mode=rocks` passt besser zu alpinen und felsigen Ufern als die Vorgabe `sand`, und `road_level=3` fügt sekundäre Straßennetze hinzu, um den Preis von mehr Vektordaten pro Kachel.
+Die übrigen Abweichungen folgen derselben Logik: Ein höheres `mask_zl` mit einem schmaleren `masks_width` erzeugt feinere, aber engere Küstenlinien, und `masking_mode=rocks` macht den Uferübergang abrupter als die Vorgabe `sand`. `road_level=3` weitet die Mesh-Einebnung vom Hauptstraßennetz auf Residential- und Unclassified-Straßen aus — Secondary-Straßen sind schon in der Vorgabe `1` enthalten — was mehr Vektordaten pro Kachel kostet.
 
 Es handelt sich um Konfigurationswerte aus der Praxis, nicht um Messergebnisse. Für diesen Vergleich wurden weder Paketgrößen noch Bildraten gemessen, die beschriebenen Wirkungen geben also eine Richtung an, keine Größenordnung.
 
-`cover_zl=17` auf einer Basis von `default_zl=16` hält die hochauflösende Zone eine Stufe über der Basis statt zwei, sodass die Szenerie weniger und sanftere Skalenwechsel enthält. Das ist ein Argument über Paketgröße und Einheitlichkeit, kein Mittel gegen Bildfehler — diese entstehen in aller Regel bei der Texturkodierung und nicht im Szeneriepaket, und keine Wahl der Zoomstufe beseitigt sie.
+`cover_zl=17` auf einer Basis von `default_zl=16` hält die hochauflösende Zone eine Stufe über der Basis statt zwei, sodass die Szenerie weniger und sanftere Skalenwechsel enthält. Das ist ein Argument über Paketgröße und Einheitlichkeit. Ein Mittel gegen Bildfehler ist es nicht: Woher die im Einzelfall kommen, ist damit nicht gesagt, und weder die Ortho4XP- noch die X-Plane-Dokumentation stützt Zoomstufen-Mischung als allgemeine Ursache. Diese Werte zu ändern verschiebt, wo Skalenwechsel liegen; das als Fehlerbehebung zu verkaufen wäre geraten.
 
 ### Wohin das Paket gehört
 
@@ -416,7 +410,7 @@ Ortho4XP unterstützt die Integration von hochauflösenden LiDAR-Daten für eine
 
 ### Verfügbare LiDAR-Daten
 
-Die LiDAR-Daten von [sonny.4lima.de](https://sonny.4lima.de) bieten eine hohe Auflösung und Genauigkeit für verschiedene Regionen. Diese Daten können in Ortho4XP auf zwei Arten integriert werden:
+Die LiDAR-basierten Geländemodelle von [sonny.4lima.de](https://sonny.4lima.de) decken Europa mit höherer Auflösung und Genauigkeit ab als die Standard-Höhendaten. Diese Daten können in Ortho4XP auf zwei Arten integriert werden:
 
 **Methode 1: Einzelne Kacheln**
 
@@ -435,7 +429,7 @@ Die LiDAR-Daten von [sonny.4lima.de](https://sonny.4lima.de) bieten eine hohe Au
 1. Die gewünschten LiDAR-Daten von [sonny.4lima.de](https://sonny.4lima.de) herunterladen
 2. Für Methode 2 gibt es zwei Möglichkeiten:
 
-    - Die Dateien in das Ortho4XP-Verzeichnis entpacken und die Kacheln entsprechend in die Verzeichnisse unter Elevation_data sortieren. Dabei hilft [dieses Skript](https://forum.aerosoft.com/index.php?/topic/175397-h%C3%B6hendaten-f%C3%BCr-ortho4xp/#findComment-1102723)
+    - Die Dateien in das Ortho4XP-Verzeichnis entpacken und die Kacheln entsprechend in die Verzeichnisse unter `Elevation_data` sortieren
     - Oder mit Links unter `Elevation_data` arbeiten:
         - Zuerst das alte `Elevation_data` sichern
         - Neues `Elevation_data` anlegen und darin die Verzeichnisse `+00-060` usw. als Links auf ein extra Verzeichnis (z.B. `GlobalElevationData`) anlegen. Folgendes Skript erstellt im neuen leeren `Elevation_data` alle nötigen Verzeichnisse als Links auf das Verzeichnis `../GlobalElevationData`:
@@ -469,8 +463,8 @@ Die LiDAR-Daten von [sonny.4lima.de](https://sonny.4lima.de) bieten eine hohe Au
         }
 
         # Alle möglichen Links generieren
-        for lat in $(seq -80 10 80); do    # Breitengrade: -80° bis +80° in 10°-Schritten
-            for lon in $(seq -180 10 180); do # Längengrade: -180° bis +180° in 10°-Schritten
+        for lat in $(seq -90 10 80); do    # Breitengrade: -90° bis +80° in 10°-Schritten
+            for lon in $(seq -180 10 170); do # Längengrade: -180° bis +170° in 10°-Schritten
                 link_name=$(create_link_name $lat $lon)
                 ln -s "$TARGET_PATH" "./$link_name"
             done
@@ -498,17 +492,21 @@ Das OrthoForge-Projekt betreibt zwei begleitende Dienste, die unabhängig davon 
 
 **Sonny-DTM-Spiegel**
 
-Dieselbe Seite betreibt einen autorisierten Spiegel der Höhendaten von Sonny, angeboten als übliche `.hgt`-Kacheln im SRTM-Stil in 3″, 1″ und — für die Vereinigten Staaten, aus USGS 3DEP neu erzeugt — 0,5″. Ortho4XP verwendet sie genau wie die Originale: nach `Elevation_data` entpacken, wie oben beschrieben. OrthoForge kann über `custom_dem_search_dirs` darauf verweisen.
+Dieselbe Seite betreibt einen Spiegel der Höhendaten von Sonny, angeboten als übliche `.hgt`-Kacheln im SRTM-Stil in 3″ und 1″, dazu 0,5″-Kacheln für die Vereinigten Staaten. Ortho4XP verwendet sie genau wie die Originale: nach `Elevation_data` entpacken, wie oben beschrieben. OrthoForge kann über `custom_dem_search_dirs` darauf verweisen.
 
-Der Spiegel ist eine Bequemlichkeitskopie und beschränkt sich auf das, was das OrthoForge-Projekt bereitgestellt hat. [sonny.4lima.de](https://sonny.4lima.de) bleibt die maßgebliche Quelle mit der vollständigen Abdeckung und den aktuellen Aktualisierungen — sie ist die erste Adresse, der Spiegel die Alternative, wenn sich ein bestimmter Kachelsatz dort bequemer beziehen lässt. Die Daten stehen in beiden Fällen unter CC BY 4.0 und werden Sonny zugeschrieben.
+Die 0,5″-US-Kacheln stammen nicht von Sonny — sie sind aus USGS 3DEP neu erzeugt und tragen entsprechend diese Zuschreibung.
+
+Der Spiegel ist eine Bequemlichkeitskopie und beschränkt sich auf das, was das OrthoForge-Projekt bereitgestellt hat. [sonny.4lima.de](https://sonny.4lima.de) bleibt die maßgebliche Quelle mit der vollständigen Abdeckung und den aktuellen Aktualisierungen — sie ist die erste Adresse, der [Spiegel](https://xpconnect.me/sonny.html) die Alternative, wenn sich ein bestimmter Kachelsatz dort bequemer beziehen lässt. Sonnys eigene Daten stehen an beiden Orten unter CC BY 4.0 und werden Sonny zugeschrieben.
 
 ## Ortho Patches für Szenerien
 
-Viele Szenerien — sowohl Standard- als auch Drittanbieter-Szenerien — sind ursprünglich auf das alte, flache Mesh-Modell von X-Plane ausgelegt. In der Datei `apt.dat` kann hierfür das Flag `flatten 1` gesetzt sein. Dieses Flag sorgt dafür, dass die Szenerie selbst und häufig auch größere Teile der Umgebung vollständig flach dargestellt werden. Das steht im Widerspruch zu dem Ziel, mit Ortho4XP ein möglichst genaues und realistisches Bodenmesh zu erzeugen.
+Viele Szenerien — sowohl Standard- als auch Drittanbieter-Szenerien — sind ursprünglich auf das alte, flache Mesh-Modell von X-Plane ausgelegt. In der Datei `apt.dat` kann hierfür die Metadatenzeile `1302 flatten 1` gesetzt sein. Sie sorgt dafür, dass die Szenerie selbst und häufig auch größere Teile der Umgebung vollständig flach dargestellt werden. Das steht im Widerspruch zu dem Ziel, mit Ortho4XP ein möglichst genaues und realistisches Bodenmesh zu erzeugen.
 
-Für einige Szenerien existieren spezielle Ortho Patches, die entweder vom Hersteller selbst oder von aktiven X-Plane-Nutzern bereitgestellt werden. Mithilfe dieser Patches kann das Mesh-Modell mit Ortho4XP gezielt an die jeweilige Szenerie angepasst werden. Zudem erlauben Modifikationen an der Szenerie, auf das Setzen von `flatten 1` zu verzichten und dennoch eine korrekte Darstellung zu erreichen.
+Für einige Szenerien existieren spezielle Ortho Patches, die entweder vom Hersteller selbst oder von aktiven X-Plane-Nutzern bereitgestellt werden. Mithilfe dieser Patches kann das Mesh-Modell mit Ortho4XP gezielt an die jeweilige Szenerie angepasst werden. Zudem erlauben Modifikationen an der Szenerie, auf das Setzen von `1302 flatten 1` zu verzichten und dennoch eine korrekte Darstellung zu erreichen.
 
-Falls keine solchen Modifikationen oder Patches verfügbar sind, kann oft auch das manuelle Entfernen der Zeile mit `flatten 1` in der entsprechenden `apt.dat`-Datei helfen. Dadurch wird die Szenerie an das neue, detaillierte Bodenmodell angepasst. Es können dabei jedoch kleinere Artefakte auftreten, wie etwa Objekte, die nicht mehr exakt auf dem Boden stehen, sondern gelegentlich leicht in der Luft schweben oder im Boden versinken.
+Falls keine solchen Modifikationen oder Patches verfügbar sind, kann oft auch das manuelle Entfernen der Zeile `1302 flatten 1` aus der entsprechenden `apt.dat` helfen. Dadurch wird die Szenerie an das neue, detaillierte Bodenmodell angepasst. Kleinere Artefakte können bleiben — Objekte, die nicht mehr exakt auf dem Boden stehen, leicht darüber schweben oder darin versinken.
+
+Der umgekehrte Fall ist ebenfalls wissenswert. X-Plane 12 bietet die frühere Option, Pisten der Geländekontur folgen zu lassen, nicht mehr. Auf einem sehr detaillierten Ortho4XP-Mesh kann ein Flugplatz dadurch eine sichtbar unebene Oberfläche bekommen. Dann ist das *Setzen* von `1302 flatten 1` die Lösung, nicht das Entfernen.
 
 ## Wichtige Hinweise und Fehlerbehebung
 
@@ -517,7 +515,7 @@ Falls keine solchen Modifikationen oder Patches verfügbar sind, kann oft auch d
 - Ortho4XP benötigt viel Speicherplatz für die generierten Texturen
 - Die Qualität der Orthofotos hängt von der gewählten Bildquelle ab
 - Die Verarbeitung kann je nach Gebietsgröße und Zoomstufe mehrere Stunden dauern
-- Der shred86-Fork bietet bessere Performance und mehr Funktionen
+- Der shred86-Fork ergänzt Funktionen gegenüber dem Original — die Liste steht in dessen Wiki
 - Die Verwendung der Binaries vereinfacht die Installation erheblich
 
 ### Performance-Optimierung
@@ -525,7 +523,7 @@ Falls keine solchen Modifikationen oder Patches verfügbar sind, kann oft auch d
 - Die Verarbeitungszeit hängt stark von der gewählten Zoomstufe und der Gebietsgröße ab
 - Zu hohe Zoomstufen können das System überlasten
 - `skip_downloads` und `skip_converts` sind nützlich für die Wiederverarbeitung einzelner Schritte und die Grundlage von Mesh-only-Builds
-- Die Verwendung einer SSD kann die Verarbeitungszeit deutlich reduzieren
+- Die Kachelerzeugung ist I/O-lastig: Sie schreibt sehr viele Texturdateien und liest durchgehend Höhen- und Vektordaten
 
 ### Optimierung der Dateigröße
 
@@ -537,7 +535,17 @@ mogrify -resize 2048x2048 *.dds
 
 Eine Halbierung der Kantenlänge viertelt die Dateigröße, und 2048x2048 ist ein vernünftiger Kompromiss zwischen Bildqualität und Speicherplatzbedarf. Kompressionsformat und Alphakanal überstehen den Vorgang — eine DXT1-Textur bleibt DXT1, eine maskierte DXT5-Textur behält ihr Alpha — und ImageMagick erzeugt die vollständige Mipmap-Kette für die neue Größe neu.
 
-Genau darauf kommt es an: X-Planes `LOAD_CENTER`-Mechanismus wählt die Mipmap-Stufe nach Entfernung aus, eine ohne vollständige Kette skalierte Textur würde die entfernungsabhängige Auflösung also zerstören. Das lässt sich nach einem Stapellauf prüfen, statt es anzunehmen — `magick identify -verbose datei.dds` gibt die Mipmap-Anzahl aus, es sollte eine Stufe je Halbierung bis hinunter zu 1x1 sein.
+Wichtiger als die Mipmaps ist allerdings ein anderer Haken. Ortho4XP schreibt die Texturgröße in jede `.ter`-Datei als festen Wert `4096`:
+
+```
+LOAD_CENTER 0.15381 32.71729 4891 4096
+```
+
+Das Verkleinern der DDS-Dateien rührt die `.ter`-Dateien nicht an, danach behauptet also jede Terrain-Definition eine Auflösung, die die Textur nicht mehr hat. X-Plane nutzt diese Zahl für die entfernungsabhängige Auflösungsverwaltung — das Verkleinern ist deshalb nur unbedenklich, wenn die `.ter`-Dateien mitgezogen werden oder die Abweichung bewusst in Kauf genommen wird.
+
+Wer die Mipmap-Kette einer Datei prüfen will: `magick identify -verbose` gibt sie gar nicht aus, die Anzahl steht im DDS-Header ab Byte-Offset 28.
+
+Für noch nicht gebaute Kacheln ist der sauberere Weg, `default_zl` um eine Stufe zu senken, statt hinterher zu skalieren. Das ergibt kleinere Texturen mit passenden Terrain-Definitionen.
 
 ### Fehlerbehebung
 
@@ -570,6 +578,6 @@ Bei Problemen:
 - [Ortho4XP](https://github.com/oscarpilote/Ortho4XP) — Oscar Pilote, Originalprojekt
 - [Ortho4XP-Fork und Wiki](https://github.com/shred86/Ortho4XP/wiki) — shred86, Installations- und Anwendungsdokumentation
 - [OrthoForge](https://xpconnect.me/orthoforge.html) — xbard, eigenständig entwickelter Nachfolger
-- [Vorgefertigte OSM-Kacheln](https://xpconnect.me/orthoforge-data.html) — OrthoForge-Projekt, OSM- und DEM-Spiegel
+- [Vorgefertigte OSM-Kacheln](https://xpconnect.me/orthoforge-data.html) — OrthoForge-Projekt, OpenStreetMap-Vektordaten
 - [Sonnys LiDAR-Geländemodelle](https://sonny.4lima.de) — Sonny, Höhendatensätze für Europa
 - [Ortho4XP-Forum](https://forums.x-plane.org/index.php?/forums/forum/310-ortho4xp/) — X-Plane.org, Community-Unterstützung

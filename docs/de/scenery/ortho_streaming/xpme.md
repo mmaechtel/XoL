@@ -12,7 +12,7 @@ Der entscheidende Unterschied zu den Alternativen ist das Lizenzmodell. XPME ist
 !!! warning "Pro ist ein Abonnement, kein Kauf"
     Das Bestellformular unter `k.aiflygo.com/purchase` weist die Lizenz für X-Plane 12 mit **5 $ für 30 Tage** und **40 $ für 365 Tage** aus. Das Formular baut seine Preisanzeige dynamisch auf, die aktuellen Beträge sind also dort vor dem Bezahlen zu prüfen. Eine dauerhafte Lizenz gibt es nicht.
 
-    Eine Lizenz gilt für genau einen PC und ist an die Hardware gebunden — ein Wechsel von CPU oder Datenträger sowie eine Neuinstallation des Systems können sie ungültig machen. Die kommerzielle Nutzung ist ausdrücklich untersagt: Flugschulen, Trainingszentren, jeder gewerbliche Betrieb. Die Zahlung läuft über PayPal oder Buy Me a Coffee, der Anbieter nennt eine Rückgabefrist von 7 Tagen.
+    Eine Lizenz gilt für genau einen PC und ist an die Hardware gebunden — ein Wechsel von CPU oder Datenträger sowie eine Neuinstallation des Systems können sie ungültig machen. Laut Anbieter lässt sich eine Lizenz mit Benutzernamen und Kauf-E-Mail auf ein neues Gerät umziehen. Die kommerzielle Nutzung ist ohne ausdrückliche schriftliche Genehmigung untersagt. Die Zahlung läuft über PayPal oder Buy Me a Coffee. Die Lizenzbedingungen nennen keine Rückgabefrist — im Issue-Tracker wurde eine Erstattung im Einzelfall gewährt, verlassen sollte man sich darauf nicht.
 
 ## Funktionsweise
 
@@ -20,7 +20,7 @@ XPME hängt ein **virtuelles Dateisystem** in den Szenerie-Baum von X-Plane ein 
 
 Anders als AutoOrtho und XEarthLayer liest XPME das Gelände-[Mesh](../../glossary.md#mesh) nicht aus der Szenerie von X-Plane. Es liefert **Basispakete** mit — regionale [DSF](../../glossary.md#dsf-distribution-scenery-format)- und Terrain-Daten, erzeugt mit einem angepassten [Ortho4XP](../../glossary.md#ortho4xp)-Fork auf ZL16 — die dieselbe Rolle einnehmen wie die DSF/TER-Pakete bei XEarthLayer.
 
-Die Basispakete lassen sich nicht von Hand installieren. Sie liegen auf Cloudflare und werden vom eingebauten Downloader geholt, der `aria2c` als Übertragungs-Backend nutzt und die gewählten Pakete nacheinander installiert. Wer hinter restriktiven Netzen sitzt, wird auf einen HTTP-Proxy oder ein VPN verwiesen.
+Die Basispakete lassen sich nicht von Hand installieren. Sie liegen auf Cloudflare und werden vom eingebauten Downloader geholt, der `aria2` als Übertragungs-Backend nutzt. Wer hinter restriktiven Netzen sitzt, wird auf einen HTTP-Proxy oder ein VPN verwiesen.
 
 In der Oberfläche wählbare Kartenquellen sind Bing, ArcGIS, Google und Apple. Ein Wechsel der Quelle im Flug ist möglich, wirkt aber nicht sofort — X-Plane muss die betroffenen Texturen neu laden.
 
@@ -88,7 +88,7 @@ chmod +x xplane-map-enhancement-<version>.AppImage
 !!! warning "Linux-Builds erscheinen nicht in jedem Release"
     Nicht jedes Release bringt Linux-Dateien mit. Mehrere Releases enthalten nur die Windows-`.exe` und das macOS-`.dmg`, darunter auch neuere — `.AppImage` und `.deb` erscheinen in den meisten Releases, aber nicht verlässlich im jeweils neuesten. Vor dem Herunterladen die Dateiliste des Releases prüfen und notfalls auf das jüngste Release ausweichen, das einen Linux-Build enthält.
 
-Nach dem ersten Start in den Einstellungen den **Pfad für die Basispakete** auf eine schnelle SSD legen und dann in der Ansicht „Downloader" die zu befliegenden Regionen auswählen und installieren. Die Downloads laufen nacheinander und können groß werden. Die Anwendung muss laufen und vor X-Plane gestartet sein, damit das virtuelle Dateisystem eingehängt ist; beim Beenden gilt die umgekehrte Reihenfolge — erst X-Plane schließen, dann in XPME auf „Stop" drücken, sonst wird der Einhängepunkt nicht sauber abgeräumt.
+Nach dem ersten Start in den Einstellungen den **Pfad für die Basispakete** auf eine schnelle SSD legen und dann in der Ansicht „Downloader" die zu befliegenden Regionen auswählen und installieren. Die Downloads laufen nacheinander und können groß werden. Die Anwendung muss laufen und vor X-Plane gestartet sein, damit das virtuelle Dateisystem eingehängt ist. Fürs Beenden dokumentiert der Anbieter die umgekehrte Reihenfolge: erst X-Plane schließen, dann in XPME auf „Stop" drücken.
 
 ## Bekannte Einschränkungen unter Linux
 
@@ -99,7 +99,7 @@ Nur das, was der Anbieter dokumentiert oder die Release-Historie belegt:
 - **Szenerie-Konflikte.** Ortho4XP und X-Plane HD Mesh Scenery überschreiben die Basispakete von XPME und sind als bekannte Konflikte benannt — sie müssen entfernt oder deaktiviert werden. XPME mit vorhandenen [statischen Kacheln](static_plus_streaming.md) zu mischen wird also nicht so unterstützt wie bei AutoOrtho oder XEarthLayer.
 - **Hohe CPU-Last beim Laden ist zu erwarten.** Der Anbieter erklärt, X-Plane 12 sei für diese Art des Texturaustauschs nicht ausgelegt und die Bildverarbeitung samt DDS-Konvertierung von Natur aus aufwendig. Vorabladen mit eingeschalteten hochauflösenden Texturen wird ausdrücklich als möglicher Auslöser für schlechtere Simulator-Leistung genannt.
 - **Basispakete lassen sich nicht von Hand installieren.** Erreicht der eingebaute Downloader die auf Cloudflare liegenden Pakete nicht, ist das dokumentierte Mittel ein Proxy oder ein VPN — einen Offline-Weg gibt es nicht.
-- **Unabhängige Linux-Erfahrungsberichte waren für diese Seite nicht überprüfbar.** Der einschlägige Community-Thread liegt in einem Forum, das automatisierte Abrufe blockt, deshalb stützt sich hier nichts darauf.
+- **Gemeldete Linux-Probleme** im Issue-Tracker des Projekts betreffen unter anderem eine FUSE-Einhängeoption, die die lokale Bibliothek ablehnt (`fuse: unknown option '-o max_threads=200'`), sowie ein Exit-Code-Problem unter Arch Linux. Der Tracker ist die nützlichste Stelle für einen Blick vor der Installation; der X-Plane-Forumsthread blockt automatisierte Abrufe, es stützt sich hier nichts darauf.
 
 ---
 
@@ -107,7 +107,7 @@ Nur das, was der Anbieter dokumentiert oder die Release-Historie belegt:
 
 | Dimension | XPME | AutoOrtho | XEarthLayer |
 |---|---|---|---|
-| Quellcode | Geschlossen | Offen (GPL) | Offen |
+| Quellcode | Geschlossen | Offen (Apache-2.0) | Offen (MIT) |
 | Kosten | Kostenlose Stufe gedeckelt, Pro im Abo | Kostenlos | Kostenlos |
 | Plattform | Windows, macOS, Linux | Windows, Linux, macOS (Apple Silicon) | Nur Linux |
 | Einhänge-Schicht | WinFSP / FUSE-T / FUSE 3 | FUSE | FUSE |
@@ -124,7 +124,7 @@ Nur das, was der Anbieter dokumentiert oder die Release-Historie belegt:
 
 - **Nutzer, die bereits Ortho4XP-Kacheln pflegen**: XPME ist das falsche Werkzeug. Ortho4XP ist ein dokumentierter Konflikt und muss weichen, während [statische Kacheln mit Streaming zu kombinieren](static_plus_streaming.md) bei den anderen beiden ein unterstützter Arbeitsablauf ist.
 
-- **Nutzer mehrerer Simulatoren**: XPME ist das einzige der drei, das X-Plane und Microsoft Flight Simulator mit einer Produktfamilie und einer Oberfläche abdeckt — sein deutlichster struktureller Vorteil.
+- **Nutzer mehrerer Simulatoren**: XPME ist das einzige der drei, das auch den Microsoft Flight Simulator abdeckt. Beide Seiten sind getrennte Anwendungen mit eigenen Lizenzen und eigenen Basispaketen — es ist also ein Anbieter und eine Arbeitsweise, keine gemeinsame Installation. Für beide Simulatoren zugleich bleibt es hier trotzdem die einzige Möglichkeit.
 
 ---
 
