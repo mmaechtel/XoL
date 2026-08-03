@@ -1,6 +1,12 @@
 # Adversarische Gegenprüfung — 2026-08-04
 
-Gegenstand: die fünf Seitenpaare aus `WORK_ORDER_gegenpruefung_2026-08-04.md`.
+Gegenstand: die fünf am 2026-08-03 überarbeiteten Seitenpaare (DE und EN) —
+`scenery/orthophotography/ortho4xp.md`, `scenery/ortho_streaming/xpme.md`,
+`addon/traffic/xpais_marine_traffic.md`, `addon/toliss/toliss_mods.md`,
+`scenery/aufbau_quellen/scenery_sources.md`. Auftrag war die adversarische
+Gegenprüfung der dort eingebauten, bis dahin ungeprüften Korrekturen
+(Arbeitsanweisung `WORK_ORDER_gegenpruefung_2026-08-04.md`, nach Erledigung
+entfernt — Stand siehe Commit 3684ad0).
 Methode: neun Agenten mit Widerlegungsauftrag (nicht Bestätigungsauftrag), plus
 Browser-Automatisierung für `forums.x-plane.org`. Belege durchgehend mit Pfad +
 Zeilennummer oder URL + wörtlichem Zitat. Im Zweifel gilt „nicht gesichert".
