@@ -246,6 +246,7 @@ The example system runs Debian 12 (Bookworm) with X-Plane 12, featuring an SSD, 
 
 | Topic | Page | Focus |
 |---|---|---|
+| XPME | [XPME](xpme.md) | Closed-source freemium alternative, paid high-resolution tier |
 | XEarthLayer | [XEarthLayer](xearthlayer.md) | Rust-based streaming alternative with adaptive prefetch |
 | Ortho4XP | [Ortho4XP](../orthophotography/ortho4xp.md) | Static ortho tile generation for offline use |
 | Static + Streaming | [Static + Streaming](static_plus_streaming.md) | Combining local tiles with streaming |

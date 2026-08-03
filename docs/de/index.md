@@ -35,11 +35,13 @@ Diese Dokumentation ist ein offenes Projekt. Verbesserungen oder Ergänzungen k�
 
 ## Letzte Änderungen
 
+### 2026-08-03
+- [Ortho4XP](scenery/orthophotography/ortho4xp.md) neu aufgebaut als Parameter-Referenz: alle Vorgabewerte gegen den Quellcode geprüft und korrigiert, die Parameter thematisch gruppiert und um `min_angle`, `water_tech`, die Flughafenabdeckung sowie Masken- und Höhenparameter erweitert. Neu ist das Kapitel **Pakete für Ortho-Streaming bauen** — wie sich mit `skip_downloads` und `skip_converts` reine Mesh- und Terrain-Pakete für einen Streaming-Layer erzeugen lassen, samt eigenem Konfigurationsprofil. Die vier Profile sind jetzt vollständige, direkt einfügbare Konfigurationsabschnitte
+- Neue Seite [XPME](scenery/ortho_streaming/xpme.md), eine dritte Ortho-Streaming-Lösung neben AutoOrtho und XEarthLayer — mit offiziellem Linux-Build, aber Closed Source und Freemium: hochauflösende Bodentexturen und Vorabladen setzen ein kostenpflichtiges Abonnement voraus, und es steht im Konflikt mit vorhandenen Ortho4XP-Kacheln
+
 ### 2026-07-27
 - Faktencheck über alle 46 [Addon-Seiten](addon/index.md): jede Aussage gegen aktuelle Primärquellen geprüft. Highlights: AviTab dokumentiert jetzt den gepflegten TeamAvitab-Fork, das LST-Entwicklerwerkzeug ist ein browserbasierter Web-Editor, der auch unter Linux läuft, XOrganizer wird inzwischen über den X-Plane.org Store verkauft, XPPython3 verweist auf den gepflegten Nachfolge-Fork, und stagnierende Projekte (XGS, XLinSpeak, TerrainRadar u.a.) sind mit ihrem letzten Release-Datum gekennzeichnet
 
 ### 2026-07-26
 - [Ortho4XP](scenery/orthophotography/ortho4xp.md) behandelt jetzt auch [OrthoForge](https://xpconnect.me/orthoforge.html): ein eigenständig weiterentwickelter Nachfolger mit nativem Linux-Setup-Skript, getrennten Höhendaten für Land und Meeresboden sowie vorgefertigten OpenStreetMap-Daten
 
-### 2026-06-30
-- [WorldMap der Szenerien](Maps.md) zeigt jetzt das letzte Aktualisierungsdatum jeder Szenerie und bietet einen **Scenery since**-Jahresfilter — nur Szenerien anzeigen, die seit einem gewählten Jahr aktualisiert wurden. Die Karte umfasst inzwischen über 1800 X-Plane-12-Szenerien

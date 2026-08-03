@@ -246,6 +246,7 @@ Das Beispielsystem läuft mit Debian 12 (Bookworm) und X-Plane 12, verfügt übe
 
 | Thema | Seite | Schwerpunkt |
 |---|---|---|
+| XPME | [XPME](xpme.md) | Closed-Source-Freemium-Alternative, hochauflösende Stufe kostenpflichtig |
 | XEarthLayer | [XEarthLayer](xearthlayer.md) | Rust-basierte Streaming-Alternative mit adaptivem Prefetch |
 | Ortho4XP | [Ortho4XP](../orthophotography/ortho4xp.md) | Statische Ortho-Kachel-Generierung für Offline-Nutzung |
 | Statisch + Streaming | [Statisch + Streaming](static_plus_streaming.md) | Kombination lokaler Kacheln mit Streaming |

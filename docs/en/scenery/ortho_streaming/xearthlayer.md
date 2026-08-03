@@ -206,8 +206,9 @@ XEarthLayer is aimed at Linux users seeking maximum streaming performance throug
 
 | Topic | Page | Focus |
 |---|---|---|
+| XPME | [XPME](xpme.md) | Closed-source freemium alternative, paid high-resolution tier |
 | AutoOrtho | [AutoOrtho](autoortho.md) | Alternative streaming solution with wider platform support |
-| Ortho4XP | [Ortho4XP](../orthophotography/ortho4xp.md) | Static ortho tile generation for offline use |
+| Ortho4XP | [Ortho4XP](../orthophotography/ortho4xp.md#building-packages-for-ortho-streaming) | Building the mesh-only DSF/TER packages this layer draws on |
 | Static + Streaming | [Static + Streaming](static_plus_streaming.md) | Combining local tiles with streaming |
 | Scenery Components | [How X-Plane Builds the World](../aufbau_quellen/scenery_components.md) | scenery_packs.ini load order |
 | Kernel Tuning | [Kernel Tuning](../../linux/system/systemtuning.md) | CPU governor, IRQ pinning, scheduler tuning |

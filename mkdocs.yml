@@ -153,6 +153,7 @@ plugins:
                     - Funktionsweise: de/scenery/ortho_streaming/how_streaming_works.md
                     - AutoOrtho: de/scenery/ortho_streaming/autoortho.md
                     - XEarthLayer: de/scenery/ortho_streaming/xearthlayer.md
+                    - XPME: de/scenery/ortho_streaming/xpme.md
                     - Statisch + Streaming: de/scenery/ortho_streaming/static_plus_streaming.md
                 - Autogen:
                     - de/scenery/autogen/index.md
@@ -310,6 +311,7 @@ plugins:
                     - How It Works: en/scenery/ortho_streaming/how_streaming_works.md
                     - AutoOrtho: en/scenery/ortho_streaming/autoortho.md
                     - XEarthLayer: en/scenery/ortho_streaming/xearthlayer.md
+                    - XPME: en/scenery/ortho_streaming/xpme.md
                     - Static + Streaming: en/scenery/ortho_streaming/static_plus_streaming.md
                 - Autogen:
                     - en/scenery/autogen/index.md

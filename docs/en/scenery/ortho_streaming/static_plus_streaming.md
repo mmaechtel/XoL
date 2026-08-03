@@ -75,7 +75,7 @@ To generate meshes only without textures, set the following parameters in Ortho4
 | Build Imagery | Disabled | No textures needed |
 | Mesh level | 1–2 | Higher value = more detailed terrain |
 
-The remaining parameters are detailed in the [Ortho4XP chapter](../orthophotography/ortho4xp.md).
+The remaining parameters are detailed in the [Ortho4XP chapter](../orthophotography/ortho4xp.md#important-parameters); the settings specific to mesh-only builds are covered under [Building Packages for Ortho Streaming](../orthophotography/ortho4xp.md#building-packages-for-ortho-streaming).
 
 ### Directory Structure
 
@@ -119,7 +119,7 @@ The combination of static generation and streaming provides a flexible solution 
 |---|---|---|
 | AutoOrtho | [AutoOrtho](autoortho.md) | Streaming configuration and cache management |
 | XEarthLayer | [XEarthLayer](xearthlayer.md) | Alternative streaming solution |
-| Ortho4XP | [Ortho4XP](../orthophotography/ortho4xp.md) | Tile generation settings and LiDAR integration |
+| Ortho4XP | [Ortho4XP](../orthophotography/ortho4xp.md#building-packages-for-ortho-streaming) | Parameter reference, mesh-only package builds and LiDAR integration |
 | Scenery Components | [How X-Plane Builds the World](../aufbau_quellen/scenery_components.md) | scenery_packs.ini load order and priority rules |
 | Filesystem | [Filesystem](../../linux/optimizations/filesystem.md) | Storage optimization for local tiles and cache |
 | GPU & VRAM | [GPU & VRAM](../../fundamentals/performance/gpu_vram.md) | VRAM impact of combined ortho sources |

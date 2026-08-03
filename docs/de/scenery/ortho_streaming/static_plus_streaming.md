@@ -75,7 +75,7 @@ Um nur Meshes ohne Texturen zu erzeugen, werden in Ortho4XP folgende Parameter g
 | Build Imagery | Deaktiviert | Keine Texturen nötig |
 | Mesh-Level | 1–2 | Höherer Wert = detaillierteres Gelände |
 
-Die übrigen Parameter werden im [Ortho4XP-Kapitel](../orthophotography/ortho4xp.md) erläutert.
+Die übrigen Parameter werden im [Ortho4XP-Kapitel](../orthophotography/ortho4xp.md#wichtige-parameter) erläutert; die speziell für Mesh-only-Builds nötigen Einstellungen behandelt [Pakete für Ortho-Streaming bauen](../orthophotography/ortho4xp.md#pakete-fur-ortho-streaming-bauen).
 
 ### Verzeichnisstruktur
 
@@ -119,7 +119,7 @@ Die Kombination aus statischer Generierung und Streaming bietet eine flexible L�
 |---|---|---|
 | AutoOrtho | [AutoOrtho](autoortho.md) | Streaming-Konfiguration und Cache-Verwaltung |
 | XEarthLayer | [XEarthLayer](xearthlayer.md) | Alternative Streaming-Lösung |
-| Ortho4XP | [Ortho4XP](../orthophotography/ortho4xp.md) | Kachel-Generierung und LiDAR-Integration |
+| Ortho4XP | [Ortho4XP](../orthophotography/ortho4xp.md#pakete-fur-ortho-streaming-bauen) | Parameter-Referenz, Mesh-only-Pakete und LiDAR-Integration |
 | Szenerie-Komponenten | [Wie X-Plane die Welt aufbaut](../aufbau_quellen/scenery_components.md) | scenery_packs.ini-Ladereihenfolge und Prioritätsregeln |
 | Dateisystem | [Dateisystem](../../linux/optimizations/filesystem.md) | Speicheroptimierung für lokale Kacheln und Cache |
 | GPU & VRAM | [GPU & VRAM](../../fundamentals/performance/gpu_vram.md) | VRAM-Auswirkungen kombinierter Ortho-Quellen |

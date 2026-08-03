@@ -206,8 +206,9 @@ XEarthLayer richtet sich an Linux-Nutzer, die maximale Streaming-Performance dur
 
 | Thema | Seite | Schwerpunkt |
 |---|---|---|
+| XPME | [XPME](xpme.md) | Closed-Source-Freemium-Alternative, hochauflösende Stufe kostenpflichtig |
 | AutoOrtho | [AutoOrtho](autoortho.md) | Alternative Streaming-Lösung mit breiterer Plattformunterstützung |
-| Ortho4XP | [Ortho4XP](../orthophotography/ortho4xp.md) | Statische Ortho-Kachel-Generierung für Offline-Nutzung |
+| Ortho4XP | [Ortho4XP](../orthophotography/ortho4xp.md#pakete-fur-ortho-streaming-bauen) | Bau der Mesh-only-DSF/TER-Pakete, auf die dieser Layer aufsetzt |
 | Statisch + Streaming | [Statisch + Streaming](static_plus_streaming.md) | Kombination lokaler Kacheln mit Streaming |
 | Szenerie-Komponenten | [Wie X-Plane die Welt aufbaut](../aufbau_quellen/scenery_components.md) | scenery_packs.ini-Ladereihenfolge |
 | Kernel-Tuning | [Kernel-Tuning](../../linux/system/systemtuning.md) | CPU-Governor, IRQ-Pinning, Scheduler-Tuning |

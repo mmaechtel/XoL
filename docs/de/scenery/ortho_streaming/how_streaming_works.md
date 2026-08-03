@@ -198,8 +198,10 @@ Ortho-Streaming liefert Satellitenbilder in Echtzeit — doch manchmal erscheine
 | Thema | Seite | Schwerpunkt |
 |-------|-------|-------------|
 | AutoOrtho | [AutoOrtho](autoortho.md) | Streaming-Konfiguration, Fork-Features, Ortho4XP-Vergleich |
+| XPME | [XPME](xpme.md) | Closed-Source-Freemium-Alternative mit eigenen Basispaketen |
 | XEarthLayer | [XEarthLayer](xearthlayer.md) | Rust-basiertes Streaming mit adaptivem Prefetch und CPU-Tuning |
 | Statisch + Streaming | [Statisch + Streaming](static_plus_streaming.md) | Kombination lokaler Ortho4XP-Tiles mit Streaming |
+| Ortho4XP | [Pakete für Ortho-Streaming bauen](../orthophotography/ortho4xp.md#pakete-fur-ortho-streaming-bauen) | Mesh-only-DSF/TER-Pakete für einen Streaming-Layer bauen |
 | Szenerie-Komponenten | [Wie X-Plane die Welt aufbaut](../aufbau_quellen/scenery_components.md) | scenery_packs.ini-Ladereihenfolge und Schicht-Interaktion |
 | Dateisystem | [Dateisystem](../../linux/optimizations/filesystem.md) | I/O-Optimierung für SSD-Cache-Performance |
 

@@ -35,11 +35,13 @@ This documentation is an open project. Improvements or additions can be contribu
 
 ## Recent Changes
 
+### 2026-08-03
+- [Ortho4XP](scenery/orthophotography/ortho4xp.md) rebuilt as a parameter reference: every default verified against the source and corrected, the parameters grouped by topic and extended with `min_angle`, `water_tech`, airport coverage and the mask and elevation settings. New chapter **Building Packages for Ortho Streaming** — how `skip_downloads` and `skip_converts` produce mesh-and-terrain-only packages for a streaming layer, with a configuration profile of its own. The four profiles are now complete, paste-ready config fragments
+- New page [XPME](scenery/ortho_streaming/xpme.md), a third ortho streaming solution alongside AutoOrtho and XEarthLayer — with an official Linux build, but closed source and freemium: high-resolution ground textures and preloading require a paid subscription, and it conflicts with existing Ortho4XP tiles
+
 ### 2026-07-27
 - Fact-check across all 46 [addon pages](addon/index.md): every claim verified against current primary sources. Highlights: AviTab now documents the maintained TeamAvitab fork, LST's developer tooling is a browser-based Web Editor that also runs on Linux, XOrganizer is now sold via the X-Plane.org Store, XPPython3 points to its maintained successor fork, and stagnant projects (XGS, XLinSpeak, TerrainRadar and others) are marked with their last release date
 
 ### 2026-07-26
 - [Ortho4XP](scenery/orthophotography/ortho4xp.md) now covers [OrthoForge](https://xpconnect.me/orthoforge.html): an independently developed successor with a native Linux setup script, separate land/seabed elevation sources and pre-baked OpenStreetMap data
 
-### 2026-06-30
-- [WorldMap of Scenery](Maps.md) now shows each scenery's last update date and adds a **Scenery since** year filter — show only sceneries updated since a chosen year. The map now covers over 1800 X-Plane 12 sceneries

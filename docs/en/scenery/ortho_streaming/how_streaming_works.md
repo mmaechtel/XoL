@@ -198,8 +198,10 @@ Ortho streaming delivers satellite imagery in real time — but sometimes tiles 
 | Topic | Page | Focus |
 |-------|------|-------|
 | AutoOrtho | [AutoOrtho](autoortho.md) | Streaming configuration, fork features, Ortho4XP comparison |
+| XPME | [XPME](xpme.md) | Closed-source freemium alternative with its own base packages |
 | XEarthLayer | [XEarthLayer](xearthlayer.md) | Rust-based streaming with adaptive prefetch and CPU tuning |
 | Static + Streaming | [Static + Streaming](static_plus_streaming.md) | Combining local Ortho4XP tiles with streaming |
+| Ortho4XP | [Building Packages for Ortho Streaming](../orthophotography/ortho4xp.md#building-packages-for-ortho-streaming) | Building mesh-only DSF/TER packages for a streaming layer |
 | Scenery Components | [How X-Plane Builds the World](../aufbau_quellen/scenery_components.md) | scenery_packs.ini load order and layer interaction |
 | Filesystem | [Filesystem](../../linux/optimizations/filesystem.md) | I/O optimization for SSD cache performance |
 
