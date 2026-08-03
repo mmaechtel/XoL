@@ -206,6 +206,7 @@ plugins:
                     - openSAM: de/addon/traffic/opensam.md
                     - AutoGate: de/addon/traffic/autogate.md
                     - Follow the Greens: de/addon/traffic/followthegreens.md
+                    - XPAIS Marine Traffic: de/addon/traffic/xpais_marine_traffic.md
                 - Werkzeuge:
                     - de/addon/tools/index.md
                     - DataRefTool: de/addon/tools/datareftool.md
@@ -364,6 +365,7 @@ plugins:
                     - openSAM: en/addon/traffic/opensam.md
                     - AutoGate: en/addon/traffic/autogate.md
                     - Follow the Greens: en/addon/traffic/followthegreens.md
+                    - XPAIS Marine Traffic: en/addon/traffic/xpais_marine_traffic.md
                 - Tools:
                     - en/addon/tools/index.md
                     - DataRefTool: en/addon/tools/datareftool.md
