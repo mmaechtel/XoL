@@ -3,3 +3,27 @@
     text-transform: uppercase;
     letter-spacing: 0.05em;
 }
+
+/* ── Überschriften-Hierarchie ──
+   Material liefert h3 mit 1.25em/400 und h4 mit 1em/700. Eine
+   **Fett**-Pseudo-Überschrift im Fließtext ist ebenfalls 1em/700 und wirkt
+   damit schwerer als das echte h3 darüber — die Rangfolge steht optisch kopf.
+   h3 bekommt deshalb mehr Gewicht, h4 etwas mehr Größe, damit beide über den
+   Fett-Labels stehen. */
+
+.md-typeset h3 {
+    font-weight: 600;
+}
+
+.md-typeset h4 {
+    font-size: 1.05em;
+}
+
+/* Absätze, die nur aus einem Fett-Label bestehen, dienen als
+   Zwischenüberschrift vor Tabellen und Listen. Sie bekommen den Abstand einer
+   Überschrift: Luft darüber, engerer Anschluss an das, was sie einleiten. */
+
+.md-typeset p:has(> strong:only-child) {
+    margin-top: 1.6em;
+    margin-bottom: 0.5em;
+}
