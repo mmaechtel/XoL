@@ -8,7 +8,7 @@ OSM Offshore Oil Rigs ist ein Szeneriepaket für [X-Plane](../../glossary.md#x-p
 ## Hintergrund
 
 - **Typ:** Szeneriepaket (keine Plugin-Abhängigkeit)
-- **Entwickler:** Saar Snagar (snagar.dev)
+- **Entwickler:** Saar Nagar (snagar.dev)
 - **Distribution:** [x-plane.to](https://x-plane.to/file/1896/osm-offshore-oil-rigs) (Freeware)
 - **Plattformen:** Windows, macOS, Linux (Standard-Szenerieordner, plattformunabhängig)
 - **Kompatibilität:** X-Plane 12
