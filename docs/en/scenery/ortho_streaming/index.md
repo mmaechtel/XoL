@@ -10,3 +10,7 @@ AutoOrtho and XEarthLayer stream satellite imagery on demand via a virtual FUSE 
 - **[XEarthLayer](xearthlayer.md)** — Rust-based streaming with adaptive prefetch
 - **[XPME](xpme.md)** — Closed-source freemium alternative with its own base packages
 - **[Static + Streaming](static_plus_streaming.md)** — Combine both systems
+
+!!! note "Night flights"
+
+    Ortho tiles replace the ground textures that carry X-Plane's distant night lighting. On a night flight the lights therefore end abruptly around the aircraft — switching the streaming layer off for such flights costs nothing visually and restores the lighting to the horizon. See [Bay's Lighting Mod](../../addon/scenery_addons/bays_lighting_mod.md).

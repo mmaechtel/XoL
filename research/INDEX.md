@@ -78,6 +78,7 @@ Docs: `docs/en/addon/tools/xorganizer.md`, `docs/en/addon/cockpit/avitab.md`, et
 - addons/autoortho4xplane_fork.md -> scenery/ortho_streaming/autoortho.md
 - addons/xearthlayer_current_state.md -> scenery/ortho_streaming/xearthlayer.md
 - addons/XPME_research.md -> scenery/orthophotography/orthophotography_intro.md
+- addons/FAKTENCHECK_autohaze_bays_lighting.md -> addon/flylua_scripts/autohaze.md, addon/scenery_addons/bays_lighting_mod.md
 
 ### MITTEL
 - addons/xplane_addon_plugins_linux.md -> addon/cockpit/xchecklist.md, addon/cockpit/opentrack.md, addon/tools/xlinspeak.md

@@ -88,6 +88,8 @@ Resources/plugins/FlyWithLua/
 
 Reine Lua-Skripte sind plattformunabhängig und laufen unter Linux identisch wie unter Windows und macOS. Linux-spezifische Probleme treten nur auf, wenn ein Skript externe Binaries oder Betriebssystem-Funktionen aufruft.
 
+Der Abschnitt [FlyWithLua-Skripte](../flylua_scripts/index.md) dokumentiert einzelne Skripte für den täglichen Einsatz.
+
 ## Quellen
 
 - [FlyWithLua — GitHub](https://github.com/X-Friese/FlyWithLua)

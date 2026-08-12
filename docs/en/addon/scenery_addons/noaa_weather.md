@@ -25,7 +25,7 @@ Since X-Plane 12 already uses NOAA GFS data for its own weather engine, this plu
 
 ## Value in Flight Simulation
 
-While X-Plane 12 already sources its weather data from NOAA, it cannot depict snow coverage with location-specific accuracy. NOAA Weather fills this gap using actual GFS snow depth data and additionally provides a METAR comparison tool that is particularly useful for online flying on IVAO or VATSIM. Since commercial weather alternatives like Active Sky and xEnviro do not support Linux, NOAA Weather is one of the few options available to Linux users.
+While X-Plane 12 already sources its weather data from NOAA, it cannot depict snow coverage with location-specific accuracy. NOAA Weather fills this gap using actual GFS snow depth data and additionally provides a METAR comparison tool that is particularly useful for online flying on IVAO or VATSIM. Since commercial weather alternatives like Active Sky and xEnviro do not support Linux, NOAA Weather is one of the few options available to Linux users. A related addon is [AutoHaze](../flylua_scripts/autohaze.md), which recomputes the atmospheric haze from measured aerosol data.
 
 ## Installation
 

@@ -35,6 +35,11 @@ This documentation is an open project. Improvements or additions can be contribu
 
 ## Recent Changes
 
+### 2026-08-12
+
+- New page [AutoHaze](addon/flylua_scripts/autohaze.md): a FlyWithLua script that replaces X-Plane's default haze with turbidity computed from satellite aerosol data, surface weather and the real boundary layer height — because above the METAR visibility cap the simulator has no data left and falls back to a fixed, usually excessive value. Linux support arrived with version 2.4; the page collects the helper-binary specifics, the SSL certificate fix and the log file
+- New page [Bay's Lighting Mod](addon/scenery_addons/bays_lighting_mod.md): a complete overhaul of airport, night and cockpit lighting including cloud scattering and visibility. The page explains why night lighting and ortho scenery collide — ortho removes the distant baked light layer, which ends the lights abruptly around the aircraft, with or without the mod
+
 ### 2026-08-04
 - Adversarial counter-check of the pages revised on 2026-08-03, with several corrections. [Scenery Sources](scenery/aufbau_quellen/scenery_sources.md): X-World Pro ships its own Linux installation script, so the manual symlink applies only to the free vegetation library — the previous instruction would have produced a broken Pro install. [XPME](scenery/ortho_streaming/xpme.md) does document a refund period. [Ortho4XP](scenery/orthophotography/ortho4xp.md): the "runways follow terrain contours" option disappeared with X-Plane 11, not 12, the Sonny mirror also carries 0.5″ tiles for the Alps, and the forum links now point at the Ortho4XP forum again
 - Smaller precision fixes on the same pages: `masking_mode` selects a mask algorithm rather than a texture, `road_level=1` also includes trunk roads, `custom_dem` needs GDAL only for non-HGT rasters, and [XPAIS Marine Traffic](addon/traffic/xpais_marine_traffic.md) has the complete config and menu, the correct hull fallback and the two design decisions no longer listed as limitations
@@ -45,6 +50,3 @@ This documentation is an open project. Improvements or additions can be contribu
 - [ToLiss Mods](addon/toliss/toliss_mods.md) extended by both wing mods: the **Durantula Wing Enhancement MOD** (new flaps and flap-track fairings, plus wingflex via X-Plane's native wing deflection) and **RealWings**, which replaces the wing outright with new geometry and 4K textures. Both have a native Linux installer; a note explains why the two should be treated as alternatives
 - New page [XPAIS Marine Traffic](addon/traffic/xpais_marine_traffic.md): live AIS ship traffic from the AISStream feed, rendered at the vessels' real positions — a native Linux plugin, built from source, GPL-3.0. Its repository has been archived since July 2026, which the page states up front, and it explains why X-Plane's own ship traffic has to be switched off alongside it
 - [Scenery Sources](scenery/aufbau_quellen/scenery_sources.md) now covers **X-World Pro**, SimHeaven's commercial VFR line for X-Plane 12 — what it adds over the free packages, which remain available. Includes the Linux pitfall of the vegetation libraries: the supplied Windows batch file does nothing here
-
-### 2026-07-27
-- Fact-check across all 46 [addon pages](addon/index.md): every claim verified against current primary sources. Highlights: AviTab now documents the maintained TeamAvitab fork, LST's developer tooling is a browser-based Web Editor that also runs on Linux, XOrganizer is now sold via the X-Plane.org Store, XPPython3 points to its maintained successor fork, and stagnant projects (XGS, XLinSpeak, TerrainRadar and others) are marked with their last release date

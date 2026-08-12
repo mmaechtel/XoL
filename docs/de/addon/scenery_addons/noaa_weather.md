@@ -25,7 +25,7 @@ Da X-Plane 12 seine eigene Wettererzeugung auf NOAA-GFS-Daten aufbaut, arbeitet 
 
 ## Mehrwert in der Flugsimulation
 
-X-Plane 12 bezieht seine Wetterdaten zwar bereits von NOAA, kann Schneebedeckung aber nicht standortgenau darstellen. NOAA Weather schließt diese Lücke mit echten GFS-Schneehöhendaten und bietet zusätzlich einen METAR-Vergleich, der besonders für Online-Flüge auf IVAO oder VATSIM hilfreich ist. Da kommerzielle Wetter-Alternativen wie Active Sky oder xEnviro kein Linux unterstützen, ist NOAA Weather eine der wenigen Optionen für Linux-Nutzer.
+X-Plane 12 bezieht seine Wetterdaten zwar bereits von NOAA, kann Schneebedeckung aber nicht standortgenau darstellen. NOAA Weather schließt diese Lücke mit echten GFS-Schneehöhendaten und bietet zusätzlich einen METAR-Vergleich, der besonders für Online-Flüge auf IVAO oder VATSIM hilfreich ist. Da kommerzielle Wetter-Alternativen wie Active Sky oder xEnviro kein Linux unterstützen, ist NOAA Weather eine der wenigen Optionen für Linux-Nutzer. Thematisch verwandt ist [AutoHaze](../flylua_scripts/autohaze.md), das den atmosphärischen Dunst aus gemessenen Aerosoldaten neu berechnet.
 
 ## Installation
 

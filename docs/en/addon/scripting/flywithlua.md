@@ -88,6 +88,8 @@ Resources/plugins/FlyWithLua/
 
 Pure Lua scripts are platform-independent and run identically on Linux, Windows, and macOS. Linux-specific issues only occur when a script calls external binaries or operating system functions.
 
+The [FlyWithLua Scripts](../flylua_scripts/index.md) section documents individual scripts for daily use.
+
 ## Sources
 
 - [FlyWithLua — GitHub](https://github.com/X-Friese/FlyWithLua)

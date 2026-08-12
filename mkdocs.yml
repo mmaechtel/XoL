@@ -176,6 +176,7 @@ plugins:
                     - SimScreen Overlay: de/addon/flylua_scripts/simscreenoverlay.md
                     - SGES: de/addon/flylua_scripts/sges.md
                     - X-ProTurb: de/addon/flylua_scripts/xproturb.md
+                    - AutoHaze: de/addon/flylua_scripts/autohaze.md
                 - ToLiss-Ökosystem:
                     - de/addon/toliss/index.md
                     - Skripte & Plugins: de/addon/toliss/toliss_ecosystem.md
@@ -223,6 +224,7 @@ plugins:
                     - xa-snow: de/addon/scenery_addons/xa-snow.md
                     - NOAA Weather: de/addon/scenery_addons/noaa_weather.md
                     - LST: de/addon/scenery_addons/lst.md
+                    - Bay's Lighting Mod: de/addon/scenery_addons/bays_lighting_mod.md
                 - Via KVM:
                     - de/addon/kvm/index.md
                     - My FS Flights: de/addon/kvm/myfs_flights.md
@@ -335,6 +337,7 @@ plugins:
                     - SimScreen Overlay: en/addon/flylua_scripts/simscreenoverlay.md
                     - SGES: en/addon/flylua_scripts/sges.md
                     - X-ProTurb: en/addon/flylua_scripts/xproturb.md
+                    - AutoHaze: en/addon/flylua_scripts/autohaze.md
                 - ToLiss Ecosystem:
                     - en/addon/toliss/index.md
                     - Scripts & Plugins: en/addon/toliss/toliss_ecosystem.md
@@ -382,6 +385,7 @@ plugins:
                     - xa-snow: en/addon/scenery_addons/xa-snow.md
                     - NOAA Weather: en/addon/scenery_addons/noaa_weather.md
                     - LST: en/addon/scenery_addons/lst.md
+                    - Bay's Lighting Mod: en/addon/scenery_addons/bays_lighting_mod.md
                 - Via KVM:
                     - en/addon/kvm/index.md
                     - My FS Flights: en/addon/kvm/myfs_flights.md

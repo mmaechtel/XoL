@@ -10,3 +10,7 @@ AutoOrtho und XEarthLayer streamen Satellitenbilder bei Bedarf über ein virtuel
 - **[XEarthLayer](xearthlayer.md)** — Rust-basiertes Streaming mit adaptivem Prefetch
 - **[XPME](xpme.md)** — Closed-Source-Freemium-Alternative mit eigenen Basispaketen
 - **[Statisch + Streaming](static_plus_streaming.md)** — Beide Systeme kombinieren
+
+!!! note "Nachtflüge"
+
+    Ortho-Kacheln ersetzen die Bodentexturen, die X-Planes entfernte Nachtbeleuchtung tragen. Bei einem Nachtflug enden die Lichter deshalb abrupt rund ums Flugzeug — die Streaming-Schicht für solche Flüge abzuschalten kostet optisch nichts und stellt die Beleuchtung bis zum Horizont wieder her. Siehe [Bay's Lighting Mod](../../addon/scenery_addons/bays_lighting_mod.md).

@@ -91,14 +91,13 @@ Commit-Nachricht:
 - Falls `$ARGUMENTS` gesetzt: Diese Nachricht verwenden
 - Falls leer: Aus den Aenderungen eine praegende, einzeilige Nachricht ableiten
 
-Format:
-```
-git commit -m "$(cat <<'EOF'
-{Commit-Nachricht}
+Format: Nachricht in eine Datei schreiben und mit `git commit -F` committen
+(mehrzeilige Strings in `-m` zerlegen unter zsh die Zeile). Den
+`Co-Authored-By`-Trailer nicht hier festschreiben — er kommt aus den globalen
+Regeln der laufenden Sitzung.
 
-Co-Authored-By: Claude Opus 4.6 <noreply@anthropic.com>
-EOF
-)"
+```bash
+git commit -F <nachrichtendatei>
 ```
 
 **NICHT pushen.** Der Push erfolgt nur auf explizite User-Anweisung.
