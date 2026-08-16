@@ -131,6 +131,7 @@ docs/{lang}/
 │   ├── scripting/            #   Subsection mit index.md
 │   ├── flylua_scripts/       #   Subsection mit index.md
 │   ├── toliss/               #   Subsection mit index.md
+│   │   └── mods/             #     Sub-Subsection mit index.md (Flügel-/Beleuchtungs-Mods)
 │   ├── sounds/               #   Subsection mit index.md
 │   ├── cockpit/              #   Subsection mit index.md
 │   ├── traffic/              #   Subsection mit index.md

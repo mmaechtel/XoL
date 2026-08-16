@@ -180,7 +180,13 @@ plugins:
                 - ToLiss-Ökosystem:
                     - de/addon/toliss/index.md
                     - Skripte & Plugins: de/addon/toliss/toliss_ecosystem.md
-                    - Mods: de/addon/toliss/toliss_mods.md
+                    - Mods:
+                        - de/addon/toliss/mods/index.md
+                        - Easy Freighter: de/addon/toliss/mods/easy_freighter.md
+                        - Carda-Triebwerke: de/addon/toliss/mods/carda_engines.md
+                        - Durantula Wing Mod: de/addon/toliss/mods/durantula_wing_mod.md
+                        - RealWings: de/addon/toliss/mods/realwings.md
+                        - ToLiss Photon: de/addon/toliss/mods/toliss_photon.md
                     - DK Toliss Callout: de/addon/toliss/dk_toliss_callout.md
                     - TOI Cabin Ready: de/addon/toliss/toicabrdy.md
                 - Sounds:
@@ -341,7 +347,13 @@ plugins:
                 - ToLiss Ecosystem:
                     - en/addon/toliss/index.md
                     - Scripts & Plugins: en/addon/toliss/toliss_ecosystem.md
-                    - Mods: en/addon/toliss/toliss_mods.md
+                    - Mods:
+                        - en/addon/toliss/mods/index.md
+                        - Easy Freighter: en/addon/toliss/mods/easy_freighter.md
+                        - Carda Engines: en/addon/toliss/mods/carda_engines.md
+                        - Durantula Wing Mod: en/addon/toliss/mods/durantula_wing_mod.md
+                        - RealWings: en/addon/toliss/mods/realwings.md
+                        - ToLiss Photon: en/addon/toliss/mods/toliss_photon.md
                     - DK Toliss Callout: en/addon/toliss/dk_toliss_callout.md
                     - TOI Cabin Ready: en/addon/toliss/toicabrdy.md
                 - Sounds:
