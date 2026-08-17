@@ -33,6 +33,23 @@ Das Plugin [AviTab Browser](https://github.com/rswilem/avitab-browser) von rswil
 - **Features:** Konfigurierbare Homepage, Hotkey-Websites, SimBrief-Flugplan-Download
 - **Download:** [forums.x-plane.org](https://forums.x-plane.org/files/file/93812-avitab-browser-a-web-browser-addon-for-the-avitab-plugin/)
 
+!!! tip "Little Navmap als Moving Map im AviTab Browser"
+    [Little Navmap](../tools/littlexpconnect.md) bringt einen eigenen Webserver mit (`Tools > Run Web Server`, Standardport 8965). Dessen Kartenseite zeigt die von Little XpConnect gelieferte Flugzeugposition und hält das Flugzeug auf Wunsch zentriert (`Center on aircraft` plus Auto-Refresh) — eine Moving Map mit der kompletten Little-Navmap-Karte inklusive Flugplan, ganz ohne zusätzlichen Tile-Server. Wird der AviTab Browser auf diese Seite gerichtet, erscheint sie auf dem Cockpit-Tablet.
+
+    Konfiguration in `Resources/plugins/avitab-browser/config.ini` (die Datei wird beim ersten Start mit Standardwerten angelegt); ein funktionierendes Linux-Beispiel:
+
+    ```ini
+    [browser]
+    homepage=http://localhost:8965
+    hide_addressbar=yes
+
+    [statusbar]
+    icon_1=navigation
+    url_1=http://localhost:8965
+    ```
+
+    `homepage` öffnet die Karte direkt, das `statusbar`-Lesezeichen holt sie nach dem Surfen auf anderen Seiten mit einem Tipp zurück. Läuft Little Navmap auf einem anderen Rechner, ist `localhost` durch dessen Adresse zu ersetzen — der Webserver ist von jedem Gerät im lokalen Netz erreichbar.
+
 ## Mehrwert in der Flugsimulation
 
 AviTab löst das Problem, dass während des Flugs häufig Karten, Checklisten oder Handbücher nachgeschlagen werden müssen — insbesondere in VR, wo das Headset zum Ablesen externer Bildschirme abgenommen werden müsste. Über Custom Maps lassen sich eigene Tile-Server (z.B. ein lokaler TileServer-GL) einbinden. Die Aircraft-Integration ermöglicht bei unterstützten Flugzeugen ein direkt im 3D-Cockpit verbautes Tablet.

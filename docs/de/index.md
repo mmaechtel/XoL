@@ -35,6 +35,10 @@ Diese Dokumentation ist ein offenes Projekt. Verbesserungen oder Ergänzungen k�
 
 ## Letzte Änderungen
 
+### 2026-08-17
+
+- [AviTab](addon/cockpit/avitab.md): neuer Tipp, wie Little Navmap als Moving Map im AviTab Browser läuft — der eingebaute Webserver von Little Navmap liefert die Karte mit aktueller Flugzeugposition aufs Cockpit-Tablet, mit funktionierendem `config.ini`-Beispiel für Linux; die Seite [Little XpConnect](addon/tools/littlexpconnect.md) verweist darauf
+
 ### 2026-08-16
 
 - Die [ToLiss Mods](addon/toliss/mods/index.md) sind jetzt eine eigene Sektion mit einer Seite pro Mod — [Easy Freighter](addon/toliss/mods/easy_freighter.md) und die [Carda Realistic Engine Mods](addon/toliss/mods/carda_engines.md) eingeschlossen
@@ -45,7 +49,3 @@ Diese Dokumentation ist ein offenes Projekt. Verbesserungen oder Ergänzungen k�
 
 - Neue Seite [AutoHaze](addon/flylua_scripts/autohaze.md): ein FlyWithLua-Skript, das den Standard-Dunst von X-Plane durch eine Trübung aus Satelliten-Aerosoldaten, Bodenwetter und realer Grenzschichthöhe ersetzt — oberhalb der METAR-Sichtobergrenze hat der Simulator nämlich keine Daten mehr und fällt auf einen festen, meist zu hohen Wert zurück. Linux-Unterstützung besteht ab Version 2.4; die Seite sammelt die Besonderheiten der Helper-Binary, die Behebung der SSL-Zertifikatsfehler und die Logdatei
 - Neue Seite [Bay's Lighting Mod](addon/scenery_addons/bays_lighting_mod.md): eine komplette Überarbeitung der Flughafen-, Nacht- und Cockpitbeleuchtung samt Wolkenstreuung und Sichtweite. Die Seite erklärt, warum sich Nachtbeleuchtung und Ortho-Szenerien in die Quere kommen — Ortho entfernt die entfernte, eingebackene Lichtschicht, wodurch die Lichter rund ums Flugzeug abrupt enden, mit und ohne Mod
-
-### 2026-08-04
-- Adversarische Gegenprüfung der am 2026-08-03 überarbeiteten Seiten, mit mehreren Korrekturen. [Szenerie-Quellen](scenery/aufbau_quellen/scenery_sources.md): X-World Pro bringt ein eigenes Linux-Installationsskript mit, der Symlink von Hand betrifft also nur die freie Vegetations-Library — die bisherige Anleitung hätte zu einer defekten Pro-Installation geführt. [XPME](scenery/ortho_streaming/xpme.md) nennt sehr wohl eine Rückgabefrist. [Ortho4XP](scenery/orthophotography/ortho4xp.md): Die Option, Pisten der Geländekontur folgen zu lassen, entfiel mit X-Plane 11, nicht 12, der Sonny-Spiegel führt 0,5″-Kacheln auch für die Alpen, und die Forum-Links zeigen wieder auf das Ortho4XP-Forum
-- Kleinere Präzisierungen auf denselben Seiten: `masking_mode` wählt einen Maskenalgorithmus und keine Textur, `road_level=1` enthält auch Trunk-Straßen, `custom_dem` braucht GDAL nur für Nicht-HGT-Raster, und [XPAIS Marine Traffic](addon/traffic/xpais_marine_traffic.md) hat nun die vollständige Konfiguration und Menüliste, den richtigen Rumpf-Fallback und die zwei Entwurfsentscheidungen nicht mehr als Grenzen aufgeführt

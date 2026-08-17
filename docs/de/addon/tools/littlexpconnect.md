@@ -27,6 +27,9 @@ Das Plugin wird aktiv gepflegt und ist im Little-Navmap-Download-Archiv enthalte
 
 Für den Betrieb von Little Navmap auf einem anderen Rechner wird **Little Navconnect** (ebenfalls im Download enthalten) auf dem X-Plane-Rechner gestartet. Es liest den Shared Memory und leitet die Daten über TCP-Port **51968** weiter.
 
+!!! tip "Little-Navmap-Karte im Cockpit über den AviTab Browser"
+    Der eingebaute Webserver von Little Navmap (`Tools > Run Web Server`, Standardport 8965) liefert die Karte mit aktueller Flugzeugposition und Flugplan an jeden Browser im lokalen Netz. Wird seine Adresse (z.B. `http://localhost:8965`) als Homepage des [AviTab Browser](../cockpit/avitab.md#avitab-browser-erganzungs-plugin) eingetragen, wird Little Navmap zur Moving Map auf dem Cockpit-Tablet — das `config.ini`-Beispiel steht auf der AviTab-Seite.
+
 ## Mehrwert in der Flugsimulation
 
 Little Navmap ist eines der umfangreichsten kostenlosen Flugplanungs- und Navigationswerkzeuge. Little XpConnect ermöglicht die Echtzeit-Anzeige der Flugzeugposition auf der Little-Navmap-Karte, Moving Map während des Flugs und die Überwachung aller Flugparameter. Das Plugin arbeitet über Shared Memory statt Netzwerk, was minimale Latenz und keinen Konfigurationsaufwand für lokale Setups bedeutet.

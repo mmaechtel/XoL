@@ -27,6 +27,9 @@ The plugin is actively maintained and is included in the Little Navmap download 
 
 To run Little Navmap on a different machine, start **Little Navconnect** (also included in the download) on the X-Plane machine. It reads the shared memory and forwards the data via TCP port **51968**.
 
+!!! tip "Little Navmap map in the cockpit via AviTab Browser"
+    Little Navmap's built-in web server (`Tools > Run Web Server`, default port 8965) serves the map with the live aircraft position and flight plan to any browser in the local network. Set its address (e.g. `http://localhost:8965`) as the homepage of the [AviTab Browser](../cockpit/avitab.md#avitab-browser-companion-plugin) and Little Navmap becomes a moving map on the cockpit tablet — the AviTab page shows the `config.ini` example.
+
 ## Value in Flight Simulation
 
 Little Navmap is one of the most comprehensive free flight planning and navigation tools. Little XpConnect enables real-time display of the aircraft position on the Little Navmap map, moving map during flight, and monitoring of all flight parameters. The plugin uses shared memory instead of network communication, which means minimal latency and zero configuration effort for local setups.
