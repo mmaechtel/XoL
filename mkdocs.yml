@@ -221,7 +221,7 @@ plugins:
                     - SkunkCrafts Updater: de/addon/tools/skunkcrafts_updater.md
                     - XGS: de/addon/tools/xgs.md
                     - XLinSpeak: de/addon/tools/xlinspeak.md
-                    - WINCTRL: de/addon/tools/winctrl.md
+                    - WINCTRL Plugin: de/addon/tools/winctrl.md
                     - XOrganizer: de/addon/tools/xorganizer.md
                 - Szenerie-Plugins:
                     - de/addon/scenery_addons/index.md
@@ -388,7 +388,7 @@ plugins:
                     - SkunkCrafts Updater: en/addon/tools/skunkcrafts_updater.md
                     - XGS: en/addon/tools/xgs.md
                     - XLinSpeak: en/addon/tools/xlinspeak.md
-                    - WINCTRL: en/addon/tools/winctrl.md
+                    - WINCTRL Plugin: en/addon/tools/winctrl.md
                     - XOrganizer: en/addon/tools/xorganizer.md
                 - Scenery Plugins:
                     - en/addon/scenery_addons/index.md

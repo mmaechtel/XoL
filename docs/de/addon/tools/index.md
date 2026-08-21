@@ -10,5 +10,5 @@ Sieben Werkzeuge für Plugin-Entwicklung und Betrieb: DataRefTool inspiziert X-P
 - **[SkunkCrafts Updater](skunkcrafts_updater.md)** — Automatische Addon-Updates
 - **[XGS](xgs.md)** — Landungsbewertung
 - **[XLinSpeak](xlinspeak.md)** — Sprachausgabe für X-Plane unter Linux
-- **[WINCTRL](winctrl.md)** — Fenster-Management für X-Plane
+- **[X-Plane WINCTRL Plugin](winctrl.md)** — WINCTRL-Cockpit-Panels (Displays, LEDs, Encoder)
 - **[XOrganizer](xorganizer.md)** — Szenerie-Verwaltung und scenery_packs.ini-Editor

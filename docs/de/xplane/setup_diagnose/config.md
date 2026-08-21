@@ -126,6 +126,15 @@ X-Plane 12 nutzt [FMOD](../../glossary.md#fmod) Studio 2.02 als Audio-Engine. Un
 
 X-Plane erkennt Controller unter Linux über SDL2 mit [evdev](../../glossary.md#evdev)-Backend (`/dev/input/event*`). Damit das funktioniert, braucht der Nutzer Leserechte auf die Input-Devices — **X-Plane darf niemals als root gestartet werden**.
 
+**Zwei Geräteklassen**
+
+| Klasse | Beispiele | Was Linux tut | Zusätzlich nötig |
+|--------|-----------|---------------|------------------|
+| Standard-HID-Controller | Joystick, Yoke, Schubhebel, Pedale | Kernel legt sie als `evdev`-Knoten an; `70-uaccess.rules` von systemd gibt dem angemeldeten Benutzer eine ACL | In der Regel nichts — eine Regel nur, wenn das Gerät unsichtbar bleibt |
+| Raw-HID-Panels | WINCTRL MCDU, FCU, EFIS | Kernel legt einen `hidraw`-Knoten an, der root vorbehalten bleibt | udev-Regel plus ein Plugin, das das Protokoll spricht — siehe [WINCTRL](../../addon/tools/winctrl.md) |
+
+Standard-Controller werden vollständig in X-Plane unter **Einstellungen → Joystick** konfiguriert, ohne Treiber und ohne Herstellersoftware. Panels sind ein anderer Fall, weil X-Plane von ihren Displays und Encodern nichts weiß — das ergänzt das WINCTRL-Plugin, und Raw-HID-Knoten tragen dafür keine ACL.
+
 ### udev-Regeln
 
 Wenn ein Controller nicht erkannt wird, fehlen meist die Berechtigungen. Die offizielle Anleitung beschreibt die Grundlagen: [Using Joysticks on Linux](https://www.x-plane.com/kb/using-joysticks-x-plane-11-linux-systems/)
@@ -137,7 +146,7 @@ Darüber hinaus lassen sich mit eigenen udev-Regeln Berechtigungen setzen, stabi
 Zunächst die angeschlossenen USB-Controller auflisten:
 
 ```bash
-lsusb | grep -i -E "thrustmaster|logitech|saitek|vkb|virpil|winwing"
+lsusb | grep -i -E "thrustmaster|logitech|saitek|vkb|virpil|winctrl|winwing"
 ```
 
 Für die udev-Regel werden Vendor-ID und Product-ID benötigt. Die Details eines bestimmten Event-Devices anzeigen:

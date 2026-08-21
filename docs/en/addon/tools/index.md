@@ -10,5 +10,5 @@ Seven utilities for plugin development and operations: DataRefTool inspects X-Pl
 - **[SkunkCrafts Updater](skunkcrafts_updater.md)** — Automatic addon updates
 - **[XGS](xgs.md)** — Landing rate display
 - **[XLinSpeak](xlinspeak.md)** — Speech output for X-Plane on Linux
-- **[WINCTRL](winctrl.md)** — Window management for X-Plane
+- **[X-Plane WINCTRL Plugin](winctrl.md)** — WINCTRL cockpit panels (displays, LEDs, encoders)
 - **[XOrganizer](xorganizer.md)** — Scenery manager and scenery_packs.ini editor

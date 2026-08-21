@@ -19,7 +19,7 @@ MobiFlight ist eine Open-Source-Middleware für den Bau von Home-Cockpits. Die S
 - **Commands:** Auslösen von X-Plane Commands (z.B. `sim/autopilot/heading_up`)
 - **Aircraft-Erkennung:** Automatischer Wechsel der Konfiguration je nach geladenem Flugzeug
 - **HubHop-Presets:** Über 7.000 Community-Presets für verschiedene Aircraft (Zibo 737, ToLiss A320 u.a.)
-- **Hardware-Support:** Arduino Mega/Nano/Pro Micro, Raspberry Pi Pico, MIDI-Controller, HID-Geräte, kommerzielle Panels (Winwing, VKB, Octavi)
+- **Hardware-Support:** Arduino Mega/Nano/Pro Micro, Raspberry Pi Pico, MIDI-Controller, HID-Geräte, kommerzielle Panels (WINCTRL, VKB, Octavi)
 - **Kein X-Plane-Plugin nötig:** Die Kommunikation nutzt X-Planes eingebaute UDP-Schnittstelle — kein zusätzliches Plugin erforderlich
 
 ## KVM-Setup

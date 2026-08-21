@@ -35,6 +35,11 @@ Diese Dokumentation ist ein offenes Projekt. Verbesserungen oder Ergänzungen k�
 
 ## Letzte Änderungen
 
+### 2026-08-21
+
+- Die Seite [X-Plane WINCTRL Plugin](addon/tools/winctrl.md) wurde überarbeitet. Der Hersteller firmiert inzwischen als WINCTRL, deshalb ist „Winwing" aus der Dokumentation verschwunden; **WINCTRL** meint die Hardware, die Software heißt **X-Plane WINCTRL Plugin**. Der udev-Abschnitt empfiehlt jetzt den Debian-Tag `uaccess` statt `MODE="0666"` — samt der Falle, dass die Regeldatei `70-winctrl.rules` heißen muss, weil `99-*` nach `73-seat-late.rules` einsortiert und der Tag dann wirkungslos bleibt. Die Vendor-ID `4098` ist ein Hexadezimal-String (0x4098); der bisherige gegenteilige Hinweis war falsch. Neu: eigene FMC-Display-Schriften als `.xpwwf`-Dateien und der Vorrang von Tasten, die in X-Plane zugewiesen sind. Unterstützte Hardware und der Vergleich mit SimAppPro wurden korrigiert
+- [X-Plane-Konfiguration](xplane/setup_diagnose/config.md#controller): neue Tabelle zur Unterscheidung der zwei Geräteklassen — Joysticks, Yokes und Schubhebel erledigt der Kernel, konfiguriert wird in X-Plane; Cockpitpanels legen dagegen einen Raw-HID-Knoten an, der root gehört, und brauchen udev-Regel plus Plugin
+
 ### 2026-08-17
 
 - [AviTab](addon/cockpit/avitab.md): neuer Tipp, wie Little Navmap als Moving Map im AviTab Browser läuft — der eingebaute Webserver von Little Navmap liefert die Karte mit aktueller Flugzeugposition aufs Cockpit-Tablet, mit funktionierendem `config.ini`-Beispiel für Linux; die Seite [Little XpConnect](addon/tools/littlexpconnect.md) verweist darauf
@@ -44,8 +49,3 @@ Diese Dokumentation ist ein offenes Projekt. Verbesserungen oder Ergänzungen k�
 - Die [ToLiss Mods](addon/toliss/mods/index.md) sind jetzt eine eigene Sektion mit einer Seite pro Mod — [Easy Freighter](addon/toliss/mods/easy_freighter.md) und die [Carda Realistic Engine Mods](addon/toliss/mods/carda_engines.md) eingeschlossen
 - Die beiden Flügel-Mods für die ToLiss-Airbusse haben eigene Seiten bekommen, [Durantula Wing Enhancement MOD](addon/toliss/mods/durantula_wing_mod.md) und [RealWings](addon/toliss/mods/realwings.md), statt zweier Abschnitte auf der Sammelseite — jeweils mit Entwickler, Download und Lizenz im Kopf, der vollständigen Installation über den nativen Linux-Installer samt nicht-interaktiver Aufrufe und dem Hinweis, warum die beiden Alternativen sind und nicht übereinander gehören
 - Neue Seite [ToLiss Photon](addon/toliss/mods/toliss_photon.md): eine Beleuchtungsüberarbeitung für ToLiss A319, A320, A321 und A330-900, die jedes Außenlicht in den OBJ-Dateien des Flugzeugs neu anlegt und das Blinken von Beacon und Strobe an ein natives Plugin übergibt — ohne FlyWithLua und ohne XPPython3. Halogen, Xenon und LED lassen sich im Simulator umschalten und werden pro Livery gespeichert, die optionale Cockpitbeleuchtung von Gus Rodrigues kommt mit. Die Seite behandelt den Linux-Installer: den Ausweg bei schwarzem Fenster über Konsolen- oder Software-Rendering, die Abhängigkeit der Ordnerauswahl von `zenity`/`kdialog` und warum er nach den Wing-Mods und nach jedem ToLiss-Update erneut laufen muss
-
-### 2026-08-12
-
-- Neue Seite [AutoHaze](addon/flylua_scripts/autohaze.md): ein FlyWithLua-Skript, das den Standard-Dunst von X-Plane durch eine Trübung aus Satelliten-Aerosoldaten, Bodenwetter und realer Grenzschichthöhe ersetzt — oberhalb der METAR-Sichtobergrenze hat der Simulator nämlich keine Daten mehr und fällt auf einen festen, meist zu hohen Wert zurück. Linux-Unterstützung besteht ab Version 2.4; die Seite sammelt die Besonderheiten der Helper-Binary, die Behebung der SSL-Zertifikatsfehler und die Logdatei
-- Neue Seite [Bay's Lighting Mod](addon/scenery_addons/bays_lighting_mod.md): eine komplette Überarbeitung der Flughafen-, Nacht- und Cockpitbeleuchtung samt Wolkenstreuung und Sichtweite. Die Seite erklärt, warum sich Nachtbeleuchtung und Ortho-Szenerien in die Quere kommen — Ortho entfernt die entfernte, eingebackene Lichtschicht, wodurch die Lichter rund ums Flugzeug abrupt enden, mit und ohne Mod

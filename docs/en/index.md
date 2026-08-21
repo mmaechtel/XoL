@@ -35,6 +35,11 @@ This documentation is an open project. Improvements or additions can be contribu
 
 ## Recent Changes
 
+### 2026-08-21
+
+- The [X-Plane WINCTRL Plugin](addon/tools/winctrl.md) page was reworked. The vendor now trades as WINCTRL, so "Winwing" is gone from the documentation; **WINCTRL** means the hardware, the software is the **X-Plane WINCTRL plugin**. The udev section now recommends Debian's `uaccess` tag over `MODE="0666"` — including the trap that the rule file must be named `70-winctrl.rules`, because `99-*` sorts after `73-seat-late.rules` and the tag then does nothing. The vendor ID `4098` is a hexadecimal string (0x4098); the previous note claiming otherwise was wrong. New: custom FMC display fonts as `.xpwwf` files, and the rule that buttons assigned in X-Plane take precedence over the plugin. Supported hardware and the SimAppPro comparison were corrected
+- [X-Plane Configuration](xplane/setup_diagnose/config.md#controllers): new table separating the two device classes — joysticks, yokes and throttle quadrants are handled by the kernel and configured entirely inside X-Plane, while cockpit panels expose a root-only raw HID node and need a udev rule plus a plugin
+
 ### 2026-08-17
 
 - [AviTab](addon/cockpit/avitab.md): new tip on using Little Navmap as a moving map in the AviTab Browser — Little Navmap's built-in web server delivers the map with the live aircraft position to the cockpit tablet, with a working `config.ini` example for Linux; the [Little XpConnect](addon/tools/littlexpconnect.md) page links to it
@@ -44,8 +49,3 @@ This documentation is an open project. Improvements or additions can be contribu
 - The [ToLiss Mods](addon/toliss/mods/index.md) are now a section of their own with one page per mod — [Easy Freighter](addon/toliss/mods/easy_freighter.md) and the [Carda Realistic Engine Mods](addon/toliss/mods/carda_engines.md) included
 - The two wing mods for the ToLiss Airbuses now have pages of their own, [Durantula Wing Enhancement MOD](addon/toliss/mods/durantula_wing_mod.md) and [RealWings](addon/toliss/mods/realwings.md), instead of two sections on the collective page — each with developer, download and license up front, the full install via the native Linux installer including its non-interactive invocation, and the reason the two are alternatives rather than a stack
 - New page [ToLiss Photon](addon/toliss/mods/toliss_photon.md): a lighting overhaul for the ToLiss A319, A320, A321 and A330-900 that re-authors every exterior light in the aircraft's OBJ files and hands beacon and strobe flashing to a native plugin — no FlyWithLua and no XPPython3. Halogen, Xenon and LED are switchable in the simulator and saved per livery, and the optional cockpit lighting by Gus Rodrigues comes with it. The page covers the Linux installer: the black-window fallback via console or software rendering, the `zenity`/`kdialog` dependency of the folder picker, and why it has to run after the wing mods and again after every ToLiss update
-
-### 2026-08-12
-
-- New page [AutoHaze](addon/flylua_scripts/autohaze.md): a FlyWithLua script that replaces X-Plane's default haze with turbidity computed from satellite aerosol data, surface weather and the real boundary layer height — because above the METAR visibility cap the simulator has no data left and falls back to a fixed, usually excessive value. Linux support arrived with version 2.4; the page collects the helper-binary specifics, the SSL certificate fix and the log file
-- New page [Bay's Lighting Mod](addon/scenery_addons/bays_lighting_mod.md): a complete overhaul of airport, night and cockpit lighting including cloud scattering and visibility. The page explains why night lighting and ortho scenery collide — ortho removes the distant baked light layer, which ends the lights abruptly around the aircraft, with or without the mod
