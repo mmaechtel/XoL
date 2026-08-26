@@ -61,7 +61,12 @@ Definiert in `mkdocs.yml` unter `plugins > i18n > languages > nav`. Separate Nav
 
 ## Git-Regeln
 
-- Alles unter `research/` immer mitcommiten
+- `research/` ist **nicht** versioniert (in `.gitignore`) — Arbeits- und Recherchenotizen
+  bleiben lokal, das Repo ist öffentlich. Das Verzeichnis liegt weiterhin im
+  Arbeitsverzeichnis, alle Skills finden es unter dem gewohnten Pfad
+- Ebenso `private/` — dort liegt die Server-Doku (`private/SERVER-XOL.md`)
+- Vor Commits prüfen: keine IPs, Hostnamen, Zugangsdaten oder absoluten lokalen
+  Pfade (`/home/<user>/…`) in versionierten Dateien
 - `.claude/*` ist in `.gitignore`, aber `!.claude/commands/` ist ausgenommen — Commands werden committed
 - `site/` ist in `.gitignore` (Build-Output)
 

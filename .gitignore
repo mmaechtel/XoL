@@ -36,3 +36,6 @@ monitoring/*
 !monitoring/ANALYSE_HISTORY.md
 !monitoring/ANALYSE_RUN_*.md
 !monitoring/cgroups/
+
+# Arbeits- und Recherchenotizen -- bleiben lokal, das Repo ist oeffentlich
+research/
