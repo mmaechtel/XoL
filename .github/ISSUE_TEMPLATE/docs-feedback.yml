@@ -21,7 +21,7 @@ body:
     attributes:
       label: Page
       description: Which page is affected? Paste the URL or page title.
-      placeholder: "e.g. https://emvisio.com/en/linux/system/systemtuning.html"
+      placeholder: "e.g. https://xol.emvisio.de/en/linux/system/systemtuning.html"
     validations:
       required: true
 

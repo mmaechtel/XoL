@@ -1,7 +1,7 @@
 #!/bin/bash
 # Smoke test: verify random pages, all videos and posters are reachable on the live site.
 # Usage: ./smoke_test.sh [base_url] [--pages N]
-#   base_url   defaults to https://emvisio.de (tests both .de and .com)
+#   base_url   defaults to https://xol.emvisio.de (tests de and en)
 #   --pages N  number of random pages to check per domain (default: 10)
 
 set -euo pipefail
@@ -57,24 +57,24 @@ run_test() {
         echo "Warning: $SITEMAP not found. Run 'mkdocs build' first."
         echo "Skipping page checks."
     else
-        # Sitemap uses emvisio.com — extract paths and rebuild with target base_url
+        # Sitemap-Host wird generisch entfernt — Pfade werden gegen base_url neu gebaut
         if [ -n "$lang_filter" ]; then
             if [ "$lang_filter" = "de" ]; then
                 # DE pages: everything that does NOT start with /en/
                 PAGES=$(sed -n 's|.*<loc>\([^<]*\)</loc>.*|\1|p' "$SITEMAP" \
-                    | sed 's|https://emvisio.com/||' \
+                    | sed -E 's|^https://[^/]+/||' \
                     | grep -v '^en/' \
                     | shuf -n "$NUM_PAGES")
             else
                 # EN pages: everything under /en/
                 PAGES=$(sed -n 's|.*<loc>\([^<]*\)</loc>.*|\1|p' "$SITEMAP" \
-                    | sed 's|https://emvisio.com/||' \
+                    | sed -E 's|^https://[^/]+/||' \
                     | grep '^en/' \
                     | shuf -n "$NUM_PAGES")
             fi
         else
             PAGES=$(sed -n 's|.*<loc>\([^<]*\)</loc>.*|\1|p' "$SITEMAP" \
-                | sed 's|https://emvisio.com/||' \
+                | sed -E 's|^https://[^/]+/||' \
                 | shuf -n "$NUM_PAGES")
         fi
 
@@ -157,9 +157,9 @@ if [ -n "$BASE_URL" ]; then
     # Single domain specified
     run_test "$BASE_URL" ""
 else
-    # Default: test both domains with matching language
-    run_test "https://emvisio.de" "de"
-    run_test "https://emvisio.com" "en"
+    # Default: kanonischer Host, beide Sprachen
+    run_test "https://xol.emvisio.de" "de"
+    run_test "https://xol.emvisio.de" "en"
 fi
 
 # --- Summary ---

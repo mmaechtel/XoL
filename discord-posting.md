@@ -15,5 +15,5 @@ Wie schon in früheren Versionen liefern die regionalen Pakete ein höher aufgel
 **Fazit:** Mit dem DDS-Disk-Cache, GPU-Offloading auf die iGPU und den konservativeren CPU-Defaults kommt man jetzt an den Punkt, an dem hochauflösende Orthos im Flug keine Stutters mehr verursachen — X-Plane läuft smooth durch, auch auf langen Strecken mit ständig wechselnder Szenerie. Mit eigenen LiDAR-Daten und ZL19 sind Anflüge mit konstanten 60 FPS minimum ein Traum — inkl. aller Addons die X-Plane so hergibt, 3rd-Party-Szenerien, SimHeaven und Co.!
 
 Die XoL-Doku ist aktualisiert:
-:flag_gb: <https://emvisio.com/en/scenery/ortho_streaming/xearthlayer.html>
-:flag_de: <https://emvisio.com/scenery/ortho_streaming/xearthlayer.html>
+:flag_gb: <https://xol.emvisio.de/en/scenery/ortho_streaming/xearthlayer.html>
+:flag_de: <https://xol.emvisio.de/scenery/ortho_streaming/xearthlayer.html>

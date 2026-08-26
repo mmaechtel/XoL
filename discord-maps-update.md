@@ -8,5 +8,5 @@ Beide Tools zeigen jetzt, **wie aktuell eine Szenerie ist**.
 
 Die WorldMap umfasst inzwischen **über 1.800** X-Plane-12-Szenerien.
 
-🗺️ WorldMap der Szenerien: <https://emvisio.de/Maps/airportmap.html>
+🗺️ WorldMap der Szenerien: <https://xol.emvisio.de/Maps/airportmap.html>
 🛫 ATC Flight Planner: <https://atc.emvisio.de>

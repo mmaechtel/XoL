@@ -1,6 +1,6 @@
 # XoL — X-Plane on Linux
 
-Bilingual documentation site (German/English) for running [X-Plane 12](https://www.x-plane.com/) on Linux. Built with [MkDocs Material](https://squidfunk.github.io/mkdocs-material/), hosted at [emvisio.com](https://emvisio.com/).
+Bilingual documentation site (German/English) for running [X-Plane 12](https://www.x-plane.com/) on Linux. Built with [MkDocs Material](https://squidfunk.github.io/mkdocs-material/), hosted at [xol.emvisio.de](https://xol.emvisio.de/).
 
 ## Setup
 
