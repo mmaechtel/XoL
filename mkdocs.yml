@@ -428,6 +428,9 @@ plugins:
       #type: date
       #fallback_to_build_date: true
 
+hooks:
+  - scripts/hooks_seo.py
+
 extra:
   alternate:
     - name: Deutsch
