@@ -1,6 +1,6 @@
 # Faktencheck Bereich 3 — "Building Packages for Ortho Streaming" + Profil "Ortho Streaming Package Settings"
 
-Datei: `/home/maechtel/Work/Git/XoL/docs/en/scenery/orthophotography/ortho4xp.md`
+Datei: `docs/en/scenery/orthophotography/ortho4xp.md`
 Lokaler Install: `/mnt/xplane_data/docker/Ortho4XP` (Fork von shred86 v1.40.13, Commit `0d50ffb`)
 Beobachtete Kachel: `/mnt/xplane_data/docker/Ortho4XP/Tiles/zOrtho4XP_+00+032`
 

@@ -1,6 +1,6 @@
 # Faktencheck Bereich 4 — Altbestand ortho4xp.md (LiDAR, Ortho Patches, Notes, Further Reading)
 
-Datei: `/home/maechtel/Work/Git/XoL/docs/en/scenery/orthophotography/ortho4xp.md`
+Datei: `docs/en/scenery/orthophotography/ortho4xp.md`
 Referenz-Quellcode: `/mnt/xplane_data/docker/Ortho4XP/` — `src/O4_Version.py`: `version='1.40.13'` (= shred86-Fork-Versionslinie)
 
 ---

@@ -1,6 +1,6 @@
 # Faktencheck Bereich 2 — ortho4xp.md: Installation/Versionen, OrthoForge, Pre-baked Daten, Sources
 
-Datei: `/home/maechtel/Work/Git/XoL/docs/en/scenery/orthophotography/ortho4xp.md`
+Datei: `docs/en/scenery/orthophotography/ortho4xp.md`
 Prüfdatum: 2026-08-03
 
 ---

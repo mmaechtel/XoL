@@ -1,6 +1,6 @@
 # Faktencheck Bereich 1 — ortho4xp.md, "Important Parameters" + "Recommended Settings"
 
-Geprüfte Datei: `/home/maechtel/Work/Git/XoL/docs/en/scenery/orthophotography/ortho4xp.md`, Zeilen 84–322.
+Geprüfte Datei: `docs/en/scenery/orthophotography/ortho4xp.md`, Zeilen 84–322.
 Prüfdatum: 2026-08-03.
 
 ## Quellenlage (Vorbemerkung)
