@@ -1,5 +1,5 @@
 ---
-description: "Ortho4XP generates high-resolution satellite ground textures for X-Plane. Installation, OrthoForge, parameter reference, mesh-only packages for ortho streaming, LiDAR integration, and Ortho Patches on Linux."
+description: "Ortho4XP generates high-resolution satellite ground textures for X-Plane — installation, OrthoForge, parameter reference, and LiDAR on Linux."
 ---
 # Ortho4XP
 

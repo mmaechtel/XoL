@@ -1,5 +1,5 @@
 ---
-description: "XP Walkaround für X-Plane 12 — First-Person-Walkaround mit Taschenlampe, Campsite-System und Mouse Look. Natives Linux-Plugin mit SimpleWalkaround als kostenlose Alternative."
+description: "XP Walkaround für X-Plane 12 — First-Person-Rundgang mit Taschenlampe, Campsite-System und Mouse Look. Natives Linux-Plugin, freie Alternative."
 ---
 # XP Walkaround
 

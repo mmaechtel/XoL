@@ -1,5 +1,5 @@
 ---
-description: "AnyAirline für X-Plane 12 — Passagier-Kabinen-Immersion mit KI-Kabinendurchsagen, routenbezogenem Passagier-Manifest, Boarding-Ambiente und kostenloser Passagier-IFE-Karte. Linux-Connector inklusive."
+description: "AnyAirline für X-Plane 12 — KI-Kabinendurchsagen, routenbezogenes Passagier-Manifest, Boarding-Ambiente und IFE-Karte, mit Linux-Connector."
 ---
 # AnyAirline
 

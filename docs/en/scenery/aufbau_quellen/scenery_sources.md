@@ -1,5 +1,5 @@
 ---
-description: "Available X-Plane scenery options: standard scenery with Gateway airports, SimHeaven X-World and X-World Pro autogen, freeware, payware, and interactive WorldMaps."
+description: "X-Plane scenery options — standard scenery with Gateway airports, SimHeaven X-World autogen, freeware, payware, and interactive WorldMaps."
 ---
 # Scenery
 

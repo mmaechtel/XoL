@@ -1,5 +1,5 @@
 ---
-description: "XPAIS Marine Traffic stellt echten AIS-Schiffsverkehr aus dem AISStream-Feed in X-Plane 12 dar — ein nativer Linux-Plugin, quelloffen, seit Juli 2026 archiviert."
+description: "XPAIS Marine Traffic zeigt echten AIS-Schiffsverkehr aus dem AISStream-Feed in X-Plane 12 — natives Linux-Plugin, quelloffen, seit Juli 2026 archiviert."
 ---
 # XPAIS Marine Traffic
 

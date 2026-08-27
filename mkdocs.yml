@@ -1,4 +1,4 @@
-site_name: XoL - XPlane on Linux
+site_name: XoL - X-Plane on Linux
 site_url: https://xol.emvisio.de/
 site_description: X-Plane 12 on Linux — Tuning, Drivers, Scenery, and Tools
 repo_url: https://github.com/mmaechtel/XoL
@@ -423,7 +423,7 @@ plugins:
             - Glossary: en/glossary.md
             - About: en/about.md
   - git-revision-date-localized:
-      #enable_creation_date: true
+      enable_creation_date: true
       #enabled: !ENV [CI, false]
       #type: date
       #fallback_to_build_date: true

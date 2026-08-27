@@ -1,5 +1,5 @@
 ---
-description: "Tuning case study for X-Plane on Linux: three steps from micro-stutters to stable frame times — watermark tuning, IO latency, and NVMe power management with real measurements."
+description: "Tuning case study for X-Plane on Linux — from micro-stutters to stable frame times via watermark tuning, IO latency, and NVMe power management."
 ---
 # Case Study: Eliminating Micro-Stutters
 

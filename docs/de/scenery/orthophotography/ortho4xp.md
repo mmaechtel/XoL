@@ -1,5 +1,5 @@
 ---
-description: "Ortho4XP erzeugt hochauflösende Satelliten-Bodentexturen für X-Plane. Installation, OrthoForge, Parameter-Referenz, Mesh-only-Pakete fürs Ortho-Streaming, LiDAR-Integration und Ortho Patches unter Linux."
+description: "Ortho4XP erzeugt hochauflösende Satelliten-Bodentexturen für X-Plane — Installation, OrthoForge, Parameter-Referenz und LiDAR unter Linux."
 ---
 # Ortho4XP
 

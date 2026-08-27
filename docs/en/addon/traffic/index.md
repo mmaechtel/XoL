@@ -1,5 +1,5 @@
 ---
-description: "Seven X-Plane plugins for air and maritime traffic and ground operations — LiveTraffic, Better Pushback, AutoDGS, openSAM, AutoGate, Follow the Greens, and XPAIS Marine Traffic."
+description: "Seven X-Plane plugins for air and marine traffic and ground ops — LiveTraffic, Better Pushback, AutoDGS, openSAM, AutoGate, and more."
 ---
 # Traffic & Ground Ops
 

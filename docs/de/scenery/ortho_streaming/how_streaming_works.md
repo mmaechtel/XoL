@@ -1,5 +1,5 @@
 ---
-description: "Wie Ortho-Streaming in X-Plane funktioniert: die DSF→.ter→DDS-Texturkette, FUSE als virtuelles Dateisystem, Streaming-Pipeline, Cache-Architektur und Linux-Vorteile."
+description: "Wie Ortho-Streaming in X-Plane funktioniert: DSF→.ter→DDS-Texturkette, FUSE als virtuelles Dateisystem, Streaming-Pipeline, Cache und Linux-Vorteile."
 ---
 # Wie Ortho-Streaming funktioniert
 

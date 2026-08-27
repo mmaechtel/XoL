@@ -1,5 +1,5 @@
 ---
-description: "XEarthLayer ist ein Rust-basiertes Ortho-Streaming-Tool für X-Plane 12 unter Linux mit GPU-beschleunigter Kompression, adaptivem Prefetch, dreistufigem Cache und CPU-Tuning."
+description: "XEarthLayer — Rust-basiertes Ortho-Streaming für X-Plane 12 unter Linux mit GPU-beschleunigter Kompression, adaptivem Prefetch und Drei-Stufen-Cache."
 ---
 # XEarthLayer
 

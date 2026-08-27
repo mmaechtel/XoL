@@ -13,22 +13,119 @@
 {{ super() }}
 {% endblock %}
 
+{#-
+  Absolute URL eines Navigationseintrags. Sektionen haben selbst keine URL —
+  wie in partials/path-item.html wird auf das erste Kind ausgewichen.
+-#}
+{% macro nav_url(nav_item) %}
+  {%- if nav_item.children -%}
+    {{- nav_url(nav_item.children | first) -}}
+  {%- elif nav_item.url -%}
+    {{- config.site_url ~ nav_item.url -}}
+  {%- endif -%}
+{% endmacro %}
+
 {% block extrahead %}
 {{ super() }}
+
+<link rel="alternate" type="application/rss+xml" title="{{ config.site_name }} Blog" href="{{ 'assets/rss/blog.xml' | url }}">
+
 {% if page and page.file %}
+  {% set page_lang = config.theme.language | default('en') %}
+  {% set page_desc = page.meta.description | default(config.site_description) %}
+  {% set card_url = config.site_url ~ 'assets/images/social/' ~ (page.file.dest_uri | replace('.html', '.png')) %}
+  {% set modified = page.meta.git_revision_date_localized_raw_iso_date %}
+  {% set created = page.meta.git_creation_date_localized_raw_iso_date %}
+
+  {#- Sprach-Startseite: eigener Seitentyp, keine mehrgliedrige Breadcrumb -#}
+  {% set home_url = (config.site_url ~ nav.homepage.url) if nav.homepage else config.site_url %}
+  {% set is_root = page.canonical_url == home_url %}
+
+  {#- Breadcrumb-Kette: Startseite + alle Vorfahren, die eine URL aufloesen.
+      Sektionen ohne eigene Seite loesen auf ihr erstes Kind auf und koennen
+      dabei dieselbe URL liefern wie ein Nachbar — Duplikate fliegen raus. -#}
+  {% set crumbs = [] %}
+  {% set seen = [] %}
+  {% if nav.homepage %}
+    {% set _ = crumbs.append({"title": config.site_name, "url": home_url}) %}
+    {% set _ = seen.append(home_url) %}
+  {% endif %}
+  {% for nav_item in page.ancestors | reverse %}
+    {% set resolved = nav_url(nav_item) | trim %}
+    {% if resolved and resolved not in seen %}
+      {% set _ = crumbs.append({"title": nav_item.title, "url": resolved}) %}
+      {% set _ = seen.append(resolved) %}
+    {% endif %}
+  {% endfor %}
+  {% if page.canonical_url not in seen %}
+    {% set _ = crumbs.append({"title": page.title | striptags, "url": page.canonical_url}) %}
+  {% endif %}
+
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
-  "@type": "WebPage",
-  "name": "{{ page.title | e }}",
-  "description": "{{ page.meta.description | default(config.site_description) | e }}",
-  "url": "{{ page.canonical_url }}",
-  "inLanguage": "{{ config.theme.language | default('en') }}",
-  "isPartOf": {
-    "@type": "WebSite",
-    "name": "{{ config.site_name | e }}",
-    "url": "{{ config.site_url }}"
-  }
+  "@graph": [
+    {
+      "@type": "WebSite",
+      "@id": {{ (config.site_url ~ "#website") | tojson }},
+      "name": {{ config.site_name | tojson }},
+      "url": {{ config.site_url | tojson }},
+      "description": {{ config.site_description | tojson }},
+      "inLanguage": {{ page_lang | tojson }},
+      "publisher": { "@id": {{ (config.site_url ~ "#publisher") | tojson }} },
+      "potentialAction": {
+        "@type": "SearchAction",
+        "target": {
+          "@type": "EntryPoint",
+          "urlTemplate": {{ (config.site_url ~ page_lang ~ "/?q={search_term_string}") | tojson }}
+        },
+        "query-input": "required name=search_term_string"
+      }
+    },
+    {
+      "@type": "Organization",
+      "@id": {{ (config.site_url ~ "#publisher") | tojson }},
+      "name": "XoL",
+      "url": {{ config.site_url | tojson }},
+      "logo": {{ (config.site_url ~ "assets/favicon.png") | tojson }},
+      "sameAs": [ {{ config.repo_url | tojson }} ]
+    },
+    {
+      "@type": "BreadcrumbList",
+      "@id": {{ (page.canonical_url ~ "#breadcrumb") | tojson }},
+      "itemListElement": [
+        {%- for crumb in crumbs %}
+        {
+          "@type": "ListItem",
+          "position": {{ loop.index }},
+          "name": {{ crumb.title | tojson }},
+          "item": {{ crumb.url | tojson }}
+        }{{ "," if not loop.last }}
+        {%- endfor %}
+      ]
+    },
+    {
+      "@type": {{ ("CollectionPage" if is_root else "TechArticle") | tojson }},
+      "@id": {{ (page.canonical_url ~ "#page") | tojson }},
+      "headline": {{ (page.title | striptags) | tojson }},
+      "name": {{ (page.title | striptags) | tojson }},
+      "description": {{ page_desc | tojson }},
+      "url": {{ page.canonical_url | tojson }},
+      "inLanguage": {{ page_lang | tojson }},
+      "image": {{ card_url | tojson }},
+      {%- if created %}
+      "datePublished": {{ created | tojson }},
+      {%- endif %}
+      {%- if modified %}
+      "dateModified": {{ modified | tojson }},
+      {%- endif %}
+      "isPartOf": { "@id": {{ (config.site_url ~ "#website") | tojson }} },
+      "breadcrumb": { "@id": {{ (page.canonical_url ~ "#breadcrumb") | tojson }} },
+      "author": { "@id": {{ (config.site_url ~ "#publisher") | tojson }} },
+      "publisher": { "@id": {{ (config.site_url ~ "#publisher") | tojson }} },
+      "license": "https://creativecommons.org/licenses/by/4.0/"
+    }
+  ]
 }
 </script>
 {% endif %}
