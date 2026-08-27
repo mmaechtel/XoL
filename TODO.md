@@ -21,6 +21,7 @@ Workflow und Phasen-Beschreibung: siehe `CLAUDE.md` → Dokumentations-Workflow.
 | 14    | `addon/cockpit/opentrack.md` | geprüft | OpenTrack: Headtracking unter Linux |
 | 15    | `addon/tools/xlinspeak.md` | geprüft | XLinSpeak ergänzen: Piper TTS Manager |
 | 16    | `addon/cockpit/xpwalkaround.md` | geprüft | XP Walkaround: First-Person-Walkaround |
+| 17    | `WORK_ORDER_SEO.md` | offen       | SEO-Ausbau: Titel, Sektions-Intros, VideoObject, llms.txt (Phasenplan im Work Order) |
 
 ---
 
