@@ -1,4 +1,5 @@
 ---
+title: X-Plane 12 Setup and Diagnostics
 description: "Setup and diagnostics for X-Plane 12 on Linux: configuration differences, performance analysis with Microprofiler and MangoHUD, and CLI troubleshooting."
 ---
 # Setup & Diagnostics

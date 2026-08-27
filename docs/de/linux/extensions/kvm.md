@@ -1,5 +1,5 @@
 ---
-title: KVM
+title: "KVM auf Debian: Windows-VM für X-Plane"
 description: "KVM-Virtualisierung auf Debian für X-Plane: Installation, Windows-VM-Einrichtung, USB-Passthrough für StreamDeck und SSH-Key-Verwaltung."
 tags:
   - virtualisierung

@@ -1,4 +1,5 @@
 ---
+title: "X-Plane Load Dimensions: CPU, I/O, Net"
 description: "Three load dimensions competing in X-Plane: CPU compute, local I/O, and network streaming — identifying bottlenecks and their interactions."
 ---
 # Performance

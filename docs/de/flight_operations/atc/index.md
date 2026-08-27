@@ -1,4 +1,5 @@
 ---
+title: IFR-ATC-Kommunikation in X-Plane
 description: "Vollständiger IFR-ATC-Kommunikationsleitfaden für X-Plane — sieben Kapitel von Freigabe über Start, Reiseflug und Anflug bis zur Landung."
 ---
 # ATC

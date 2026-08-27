@@ -1,4 +1,5 @@
 ---
+title: "ATC Departure: X-Plane Phraseology"
 description: "Departure and climb ATC communication — SID compliance, altitude changes, radar vectors, and handoff to Center with standard phraseology examples."
 ---
 # Departure & Climb

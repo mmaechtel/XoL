@@ -1,4 +1,5 @@
 ---
+title: "X-Plane Flight Ops: Weather, ATC, VATSIM"
 description: "Flight operations in X-Plane — weather simulation, step-by-step ATC radio communication for IFR flights, and realistic online flying via VATSIM."
 ---
 # Flight Operations

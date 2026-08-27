@@ -31,6 +31,17 @@ else
     echo "Created symlink: docs/assets/video -> $VIDEO_SRC"
 fi
 
-# --livereload: workaround for Click 8.x + Python 3.14 bug (flag_value default ignored)
-echo "Starting MkDocs development server..."
-mkdocs serve --livereload
+# Schneller Review-Build: ohne Social Cards und Git-Daten (~20 s statt Minuten)
+export XOL_FULL_BUILD=false
+echo "Building site (fast mode: no social cards, no git dates)..."
+mkdocs build || exit 1
+
+# Videos nicht kopieren, sondern verlinken — der Build schließt assets/video aus
+ln -sfn "$VIDEO_SRC" site/assets/video
+trap 'rm -f site/assets/video' EXIT
+
+# PHP-Server statt mkdocs serve: streamt Videos vom Share mit Range-Support
+# (mkdocs serve liest Dateien komplett ein und blockiert bei großen MP4s)
+PORT="${PORT:-8000}"
+echo "Serving site/ at http://127.0.0.1:${PORT}/  (Ctrl+C to stop)"
+php -S "127.0.0.1:${PORT}" -t site

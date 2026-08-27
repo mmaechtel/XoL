@@ -1,4 +1,5 @@
 ---
+title: Linux Optimizations for X-Plane
 description: "Linux optimization layers for X-Plane: NVIDIA driver, Liquorix kernel, X11 vs. Wayland display server, and filesystem I/O tuning."
 ---
 # Optimizations

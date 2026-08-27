@@ -1,4 +1,5 @@
 ---
+title: Latenz und Vorhersagbarkeit in X-Plane
 description: "Latenz vs. Durchsatz in X-Plane: Warum zeitliche Vorhersagbarkeit wichtiger ist als reine FPS und vier Systemquellen für Frame-Time-Spitzen."
 ---
 # Latenz und Vorhersagbarkeit

@@ -1,4 +1,5 @@
 ---
+title: Linux System Tuning for X-Plane
 description: "Linux system tuning for X-Plane: two kernel profiles targeting latency over throughput, plus monitoring tools to verify every tuning measure."
 ---
 # System

@@ -1,4 +1,5 @@
 ---
+title: "ATC IFR-Clearance: X-Plane-Phraseologie"
 description: "IFR-Freigabeverfahren für X-Plane-Piloten — Standardphraseologie, benötigte Informationsquellen und digitale Freigabe per CPDLC und Hoppie."
 ---
 # Clearance

@@ -1,4 +1,5 @@
 ---
+title: "ATC Anflug: X-Plane-Phraseologie"
 description: "ATC-Kommunikation in der Anflugphase in X-Plane — STAR-Verfahren, Radarführung, Sinkfluganweisungen und ILS-Anflugfreigabe mit Standardphraseologie."
 ---
 # Anflug

@@ -1,4 +1,5 @@
 ---
+title: "CPU & RAM: X-Plane Threading Model"
 description: "X-Plane threading model explained: main thread bottleneck, scenery multi-threading, ortho streaming CPU budget, and RAM as staging area."
 ---
 # CPU & RAM

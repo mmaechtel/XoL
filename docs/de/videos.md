@@ -1,10 +1,12 @@
 ---
-title: Videos
+title: "Videos: X-Plane-Tuning & Szenerie"
 description: "Video-Sammlung zu X-Plane unter Linux — Performance-Tuning, Szenerie-Verwaltung, Display-Server-Wahl, Cockpit-Addons und Ortho-Streaming."
 ---
 # Videos
 
-Videosammlung rund um X-Plane auf Linux.
+Videosammlung rund um X-Plane auf Linux — acht kurze Erklärvideos, die die Kernkapitel der Dokumentation auf wenige Minuten verdichten. Gedacht als Einstieg: erst ansehen, dann das Kapitel mit Befehlen und Details lesen.
+
+*X-Plane unter Linux: Doku-Tour* ist der Rundgang durch diese Dokumentation. *System-Tuning für X-Plane*, *Das Performance-Rätsel* und *X-Plane 12: Jagd nach FPS* erzählen die Tuning-Geschichte — warum Latenz wichtiger ist als rohe FPS und wie die Kapitel [System](linux/system/index.md) und [Performance](fundamentals/performance/index.md) das angehen. *X11 vs. Wayland für X-Plane* fasst die Entscheidung aus [Display Server](linux/optimizations/displayserver.md) zusammen. *X-Planes Welt: Richtig gebaut* erklärt die Ladereihenfolge aus [Komponenten](scenery/aufbau_quellen/scenery_components.md), *Ortho-Streaming für X-Plane* die Tools unter [Ortho Streaming](scenery/ortho_streaming/index.md), und *Vom Briefing zum Gate* den Ablauf aus [Flugbetrieb](flight_operations/index.md). Die Videos sind deutsch; die englische Ausgabe hat ein eigenes Set.
 
 <div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(360px, 1fr)); gap: 1.5rem;" markdown>
 

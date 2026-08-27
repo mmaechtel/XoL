@@ -35,6 +35,13 @@ Diese Dokumentation ist ein offenes Projekt. Verbesserungen oder Ergänzungen k�
 
 ## Letzte Änderungen
 
+### 2026-08-27
+
+- Die Übersichtsseiten der Sektionen tragen jetzt echten Orientierungstext statt eines Einzeilers — was die Sektion abdeckt, für wen, und in welcher Reihenfolge lesen: [Grundlagen](fundamentals/index.md), [Hilfsprogramme](linux/extensions/index.md), [Aufbau & Quellen](scenery/aufbau_quellen/index.md), [Orthofotografie](scenery/orthophotography/index.md), [Autogen](scenery/autogen/index.md), [Scripting](addon/scripting/index.md), [ToLiss Mods](addon/toliss/mods/index.md), [Sounds](addon/sounds/index.md), [Werkzeuge](addon/tools/index.md), [Verkehr & Bodenbetrieb](addon/traffic/index.md), [Szenerie-Plugins](addon/scenery_addons/index.md), [Via KVM](addon/kvm/index.md), [Wetter](flight_operations/weather/index.md), [Online](flight_operations/vatsim/index.md) und [Videos](videos.md). Dabei wurden einige Kurzbeschreibungen gegen die Detailseiten berichtigt — XRoads blendet Straßenpolygone auf Ortho-Kacheln aus statt Verkehr zu ergänzen, XOrganizer ist Windows-only, und unter X-Plane 12 ersetzt openSAM v5 das eigenständige AutoDGS
+- [Easy Freighter](addon/toliss/mods/easy_freighter.md) erklärt jetzt, wie die Frachttür pro Livery geschaltet wird, und listet die Einrichtungsschritte
+- Die [Videos](videos.md)-Seiten beschreiben jedes Video mit Dauer und Upload-Datum maschinenlesbar, sodass Suchmaschinen sie als Videoergebnisse anzeigen können
+- Die Seitenleiste zeigt nur noch die aktive Sektion, was das Seitengewicht um rund 40 % senkt; die eingestellten Flughafen-Blogbeiträge wurden entfernt
+
 ### 2026-08-21
 
 - Die Seite [X-Plane WINCTRL Plugin](addon/tools/winctrl.md) wurde überarbeitet. Der Hersteller firmiert inzwischen als WINCTRL, deshalb ist „Winwing" aus der Dokumentation verschwunden; **WINCTRL** meint die Hardware, die Software heißt **X-Plane WINCTRL Plugin**. Der udev-Abschnitt empfiehlt jetzt den Debian-Tag `uaccess` statt `MODE="0666"` — samt der Falle, dass die Regeldatei `70-winctrl.rules` heißen muss, weil `99-*` nach `73-seat-late.rules` einsortiert und der Tag dann wirkungslos bleibt. Die Vendor-ID `4098` ist ein Hexadezimal-String (0x4098); der bisherige gegenteilige Hinweis war falsch. Neu: eigene FMC-Display-Schriften als `.xpwwf`-Dateien und der Vorrang von Tasten, die in X-Plane zugewiesen sind. Unterstützte Hardware und der Vergleich mit SimAppPro wurden korrigiert
@@ -43,9 +50,3 @@ Diese Dokumentation ist ein offenes Projekt. Verbesserungen oder Ergänzungen k�
 ### 2026-08-17
 
 - [AviTab](addon/cockpit/avitab.md): neuer Tipp, wie Little Navmap als Moving Map im AviTab Browser läuft — der eingebaute Webserver von Little Navmap liefert die Karte mit aktueller Flugzeugposition aufs Cockpit-Tablet, mit funktionierendem `config.ini`-Beispiel für Linux; die Seite [Little XpConnect](addon/tools/littlexpconnect.md) verweist darauf
-
-### 2026-08-16
-
-- Die [ToLiss Mods](addon/toliss/mods/index.md) sind jetzt eine eigene Sektion mit einer Seite pro Mod — [Easy Freighter](addon/toliss/mods/easy_freighter.md) und die [Carda Realistic Engine Mods](addon/toliss/mods/carda_engines.md) eingeschlossen
-- Die beiden Flügel-Mods für die ToLiss-Airbusse haben eigene Seiten bekommen, [Durantula Wing Enhancement MOD](addon/toliss/mods/durantula_wing_mod.md) und [RealWings](addon/toliss/mods/realwings.md), statt zweier Abschnitte auf der Sammelseite — jeweils mit Entwickler, Download und Lizenz im Kopf, der vollständigen Installation über den nativen Linux-Installer samt nicht-interaktiver Aufrufe und dem Hinweis, warum die beiden Alternativen sind und nicht übereinander gehören
-- Neue Seite [ToLiss Photon](addon/toliss/mods/toliss_photon.md): eine Beleuchtungsüberarbeitung für ToLiss A319, A320, A321 und A330-900, die jedes Außenlicht in den OBJ-Dateien des Flugzeugs neu anlegt und das Blinken von Beacon und Strobe an ein natives Plugin übergibt — ohne FlyWithLua und ohne XPPython3. Halogen, Xenon und LED lassen sich im Simulator umschalten und werden pro Livery gespeichert, die optionale Cockpitbeleuchtung von Gus Rodrigues kommt mit. Die Seite behandelt den Linux-Installer: den Ausweg bei schwarzem Fenster über Konsolen- oder Software-Rendering, die Abhängigkeit der Ordnerauswahl von `zenity`/`kdialog` und warum er nach den Wing-Mods und nach jedem ToLiss-Update erneut laufen muss

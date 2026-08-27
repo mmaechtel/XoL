@@ -1,4 +1,5 @@
 ---
+title: "ATC Landung: X-Plane-Phraseologie"
 description: "ATC-Verfahren für Landung und Einrollen — Landefreigabe, Durchstart-Phraseologie, Pistenräumung und Rollen zum Gate mit Funkbeispielen."
 ---
 # Landung und Abstellen

@@ -1,4 +1,5 @@
 ---
+title: "Über XoL: Lizenz, Datenschutz, Kontakt"
 description: "Über die XoL-Dokumentation — Zielgruppe, Kontakt, Creative-Commons-Lizenz, Datenschutz und rechtliche Hinweise zu X-Plane unter Linux."
 ---
 ## Über diese Dokumentation

@@ -1,4 +1,5 @@
 ---
+title: X-Plane Performance-Grundlagen
 description: "X-Plane Performance-Grundlagen: CPU-, I/O- und Netzwerk-Lastdimensionen, VRAM-Verwaltung, Frame-Time-Analyse und Latenzquellen."
 ---
 # Performance

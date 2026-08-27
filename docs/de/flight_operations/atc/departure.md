@@ -1,4 +1,5 @@
 ---
+title: "ATC Abflug: X-Plane-Phraseologie"
 description: "ATC-Kommunikation beim Abflug und Steigflug — SID-Befolgung, Höhenfreigaben, Radarführung und Übergabe an Center mit Phraseologie-Beispielen."
 ---
 # Abflug und Steigflug
