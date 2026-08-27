@@ -1,5 +1,5 @@
 ---
-description: "Tuning-Fallstudie für X-Plane unter Linux: Drei Schritte von Mikrorucklern zu stabilen Framezeiten — Watermark-Tuning, IO-Latenz und NVMe-Powermanagement mit realen Messdaten."
+description: "Tuning-Fallstudie für X-Plane unter Linux — von Mikrorucklern zu stabilen Framezeiten per Watermark-Tuning, IO-Latenz und NVMe-Powermanagement."
 ---
 # Fallstudie: Mikroruckler eliminieren
 

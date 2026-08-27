@@ -1,2 +1,52 @@
 # Disable directory listing
 Options -Indexes
+
+# ---------------------------------------------------------------------------
+# Auslieferung fuer Suchmaschinen und Core Web Vitals
+#
+# Voraussetzung: der vhost muss "AllowOverride All" (mindestens FileInfo und
+# Indexes) fuer /var/www/html gesetzt haben. Fehlt das, quittiert Apache die
+# Direktiven mit HTTP 500 — nach dem ersten Deploy prueft ./smoke_test.sh das.
+# Jeder Block ist per <IfModule> abgesichert: fehlt das Modul, passiert nichts.
+# ---------------------------------------------------------------------------
+
+# Kompression — die Seiten sind HTML-lastig (Navigationsbaum auf jeder Seite).
+<IfModule mod_deflate.c>
+    AddOutputFilterByType DEFLATE text/html text/plain text/css text/xml
+    AddOutputFilterByType DEFLATE application/javascript application/json
+    AddOutputFilterByType DEFLATE application/xml application/rss+xml
+    AddOutputFilterByType DEFLATE image/svg+xml
+</IfModule>
+
+<IfModule mod_brotli.c>
+    AddOutputFilterByType BROTLI_COMPRESS text/html text/plain text/css text/xml
+    AddOutputFilterByType BROTLI_COMPRESS application/javascript application/json
+    AddOutputFilterByType BROTLI_COMPRESS application/xml application/rss+xml
+    AddOutputFilterByType BROTLI_COMPRESS image/svg+xml
+</IfModule>
+
+# Cache-Zeiten — Assets tragen einen Hash im Dateinamen und duerfen lange
+# liegen bleiben. HTML, Sitemap und Feed muessen kurz gehalten werden, damit
+# Aenderungen zeitnah beim Crawler ankommen.
+<IfModule mod_expires.c>
+    ExpiresActive On
+    ExpiresDefault                          "access plus 1 week"
+    ExpiresByType text/html                 "access plus 1 hour"
+    ExpiresByType application/xml           "access plus 1 hour"
+    ExpiresByType application/rss+xml       "access plus 1 hour"
+    ExpiresByType text/css                  "access plus 1 year"
+    ExpiresByType application/javascript    "access plus 1 year"
+    ExpiresByType font/woff2                "access plus 1 year"
+    ExpiresByType image/png                 "access plus 6 months"
+    ExpiresByType image/jpeg                "access plus 6 months"
+    ExpiresByType image/svg+xml             "access plus 6 months"
+    ExpiresByType image/webp                "access plus 6 months"
+    ExpiresByType video/mp4                 "access plus 6 months"
+</IfModule>
+
+# Sitemap und Feed werden gzip-vorkomprimiert ausgeliefert bzw. muessen mit
+# korrektem Content-Type ankommen, sonst liest Google sie nicht.
+<IfModule mod_mime.c>
+    AddType application/xml .xml
+    AddType application/rss+xml .rss
+</IfModule>

@@ -1,5 +1,5 @@
 ---
-description: "Sieben X-Plane-Plugins für Flug- und Schiffsverkehr sowie Bodenbetrieb — LiveTraffic, Better Pushback, AutoDGS, openSAM, AutoGate, Follow the Greens und XPAIS Marine Traffic."
+description: "Sieben X-Plane-Plugins für Flug- und Schiffsverkehr sowie Bodenbetrieb — LiveTraffic, Better Pushback, AutoDGS, openSAM, AutoGate und mehr."
 ---
 # Verkehr & Bodenbetrieb
 

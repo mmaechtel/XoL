@@ -1,5 +1,5 @@
 ---
-description: "X-ProTurb ist eine FlyWithLua-Turbulenz-Engine für X-Plane 12 — physikbasierte atmosphärische Turbulenz nach MIL-F-8785C, FAR 25.341 und ICAO 9625 Level-D, mit flugzeugspezifischer 6-DOF-Reaktion."
+description: "X-ProTurb — FlyWithLua-Turbulenz-Engine für X-Plane 12 mit physikbasierten Atmosphärenmodellen (MIL-F-8785C, ICAO 9625) und 6-DOF-Reaktion."
 ---
 # X-ProTurb — Professional Turbulence Engine
 

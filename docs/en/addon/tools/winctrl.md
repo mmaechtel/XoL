@@ -1,5 +1,5 @@
 ---
-description: "The X-Plane WINCTRL plugin connects WINCTRL cockpit panels to X-Plane on Linux and macOS via USB HID — replacing the Windows-only SimAppPro with full LCD, LED, and button support."
+description: "The X-Plane WINCTRL plugin drives WINCTRL cockpit panels on Linux and macOS via USB HID — LCD, LED, and button support without SimAppPro."
 ---
 # X-Plane WINCTRL Plugin
 

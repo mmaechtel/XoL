@@ -1,5 +1,5 @@
 ---
-description: "Das X-Plane WINCTRL Plugin verbindet WINCTRL-Cockpitpanels unter Linux und macOS per USB HID mit X-Plane — vollwertige LCD-, LED- und Tastensteuerung ohne SimAppPro."
+description: "Das X-Plane WINCTRL Plugin steuert WINCTRL-Cockpitpanels unter Linux und macOS per USB HID — LCD-, LED- und Tastensteuerung ohne SimAppPro."
 ---
 # X-Plane WINCTRL Plugin
 

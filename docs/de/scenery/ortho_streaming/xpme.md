@@ -1,5 +1,5 @@
 ---
-description: "XPME (X-Plane Map Enhancement) streamt Satellitenbilder über ein eingehängtes virtuelles Dateisystem in X-Plane 12. Linux-Einrichtung, kostenlose Stufe gegen kostenpflichtiges Pro-Abo und Vergleich mit AutoOrtho und XEarthLayer."
+description: "XPME streamt Satellitenbilder über ein virtuelles Dateisystem in X-Plane 12 — Linux-Einrichtung, Gratis- gegen Pro-Stufe und Einordnung."
 ---
 # XPME (X-Plane Map Enhancement)
 

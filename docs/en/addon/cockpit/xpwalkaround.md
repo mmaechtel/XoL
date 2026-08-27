@@ -1,5 +1,5 @@
 ---
-description: "XP Walkaround for X-Plane 12 — first-person walkaround with flashlight, campsite system, and mouse look. Native Linux plugin with SimpleWalkaround as free alternative."
+description: "XP Walkaround for X-Plane 12 — first-person walkaround with flashlight, campsite system, and mouse look. Native Linux plugin, free alternative."
 ---
 # XP Walkaround
 

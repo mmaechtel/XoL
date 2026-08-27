@@ -1,5 +1,5 @@
 ---
-description: "OpenTrack head tracking for X-Plane on Linux — 6DOF tracking with NeuralNet webcam tracker, IR devices, or SmoothTrack. Debian build guide and HeadTrack plugin setup."
+description: "OpenTrack head tracking for X-Plane on Linux — 6DOF via webcam NeuralNet, IR devices, or SmoothTrack, plus Debian build and plugin setup."
 ---
 # OpenTrack
 

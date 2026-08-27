@@ -1,5 +1,5 @@
 ---
-description: "AnyAirline for X-Plane 12 — passenger cabin immersion with AI cabin announcements, a route-aware passenger manifest, boarding ambience, and a free passenger IFE map. Linux connector included."
+description: "AnyAirline for X-Plane 12 — AI cabin announcements, route-aware passenger manifest, boarding ambience, and IFE map, with a Linux connector."
 ---
 # AnyAirline
 
