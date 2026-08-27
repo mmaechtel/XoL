@@ -1,6 +1,8 @@
 # Work Order — SEO-Ausbau der Dokumentation
 
-**Stand:** 2026-08-27 · Branch `claude/seo-optimization-1rrhow`
+**Stand:** 2026-08-27 · erstellt auf Branch `claude/seo-optimization-1rrhow`;
+nach dessen Merge läuft die Ausführung lokal von `main` aus (Branch-Wahl siehe
+`/seo-execute` Pre-Flight)
 **Basis:** Commit `b2bb19f` (JSON-LD @graph, Sitemap-x-default, site_name-Fix,
 .htaccess-Auslieferung, 13 Descriptions gekürzt, /seo-check um Titel-Prüfung
 erweitert). Dieser Work Order deckt die verbliebenen Punkte ab.

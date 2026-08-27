@@ -23,7 +23,7 @@ die im Work Order noch auf `[ ] offen` steht.
 
 | Voraussetzung | Prüfung | Schwere |
 |---------------|---------|---------|
-| Branch | `claude/seo-optimization-1rrhow` ausgecheckt (sonst auschecken, `git pull`) | Blocker |
+| Branch | Arbeitsbranch ausgecheckt und aktuell (`git pull`). Solange der Plan-Branch `claude/seo-optimization-1rrhow` offen ist: dieser. Nach dessen Merge: frischer Branch von `main` (z. B. `seo/phase-<N>`) oder `main` direkt — Entscheidung des Users | Blocker |
 | Work Order | `WORK_ORDER_SEO.md` vorhanden und gelesen | Blocker |
 | Regelwerke | `CLAUDE.md`, `SKILL_RULES.md`, `docs/MARKDOWN_RULES.txt` gelesen | Blocker |
 | Build | `pip install -r requirements.txt`, `mkdocs build` läuft | Blocker |
@@ -103,8 +103,8 @@ committet.
 
 - Status-Checkbox der Phase im Work Order auf `[x] erledigt` setzen
 - Ein Commit je Phase: Änderungen + Work-Order-Update zusammen
-- `git push -u origin claude/seo-optimization-1rrhow`, bei Netzfehlern
-  4 Retries mit 2s/4s/8s/16s
+- `git push -u origin <arbeitsbranch>`, bei Netzfehlern 4 Retries mit
+  2s/4s/8s/16s (lokal auf `main`: normales `git push`)
 - Danach fragen, ob die nächste Phase folgen soll
 
 ---
