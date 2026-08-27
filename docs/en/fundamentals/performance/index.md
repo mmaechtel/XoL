@@ -1,4 +1,5 @@
 ---
+title: X-Plane Performance Fundamentals
 description: "X-Plane performance fundamentals: CPU, I/O, and network load dimensions, VRAM management, frame time analysis, and latency sources."
 ---
 # Performance

@@ -1,4 +1,5 @@
 ---
+title: X-Plane 12 Addons unter Linux geprüft
 description: "Über 40 X-Plane 12 Addons unter Linux geprüft — Scripting-Frameworks, Cockpit-Tools, Traffic-Plugins, Sound-Packs und Szenerie-Erweiterungen."
 ---
 # Addons

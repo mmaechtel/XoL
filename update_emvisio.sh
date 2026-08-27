@@ -71,7 +71,8 @@ if [ "$NO_VIDEOS" = false ] && [ ! -d "$VIDEO_SRC" ]; then
     exit 1
 fi
 
-# Copy root-level files to site/
+# Regenerate llms.txt from nav + frontmatter, then copy root-level files to site/
+python3 scripts/generate_llms.py --check || exit 1
 cp .htaccess robots.txt llms.txt site/
 
 # Rsync options:
@@ -85,7 +86,7 @@ RSYNC_OPTS=(
     --delete
     --exclude='stats/'
     --exclude='Maps/'
-    --exclude='assets/video/'
+    --exclude='assets/video'   # ohne Slash: trifft auch den Symlink aus serve_dev.sh
 )
 
 # macOS stores filenames in NFD (decomposed Unicode: u + combining ¨)

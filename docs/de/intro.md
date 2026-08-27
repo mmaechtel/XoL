@@ -1,4 +1,5 @@
 ---
+title: "Warum Linux für X-Plane: Mehr Kontrolle"
 description: "Warum X-Plane unter Linux — Open-Source-Kernel-Tuning, GPU-Treiberkontrolle, Dateisystem-Optimierung und vorhersagbare Systemleistung."
 ---
 # Einführung

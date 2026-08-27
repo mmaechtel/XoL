@@ -24,7 +24,7 @@ theme:
     - navigation.tracking
     - navigation.tabs
     - navigation.sections
-    - navigation.expand
+    - navigation.prune
     - navigation.path
     - navigation.indexes
     - navigation.top
@@ -75,12 +75,12 @@ extra_css:
 plugins:
   - social:
       cards_layout: xol
+      enabled: !ENV [XOL_FULL_BUILD, true]
   - search:
       lang:
         - en
         - de
       separator: '[\s\-\.]+'
-  - pub-blog
   - pub-obsidian:
       backlinks:
         enabled: false
@@ -424,6 +424,7 @@ plugins:
             - About: en/about.md
   - git-revision-date-localized:
       enable_creation_date: true
+      enabled: !ENV [XOL_FULL_BUILD, true]
       #enabled: !ENV [CI, false]
       #type: date
       #fallback_to_build_date: true

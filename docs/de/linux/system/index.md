@@ -1,4 +1,5 @@
 ---
+title: Linux-System-Tuning für X-Plane
 description: "Linux-System-Tuning für X-Plane: Zwei Kernel-Profile mit Fokus auf Latenz statt Durchsatz, plus Monitoring-Tools zur Verifikation jeder Einstellung."
 ---
 # System

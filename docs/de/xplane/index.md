@@ -1,4 +1,5 @@
 ---
+title: "X-Plane 12: Vulkan, Audio, Controller"
 description: "X-Plane 12 unter Linux: Vulkan-Rendering, Zink für Plugins, Shader-Caches, PipeWire-Audio, Controller-Einrichtung und GPU-Fehlersuche."
 ---
 # X-Plane unter Linux

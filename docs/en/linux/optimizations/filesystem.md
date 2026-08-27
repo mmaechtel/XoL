@@ -1,4 +1,5 @@
 ---
+title: "Filesystem Tuning for X-Plane: SSD, RAID"
 description: "Filesystem optimization for X-Plane on Linux: NVMe SSD setup, Ext4/Btrfs/XFS comparison, mount options, RAID-0 configuration, and backup strategies."
 ---
 # Filesystem

@@ -1,4 +1,5 @@
 ---
+title: "ATC Takeoff: X-Plane Phraseology"
 description: "Takeoff ATC procedures — Tower communication, line-up clearance, conditional clearances, and departure handoff with standard phraseology examples."
 ---
 # Takeoff

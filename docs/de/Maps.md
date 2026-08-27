@@ -1,4 +1,5 @@
 ---
+title: "X-Plane-Szeneriekarten: Airports & Ortho"
 description: "Interaktive Weltkarten zur X-Plane 12 Szenerie-Planung — über 1800 Flughäfen und installierte Ortho-Kacheln auf einer Live-Karte."
 ---
 # Maps

@@ -1,4 +1,5 @@
 ---
+title: "X-Plane-Flugbetrieb: Wetter, ATC, VATSIM"
 description: "Flugbetrieb in X-Plane — Wettersimulation, schrittweise ATC-Funkkommunikation für IFR-Flüge und realistisches Online-Fliegen über VATSIM."
 ---
 # Flugbetrieb

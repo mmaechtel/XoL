@@ -1,4 +1,5 @@
 ---
+title: Why Latency Matters for X-Plane
 description: "Why latency matters for X-Plane on Linux: stable frame times beat high FPS, two kernel tuning profiles, and monitoring tools for verification."
 ---
 # Why Latency Matters

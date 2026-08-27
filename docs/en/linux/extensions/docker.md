@@ -1,4 +1,5 @@
 ---
+title: "Docker on Debian: Installation Guide"
 description: "Step-by-step Docker installation on Debian: repository setup, package installation, service configuration, and rootless usage."
 ---
 ### Installing [Docker](../../glossary.md#docker) on Debian: A Step-by-Step Guide

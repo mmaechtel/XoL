@@ -1,4 +1,5 @@
 ---
+title: "ATC Streckenflug: X-Plane-Phraseologie"
 description: "ATC-Kommunikation im Reiseflug — Frequenzwechsel zwischen Sektoren, Stufensteigflüge, Wetterausweichmanöver und Standardphraseologie."
 ---
 # Streckenflug

@@ -12,6 +12,7 @@ und wird nach dem Build nachgetragen (siehe on_post_build).
 Registriert in mkdocs.yml unter `hooks:`.
 """
 import gzip
+import json
 import os
 import re
 from urllib.parse import urljoin
@@ -25,6 +26,17 @@ ALTERNATE = re.compile(
 
 # Sprache, die Besucher ohne passende Fassung bekommen sollen.
 X_DEFAULT_LANG = "en"
+
+# VideoObject-Metadaten fuer die Videos-Seiten (erzeugt von
+# scripts/generate_video_meta.py); main.html liest sie aus config.extra.
+VIDEO_META = os.path.join(os.path.dirname(os.path.abspath(__file__)), "video_meta.json")
+
+
+def on_config(config):
+    if os.path.exists(VIDEO_META):
+        with open(VIDEO_META, encoding="utf-8") as datei:
+            config["extra"]["video_meta"] = json.load(datei)
+    return config
 
 
 def on_post_page(output, page, config):

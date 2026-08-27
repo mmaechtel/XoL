@@ -28,7 +28,6 @@
 {% block extrahead %}
 {{ super() }}
 
-<link rel="alternate" type="application/rss+xml" title="{{ config.site_name }} Blog" href="{{ 'assets/rss/blog.xml' | url }}">
 
 {% if page and page.file %}
   {% set page_lang = config.theme.language | default('en') %}
@@ -128,6 +127,36 @@
   ]
 }
 </script>
+{%- set video_meta = config.extra.video_meta | default({}) %}
+{%- if page.file.src_uri.endswith("videos.md") and video_meta[page_lang] is defined %}
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "ItemList",
+  "@id": {{ (page.canonical_url ~ "#videos") | tojson }},
+  "itemListElement": [
+    {%- for video in video_meta[page_lang] %}
+    {
+      "@type": "ListItem",
+      "position": {{ loop.index }},
+      "item": {
+        "@type": "VideoObject",
+        "name": {{ video.name | tojson }},
+        "description": {{ video.description | tojson }},
+        "thumbnailUrl": {{ (config.site_url ~ video.thumbnailUrl) | tojson }},
+        "contentUrl": {{ (config.site_url ~ video.contentUrl) | tojson }},
+        "uploadDate": {{ video.uploadDate | tojson }},
+        "duration": {{ video.duration | tojson }},
+        "inLanguage": {{ page_lang | tojson }},
+        "isPartOf": { "@id": {{ (page.canonical_url ~ "#page") | tojson }} },
+        "publisher": { "@id": {{ (config.site_url ~ "#publisher") | tojson }} }
+      }
+    }{{ "," if not loop.last }}
+    {%- endfor %}
+  ]
+}
+</script>
+{%- endif %}
 {% endif %}
 {% endblock %}
 

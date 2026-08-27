@@ -1,4 +1,5 @@
 ---
+title: "About XoL: License, Privacy, Contact"
 description: "About XoL documentation — target audience, contact, Creative Commons license, privacy policy, and legal notice for X-Plane on Linux."
 ---
 ## About the Documentation

@@ -1,4 +1,5 @@
 ---
+title: "GPU & VRAM-Verwaltung in X-Plane"
 description: "VRAM-Verwaltung in X-Plane unter Linux: Textur-Paging, Zoom-Level-Einfluss, GPU-Treiberunterschiede und Frame-Time-Perzentilanalyse."
 ---
 # GPU & VRAM

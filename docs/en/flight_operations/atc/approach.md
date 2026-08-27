@@ -1,4 +1,5 @@
 ---
+title: "ATC Approach: X-Plane Phraseology"
 description: "Approach phase ATC communication in X-Plane — STAR procedures, radar vectors, descent instructions, and ILS approach clearance with standard phraseology."
 ---
 # Approach

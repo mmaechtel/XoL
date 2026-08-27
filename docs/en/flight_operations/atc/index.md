@@ -1,4 +1,5 @@
 ---
+title: IFR ATC Communication in X-Plane
 description: "Complete IFR ATC communication guide for X-Plane — seven chapters from clearance through takeoff, en route, approach, to landing with phraseology."
 ---
 # ATC

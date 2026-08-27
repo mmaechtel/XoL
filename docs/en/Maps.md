@@ -1,4 +1,5 @@
 ---
+title: "X-Plane Scenery Maps: Airports & Ortho"
 description: "Interactive world maps for X-Plane 12 scenery planning — browse over 1800 airports and installed ortho tiles on a live map."
 ---
 # Maps

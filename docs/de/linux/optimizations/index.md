@@ -1,4 +1,5 @@
 ---
+title: Linux-Optimierungen für X-Plane
 description: "Linux-Optimierungsebenen für X-Plane: NVIDIA-Treiber, Liquorix-Kernel, X11 vs. Wayland Display-Server und Dateisystem-I/O-Tuning."
 ---
 # Optimierungen

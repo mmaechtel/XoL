@@ -1,4 +1,5 @@
 ---
+title: Latency and Predictability in X-Plane
 description: "Latency vs. throughput in X-Plane: why temporal predictability beats raw FPS, and four system sources that cause frame time spikes."
 ---
 # Latency and Predictability

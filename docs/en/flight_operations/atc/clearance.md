@@ -1,4 +1,5 @@
 ---
+title: "ATC IFR Clearance: X-Plane Phraseology"
 description: "IFR clearance procedures for X-Plane pilots — standard phraseology, required information sources, and digital clearance retrieval via CPDLC and Hoppie."
 ---
 # Clearance

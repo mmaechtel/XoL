@@ -4,10 +4,10 @@ Guidance for Claude Code when working in this repository.
 
 ## Wichtige Befehle
 
-- **Dev-Server:** `mkdocs serve` (oder `./serve_dev.sh`)
+- **Dev-Server:** `./serve_dev.sh` — schneller Review-Build (ohne Social Cards/Git-Daten) + PHP-Server mit Videos vom Share; `mkdocs serve` für Livereload beim Schreiben
 - **Site bauen:** `mkdocs build` (Output: `site/`)
 - **Deploy:** `./update_emvisio.sh <hostname>` — Dry Run mit `--dry`
-- **RSS generieren:** `python scripts/generate_rss.py`
+- **llms.txt:** `python3 scripts/generate_llms.py --check` — aus EN-Nav + Frontmatter erzeugen (läuft im Deploy automatisch)
 - **Python-Abhängigkeiten:** `pip install -r requirements.txt`
 
 ## Architektur

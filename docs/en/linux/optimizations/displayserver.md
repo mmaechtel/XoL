@@ -1,4 +1,5 @@
 ---
+title: X11 vs. Wayland for X-Plane 12
 description: "X11 vs. Wayland for X-Plane on Linux: protocol comparison, latency measurements, XWayland overhead, and GPU-specific session recommendations."
 ---
 # Display Server

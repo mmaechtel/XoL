@@ -1,4 +1,5 @@
 ---
+title: "Dateisystem für X-Plane: SSD, RAID"
 description: "Dateisystem-Optimierung für X-Plane unter Linux: NVMe-SSD-Setup, Ext4/Btrfs/XFS-Vergleich, Mount-Optionen, RAID-0-Konfiguration und Backup-Strategien."
 ---
 # Dateisystem

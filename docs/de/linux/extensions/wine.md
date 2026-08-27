@@ -1,4 +1,5 @@
 ---
+title: Wine auf Debian für X-Plane-Tools
 description: "Wine-Installation auf Debian: zwei Wege (Standardpakete und WineHQ), Winetricks-Einrichtung und 32-Bit-Unterstützung für Windows-X-Plane-Tools."
 ---
 ## Wine unter Debian 12 installieren – zwei Wege

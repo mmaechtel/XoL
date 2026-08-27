@@ -45,7 +45,7 @@ siehe `.claude/commands/seo-execute.md`).
 
 ## Phase 0 — Technik: prune + Blog-Rückbau
 
-**Status:** [ ] offen
+**Status:** [x] erledigt (2026-08-27; Blog + RSS + pub-blog entfernt, Build 132→26 s; prune aktiv: Median 104→61 KB, Summe −45 %)
 
 1. `mkdocs.yml`: `navigation.expand` entfernen, `navigation.prune` ergänzen
    (beide zusammen sind laut Material-Doku inkompatibel; prune braucht den
@@ -62,12 +62,17 @@ siehe `.claude/commands/seo-execute.md`).
 
 ## Phasen 1–5 — Titel + Sektions-Intros, je Sektion ein Batch
 
+> **Stand 2026-08-27:** Die `title:`-Frontmatter aller unten gelisteten Seiten
+> (und weiterer Einzelseiten, 46 insgesamt, EN+DE) wurden per `/seo-check`
+> gesetzt und im Build verifiziert. Die Titel-Spalten unten sind damit
+> **erledigt** — offen ist in Phase 1–5 nur noch die Spalte „Intro?".
+
 Pro Batch: erst `title:`-Frontmatter (EN+DE), dann Intro-Ausbau der dünnen
 Indexseiten (EN führt, DE zieht nach). Titel unten sind **Vorschläge** — beim
 Abarbeiten gegen den Seiteninhalt prüfen und ggf. verwerfen („OK lassen" ist
 ein gültiges Ergebnis, z. B. bei etablierten Eigennamen).
 
-### Phase 1 — Grundlagen & Linux  **Status:** [ ] offen
+### Phase 1 — Grundlagen & Linux  **Status:** [x] erledigt (2026-08-27, Intros fundamentals + extensions)
 
 | Datei | Titel-Vorschlag EN | Intro? (Ist-Wörter) |
 |---|---|---|
@@ -77,7 +82,7 @@ ein gültiges Ergebnis, z. B. bei etablierten Eigennamen).
 | `linux/optimizations/index.md` | Linux Optimizations: Drivers & Kernel | nein |
 | `linux/extensions/index.md` | Linux Utilities: KVM, Docker, Wine | ja (94) |
 
-### Phase 2 — X-Plane & Szenerie  **Status:** [ ] offen
+### Phase 2 — X-Plane & Szenerie  **Status:** [x] erledigt (2026-08-27, Intros aufbau_quellen + orthophotography + autogen)
 
 | Datei | Titel-Vorschlag EN | Intro? |
 |---|---|---|
@@ -88,7 +93,7 @@ ein gültiges Ergebnis, z. B. bei etablierten Eigennamen).
 | `scenery/ortho_streaming/index.md` | Ortho Streaming for X-Plane | nein |
 | `scenery/autogen/index.md` | Autogen Scenery for X-Plane | ja (99) |
 
-### Phase 3 — Addons I (Scripting, ToLiss, Sounds)  **Status:** [ ] offen
+### Phase 3 — Addons I (Scripting, ToLiss, Sounds)  **Status:** [x] erledigt (2026-08-27, Intros scripting + mods + sounds + easy_freighter)
 
 | Datei | Titel-Vorschlag EN | Intro? |
 |---|---|---|
@@ -99,7 +104,7 @@ ein gültiges Ergebnis, z. B. bei etablierten Eigennamen).
 | `addon/sounds/index.md` | X-Plane Sound Addons | ja (41) |
 | `addon/toliss/mods/easy_freighter.md` | — (Titel OK) | ja, Content-Seite (74) |
 
-### Phase 4 — Addons II (Cockpit, Tools, Traffic, Scenery-Plugins, KVM)  **Status:** [ ] offen
+### Phase 4 — Addons II (Cockpit, Tools, Traffic, Scenery-Plugins, KVM)  **Status:** [x] erledigt (2026-08-27, Intros tools + traffic + scenery_addons + kvm)
 
 | Datei | Titel-Vorschlag EN | Intro? |
 |---|---|---|
@@ -109,7 +114,7 @@ ein gültiges Ergebnis, z. B. bei etablierten Eigennamen).
 | `addon/scenery_addons/index.md` | X-Plane Scenery Plugins | ja (88) |
 | `addon/kvm/index.md` | Windows-only Addons via KVM | ja (54) |
 
-### Phase 5 — Flight Ops & Meta-Seiten  **Status:** [ ] offen
+### Phase 5 — Flight Ops & Meta-Seiten  **Status:** [x] erledigt (2026-08-27, Intros vatsim + weather + videos)
 
 | Datei | Titel-Vorschlag EN | Intro? |
 |---|---|---|
@@ -125,7 +130,7 @@ DE-Titel je Batch sinngleich bilden (gleiche Längenregel), nicht 1:1 übersetze
 
 ---
 
-## Phase 6 — VideoObject-Markup  **Status:** [ ] offen
+## Phase 6 — VideoObject-Markup  **Status:** [x] erledigt (2026-08-27, 8+8 VideoObject; Rich-Results-Test nach Deploy)
 
 8 Videos je Sprache auf `videos.md`, derzeit ohne strukturierte Daten. Google
 verlangt je Video mindestens `name`, `description`, `thumbnailUrl`, `uploadDate`.
@@ -143,7 +148,7 @@ den Betreiber, Ergebnis-JSON committen. Container kann Schritt 3–4 danach.
 
 ---
 
-## Phase 7 — llms.txt vervollständigen  **Status:** [ ] offen
+## Phase 7 — llms.txt vervollständigen  **Status:** [x] erledigt (2026-08-27, Generator + 134 Seiten, im Deploy verdrahtet)
 
 Derzeit 19 von 137 Seiten gelistet. Statt Handpflege:
 
@@ -155,7 +160,7 @@ Derzeit 19 von 137 Seiten gelistet. Statt Handpflege:
 
 ---
 
-## Abschluss  **Status:** [ ] offen
+## Abschluss  **Status:** [x] erledigt (2026-08-27; Deploy + Search Console + Rich-Results-Test: Betreiber)
 
 - Changelog-Eintrag (DE+EN, ein Datumsblock, komprimiert): neue Sektions-Intros
   und Video-Auszeichnung — Titel-/Meta-Arbeit nicht einzeln aufführen

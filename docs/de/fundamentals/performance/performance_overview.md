@@ -1,4 +1,5 @@
 ---
+title: "X-Plane-Lastdimensionen: CPU, I/O, Netz"
 description: "Drei konkurrierende Lastdimensionen in X-Plane: CPU-Compute, lokales I/O und Netzwerk-Streaming — Engpässe und ihre Wechselwirkungen erkennen."
 ---
 # Performance

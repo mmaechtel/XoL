@@ -1,4 +1,5 @@
 ---
+title: "Cockpit- & Kamera-Plugins für X-Plane"
 description: "Zehn Cockpit- und Kamera-Plugins für X-Plane unter Linux — EFB, Kamerasteuerung, Checklisten, Head-Tracking, Geländeradar, Kabine und Walkaround."
 ---
 # Cockpit & Kamera

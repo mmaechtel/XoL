@@ -7,26 +7,229 @@
 - License: CC BY 4.0
 - Source: https://github.com/mmaechtel/XoL
 
-## Sections
+## Overview
 
-- [Performance Fundamentals](https://xol.emvisio.de/en/fundamentals/performance/performance_overview.html): CPU, GPU, and I/O load dimensions in X-Plane
-- [Latency and Predictability](https://xol.emvisio.de/en/fundamentals/performance/latency.html): Why latency matters more than throughput
-- [CPU & RAM](https://xol.emvisio.de/en/fundamentals/performance/cpu_ram.html): Threading model and system memory
-- [GPU & VRAM](https://xol.emvisio.de/en/fundamentals/performance/gpu_vram.html): Texture paging, driver differences, frame time analysis
-- [Kernel Tuning](https://xol.emvisio.de/en/linux/system/systemtuning.html): CPU governor, IRQ affinity, kernel parameters for low latency
-- [Monitoring](https://xol.emvisio.de/en/linux/system/systemtools.html): Linux tools for verifying tuning results
-- [Nvidia Drivers](https://xol.emvisio.de/en/linux/optimizations/nvidia.html): Driver installation, Vulkan, MangoHud
-- [Liquorix Kernel](https://xol.emvisio.de/en/linux/optimizations/liquorix.html): Low-latency kernel with PDS scheduler
-- [Display Server](https://xol.emvisio.de/en/linux/optimizations/displayserver.html): X11 vs Wayland decision guide
-- [Filesystem](https://xol.emvisio.de/en/linux/optimizations/filesystem.html): ext4 and Btrfs tuning for scenery I/O
-- [X-Plane Configuration](https://xol.emvisio.de/en/xplane/setup_diagnose/config.html): Rendering settings and log.txt analysis
-- [Performance Analysis](https://xol.emvisio.de/en/xplane/setup_diagnose/performance.html): Frame time analysis and bottleneck detection
-- [Scenery Components](https://xol.emvisio.de/en/scenery/aufbau_quellen/scenery_components.html): How X-Plane scenery is structured
-- [Scenery Sources](https://xol.emvisio.de/en/scenery/aufbau_quellen/scenery_sources.html): Where to find free and commercial scenery
-- [Orthophotography](https://xol.emvisio.de/en/scenery/orthophotography/orthophotography_intro.html): Concepts and methods for photorealistic terrain
-- [AutoOrtho](https://xol.emvisio.de/en/scenery/ortho_streaming/autoortho.html): On-demand orthophoto streaming
-- [XEarthLayer](https://xol.emvisio.de/en/scenery/ortho_streaming/xearthlayer.html): Satellite imagery streaming plugin
-- [ATC Procedures](https://xol.emvisio.de/en/flight_operations/atc/clearance.html): IFR clearance to landing — full gate-to-gate guide
-- [Weather](https://xol.emvisio.de/en/flight_operations/weather/briefing.html): Weather tools, radar usage, and briefing
-- [VATSIM](https://xol.emvisio.de/en/flight_operations/vatsim/vatsim.html): Online flying with live ATC
-- [Addons](https://xol.emvisio.de/en/addon/index.html): 40+ Linux-compatible plugins, scripts, and tools
+- [XoL: Running X-Plane on Linux](https://xol.emvisio.de/en/index.html): X-Plane 12 on Linux — setup guides, kernel tuning, GPU drivers, filesystem optimization, scenery management, and addon catalog.
+- [Why Linux](https://xol.emvisio.de/en/intro.html): Why run X-Plane on Linux — open-source kernel tuning, GPU driver control, filesystem optimization, and predictable system performance.
+- [Getting Started](https://xol.emvisio.de/en/begin.html): Getting started with X-Plane 12 on Linux — system requirements, standalone and Steam installation, library dependencies, and first launch.
+- [Videos](https://xol.emvisio.de/en/videos.html): Video collection for X-Plane on Linux — performance tuning, scenery management, display server choice, cockpit addons, and ortho streaming.
+
+## Fundamentals
+
+- [X-Plane Fundamentals: CPU, I/O, Network](https://xol.emvisio.de/en/fundamentals/index.html): How X-Plane distributes workload across CPU, storage I/O, and network — understanding the competing resource demands before optimizing.
+
+### Performance
+
+- [X-Plane Performance Fundamentals](https://xol.emvisio.de/en/fundamentals/performance/index.html): X-Plane performance fundamentals: CPU, I/O, and network load dimensions, VRAM management, frame time analysis, and latency sources.
+- [Load Dimensions](https://xol.emvisio.de/en/fundamentals/performance/performance_overview.html): Three load dimensions competing in X-Plane: CPU compute, local I/O, and network streaming — identifying bottlenecks and their interactions.
+- [Latency and Predictability](https://xol.emvisio.de/en/fundamentals/performance/latency.html): Latency vs. throughput in X-Plane: why temporal predictability beats raw FPS, and four system sources that cause frame time spikes.
+- [CPU & RAM](https://xol.emvisio.de/en/fundamentals/performance/cpu_ram.html): X-Plane threading model explained: main thread bottleneck, scenery multi-threading, ortho streaming CPU budget, and RAM as staging area.
+- [GPU & VRAM](https://xol.emvisio.de/en/fundamentals/performance/gpu_vram.html): VRAM management in X-Plane on Linux: texture paging, zoom level impact, GPU driver differences, and frame time percentile analysis.
+
+## Linux
+
+- [Linux Optimizations for X-Plane](https://xol.emvisio.de/en/linux/index.html): Linux tuning for X-Plane: kernel profiles, GPU drivers, display server choice, filesystem optimization, and tools for Windows-only addons.
+
+### System
+
+- [Linux System Tuning for X-Plane](https://xol.emvisio.de/en/linux/system/index.html): Linux system tuning for X-Plane: two kernel profiles targeting latency over throughput, plus monitoring tools to verify every tuning measure.
+- [Why Latency Matters](https://xol.emvisio.de/en/linux/system/latency.html): Why latency matters for X-Plane on Linux: stable frame times beat high FPS, two kernel tuning profiles, and monitoring tools for verification.
+- [Kernel Tuning](https://xol.emvisio.de/en/linux/system/systemtuning.html): Kernel tuning for X-Plane on Linux: two profiles for stock and Liquorix kernels — CPU governor, C-states, interrupt shielding, and NVMe power management.
+- [Swap & Memory](https://xol.emvisio.de/en/linux/system/swap.html): Linux swap and memory management for X-Plane: page reclaim mechanics, watermark tuning, swap configuration, and tuning recommendations for flight simulation.
+- [Monitoring](https://xol.emvisio.de/en/linux/system/systemtools.html): Linux monitoring tools for X-Plane: htop, btop, turbostat, mpstat, ioping, and more — verify CPU governor, interrupt shielding, and NVMe latency.
+- [Tuning Case Study](https://xol.emvisio.de/en/linux/system/tuning_casestudy.html): Tuning case study for X-Plane on Linux — from micro-stutters to stable frame times via watermark tuning, IO latency, and NVMe power management.
+
+### Optimizations
+
+- [Linux Optimizations for X-Plane](https://xol.emvisio.de/en/linux/optimizations/index.html): Linux optimization layers for X-Plane: NVIDIA driver, Liquorix kernel, X11 vs. Wayland display server, and filesystem I/O tuning.
+- [Nvidia Drivers](https://xol.emvisio.de/en/linux/optimizations/nvidia.html): NVIDIA driver installation on Debian for X-Plane: package manager and manual methods, Liquorix headers, kernel mode setting, and performance tuning.
+- [Liquorix Kernel](https://xol.emvisio.de/en/linux/optimizations/liquorix.html): Liquorix kernel on Debian for X-Plane: installation, PDS scheduler, 1000 Hz timer, full preemption, and comparison with the stock kernel.
+- [Display Server](https://xol.emvisio.de/en/linux/optimizations/displayserver.html): X11 vs. Wayland for X-Plane on Linux: protocol comparison, latency measurements, XWayland overhead, and GPU-specific session recommendations.
+- [X11 Session](https://xol.emvisio.de/en/linux/optimizations/displayserver_x11.html): Setting up an X11 session for X-Plane on Linux: session switching, compositor bypass, desktop entry configuration, and advantages over Wayland.
+- [Wayland Session](https://xol.emvisio.de/en/linux/optimizations/displayserver_wayland.html): Running X-Plane in a Wayland session via XWayland: latency overhead, known issues, environment variables, and GPU-specific troubleshooting.
+- [Filesystem](https://xol.emvisio.de/en/linux/optimizations/filesystem.html): Filesystem optimization for X-Plane on Linux: NVMe SSD setup, Ext4/Btrfs/XFS comparison, mount options, RAID-0 configuration, and backup strategies.
+
+### Utilities
+
+- [KVM, Wine, Docker: Linux Utilities](https://xol.emvisio.de/en/linux/extensions/index.html): Linux utilities for X-Plane: KVM for Windows VMs, Wine for installers, Docker containers, pyenv for Python plugins, and zsh shell setup.
+- [KVM](https://xol.emvisio.de/en/linux/extensions/kvm.html): KVM virtualization on Debian for X-Plane: installation, Windows VM setup, USB passthrough for StreamDeck, and SSH key management.
+- [Docker](https://xol.emvisio.de/en/linux/extensions/docker.html): Step-by-step Docker installation on Debian: repository setup, package installation, service configuration, and rootless usage.
+- [Wine](https://xol.emvisio.de/en/linux/extensions/wine.html): Wine installation on Debian: two methods (standard packages and WineHQ), Winetricks setup, and 32-bit support for Windows X-Plane tools.
+- [pyenv](https://xol.emvisio.de/en/linux/extensions/pyenv.html): pyenv setup on Debian: install and manage multiple Python versions, virtual environments, and shell integration for X-Plane plugin development.
+- [zsh](https://xol.emvisio.de/en/linux/extensions/zsh.html): Z Shell setup on Linux: installation, Oh My Zsh, autocompletion, syntax highlighting, and useful plugins for daily system administration.
+
+## X-Plane
+
+- [X-Plane 12: Vulkan, Audio, Controllers](https://xol.emvisio.de/en/xplane/index.html): X-Plane 12 on Linux: Vulkan rendering, Zink for plugins, shader caches, PipeWire audio, controller setup, and systematic GPU troubleshooting.
+
+### Setup & Diagnostics
+
+- [X-Plane 12 Setup and Diagnostics](https://xol.emvisio.de/en/xplane/setup_diagnose/index.html): Setup and diagnostics for X-Plane 12 on Linux: configuration differences, performance analysis with Microprofiler and MangoHUD, and CLI troubleshooting.
+- [Configuration](https://xol.emvisio.de/en/xplane/setup_diagnose/config.html): Linux-specific X-Plane 12 configuration: Vulkan, Zink, shader caches, Mesa and NVIDIA variables, PipeWire audio, evdev controllers, and CLI diagnostics.
+- [Performance Analysis](https://xol.emvisio.de/en/xplane/setup_diagnose/performance.html): X-Plane 12 performance analysis on Linux: Microprofiler for CPU/GPU bottlenecks, MangoHUD frame time overlay, GPU monitoring, and optimization tips.
+
+### System Errors
+
+- [System Errors in X-Plane on Linux](https://xol.emvisio.de/en/xplane/systemfehler/index.html): Troubleshooting X-Plane 12 on Linux: GPU device losses, Vulkan error diagnosis with Aftermath, safe mode, and systematic subsystem isolation via CLI.
+- [Device Losses](https://xol.emvisio.de/en/xplane/systemfehler/geraeteverluste.html): GPU device losses in X-Plane explained: causes of VK_ERROR_DEVICE_LOST, async debugging challenges, and Aftermath crash analysis on Linux.
+
+## Scenery
+
+- [X-Plane Scenery: Mesh, Ortho, Autogen](https://xol.emvisio.de/en/scenery/index.html): X-Plane scenery overview covering mesh, orthophotos, and autogen layers, plus tools for static and streamed orthophotography on Linux.
+
+### Structure & Sources
+
+- [X-Plane Scenery Structure and Sources](https://xol.emvisio.de/en/scenery/aufbau_quellen/index.html): X-Plane scenery structure explained: mesh, orthophotos, autogen layers, scenery_packs.ini load order, and available scenery sources.
+- [Components](https://xol.emvisio.de/en/scenery/aufbau_quellen/scenery_components.html): How X-Plane builds its world from mesh, ortho, and autogen layers. Includes scenery_packs.ini load order rules and a working example.
+- [Sources](https://xol.emvisio.de/en/scenery/aufbau_quellen/scenery_sources.html): X-Plane scenery options — standard scenery with Gateway airports, SimHeaven X-World autogen, freeware, payware, and interactive WorldMaps.
+
+### Orthophotography
+
+- [Orthophotography for X-Plane 12](https://xol.emvisio.de/en/scenery/orthophotography/index.html): Orthophotography for X-Plane: static tile generation with Ortho4XP and real-time streaming solutions for photorealistic ground textures on Linux.
+- [Concepts & Methods](https://xol.emvisio.de/en/scenery/orthophotography/orthophotography_intro.html): Static generation vs. ortho streaming for X-Plane ground textures. Ortho4XP, AutoOrtho, XEarthLayer, scenery_packs.ini setup, and player profiles.
+- [Ortho4XP](https://xol.emvisio.de/en/scenery/orthophotography/ortho4xp.html): Ortho4XP generates high-resolution satellite ground textures for X-Plane — installation, OrthoForge, parameter reference, and LiDAR on Linux.
+
+### Ortho Streaming
+
+- [Ortho Streaming](https://xol.emvisio.de/en/scenery/ortho_streaming/index.html): Ortho streaming for X-Plane on Linux: AutoOrtho, XEarthLayer and XPME deliver satellite imagery on demand via FUSE, combinable with local Ortho4XP tiles.
+- [How It Works](https://xol.emvisio.de/en/scenery/ortho_streaming/how_streaming_works.html): How ortho streaming works in X-Plane: the DSF→.ter→DDS texture chain, FUSE virtual filesystem, streaming pipeline, cache architecture, and Linux advantages.
+- [AutoOrtho](https://xol.emvisio.de/en/scenery/ortho_streaming/autoortho.html): AutoOrtho streams satellite imagery into X-Plane in real time via FUSE. Setup guide for Linux with configuration, troubleshooting, and Ortho4XP comparison.
+- [XEarthLayer](https://xol.emvisio.de/en/scenery/ortho_streaming/xearthlayer.html): XEarthLayer — Rust-based ortho streaming for X-Plane 12 on Linux with GPU-accelerated encoding, adaptive prefetch, and a three-tier cache.
+- [XPME](https://xol.emvisio.de/en/scenery/ortho_streaming/xpme.html): XPME streams satellite imagery into X-Plane 12 via a mounted virtual filesystem — Linux setup, free versus Pro tier, and how it compares.
+- [Static + Streaming](https://xol.emvisio.de/en/scenery/ortho_streaming/static_plus_streaming.html): Combine Ortho4XP static tiles with AutoOrtho streaming in X-Plane. Setup guide for scenery_packs.ini priority, mesh-only generation, and LiDAR data.
+
+### Autogen
+
+- [Autogen Scenery Packages for X-Plane](https://xol.emvisio.de/en/scenery/autogen/index.html): Autogen scenery packages for X-Plane: community-built road networks, rail systems, and maritime traffic based on OpenStreetMap data.
+- [XPNetwork Europa](https://xol.emvisio.de/en/scenery/autogen/xpnetwork_europa.html): XPNetwork Europa adds detailed OSM-based road, rail, and maritime networks to X-Plane with localized traffic objects and dynamic vehicles.
+- [Smoke & Steam](https://xol.emvisio.de/en/scenery/autogen/smoke_steam_simheaven.html): Smoke & Steam for SimHeaven adds particle-based smoke and steam effects to industrial chimneys and cooling towers in SimHeaven X-World scenery.
+- [OSM Offshore Oil Rigs](https://xol.emvisio.de/en/scenery/autogen/osm_offshore_oil_rigs.html): OSM Offshore Oil Rigs places worldwide offshore oil platforms as heliports in X-Plane using OpenStreetMap position data.
+
+## Addons
+
+- [X-Plane 12 Addons Verified on Linux](https://xol.emvisio.de/en/addon/index.html): Over 40 X-Plane 12 addons verified on Linux — scripting frameworks, cockpit tools, traffic plugins, sound packs, and scenery enhancements.
+
+### Scripting
+
+- [X-Plane Scripting: FlyWithLua, XPPython3](https://xol.emvisio.de/en/addon/scripting/index.html): FlyWithLua and XPPython3: the two scripting frameworks for X-Plane 12 on Linux. Lua for lightweight scripts, Python 3 for complex plugins.
+- [FlyWithLua](https://xol.emvisio.de/en/addon/scripting/flywithlua.html): FlyWithLua NG+ Lua scripting engine for X-Plane 12 on Linux: installation, libglut symlink fix on Debian, FMOD error workaround, and script setup.
+- [XPPython3](https://xol.emvisio.de/en/addon/scripting/xppython3.html): XPPython3 Python 3 plugin framework for X-Plane 12 on Linux: full SDK access, built-in pip, Dear ImGui UI, and Debian dependency setup.
+
+### FlyWithLua Scripts
+
+- [FlyWithLua Scripts](https://xol.emvisio.de/en/addon/flylua_scripts/index.html): Nine FlyWithLua scripts for X-Plane 12 — haze correction, turbulence, rain effects, SimBrief integration, scenery loading, and memory cleanup.
+- [3D Rain Stop](https://xol.emvisio.de/en/addon/flylua_scripts/3drainspeedstop.html): 3D Rain Stop for X-Plane 12 — FlyWithLua script that disables distracting 3D rain particles at high speed or altitude while keeping windshield rain.
+- [Dynamic Rain Rate](https://xol.emvisio.de/en/addon/flylua_scripts/rain_rate.html): Dynamic Rain Rate for X-Plane 12 — FlyWithLua script that scales rain intensity based on airspeed for more realistic precipitation effects.
+- [SimBrief Simple OFP](https://xol.emvisio.de/en/addon/flylua_scripts/simbrief_simple_ofp.html): SimBrief Simple OFP for X-Plane — FlyWithLua script that downloads and displays your SimBrief flight plan as an in-simulator overlay.
+- [SimLoad Manager](https://xol.emvisio.de/en/addon/flylua_scripts/simloadmanager.html): SimLoad Manager for X-Plane 12 — FlyWithLua script simulating realistic passenger boarding, cargo loading, and fuel ground operations.
+- [SimReaperXP](https://xol.emvisio.de/en/addon/flylua_scripts/simreaperxp.html): SimReaperXP for X-Plane 12 — FlyWithLua script that recovers up to 10 FPS by selectively disabling shadows, lights, and water rendering.
+- [SimScreen Overlay](https://xol.emvisio.de/en/addon/flylua_scripts/simscreenoverlay.html): SimScreen Overlay for X-Plane 12 — FlyWithLua script that stamps flight data onto screenshots with optional SimBrief integration.
+- [SGES](https://xol.emvisio.de/en/addon/flylua_scripts/sges.html): SGES ground equipment for X-Plane 12 — FlyWithLua script adding GPU, fuel trucks, animated passengers, chocks, pushback, and deicing to the ramp.
+- [X-ProTurb](https://xol.emvisio.de/en/addon/flylua_scripts/xproturb.html): X-ProTurb — FlyWithLua turbulence engine for X-Plane 12 with physics-based atmospheric models (MIL-F-8785C, ICAO 9625) and 6-DOF response.
+- [AutoHaze](https://xol.emvisio.de/en/addon/flylua_scripts/autohaze.html): AutoHaze is a FlyWithLua script for X-Plane 12 that replaces the default haze with turbidity derived from real satellite aerosol and weather data.
+
+### ToLiss Ecosystem
+
+- [ToLiss Ecosystem](https://xol.emvisio.de/en/addon/toliss/index.html): ToLiss ecosystem for X-Plane 12: FlyWithLua scripts, callouts, cabin ready automation, aircraft mods, and plugin integrations for the Airbus fleet.
+- [Scripts & Plugins](https://xol.emvisio.de/en/addon/toliss/toliss_ecosystem.html): Community FlyWithLua scripts and plugins for the ToLiss Airbus fleet in X-Plane 12: callouts, cockpit automation, boarding simulation, and ground services.
+
+#### Mods
+
+- [ToLiss Mods](https://xol.emvisio.de/en/addon/toliss/mods/index.html): ToLiss aircraft mods for X-Plane 12: freighter conversion, Carda engines, Durantula and RealWings wing mods, ToLiss Photon lighting — each on its own page.
+- [Easy Freighter](https://xol.emvisio.de/en/addon/toliss/mods/easy_freighter.html): Easy Freighter: A321 P2F cargo door conversion kit for the ToLiss A321 in X-Plane 12 — drag-and-drop object plus livery settings, not approved by ToLiss.
+- [Carda Engines](https://xol.emvisio.de/en/addon/toliss/mods/carda_engines.html): Carda Realistic Engine Mods: high-detail 3D engine replacements for the ToLiss A319, A320 and A321 in X-Plane 12 — native Linux installer for the .acf patch.
+- [Durantula Wing Mod](https://xol.emvisio.de/en/addon/toliss/mods/durantula_wing_mod.html): The Durantula Wing Enhancement MOD reworks flaps, flap-track fairings and wingflex on the ToLiss A319, A320 and A321 — with a Linux installer.
+- [RealWings](https://xol.emvisio.de/en/addon/toliss/mods/realwings.html): RealWings replaces the wing of the ToLiss A319, A320 and A321 outright — new geometry, 4K textures and window frames, with a Linux installer.
+- [ToLiss Photon](https://xol.emvisio.de/en/addon/toliss/mods/toliss_photon.html): ToLiss Photon reworks exterior and cockpit lighting on the ToLiss A319, A320, A321 and A330-900 — native plugin, own Linux installer, GPLv3.
+- [DK Toliss Callout](https://xol.emvisio.de/en/addon/toliss/dk_toliss_callout.html): DK Toliss Callout: FlyWithLua script for automated FMA voice callouts on ToLiss Airbus aircraft in X-Plane 12. Linux TTS via XLinSpeak.
+- [TOI Cabin Ready](https://xol.emvisio.de/en/addon/toliss/toicabrdy.html): TOI Cabin Ready: FlyWithLua script that automates the Cabin Ready ECAM call for ToLiss Airbus aircraft in X-Plane 12 during departure and approach.
+
+### Sounds
+
+- [X-Plane 12 Sound Packs: KOSP, Mango](https://xol.emvisio.de/en/addon/sounds/index.html): Sound packs for X-Plane 12: KOSP Project delivers a complete ToLiss Airbus soundscape, Mango Studios offers aircraft-specific FMOD replacements.
+- [KOSP Project](https://xol.emvisio.de/en/addon/sounds/kosp_project.html): KOSP Project: comprehensive FMOD sound replacement for ToLiss A319, A320, and A321 in X-Plane 12 with four engine variants and cockpit recordings.
+- [Mango Studios](https://xol.emvisio.de/en/addon/sounds/mango_studios.html): Mango Studios FMOD sound packs for the complete ToLiss fleet in X-Plane 12: real-aircraft engine recordings, cockpit sounds, and cabin announcements.
+
+### Cockpit & Camera
+
+- [Cockpit & Camera Plugins for X-Plane](https://xol.emvisio.de/en/addon/cockpit/index.html): Ten cockpit and camera plugins for X-Plane on Linux — EFB, camera control, checklists, head tracking, terrain radar, cabin view, and walkaround.
+- [AviTab](https://xol.emvisio.de/en/addon/cockpit/avitab.html): AviTab for X-Plane on Linux — open-source cockpit tablet with PDF viewer, moving map, Navigraph charts, and custom tile server support.
+- [XCamera](https://xol.emvisio.de/en/addon/cockpit/xcamera.html): XCamera for X-Plane on Linux — aircraft-specific camera system with Bezier transitions, walk mode, airport cameras, and OpenTrack head tracking.
+- [Xchecklist](https://xol.emvisio.de/en/addon/cockpit/xchecklist.html): Xchecklist for X-Plane on Linux — interactive checklists with text-to-speech via speech-dispatcher. Installation, TTS setup, and XLinSpeak integration.
+- [XTextureExtractor](https://xol.emvisio.de/en/addon/cockpit/xtextureextractor.html): XTextureExtractor for X-Plane on Linux — stream live cockpit instruments to tablets, external monitors, or Raspberry Pi over the network.
+- [LinuxTrack](https://xol.emvisio.de/en/addon/cockpit/linuxtrack.html): LinuxTrack head tracking for X-Plane on Linux — 6DOF tracking with TrackIR, webcam, or Wiimote. Installation and X-IR fork guide.
+- [OpenTrack](https://xol.emvisio.de/en/addon/cockpit/opentrack.html): OpenTrack head tracking for X-Plane on Linux — 6DOF via webcam NeuralNet, IR devices, or SmoothTrack, plus Debian build and plugin setup.
+- [TerrainRadar](https://xol.emvisio.de/en/addon/cockpit/terrainradar.html): TerrainRadar plugin for X-Plane 12 — EGPWS terrain display with color-coded altitude warnings, VSD profile, and universal overlay mode.
+- [KabinXP](https://xol.emvisio.de/en/addon/cockpit/kabinxp.html): KabinXP for X-Plane 12 — cabin announcement plugin with per-livery sound packs, 3D spatial audio, and drag-and-arrange button layouts.
+- [AnyAirline](https://xol.emvisio.de/en/addon/cockpit/anyairline.html): AnyAirline for X-Plane 12 — AI cabin announcements, route-aware passenger manifest, boarding ambience, and IFE map, with a Linux connector.
+- [XP Walkaround](https://xol.emvisio.de/en/addon/cockpit/xpwalkaround.html): XP Walkaround for X-Plane 12 — first-person walkaround with flashlight, campsite system, and mouse look. Native Linux plugin, free alternative.
+
+### Traffic & Ground Ops
+
+- [Traffic & Ground Ops Plugins for X-Plane](https://xol.emvisio.de/en/addon/traffic/index.html): Seven X-Plane plugins for air and marine traffic and ground ops — LiveTraffic, Better Pushback, AutoDGS, openSAM, AutoGate, and more.
+- [LiveTraffic](https://xol.emvisio.de/en/addon/traffic/livetraffic.html): LiveTraffic renders real-world ADS-B air traffic in X-Plane with TCAS integration, 3D sound, and multiple free and paid data sources.
+- [Better Pushback](https://xol.emvisio.de/en/addon/traffic/betterpushback.html): Better Pushback replaces X-Plane's default pushback with a route planner, 3D tug vehicle, manual mode, and multilingual ground crew voice output.
+- [AutoDGS](https://xol.emvisio.de/en/addon/traffic/autodgs.html): AutoDGS provides automatic docking guidance with VDGS or marshaller at over 5,000 X-Plane gateway airports — no scenery modifications required.
+- [openSAM](https://xol.emvisio.de/en/addon/traffic/opensam.html): openSAM is a free open-source replacement for the SAM plugin — controlling animated jetways, VDGS, and marshallers in X-Plane custom sceneries.
+- [AutoGate](https://xol.emvisio.de/en/addon/traffic/autogate.html): AutoGate provides animated jetways and docking guidance for older X-Plane sceneries built with the AutoGate toolkit. Legacy plugin, maintained for XP12.
+- [Follow the Greens](https://xol.emvisio.de/en/addon/traffic/followthegreens.html): Follow the Greens adds real-world A-SMGCS taxiway guidance to X-Plane — green centerline lights, red stop bars, and 4D speed management at airports.
+- [XPAIS Marine Traffic](https://xol.emvisio.de/en/addon/traffic/xpais_marine_traffic.html): XPAIS Marine Traffic renders live AIS ship traffic in X-Plane 12 from the AISStream feed — a native Linux plugin, open source but archived since July 2026.
+
+### Tools
+
+- [X-Plane Utility Plugins for Linux](https://xol.emvisio.de/en/addon/tools/index.html): Seven X-Plane utilities for Linux: DataRefTool, Little XpConnect, SkunkCrafts Updater, XGS landing rate, XLinSpeak TTS, WINCTRL, and XOrganizer.
+- [DataRefTool](https://xol.emvisio.de/en/addon/tools/datareftool.html): DataRefTool (DRT) for X-Plane 12: browse, search, watch, and edit datarefs in real time. Essential for plugin development and debugging on Linux.
+- [Little XpConnect](https://xol.emvisio.de/en/addon/tools/littlexpconnect.html): Little XpConnect bridges X-Plane to Little Navmap on Linux: real-time position, weather, and AI traffic data via shared memory or network forwarding.
+- [SkunkCrafts Updater](https://xol.emvisio.de/en/addon/tools/skunkcrafts_updater.html): SkunkCrafts Updater keeps X-Plane addons current on Linux: automatic discovery, differential downloads, and glibc compatibility notes for Debian.
+- [XGS](https://xol.emvisio.de/en/addon/tools/xgs.html): XGS displays landing quality data in X-Plane — sink rate, G-forces, centerline deviation, and touchdown distance with configurable rating scales.
+- [XLinSpeak](https://xol.emvisio.de/en/addon/tools/xlinspeak.html): XLinSpeak adds text-to-speech for X-Plane plugins on Linux via speech-dispatcher. Plus Piper TTS Manager for high-quality neural speech synthesis.
+- [WINCTRL Plugin](https://xol.emvisio.de/en/addon/tools/winctrl.html): The X-Plane WINCTRL plugin drives WINCTRL cockpit panels on Linux and macOS via USB HID — LCD, LED, and button support without SimAppPro.
+- [XOrganizer](https://xol.emvisio.de/en/addon/tools/xorganizer.html): XOrganizer manages X-Plane scenery, plugins, and profiles — with conflict analysis, drag-and-drop ordering, and flight-plan-based profile creation.
+
+### Scenery Plugins
+
+- [Scenery Plugins for X-Plane 12](https://xol.emvisio.de/en/addon/scenery_addons/index.html): Six scenery plugins for X-Plane: XRoads traffic, AEP airport surroundings, xa-snow, NOAA Weather, LST ground life, and Bay's Lighting Mod.
+- [XRoad](https://xol.emvisio.de/en/addon/scenery_addons/xroad.html): XRoads hides X-Plane road polygons in Ortho4XP orthophotos, revealing satellite imagery roads. Includes Linux compilation instructions.
+- [AEP](https://xol.emvisio.de/en/addon/scenery_addons/aep.html): Airport Enhancement Package (AEP) for X-Plane 12: upgraded airport buildings, ground markings, vegetation, and PBR textures for default airports.
+- [xa-snow](https://xol.emvisio.de/en/addon/scenery_addons/xa-snow.html): xa-snow overlays real-world NOAA snow depth data on X-Plane 12 scenery, replacing uniform regional snow with location-specific coverage on Linux.
+- [NOAA Weather](https://xol.emvisio.de/en/addon/scenery_addons/noaa_weather.html): NOAA Weather plugin adds real-world snow coverage and METAR comparison to X-Plane 12 on Linux. Requires XPPython3, includes wgrib2 binary.
+- [LST](https://xol.emvisio.de/en/addon/scenery_addons/lst.html): LST (Living Scenery Technology) brings animated ground traffic to X-Plane 12 airports: vehicles, pedestrians, and ground equipment on defined routes.
+- [Bay's Lighting Mod](https://xol.emvisio.de/en/addon/scenery_addons/bays_lighting_mod.html): Bay's Lighting Mod is a lighting overhaul for X-Plane 12 — reworked airport, beacon, night and cockpit lighting, cloud scattering and visibility.
+
+### Via KVM
+
+- [Windows X-Plane Addons via KVM](https://xol.emvisio.de/en/addon/kvm/index.html): Three Windows-only X-Plane addons usable on Linux via KVM virtualization: My FS Flights, MobiFlight, and SayIntentions.AI.
+- [My FS Flights](https://xol.emvisio.de/en/addon/kvm/myfs_flights.html): My FS Flights cloud-based flight tracking and AI landing analysis for X-Plane on Linux, running in a Windows KVM/QEMU virtual machine.
+- [MobiFlight](https://xol.emvisio.de/en/addon/kvm/mobiflight.html): MobiFlight home cockpit middleware for X-Plane on Linux: network split setup or KVM/QEMU VM with USB passthrough for Arduino hardware.
+- [SayIntentions.AI](https://xol.emvisio.de/en/addon/kvm/sayintentions.html): SayIntentions.AI voice-controlled ATC for X-Plane on Linux using a KVM/QEMU Windows VM with UDP port forwarding and mic passthrough.
+
+## Flight Operations
+
+- [X-Plane Flight Ops: Weather, ATC, VATSIM](https://xol.emvisio.de/en/flight_operations/index.html): Flight operations in X-Plane — weather simulation, step-by-step ATC radio communication for IFR flights, and realistic online flying via VATSIM.
+
+### Weather
+
+- [Weather Simulation in X-Plane 12](https://xol.emvisio.de/en/flight_operations/weather/index.html): Overview of weather simulation in X-Plane: real-time NOAA data, manual configuration, METAR/TAF basics, and external weather tools.
+- [Briefing](https://xol.emvisio.de/en/flight_operations/weather/briefing.html): Weather systems in X-Plane explained: METAR, TAF, weather radar, turbulence avoidance strategies, and external tools for flight planning.
+
+### ATC
+
+- [IFR ATC Communication in X-Plane](https://xol.emvisio.de/en/flight_operations/atc/index.html): Complete IFR ATC communication guide for X-Plane — seven chapters from clearance through takeoff, en route, approach, to landing with phraseology.
+- [Clearance](https://xol.emvisio.de/en/flight_operations/atc/clearance.html): IFR clearance procedures for X-Plane pilots — standard phraseology, required information sources, and digital clearance retrieval via CPDLC and Hoppie.
+- [Pushback & Taxi](https://xol.emvisio.de/en/flight_operations/atc/pushback_taxi.html): Pushback and taxi ATC procedures — apron communication, pushback clearance, taxi routing with hold-short instructions, and standard phraseology.
+- [Takeoff](https://xol.emvisio.de/en/flight_operations/atc/takeoff.html): Takeoff ATC procedures — Tower communication, line-up clearance, conditional clearances, and departure handoff with standard phraseology examples.
+- [Departure & Climb](https://xol.emvisio.de/en/flight_operations/atc/departure.html): Departure and climb ATC communication — SID compliance, altitude changes, radar vectors, and handoff to Center with standard phraseology examples.
+- [En Route](https://xol.emvisio.de/en/flight_operations/atc/enroute.html): En route ATC communication during cruise flight — frequency changes between sectors, step climbs, weather deviations, and standard phraseology.
+- [Approach](https://xol.emvisio.de/en/flight_operations/atc/approach.html): Approach phase ATC communication in X-Plane — STAR procedures, radar vectors, descent instructions, and ILS approach clearance with standard phraseology.
+- [Landing & Taxi In](https://xol.emvisio.de/en/flight_operations/atc/landing.html): Landing and taxi-in ATC procedures — landing clearance, go-around phraseology, runway vacating, and taxi to gate with standard radio communication.
+
+### Online
+
+- [VATSIM Online Flying with X-Plane](https://xol.emvisio.de/en/flight_operations/vatsim/index.html): VATSIM online flying for X-Plane — setup guide and automatically calculated flight routes based on current controller bookings and events.
+- [VATSim](https://xol.emvisio.de/en/flight_operations/vatsim/vatsim.html): Getting started with VATSIM for X-Plane — account setup, client installation, and flight planning with optimal ATC coverage via the ATC Flight Planner.
+- [Glossary](https://xol.emvisio.de/en/glossary.html): Glossary of X-Plane and Linux terms — CPU governor, Vulkan, VRAM, Wayland, Mesa, kernel parameters, scenery formats, and more explained.
+- [About](https://xol.emvisio.de/en/about.html): About XoL documentation — target audience, contact, Creative Commons license, privacy policy, and legal notice for X-Plane on Linux.
+
+## Other pages
+
+- [X-Plane Scenery Maps: Airports & Ortho](https://xol.emvisio.de/en/Maps.html): Interactive world maps for X-Plane 12 scenery planning — browse over 1800 airports and installed ortho tiles on a live map.

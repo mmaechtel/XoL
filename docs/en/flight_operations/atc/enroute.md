@@ -1,4 +1,5 @@
 ---
+title: "ATC En Route: X-Plane Phraseology"
 description: "En route ATC communication during cruise flight — frequency changes between sectors, step climbs, weather deviations, and standard phraseology."
 ---
 # En Route
