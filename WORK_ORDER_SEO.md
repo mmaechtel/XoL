@@ -5,6 +5,9 @@
 .htaccess-Auslieferung, 13 Descriptions gekürzt, /seo-check um Titel-Prüfung
 erweitert). Dieser Work Order deckt die verbliebenen Punkte ab.
 
+**Ausführung:** `/seo-execute` (Orchestrierung, Review-Gates, Codex-Zweitprüfung —
+siehe `.claude/commands/seo-execute.md`).
+
 **Lesen vor jeder Phase:** `docs/MARKDOWN_RULES.txt`, `SKILL_RULES.md`,
 `CLAUDE.md`. EN führt, DE zieht nach, Formatierung identisch.
 
