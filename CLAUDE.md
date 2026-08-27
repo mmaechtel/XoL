@@ -61,6 +61,8 @@ Definiert in `mkdocs.yml` unter `plugins > i18n > languages > nav`. Separate Nav
 
 ## Git-Regeln
 
+- **Commit- und PR-Texte kurz halten:** Kernänderung in wenigen Zeilen, keine langen Aufzählungen
+
 - `research/` ist **nicht** versioniert (in `.gitignore`) — Arbeits- und Recherchenotizen
   bleiben lokal, das Repo ist öffentlich. Das Verzeichnis liegt weiterhin im
   Arbeitsverzeichnis, alle Skills finden es unter dem gewohnten Pfad
