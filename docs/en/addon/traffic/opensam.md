@@ -1,4 +1,5 @@
 ---
+title: "openSAM on Linux: Free SAM Replacement for Jetways"
 description: "openSAM is a free open-source replacement for the SAM plugin — controlling animated jetways, VDGS, and marshallers in X-Plane custom sceneries."
 ---
 # openSAM

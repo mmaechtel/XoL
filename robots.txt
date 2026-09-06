@@ -2,3 +2,4 @@ User-agent: *
 Allow: /
 
 Sitemap: https://xol.emvisio.de/sitemap.xml
+Sitemap: https://xol.emvisio.de/video-sitemap.xml

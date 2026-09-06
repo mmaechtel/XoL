@@ -1,4 +1,5 @@
 ---
+title: "XPME unter Linux: Satelliten-Streaming für X-Plane 12"
 description: "XPME streamt Satellitenbilder über ein virtuelles Dateisystem in X-Plane 12 — Linux-Einrichtung, Gratis- gegen Pro-Stufe und Einordnung."
 ---
 # XPME (X-Plane Map Enhancement)

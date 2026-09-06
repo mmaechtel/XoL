@@ -1,4 +1,5 @@
 ---
+title: "openSAM unter Linux: freier SAM-Ersatz für Fluggastbrücken"
 description: "openSAM ist ein freier Open-Source-Ersatz für das SAM-Plugin — steuert animierte Fluggastbrücken, VDGS und Marshaller in X-Plane-Szenerien."
 ---
 # openSAM

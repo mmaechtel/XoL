@@ -1,4 +1,5 @@
 ---
+title: "SayIntentions.AI unter Linux per KVM-Windows-VM"
 description: "SayIntentions.AI sprachgesteuerte Flugsicherung für X-Plane unter Linux via KVM/QEMU-Windows-VM mit UDP-Portweiterleitung und Mikrofon."
 ---
 # SayIntentions.AI

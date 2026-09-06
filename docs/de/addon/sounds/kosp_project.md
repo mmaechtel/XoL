@@ -1,4 +1,5 @@
 ---
+title: "KOSP Project: ToLiss-A320-Soundpaket unter Linux"
 description: "KOSP Project: umfassender FMOD-Soundersatz für ToLiss A319, A320 und A321 in X-Plane 12 mit vier Triebwerksvarianten und Cockpit-Aufnahmen."
 ---
 # KOSP Project — Full Soundscape

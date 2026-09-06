@@ -1,4 +1,5 @@
 ---
+title: "XPME on Linux: Satellite Streaming for X-Plane 12"
 description: "XPME streams satellite imagery into X-Plane 12 via a mounted virtual filesystem — Linux setup, free versus Pro tier, and how it compares."
 ---
 # XPME (X-Plane Map Enhancement)

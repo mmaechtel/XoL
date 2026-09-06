@@ -1,4 +1,5 @@
 ---
+title: "Better Pushback on Linux: Install & Setup"
 description: "Better Pushback replaces X-Plane's default pushback with a route planner, 3D tug vehicle, manual mode, and multilingual ground crew voice output."
 ---
 # Better Pushback

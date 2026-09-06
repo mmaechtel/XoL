@@ -1,4 +1,5 @@
 ---
+title: "FlyWithLua NG+ on Linux: Install & libglut Fix"
 description: "FlyWithLua NG+ Lua scripting engine for X-Plane 12 on Linux: installation, libglut symlink fix on Debian, FMOD error workaround, and script setup."
 ---
 # FlyWithLua

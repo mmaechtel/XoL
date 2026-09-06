@@ -50,3 +50,17 @@ Options -Indexes
     AddType application/xml .xml
     AddType application/rss+xml .rss
 </IfModule>
+
+# Umgezogene Seiten — alte URLs stehen noch im Google-Index (Search Console,
+# Stand 2026-09-06) und liefern sonst 404.
+<IfModule mod_alias.c>
+    Redirect permanent /en/addon/toliss/toliss_mods.html   /en/addon/toliss/mods/index.html
+    Redirect permanent /addon/toliss/toliss_mods.html      /addon/toliss/mods/index.html
+    Redirect permanent /displayserver.html                 /linux/optimizations/displayserver.html
+    Redirect permanent /displayserver_x11.html             /linux/optimizations/displayserver.html
+    Redirect permanent /displayserver_wayland.html         /linux/optimizations/displayserver.html
+    Redirect permanent /scenery_components.html            /scenery/aufbau_quellen/scenery_components.html
+    Redirect permanent /systemtools.html                   /linux/system/systemtools.html
+    Redirect permanent /addon/xearthlayer.html             /scenery/ortho_streaming/xearthlayer.html
+    Redirect permanent /addon/static_plus_streaming.html   /scenery/ortho_streaming/static_plus_streaming.html
+</IfModule>
