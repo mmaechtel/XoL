@@ -1,4 +1,5 @@
 ---
+title: "Ortho4XP on Linux: Install, OrthoForge, Parameters"
 description: "Ortho4XP generates high-resolution satellite ground textures for X-Plane — installation, OrthoForge, parameter reference, and LiDAR on Linux."
 ---
 # Ortho4XP

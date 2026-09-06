@@ -1,4 +1,5 @@
 ---
+title: "KOSP Project: ToLiss A320 Sound Pack on Linux"
 description: "KOSP Project: comprehensive FMOD sound replacement for ToLiss A319, A320, and A321 in X-Plane 12 with four engine variants and cockpit recordings."
 ---
 # KOSP Project — Full Soundscape

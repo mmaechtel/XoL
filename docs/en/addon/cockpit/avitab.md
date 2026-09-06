@@ -1,4 +1,5 @@
 ---
+title: "AviTab on Linux: Setup, Charts, Tile Servers"
 description: "AviTab for X-Plane on Linux — open-source cockpit tablet with PDF viewer, moving map, Navigraph charts, and custom tile server support."
 ---
 # AviTab

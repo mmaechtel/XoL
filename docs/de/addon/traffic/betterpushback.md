@@ -1,4 +1,5 @@
 ---
+title: "Better Pushback unter Linux: Installation & Einrichtung"
 description: "Better Pushback ersetzt den X-Plane-Standard-Pushback durch Routenplaner, 3D-Schlepper, manuellen Modus und mehrsprachige Bodencrew-Sprachausgabe."
 ---
 # Better Pushback

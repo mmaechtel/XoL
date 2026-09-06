@@ -1,4 +1,5 @@
 ---
+title: "SayIntentions.AI on Linux via KVM Windows VM"
 description: "SayIntentions.AI voice-controlled ATC for X-Plane on Linux using a KVM/QEMU Windows VM with UDP port forwarding and mic passthrough."
 ---
 # SayIntentions.AI
