@@ -63,4 +63,16 @@ Options -Indexes
     Redirect permanent /systemtools.html                   /linux/system/systemtools.html
     Redirect permanent /addon/xearthlayer.html             /scenery/ortho_streaming/xearthlayer.html
     Redirect permanent /addon/static_plus_streaming.html   /scenery/ortho_streaming/static_plus_streaming.html
+    Redirect permanent /disclaimer.html                    /about.html
+    Redirect permanent /en/disclaimer.html                 /en/about.html
+    Redirect permanent /scenery.html                       /scenery/index.html
+    Redirect permanent /en/scenery.html                    /en/scenery/index.html
+    Redirect permanent /addon/xgs.html                     /addon/tools/xgs.html
+    Redirect permanent /en/addon/xgs.html                  /en/addon/tools/xgs.html
+    Redirect permanent /flight_operations/overview.html    /flight_operations/index.html
+    Redirect permanent /en/flight_operations/overview.html /en/flight_operations/index.html
+    Redirect permanent /blog/kcle-cleveland.html           /scenery/index.html
+    Redirect permanent /en/blog/kcle-cleveland.html        /en/scenery/index.html
+    Redirect permanent /blog/klax-los-angeles.html         /scenery/index.html
+    Redirect permanent /en/blog/klax-los-angeles.html      /en/scenery/index.html
 </IfModule>

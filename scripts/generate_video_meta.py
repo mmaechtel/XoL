@@ -47,6 +47,24 @@ def site_path(rel_from_videos_md):
     return quote(clean, safe="/")
 
 
+def _upload_datum(dt):
+    """Mitternacht Ortszeit als ISO 8601 mit Zeitzonen-Offset.
+
+    Google lehnt uploadDate ohne Offset ab (Search Console: "Zeitzone in
+    Datum/Uhrzeit-Attribut 'uploadDate' fehlt")."""
+    lokal = dt.astimezone().tzinfo
+    return dt.replace(hour=0, minute=0, second=0, microsecond=0, tzinfo=lokal).isoformat()
+
+
+def _mit_zeitzone(wert):
+    """Alte Nur-Datum-Werte auf das volle Format heben, neue unveraendert lassen."""
+    if not wert:
+        return None
+    if len(wert) == 10:
+        return _upload_datum(datetime.fromisoformat(wert))
+    return wert
+
+
 def main():
     old = json.loads(OUT.read_text(encoding="utf-8")) if OUT.exists() else {}
     result = {}
@@ -65,14 +83,14 @@ def main():
                 sys.exit(f"missing on share: {mp4}")
             content_url = site_path(src)
             prev = previous.get(content_url, {})
-            mtime = datetime.fromtimestamp(mp4.stat().st_mtime).date().isoformat()
+            mtime = _upload_datum(datetime.fromtimestamp(mp4.stat().st_mtime))
             entries.append({
                 "name": name.group("name").strip(),
                 "description": prev.get("description", ""),
                 "contentUrl": content_url,
                 "thumbnailUrl": site_path(poster.group("poster")),
                 # first run: file mtime; later runs keep the recorded date stable
-                "uploadDate": prev.get("uploadDate", mtime),
+                "uploadDate": _mit_zeitzone(prev.get("uploadDate")) or mtime,
                 "duration": probe_duration(mp4),
             })
         if len(entries) != md.count("<video "):
