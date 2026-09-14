@@ -5,7 +5,7 @@
       "description": "Rundgang durch die XoL-Dokumentation: Was sie abdeckt, wie die Sektionen aufeinander aufbauen und wo der Einstieg für X-Plane 12 unter Linux liegt.",
       "contentUrl": "assets/video/de/X-Plane_unter_Linux__Doku-Tour/X-Plane_unter_Linux__Doku-Tour.mp4",
       "thumbnailUrl": "assets/video/de/X-Plane_unter_Linux__Doku-Tour/X-Plane_unter_Linux__Doku-Tour.jpg",
-      "uploadDate": "2026-02-16",
+      "uploadDate": "2026-02-16T00:00:00+01:00",
       "duration": "PT7M53S"
     },
     {
@@ -13,7 +13,7 @@
       "description": "X11 oder Wayland für X-Plane unter Linux? Was XWayland an Eingabelatenz kostet und wie sich die passende Sitzung für den Simulator wählen lässt.",
       "contentUrl": "assets/video/de/X11_vs_Wayland/X11_vs_Wayland.mp4",
       "thumbnailUrl": "assets/video/de/X11_vs_Wayland/X11_vs_Wayland.jpg",
-      "uploadDate": "2026-02-14",
+      "uploadDate": "2026-02-14T00:00:00+01:00",
       "duration": "PT8M35S"
     },
     {
@@ -21,7 +21,7 @@
       "description": "Wie X-Plane seine Welt aus Mesh, Orthofotos, Autogen und Flughäfen zusammensetzt — und warum die Reihenfolge in der scenery_packs.ini entscheidet, was sichtbar ist.",
       "contentUrl": "assets/video/de/X-Planes_Welt__Richtig_gebaut/X-Planes_Welt__Richtig_gebaut.mp4",
       "thumbnailUrl": "assets/video/de/X-Planes_Welt__Richtig_gebaut/X-Planes_Welt__Richtig_gebaut.jpg",
-      "uploadDate": "2026-02-14",
+      "uploadDate": "2026-02-14T00:00:00+01:00",
       "duration": "PT6M38S"
     },
     {
@@ -29,7 +29,7 @@
       "description": "Linux-Systemtuning für X-Plane: Kernel-Parameter, CPU-Governor, Interrupt-Verteilung und NVMe-Einstellungen für stabile Frame-Times statt roher FPS.",
       "contentUrl": "assets/video/de/System-Tuning_f%C3%BCr_X-Plane/System-Tuning_f%C3%BCr_X-Plane.mp4",
       "thumbnailUrl": "assets/video/de/System-Tuning_f%C3%BCr_X-Plane/System-Tuning_f%C3%BCr_X-Plane.jpg",
-      "uploadDate": "2026-02-14",
+      "uploadDate": "2026-02-14T00:00:00+01:00",
       "duration": "PT7M35S"
     },
     {
@@ -37,7 +37,7 @@
       "description": "AutoOrtho, XEarthLayer und XPME erklärt: Wie Ortho-Streaming Satellitenbilder auf Abruf liefert und sich mit lokalen Kacheln kombinieren lässt.",
       "contentUrl": "assets/video/de/Ortho-Streaming_f%C3%BCr_X-Plane/Ortho-Streaming_f%C3%BCr_X-Plane.mp4",
       "thumbnailUrl": "assets/video/de/Ortho-Streaming_f%C3%BCr_X-Plane/Ortho-Streaming_f%C3%BCr_X-Plane.jpg",
-      "uploadDate": "2026-02-15",
+      "uploadDate": "2026-02-15T00:00:00+01:00",
       "duration": "PT7M39S"
     },
     {
@@ -45,7 +45,7 @@
       "description": "Warum es bei X-Plane-Performance um Latenz geht, nicht um FPS: die drei Lastdimensionen CPU, I/O und Netzwerk und ihr Wettbewerb um dieselbe Hardware.",
       "contentUrl": "assets/video/de/Das_Performance-R%C3%A4tsel/Das_Performance-R%C3%A4tsel.mp4",
       "thumbnailUrl": "assets/video/de/Das_Performance-R%C3%A4tsel/Das_Performance-R%C3%A4tsel.jpg",
-      "uploadDate": "2026-02-15",
+      "uploadDate": "2026-02-15T00:00:00+01:00",
       "duration": "PT5M52S"
     },
     {
@@ -53,7 +53,7 @@
       "description": "Ein IFR-Flug in X-Plane von der Wetter-Vorbereitung über Clearance, Abflug und Anflug bis zum Gate — mit der passenden ATC-Phraseologie.",
       "contentUrl": "assets/video/de/Vom_Briefing_zum_Gate/Vom_Briefing_zum_Gate.mp4",
       "thumbnailUrl": "assets/video/de/Vom_Briefing_zum_Gate/Vom_Briefing_zum_Gate.jpg",
-      "uploadDate": "2026-02-15",
+      "uploadDate": "2026-02-15T00:00:00+01:00",
       "duration": "PT7M24S"
     },
     {
@@ -61,7 +61,7 @@
       "description": "X-Plane-12-Performance unter Linux lesen: Frame-Time-Perzentile, GPU- und VRAM-Verhalten und die Einstellungen, die wirklich etwas bewegen.",
       "contentUrl": "assets/video/de/X-Plane_12__Jagd_nach_FPS/X-Plane_12__Jagd_nach_FPS.mp4",
       "thumbnailUrl": "assets/video/de/X-Plane_12__Jagd_nach_FPS/X-Plane_12__Jagd_nach_FPS.jpg",
-      "uploadDate": "2026-02-17",
+      "uploadDate": "2026-02-17T00:00:00+01:00",
       "duration": "PT7M26S"
     }
   ],
@@ -71,7 +71,7 @@
       "description": "Tour of the XoL documentation: what it covers, how the sections build on each other, and where to start when setting up X-Plane 12 on Linux.",
       "contentUrl": "assets/video/en/X-Plane_on_Linux/X-Plane_on_Linux.mp4",
       "thumbnailUrl": "assets/video/en/X-Plane_on_Linux/X-Plane_on_Linux.jpg",
-      "uploadDate": "2026-02-16",
+      "uploadDate": "2026-02-16T00:00:00+01:00",
       "duration": "PT7M19S"
     },
     {
@@ -79,7 +79,7 @@
       "description": "How X-Plane assembles its world from mesh, orthophotos, autogen and airports — and why the order in scenery_packs.ini decides what you see.",
       "contentUrl": "assets/video/en/Mastering_scenery_packs/Mastering_scenery_packs.mp4",
       "thumbnailUrl": "assets/video/en/Mastering_scenery_packs/Mastering_scenery_packs.jpg",
-      "uploadDate": "2026-02-14",
+      "uploadDate": "2026-02-14T00:00:00+01:00",
       "duration": "PT7M48S"
     },
     {
@@ -87,7 +87,7 @@
       "description": "Two routes to stable frame times on Linux: tuning the stock kernel versus switching to the Liquorix kernel, and what each buys you.",
       "contentUrl": "assets/video/en/Two_Paths_to_Smoother_Flight/Two_Paths_to_Smoother_Flight.mp4",
       "thumbnailUrl": "assets/video/en/Two_Paths_to_Smoother_Flight/Two_Paths_to_Smoother_Flight.jpg",
-      "uploadDate": "2026-02-14",
+      "uploadDate": "2026-02-14T00:00:00+01:00",
       "duration": "PT6M23S"
     },
     {
@@ -95,7 +95,7 @@
       "description": "AutoOrtho, XEarthLayer and XPME explained: how ortho streaming delivers satellite imagery on demand and how it combines with local tiles.",
       "contentUrl": "assets/video/en/Ortho-Streaming_on_Linux/Ortho-Streaming_on_Linux.mp4",
       "thumbnailUrl": "assets/video/en/Ortho-Streaming_on_Linux/Ortho-Streaming_on_Linux.jpg",
-      "uploadDate": "2026-02-15",
+      "uploadDate": "2026-02-15T00:00:00+01:00",
       "duration": "PT8M50S"
     },
     {
@@ -103,7 +103,7 @@
       "description": "Why X-Plane performance is about latency, not FPS: the three load dimensions CPU, I/O and network, and how they compete for the same hardware.",
       "contentUrl": "assets/video/en/The_Performance_Puzzle/The_Performance_Puzzle.mp4",
       "thumbnailUrl": "assets/video/en/The_Performance_Puzzle/The_Performance_Puzzle.jpg",
-      "uploadDate": "2026-02-15",
+      "uploadDate": "2026-02-15T00:00:00+01:00",
       "duration": "PT7M2S"
     },
     {
@@ -111,7 +111,7 @@
       "description": "Linux-compatible cockpit and camera addons for X-Plane 12 — from tablet and checklist tools to head tracking and camera control.",
       "contentUrl": "assets/video/en/Beyond_the_Default_Cockpit/Beyond_the_Default_Cockpit.mp4",
       "thumbnailUrl": "assets/video/en/Beyond_the_Default_Cockpit/Beyond_the_Default_Cockpit.jpg",
-      "uploadDate": "2026-02-15",
+      "uploadDate": "2026-02-15T00:00:00+01:00",
       "duration": "PT7M47S"
     },
     {
@@ -119,7 +119,7 @@
       "description": "X11 or Wayland for X-Plane on Linux? What XWayland costs in input latency and how to pick the right session for the simulator.",
       "contentUrl": "assets/video/en/X-Plane__Display_Server_Choice/X-Plane__Display_Server_Choice.mp4",
       "thumbnailUrl": "assets/video/en/X-Plane__Display_Server_Choice/X-Plane__Display_Server_Choice.jpg",
-      "uploadDate": "2026-02-16",
+      "uploadDate": "2026-02-16T00:00:00+01:00",
       "duration": "PT6M18S"
     },
     {
@@ -127,7 +127,7 @@
       "description": "Reading X-Plane 12 performance on Linux: frame time percentiles, GPU and VRAM behaviour, and the settings that actually move the needle.",
       "contentUrl": "assets/video/en/X-Plane_12_Performance/X-Plane_12_Performance.mp4",
       "thumbnailUrl": "assets/video/en/X-Plane_12_Performance/X-Plane_12_Performance.jpg",
-      "uploadDate": "2026-02-17",
+      "uploadDate": "2026-02-17T00:00:00+01:00",
       "duration": "PT6M40S"
     }
   ]
