@@ -18,6 +18,11 @@ verlangt, dass es dort der Hauptinhalt ist; die Sammelseite videos.html mit acht
 Videos erfuellt das nicht (Search Console: "Video befindet sich nicht auf einer
 Wiedergabeseite") und bleibt deshalb aussen vor.
 
+Die Sprach-Startseiten tragen als kanonische Adresse das Verzeichnis ("/",
+"/en/") statt ".../index.html": Unter der Verzeichnisadresse ist die Seite
+verlinkt, Google waehlte sie deshalb selbst (Search Console: "Google hat eine
+andere Seite als der Nutzer als kanonische Seite bestimmt").
+
 Registriert in mkdocs.yml unter `hooks:`.
 """
 import gzip
@@ -51,6 +56,13 @@ WIEDERGABESEITEN = {}
 # gerenderten HTML. Die Sprache steht im Videopfad, nicht in der Seiten-URL —
 # mkdocs-static-i18n legt Deutsch ohne Praefix an die Wurzel.
 VIDEO_QUELLE = re.compile(r'<source src="[^"]*/(?P<kennung>video/[^"]+\.mp4)"')
+
+
+def _startseiten_kuerzen(text, config):
+    """<site_url>[xx/]index.html -> <site_url>[xx/] in absoluten Adressen."""
+    muster = re.escape(config["site_url"]) + r'((?:[a-z]{2}/)?)index\.html(?=["#<])'
+    return re.sub(muster, lambda t: config["site_url"] + t.group(1), text)
+
 
 def on_config(config):
     if os.path.exists(VIDEO_META):
@@ -100,7 +112,7 @@ def on_post_page(output, page, config):
 
     output, anzahl = ALTERNATE.subn(ersetzen, output)
     if not anzahl:
-        return output
+        return _startseiten_kuerzen(output, config)
 
     ziel = absolut.get(X_DEFAULT_LANG)
     if ziel and 'hreflang="x-default"' not in output:
@@ -111,7 +123,7 @@ def on_post_page(output, page, config):
             1,
         )
 
-    return output
+    return _startseiten_kuerzen(output, config)
 
 
 # <xhtml:link rel="alternate" hreflang="en" href="..."/> in der Sitemap. Der
@@ -160,7 +172,7 @@ def video_sitemap_schreiben(config):
         return
     pfad = os.path.join(config["site_dir"], "video-sitemap.xml")
     with open(pfad, "w", encoding="utf-8") as datei:
-        datei.write("\n".join(zeilen) + "\n")
+        datei.write(_startseiten_kuerzen("\n".join(zeilen) + "\n", config))
 
 
 ISO_DAUER = re.compile(r"PT(?:(\d+)H)?(?:(\d+)M)?(?:(\d+)S)?")
@@ -182,9 +194,6 @@ def on_post_build(config):
     with open(pfad, encoding="utf-8") as datei:
         inhalt = datei.read()
 
-    if 'hreflang="x-default"' in inhalt:
-        return
-
     def ergaenzen(treffer):
         return '%s\n%s<xhtml:link rel="alternate" hreflang="x-default" href="%s"/>' % (
             treffer.group(0),
@@ -192,9 +201,9 @@ def on_post_build(config):
             treffer.group("href"),
         )
 
-    inhalt, anzahl = SITEMAP_ALTERNATE.subn(ergaenzen, inhalt)
-    if not anzahl:
-        return
+    if 'hreflang="x-default"' not in inhalt:
+        inhalt = SITEMAP_ALTERNATE.sub(ergaenzen, inhalt)
+    inhalt = _startseiten_kuerzen(inhalt, config)
 
     with open(pfad, "w", encoding="utf-8") as datei:
         datei.write(inhalt)

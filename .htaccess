@@ -52,7 +52,8 @@ Options -Indexes
 </IfModule>
 
 # Umgezogene Seiten — alte URLs stehen noch im Google-Index (Search Console,
-# Stand 2026-09-06) und liefern sonst 404.
+# Stand 2026-09-06) und liefern sonst 404. Entfernte Blogposts ohne Nachfolger
+# melden 410, damit Google sie aus dem Index nimmt.
 <IfModule mod_alias.c>
     Redirect permanent /en/addon/toliss/toliss_mods.html   /en/addon/toliss/mods/index.html
     Redirect permanent /addon/toliss/toliss_mods.html      /addon/toliss/mods/index.html
@@ -71,8 +72,10 @@ Options -Indexes
     Redirect permanent /en/addon/xgs.html                  /en/addon/tools/xgs.html
     Redirect permanent /flight_operations/overview.html    /flight_operations/index.html
     Redirect permanent /en/flight_operations/overview.html /en/flight_operations/index.html
-    Redirect permanent /blog/kcle-cleveland.html           /scenery/index.html
-    Redirect permanent /en/blog/kcle-cleveland.html        /en/scenery/index.html
-    Redirect permanent /blog/klax-los-angeles.html         /scenery/index.html
-    Redirect permanent /en/blog/klax-los-angeles.html      /en/scenery/index.html
+    Redirect gone /blog/kcle-cleveland.html
+    Redirect gone /en/blog/kcle-cleveland.html
+    Redirect gone /blog/klax-los-angeles.html
+    Redirect gone /en/blog/klax-los-angeles.html
+    Redirect gone /blog/kden-denver.html
+    Redirect gone /en/blog/kden-denver.html
 </IfModule>

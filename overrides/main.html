@@ -71,15 +71,7 @@
       "url": {{ config.site_url | tojson }},
       "description": {{ config.site_description | tojson }},
       "inLanguage": {{ page_lang | tojson }},
-      "publisher": { "@id": {{ (config.site_url ~ "#publisher") | tojson }} },
-      "potentialAction": {
-        "@type": "SearchAction",
-        "target": {
-          "@type": "EntryPoint",
-          "urlTemplate": {{ (config.site_url ~ page_lang ~ "/?q={search_term_string}") | tojson }}
-        },
-        "query-input": "required name=search_term_string"
-      }
+      "publisher": { "@id": {{ (config.site_url ~ "#publisher") | tojson }} }
     },
     {
       "@type": "Organization",
