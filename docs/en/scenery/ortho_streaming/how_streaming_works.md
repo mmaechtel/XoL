@@ -95,7 +95,7 @@ The low FUSE defaults create a bottleneck: only 12 background requests can be in
 
 **Mitigation:**
 
-Raising `max_background` to 64–128 via a local crate patch eliminates the bottleneck without kernel modifications. The FUSE kernel module accepts values up to 65535 for `max_background` (unprivileged processes up to `max_user_bgreq`, default 256) — only the userspace library needs patching. A corresponding [patch is tracked in XEarthLayer Issue #67](https://github.com/samsoir/xearthlayer/issues/67).
+XEarthLayer overrides the low library defaults: its `[fuse]` section sets `max_background` to 256 and `congestion_threshold` to 192 by default. Both values are configurable; no crate patch or kernel modification is required. (Other FUSE implementations built on the same library can raise the limit through a local crate patch — the kernel module accepts values up to 65535, unprivileged processes up to `max_user_bgreq`, default 256.)
 
 ??? abstract "Technical Background: Why this happens"
     The Rust `fuse3` crate used by XEarthLayer compiles these limits as constants:
@@ -105,9 +105,9 @@ Raising `max_background` to 64–128 via a local crate patch eliminates the bott
     pub const DEFAULT_CONGESTION_THRESHOLD: u16 = DEFAULT_MAX_BACKGROUND * 3 / 4; // = 9
     ```
 
-    These values match the Linux kernel defaults but are not adjustable at runtime through the crate's API — a local crate patch is required.
+    These values match the Linux kernel defaults and are the library's defaults. XEarthLayer sets the limits itself through its `[fuse]` section, so no crate patch is needed.
 
-    AutoOrtho v2.1.1 ([ProgrammingDinosaur fork](https://github.com/ProgrammingDinosaur/autoortho4xplane)) is subject to the same kernel defaults. It uses mfusepy, which supports both libfuse2 and libfuse3. Both libfuse versions allow setting `max_background` as a mount option (`-o max_background=N`) or programmatically in the `init()` callback — but AutoOrtho uses neither method and stays at the kernel default of 12.
+    AutoOrtho ([ProgrammingDinosaur fork](https://github.com/ProgrammingDinosaur/autoortho4xplane)) is subject to the same kernel defaults. It uses mfusepy, which supports both libfuse2 and libfuse3. Both libfuse versions allow setting `max_background` as a mount option (`-o max_background=N`) or programmatically in the `init()` callback — but AutoOrtho uses neither method and stays at the kernel default of 12.
 
 ---
 
@@ -169,7 +169,7 @@ FUSE has been part of the Linux kernel since 2005. No third-party driver, no ker
 | Symlinks | Native, trivial | Elevated privileges or Developer Mode required |
 | Stability | Mature, extensively tested | AutoOrtho documentation warns of "filesystem variations" and "intrusive malware detection" |
 
-XEarthLayer is a direct consequence of this Linux advantage: its Rust implementation with async Tokio runtime uses the `fuse3` crate for clean, native FUSE 3 integration — without the cross-platform abstraction layers that a Windows port would require. Combined with X-Plane 12's native Vulkan renderer on Linux, the entire stack runs without compatibility layers.
+XEarthLayer is a direct consequence of this Linux advantage: its Rust implementation with async Tokio runtime uses the `fuse3` crate for clean, native FUSE 3 integration — without the abstraction layers a Windows port would require (there is none; macOS is served via macFUSE). Combined with X-Plane 12's native Vulkan renderer on Linux, the entire stack runs without compatibility layers.
 
 ---
 
@@ -184,9 +184,9 @@ Ortho streaming delivers satellite imagery in real time — but sometimes tiles 
 | Settings changed | Changing zoom level or map provider invalidates existing cache entries. | Expect slower loading after settings changes until the cache refills. |
 | Rate limiting (HTTP 429) | Map providers throttle clients that send too many requests in a short period. | Switch to a different map provider or use a VPN. AutoOrtho logs this as `HTTP 429: Too Many Requests`. |
 | High zoom level | Higher zoom means exponentially more tiles per area. ZL18 requires 4× more tiles than ZL17. | Reduce maximum zoom level if loading cannot keep up. |
-| CPU contention | DDS compression competes with X-Plane for CPU time, causing both to slow down. | Limit worker threads (XEarthLayer: `cpu_concurrent`, AutoOrtho: configuration). See [XEarthLayer CPU Tuning](xearthlayer.md#cpu-tuning). |
-| Fast low-level flight | Low altitude + high speed demands more tiles per second than cruise flight at high altitude. | Expected behavior — the cache fills as you fly. Prefetching helps (especially XEarthLayer's adaptive modes). |
-| FUSE congestion | The FUSE driver limits concurrent background requests to 12 by default. At DSF boundaries, parallel tile requests hit this ceiling — additional reads block. | Patch the FUSE userspace library to raise `max_background` — see [FUSE Congestion Bottleneck](#fuse-congestion-bottleneck). |
+| CPU contention | DDS compression competes with X-Plane for CPU time, causing both to slow down. | Limit worker threads (XEarthLayer: `generation.threads` and `prefetch.capacity_share`, AutoOrtho: configuration). See [XEarthLayer CPU Tuning](xearthlayer.md#cpu-tuning). |
+| Fast low-level flight | Low altitude + high speed demands more tiles per second than cruise flight at high altitude. | Expected behavior — the cache fills as you fly. Prefetching helps (especially XEarthLayer's speed-scaled adaptive prefetch). |
+| FUSE congestion | The FUSE driver limits concurrent background requests to 12 by default. At DSF boundaries, parallel tile requests hit this ceiling — additional reads block. | Raise `max_background` (XEarthLayer: `[fuse]` section; otherwise patch the FUSE userspace library) — see [FUSE Congestion Bottleneck](#fuse-congestion-bottleneck). |
 
 !!! tip "Cache is your best friend"
     After the first visit to a region, subsequent flights load almost entirely from disk or memory cache. The initial "slow" experience is a one-time cost per region and zoom level.

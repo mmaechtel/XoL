@@ -110,7 +110,7 @@ Only what the vendor documents or what the release history shows:
 |---|---|---|---|
 | Source code | Closed | Open (Apache-2.0) | Open (MIT) |
 | Cost | Free tier capped, Pro subscription | Free | Free |
-| Platform | Windows, macOS, Linux | Windows, Linux, macOS (Apple Silicon) | Linux only |
+| Platform | Windows, macOS, Linux | Windows, Linux, macOS (Apple Silicon) | Linux, macOS (Apple Silicon) |
 | Mount layer | WinFSP / FUSE-T / FUSE 3 | FUSE | FUSE |
 | Terrain data | Own base packages (Ortho4XP-derived, ZL16), in-app downloader | Uses X-Plane scenery plus overlay downloads | DSF/TER packages via `xearthlayer packages install` |
 | Map sources | Bing, ArcGIS, Google, Apple (three of them in the free tier) | Bing, Google, Here, Yandex, Apple | Bing, Google, Apple, ArcGIS, MapBox, USGS |

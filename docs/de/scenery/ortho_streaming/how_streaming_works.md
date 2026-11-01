@@ -95,7 +95,7 @@ Die niedrigen FUSE-Standardwerte erzeugen einen Engpass: Nur 12 Hintergrund-Anfr
 
 **Abhilfe:**
 
-`max_background` lässt sich über einen lokalen Crate-Patch auf 64–128 anheben — ohne Kernel-Modifikation. Das FUSE-Kernel-Modul akzeptiert Werte bis 65535 für `max_background` (unprivilegierte Prozesse bis `max_user_bgreq`, Standard 256); nur die Userspace-Bibliothek muss gepatcht werden. Ein entsprechender [Patch wird in XEarthLayer Issue #67](https://github.com/samsoir/xearthlayer/issues/67) verfolgt.
+XEarthLayer überschreibt die niedrigen Bibliotheksdefaults: Die `[fuse]`-Sektion setzt `max_background` standardmäßig auf 256 und `congestion_threshold` auf 192. Beide Werte lassen sich konfigurieren; ein Crate-Patch oder eine Kernel-Modifikation ist nicht erforderlich. (Andere FUSE-Implementierungen auf Basis derselben Bibliothek können das Limit über einen lokalen Crate-Patch anheben — das Kernel-Modul akzeptiert Werte bis 65535, unprivilegierte Prozesse bis `max_user_bgreq`, Standard 256.)
 
 ??? abstract "Technischer Hintergrund: Warum das passiert"
     Das Rust-Crate `fuse3`, das XEarthLayer verwendet, kompiliert diese Limits als Konstanten:
@@ -105,9 +105,9 @@ Die niedrigen FUSE-Standardwerte erzeugen einen Engpass: Nur 12 Hintergrund-Anfr
     pub const DEFAULT_CONGESTION_THRESHOLD: u16 = DEFAULT_MAX_BACKGROUND * 3 / 4; // = 9
     ```
 
-    Diese Werte entsprechen den Linux-Kernel-Standardwerten, sind aber über die API des Crates nicht zur Laufzeit konfigurierbar — ein lokaler Crate-Patch ist erforderlich.
+    Diese Werte entsprechen den Linux-Kernel-Standardwerten und sind die Bibliotheksdefaults. XEarthLayer setzt die Limits selbst über die `[fuse]`-Sektion, ein Crate-Patch ist daher nicht nötig.
 
-    AutoOrtho v2.1.1 ([ProgrammingDinosaur-Fork](https://github.com/ProgrammingDinosaur/autoortho4xplane)) unterliegt denselben Kernel-Standardwerten. Es nutzt mfusepy, das sowohl libfuse2 als auch libfuse3 unterstützt. Beide libfuse-Versionen erlauben `max_background` als Mount-Option (`-o max_background=N`) oder programmatisch im `init()`-Callback — AutoOrtho nutzt jedoch keinen der beiden Wege und bleibt beim Kernel-Default von 12.
+    AutoOrtho ([ProgrammingDinosaur-Fork](https://github.com/ProgrammingDinosaur/autoortho4xplane)) unterliegt denselben Kernel-Standardwerten. Es nutzt mfusepy, das sowohl libfuse2 als auch libfuse3 unterstützt. Beide libfuse-Versionen erlauben `max_background` als Mount-Option (`-o max_background=N`) oder programmatisch im `init()`-Callback — AutoOrtho nutzt jedoch keinen der beiden Wege und bleibt beim Kernel-Default von 12.
 
 ---
 
@@ -169,7 +169,7 @@ FUSE ist seit 2005 Teil des Linux-Kernels. Kein Drittanbieter-Treiber, keine Ker
 | Symlinks | Nativ, trivial | Erhöhte Rechte oder Developer Mode erforderlich |
 | Stabilität | Ausgereift, intensiv getestet | AutoOrtho-Dokumentation warnt vor „filesystem variations" und „intrusive malware detection" |
 
-XEarthLayer ist eine direkte Konsequenz dieses Linux-Vorteils: Die Rust-Implementierung mit async Tokio-Runtime nutzt das `fuse3`-Crate für saubere, native FUSE-3-Integration — ohne die plattformübergreifenden Abstraktionsschichten, die eine Windows-Portierung erfordern würde. Zusammen mit X-Plane 12s nativem Vulkan-Renderer auf Linux läuft der gesamte Stack ohne Kompatibilitätsschichten.
+XEarthLayer ist eine direkte Konsequenz dieses Linux-Vorteils: Die Rust-Implementierung mit async Tokio-Runtime nutzt das `fuse3`-Crate für saubere, native FUSE-3-Integration — ohne die Abstraktionsschichten, die eine Windows-Portierung erfordern würde (eine solche gibt es nicht; macOS wird über macFUSE bedient). Zusammen mit X-Plane 12s nativem Vulkan-Renderer auf Linux läuft der gesamte Stack ohne Kompatibilitätsschichten.
 
 ---
 
@@ -184,9 +184,9 @@ Ortho-Streaming liefert Satellitenbilder in Echtzeit — doch manchmal erscheine
 | Einstellungen geändert | Änderungen am Zoom-Level oder Kartenanbieter machen bestehende Cache-Einträge ungültig. | Nach Einstellungsänderungen mit langsameren Ladezeiten rechnen, bis sich der Cache neu füllt. |
 | Rate Limiting (HTTP 429) | Kartenanbieter drosseln Clients, die in kurzer Zeit zu viele Anfragen senden. | Auf einen anderen Kartenanbieter wechseln oder VPN nutzen. AutoOrtho protokolliert dies als `HTTP 429: Too Many Requests`. |
 | Hoher Zoom-Level | Höherer Zoom bedeutet exponentiell mehr Tiles pro Fläche. ZL18 benötigt 4× mehr Tiles als ZL17. | Maximalen Zoom-Level reduzieren, wenn das Laden nicht mitkommt. |
-| CPU-Konkurrenz | DDS-Kompression konkurriert mit X-Plane um CPU-Zeit, was beides verlangsamt. | Worker-Threads begrenzen (XEarthLayer: `cpu_concurrent`, AutoOrtho: Konfiguration). Siehe [XEarthLayer CPU-Tuning](xearthlayer.md#cpu-tuning). |
-| Schneller Tiefflug | Niedrige Höhe + hohe Geschwindigkeit erfordern mehr Tiles pro Sekunde als Reiseflug in großer Höhe. | Erwartetes Verhalten — der Cache füllt sich im Flug. Prefetching hilft (besonders XEarthLayers adaptive Modi). |
-| FUSE-Congestion | Der FUSE-Treiber begrenzt gleichzeitige Hintergrund-Anfragen standardmäßig auf 12. An DSF-Grenzen erreichen parallele Kachelanfragen diese Obergrenze — weitere Lesezugriffe blockieren. | FUSE-Userspace-Bibliothek patchen, um `max_background` anzuheben — siehe [FUSE-Congestion-Engpass](#fuse-congestion-engpass). |
+| CPU-Konkurrenz | DDS-Kompression konkurriert mit X-Plane um CPU-Zeit, was beides verlangsamt. | Worker-Threads begrenzen (XEarthLayer: `generation.threads` und `prefetch.capacity_share`, AutoOrtho: Konfiguration). Siehe [XEarthLayer CPU-Tuning](xearthlayer.md#cpu-tuning). |
+| Schneller Tiefflug | Niedrige Höhe + hohe Geschwindigkeit erfordern mehr Tiles pro Sekunde als Reiseflug in großer Höhe. | Erwartetes Verhalten — der Cache füllt sich im Flug. Prefetching hilft (besonders XEarthLayers geschwindigkeitsskaliertes adaptives Prefetch). |
+| FUSE-Congestion | Der FUSE-Treiber begrenzt gleichzeitige Hintergrund-Anfragen standardmäßig auf 12. An DSF-Grenzen erreichen parallele Kachelanfragen diese Obergrenze — weitere Lesezugriffe blockieren. | `max_background` anheben (XEarthLayer: `[fuse]`-Sektion; sonst FUSE-Userspace-Bibliothek patchen) — siehe [FUSE-Congestion-Engpass](#fuse-congestion-engpass). |
 
 !!! tip "Der Cache ist der beste Verbündete"
     Nach dem ersten Besuch einer Region laden nachfolgende Flüge nahezu vollständig aus dem Disk- oder Memory-Cache. Das anfängliche „langsame" Erlebnis ist ein einmaliger Aufwand pro Region und Zoom-Level.
