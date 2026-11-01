@@ -117,11 +117,10 @@
 
 ### FlyWithLua Scripts
 
-- [FlyWithLua Scripts](https://xol.emvisio.de/en/addon/flylua_scripts/index.html): Nine FlyWithLua scripts for X-Plane 12 — haze correction, turbulence, rain effects, SimBrief integration, scenery loading, and memory cleanup.
+- [FlyWithLua Scripts](https://xol.emvisio.de/en/addon/flylua_scripts/index.html): Eight FlyWithLua scripts for X-Plane 12 — haze correction, turbulence, rain effects, SimBrief integration, screen overlay, and memory cleanup.
 - [3D Rain Stop](https://xol.emvisio.de/en/addon/flylua_scripts/3drainspeedstop.html): 3D Rain Stop for X-Plane 12 — FlyWithLua script that disables distracting 3D rain particles at high speed or altitude while keeping windshield rain.
 - [Dynamic Rain Rate](https://xol.emvisio.de/en/addon/flylua_scripts/rain_rate.html): Dynamic Rain Rate for X-Plane 12 — FlyWithLua script that scales rain intensity based on airspeed for more realistic precipitation effects.
 - [SimBrief Simple OFP](https://xol.emvisio.de/en/addon/flylua_scripts/simbrief_simple_ofp.html): SimBrief Simple OFP for X-Plane — FlyWithLua script that downloads and displays your SimBrief flight plan as an in-simulator overlay.
-- [SimLoad Manager](https://xol.emvisio.de/en/addon/flylua_scripts/simloadmanager.html): SimLoad Manager for X-Plane 12 — FlyWithLua script simulating realistic passenger boarding, cargo loading, and fuel ground operations.
 - [SimReaperXP](https://xol.emvisio.de/en/addon/flylua_scripts/simreaperxp.html): SimReaperXP for X-Plane 12 — FlyWithLua script that recovers up to 10 FPS by selectively disabling shadows, lights, and water rendering.
 - [SimScreen Overlay](https://xol.emvisio.de/en/addon/flylua_scripts/simscreenoverlay.html): SimScreen Overlay for X-Plane 12 — FlyWithLua script that stamps flight data onto screenshots with optional SimBrief integration.
 - [SGES](https://xol.emvisio.de/en/addon/flylua_scripts/sges.html): SGES ground equipment for X-Plane 12 — FlyWithLua script adding GPU, fuel trucks, animated passengers, chocks, pushback, and deicing to the ramp.
@@ -152,7 +151,7 @@
 
 ### Cockpit & Camera
 
-- [Cockpit & Camera Plugins for X-Plane](https://xol.emvisio.de/en/addon/cockpit/index.html): Ten cockpit and camera plugins for X-Plane on Linux — EFB, camera control, checklists, head tracking, terrain radar, cabin view, and walkaround.
+- [Cockpit & Camera Plugins for X-Plane](https://xol.emvisio.de/en/addon/cockpit/index.html): Twelve cockpit and camera plugins for X-Plane on Linux — EFB, camera control, checklists, head tracking, dispatch datalink, cabin simulation, and walkaround.
 - [AviTab](https://xol.emvisio.de/en/addon/cockpit/avitab.html): AviTab for X-Plane on Linux — open-source cockpit tablet with PDF viewer, moving map, Navigraph charts, and custom tile server support.
 - [XCamera](https://xol.emvisio.de/en/addon/cockpit/xcamera.html): XCamera for X-Plane on Linux — aircraft-specific camera system with Bezier transitions, walk mode, airport cameras, and OpenTrack head tracking.
 - [Xchecklist](https://xol.emvisio.de/en/addon/cockpit/xchecklist.html): Xchecklist for X-Plane on Linux — interactive checklists with text-to-speech via speech-dispatcher. Installation, TTS setup, and XLinSpeak integration.
@@ -163,12 +162,15 @@
 - [KabinXP](https://xol.emvisio.de/en/addon/cockpit/kabinxp.html): KabinXP for X-Plane 12 — cabin announcement plugin with per-livery sound packs, 3D spatial audio, and drag-and-arrange button layouts.
 - [AnyAirline](https://xol.emvisio.de/en/addon/cockpit/anyairline.html): AnyAirline for X-Plane 12 — AI cabin announcements, route-aware passenger manifest, boarding ambience, and IFE map, with a Linux connector.
 - [XP Walkaround](https://xol.emvisio.de/en/addon/cockpit/xpwalkaround.html): XP Walkaround for X-Plane 12 — first-person walkaround with flashlight, campsite system, and mouse look. Native Linux plugin, free alternative.
+- [AOC Datalink Center](https://xol.emvisio.de/en/addon/cockpit/aoc_datalink_center.html): AOC Datalink Center for X-Plane 12 — free native plugin for ToLiss: Hoppie ACARS, CPDLC, PDC, SimBrief OFP, OOOI and weather monitors in a browser WebUI.
+- [XP CabinState](https://xol.emvisio.de/en/addon/cockpit/xp_cabinstate.html): XP CabinState for X-Plane 12 — cabin, crew and passenger simulation with SimLoad Manager integration; tested on Linux via Wine in headless mode.
 
 ### Traffic & Ground Ops
 
-- [Traffic & Ground Ops Plugins for X-Plane](https://xol.emvisio.de/en/addon/traffic/index.html): Seven X-Plane plugins for air and marine traffic and ground ops — LiveTraffic, Better Pushback, AutoDGS, openSAM, AutoGate, and more.
+- [Traffic & Ground Ops Plugins for X-Plane](https://xol.emvisio.de/en/addon/traffic/index.html): Eight X-Plane plugins for air and marine traffic and ground ops — LiveTraffic, Better Pushback, SimLoad Manager, openSAM, AutoGate, and more.
 - [LiveTraffic](https://xol.emvisio.de/en/addon/traffic/livetraffic.html): LiveTraffic renders real-world ADS-B air traffic in X-Plane with TCAS integration, 3D sound, and multiple free and paid data sources.
 - [Better Pushback](https://xol.emvisio.de/en/addon/traffic/betterpushback.html): Better Pushback replaces X-Plane's default pushback with a route planner, 3D tug vehicle, manual mode, and multilingual ground crew voice output.
+- [SimLoad Manager](https://xol.emvisio.de/en/addon/traffic/simloadmanager.html): SimLoad Manager for X-Plane 12 — native plugin for boarding, cargo, fuel and animated ground ops with Ground Planner; runs on Linux without SGES.
 - [AutoDGS](https://xol.emvisio.de/en/addon/traffic/autodgs.html): AutoDGS provides automatic docking guidance with VDGS or marshaller at over 5,000 X-Plane gateway airports — no scenery modifications required.
 - [openSAM](https://xol.emvisio.de/en/addon/traffic/opensam.html): openSAM is a free open-source replacement for the SAM plugin — controlling animated jetways, VDGS, and marshallers in X-Plane custom sceneries.
 - [AutoGate](https://xol.emvisio.de/en/addon/traffic/autogate.html): AutoGate provides animated jetways and docking guidance for older X-Plane sceneries built with the AutoGate toolkit. Legacy plugin, maintained for XP12.
@@ -188,13 +190,15 @@
 
 ### Scenery Plugins
 
-- [Scenery Plugins for X-Plane 12](https://xol.emvisio.de/en/addon/scenery_addons/index.html): Six scenery plugins for X-Plane: XRoads traffic, AEP airport surroundings, xa-snow, NOAA Weather, LST ground life, and Bay's Lighting Mod.
+- [Scenery Plugins for X-Plane 12](https://xol.emvisio.de/en/addon/scenery_addons/index.html): Eight scenery plugins for X-Plane: XRoads, AEP, xa-snow, NOAA Weather, LST ground life, Bay's Lighting Mod, XP BirdState, and Night Sky Fix.
 - [XRoad](https://xol.emvisio.de/en/addon/scenery_addons/xroad.html): XRoads hides X-Plane road polygons in Ortho4XP orthophotos, revealing satellite imagery roads. Includes Linux compilation instructions.
 - [AEP](https://xol.emvisio.de/en/addon/scenery_addons/aep.html): Airport Enhancement Package (AEP) for X-Plane 12: upgraded airport buildings, ground markings, vegetation, and PBR textures for default airports.
 - [xa-snow](https://xol.emvisio.de/en/addon/scenery_addons/xa-snow.html): xa-snow overlays real-world NOAA snow depth data on X-Plane 12 scenery, replacing uniform regional snow with location-specific coverage on Linux.
 - [NOAA Weather](https://xol.emvisio.de/en/addon/scenery_addons/noaa_weather.html): NOAA Weather plugin adds real-world snow coverage and METAR comparison to X-Plane 12 on Linux. Requires XPPython3, includes wgrib2 binary.
 - [LST](https://xol.emvisio.de/en/addon/scenery_addons/lst.html): LST (Living Scenery Technology) brings animated ground traffic to X-Plane 12 airports: vehicles, pedestrians, and ground equipment on defined routes.
 - [Bay's Lighting Mod](https://xol.emvisio.de/en/addon/scenery_addons/bays_lighting_mod.html): Bay's Lighting Mod is a lighting overhaul for X-Plane 12 — reworked airport, beacon, night and cockpit lighting, cloud scattering and visibility.
+- [XP BirdState](https://xol.emvisio.de/en/addon/scenery_addons/xp_birdstate.html): XP BirdState for X-Plane 12 — native plugin with 120 bird species by region, season and weather, birds at runways and bird-strike log; Linux supported.
+- [Night Sky Fix](https://xol.emvisio.de/en/addon/scenery_addons/night_sky_fix.html): Night Sky Fix for X-Plane 12 — star catalogs with up to 900,000 stars for a visible Milky Way, plus a FlyWithLua script for realistic star brightness.
 
 ### Via KVM
 

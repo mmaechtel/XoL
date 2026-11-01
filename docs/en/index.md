@@ -35,6 +35,11 @@ This documentation is an open project. Improvements or additions can be contribu
 
 ## Recent Changes
 
+### 2026-11-01
+
+- New plugin pages: [AOC Datalink Center](addon/cockpit/aoc_datalink_center.md) brings ACARS/CPDLC dispatch via Hoppie as a native Linux plugin, [XP CabinState](addon/cockpit/xp_cabinstate.md) simulates cabin, crew, and passengers — officially Windows-only, documented with a tested Wine setup and the SimLoad Manager integration — [XP BirdState](addon/scenery_addons/xp_birdstate.md) adds bird flocks with an official Linux build, and [Night Sky Fix](addon/scenery_addons/night_sky_fix.md) replaces the star catalog for a visible Milky Way
+- [SimLoad Manager](addon/traffic/simloadmanager.md) is now a native plugin with its own ground vehicles, passengers, and crew — no FlyWithLua or SGES required; the page moved to Traffic & Ground Ops
+
 ### 2026-08-27
 
 - The section overview pages now carry real orientation text instead of a one-liner — what the section covers, for whom, and in which order to read: [Fundamentals](fundamentals/index.md), [Utilities](linux/extensions/index.md), [Structure & Sources](scenery/aufbau_quellen/index.md), [Orthophotography](scenery/orthophotography/index.md), [Autogen](scenery/autogen/index.md), [Scripting](addon/scripting/index.md), [ToLiss Mods](addon/toliss/mods/index.md), [Sounds](addon/sounds/index.md), [Tools](addon/tools/index.md), [Traffic & Ground Ops](addon/traffic/index.md), [Scenery Plugins](addon/scenery_addons/index.md), [Via KVM](addon/kvm/index.md), [Weather](flight_operations/weather/index.md), [Online](flight_operations/vatsim/index.md) and [Videos](videos.md). Along the way a few summaries were corrected against their detail pages — XRoads hides road polygons on ortho tiles rather than adding traffic, XOrganizer is Windows-only, and on X-Plane 12 openSAM v5 replaces standalone AutoDGS
@@ -46,7 +51,3 @@ This documentation is an open project. Improvements or additions can be contribu
 
 - The [X-Plane WINCTRL Plugin](addon/tools/winctrl.md) page was reworked. The vendor now trades as WINCTRL, so "Winwing" is gone from the documentation; **WINCTRL** means the hardware, the software is the **X-Plane WINCTRL plugin**. The udev section now recommends Debian's `uaccess` tag over `MODE="0666"` — including the trap that the rule file must be named `70-winctrl.rules`, because `99-*` sorts after `73-seat-late.rules` and the tag then does nothing. The vendor ID `4098` is a hexadecimal string (0x4098); the previous note claiming otherwise was wrong. New: custom FMC display fonts as `.xpwwf` files, and the rule that buttons assigned in X-Plane take precedence over the plugin. Supported hardware and the SimAppPro comparison were corrected
 - [X-Plane Configuration](xplane/setup_diagnose/config.md#controllers): new table separating the two device classes — joysticks, yokes and throttle quadrants are handled by the kernel and configured entirely inside X-Plane, while cockpit panels expose a root-only raw HID node and need a udev rule plus a plugin
-
-### 2026-08-17
-
-- [AviTab](addon/cockpit/avitab.md): new tip on using Little Navmap as a moving map in the AviTab Browser — Little Navmap's built-in web server delivers the map with the live aircraft position to the cockpit tablet, with a working `config.ini` example for Linux; the [Little XpConnect](addon/tools/littlexpconnect.md) page links to it
