@@ -70,6 +70,8 @@ Options -Indexes
     Redirect permanent /en/scenery.html                    /en/scenery/index.html
     Redirect permanent /addon/xgs.html                     /addon/tools/xgs.html
     Redirect permanent /en/addon/xgs.html                  /en/addon/tools/xgs.html
+    Redirect permanent /addon/flylua_scripts/simloadmanager.html    /addon/traffic/simloadmanager.html
+    Redirect permanent /en/addon/flylua_scripts/simloadmanager.html /en/addon/traffic/simloadmanager.html
     Redirect permanent /flight_operations/overview.html    /flight_operations/index.html
     Redirect permanent /en/flight_operations/overview.html /en/flight_operations/index.html
     Redirect gone /blog/kcle-cleveland.html

@@ -171,7 +171,6 @@ plugins:
                     - 3D Rain Stop: de/addon/flylua_scripts/3drainspeedstop.md
                     - Dynamic Rain Rate: de/addon/flylua_scripts/rain_rate.md
                     - SimBrief Simple OFP: de/addon/flylua_scripts/simbrief_simple_ofp.md
-                    - SimLoad Manager: de/addon/flylua_scripts/simloadmanager.md
                     - SimReaperXP: de/addon/flylua_scripts/simreaperxp.md
                     - SimScreen Overlay: de/addon/flylua_scripts/simscreenoverlay.md
                     - SGES: de/addon/flylua_scripts/sges.md
@@ -205,10 +204,13 @@ plugins:
                     - KabinXP: de/addon/cockpit/kabinxp.md
                     - AnyAirline: de/addon/cockpit/anyairline.md
                     - XP Walkaround: de/addon/cockpit/xpwalkaround.md
+                    - AOC Datalink Center: de/addon/cockpit/aoc_datalink_center.md
+                    - XP CabinState: de/addon/cockpit/xp_cabinstate.md
                 - Verkehr & Bodenbetrieb:
                     - de/addon/traffic/index.md
                     - LiveTraffic: de/addon/traffic/livetraffic.md
                     - Better Pushback: de/addon/traffic/betterpushback.md
+                    - SimLoad Manager: de/addon/traffic/simloadmanager.md
                     - AutoDGS: de/addon/traffic/autodgs.md
                     - openSAM: de/addon/traffic/opensam.md
                     - AutoGate: de/addon/traffic/autogate.md
@@ -231,6 +233,8 @@ plugins:
                     - NOAA Weather: de/addon/scenery_addons/noaa_weather.md
                     - LST: de/addon/scenery_addons/lst.md
                     - Bay's Lighting Mod: de/addon/scenery_addons/bays_lighting_mod.md
+                    - XP BirdState: de/addon/scenery_addons/xp_birdstate.md
+                    - Night Sky Fix: de/addon/scenery_addons/night_sky_fix.md
                 - Via KVM:
                     - de/addon/kvm/index.md
                     - My FS Flights: de/addon/kvm/myfs_flights.md
@@ -338,7 +342,6 @@ plugins:
                     - 3D Rain Stop: en/addon/flylua_scripts/3drainspeedstop.md
                     - Dynamic Rain Rate: en/addon/flylua_scripts/rain_rate.md
                     - SimBrief Simple OFP: en/addon/flylua_scripts/simbrief_simple_ofp.md
-                    - SimLoad Manager: en/addon/flylua_scripts/simloadmanager.md
                     - SimReaperXP: en/addon/flylua_scripts/simreaperxp.md
                     - SimScreen Overlay: en/addon/flylua_scripts/simscreenoverlay.md
                     - SGES: en/addon/flylua_scripts/sges.md
@@ -372,10 +375,13 @@ plugins:
                     - KabinXP: en/addon/cockpit/kabinxp.md
                     - AnyAirline: en/addon/cockpit/anyairline.md
                     - XP Walkaround: en/addon/cockpit/xpwalkaround.md
+                    - AOC Datalink Center: en/addon/cockpit/aoc_datalink_center.md
+                    - XP CabinState: en/addon/cockpit/xp_cabinstate.md
                 - Traffic & Ground Ops:
                     - en/addon/traffic/index.md
                     - LiveTraffic: en/addon/traffic/livetraffic.md
                     - Better Pushback: en/addon/traffic/betterpushback.md
+                    - SimLoad Manager: en/addon/traffic/simloadmanager.md
                     - AutoDGS: en/addon/traffic/autodgs.md
                     - openSAM: en/addon/traffic/opensam.md
                     - AutoGate: en/addon/traffic/autogate.md
@@ -398,6 +404,8 @@ plugins:
                     - NOAA Weather: en/addon/scenery_addons/noaa_weather.md
                     - LST: en/addon/scenery_addons/lst.md
                     - Bay's Lighting Mod: en/addon/scenery_addons/bays_lighting_mod.md
+                    - XP BirdState: en/addon/scenery_addons/xp_birdstate.md
+                    - Night Sky Fix: en/addon/scenery_addons/night_sky_fix.md
                 - Via KVM:
                     - en/addon/kvm/index.md
                     - My FS Flights: en/addon/kvm/myfs_flights.md
