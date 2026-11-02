@@ -70,11 +70,12 @@ SCENERY_PACK Custom Scenery/z_ao_eur/
 SCENERY_PACK Custom Scenery/z_autoortho/
 ```
 
-For **XEarthLayer**, regional packages are installed via the CLI (`xearthlayer packages install eu`). The entries use the `zzXEL_` prefix and are also placed at the end of the file:
+For **XEarthLayer**, regional packages are installed via the CLI (`xearthlayer packages install eu`). Installed ortho packages appear as one consolidated entry (`zzXEL_ortho`) at the end of the file. The `yzXEL_overlay` line above it only exists when overlays are installed and enabled:
 
 ```ini
 # XEarthLayer Ortho Streaming (at the very bottom)
-SCENERY_PACK Custom Scenery/zzXEL_eu_ortho/
+SCENERY_PACK Custom Scenery/yzXEL_overlay/   # only with overlays
+SCENERY_PACK Custom Scenery/zzXEL_ortho/
 ```
 
 **XPME** automatically places its entries in `scenery_packs.ini` during installation. The principle is identical: streaming entries must be at the end so that local scenery takes priority.

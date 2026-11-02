@@ -35,6 +35,10 @@ This documentation is an open project. Improvements or additions can be contribu
 
 ## Recent Changes
 
+### 2026-11-02
+
+- [XEarthLayer](scenery/ortho_streaming/xearthlayer.md) updated for version 0.5.0: macOS support, generated night lighting for ortho scenery, the rebuilt 17-region package library with its new package manager, a separate prefetch lane that never delays X-Plane's tile requests, and XDG paths under `~/.config` and `~/.cache`. A warning box covers the switch from the old package generation
+
 ### 2026-11-01
 
 - New plugin pages: [AOC Datalink Center](addon/cockpit/aoc_datalink_center.md) brings ACARS/CPDLC dispatch via Hoppie as a native Linux plugin, [XP CabinState](addon/cockpit/xp_cabinstate.md) simulates cabin, crew, and passengers — officially Windows-only, documented with a tested Wine setup and the SimLoad Manager integration — [XP BirdState](addon/scenery_addons/xp_birdstate.md) adds bird flocks with an official Linux build, and [Night Sky Fix](addon/scenery_addons/night_sky_fix.md) replaces the star catalog for a visible Milky Way
@@ -46,8 +50,3 @@ This documentation is an open project. Improvements or additions can be contribu
 - [Easy Freighter](addon/toliss/mods/easy_freighter.md) now explains how the cargo door is switched per livery and lists the setup steps
 - The [Videos](videos.md) pages describe each video with duration and upload date in machine-readable form, so search engines can show them as video results
 - The sidebar shows only the active section, which cuts page weight by roughly 40 %; the retired airport blog posts were removed
-
-### 2026-08-21
-
-- The [X-Plane WINCTRL Plugin](addon/tools/winctrl.md) page was reworked. The vendor now trades as WINCTRL, so "Winwing" is gone from the documentation; **WINCTRL** means the hardware, the software is the **X-Plane WINCTRL plugin**. The udev section now recommends Debian's `uaccess` tag over `MODE="0666"` — including the trap that the rule file must be named `70-winctrl.rules`, because `99-*` sorts after `73-seat-late.rules` and the tag then does nothing. The vendor ID `4098` is a hexadecimal string (0x4098); the previous note claiming otherwise was wrong. New: custom FMC display fonts as `.xpwwf` files, and the rule that buttons assigned in X-Plane take precedence over the plugin. Supported hardware and the SimAppPro comparison were corrected
-- [X-Plane Configuration](xplane/setup_diagnose/config.md#controllers): new table separating the two device classes — joysticks, yokes and throttle quadrants are handled by the kernel and configured entirely inside X-Plane, while cockpit panels expose a root-only raw HID node and need a udev rule plus a plugin

@@ -110,7 +110,7 @@ Nur das, was der Anbieter dokumentiert oder die Release-Historie belegt:
 |---|---|---|---|
 | Quellcode | Geschlossen | Offen (Apache-2.0) | Offen (MIT) |
 | Kosten | Kostenlose Stufe gedeckelt, Pro im Abo | Kostenlos | Kostenlos |
-| Plattform | Windows, macOS, Linux | Windows, Linux, macOS (Apple Silicon) | Nur Linux |
+| Plattform | Windows, macOS, Linux | Windows, Linux, macOS (Apple Silicon) | Linux, macOS (Apple Silicon) |
 | Einhänge-Schicht | WinFSP / FUSE-T / FUSE 3 | FUSE | FUSE |
 | Geländedaten | Eigene Basispakete (Ortho4XP-basiert, ZL16), eingebauter Downloader | Nutzt die X-Plane-Szenerie plus Overlay-Downloads | DSF/TER-Pakete über `xearthlayer packages install` |
 | Kartenquellen | Bing, ArcGIS, Google, Apple (drei davon in der kostenlosen Stufe) | Bing, Google, Here, Yandex, Apple | Bing, Google, Apple, ArcGIS, MapBox, USGS |
@@ -121,7 +121,7 @@ Nur das, was der Anbieter dokumentiert oder die Release-Historie belegt:
 
 **Welches System passt besser?**
 
-- **Linux-Nutzer, die maximale Kontrolle wollen**: XEarthLayer und AutoOrtho sind offen, kostenlos, bis auf Thread-Zahlen und Cache-Stufen einstellbar, und ihr Verhalten lässt sich nachvollziehen, wenn etwas schiefgeht. XPME bietet davon nichts — sein Innenleben ist undokumentiert, und seine Linux-Builds sind nicht je Release zugesichert.
+- **Linux-Nutzer, die maximale Kontrolle wollen**: XEarthLayer und AutoOrtho sind offen, kostenlos, bis hin zu Thread-Zahlen und Cache-Stufen einstellbar, und ihr Verhalten lässt sich nachvollziehen, wenn etwas schiefgeht. XPME bietet davon nichts — sein Innenleben ist undokumentiert, und seine Linux-Builds sind nicht je Release zugesichert.
 
 - **Nutzer, die bereits Ortho4XP-Kacheln pflegen**: XPME ist das falsche Werkzeug. Ortho4XP ist ein dokumentierter Konflikt und muss weichen, während [statische Kacheln mit Streaming zu kombinieren](static_plus_streaming.md) bei den anderen beiden ein unterstützter Arbeitsablauf ist.
 

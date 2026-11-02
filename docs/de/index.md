@@ -35,6 +35,10 @@ Diese Dokumentation ist ein offenes Projekt. Verbesserungen oder Ergänzungen k�
 
 ## Letzte Änderungen
 
+### 2026-11-02
+
+- [XEarthLayer](scenery/ortho_streaming/xearthlayer.md) auf den Stand von Version 0.5.0 gebracht: macOS-Unterstützung, generierte Nachtbeleuchtung für Ortho-Szenerie, die neu gebaute Paketbibliothek mit 17 Regionen samt neuem Paketmanager, eine eigene Prefetch-Spur, die X-Planes Kachelanfragen nie ausbremst, und XDG-Pfade unter `~/.config` und `~/.cache`. Ein Warnkasten beschreibt den Umstieg von der alten Paketgeneration
+
 ### 2026-11-01
 
 - Neue Plugin-Seiten: [AOC Datalink Center](addon/cockpit/aoc_datalink_center.md) bringt ACARS/CPDLC-Dispatch über Hoppie als natives Linux-Plugin, [XP CabinState](addon/cockpit/xp_cabinstate.md) simuliert Kabine, Crew und Passagiere — offiziell nur für Windows, dokumentiert mit getestetem Wine-Setup und der Anbindung an SimLoad Manager —, [XP BirdState](addon/scenery_addons/xp_birdstate.md) ergänzt Vogelschwärme mit offiziellem Linux-Build, und [Night Sky Fix](addon/scenery_addons/night_sky_fix.md) ersetzt den Sternkatalog für eine sichtbare Milchstraße
@@ -46,8 +50,3 @@ Diese Dokumentation ist ein offenes Projekt. Verbesserungen oder Ergänzungen k�
 - [Easy Freighter](addon/toliss/mods/easy_freighter.md) erklärt jetzt, wie die Frachttür pro Livery geschaltet wird, und listet die Einrichtungsschritte
 - Die [Videos](videos.md)-Seiten beschreiben jedes Video mit Dauer und Upload-Datum maschinenlesbar, sodass Suchmaschinen sie als Videoergebnisse anzeigen können
 - Die Seitenleiste zeigt nur noch die aktive Sektion, was das Seitengewicht um rund 40 % senkt; die eingestellten Flughafen-Blogbeiträge wurden entfernt
-
-### 2026-08-21
-
-- Die Seite [X-Plane WINCTRL Plugin](addon/tools/winctrl.md) wurde überarbeitet. Der Hersteller firmiert inzwischen als WINCTRL, deshalb ist „Winwing" aus der Dokumentation verschwunden; **WINCTRL** meint die Hardware, die Software heißt **X-Plane WINCTRL Plugin**. Der udev-Abschnitt empfiehlt jetzt den Debian-Tag `uaccess` statt `MODE="0666"` — samt der Falle, dass die Regeldatei `70-winctrl.rules` heißen muss, weil `99-*` nach `73-seat-late.rules` einsortiert und der Tag dann wirkungslos bleibt. Die Vendor-ID `4098` ist ein Hexadezimal-String (0x4098); der bisherige gegenteilige Hinweis war falsch. Neu: eigene FMC-Display-Schriften als `.xpwwf`-Dateien und der Vorrang von Tasten, die in X-Plane zugewiesen sind. Unterstützte Hardware und der Vergleich mit SimAppPro wurden korrigiert
-- [X-Plane-Konfiguration](xplane/setup_diagnose/config.md#controller): neue Tabelle zur Unterscheidung der zwei Geräteklassen — Joysticks, Yokes und Schubhebel erledigt der Kernel, konfiguriert wird in X-Plane; Cockpitpanels legen dagegen einen Raw-HID-Knoten an, der root gehört, und brauchen udev-Regel plus Plugin
