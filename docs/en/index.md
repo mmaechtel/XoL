@@ -35,6 +35,13 @@ This documentation is an open project. Improvements or additions can be contribu
 
 ## Recent Changes
 
+### 2026-11-22
+
+- [SGES](addon/flylua_scripts/sges.md): development of the FlyWithLua script has ended; the page now covers its native successor SGES NG, currently in testing (X-Plane 12.4 or newer, no FlyWithLua needed)
+- [X-ProTurb](addon/flylua_scripts/xproturb.md) updated: one-time calibration per aircraft, real-world weather data via LiveCAT, separate atmosphere and aircraft scales, and a revised installation section
+- [SimLoad Manager](addon/traffic/simloadmanager.md) opens and closes aircraft doors automatically as ground vehicles arrive; [XP CabinState](addon/cockpit/xp_cabinstate.md) adds new service trolleys and updates inside the program
+- [XEarthLayer](scenery/ortho_streaming/xearthlayer.md): the regional packages are built at ZL16, with ZL17 around ICAO airports
+
 ### 2026-11-02
 
 - [XEarthLayer](scenery/ortho_streaming/xearthlayer.md) updated for version 0.5.0: macOS support, generated night lighting for ortho scenery, the rebuilt 17-region package library with its new package manager, a separate prefetch lane that never delays X-Plane's tile requests, and XDG paths under `~/.config` and `~/.cache`. A warning box covers the switch from the old package generation
@@ -43,10 +50,3 @@ This documentation is an open project. Improvements or additions can be contribu
 
 - New plugin pages: [AOC Datalink Center](addon/cockpit/aoc_datalink_center.md) brings ACARS/CPDLC dispatch via Hoppie as a native Linux plugin, [XP CabinState](addon/cockpit/xp_cabinstate.md) simulates cabin, crew, and passengers — officially Windows-only, documented with a tested Wine setup and the SimLoad Manager integration — [XP BirdState](addon/scenery_addons/xp_birdstate.md) adds bird flocks with an official Linux build, and [Night Sky Fix](addon/scenery_addons/night_sky_fix.md) replaces the star catalog for a visible Milky Way
 - [SimLoad Manager](addon/traffic/simloadmanager.md) is now a native plugin with its own ground vehicles, passengers, and crew — no FlyWithLua or SGES required; the page moved to Traffic & Ground Ops
-
-### 2026-08-27
-
-- The section overview pages now carry real orientation text instead of a one-liner — what the section covers, for whom, and in which order to read: [Fundamentals](fundamentals/index.md), [Utilities](linux/extensions/index.md), [Structure & Sources](scenery/aufbau_quellen/index.md), [Orthophotography](scenery/orthophotography/index.md), [Autogen](scenery/autogen/index.md), [Scripting](addon/scripting/index.md), [ToLiss Mods](addon/toliss/mods/index.md), [Sounds](addon/sounds/index.md), [Tools](addon/tools/index.md), [Traffic & Ground Ops](addon/traffic/index.md), [Scenery Plugins](addon/scenery_addons/index.md), [Via KVM](addon/kvm/index.md), [Weather](flight_operations/weather/index.md), [Online](flight_operations/vatsim/index.md) and [Videos](videos.md). Along the way a few summaries were corrected against their detail pages — XRoads hides road polygons on ortho tiles rather than adding traffic, XOrganizer is Windows-only, and on X-Plane 12 openSAM v5 replaces standalone AutoDGS
-- [Easy Freighter](addon/toliss/mods/easy_freighter.md) now explains how the cargo door is switched per livery and lists the setup steps
-- The [Videos](videos.md) pages describe each video with duration and upload date in machine-readable form, so search engines can show them as video results
-- The sidebar shows only the active section, which cuts page weight by roughly 40 %; the retired airport blog posts were removed
