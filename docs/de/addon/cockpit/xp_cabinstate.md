@@ -14,10 +14,12 @@ XP CabinState simuliert Kabine, Crew und Passagiere neben [X-Plane](../../glossa
 - **Kompatibilität:** X-Plane 12.1.1 oder neuer (eingebaute Web API, standardmäßig aktiv)
 - **Flugzeuge:** 12 Kabinen — ToLiss A319 bis A340-600, Zibo/LevelUp 737-600 bis 900ER, DeltaWing ATR 72-600
 - **Begleit-Plugin:** XP CabinState Link (Figuren, Kabinenzeichen und Kabinensound in X-Plane) — nur Windows-Build
+- **Updates:** Im Programm integriert — nur melden (Standard), im Hintergrund herunterladen und per Klick installieren oder automatisch installieren; Programm und XP CabinState Link müssen dieselbe Version haben
 
 ## Funktionsumfang
 
 - **Kompletter Flugablauf:** Boarding, Sicherheitsvorführung, Trolley-Service, Landung, Aussteigen und Reinigung; die Crew reagiert auf Rufknöpfe
+- **Servicewagen:** Getränke-, Essens-, Duty-free- und Abfall-Trolleys sowie verplombte Catering-Trolleys mit Töpfen, Bechern, Dosen, Flaschen, Menüboxen und Duty-free-Waren — in der 3D-Kabine und mit XP CabinState Link auch in X-Plane
 - **Durchsagen:** Crew-Durchsagen auf Deutsch und Englisch, Gate-Durchsagen mit Terminal-Sound, Boarding-Musik und Gong
 - **Bordbildschirm:** Sicherheitsvideo und Kabinenkarte mit Route und Position
 - **3D-Kabine:** Kabinenansicht mit Crew und Sitzbelegung in der WebUI
@@ -33,6 +35,7 @@ XP CabinState simuliert Kabine, Crew und Passagiere neben [X-Plane](../../glossa
 | Logbuch | Letzte 5 Flüge | Vollständig, mit Flugbericht |
 | Airline-Modus (Flotte, Bank, Personal, Verträge, Abrechnung) | — | Ja |
 | Eigene Medien und Sitzpläne | — | Ja |
+| Bewegte Passagiere und Crew in der X-Plane-Kabine der DeltaWing ATR 72-600 (benötigt XP CabinState Link) | — | Ja |
 
 ## Mehrwert in der Flugsimulation
 
@@ -57,9 +60,10 @@ WINEPREFIX="$HOME/.wine-xpcabinstate" wine XPCabinState.exe --headless --run-sec
 
 - **`--headless`** ist nötig — das Programmfenster braucht WebView2/.NET, das unter Wine nicht verfügbar ist
 - **`--run-seconds`** ist nötig — ohne die Option stürzt das Programm mit `OverflowError: timestamp out of range` ab; der Wert ist die Laufzeit in Sekunden und darf großzügig gewählt werden (86400 entspricht 24 Stunden)
-- **WebUI:** Standardmäßig Port 8130 auf allen Interfaces; ist er belegt, nimmt das Programm den nächsten freien Port (die Adresse steht im Protokoll `Documents/XP-CabinState/XP CabinState.log` im Wine-Prefix). Einmal `http://127.0.0.1:8130/?k=<schlüssel>` mit dem Zugangsschlüssel aus `Documents/XP-CabinState/Spielstand/ui_key.txt` aufrufen, den Port bei Bedarf anpassen — der Browser merkt sich den Zugang per Cookie
+- **WebUI:** Standardmäßig Port 8130 auf allen Interfaces; ist er belegt, nimmt das Programm den nächsten freien Port (die Adresse steht in `XP CabinState.log`, das sowohl neben `XPCabinState.exe` als auch in `Documents/XP-CabinState/` im Wine-Prefix liegt). Einmal `http://127.0.0.1:8130/?k=<schlüssel>` mit dem Zugangsschlüssel aus `Documents/XP-CabinState/Spielstand/ui_key.txt` aufrufen, den Port bei Bedarf anpassen — der Browser merkt sich den Zugang per Cookie
 - **Ton:** Kommt aus dem Browser (Schalter in der WebUI); nur in einem Browser einschalten, sonst laufen Durchsagen doppelt
 - **Bordbildschirm:** Unter `/?ife=1` erreichbar, etwa im [AviTab](avitab.md)-Browser
+- **Updates:** Der integrierte Updater ist unter Wine ungetestet; für ein manuelles Update den ganzen Programmordner ersetzen — die Spielstände in `Documents/XP-CabinState/` im Wine-Prefix bleiben erhalten
 
 Da XP CabinState Link keinen Linux-Build hat, fehlen die Figuren in der X-Plane-Kabine, der Ton im Sim, das X-Plane-Menü und die Kabinenkamera. Alles andere läuft in der WebUI.
 

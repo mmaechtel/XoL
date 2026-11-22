@@ -1,18 +1,35 @@
 ---
-description: "SGES ground equipment for X-Plane 12 — FlyWithLua script adding GPU, fuel trucks, animated passengers, chocks, pushback, and deicing to the ramp."
+description: "SGES ground equipment for X-Plane — discontinued FlyWithLua script for GPU, fuel trucks, passengers, chocks and pushback; successor SGES NG in testing."
 ---
 # SGES — Simple Ground Equipment & Services
 
-SGES is a [FlyWithLua](../scripting/flywithlua.md) script that adds comprehensive ground handling equipment to [X-Plane](../../glossary.md#x-plane) 12. It places and animates static and moving objects around the aircraft on the apron — from GPU and fuel truck to animated passengers and a simplified marshaller.
+SGES is a [FlyWithLua](../scripting/flywithlua.md) script that adds comprehensive ground handling equipment to [X-Plane](../../glossary.md#x-plane). It places and animates static and moving objects around the aircraft on the apron — from GPU and fuel truck to animated passengers and a simplified marshaller.
 
 ## Background
 
 - **Developer:** XPJavelin
 - **Download:** [forums.x-plane.org](https://forums.x-plane.org/files/file/62296-simple-ground-equipment-services-low-tech-services/)
 - **Platforms:** Windows, macOS, Linux (pure Lua)
-- **Compatibility:** X-Plane 12
+- **Compatibility:** X-Plane 11.5 and X-Plane 12
 - **Dependency:** [FlyWithLua NG+](../scripting/flywithlua.md)
-- **Updates:** Via [SkunkCrafts Updater](../tools/skunkcrafts_updater.md)
+- **Status:** Development ended in November 2026, successor SGES NG in testing
+
+!!! warning "End of development"
+
+    The FlyWithLua script will receive no further bug fixes or updates. Its final version stays available for download. The developer recommends staying with the script until the successor is released.
+
+## Successor: SGES NG
+
+SGES NG (New Generation) is a native plugin, rewritten from scratch, that is to replace the FlyWithLua script. It carries over the full feature set and reads existing SGES files.
+
+- **Platforms:** Linux and Windows
+- **Requirement:** X-Plane 12.4 or newer
+- **Dependencies:** None, FlyWithLua is no longer needed
+- **Updates:** Built-in updater
+- **License:** Proprietary. Unlike the script, SGES NG may not be modified or redistributed
+- **Status:** Testing. A first test build is linked from the download page, the general release is still pending
+
+Anyone on X-Plane 11 or an X-Plane 12 version before 12.4 stays on the final FlyWithLua version.
 
 ## Features
 
@@ -36,7 +53,7 @@ SGES fills the gap between static default ramps and paid ground service solution
 
 **Download:** [forums.x-plane.org](https://forums.x-plane.org/files/file/62296-simple-ground-equipment-services-low-tech-services/)
 
-Place the SGES files into `Resources/plugins/FlyWithLua/Scripts/`. Follow the included PDF manual for the SkunkCrafts Updater configuration file.
+Place the SGES files into `Resources/plugins/FlyWithLua/Scripts/`. The final version no longer ships a SkunkCrafts Updater configuration, so the [SkunkCrafts Updater](../tools/skunkcrafts_updater.md) no longer covers SGES.
 
 After first launch, assign a keyboard key to toggle the SGES menu via `Settings > Keyboard`. Generate the airport cache via `Plugins > FlyWithLua > Macros > SGES refresh`.
 
@@ -45,4 +62,5 @@ SGES ships with five PDF manuals covering general use, animated passengers, arre
 ## Sources
 
 - [SGES — forums.x-plane.org](https://forums.x-plane.org/files/file/62296-simple-ground-equipment-services-low-tech-services/)
+- [SGES NG announcement — community.x-plane.com](https://community.x-plane.com/topic/270-simple-ground-equipment-and-services/)
 - [SGES — x-plane.to](https://x-plane.to/file/176/simple-ground-equipment-services-low-tech-ground-services)

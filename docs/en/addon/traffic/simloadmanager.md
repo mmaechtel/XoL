@@ -14,7 +14,7 @@ SimLoad Manager is a native [plugin](../../glossary.md#plugin) for [X-Plane](../
 - **Dependencies:** None — [SGES](../flylua_scripts/sges.md) is optional and only then requires [FlyWithLua NG+](../scripting/flywithlua.md)
 - **Optional:** SimBrief account (an enriched manual flight plan is also supported)
 
-Supported aircraft include the Laminar default fleet (737-800, A330-300, MD-82, C750 and most smaller Laminar aircraft), Zibo/LevelUp 737-600 to 900ER, all ToLiss aircraft, X-Crafts E-Jets and ERJ, Flight Factor 757/767 and A320, FPS 747-800, Rotate MD80, FlyJSim 732, and the Colimata Concorde FXP. For the Q4XP, SimLoad Manager automatically disables its weight and fuel integration.
+Supported aircraft include the Laminar default fleet (737-800, A330-300, MD-82, C750 and most smaller Laminar aircraft), Zibo/LevelUp 737-600 to 900ER, all ToLiss aircraft, X-Crafts E-Jets and ERJ, Flight Factor 757/767 and A320, FPS 747-800, Rotate MD80, FlyJSim 732, the CalibraSim A330-200, and the Colimata Concorde FXP. For the Q4XP, SimLoad Manager automatically disables its weight and fuel integration.
 
 ## Features
 
@@ -23,6 +23,8 @@ Supported aircraft include the Laminar default fleet (737-800, A330-300, MD-82, 
 - **Ground Ops:** All vehicles are managed by SimLoad Manager itself — animated X-Plane vehicles plus 3D models by Isar Simworks (stairs, ULD loaders, fresh and waste water trucks); every vehicle is optional per profile
 - **Passengers and crew:** Animated passengers and crew
 - **Ground Planner:** Editor for per-aircraft ground profiles — vehicle positions, forward and reverse routes, wait times, height adjustment, and in-sim testing of single vehicles or whole stages
+- **Placement Editor:** Can show a to-scale top-down screenshot of the aircraft under the plan and warns when a lifting vehicle's height is out of range
+- **Automatic doors:** Passenger, cargo and service doors open and close as the ground vehicles arrive and leave; set up per vehicle position in the Placement Editor via commands or datarefs. Doors operated by hand are left alone
 - **Vehicle beacons:** On, while driving, or off
 - **Ground handling details:** GPU management per aircraft type, a checklist, buses and stairs arriving after catering
 - **Data sources:** SimBrief import or an enriched manual flight plan; automatic flight plan detection
@@ -32,6 +34,7 @@ Supported aircraft include the Laminar default fleet (737-800, A330-300, MD-82, 
 - **Loadsheet:** SLMLS loadsheet, also as ACARS uplink via Hoppie or SayIntentions.ai (addressed to the flight number or SimBrief callsign)
 - **Sound:** Ambient sounds, AI voice alerts, and boarding music (custom WAV files supported)
 - **Web server:** The UI can be opened on a second screen, a tablet, or the AviTab browser
+- **Performance:** Almost no CPU load until Start is pressed; vehicle and character models are released from VRAM in flight and reloaded for the next turnaround
 - **Integrations:** Custom commands, Flight Sim Deck, SimChecklist.eu, auto-save; UI languages EN/FR/IT/ES/DE
 
 ## Value in Flight Simulation
@@ -45,7 +48,8 @@ A turnaround takes time and follows a sequence. SimLoad Manager adds this phase 
 Extract the archive and copy the complete `SimLoadManager/` folder into `Resources/plugins/` — do not rename it. After starting X-Plane, the plugin is available under **Plugins → SimLoad Manager**.
 
 - **Settings:** Stored in `Output/preferences/simload_settings.txt` — deleting the plugin folder during an update does not reset them
-- **Ground profiles:** Stored in `Resources/plugins/SimLoadManager/profiles/` and can be shared; the builds ship without profiles; the developer links default profiles and a guide
+- **Ground profiles:** Stored in `Resources/plugins/SimLoadManager/profiles/` and can be shared; the builds ship without profiles. The developer links ready-made profiles on the download page with configured doors for the ToLiss A319/A320/A321, Zibo and LevelUp 737, Laminar 737 and A330, and X-Crafts E-Jets
+- **Vehicle packs:** At startup, SimLoad Manager checks that the vehicle packs are complete and offers missing files for download
 - **Updates:** Via the [SkunkCrafts Updater](../tools/skunkcrafts_updater.md)
 
 !!! warning "Switching from the FlyWithLua version"

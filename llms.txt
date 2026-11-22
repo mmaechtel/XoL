@@ -94,7 +94,7 @@
 - [Ortho Streaming](https://xol.emvisio.de/en/scenery/ortho_streaming/index.html): Ortho streaming for X-Plane on Linux: AutoOrtho, XEarthLayer and XPME deliver satellite imagery on demand via FUSE, combinable with local Ortho4XP tiles.
 - [How It Works](https://xol.emvisio.de/en/scenery/ortho_streaming/how_streaming_works.html): How ortho streaming works in X-Plane: the DSF→.ter→DDS texture chain, FUSE virtual filesystem, streaming pipeline, cache architecture, and Linux advantages.
 - [AutoOrtho](https://xol.emvisio.de/en/scenery/ortho_streaming/autoortho.html): AutoOrtho streams satellite imagery into X-Plane in real time via FUSE. Setup guide for Linux with configuration, troubleshooting, and Ortho4XP comparison.
-- [XEarthLayer](https://xol.emvisio.de/en/scenery/ortho_streaming/xearthlayer.html): XEarthLayer — Rust-based ortho streaming for X-Plane 12 on Linux with GPU-accelerated encoding, adaptive prefetch, and a three-tier cache.
+- [XEarthLayer](https://xol.emvisio.de/en/scenery/ortho_streaming/xearthlayer.html): XEarthLayer — Rust-based ortho streaming for X-Plane 12 on Linux with GPU-accelerated encoding, adaptive prefetch, generated night lighting, and a three-tier cache.
 - [XPME](https://xol.emvisio.de/en/scenery/ortho_streaming/xpme.html): XPME streams satellite imagery into X-Plane 12 via a mounted virtual filesystem — Linux setup, free versus Pro tier, and how it compares.
 - [Static + Streaming](https://xol.emvisio.de/en/scenery/ortho_streaming/static_plus_streaming.html): Combine Ortho4XP static tiles with AutoOrtho streaming in X-Plane. Setup guide for scenery_packs.ini priority, mesh-only generation, and LiDAR data.
 
@@ -123,8 +123,8 @@
 - [SimBrief Simple OFP](https://xol.emvisio.de/en/addon/flylua_scripts/simbrief_simple_ofp.html): SimBrief Simple OFP for X-Plane — FlyWithLua script that downloads and displays your SimBrief flight plan as an in-simulator overlay.
 - [SimReaperXP](https://xol.emvisio.de/en/addon/flylua_scripts/simreaperxp.html): SimReaperXP for X-Plane 12 — FlyWithLua script that recovers up to 10 FPS by selectively disabling shadows, lights, and water rendering.
 - [SimScreen Overlay](https://xol.emvisio.de/en/addon/flylua_scripts/simscreenoverlay.html): SimScreen Overlay for X-Plane 12 — FlyWithLua script that stamps flight data onto screenshots with optional SimBrief integration.
-- [SGES](https://xol.emvisio.de/en/addon/flylua_scripts/sges.html): SGES ground equipment for X-Plane 12 — FlyWithLua script adding GPU, fuel trucks, animated passengers, chocks, pushback, and deicing to the ramp.
-- [X-ProTurb](https://xol.emvisio.de/en/addon/flylua_scripts/xproturb.html): X-ProTurb — FlyWithLua turbulence engine for X-Plane 12 with physics-based atmospheric models (MIL-F-8785C, ICAO 9625) and 6-DOF response.
+- [SGES](https://xol.emvisio.de/en/addon/flylua_scripts/sges.html): SGES ground equipment for X-Plane — discontinued FlyWithLua script for GPU, fuel trucks, passengers, chocks and pushback; successor SGES NG in testing.
+- [X-ProTurb](https://xol.emvisio.de/en/addon/flylua_scripts/xproturb.html): X-ProTurb — FlyWithLua turbulence engine for X-Plane 12 with physics-based atmospheric models (MIL-F-8785C, ICAO 9625) and an aircraft-specific gust response.
 - [AutoHaze](https://xol.emvisio.de/en/addon/flylua_scripts/autohaze.html): AutoHaze is a FlyWithLua script for X-Plane 12 that replaces the default haze with turbidity derived from real satellite aerosol and weather data.
 
 ### ToLiss Ecosystem

@@ -3,14 +3,14 @@ description: "Eight FlyWithLua scripts for X-Plane 12 — haze correction, turbu
 ---
 # FlyWithLua Scripts
 
-Eight FlyWithLua scripts for daily use: from 3D Rain Stop, Dynamic Rain Rate and AutoHaze for realistic weather and visibility, through X-ProTurb for physics-based turbulence and SimBrief integration, to SimReaperXP for memory cleanup and SGES for ground effect simulation.
+Eight FlyWithLua scripts for daily use: from 3D Rain Stop, Dynamic Rain Rate and AutoHaze for realistic weather and visibility, through X-ProTurb for physics-based turbulence and SimBrief integration, to SimReaperXP for memory cleanup and SGES for ground equipment.
 
 - **[3D Rain Stop](3drainspeedstop.md)** — Stop rain in cockpit with closed windows
 - **[Dynamic Rain Rate](rain_rate.md)** — Dynamic rain intensity
 - **[SimBrief Simple OFP](simbrief_simple_ofp.md)** — SimBrief flight plan in the simulator
 - **[SimReaperXP](simreaperxp.md)** — Memory cleanup during runtime
 - **[SimScreen Overlay](simscreenoverlay.md)** — Screen overlay for flight data
-- **[SGES](sges.md)** — Ground Effect Simulation
+- **[SGES](sges.md)** — Ground equipment and services (discontinued)
 - **[X-ProTurb](xproturb.md)** — Physics-based turbulence engine
 - **[AutoHaze](autohaze.md)** — Haze correction from real atmospheric data
 
