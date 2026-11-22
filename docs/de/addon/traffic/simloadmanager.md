@@ -14,7 +14,7 @@ SimLoad Manager ist ein natives [Plugin](../../glossary.md#plugin) für [X-Plane
 - **Abhängigkeiten:** Keine — [SGES](../flylua_scripts/sges.md) ist optional und erfordert nur dann [FlyWithLua NG+](../scripting/flywithlua.md)
 - **Optional:** SimBrief-Konto (ein angereicherter manueller Flugplan ist ebenfalls möglich)
 
-Unterstützt werden die Laminar-Standardflotte (737-800, A330-300, MD-82, C750 und die meisten kleineren Laminar-Flugzeuge), Zibo/LevelUp 737-600 bis 900ER, alle ToLiss-Flugzeuge, X-Crafts E-Jets und ERJ, Flight Factor 757/767 und A320, FPS 747-800, Rotate MD80, FlyJSim 732 sowie die Colimata Concorde FXP. Beim Q4XP deaktiviert SimLoad Manager die Gewichts- und Treibstoff-Integration automatisch.
+Unterstützt werden die Laminar-Standardflotte (737-800, A330-300, MD-82, C750 und die meisten kleineren Laminar-Flugzeuge), Zibo/LevelUp 737-600 bis 900ER, alle ToLiss-Flugzeuge, X-Crafts E-Jets und ERJ, Flight Factor 757/767 und A320, FPS 747-800, Rotate MD80, FlyJSim 732, der CalibraSim A330-200 sowie die Colimata Concorde FXP. Beim Q4XP deaktiviert SimLoad Manager die Gewichts- und Treibstoff-Integration automatisch.
 
 ## Funktionsumfang
 
@@ -23,6 +23,8 @@ Unterstützt werden die Laminar-Standardflotte (737-800, A330-300, MD-82, C750 u
 - **Ground Ops:** Alle Fahrzeuge verwaltet SimLoad Manager selbst — animierte X-Plane-Fahrzeuge sowie 3D-Modelle von Isar Simworks (Treppen, ULD-Loader, Frisch- und Abwasserfahrzeuge); jedes Fahrzeug ist im Profil optional
 - **Passagiere und Crew:** Animierte Passagiere und Crew
 - **Ground Planner:** Editor für Bodenprofile je Flugzeug — Fahrzeugpositionen, Routen vorwärts und rückwärts, Wartezeiten, Höhenanpassung sowie Test einzelner Fahrzeuge oder ganzer Stages im Simulator
+- **Placement Editor:** Kann einen maßstabsgetreuen Screenshot des Flugzeugs von oben unter den Plan legen und warnt, wenn die Höhe eines Hubfahrzeugs außerhalb seines Arbeitsbereichs liegt
+- **Automatische Türen:** Passagier-, Fracht- und Servicetüren öffnen und schließen sich, wenn die Bodenfahrzeuge ankommen und abfahren; sie werden je Fahrzeugposition im Placement Editor über Commands oder Datarefs eingerichtet. Von Hand bediente Türen bleiben unangetastet
 - **Fahrzeug-Beacons:** An, während der Fahrt oder aus
 - **Ground-Handling-Details:** GPU-Management pro Flugzeugtyp, Checkliste, Busse und Treppen kommen nach dem Catering
 - **Datenquellen:** SimBrief-Import oder angereicherter manueller Flugplan; automatische Flugplanerkennung
@@ -32,6 +34,7 @@ Unterstützt werden die Laminar-Standardflotte (737-800, A330-300, MD-82, C750 u
 - **Loadsheet:** SLMLS-Loadsheet, auch als ACARS-Uplink über Hoppie oder SayIntentions.ai (adressiert an Flugnummer oder SimBrief-Callsign)
 - **Sound:** Umgebungsgeräusche, KI-Sprachansagen und Boarding-Musik (eigene WAV-Dateien möglich)
 - **Webserver:** Die UI lässt sich auf einem zweiten Bildschirm, einem Tablet oder im AviTab-Browser öffnen
+- **Performance:** Bis zum Druck auf Start fast keine CPU-Last; Fahrzeug- und Figurenmodelle werden im Flug aus dem VRAM entfernt und für den nächsten Turnaround neu geladen
 - **Integrationen:** Custom Commands, Flight Sim Deck, SimChecklist.eu, Auto-Save; UI-Sprachen EN/FR/IT/ES/DE
 
 ## Mehrwert in der Flugsimulation
@@ -45,7 +48,8 @@ Ein Turnaround braucht Zeit und folgt einer Sequenz. SimLoad Manager fügt diese
 Das Archiv entpacken und den kompletten Ordner `SimLoadManager/` nach `Resources/plugins/` kopieren — nicht umbenennen. Nach dem Start von X-Plane steht das Plugin unter **Plugins → SimLoad Manager** bereit.
 
 - **Einstellungen:** Liegen in `Output/preferences/simload_settings.txt` — das Löschen des Plugin-Ordners beim Update setzt sie nicht zurück
-- **Bodenprofile:** Liegen in `Resources/plugins/SimLoadManager/profiles/` und lassen sich teilen; die Builds enthalten keine Profile; Default-Profile und eine Anleitung verlinkt der Entwickler
+- **Bodenprofile:** Liegen in `Resources/plugins/SimLoadManager/profiles/` und lassen sich teilen; die Builds enthalten keine Profile. Der Entwickler verlinkt auf der Download-Seite fertige Profile mit eingerichteten Türen für ToLiss A319/A320/A321, Zibo und LevelUp 737, Laminar 737 und A330 sowie X-Crafts E-Jets
+- **Fahrzeugpakete:** Beim Start prüft SimLoad Manager, ob die Fahrzeugpakete vollständig sind, und bietet fehlende Dateien zum Download an
 - **Updates:** Über den [SkunkCrafts Updater](../tools/skunkcrafts_updater.md)
 
 !!! warning "Umstieg von der FlyWithLua-Version"

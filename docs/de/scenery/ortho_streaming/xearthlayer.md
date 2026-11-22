@@ -145,7 +145,7 @@ XEarthLayer sollte erst beendet werden, nachdem X-Plane geschlossen wurde — mi
 
 ## Regionale Pakete
 
-XEarthLayer benötigt separate **[DSF](../../glossary.md#dsf-distribution-scenery-format)/TER-Pakete** (Distribution Scenery Format / Terrain), die die [Mesh](../../glossary.md#mesh)-Daten und Terrain-Definitionen für die jeweiligen Regionen enthalten. Die Bibliothek deckt die Welt in 17 Regionen ab (insgesamt rund 161 GB, Antarktis noch nicht verfügbar). Installieren, Aktualisieren und Entfernen übernimmt der interaktive **Paketmanager** im Terminal:
+XEarthLayer benötigt separate **[DSF](../../glossary.md#dsf-distribution-scenery-format)/TER-Pakete** (Distribution Scenery Format / Terrain), die die [Mesh](../../glossary.md#mesh)-Daten und Terrain-Definitionen für die jeweiligen Regionen enthalten. Die Bibliothek deckt die Welt in 17 Regionen ab (insgesamt rund 161 GB, Antarktis noch nicht verfügbar). Die Pakete sind in [ZL](../../glossary.md#zl-zoom-level)16 gebaut, im Umkreis von 1 km um jeden ICAO-Flughafen in ZL17. Installieren, Aktualisieren und Entfernen übernimmt der interaktive **Paketmanager** im Terminal:
 
 ```bash
 # Paketmanager öffnen (Tabs Local, Library, Progress, Settings)

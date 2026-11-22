@@ -145,7 +145,7 @@ XEarthLayer should only be stopped after X-Plane has exited — with `q` on the 
 
 ## Regional Packages
 
-XEarthLayer requires separate **[DSF](../../glossary.md#dsf-distribution-scenery-format)/TER packages** (Distribution Scenery Format / Terrain) that contain the [mesh](../../glossary.md#mesh) data and terrain definitions for the respective regions. The library covers the world in 17 regions (about 161 GB in total, Antarctica not yet available). The interactive **package manager** handles installing, updating, and removing in the terminal:
+XEarthLayer requires separate **[DSF](../../glossary.md#dsf-distribution-scenery-format)/TER packages** (Distribution Scenery Format / Terrain) that contain the [mesh](../../glossary.md#mesh) data and terrain definitions for the respective regions. The library covers the world in 17 regions (about 161 GB in total, Antarctica not yet available). The packages are built at [ZL](../../glossary.md#zl-zoom-level)16, with ZL17 within a 1 km radius of every ICAO airport. The interactive **package manager** handles installing, updating, and removing in the terminal:
 
 ```bash
 # Open the package manager (Local, Library, Progress, Settings tabs)
