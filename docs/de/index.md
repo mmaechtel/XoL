@@ -37,7 +37,7 @@ Diese Dokumentation ist ein offenes Projekt. Verbesserungen oder Ergänzungen k�
 
 ### 2026-11-23
 
-- Neue Seite: [XP SnowState](addon/scenery_addons/xp_snowstate.md) korrigiert X-Planes Schnee mit echten Schneehöhen aus Messstationen und Wettermodellen — ein natives Plugin mit Linux-Build, derzeit in einer zeitlich begrenzten Beta
+- Neue Seite: [XP SnowState](addon/scenery_addons/xp_snowstate.md) korrigiert X-Planes Schnee mit echten Schneehöhen aus Messstationen und Wettermodellen — ein natives Plugin mit Linux-Build, derzeit in der Beta
 - [NOAA Weather](addon/scenery_addons/noaa_weather.md) für X-Plane 12.4.4 überarbeitet: Schnee aus X-Planes eigenen Wetterdateien, neuer Ordneraufbau, eine Tabelle der Einstellungen mit der Empfehlung für Online-Flüge und die Grenzen eines einzigen Schneewerts im Gebirge
 - [xa-snow](addon/scenery_addons/xa-snow.md) wurde vom Entwickler eingestellt, weil X-Plane 12.4.4 liegenden Schnee selbst zeichnet
 

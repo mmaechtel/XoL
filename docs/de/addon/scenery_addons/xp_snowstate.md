@@ -3,18 +3,14 @@ description: "XP SnowState für X-Plane 12 — natives Plugin, das X-Planes Schn
 ---
 # XP SnowState
 
-XP SnowState ist ein natives [Plugin](../../glossary.md#plugin) für [X-Plane](../../glossary.md#x-plane) 12. Es vergleicht den Schnee, den X-Plane zeigt, mit echten Schneehöhen aus Messstationen und Wettermodellen und korrigiert nur, wenn X-Plane klar danebenliegt. Das Paket enthält einen nativen Linux-Build.
-
-!!! note "Beta"
-
-    XP SnowState ist derzeit eine zeitlich begrenzte Beta, die bis zum 29. November 2026 läuft. Einen öffentlichen Download gibt es noch nicht; diese Seite enthält deshalb keinen Download-Link. Die Beschreibung kann sich bis zur Veröffentlichung ändern.
+XP SnowState ist ein natives [Plugin](../../glossary.md#plugin) für [X-Plane](../../glossary.md#x-plane) 12. Es vergleicht den Schnee, den X-Plane zeigt, mit echten Schneehöhen aus Messstationen und Wettermodellen und korrigiert nur, wenn X-Plane klar danebenliegt. Das Plugin befindet sich derzeit in der Beta und enthält einen nativen Linux-Build.
 
 ## Hintergrund
 
 - **Entwickler:** Isar Simworks (München)
 - **Website:** [isarsimworks.de](https://isarsimworks.de/)
 - **Lizenz:** Noch nicht angekündigt
-- **Status:** Zeitlich begrenzte Beta bis 29. November 2026, kein öffentlicher Download
+- **Status:** Beta, erhältlich über den Discord-Kanal des Entwicklers
 - **Plattformen:** Windows 10/11 (64 Bit), Linux (64 Bit), macOS 11+
 - **Kompatibilität:** X-Plane 12; 12.4.4+ empfohlen und für den Modus REGIONAL nötig
 - **Abhängigkeiten:** Keine (kein XPPython3); eine Internetverbindung ist erforderlich
@@ -54,7 +50,7 @@ Bei Winterflügen zu Talflughäfen wie Innsbruck, Samedan oder Bozen entscheidet
 
 ## Installation
 
-**Download:** Während der Beta kein öffentlicher Download
+**Download:** Während der Beta über den Discord-Kanal des Entwicklers
 
 XP SnowState ist ein natives Plugin: Der Ordner `XPSnowState` wird nach `Resources/plugins/` kopiert. Beim ersten Start lädt das Plugin einmalig die weltweite Stationsliste (rund 9 MB, einige Minuten). Das Menü **Plugins → XP SnowState Beta** öffnet Fenster und WebUI.
 

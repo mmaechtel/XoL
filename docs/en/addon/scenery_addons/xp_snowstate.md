@@ -3,18 +3,14 @@ description: "XP SnowState for X-Plane 12 — native plugin that corrects X-Plan
 ---
 # XP SnowState
 
-XP SnowState is a native [plugin](../../glossary.md#plugin) for [X-Plane](../../glossary.md#x-plane) 12 that compares the snow X-Plane shows with real snow depths from measuring stations and weather models, and corrects it only when X-Plane is clearly off. The package contains a native Linux build.
-
-!!! note "Beta"
-
-    XP SnowState is currently a time-limited beta that runs until 29 November 2026. There is no public download yet, so this page has no download link. The description may change until release.
+XP SnowState is a native [plugin](../../glossary.md#plugin) for [X-Plane](../../glossary.md#x-plane) 12 that compares the snow X-Plane shows with real snow depths from measuring stations and weather models, and corrects it only when X-Plane is clearly off. The plugin is currently in beta and includes a native Linux build.
 
 ## Background
 
 - **Developer:** Isar Simworks (Munich)
 - **Website:** [isarsimworks.de](https://isarsimworks.de/en/)
 - **License:** Not yet announced
-- **Status:** Time-limited beta until 29 November 2026, no public download
+- **Status:** Beta, available through the developer's Discord channel
 - **Platforms:** Windows 10/11 (64-bit), Linux (64-bit), macOS 11+
 - **Compatibility:** X-Plane 12; 12.4.4+ recommended and required for the REGIONAL mode
 - **Dependencies:** None (no XPPython3); an internet connection is required
@@ -54,7 +50,7 @@ For winter flights into valley airports such as Innsbruck, Samedan, or Bolzano, 
 
 ## Installation
 
-**Download:** No public download during the beta
+**Download:** During the beta through the developer's Discord channel
 
 XP SnowState is a native plugin: the folder `XPSnowState` is copied to `Resources/plugins/`. On first start the plugin downloads the worldwide station list once (about 9 MB, a few minutes). The menu **Plugins → XP SnowState Beta** opens the window and the WebUI.
 
