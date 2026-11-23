@@ -13,7 +13,7 @@ NOAA Weather is a Python-based [plugin](../../glossary.md#plugin) that adds snow
 - **Compatibility:** X-Plane 12.4.4 or newer (current pre-releases); for X-Plane 12.4.0–12.4.3 use the release NOAA Weather 12.4
 - **Prerequisite:** [XPPython3](../scripting/xppython3.md) 4.8.0+ for the current pre-releases, 4.6.0+ for NOAA Weather 12.4
 
-X-Plane 12 already builds its weather on NOAA GFS data, so according to the developer the plugin mostly monitors what Real Weather is doing. From X-Plane 12.4.4 on, the Real Weather files contain snow depth, and the plugin no longer downloads GFS data itself.
+X-Plane 12 already builds its weather on NOAA GFS data, so the plugin does not generate weather of its own; according to the developer it mostly monitors what Real Weather is doing. From X-Plane 12.4.4 on, the Real Weather files contain snow depth, and the plugin no longer downloads GFS data itself.
 
 ## Features
 
@@ -48,13 +48,13 @@ The plugin applies one snow value to the whole visible scene, taken from the GFS
 
 ## Value in Flight Simulation
 
-X-Plane's own snow depiction is not yet reliable. NOAA Weather applies the Real Weather snow depth as snow cover around the aircraft, reduces runway slipperiness in icing conditions, and adds a METAR comparison. Commercial weather engines such as Active Sky and xEnviro do not run on Linux. NOAA Weather does not replace them, but it adds snow and runway condition to Real Weather. A related addon is [AutoHaze](../flylua_scripts/autohaze.md), which recomputes the atmospheric haze from measured aerosol data.
+X-Plane's own snow depiction is not yet reliable. NOAA Weather applies the Real Weather snow depth as snow cover around the aircraft, reduces runway slipperiness in icing conditions, and adds a METAR comparison. Commercial weather engines such as Active Sky and xEnviro do not run on Linux; NOAA Weather does not replace them. A related addon is [AutoHaze](../flylua_scripts/autohaze.md), which recomputes the atmospheric haze from measured aerosol data.
 
 ## Installation
 
 **Download:** [GitHub Releases](https://github.com/biuti/XplaneNoaaWeather/releases)
 
-[XPPython3](../scripting/xppython3.md) must already be installed. On X-Plane 12.4.4, pick the latest release marked *Pre-release*. It comes as a single folder that is copied to `Resources/plugins/PythonPlugins/`:
+[XPPython3](../scripting/xppython3.md) must already be installed. On X-Plane 12.4.4 or newer, pick the latest release marked *Pre-release*. It comes as a single folder that is copied to `Resources/plugins/PythonPlugins/`:
 
 ```
 Resources/plugins/PythonPlugins/

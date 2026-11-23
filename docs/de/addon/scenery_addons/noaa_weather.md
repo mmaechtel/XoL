@@ -13,7 +13,7 @@ NOAA Weather ist ein Python-basiertes [Plugin](../../glossary.md#plugin), das X-
 - **Kompatibilität:** X-Plane 12.4.4 oder neuer (aktuelle Vorabversionen); für X-Plane 12.4.0–12.4.3 das Release NOAA Weather 12.4 verwenden
 - **Voraussetzung:** [XPPython3](../scripting/xppython3.md) 4.8.0+ für die aktuellen Vorabversionen, 4.6.0+ für NOAA Weather 12.4
 
-X-Plane 12 baut seine Wetter-Engine bereits auf NOAA-GFS-Daten auf, nach Angabe des Entwicklers beobachtet das Plugin deshalb vor allem, was Real Weather tut. Seit X-Plane 12.4.4 enthalten die Real-Weather-Dateien die Schneehöhe, und das Plugin lädt keine GFS-Daten mehr selbst herunter.
+X-Plane 12 baut seine Wetter-Engine bereits auf NOAA-GFS-Daten auf, das Plugin erzeugt deshalb kein eigenes Wetter; nach Angabe des Entwicklers beobachtet es vor allem, was Real Weather tut. Seit X-Plane 12.4.4 enthalten die Real-Weather-Dateien die Schneehöhe, und das Plugin lädt keine GFS-Daten mehr selbst herunter.
 
 ## Funktionsumfang
 
@@ -48,13 +48,13 @@ Das Plugin setzt einen einzigen Schneewert für die gesamte sichtbare Szene, ent
 
 ## Mehrwert in der Flugsimulation
 
-X-Planes eigene Schneedarstellung ist noch nicht verlässlich. NOAA Weather setzt die Schneehöhe aus Real Weather als Schneedecke um das Flugzeug, verringert die Pistenglätte bei Vereisung und ergänzt einen METAR-Vergleich. Kommerzielle Wetter-Engines wie Active Sky oder xEnviro laufen nicht unter Linux. NOAA Weather ersetzt sie nicht, ergänzt Real Weather aber um Schnee und Pistenzustand. Thematisch verwandt ist [AutoHaze](../flylua_scripts/autohaze.md), das den atmosphärischen Dunst aus gemessenen Aerosoldaten neu berechnet.
+X-Planes eigene Schneedarstellung ist noch nicht verlässlich. NOAA Weather setzt die Schneehöhe aus Real Weather als Schneedecke um das Flugzeug, verringert die Pistenglätte bei Vereisung und ergänzt einen METAR-Vergleich. Kommerzielle Wetter-Engines wie Active Sky oder xEnviro laufen nicht unter Linux; NOAA Weather ersetzt sie nicht. Thematisch verwandt ist [AutoHaze](../flylua_scripts/autohaze.md), das den atmosphärischen Dunst aus gemessenen Aerosoldaten neu berechnet.
 
 ## Installation
 
 **Download:** [GitHub Releases](https://github.com/biuti/XplaneNoaaWeather/releases)
 
-[XPPython3](../scripting/xppython3.md) muss bereits installiert sein. Unter X-Plane 12.4.4 das neueste als *Pre-release* markierte Release wählen. Es besteht aus einem einzigen Ordner, der nach `Resources/plugins/PythonPlugins/` kopiert wird:
+[XPPython3](../scripting/xppython3.md) muss bereits installiert sein. Unter X-Plane 12.4.4 oder neuer das neueste als *Pre-release* markierte Release wählen. Es besteht aus einem einzigen Ordner, der nach `Resources/plugins/PythonPlugins/` kopiert wird:
 
 ```
 Resources/plugins/PythonPlugins/

@@ -1,5 +1,5 @@
 ---
-description: "xa-snow überlagert reale NOAA-Schneetiefen-Daten auf X-Plane-12-Szenerie und ersetzt einheitlichen Regionalschnee durch standortgenaue Abdeckung."
+description: "xa-snow legt reale NOAA-Schneehöhen auf die X-Plane-12-Szenerie — eingestellt, seit X-Plane 12.4.4 liegenden Schnee selbst zeichnet; nativer Linux-Build."
 ---
 # xa-snow
 
@@ -22,7 +22,7 @@ Vor X-Plane 12.4.4 ersetzte xa-snow X-Planes einheitlichen regionalen Schnee dur
 ## Funktionsumfang
 
 - **NOAA-Schneedaten:** Lädt 6-Stunden-Vorhersagen der akkumulierten Schneehöhe für die gesamte Erde herunter
-- **Räumliche Interpolation:** Überwindet X-Planes Beschränkung auf einheitliche regionale Schneebedeckung mit 0,25° Lat/Lon-Auflösung
+- **Räumliche Interpolation:** Überwand vor 12.4.4 X-Planes Beschränkung auf einheitliche regionale Schneebedeckung mit 0,25° Lat/Lon-Auflösung
 - **Küstenlinien-Bearbeitung:** Extrapoliert Landschnee zu Küstenlinien, die NOAA-IR-Bilder übersehen, mit optionaler Temperaturkorrektur zum Abschmelzen von ausgedehntem Küstenschnee bei hoher Bodentemperatur
 - **Historischer Schnee:** Lädt optional archivierte Schneedaten für ein vergangenes Datum (vor Flugstart) — das Archiv umfasst ungefähr ein Jahr, enthält aber Lücken
 - **Auto-Update:** Aktualisiert optional die Schneehöhen-Daten während langer Flüge — ressourcenintensiv und vom Upstream als potenziell instabil eingestuft
@@ -35,7 +35,7 @@ Legacy-Szeneries (meist aus XP11) zeigen übermäßig Schnee auf Runways und Tax
 
 ## Mehrwert in der Flugsimulation
 
-Vor 12.4.4 wurde X-Planes eingebauter Schnee einheitlich über große Regionen verteilt — entweder war alles bedeckt oder nichts. xa-snow bringt saisonalen Realismus, indem es Schnee dort zeigt, wo er tatsächlich liegt: schneebedeckte Alpen neben grünen Tälern, realistische Baumgrenzenübergänge und korrekte küstennahe Schneegrenzen. In Kombination mit Echtzeit-Wetter entsteht ein überzeugendes Winterflug-Erlebnis.
+Vor 12.4.4 wurde X-Planes eingebauter Schnee einheitlich über große Regionen verteilt — entweder war alles bedeckt oder nichts. xa-snow brachte saisonalen Realismus, indem es Schnee dort zeigte, wo er tatsächlich lag: schneebedeckte Alpen neben grünen Tälern, realistische Baumgrenzenübergänge und korrekte küstennahe Schneegrenzen. In Kombination mit Echtzeit-Wetter entstand ein überzeugendes Winterflug-Erlebnis.
 
 ## Installation
 

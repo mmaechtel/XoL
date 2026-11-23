@@ -7,7 +7,7 @@ XP SnowState ist ein natives [Plugin](../../glossary.md#plugin) für [X-Plane](.
 
 !!! note "Beta"
 
-    XP SnowState ist derzeit eine zeitlich begrenzte Beta, die bis zum 29. November 2026 läuft. Einen öffentlichen Download gibt es noch nicht; diese Seite enthält deshalb keinen Download-Link, und die Beschreibung kann sich bis zur Veröffentlichung ändern.
+    XP SnowState ist derzeit eine zeitlich begrenzte Beta, die bis zum 29. November 2026 läuft. Einen öffentlichen Download gibt es noch nicht; diese Seite enthält deshalb keinen Download-Link. Die Beschreibung kann sich bis zur Veröffentlichung ändern.
 
 ## Hintergrund
 
@@ -35,7 +35,7 @@ Der Modus bestimmt, wie weit das Plugin eingreift. Voreingestellt ist AUTO.
 
 | Modus | Verhalten |
 |---|---|
-| AUTO | Korrigiert nur bei klarer Abweichung (ab 3 cm und 50 % Abweichung) und gibt an X-Plane zurück, sobald es wieder stimmt |
+| AUTO | Korrigiert nur bei klarer Abweichung (ab 3 cm und 50 %) und gibt an X-Plane zurück, sobald es wieder stimmt |
 | ECHT | Setzt immer die echte Schneehöhe |
 | REGIONAL | Schreibt echte Schneehöhen rund um das Flugzeug in X-Planes eigene Schneedatei; X-Plane verteilt den Schnee danach selbst. Originale werden gesichert und wiederhergestellt |
 | MANUELL | Fester Wert zum Testen |
@@ -46,7 +46,7 @@ In AUTO, ECHT und MANUELL gilt der Schneewert für die gesamte sichtbare Szene. 
 
 ## Mehrwert in der Flugsimulation
 
-Bei Winterflügen zu Talflughäfen wie Innsbruck, Samedan oder Bozen entscheidet der Schnee am Platz darüber, wie der Anflug aussieht und wie sich die Piste verhält. Im Modus AUTO lässt XP SnowState X-Planes Schnee in Ruhe, solange er stimmt, und korrigiert ihn bei klarer Abweichung. Der Modus REGIONAL geht weiter und erhält X-Planes eigene regionale Darstellung; der Entwickler empfiehlt ihn für Gebirge und Talflughäfen.
+Bei Winterflügen zu Talflughäfen wie Innsbruck, Samedan oder Bozen entscheidet der Schnee am Platz darüber, wie der Anflug aussieht und wie sich die Piste verhält. Im Modus AUTO lässt XP SnowState X-Planes Schnee in Ruhe, solange er stimmt, und korrigiert ihn bei klarer Abweichung. Der Modus REGIONAL geht weiter: Statt eines Werts für die ganze Szene korrigiert er X-Planes regionalen Schnee, und am Boden sowie im Anflug stimmt der Wert am Flugzeug genau. Der Entwickler empfiehlt ihn für Gebirge und Talflughäfen.
 
 !!! warning "Nur ein Plugin darf den Schnee setzen"
 

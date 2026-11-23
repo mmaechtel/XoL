@@ -1,5 +1,5 @@
 ---
-description: "xa-snow overlays real-world NOAA snow depth data on X-Plane 12 scenery, replacing uniform regional snow with location-specific coverage on Linux."
+description: "xa-snow overlays real-world NOAA snow depth data on X-Plane 12 scenery — discontinued since X-Plane 12.4.4 draws accumulated snow itself; native Linux build."
 ---
 # xa-snow
 
@@ -22,7 +22,7 @@ Before X-Plane 12.4.4, xa-snow replaced X-Plane's uniform regional snow with loc
 ## Features
 
 - **NOAA snow data:** Downloads 6-hour accumulated snow depth forecasts covering the entire globe
-- **Spatial interpolation:** Overcomes X-Plane's limitation of uniform regional snow coverage at 0.25° lat/lon resolution
+- **Spatial interpolation:** Before 12.4.4, overcame X-Plane's limitation of uniform regional snow coverage at 0.25° lat/lon resolution
 - **Shoreline handling:** Extrapolates inland snow to coastlines that NOAA's IR imagery misses, with optional temperature correction that melts extended coastal snow when ground temperature is high
 - **Historical snow:** Optionally loads archived snow data for a past date, set before starting the flight — the archive covers roughly a year but has gaps
 - **Auto update:** Optionally refreshes snow depth data during long flights — resource-heavy and flagged upstream as potentially unstable
@@ -35,7 +35,7 @@ Legacy (mostly XP11) sceneries show excessive snow on runways and taxiways. Copy
 
 ## Value in Flight Simulation
 
-Before 12.4.4, X-Plane's built-in snow was applied uniformly across large regions — either everything was covered or nothing was. xa-snow brings seasonal realism by showing snow where it actually exists: snow-covered Alps next to green valleys, realistic treeline transitions, and accurate coastal snow boundaries. Combined with real weather, this creates convincing winter operations.
+Before 12.4.4, X-Plane's built-in snow was applied uniformly across large regions — either everything was covered or nothing was. xa-snow brought seasonal realism by showing snow where it actually existed: snow-covered Alps next to green valleys, realistic treeline transitions, and accurate coastal snow boundaries. Combined with real weather, this made for convincing winter operations.
 
 ## Installation
 

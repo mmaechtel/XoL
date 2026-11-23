@@ -7,7 +7,7 @@ XP SnowState is a native [plugin](../../glossary.md#plugin) for [X-Plane](../../
 
 !!! note "Beta"
 
-    XP SnowState is currently a time-limited beta that runs until 29 November 2026. There is no public download yet, so this page has no download link, and the description may change until release.
+    XP SnowState is currently a time-limited beta that runs until 29 November 2026. There is no public download yet, so this page has no download link. The description may change until release.
 
 ## Background
 
@@ -46,7 +46,7 @@ In AUTO, REAL, and MANUAL the snow value applies to the whole visible scene. REG
 
 ## Value in Flight Simulation
 
-For winter flights into valley airports such as Innsbruck, Samedan, or Bolzano, the snow at the airport decides how the approach looks and how the runway behaves. In AUTO mode XP SnowState leaves X-Plane's snow alone as long as it is correct and corrects it when it is clearly off. The REGIONAL mode goes further and keeps X-Plane's own regional depiction; the developer recommends it for mountains and valley airports.
+For winter flights into valley airports such as Innsbruck, Samedan, or Bolzano, the snow at the airport decides how the approach looks and how the runway behaves. In AUTO mode XP SnowState leaves X-Plane's snow alone as long as it is correct and corrects it when it is clearly off. The REGIONAL mode goes further: instead of one value for the whole scene it corrects X-Plane's regional snow, and on the ground and on approach the value at the aircraft is exact. The developer recommends it for mountains and valley airports.
 
 !!! warning "Only one plugin may set the snow"
 
