@@ -37,9 +37,9 @@ This documentation is an open project. Improvements or additions can be contribu
 
 ### 2026-11-23
 
-- New page: [XP SnowState](addon/scenery_addons/xp_snowstate.md) corrects X-Plane's snow with measured snow depths, separate for valley and mountain — a native plugin with a Linux build, currently in a time-limited beta
+- New page: [XP SnowState](addon/scenery_addons/xp_snowstate.md) corrects X-Plane's snow with real snow depths from measuring stations and weather models — a native plugin with a Linux build, currently in a time-limited beta
 - [NOAA Weather](addon/scenery_addons/noaa_weather.md) revised for X-Plane 12.4.4: snow from X-Plane's own weather files, new folder layout, a settings table with the recommendation for online flying, and the limits of a single snow value in the mountains
-- [xa-snow](addon/scenery_addons/xa-snow.md) has been discontinued by its developer, since X-Plane 12.4.4 draws accumulated snow itself
+- [xa-snow](addon/scenery_addons/xa-snow.md) has been discontinued by its developer because X-Plane 12.4.4 draws accumulated snow itself
 
 ### 2026-11-22
 

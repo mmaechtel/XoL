@@ -56,6 +56,7 @@ Definiert in `mkdocs.yml` unter `plugins > i18n > languages > nav`. Separate Nav
 - **Nur Linux-Spezifika:** Plattformunabhängige X-Plane-Einstellungen nicht dokumentieren
 - **Versionsnummern minimieren:** Entscheidungsbaum in `research/AUDIT_FLOW.md`. Kurzregel: Harte Mindestanforderungen behalten, illustrative Versionen entfernen. Akademische `??? abstract`-Blöcke sind ausgenommen.
 - **Quellenabschnitt** am Seitenende: nur offizielle, belastbare Quellen (max 5-8)
+- **Lektorat:** Jede neue oder überarbeitete Seite vor dem Merge vom Agenten `lektor` prüfen lassen — Aufbau, Formatierung und Formulierung wie die übrigen Seiten; der Text soll nach einem Menschen klingen, nicht nach KI.
 - **Anredekonvention DE:** Unpersönlicher Stil (Infinitiv, Passiv, „lassen sich") statt „Sie"-Anrede. EN bleibt unverändert.
 - **Freigegebene Quellen/Domains:** siehe `SKILL_RULES.md` + `.claude/settings.local.json`
 

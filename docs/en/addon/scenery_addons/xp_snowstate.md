@@ -1,38 +1,25 @@
 ---
-description: "XP SnowState for X-Plane 12 — native plugin that corrects X-Plane's snow with measured snow depths, separate for valley and mountain; beta with a Linux build."
+description: "XP SnowState for X-Plane 12 — native plugin that corrects X-Plane's snow with real snow depths from measuring stations and weather models; beta with a Linux build."
 ---
 # XP SnowState
 
-XP SnowState is a native [plugin](../../glossary.md#plugin) for [X-Plane](../../glossary.md#x-plane) 12 that compares the snow X-Plane shows with the snow depth actually measured at that place, and corrects it only when X-Plane is clearly off. The package contains a native Linux build.
+XP SnowState is a native [plugin](../../glossary.md#plugin) for [X-Plane](../../glossary.md#x-plane) 12 that compares the snow X-Plane shows with real snow depths from measuring stations and weather models, and corrects it only when X-Plane is clearly off. The package contains a native Linux build.
 
 !!! note "Beta"
-    XP SnowState is currently a time-limited beta that runs until 29 November 2026. There is no public download yet, so this page carries no download link. The description follows the README and manual of the beta package and may change until release.
+
+    XP SnowState is currently a time-limited beta that runs until 29 November 2026. There is no public download yet, so this page has no download link, and the description may change until release.
 
 ## Background
 
 - **Developer:** Isar Simworks (Munich)
 - **Website:** [isarsimworks.de](https://isarsimworks.de/en/)
-- **License:** Not yet announced (time-limited beta)
+- **License:** Not yet announced
+- **Status:** Time-limited beta until 29 November 2026, no public download
 - **Platforms:** Windows 10/11 (64-bit), Linux (64-bit), macOS 11+
 - **Compatibility:** X-Plane 12; 12.4.4+ recommended and required for the REGIONAL mode
 - **Dependencies:** None (no XPPython3); an internet connection is required
 
-Since 12.4.4, X-Plane draws its own regional snow with Real Weather from a GFS grid with cells about 28 km wide. On flat land that works, but in the mountains one cell averages valley and summit: valleys get too much snow, peaks too little. The developer's test example is Innsbruck, where X-Plane showed 9 cm at the airport while none was lying there.
-
-## Modes
-
-The mode decides how far the plugin intervenes. Only REGIONAL shows valley and mountain differently; in the other writing modes the value applies to the whole visible scene.
-
-| Mode | Behaviour |
-|---|---|
-| AUTO | Corrects only on a clear deviation (from 3 cm and 50 %) and hands back to X-Plane once it matches again |
-| REAL | Always sets the real snow depth |
-| REGIONAL | Writes real snow depths into X-Plane's own snow file around the aircraft; X-Plane then spreads the snow itself. Originals are backed up and restored |
-| MANUAL | Fixed value for testing |
-| WATCH | Writes nothing, only compares |
-| OFF | Plugin rests |
-
-REGIONAL works only with X-Plane's Real Weather and corrects the grid points of the existing file — the grid itself stays at 0.25°.
+Since 12.4.4, X-Plane draws its own regional snow with Real Weather from a GFS grid of 0.25° (cells about 28 km wide). On flat land that works, but in the mountains one cell averages valley and summit: valleys get too much snow, peaks too little. The developer's test example is Innsbruck, where X-Plane showed 9 cm at the airport although there was no snow on the ground.
 
 ## Features
 
@@ -42,20 +29,38 @@ REGIONAL works only with X-Plane's Real Weather and corrects the grid points of 
 - **Controls:** In-sim window and a WebUI in any browser at `http://127.0.0.1:8797/`, in English and German
 - **Diagnostics:** Nearby METAR in plain text, stations with height and distance, and X-Plane's own snow value side by side
 
+## Modes
+
+The mode decides how far the plugin intervenes. The default is AUTO.
+
+| Mode | Behaviour |
+|---|---|
+| AUTO | Corrects only on a clear deviation (at least 3 cm and 50 % off) and hands back to X-Plane once it matches again |
+| REAL | Always sets the real snow depth |
+| REGIONAL | Writes real snow depths into X-Plane's own snow file around the aircraft; X-Plane then spreads the snow itself. Originals are backed up and restored |
+| MANUAL | Fixed value for testing |
+| WATCH | Writes nothing, only compares |
+| OFF | Plugin inactive |
+
+In AUTO, REAL, and MANUAL the snow value applies to the whole visible scene. REGIONAL works only with X-Plane's Real Weather: it gives every grid point of X-Plane's snow file the depth that fits its terrain height and, on the ground and on approach, sets the exact value at the aircraft position. The grid stays at 0.25°, so the snow differs from region to region, but not between a valley and the summit right above it.
+
 ## Value in Flight Simulation
 
-For winter flights into valley airports such as Innsbruck, Samedan, or Bolzano, the snow at the airport decides how the approach looks and how the runway behaves. XP SnowState leaves X-Plane's regional snow untouched while it is right and steps in only where the coarse grid fails. Unlike plugins that set one value for the whole scene, the REGIONAL mode keeps X-Plane's own regional depiction.
+For winter flights into valley airports such as Innsbruck, Samedan, or Bolzano, the snow at the airport decides how the approach looks and how the runway behaves. In AUTO mode XP SnowState leaves X-Plane's snow alone as long as it is correct and corrects it when it is clearly off. The REGIONAL mode goes further and keeps X-Plane's own regional depiction; the developer recommends it for mountains and valley airports.
 
 !!! warning "Only one plugin may set the snow"
-    The developer asks to remove [xa-snow](xa-snow.md), which sets the snow for the whole scene. [NOAA Weather](noaa_weather.md) writes the same X-Plane snow and runway friction controls: switch off its snow cover and runway friction, or run XP SnowState in WATCH mode.
+
+    The developer asks to remove [xa-snow](xa-snow.md), which interferes with X-Plane's own snow and with XP SnowState. [NOAA Weather](noaa_weather.md) writes the same X-Plane datarefs for snow and runway friction: switch off **Accumulated Snow** and **Adjusted Runway Friction** there, or run XP SnowState in WATCH mode.
 
 ## Installation
+
+**Download:** No public download during the beta
 
 XP SnowState is a native plugin: the folder `XPSnowState` is copied to `Resources/plugins/`. On first start the plugin downloads the worldwide station list once (about 9 MB, a few minutes). The menu **Plugins → XP SnowState Beta** opens the window and the WebUI.
 
 ### Linux Notes
 
-The Linux build of the beta depends only on the C library and needs glibc 2.38 or newer — available in Ubuntu 24.04 and Debian 13, but not in Ubuntu 22.04 or Debian 12. The plugin was not yet tested in the simulator for this page; the functional description follows the developer's specification.
+The Linux build of the beta depends only on the C library and needs glibc 2.38 or newer — available in Ubuntu 24.04 and Debian 13, but not in Ubuntu 22.04 or Debian 12. The plugin has not been tested in the simulator for this page; the description follows the README and manual of the beta package.
 
 ## Sources
 

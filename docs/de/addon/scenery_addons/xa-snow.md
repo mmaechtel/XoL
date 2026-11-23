@@ -6,7 +6,8 @@ description: "xa-snow überlagert reale NOAA-Schneetiefen-Daten auf X-Plane-12-S
 xa-snow ist ein eigenständiges [Plugin](../../glossary.md#plugin) von hotbso, das reale Schneebedeckung auf die X-Plane-12-Szenerie legt. Es lädt akkumulierte Schneehöhendaten von NOAA herunter und wendet sie in Echtzeit auf die Simulation an.
 
 !!! warning "Eingestellt"
-    Der Entwickler hat xa-snow für überholt erklärt und das Repository archiviert: X-Plane 12.4.4 unterstützt liegenden Schnee nativ. Die letzte Version bleibt verfügbar, weitere Updates gibt es nicht. Schnee, der Tal und Berg trennt, bietet [XP SnowState](xp_snowstate.md).
+
+    Der Entwickler hat xa-snow für überholt erklärt und das Repository archiviert: X-Plane 12.4.4 unterstützt liegenden Schnee nativ. Die letzte Version bleibt verfügbar, weitere Updates gibt es nicht. Ist [XP SnowState](xp_snowstate.md) (Beta) oder die Schneedecke von [NOAA Weather](noaa_weather.md) aktiv, xa-snow entfernen.
 
 ## Hintergrund
 
@@ -14,8 +15,9 @@ xa-snow ist ein eigenständiges [Plugin](../../glossary.md#plugin) von hotbso, d
 - **Repository:** [github.com/hotbso/xa-snow](https://github.com/hotbso/xa-snow) (Open Source, GPL-3.0; libspng-Komponente BSD-2-Clause)
 - **Plattformen:** Windows, macOS, Linux (native Binaries)
 - **Kompatibilität:** [X-Plane](../../glossary.md#x-plane) 12
+- **Status:** Eingestellt, Repository archiviert
 
-xa-snow ersetzt X-Planes einheitlichen regionalen Schnee durch standortspezifische Bedeckung auf Basis tatsächlicher Wetterdaten.
+Vor X-Plane 12.4.4 ersetzte xa-snow X-Planes einheitlichen regionalen Schnee durch standortspezifische Bedeckung auf Basis tatsächlicher Wetterdaten.
 
 ## Funktionsumfang
 
@@ -33,13 +35,13 @@ Legacy-Szeneries (meist aus XP11) zeigen übermäßig Schnee auf Runways und Tax
 
 ## Mehrwert in der Flugsimulation
 
-X-Planes eingebauter Schnee wird einheitlich über große Regionen verteilt — entweder ist alles bedeckt oder nichts. xa-snow bringt saisonalen Realismus, indem es Schnee dort zeigt, wo er tatsächlich liegt: schneebedeckte Alpen neben grünen Tälern, realistische Baumgrenzenübergänge und korrekte küstennahe Schneegrenzen. In Kombination mit Echtzeit-Wetter entsteht ein überzeugendes Winterflug-Erlebnis.
+Vor 12.4.4 wurde X-Planes eingebauter Schnee einheitlich über große Regionen verteilt — entweder war alles bedeckt oder nichts. xa-snow bringt saisonalen Realismus, indem es Schnee dort zeigt, wo er tatsächlich liegt: schneebedeckte Alpen neben grünen Tälern, realistische Baumgrenzenübergänge und korrekte küstennahe Schneegrenzen. In Kombination mit Echtzeit-Wetter entsteht ein überzeugendes Winterflug-Erlebnis.
 
 ## Installation
 
 **Download:** [GitHub Releases](https://github.com/hotbso/xa-snow/releases)
 
-Die ZIP-Datei nach `Resources/plugins/` entpacken. Nach der Erstinstallation übernimmt der [SkunkCrafts Updater](../tools/skunkcrafts_updater.md) automatische Updates (PROD- oder BETA-Kanal).
+Die ZIP-Datei nach `Resources/plugins/` entpacken. Updates kamen bis zur Archivierung über den [SkunkCrafts Updater](../tools/skunkcrafts_updater.md).
 
 ### Linux-Hinweise
 
