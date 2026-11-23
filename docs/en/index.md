@@ -35,6 +35,12 @@ This documentation is an open project. Improvements or additions can be contribu
 
 ## Recent Changes
 
+### 2026-11-23
+
+- New page: [XP SnowState](addon/scenery_addons/xp_snowstate.md) corrects X-Plane's snow with real snow depths from measuring stations and weather models — a native plugin with a Linux build, currently in beta
+- [NOAA Weather](addon/scenery_addons/noaa_weather.md) revised for X-Plane 12.4.4: snow from X-Plane's own weather files, new folder layout, a settings table with the recommendation for online flying, and the limits of a single snow value in the mountains
+- [xa-snow](addon/scenery_addons/xa-snow.md) has been discontinued by its developer because X-Plane 12.4.4 draws accumulated snow itself
+
 ### 2026-11-22
 
 - [SGES](addon/flylua_scripts/sges.md): development of the FlyWithLua script has ended; the page now covers its native successor SGES NG, currently in testing (X-Plane 12.4 or newer, no FlyWithLua needed)
@@ -45,8 +51,3 @@ This documentation is an open project. Improvements or additions can be contribu
 ### 2026-11-02
 
 - [XEarthLayer](scenery/ortho_streaming/xearthlayer.md) updated for version 0.5.0: macOS support, generated night lighting for ortho scenery, the rebuilt 17-region package library with its new package manager, a separate prefetch lane that never delays X-Plane's tile requests, and XDG paths under `~/.config` and `~/.cache`. A warning box covers the switch from the old package generation
-
-### 2026-11-01
-
-- New plugin pages: [AOC Datalink Center](addon/cockpit/aoc_datalink_center.md) brings ACARS/CPDLC dispatch via Hoppie as a native Linux plugin, [XP CabinState](addon/cockpit/xp_cabinstate.md) simulates cabin, crew, and passengers — officially Windows-only, documented with a tested Wine setup and the SimLoad Manager integration — [XP BirdState](addon/scenery_addons/xp_birdstate.md) adds bird flocks with an official Linux build, and [Night Sky Fix](addon/scenery_addons/night_sky_fix.md) replaces the star catalog for a visible Milky Way
-- [SimLoad Manager](addon/traffic/simloadmanager.md) is now a native plugin with its own ground vehicles, passengers, and crew — no FlyWithLua or SGES required; the page moved to Traffic & Ground Ops
