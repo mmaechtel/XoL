@@ -19,7 +19,7 @@ X-Plane 12 already builds its weather on NOAA GFS data, so the plugin does not g
 
 - **Snow cover:** Reads the snow depth from X-Plane's Real Weather files at the aircraft position and sets the snow cover from it — according to the developer, X-Plane 12.4.4 does not yet interpret this data correctly on its own
 - **Last snow value:** Keeps the last valid snow depth for up to 70 nm when no value is available at the position, for example over water
-- **Runway friction:** X-Plane does not simulate runway treatment, so in icing conditions runways turn icy even at major airports. The plugin lowers such values to snow-covered at most
+- **Runway friction:** X-Plane does not simulate runway treatment, so in icing conditions even runways at major airports turn to ice; the plugin caps the runway condition at “snow-covered”
 - **METAR window:** Displays the METAR from X-Plane's Real Weather alongside an external source (NOAA, IVAO, or VATSIM) for any airport
 - **Weather info window:** Shows the live Real Weather values at the aircraft position: wind, visibility, temperature, pressure, and runway friction
 
@@ -44,7 +44,7 @@ The plugin applies one snow value to the whole visible scene, taken from the GFS
 
 !!! warning "Only one plugin may set the snow"
 
-    NOAA Weather and XP SnowState write the same X-Plane datarefs for snow and runway friction. When both are active, switch off **Accumulated Snow** in NOAA Weather. For the runway friction there are two ways: switch off **Adjusted Runway Friction** as well, or set **Set runway condition** to off in XP SnowState and leave the friction to NOAA Weather. The METAR window keeps working either way.
+    NOAA Weather and XP SnowState write the same X-Plane datarefs for snow and runway friction. When both are active, switch off **Accumulated Snow** in NOAA Weather. For the runway friction there are two ways: switch off **Adjusted Runway Friction** as well, or switch off **Set runway condition** in XP SnowState and leave the friction to NOAA Weather. The METAR window keeps working either way.
 
 ## Value in Flight Simulation
 

@@ -46,7 +46,7 @@ For winter flights into valley airports such as Innsbruck, Samedan, or Bolzano, 
 
 !!! warning "Only one plugin may set the snow"
 
-    The developer asks to remove [xa-snow](xa-snow.md), which interferes with X-Plane's own snow and with XP SnowState. [NOAA Weather](noaa_weather.md) writes the same X-Plane datarefs for snow and runway friction: switch off **Accumulated Snow** there. For the runway friction there are two ways: switch off **Adjusted Runway Friction** in NOAA Weather as well, or set **Set runway condition** to off in XP SnowState and leave the friction to NOAA Weather.
+    The developer asks to remove [xa-snow](xa-snow.md), which interferes with X-Plane's own snow and with XP SnowState. [NOAA Weather](noaa_weather.md) writes the same X-Plane datarefs for snow and runway friction: switch off **Accumulated Snow** there. For the runway friction there are two ways: switch off **Adjusted Runway Friction** in NOAA Weather as well, or switch off **Set runway condition** in XP SnowState and leave the friction to NOAA Weather.
 
 ## Installation
 
