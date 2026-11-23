@@ -11,28 +11,28 @@ NOAA Weather is a Python-based [plugin](../../glossary.md#plugin) that adds snow
 - **Repository:** [github.com/biuti/XplaneNoaaWeather](https://github.com/biuti/XplaneNoaaWeather) (open source, GPLv2 or later)
 - **Platforms:** Windows, macOS, Linux
 - **Compatibility:** X-Plane 12.4.4 or newer (current pre-releases); for X-Plane 12.4.0–12.4.3 use the release NOAA Weather 12.4
-- **Prerequisite:** [XPPython3](../scripting/xppython3.md) 4.8.0+ for the current pre-releases, 4.6.0+ for NOAA Weather 12.4
+- **Prerequisite:** [XPPython3](../scripting/xppython3.md) 4.8.0+ for NOAA Weather 12.4.4-beta.4 and later, 4.6.0+ for the earlier 12.4.4 betas and NOAA Weather 12.4
 
 X-Plane 12 already builds its weather on NOAA GFS data, so the plugin does not generate weather of its own; according to the developer it mostly monitors what Real Weather is doing. From X-Plane 12.4.4 on, the Real Weather files contain snow depth, and the plugin no longer downloads GFS data itself.
 
 ## Features
 
 - **Snow cover:** Reads the snow depth from X-Plane's Real Weather files at the aircraft position and sets the snow cover from it — according to the developer, X-Plane 12.4.4 does not yet interpret this data correctly on its own
-- **Last snow value:** Keeps the last valid snow depth for up to 70 nm when no value is available at the position, for example over water
+- **Missing snow values:** Uses a valid snow depth from around the position or from ahead along the track when the position has none (for example over water), and keeps a value as long as its location is within 70 nm
 - **Runway friction:** X-Plane does not simulate runway treatment, so in icing conditions even runways at major airports turn to ice; the plugin caps the runway condition at “snow-covered”
 - **METAR window:** Displays the METAR from X-Plane's Real Weather alongside an external source (NOAA, IVAO, or VATSIM) for any airport
-- **Weather info window:** Shows the live Real Weather values at the aircraft position: wind, visibility, temperature, pressure, and runway friction
+- **Weather info window:** Shows the live Real Weather values at the aircraft position (wind, visibility, temperature, pressure, and runway friction) and the METAR of the selected source
 
 ## Settings
 
-The settings are in the menu **Plugins → XP NOAA Weather → Configuration**. Only two of them change the simulator; the METAR settings affect the display only.
+The settings are in the menu **Plugins → XP NOAA Weather → Configuration**. With **Enable Plugin** off, the plugin sets neither snow nor friction. Of the settings below, only two change the simulator; the METAR settings affect the display only.
 
 | Setting | Default | Effect |
 |---|---|---|
 | Accumulated Snow | on | Sets the snow cover for the whole visible scene |
 | Adjusted Runway Friction | on | Reduces the slipperiness, as on a treated runway |
 | METAR Source | NOAA | Source shown in the METAR window: NOAA, IVAO, or VATSIM |
-| METAR Decoding | off | Adds a decoded text to the raw METAR |
+| METAR Decoding | off | Adds decoded values to the METAR in the weather info window |
 
 !!! tip "Online flying"
 
@@ -65,7 +65,7 @@ Resources/plugins/PythonPlugins/
     └── version.txt
 ```
 
-Before installing, completely remove any previous version (do not overwrite) — in particular the old layout with `PI_noaaWeather.py` and the folder `noaaweather/`. [XOrganizer](../tools/xorganizer.md) lists only `PI_*.py` files directly in `PythonPlugins/` and does not show the plugin; it still loads.
+Before installing, completely remove any previous version (do not overwrite) — in particular the old layout of the release NOAA Weather 12.4, with `PI_noaaWeather.py` and the folder `noaaweather/`. [XOrganizer](../tools/xorganizer.md) lists only `PI_*.py` files directly in `PythonPlugins/` and does not show the plugin; it still loads.
 
 ### Linux Notes
 

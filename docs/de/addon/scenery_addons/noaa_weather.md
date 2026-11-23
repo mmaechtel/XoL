@@ -11,28 +11,28 @@ NOAA Weather ist ein Python-basiertes [Plugin](../../glossary.md#plugin), das X-
 - **Repository:** [github.com/biuti/XplaneNoaaWeather](https://github.com/biuti/XplaneNoaaWeather) (Open Source, GPLv2 oder später)
 - **Plattformen:** Windows, macOS, Linux
 - **Kompatibilität:** X-Plane 12.4.4 oder neuer (aktuelle Vorabversionen); für X-Plane 12.4.0–12.4.3 das Release NOAA Weather 12.4 verwenden
-- **Voraussetzung:** [XPPython3](../scripting/xppython3.md) 4.8.0+ für die aktuellen Vorabversionen, 4.6.0+ für NOAA Weather 12.4
+- **Voraussetzung:** [XPPython3](../scripting/xppython3.md) 4.8.0+ ab NOAA Weather 12.4.4-beta.4, 4.6.0+ für die früheren 12.4.4-Betas und NOAA Weather 12.4
 
 X-Plane 12 baut seine Wetter-Engine bereits auf NOAA-GFS-Daten auf, das Plugin erzeugt deshalb kein eigenes Wetter; nach Angabe des Entwicklers beobachtet es vor allem, was Real Weather tut. Seit X-Plane 12.4.4 enthalten die Real-Weather-Dateien die Schneehöhe, und das Plugin lädt keine GFS-Daten mehr selbst herunter.
 
 ## Funktionsumfang
 
 - **Schneedecke:** Liest die Schneehöhe an der Flugzeugposition aus X-Planes Real-Weather-Dateien und setzt daraus die Schneedecke — nach Angabe des Entwicklers wertet X-Plane 12.4.4 diese Daten selbst noch nicht korrekt aus
-- **Letzter Schneewert:** Behält den letzten gültigen Schneewert bis zu 70 nm bei, wenn an der Position kein Wert vorliegt, etwa über Wasser
+- **Fehlende Schneewerte:** Übernimmt einen gültigen Schneewert aus der Umgebung der Position oder voraus auf dem Flugweg, wenn an der Position keiner vorliegt (etwa über Wasser), und behält einen Wert bei, solange sein Fundort weniger als 70 nm entfernt ist
 - **Pistenreibung:** X-Plane simuliert keine Pistenbehandlung, bei Vereisung werden deshalb auch Pisten großer Flughäfen zur Eisfläche; das Plugin begrenzt den Pistenzustand auf höchstens „verschneit“
 - **METAR-Fenster:** Zeigt das METAR aus X-Planes Real Weather neben einer externen Quelle (NOAA, IVAO oder VATSIM) für einen beliebigen Flughafen an
-- **Wetter-Infofenster:** Zeigt die aktuellen Real-Weather-Werte an der Flugzeugposition: Wind, Sicht, Temperatur, Druck und Pistenreibung
+- **Wetter-Infofenster:** Zeigt die aktuellen Real-Weather-Werte an der Flugzeugposition (Wind, Sicht, Temperatur, Druck und Pistenreibung) und das METAR der gewählten Quelle
 
 ## Einstellungen
 
-Die Einstellungen liegen im Menü **Plugins → XP NOAA Weather → Configuration**. Nur zwei davon verändern den Simulator; die METAR-Einstellungen betreffen allein die Anzeige.
+Die Einstellungen liegen im Menü **Plugins → XP NOAA Weather → Configuration**. Ist **Enable Plugin** aus, setzt das Plugin weder Schnee noch Reibung. Von den Einstellungen unten verändern nur zwei den Simulator; die METAR-Einstellungen betreffen allein die Anzeige.
 
 | Einstellung | Standard | Wirkung |
 |---|---|---|
 | Accumulated Snow | an | Setzt die Schneedecke für die gesamte sichtbare Szene |
 | Adjusted Runway Friction | an | Verringert die Glätte wie auf einer behandelten Piste |
 | METAR Source | NOAA | Quelle im METAR-Fenster: NOAA, IVAO oder VATSIM |
-| METAR Decoding | aus | Ergänzt das rohe METAR um Klartext |
+| METAR Decoding | aus | Ergänzt das METAR im Wetter-Infofenster um dekodierte Werte |
 
 !!! tip "Online-Flüge"
 
@@ -65,7 +65,7 @@ Resources/plugins/PythonPlugins/
     └── version.txt
 ```
 
-Vor der Installation eine eventuell vorhandene ältere Version vollständig löschen (nicht überschreiben) — insbesondere den alten Aufbau mit `PI_noaaWeather.py` und dem Ordner `noaaweather/`. [XOrganizer](../tools/xorganizer.md) listet nur `PI_*.py`-Dateien direkt in `PythonPlugins/` und zeigt das Plugin nicht an; es wird trotzdem geladen.
+Vor der Installation eine eventuell vorhandene ältere Version vollständig löschen (nicht überschreiben) — insbesondere den alten Aufbau des Release NOAA Weather 12.4 mit `PI_noaaWeather.py` und dem Ordner `noaaweather/`. [XOrganizer](../tools/xorganizer.md) listet nur `PI_*.py`-Dateien direkt in `PythonPlugins/` und zeigt das Plugin nicht an; es wird trotzdem geladen.
 
 ### Linux-Hinweise
 

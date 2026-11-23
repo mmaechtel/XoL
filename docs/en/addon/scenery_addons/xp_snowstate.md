@@ -10,10 +10,10 @@ XP SnowState is a native [plugin](../../glossary.md#plugin) for [X-Plane](../../
 - **Developer:** Isar Simworks (Munich)
 - **Website:** [isarsimworks.de](https://isarsimworks.de/en/)
 - **License:** Not yet announced
-- **Status:** Beta, available through the developer's Discord channel
-- **Platforms:** Windows 10/11 (64-bit), Linux (64-bit), macOS 11+
+- **Status:** Beta, available through the developer's Discord channel; the beta build stops working after 29 November 2026 (German time)
+- **Platforms:** Windows 10/11 (64-bit), Linux (64-bit), macOS 11+ (build not included in the beta package)
 - **Compatibility:** X-Plane 12; 12.4.4+ recommended and required for the REGIONAL mode
-- **Dependencies:** None (no XPPython3); an internet connection is required
+- **Dependencies:** Internet connection; XPPython3 is not needed
 
 Since 12.4.4, X-Plane draws its own regional snow with Real Weather from a GFS grid of 0.25° (cells about 28 km wide). On flat land that works, but in the mountains one cell averages valley and summit: valleys get too much snow, peaks too little. The developer's test example is Innsbruck, where X-Plane showed 9 cm at the airport although there was no snow on the ground.
 
@@ -38,7 +38,7 @@ The mode decides how far the plugin intervenes. The default is AUTO.
 | WATCH | Writes nothing, only compares |
 | OFF | Plugin inactive |
 
-In AUTO, REAL, and MANUAL the snow value applies to the whole visible scene. REGIONAL works only with X-Plane's Real Weather: it gives every grid point of X-Plane's snow file the depth that fits its terrain height and, on the ground and on approach, sets the exact value at the aircraft position. The grid stays at 0.25°, so the snow differs from region to region, but not between a valley and the summit right above it.
+In AUTO, REAL, and MANUAL the snow value applies to the whole visible scene. REGIONAL works only with X-Plane's Real Weather: within a radius around the aircraft (1° by default) it gives the grid points over land in X-Plane's snow file the depth that fits their terrain height and, on the ground and on approach, sets the exact value at the aircraft position. The grid stays at 0.25°, so the snow differs from region to region, but not between a valley and the summit right above it.
 
 ## Value in Flight Simulation
 
@@ -46,17 +46,17 @@ For winter flights into valley airports such as Innsbruck, Samedan, or Bolzano, 
 
 !!! warning "Only one plugin may set the snow"
 
-    The developer asks to remove [xa-snow](xa-snow.md), which interferes with X-Plane's own snow and with XP SnowState. [NOAA Weather](noaa_weather.md) writes the same X-Plane datarefs for snow and runway friction: switch off **Accumulated Snow** there. For the runway friction there are two ways: switch off **Adjusted Runway Friction** in NOAA Weather as well, or switch off **Set runway condition** in XP SnowState and leave the friction to NOAA Weather.
+    The developer asks users to remove [xa-snow](xa-snow.md), which interferes with X-Plane's own snow and with XP SnowState. [NOAA Weather](noaa_weather.md) writes the same X-Plane datarefs for snow and runway friction: switch off **Accumulated Snow** there. For the runway friction there are two ways: switch off **Adjusted Runway Friction** in NOAA Weather as well, or switch off **Set runway condition** in XP SnowState and leave the friction to NOAA Weather.
 
 ## Installation
 
 **Download:** During the beta through the developer's Discord channel
 
-XP SnowState is a native plugin: the folder `XPSnowState` is copied to `Resources/plugins/`. On first start the plugin downloads the worldwide station list once (about 9 MB, a few minutes). The menu **Plugins → XP SnowState Beta** opens the window and the WebUI.
+XP SnowState is a native plugin: the folder `XPSnowState` is copied to `Resources/plugins/`. An older Python version of XP SnowState (`PythonPlugins/PI_XPSnowState.py` and the folder `xpsnowstate`) has to be removed first. On first start the plugin downloads the worldwide station list once (about 9 MB, a few minutes). The menu **Plugins → XP SnowState Beta** opens the window and the WebUI.
 
 ### Linux Notes
 
-The Linux build of the beta depends only on the C library and needs glibc 2.38 or newer — available in Ubuntu 24.04 and Debian 13, but not in Ubuntu 22.04 or Debian 12. The plugin has not been tested in the simulator for this page; the description follows the README and manual of the beta package.
+The Linux build of the beta needs glibc 2.38 or newer — available in Ubuntu 24.04 and Debian 13, but not in Ubuntu 22.04 or Debian 12. It also needs libcurl and libGL from the system. The plugin has not been tested in the simulator for this page; the description follows the README and manual of the beta package.
 
 ## Sources
 

@@ -10,10 +10,10 @@ XP SnowState ist ein natives [Plugin](../../glossary.md#plugin) für [X-Plane](.
 - **Entwickler:** Isar Simworks (München)
 - **Website:** [isarsimworks.de](https://isarsimworks.de/)
 - **Lizenz:** Noch nicht angekündigt
-- **Status:** Beta, erhältlich über den Discord-Kanal des Entwicklers
-- **Plattformen:** Windows 10/11 (64 Bit), Linux (64 Bit), macOS 11+
+- **Status:** Beta, erhältlich über den Discord-Kanal des Entwicklers; der Beta-Build funktioniert nur bis einschließlich 29. November 2026 (deutsche Zeit)
+- **Plattformen:** Windows 10/11 (64 Bit), Linux (64 Bit), macOS 11+ (Build im Beta-Paket nicht enthalten)
 - **Kompatibilität:** X-Plane 12; 12.4.4+ empfohlen und für den Modus REGIONAL nötig
-- **Abhängigkeiten:** Keine (kein XPPython3); eine Internetverbindung ist erforderlich
+- **Abhängigkeiten:** Internetverbindung; XPPython3 ist nicht nötig
 
 Seit 12.4.4 zeichnet X-Plane bei Real Weather selbst regionalen Schnee; die Daten stammen aus einem GFS-Raster von 0,25° (rund 28 km breite Zellen). Im Flachland passt das, in den Bergen mittelt eine Zelle aber Tal und Gipfel: Täler bekommen zu viel Schnee, Gipfel zu wenig. Als Beispiel aus dem Test nennt der Entwickler Innsbruck, wo X-Plane 9 cm am Flughafen zeigte, obwohl dort kein Schnee lag.
 
@@ -38,7 +38,7 @@ Der Modus bestimmt, wie weit das Plugin eingreift. Voreingestellt ist AUTO.
 | BEOBACHTEN | Schreibt nichts, vergleicht nur |
 | AUS | Plugin inaktiv |
 
-In AUTO, ECHT und MANUELL gilt der Schneewert für die gesamte sichtbare Szene. REGIONAL wirkt nur mit X-Planes Real Weather: Jeder Gitterpunkt in X-Planes Schneedatei erhält die Schneehöhe, die zu seiner Geländehöhe passt, und am Boden sowie im Anflug stimmt der Wert an der Flugzeugposition genau. Das Raster bleibt bei 0,25°, der Schnee unterscheidet sich also von Region zu Region, nicht aber zwischen einem Tal und dem Gipfel direkt darüber.
+In AUTO, ECHT und MANUELL gilt der Schneewert für die gesamte sichtbare Szene. REGIONAL wirkt nur mit X-Planes Real Weather: In einem Umkreis um das Flugzeug (voreingestellt 1°) erhalten die Gitterpunkte über Land in X-Planes Schneedatei die Schneehöhe, die zu ihrer Geländehöhe passt, und am Boden sowie im Anflug stimmt der Wert an der Flugzeugposition genau. Das Raster bleibt bei 0,25°, der Schnee unterscheidet sich also von Region zu Region, nicht aber zwischen einem Tal und dem Gipfel direkt darüber.
 
 ## Mehrwert in der Flugsimulation
 
@@ -52,11 +52,11 @@ Bei Winterflügen zu Talflughäfen wie Innsbruck, Samedan oder Bozen entscheidet
 
 **Download:** Während der Beta über den Discord-Kanal des Entwicklers
 
-XP SnowState ist ein natives Plugin: Der Ordner `XPSnowState` wird nach `Resources/plugins/` kopiert. Beim ersten Start lädt das Plugin einmalig die weltweite Stationsliste (rund 9 MB, einige Minuten). Das Menü **Plugins → XP SnowState Beta** öffnet Fenster und WebUI.
+XP SnowState ist ein natives Plugin: Der Ordner `XPSnowState` wird nach `Resources/plugins/` kopiert. Eine ältere Python-Version von XP SnowState (`PythonPlugins/PI_XPSnowState.py` und der Ordner `xpsnowstate`) ist vorher zu entfernen. Beim ersten Start lädt das Plugin einmalig die weltweite Stationsliste (rund 9 MB, einige Minuten). Das Menü **Plugins → XP SnowState Beta** öffnet Fenster und WebUI.
 
 ### Linux-Hinweise
 
-Der Linux-Build der Beta hängt nur von der C-Bibliothek ab und benötigt glibc 2.38 oder neuer — vorhanden in Ubuntu 24.04 und Debian 13, nicht aber in Ubuntu 22.04 oder Debian 12. Im Simulator wurde das Plugin für diese Seite nicht getestet; die Beschreibung folgt README und Handbuch des Beta-Pakets.
+Der Linux-Build der Beta benötigt glibc 2.38 oder neuer — vorhanden in Ubuntu 24.04 und Debian 13, nicht aber in Ubuntu 22.04 oder Debian 12. Außerdem benötigt er libcurl und libGL aus dem System. Im Simulator wurde das Plugin für diese Seite nicht getestet; die Beschreibung folgt README und Handbuch des Beta-Pakets.
 
 ## Quellen
 
