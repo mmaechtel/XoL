@@ -46,7 +46,7 @@ Bei Winterflügen zu Talflughäfen wie Innsbruck, Samedan oder Bozen entscheidet
 
 !!! warning "Nur ein Plugin darf den Schnee setzen"
 
-    Der Entwickler bittet darum, [xa-snow](xa-snow.md) zu entfernen, das X-Planes eigenen Schnee und XP SnowState stört. [NOAA Weather](noaa_weather.md) schreibt dieselben X-Plane-Datarefs für Schnee und Pistenreibung: dort **Accumulated Snow** und **Adjusted Runway Friction** abschalten oder XP SnowState im Modus BEOBACHTEN betreiben.
+    Der Entwickler bittet darum, [xa-snow](xa-snow.md) zu entfernen, das X-Planes eigenen Schnee und XP SnowState stört. [NOAA Weather](noaa_weather.md) schreibt dieselben X-Plane-Datarefs für Schnee und Pistenreibung: dort **Accumulated Snow** abschalten. Für die Pistenreibung gibt es zwei Wege: in NOAA Weather auch **Adjusted Runway Friction** abschalten oder in XP SnowState **Bahnzustand setzen** auf „aus“ stellen und die Reibung NOAA Weather überlassen.
 
 ## Installation
 

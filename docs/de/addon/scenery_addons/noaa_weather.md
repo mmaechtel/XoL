@@ -19,7 +19,7 @@ X-Plane 12 baut seine Wetter-Engine bereits auf NOAA-GFS-Daten auf, das Plugin e
 
 - **Schneedecke:** Liest die Schneehöhe an der Flugzeugposition aus X-Planes Real-Weather-Dateien und setzt daraus die Schneedecke — nach Angabe des Entwicklers wertet X-Plane 12.4.4 diese Daten selbst noch nicht korrekt aus
 - **Letzter Schneewert:** Behält den letzten gültigen Schneewert bis zu 70 nm bei, wenn an der Position kein Wert vorliegt, etwa über Wasser
-- **Pistenreibung:** Simuliert Pistenbehandlung bei kaltem Wetter, indem die Glätte verringert wird, die X-Plane aus Vereisungsbedingungen ableitet
+- **Pistenreibung:** X-Plane simuliert keine Pistenbehandlung, bei Vereisung werden Pisten deshalb auch an großen Flughäfen zur Eisfläche. Das Plugin senkt solche Werte auf höchstens „verschneit“
 - **METAR-Fenster:** Zeigt das METAR aus X-Planes Real Weather neben einer externen Quelle (NOAA, IVAO oder VATSIM) für einen beliebigen Flughafen an
 - **Wetter-Infofenster:** Zeigt die aktuellen Real-Weather-Werte an der Flugzeugposition: Wind, Sicht, Temperatur, Druck und Pistenreibung
 
@@ -44,7 +44,7 @@ Das Plugin setzt einen einzigen Schneewert für die gesamte sichtbare Szene, ent
 
 !!! warning "Nur ein Plugin darf den Schnee setzen"
 
-    NOAA Weather und XP SnowState schreiben dieselben X-Plane-Datarefs für Schnee und Pistenreibung. Sind beide aktiv, in NOAA Weather **Accumulated Snow** und **Adjusted Runway Friction** abschalten oder XP SnowState im Modus BEOBACHTEN betreiben. Das METAR-Fenster arbeitet in beiden Fällen weiter.
+    NOAA Weather und XP SnowState schreiben dieselben X-Plane-Datarefs für Schnee und Pistenreibung. Sind beide aktiv, in NOAA Weather **Accumulated Snow** abschalten. Für die Pistenreibung gibt es zwei Wege: **Adjusted Runway Friction** ebenfalls abschalten oder in XP SnowState **Bahnzustand setzen** auf „aus“ stellen und die Reibung NOAA Weather überlassen. Das METAR-Fenster arbeitet in beiden Fällen weiter.
 
 ## Mehrwert in der Flugsimulation
 
