@@ -232,6 +232,7 @@ plugins:
                     - AEP: de/addon/scenery_addons/aep.md
                     - xa-snow: de/addon/scenery_addons/xa-snow.md
                     - NOAA Weather: de/addon/scenery_addons/noaa_weather.md
+                    - XP SnowState: de/addon/scenery_addons/xp_snowstate.md
                     - LST: de/addon/scenery_addons/lst.md
                     - Bay's Lighting Mod: de/addon/scenery_addons/bays_lighting_mod.md
                     - XP BirdState: de/addon/scenery_addons/xp_birdstate.md
@@ -403,6 +404,7 @@ plugins:
                     - AEP: en/addon/scenery_addons/aep.md
                     - xa-snow: en/addon/scenery_addons/xa-snow.md
                     - NOAA Weather: en/addon/scenery_addons/noaa_weather.md
+                    - XP SnowState: en/addon/scenery_addons/xp_snowstate.md
                     - LST: en/addon/scenery_addons/lst.md
                     - Bay's Lighting Mod: en/addon/scenery_addons/bays_lighting_mod.md
                     - XP BirdState: en/addon/scenery_addons/xp_birdstate.md

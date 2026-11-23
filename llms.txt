@@ -190,11 +190,12 @@
 
 ### Scenery Plugins
 
-- [Scenery Plugins for X-Plane 12](https://xol.emvisio.de/en/addon/scenery_addons/index.html): Eight scenery plugins for X-Plane: XRoads, AEP, xa-snow, NOAA Weather, LST ground life, Bay's Lighting Mod, XP BirdState, and Night Sky Fix.
+- [Scenery Plugins for X-Plane 12](https://xol.emvisio.de/en/addon/scenery_addons/index.html): Nine scenery plugins for X-Plane: XRoads, AEP, xa-snow, NOAA Weather, XP SnowState, LST ground life, Bay's Lighting Mod, XP BirdState, and Night Sky Fix.
 - [XRoad](https://xol.emvisio.de/en/addon/scenery_addons/xroad.html): XRoads hides X-Plane road polygons in Ortho4XP orthophotos, revealing satellite imagery roads. Includes Linux compilation instructions.
 - [AEP](https://xol.emvisio.de/en/addon/scenery_addons/aep.html): Airport Enhancement Package (AEP) for X-Plane 12: upgraded airport buildings, ground markings, vegetation, and PBR textures for default airports.
 - [xa-snow](https://xol.emvisio.de/en/addon/scenery_addons/xa-snow.html): xa-snow overlays real-world NOAA snow depth data on X-Plane 12 scenery, replacing uniform regional snow with location-specific coverage on Linux.
-- [NOAA Weather](https://xol.emvisio.de/en/addon/scenery_addons/noaa_weather.html): NOAA Weather plugin adds real-world snow coverage and METAR comparison to X-Plane 12 on Linux. Requires XPPython3, includes wgrib2 binary.
+- [NOAA Weather](https://xol.emvisio.de/en/addon/scenery_addons/noaa_weather.html): NOAA Weather adds snow cover, treated-runway friction and a METAR window (NOAA, IVAO, VATSIM) to X-Plane 12 on Linux. Requires XPPython3.
+- [XP SnowState](https://xol.emvisio.de/en/addon/scenery_addons/xp_snowstate.html): XP SnowState for X-Plane 12 — native plugin that corrects X-Plane's snow with measured snow depths, separate for valley and mountain; beta with a Linux build.
 - [LST](https://xol.emvisio.de/en/addon/scenery_addons/lst.html): LST (Living Scenery Technology) brings animated ground traffic to X-Plane 12 airports: vehicles, pedestrians, and ground equipment on defined routes.
 - [Bay's Lighting Mod](https://xol.emvisio.de/en/addon/scenery_addons/bays_lighting_mod.html): Bay's Lighting Mod is a lighting overhaul for X-Plane 12 — reworked airport, beacon, night and cockpit lighting, cloud scattering and visibility.
 - [XP BirdState](https://xol.emvisio.de/en/addon/scenery_addons/xp_birdstate.html): XP BirdState for X-Plane 12 — native plugin with 120 bird species by region, season and weather, birds at runways and bird-strike log; Linux supported.

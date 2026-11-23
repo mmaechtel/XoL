@@ -5,6 +5,9 @@ description: "xa-snow overlays real-world NOAA snow depth data on X-Plane 12 sce
 
 xa-snow is a standalone [plugin](../../glossary.md#plugin) by hotbso that overlays real-world snow coverage on X-Plane 12 scenery. It downloads accumulated snow depth data from NOAA and applies it to the simulation in real time.
 
+!!! warning "Discontinued"
+    The developer has declared xa-snow obsolete and archived the repository: X-Plane 12.4.4 supports accumulated snow natively. The last release remains available, but there will be no further updates. For snow that separates valley and mountain see [XP SnowState](xp_snowstate.md).
+
 ## Background
 
 - **Developer:** hotbso (Holger Teutsch), originally by zodiac1214
@@ -12,7 +15,7 @@ xa-snow is a standalone [plugin](../../glossary.md#plugin) by hotbso that overla
 - **Platforms:** Windows, macOS, Linux (native binaries)
 - **Compatibility:** [X-Plane](../../glossary.md#x-plane) 12
 
-xa-snow replaces X-Plane's uniform regional snow with location-specific coverage based on actual weather data. The plugin is actively maintained with regular releases.
+xa-snow replaces X-Plane's uniform regional snow with location-specific coverage based on actual weather data.
 
 ## Features
 

@@ -35,6 +35,12 @@ Diese Dokumentation ist ein offenes Projekt. Verbesserungen oder Ergänzungen k�
 
 ## Letzte Änderungen
 
+### 2026-11-23
+
+- Neue Seite: [XP SnowState](addon/scenery_addons/xp_snowstate.md) korrigiert X-Planes Schnee mit gemessenen Schneehöhen, getrennt für Tal und Berg — ein natives Plugin mit Linux-Build, derzeit in einer zeitlich begrenzten Beta
+- [NOAA Weather](addon/scenery_addons/noaa_weather.md) für X-Plane 12.4.4 überarbeitet: Schnee aus X-Planes eigenen Wetterdateien, neuer Ordneraufbau, eine Tabelle der Einstellungen mit der Empfehlung für Online-Flüge und die Grenzen eines einzigen Schneewerts im Gebirge
+- [xa-snow](addon/scenery_addons/xa-snow.md) wurde vom Entwickler eingestellt, da X-Plane 12.4.4 liegenden Schnee selbst zeichnet
+
 ### 2026-11-22
 
 - [SGES](addon/flylua_scripts/sges.md): Die Entwicklung des FlyWithLua-Skripts ist eingestellt; die Seite beschreibt jetzt den nativen Nachfolger SGES NG, der sich im Test befindet (X-Plane 12.4 oder neuer, ohne FlyWithLua)
@@ -45,8 +51,3 @@ Diese Dokumentation ist ein offenes Projekt. Verbesserungen oder Ergänzungen k�
 ### 2026-11-02
 
 - [XEarthLayer](scenery/ortho_streaming/xearthlayer.md) auf den Stand von Version 0.5.0 gebracht: macOS-Unterstützung, generierte Nachtbeleuchtung für Ortho-Szenerie, die neu gebaute Paketbibliothek mit 17 Regionen samt neuem Paketmanager, eine eigene Prefetch-Spur, die X-Planes Kachelanfragen nie ausbremst, und XDG-Pfade unter `~/.config` und `~/.cache`. Ein Warnkasten beschreibt den Umstieg von der alten Paketgeneration
-
-### 2026-11-01
-
-- Neue Plugin-Seiten: [AOC Datalink Center](addon/cockpit/aoc_datalink_center.md) bringt ACARS/CPDLC-Dispatch über Hoppie als natives Linux-Plugin, [XP CabinState](addon/cockpit/xp_cabinstate.md) simuliert Kabine, Crew und Passagiere — offiziell nur für Windows, dokumentiert mit getestetem Wine-Setup und der Anbindung an SimLoad Manager —, [XP BirdState](addon/scenery_addons/xp_birdstate.md) ergänzt Vogelschwärme mit offiziellem Linux-Build, und [Night Sky Fix](addon/scenery_addons/night_sky_fix.md) ersetzt den Sternkatalog für eine sichtbare Milchstraße
-- [SimLoad Manager](addon/traffic/simloadmanager.md) ist jetzt ein natives Plugin mit eigenen Bodenfahrzeugen, Passagieren und Crew — ohne FlyWithLua und ohne SGES; die Seite ist nach Verkehr & Bodenbetrieb umgezogen
