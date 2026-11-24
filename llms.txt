@@ -117,7 +117,7 @@
 
 ### FlyWithLua Scripts
 
-- [FlyWithLua Scripts](https://xol.emvisio.de/en/addon/flylua_scripts/index.html): Eight FlyWithLua scripts for X-Plane 12 — haze correction, turbulence, rain effects, SimBrief integration, screen overlay, and memory cleanup.
+- [FlyWithLua Scripts](https://xol.emvisio.de/en/addon/flylua_scripts/index.html): Eight FlyWithLua scripts for X-Plane 12 — haze correction, turbulence, rain effects, SimBrief integration, screen overlay, and FPS recovery.
 - [3D Rain Stop](https://xol.emvisio.de/en/addon/flylua_scripts/3drainspeedstop.html): 3D Rain Stop for X-Plane 12 — FlyWithLua script that disables distracting 3D rain particles at high speed or altitude while keeping windshield rain.
 - [Dynamic Rain Rate](https://xol.emvisio.de/en/addon/flylua_scripts/rain_rate.html): Dynamic Rain Rate for X-Plane 12 — FlyWithLua script that scales rain intensity based on airspeed for more realistic precipitation effects.
 - [SimBrief Simple OFP](https://xol.emvisio.de/en/addon/flylua_scripts/simbrief_simple_ofp.html): SimBrief Simple OFP for X-Plane — FlyWithLua script that downloads and displays your SimBrief flight plan as an in-simulator overlay.
