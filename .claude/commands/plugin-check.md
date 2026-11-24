@@ -15,7 +15,8 @@ neuesten Version und das Ergebnisformat; diese Datei regelt nur den Ablauf mit C
 ## Ablauf
 
 1. `research/PLUGIN_CHECK.md` lesen.
-2. **Bestand** selbst aufnehmen (Schritt 1), read-only. Die Liste dem Nutzer kurz zeigen.
+2. **Bestand** selbst aufnehmen (Schritt 1), read-only: nur `Resources/plugins`, ohne Flugzeuge
+   und ohne vom Skunkcrafts Updater gepflegte Einträge. Die Liste dem Nutzer kurz zeigen.
 3. **Quellen und neueste Versionen** (Schritte 2 und 3) nach `~/.claude/modell-strategie.md`
    verteilen: je Ausschnitt ein `rechercheur`, z. B. GitHub-Einträge, X-Plane.org-Einträge,
    Payware. Für X-Plane.org den Browser, in dem der Nutzer angemeldet ist
